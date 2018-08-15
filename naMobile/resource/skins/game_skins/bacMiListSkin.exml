@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="bacMiListSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="beijing_jpg" x="0" y="0" width="100%" height="100%"/>
+	<e:Image x="50" y="150" source="chouma_jinse_png"/>
+	<e:Image source="title_mpbjl_png" x="138" y="167"/>
+	<e:Scroller id="scroller" bottom="0" width="1880" x="20" top="240">
+		<e:List id="list">
+			<e:layout>
+				<e:VerticalLayout gap="12"/>
+			</e:layout>
+		</e:List>
+	</e:Scroller>
+</e:Skin>

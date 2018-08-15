@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="keyboardSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="xianh_bg_png" width="642" height="290" scale9Grid="15,14,20,24" horizontalCenter="0" verticalCenter="0"/>
+	<e:Button label="1" width="112" height="78" horizontalCenter="-246" verticalCenter="-91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="2" width="112" height="78" horizontalCenter="-123" verticalCenter="-91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="3" width="112" height="78" horizontalCenter="0" verticalCenter="-91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="." width="112" height="78" horizontalCenter="123" verticalCenter="-91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="清空" width="112" height="78" horizontalCenter="246" verticalCenter="-91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="4" width="112" height="78" horizontalCenter="-246" verticalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="5" width="112" height="78" horizontalCenter="-123" verticalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="6" width="112" height="78" horizontalCenter="0" verticalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="0" width="112" height="78" horizontalCenter="123" verticalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="7" width="112" height="78" horizontalCenter="-246" verticalCenter="91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="8" width="112" height="78" horizontalCenter="-123" verticalCenter="91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="9" width="112" height="78" horizontalCenter="0" verticalCenter="91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="→" width="112" height="78" horizontalCenter="123" verticalCenter="91">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" scaleX="-1"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button label="确定" width="112" height="168" horizontalCenter="246" verticalCenter="45">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="jushu_bg_png" source.down="jushu_bg_png" source.disabled="jushu_bg_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>
