@@ -8,6 +8,8 @@ module game {
 		public static Mediator_BacMiList: MediatorClass = {name:"BacMiListMediator", uiName:"BacMiListUI", layer:LayerConst.LAYER_UI};
 		public static Mediator_BacMi: MediatorClass = {name:"BacMiMediator", uiName:"BacMiUI", layer:LayerConst.LAYER_UI};
 		public static Mediator_TopMi: MediatorClass = {name:"TopMiMediator", uiName:"TopMiUI", layer:LayerConst.LAYER_MENU};
+		public static Mediator_RouList: MediatorClass = {name:"RouListMediator", uiName:"RouListUI", layer:LayerConst.LAYER_UI};
+		public static Mediator_Rou: MediatorClass = {name:"RouMediator", uiName:"RouUI", layer:LayerConst.LAYER_UI};
 	}
 
 	export class MediatorClass{
