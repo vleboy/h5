@@ -5,7 +5,8 @@
 		<e:Image x="50" y="150" source="chouma_jinse_png" scaleX="1" scaleY="1"/>
 		<e:Image x="138" y="167" source="title_cjlp_png"/>
 		<e:Scroller id="scrollerRou" width="1880" top="240" bottom="0" horizontalCenter="0">
-			<e:Group/>
+			<e:List id="listRou"/>
+
 		</e:Scroller>
 	</e:Group>
 </e:Skin>

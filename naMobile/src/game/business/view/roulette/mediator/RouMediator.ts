@@ -11,7 +11,7 @@ export class RouMediator extends BaseMediator implements INotification{
 		/**初始化UI */
 		protected initUI(){
 			this.createUIByName(Mediators.Mediator_Rou.uiName, Mediators.Mediator_Rou.layer);
-			NotifyManager.getInstance().sendNotify(NotifyConst.topState, TopBarUI.STATE_ROOMLIST);
+			NotifyManager.getInstance().sendNotify(NotifyConst.topState, TopBarUI.STATE_GAMEROOM);
 		}
 		/**初始化分发数据，在ui完成初始化后异步调用 */
 		public initData(){

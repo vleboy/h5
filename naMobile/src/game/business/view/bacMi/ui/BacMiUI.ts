@@ -10,7 +10,6 @@ module game {
 		/**对象创建完成后执行 */
 		public initSetting(){
 			console.log("mi initsetting");
-			
 			this.chiplist.setChips([1,5,10,20,50,100,500]);
 			this.initListener();
 		}
