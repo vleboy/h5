@@ -17,6 +17,10 @@ module game {
 			this.initScroller();
 			this.tweenAnimation();
 		}
+		/** 收到mediator的通知，每个UI要复写这个方法 * */
+        public onMediatorCommand(type: any, params: any = null): void {
+
+        }
 		/**初始化scroller*/
 		private initScroller(): void {
 			this.acRou = new eui.ArrayCollection();

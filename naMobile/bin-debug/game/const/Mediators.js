@@ -11,6 +11,8 @@ var game;
         Mediators.Mediator_BacMiList = { name: "BacMiListMediator", uiName: "BacMiListUI", layer: game.LayerConst.LAYER_UI };
         Mediators.Mediator_BacMi = { name: "BacMiMediator", uiName: "BacMiUI", layer: game.LayerConst.LAYER_UI };
         Mediators.Mediator_TopMi = { name: "TopMiMediator", uiName: "TopMiUI", layer: game.LayerConst.LAYER_MENU };
+        Mediators.Mediator_RouList = { name: "RouListMediator", uiName: "RouListUI", layer: game.LayerConst.LAYER_UI };
+        Mediators.Mediator_Rou = { name: "RouMediator", uiName: "RouUI", layer: game.LayerConst.LAYER_UI };
         return Mediators;
     }());
     game.Mediators = Mediators;

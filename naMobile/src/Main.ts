@@ -99,7 +99,8 @@ class Main extends eui.UILayer {
      */
     protected createGameScene(): void {
         game.MediatorManager.openMediator(game.Mediators.Mediator_TopBar);
-        game.MediatorManager.openMediator(game.Mediators.Mediator_GameList);
+        // game.MediatorManager.openMediator(game.Mediators.Mediator_GameList);
+        game.MediatorManager.openMediator(game.Mediators.Mediator_Rou);
         // game.MediatorManager.openMediator(game.Mediators.Mediator_TopMi);
     }
 }

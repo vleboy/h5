@@ -159,7 +159,8 @@ var Main = (function (_super) {
      */
     Main.prototype.createGameScene = function () {
         game.MediatorManager.openMediator(game.Mediators.Mediator_TopBar);
-        game.MediatorManager.openMediator(game.Mediators.Mediator_GameList);
+        // game.MediatorManager.openMediator(game.Mediators.Mediator_GameList);
+        game.MediatorManager.openMediator(game.Mediators.Mediator_Rou);
         // game.MediatorManager.openMediator(game.Mediators.Mediator_TopMi);
     };
     return Main;
