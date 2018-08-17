@@ -57,7 +57,7 @@ module game {
 		/**下注区点击事件*/
 		private betsTouch(e: egret.TouchEvent): void {
 			//排除0的下注点击事件
-			if(!e.target.name){
+			if (!e.target.name) {
 				let theTou = this.touchArea(new egret.Point(e.localX, e.localY));
 				if (theTou) this.betsShow(theTou);
 			}
@@ -66,6 +66,7 @@ module game {
 		private ZeroTouch(): void {
 			this.betsShow("0");
 		}
+		//-----------------------玩家操作区----------------------
 		/**下注相关显示*/
 		private betsShow(tou: string): void {
 			let touArr: string[] = tou.split("_");
@@ -111,6 +112,22 @@ module game {
 		private cancelLight(): void {
 			let numArr: number[] = this.betsNum();
 			numArr.forEach(v => { (this["light_" + v] as eui.Image).visible = false; });
+		}
+		/**显示未确定下注*/
+		private showWaitBet(): void {
+
+		}
+		/**显示确定下注*/
+		private showSureBet(): void {
+
+		}
+		/**撤销未确定下注*/
+		private cancelWaitBet(): void {
+
+		}
+		/**撤销确定下注*/
+		private cancelSureBet(): void {
+
 		}
 		//-----------------轮盘下注数组方法区-----------------
 		/**返回轮盘所有下注数字数组*/
