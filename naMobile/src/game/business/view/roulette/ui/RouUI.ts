@@ -262,8 +262,12 @@ module game {
 		}
 		/**点击列区域*/
 		private colArea(tou: egret.Point): string {
-			let areaType = "";
-			this.horYArr.forEach((v, i, arr) => { if (i <= 2 && tou.y > v && tou.y <= arr[i + 1]) areaType = this.betType[0] + "_" + (i + 1); });
+			let areaType = "",thePoint:egret.Point;
+			this.horYArr.forEach((v, i, arr) => { 
+				if (i <= 2 && tou.y > v && tou.y <= arr[i + 1]) {
+					areaType = this.betType[0] + "_" + (i + 1);
+				}; 
+			});
 			return areaType;
 		}
 		/**点击打和小双红黑单大区域*/
