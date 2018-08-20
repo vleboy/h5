@@ -104,7 +104,8 @@
                     <e:Label text="单" width="202" height="112" verticalAlign="middle" textAlign="center" size="37" fontFamily="SimHei" bold="true" top="506" left="964" locked="true"/>
                     <e:Label text="大(19-36)" width="202" height="112" verticalAlign="middle" textAlign="center" size="37" fontFamily="SimHei" bold="true" top="506" left="1175" locked="true"/>
                 </e:Group>
-				<e:Group id="touchBet" width="1385" height="100%" top="0" right="0">
+				<e:Group id="chipBets" width="100%" height="100%" top="0" left="0"/>
+				<e:Group id="touchBets" width="1385" height="100%" top="0" right="0">
 					<e:Rect id="ver_1" width="0" height="0" top="6" left="11"/>
 					<e:Rect id="ver_2" width="0" height="0" top="6" left="116"/>
 					<e:Rect id="ver_3" width="0" height="0" top="6" left="222"/>

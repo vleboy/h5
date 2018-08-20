@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="chipsSkin" width="100" height="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="groupOut" width="100%" height="100%" top="0" left="0">
+		<e:Group id="groupChips" width="100%" height="56" bottom="0" horizontalCenter="0">
+			<e:Image id="chip_1" source="chip1_png" horizontalCenter="0" bottom="0" width="62" height="37"/>
+			<e:Image id="chip_2" source="chip1_png" horizontalCenter="0" bottom="5" width="62" height="37"/>
+			<e:Image id="chip_3" source="chip1_png" horizontalCenter="0" bottom="10" width="62" height="37"/>
+			<e:Image id="chip_4" source="chip1_png" horizontalCenter="0" bottom="15" width="62" height="37"/>
+		</e:Group>
+		<e:Group id="groupTxt" width="100%" height="44" horizontalCenter="0" top="0">
+			<e:Image id="betTxtBg" source="anniu-huanzhuo_png" width="100" height="44" horizontalCenter="0" top="0" x="0" y="0" scaleX="1" scaleY="1"/>
+			<e:Label id="betTxt" text="2" horizontalCenter="0" width="100%" height="24" textAlign="center" verticalAlign="middle" verticalCenter="0" textColor="0xff8e00" fontFamily="SimHei"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>
