@@ -25,6 +25,8 @@ module game {
 		private column2: number[];
 		/**第三列*/
 		private column3: number[];
+		/**每个数字点击区域宽高*/
+		private numWH:number[];
 		//----------------函数区----------------------
 		/**对象创建完成后执行 */
 		public initSetting() {
@@ -53,6 +55,7 @@ module game {
 			this.verXArr = this.ver13X();
 			this.horYArr = this.hor5Y();
 			[1, 2, 3].forEach(v => { this["column" + v] = this.columnNum(v); });
+			this.numWH = [100,134];
 		}
 		/**下注区点击事件*/
 		private betsTouch(e: egret.TouchEvent): void {
@@ -266,7 +269,9 @@ module game {
 			this.horYArr.forEach((v, i, arr) => { 
 				if (i <= 2 && tou.y > v && tou.y <= arr[i + 1]) {
 					areaType = this.betType[0] + "_" + (i + 1);
+					thePoint = new egret.Point(this.verXArr[12])
 				}; 
+
 			});
 			return areaType;
 		}
