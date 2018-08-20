@@ -1,19 +1,19 @@
 module game {
-	export abstract class BaseUI extends eui.Component{
+    export abstract class BaseUI extends eui.Component {
         private eventDic: Dictionary;
-		public constructor(m?: BaseMediator) {
-			super();
+        public constructor(m?: BaseMediator) {
+            super();
             this.eventDic = new Dictionary();
-            this.once(egret.Event.COMPLETE, ()=>{
-                console.log("egret.Event.COMPLETE"+egret.getQualifiedClassName(this),m);
+            this.once(egret.Event.COMPLETE, () => {
+                console.log("egret.Event.COMPLETE" + egret.getQualifiedClassName(this), m);
                 this.initSetting();
                 this.onStageResize();
                 m && m.initData();
             }, this);
-		}
+        }
 
         public abstract initSetting();
-		
+
         public onStageResize(): void {
             if (GlobalConfig.isMobile) {
                 this.width = StageUtil.width;
@@ -43,6 +43,10 @@ module game {
         public onMediatorCommand(type: any, params: any = null): void {
 
         }
+        /**发送通知*/
+        protected sendNotify(type: any, params: any = null): void {
+            NotifyManager.getInstance().sendNotify(type, params);
+        }
         /**
          * 统一移除所有事件
          */
@@ -66,5 +70,5 @@ module game {
                 UIManager.closeUI(this)
             }
         }
-	}
+    }
 }
