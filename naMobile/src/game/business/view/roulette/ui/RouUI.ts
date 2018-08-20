@@ -7,6 +7,28 @@ module game {
 		private chipBets: eui.Group;
 		/**0的点击区*/
 		private touch_0: eui.Image;
+		/**荷官*/
+		private theDealer: eui.Label;
+		/**局数*/
+		private theRounds: eui.Label;
+		/**房间限额*/
+		private theLimits: eui.Label;
+		/**房间号*/
+		private theRoomNum: eui.Label;
+		/**牌局号*/
+		private theHandNum: eui.Label;
+		/**本局下注*/
+		private theBets: eui.Label;
+		/**观看视屏*/
+		private lookVideo: eui.Button;
+		/**返回*/
+		private btnReturn: eui.Button;
+		/**撤销*/
+		private btnCancel: eui.Button;
+		/**重下*/
+		private btnAgain: eui.Button;
+		/**确定*/
+		private btnSure: eui.Button;
 
 		/**半线宽*/
 		private halfLine: number;
@@ -17,7 +39,7 @@ module game {
 		/**下注类型*/
 		private betType: string[];
 		/**下注零的类型*/
-		private betZero:string;
+		private betZero: string;
 		/**第一列*/
 		private column1: number[];
 		/**第二列*/
@@ -32,6 +54,8 @@ module game {
 		private smlWH: number[];
 		/**放置筹码区与点击区宽度差*/
 		private tou_chip: number;
+		/**当前筹码堆数据(用前先清空，在调用returnChips)*/
+		private chipsArr: number[];
 
 
 		public constructor(m?: BaseMediator) {
@@ -49,12 +73,32 @@ module game {
 		}
 		/** 收到mediator的通知，每个UI要复写这个方法 * */
 		public onMediatorCommand(type: any, params: any = null): void {
-
+			switch (type) {
+				case UICommand.touBetsRou:
+					this.showWaitBet(params.theTou, params.thePoint);
+					break;
+				case UICommand.roomInfoRou:
+					this.roomInfo(params);
+					break;
+				case UICommand.sureBetsRou:
+					this.showSureBet();
+					break;
+				case UICommand.cancelBetsRou:
+					this.cancelSureBet();
+					break;
+			}
 		}
 		/**事件注册*/
 		private listenEvent(): void {
+			//下注区点击事件
 			this.registerEvent(this.touchBets, egret.TouchEvent.TOUCH_TAP, this.betsTouch, this);
-			this.registerEvent(this.touch_0, egret.TouchEvent.TOUCH_TAP, this.ZeroTouch, this)
+			this.registerEvent(this.touch_0, egret.TouchEvent.TOUCH_TAP, this.zeroTouch, this);
+			//按钮事件
+			this.registerEvent(this.lookVideo, egret.TouchEvent.TOUCH_TAP, this.watchVideo, this);
+			this.registerEvent(this.btnReturn, egret.TouchEvent.TOUCH_TAP, this.theReturn, this);
+			this.registerEvent(this.btnCancel, egret.TouchEvent.TOUCH_TAP, this.theCancel, this);
+			this.registerEvent(this.btnAgain, egret.TouchEvent.TOUCH_TAP, this.theAgain, this);
+			this.registerEvent(this.btnSure, egret.TouchEvent.TOUCH_TAP, this.theSure, this);
 		}
 		/**默认ui显示*/
 		private defaultUI(): void {
@@ -78,15 +122,21 @@ module game {
 			//排除0的下注点击事件
 			if (!e.target.name) {
 				let theTou = this.touchArea(new egret.Point(e.localX, e.localY));
-				if (theTou) this.betsShow(theTou[0]);
-				this.addChips(theTou[0], theTou[1]);
+				this.sendNotify(NotifyConst.touBetsRou, { "theTou": theTou[0], "thePoint": theTou[1] });
 			}
 		}
 		/**0的下注点击事件*/
-		private ZeroTouch(): void {
-			this.betsShow(this.betZero);
-			this.addChips(this.betZero, new egret.Point(58, 209));
+		private zeroTouch(): void { this.sendNotify(NotifyConst.touBetsRou, { "theTou": this.betZero, "thePoint": new egret.Point(58, 209) }); }
+		/**游戏相关信息*/
+		private roomInfo(info: { dealer: string, rounds: string, limit: string, roomNum: string, handNum: string }): void {
+			this.theDealer.text = "荷官:" + info.dealer;
+			this.theRounds.text = "局数:" + info.rounds;
+			this.theLimits.text = "房间限额:" + info.limit;
+			this.theRoomNum.text = "房间号:" + info.roomNum;
+			this.theHandNum.text = "牌局号:" + info.handNum;
 		}
+		/**本局你的下注*/
+		private theBetsYou(bet: string): void { this.theBets.text = bet; }
 		//-----------------------玩家操作区----------------------
 		/**下注相关显示*/
 		private betsShow(tou: string): void {
@@ -145,7 +195,7 @@ module game {
 			let noChips = () => {
 				let chips: game.chips = new game.chips;
 				//下零不需要偏移值
-				let theZero:number = tou == this.betZero ? 0 : this.tou_chip;
+				let theZero: number = tou == this.betZero ? 0 : this.tou_chip;
 				chips.x = thePoint.x + theZero - chips.width / 2;
 				chips.y = thePoint.y - chips.height * .75;
 				chips.name = tou;
@@ -154,8 +204,11 @@ module game {
 			theChips ? haveChips() : noChips();
 		}
 		/**显示未确定下注*/
-		private showWaitBet(): void {
-
+		private showWaitBet(tou: string, thePoint: egret.Point): void {
+			if (tou && thePoint) {
+				this.betsShow(tou);
+				this.addChips(tou, thePoint);
+			}
 		}
 		/**显示确定下注*/
 		private showSureBet(): void {
@@ -167,7 +220,29 @@ module game {
 		}
 		/**撤销确定下注*/
 		private cancelSureBet(): void {
-
+			//撤销筹码
+			this.chipBets.numChildren && this.chipBets.removeChildren();
+			this.cancelLight();
+		}
+		/**观看视屏*/
+		private watchVideo(): void {
+			console.warn("watch");
+		}
+		/**返回*/
+		private theReturn(): void {
+			console.warn("return");
+		}
+		/**撤销*/
+		private theCancel(): void {
+			this.sendNotify(NotifyConst.touCancelRou);
+		}
+		/**重下*/
+		private theAgain(): void {
+			this.sendNotify(NotifyConst.touAgainRou);
+		}
+		/**确定*/
+		private theSure(): void {
+			this.sendNotify(NotifyConst.touSureRou);
 		}
 		//-----------------轮盘下注数组方法区-----------------
 		/**返回轮盘所有下注数字数组*/
@@ -350,6 +425,24 @@ module game {
 			//是不是打
 			tou.y <= this.horYArr[4] ? dozArea() : smlArea();
 			return [areaType, thePoint];
+		}
+		//-------------------筹码堆方法------------------
+		/**返回筹码堆*/
+		private returnChips(chipList: number[], betNum: number): number[] {
+			if (!betNum || betNum <= 0 || !chipList) return;
+			let newArr: number[] = chipList.sort((a, b) => { return b - a });
+			let theNum = () => {
+				let num: number = 0;
+				//当有一个值大于betNum时就跳出循环，这里不能用forEach,只有for循环才可以用break;
+				for(let i = 0; i < newArr.length; i++){if (betNum >= newArr[i]) { num = newArr[i];break;}}
+				return num;
+			};
+			let theBetNum:number = theNum();
+			if(theBetNum >= 0) {
+				this.chipsArr.push(theBetNum);
+				this.returnChips(chipList,betNum - theBetNum);
+			};
+			return this.chipsArr;
 		}
 		/**
          * 资源释放
