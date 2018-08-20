@@ -32,7 +32,10 @@ export class RouMediator extends BaseMediator implements INotification{
 		handleNotification(type: number, body?: any): void{
 			
 		}
-
+		/**点击*/
+		private touchRou():void{
+			console.warn("click");
+		}
 		/**关闭mediator, 要清除他的ui和数据,不再接受通知 */
 		public dispose(): void {
 			super.dispose();

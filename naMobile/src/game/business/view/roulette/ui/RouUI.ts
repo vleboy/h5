@@ -1,10 +1,5 @@
 module game {
 	export class RouUI extends BaseUI {
-		public constructor(m?: BaseMediator) {
-			super(m);
-			//引用皮肤
-			this.skinName = GlobalConfig.skinPath + "rouSkin.exml";
-		}
 		//--------------------变量区-------------------
 		/**游戏点击区*/
 		private touchBets: eui.Group;
@@ -21,6 +16,8 @@ module game {
 		private horYArr: number[];
 		/**下注类型*/
 		private betType: string[];
+		/**下注零的类型*/
+		private betZero:string;
 		/**第一列*/
 		private column1: number[];
 		/**第二列*/
@@ -35,6 +32,13 @@ module game {
 		private smlWH: number[];
 		/**放置筹码区与点击区宽度差*/
 		private tou_chip: number;
+
+
+		public constructor(m?: BaseMediator) {
+			super(m);
+			//引用皮肤
+			this.skinName = GlobalConfig.skinPath + "rouSkin.exml";
+		}
 		//----------------函数区----------------------
 		/**对象创建完成后执行 */
 		public initSetting() {
@@ -59,6 +63,7 @@ module game {
 		/**默认数据*/
 		private defaultData(): void {
 			this.betType = ["column", "dozen", "small", "double", "red", "block", "single", "big"];
+			this.betZero = "0";
 			this.halfLine = 10;
 			this.verXArr = this.ver13X();
 			this.horYArr = this.hor5Y();
@@ -79,7 +84,8 @@ module game {
 		}
 		/**0的下注点击事件*/
 		private ZeroTouch(): void {
-			this.betsShow("0");
+			this.betsShow(this.betZero);
+			this.addChips(this.betZero, new egret.Point(58, 209));
 		}
 		//-----------------------玩家操作区----------------------
 		/**下注相关显示*/
@@ -131,7 +137,6 @@ module game {
 		/**生成筹码*/
 		private addChips(tou: string, thePoint: egret.Point): void {
 			let theChips = this.chipBets.getChildByName(tou);
-			console.warn("tou", tou, thePoint)
 			//某下注区域已有筹码
 			let haveChips = () => {
 
@@ -139,8 +144,10 @@ module game {
 			//某下注区域还没有筹码
 			let noChips = () => {
 				let chips: game.chips = new game.chips;
-				chips.x = thePoint.x + this.tou_chip - chips.width / 2;
-				chips.y = thePoint.y - chips.height / 2;
+				//下零不需要偏移值
+				let theZero:number = tou == this.betZero ? 0 : this.tou_chip;
+				chips.x = thePoint.x + theZero - chips.width / 2;
+				chips.y = thePoint.y - chips.height * .75;
 				chips.name = tou;
 				this.chipBets.addChild(chips);
 			};
