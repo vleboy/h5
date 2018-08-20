@@ -7,7 +7,9 @@ module game {
 		}
 		//--------------------变量区-------------------
 		/**游戏点击区*/
-		private touchBet: eui.Group;
+		private touchBets: eui.Group;
+		/**筹码放置区*/
+		private chipBets: eui.Group;
 		/**0的点击区*/
 		private touch_0: eui.Image;
 
@@ -26,7 +28,13 @@ module game {
 		/**第三列*/
 		private column3: number[];
 		/**每个数字点击区域宽高*/
-		private numWH:number[];
+		private numWH: number[];
+		/**打点击区域宽高*/
+		private dozWH: number[];
+		/**小双红黑单大点击区域宽高*/
+		private smlWH: number[];
+		/**放置筹码区与点击区宽度差*/
+		private tou_chip: number;
 		//----------------函数区----------------------
 		/**对象创建完成后执行 */
 		public initSetting() {
@@ -41,7 +49,7 @@ module game {
 		}
 		/**事件注册*/
 		private listenEvent(): void {
-			this.registerEvent(this.touchBet, egret.TouchEvent.TOUCH_TAP, this.betsTouch, this);
+			this.registerEvent(this.touchBets, egret.TouchEvent.TOUCH_TAP, this.betsTouch, this);
 			this.registerEvent(this.touch_0, egret.TouchEvent.TOUCH_TAP, this.ZeroTouch, this)
 		}
 		/**默认ui显示*/
@@ -55,14 +63,18 @@ module game {
 			this.verXArr = this.ver13X();
 			this.horYArr = this.hor5Y();
 			[1, 2, 3].forEach(v => { this["column" + v] = this.columnNum(v); });
-			this.numWH = [100,134];
+			this.numWH = [100, 134];
+			this.dozWH = [422, 80];
+			this.smlWH = [211, 122];
+			this.tou_chip = 108;
 		}
 		/**下注区点击事件*/
 		private betsTouch(e: egret.TouchEvent): void {
 			//排除0的下注点击事件
 			if (!e.target.name) {
 				let theTou = this.touchArea(new egret.Point(e.localX, e.localY));
-				if (theTou) this.betsShow(theTou);
+				if (theTou) this.betsShow(theTou[0]);
+				this.addChips(theTou[0], theTou[1]);
 			}
 		}
 		/**0的下注点击事件*/
@@ -115,6 +127,24 @@ module game {
 		private cancelLight(): void {
 			let numArr: number[] = this.betsNum();
 			numArr.forEach(v => { (this["light_" + v] as eui.Image).visible = false; });
+		}
+		/**生成筹码*/
+		private addChips(tou: string, thePoint: egret.Point): void {
+			let theChips = this.chipBets.getChildByName(tou);
+			console.warn("tou", tou, thePoint)
+			//某下注区域已有筹码
+			let haveChips = () => {
+
+			};
+			//某下注区域还没有筹码
+			let noChips = () => {
+				let chips: game.chips = new game.chips;
+				chips.x = thePoint.x + this.tou_chip - chips.width / 2;
+				chips.y = thePoint.y - chips.height / 2;
+				chips.name = tou;
+				this.chipBets.addChild(chips);
+			};
+			theChips ? haveChips() : noChips();
 		}
 		/**显示未确定下注*/
 		private showWaitBet(): void {
@@ -197,13 +227,13 @@ module game {
 		/**判断是不是数字区域*/
 		private touchNum(tou: egret.Point): boolean { return tou.y <= this.horYArr[3]; }
 		/**点击区域判断并返回下注类型*/
-		private touchArea(tou: egret.Point): string {
+		private touchArea(tou: egret.Point): Array<any> {
 			//先判断是不是点击列再判断是不是点击数字区域
 			return this.touchCol(tou) ? this.colArea(tou) : (this.touchNum(tou) ? this.numArea(tou) : this.smlAndDozArea(tou));
 		}
 		/**点击数字区域*/
-		private numArea(tou: egret.Point): string {
-			let areaType = "";
+		private numArea(tou: egret.Point): Array<string | egret.Point> {
+			let areaType = "", thePoint: egret.Point;
 			//判断在哪一行，分为5行(第一列（轮盘显示的），横线上，第二列，横线上，第三列)
 			let rowNum = () => {
 				let row: number = 0;
@@ -218,7 +248,7 @@ module game {
 					if (i <= 2 && tou.y > v + col1 && tou.y <= arr[i + 1] - col3) { row = (i * 2) + 1; };
 				});
 				return row;
-			}
+			};
 			//判断在哪一列，分为24列(竖线上，列上，竖线上，列上••••)
 			let colNum = () => {
 				let col: number = 0;
@@ -231,16 +261,20 @@ module game {
 					if (i <= 11 && tou.x > v + this.halfLine && tou.x <= arr[i + 1] - lastCol) { col = (i + 1) * 2 }
 				});
 				return col;
-			}
+			};
 			//----判断区域----
 			let theRow: number = rowNum(), theCol: number = colNum();
 			if (theRow && theCol) {
 				let halfRow = theRow / 2;
 				//是不是在横线上
 				let ishor: boolean = theRow % 2 == 0;
+				/***/
+				let touX: number, touY: number;
 				//特殊处理竖直第一列
 				if (theCol == 1) {
 					areaType = ishor ? "0_" + halfRow + "_" + (halfRow + 1) : "0_" + Math.ceil(halfRow);
+					touX = this.verXArr[0];
+					touY = ishor ? this.horYArr[halfRow] : this.horYArr[Math.floor(halfRow)] + this.numWH[1] / 2;
 				} else {
 					let halfCol = theCol / 2;
 					//是不是在竖线上
@@ -251,48 +285,64 @@ module game {
 						//第几列数字数组
 						let theArr1: number[] = this["column" + halfRow], theArr2: number[] = this["column" + (halfRow + 1)];
 						areaType = isVer ? theArr1[index - 1] + "_" + theArr2[index - 1] + "_" + theArr1[index] + "_" + theArr2[index] : theArr1[index - 1] + "_" + theArr2[index - 1];
+						touX = isVer ? this.verXArr[index] : this.verXArr[index - 1] + this.numWH[0] / 2;
+						touY = this.horYArr[halfRow];
 					}
 					//不在横线上
 					let unLine = () => {
 						//第几列数字数组
 						let theArr: number[] = this["column" + Math.ceil(halfRow)];
 						areaType = isVer ? theArr[index - 1] + "_" + theArr[index] : theArr[halfCol - 1] + "";
+						touX = isVer ? this.verXArr[index] : this.verXArr[halfCol - 1] + this.numWH[0] / 2;
+						touY = this.horYArr[Math.floor(halfRow)] + this.numWH[1] / 2;
 					}
 					ishor ? onLine() : unLine();
 				}
+				thePoint = new egret.Point(touX, touY);
 			}
-			return areaType;
+			return [areaType, thePoint];
 		}
 		/**点击列区域*/
-		private colArea(tou: egret.Point): string {
-			let areaType = "",thePoint:egret.Point;
-			this.horYArr.forEach((v, i, arr) => { 
+		private colArea(tou: egret.Point): Array<string | egret.Point> {
+			let areaType = "", thePoint: egret.Point;
+			this.horYArr.forEach((v, i, arr) => {
 				if (i <= 2 && tou.y > v && tou.y <= arr[i + 1]) {
 					areaType = this.betType[0] + "_" + (i + 1);
-					thePoint = new egret.Point(this.verXArr[12])
-				}; 
-
+					let touX: number = this.verXArr[12] + this.numWH[0] / 2;
+					let touY: number = v + this.numWH[1] / 2;
+					thePoint = new egret.Point(touX, touY);
+				};
 			});
-			return areaType;
+			return [areaType, thePoint];
 		}
 		/**点击打和小双红黑单大区域*/
-		private smlAndDozArea(tou: egret.Point): string {
-			let areaType = "";
+		private smlAndDozArea(tou: egret.Point): Array<string | egret.Point> {
+			let areaType = "", thePoint: egret.Point;
 			//打区域
 			let dozArea = () => {
 				this.verXArr.forEach((v, i, arr) => {
-					if (i > 0 && i % 4 == 0 && tou.x > arr[i - 4] && tou.x <= v) areaType = this.betType[1] + "_" + (i / 4);
+					if (i > 0 && i % 4 == 0 && tou.x > arr[i - 4] && tou.x <= v) {
+						areaType = this.betType[1] + "_" + (i / 4);
+						let touX: number = arr[i - 4] + this.dozWH[0] / 2;
+						let touY: number = this.horYArr[3] + this.dozWH[1] / 2;
+						thePoint = new egret.Point(touX, touY);
+					};
 				});
 			};
 			//小双红黑单大区域
 			let smlArea = () => {
 				this.verXArr.forEach((v, i, arr) => {
-					if (i > 0 && i % 2 == 0 && tou.x > arr[i - 2] && tou.x <= v) areaType = this.betType[(i / 2) + 1];
+					if (i > 0 && i % 2 == 0 && tou.x > arr[i - 2] && tou.x <= v) {
+						areaType = this.betType[(i / 2) + 1];
+						let touX: number = arr[i - 2] + this.smlWH[0] / 2;
+						let touY: number = this.horYArr[4] + this.smlWH[1] / 2;
+						thePoint = new egret.Point(touX, touY);
+					};
 				});
 			}
 			//是不是打
 			tou.y <= this.horYArr[4] ? dozArea() : smlArea();
-			return areaType;
+			return [areaType, thePoint];
 		}
 		/**
          * 资源释放
