@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="gameSceneSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image x="0" y="0" width="100%" height="100%" source="normalbg_jpg"/>
+	<e:Group id="contentGroup" width="1396" height="1080" horizontalCenter="0" verticalCenter="0">
+		<e:Group width="100%" height="100%" x="0" y="86">
+			<e:Image source="NormalFrame_png" y="100" horizontalCenter="0" width="1388" height="761" x="4" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="39" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="304" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" y="183" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="834" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="1099" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="asdad_png" y="31" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
+		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
+			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
+				<e:Image id="tile0" source="symbolName_0_png" x="35" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile1" source="symbolName_0_png" x="35" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile2" source="symbolName_0_png" x="35" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile3" source="symbolName_0_png" x="300" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile4" source="symbolName_0_png" x="300" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile5" source="symbolName_0_png" x="300" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile6" source="symbolName_0_png" x="565" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile7" source="symbolName_0_png" x="565" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile8" source="symbolName_0_png" x="565" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile9" source="symbolName_0_png" x="830" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile10" source="symbolName_0_png" x="830" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile11" source="symbolName_0_png" x="830" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile12" source="symbolName_0_png" x="1095" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile13" source="symbolName_0_png" x="1095" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile14" source="symbolName_0_png" x="1095" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+			</e:Group>
+			<e:Group id="vagueTiles" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image id="vagueTile0" source="vague0_png" x="35" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile1" source="vague0_png" x="35" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile2" source="vague0_png" x="35" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile3" source="vague0_png" x="35" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+
+				<e:Image id="vagueTile4" source="vague0_png" x="300" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile5" source="vague0_png" x="300" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile6" source="vague0_png" x="300" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile7" source="vague0_png" x="300" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+
+				<e:Image id="vagueTile8" source="vague0_png" x="565" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile9" source="vague0_png" x="565" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile10" source="vague0_png" x="565" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile11" source="vague0_png" x="565" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+
+				<e:Image id="vagueTile12" source="vague0_png" x="830" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile13" source="vague0_png" x="830" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile14" source="vague0_png" x="830" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile15" source="vague0_png" x="830" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+
+				<e:Image id="vagueTile16" source="vague0_png" x="1095" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile17" source="vague0_png" x="1095" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile18" source="vague0_png" x="1095" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile19" source="vague0_png" x="1095" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+			</e:Group>
+		</e:Group>
+		<e:Group id="btnsGroup" width="100%" height="100%" x="0" y="0" scaleX="1" scaleY="1"/>
+	</e:Group>
+</e:Skin>
