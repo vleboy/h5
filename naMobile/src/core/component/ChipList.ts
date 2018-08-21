@@ -32,6 +32,9 @@ module game {
 	export class ChipItem extends AItemRenderer{
 		private chipImg: eui.Image;
 		private customGroup: eui.Group;
+		private selectEffect1: AMovieClip;
+		private selectEffect2: AMovieClip;
+		private selectEffect: AMovieClip;
 		public constructor() {
 			super();
 		}
@@ -40,9 +43,14 @@ module game {
 		}
 		protected dataChanged()
 		{
+			console.log("dataChanged ",this.data)
 			this.customGroup.visible = this.data == "custom";
 			this.chipImg.visible = this.data != "custom";
 			this.chipImg.visible && (this.chipImg.source = "chouma"+this.data+"_png");
+			this.selectEffect1.visible= false;
+			this.selectEffect2.visible= false;
+			this.selectEffect = this.data == "custom"? this.selectEffect2 : this.selectEffect1;
+			this.selectEffect.visible = this.selected;
 		}
 		protected onRemove()
 		{

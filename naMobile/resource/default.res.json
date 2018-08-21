@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,55yuan_png,anniu-huanzhuo_png,arrow_png,arrow2_png,anniu_bg_png,b27_s6_png,B27-S6_touzhu_png,b271_png,b272_png,1-1_png,1-2_png,1-3_png,1-4_png,1-5_png,1-6_png,1-7_png,anniu_B27_1_png,anniu_b27_2_png,anniu_pt_1_png,anniu_pt_2_png,anniu_s6_1_png,anniu_s6_2_png,b27-1-1_png,b27-2_png,b27-3_png,b27-4_png,b27-5_png,b27-6-1_png,dark1-1_png,dark1-2_png,dark1-3_png,dark1-4_png,dark1-5_png,dark1-6_png,dark1-7_png,darkb27-1_png,darkb27-2_png,darkb27-3_png,darkb27-4_png,darkb27-5_png,darkb27-6_png,huise_yuan_png,img_h_png,img_hs_png,img_hx_png,img_l_png,img_ls_png,img_lv_png,img_lx_png,inject_qipao_png,jiesuan_bg_png,jiesuan_tb_png,jushu_bg_dj_png,jushu_bg_png,kongxian_tb_png,kongxian-zanting_png,liebiao_ludan_png,ludan_BG_png,lunpan_ludan_png,lvdan_bg2_png,lvdan_bg3_png,lvdan_bg4_png,mianyong1_png,mianyong2_png,mingzi_bg_png,mipai_bg_png,mipai_tb_png,na_yuan_png,pt_png,putong_touz_png,putong1_png,putong2_png,sanjianx_png,title_cjlp_png,title_jsbjl_png,title_mpbjl_png,xiala_png,xianh_bg_png,xianhong_1_png,xianhxz_bg_png,xianhxz_xz_png,xianwenl_1_png,xianwenl_2_png,xiapi_da_png,xiazhu_bg_png,xinxi_bg_png,xipai_bg_png,xuanzuo_bg_jpg,xuanzuo_dianj_jpg,zanting_tb_png,zhuangwenl_1_png,zhuangwenl_2_png,balancebg_png,beijing_jpg,biaoqing1_png,huanzhuoludan_jpg,huanzhuoludan2_jpg,weizhitubiao3_png,chip1_png,chip10_png,chip100_png,chip100k_png,chip10k_png,chip1k_png,chip2_png,chip20_png,chip200_png,chip2k_png,chip5_png,chip50_png,chip500_png,chip5k_png,chouma1_png,chouma10_png,chouma100_png,chouma100k_png,chouma10k_png,chouma1k_png,chouma2_png,chouma20_png,chouma200_png,chouma2k_png,chouma5_png,chouma50_png,chouma500_png,chouma500k_png,chouma_bianji_png,chouma_huad_png,chouma_xz_png,cjlp_png,cmzdy_png,cmzdy1_png,fanhuihong_png,gonggao_png,haol_ld_png,hoal_bg_png,qr_png,qx_png,hengxian_jpg,img_10_png,img_3_png,jianbian_png,jiangb_png,jsbjl_png,liaotian_png,liaotian1_png,lvdan_bg1_png,mipai_shou_png,mpbjl_png,chouma_baise_png,chouma_jinse_png,dtbjl_png,duotai_anniuBG_png,duotai_BG_png,duotai_chexiao_png,duotai_chexiao2_png,duotai_chexiao3_png,duotai_daludan_jpg,duotai_daludan2_jpg,duotai_daludanBG_png,duotai_he_png,duotai_he2_png,duotai_jiesuan_png,duotai_kaijiangBG_png,duotai_kongren2_png,duotai_ludanBG_png,duotai_quer_png,duotai_quer2_png,duotai_quer3_png,duotai_sanjiaox_png,duotai_xian_png,duotai_xian2_png,duotai_xiandui_png,duotai_xiandui2_png,duotai_xianl2_png,duotai_xianli_png,duotai_xianwenl_png,duotai_xianwenl2_png,duotai_xiazhu_png,duotai_xipai_png,duotai_zanting_png,duotai_zanting2_png,duotai_zhezhao_png,duotai_zhongjiang_png,duotai_zhuang_png,duotai_zhuang2_png,duotai_zhuangdui_png,duotai_zhuangdui2_png,duotai_zhuangli_png,duotai_zhuangli2_png,duotai_zhuangwenl_png,duotai_zhuangwenl2_png,duotao_touzhu_png,kaijiang_bg_png,kaijiang_chouma_png,kaijiang_guangxian_png,Back_png,C1_png,C10_png,C11_png,C12_png,C13_png,C2_png,C3_png,C4_png,C5_png,C6_png,C7_png,C8_png,C9_png,D1_png,D10_png,D11_png,D12_png,D13_png,D2_png,D3_png,D4_png,D5_png,D6_png,D7_png,D8_png,D9_png,H1_png,H10_png,H11_png,H12_png,H13_png,H2_png,H3_png,H4_png,H5_png,H6_png,H7_png,H8_png,H9_png,S1_png,S10_png,S11_png,S12_png,S13_png,S2_png,S3_png,S4_png,S5_png,S6_png,S7_png,S8_png,S9_png,queren_1_png,queren_2_png,queren_3_png,quxiao_1_png,quxiao_2_png,quxiao_3_png,paicai_anniu_png,paicai_anniu2_png,paicai_BGse_png,paicai_BGse2_png,paicai_BGse3_png,paicai_he_png,paicai_hongxian_png,paicai_riqikuang_png,paicai_xian_png,paicai_xianBK_png,paicai_yuan_png,paicai_zhuang_png,paicai_zhuangBK_png,liebiao_ludan_jpg,lunpan_ludan_jpg,lvdan_bg1_jpg,lvdan_bg2_jpg,lvdan_bg3_jpg,lvdan_bg4_jpg,beijingse_jpg,biankuang_png,da_png,k1_png,k2_png,lanpan_anniuxz_png,ling_png,lunpan_benjutz_png,lunpan_chex1_png,lunpan_chex3_png,lunpan_chongfu1_png,lunpan_chongfu2_png,lunpan_chongfu3_png,lunpan_fanhui1_png,lunpan_fanhui2_png,lunpan_fanhui3_png,lunpan_hei_png,lunpan_hong_png,lunpan_jiantou_png,lunpan_jiesuan_png,lunpan_jishi_png,lunpan_kaijiang_png,lunpan_lunpansp_png,lunpan_qieshipin_png,lunpan_qietouzhu_png,lunpan_queren2_png,lunpan_queren3_png,lunpan_quren1_png,lunpan_shipink_png,lunpan_shipink1_png,lunpan_shipink2_png,lunpan_xhez2_png,lunpan_xiazhu_png,lunpan-di_png,lunpan_png,lingx-h1_png,lingxhei_png,lingxhei1_png,lunpan_touzhu1_png,lunpan_touzhu2_png,lunpan_touzhu3_png,lunpan_ludan_anniu_png,lunpan_ludan_dalie_png,lunpan_ludan_hh_png,lunpan_ludan_xuanzhong_png,lunpan_ludan1_png,lunpan_ludan2_png,lunpan_ludan3-1_png,lunpan_ludan3_png,shipin_png,shu_png,shuang_png,shuzi_png,zhanbaibian_png,s_loadingscreen_bg_jpg,setting_png,title_png,tongyong_yuan_png,topbg_png,topbg2_png,touxiang_bg_png,touxiang_png,touzhu_qipao_png,touzhu_qipao1_png,xiazhuxx_png,xinxi_png,xuanze-cjlp_png,xuanze-dtbjl_png,xuanze-gbbjl_png,xuanze-jdbjl_png,xuanze-jsbjl_png,xuanze-mpbjl_png,zhunihaoyun1_png,zhunihaoyun2_png,zidingyi_png,baccaratbg_jpg",
+			"keys": "description_json,button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,55yuan_png,anniu-huanzhuo_png,arrow_png,arrow2_png,anniu_bg_png,b27_s6_png,B27-S6_touzhu_png,b271_png,b272_png,1-1_png,1-2_png,1-3_png,1-4_png,1-5_png,1-6_png,1-7_png,anniu_B27_1_png,anniu_b27_2_png,anniu_pt_1_png,anniu_pt_2_png,anniu_s6_1_png,anniu_s6_2_png,b27-1-1_png,b27-2_png,b27-3_png,b27-4_png,b27-5_png,b27-6-1_png,dark1-1_png,dark1-2_png,dark1-3_png,dark1-4_png,dark1-5_png,dark1-6_png,dark1-7_png,darkb27-1_png,darkb27-2_png,darkb27-3_png,darkb27-4_png,darkb27-5_png,darkb27-6_png,huise_yuan_png,img_h_png,img_hs_png,img_hx_png,img_l_png,img_ls_png,img_lv_png,img_lx_png,inject_qipao_png,jiesuan_bg_png,jiesuan_tb_png,jushu_bg_dj_png,jushu_bg_png,kongxian_tb_png,kongxian-zanting_png,liebiao_ludan_png,ludan_BG_png,lunpan_ludan_png,lvdan_bg2_png,lvdan_bg3_png,lvdan_bg4_png,mianyong1_png,mianyong2_png,mingzi_bg_png,mipai_bg_png,mipai_tb_png,na_yuan_png,pt_png,putong_touz_png,putong1_png,putong2_png,sanjianx_png,title_cjlp_png,title_jsbjl_png,title_mpbjl_png,xiala_png,xianh_bg_png,xianhong_1_png,xianhxz_bg_png,xianhxz_xz_png,xianwenl_1_png,xianwenl_2_png,xiapi_da_png,xiazhu_bg_png,xinxi_bg_png,xipai_bg_png,xuanzuo_bg_jpg,xuanzuo_dianj_jpg,zanting_tb_png,zhuangwenl_1_png,zhuangwenl_2_png,balancebg_png,beijing_jpg,biaoqing1_png,huanzhuoludan_jpg,huanzhuoludan2_jpg,weizhitubiao3_png,chip1_png,chip10_png,chip100_png,chip100k_png,chip10k_png,chip1k_png,chip2_png,chip20_png,chip200_png,chip2k_png,chip5_png,chip50_png,chip500_png,chip5k_png,chouma1_png,chouma10_png,chouma100_png,chouma100k_png,chouma10k_png,chouma1k_png,chouma2_png,chouma20_png,chouma200_png,chouma2k_png,chouma5_png,chouma50_png,chouma500_png,chouma500k_png,chouma_bianji_png,chouma_huad_png,chouma_xz_png,cjlp_png,cmzdy_png,cmzdy1_png,fanhuihong_png,gonggao_png,haol_ld_png,hoal_bg_png,qr_png,qx_png,hengxian_jpg,img_10_png,img_3_png,jianbian_png,jiangb_png,jsbjl_png,liaotian_png,liaotian1_png,lvdan_bg1_png,mipai_shou_png,mpbjl_png,chouma_baise_png,chouma_jinse_png,dtbjl_png,duotai_anniuBG_png,duotai_BG_png,duotai_chexiao_png,duotai_chexiao2_png,duotai_chexiao3_png,duotai_daludan_jpg,duotai_daludan2_jpg,duotai_daludanBG_png,duotai_he_png,duotai_he2_png,duotai_jiesuan_png,duotai_kaijiangBG_png,duotai_kongren2_png,duotai_ludanBG_png,duotai_quer_png,duotai_quer2_png,duotai_quer3_png,duotai_sanjiaox_png,duotai_xian_png,duotai_xian2_png,duotai_xiandui_png,duotai_xiandui2_png,duotai_xianl2_png,duotai_xianli_png,duotai_xianwenl_png,duotai_xianwenl2_png,duotai_xiazhu_png,duotai_xipai_png,duotai_zanting_png,duotai_zanting2_png,duotai_zhezhao_png,duotai_zhongjiang_png,duotai_zhuang_png,duotai_zhuang2_png,duotai_zhuangdui_png,duotai_zhuangdui2_png,duotai_zhuangli_png,duotai_zhuangli2_png,duotai_zhuangwenl_png,duotai_zhuangwenl2_png,duotao_touzhu_png,kaijiang_bg_png,kaijiang_chouma_png,kaijiang_guangxian_png,Back_png,C1_png,C10_png,C11_png,C12_png,C13_png,C2_png,C3_png,C4_png,C5_png,C6_png,C7_png,C8_png,C9_png,D1_png,D10_png,D11_png,D12_png,D13_png,D2_png,D3_png,D4_png,D5_png,D6_png,D7_png,D8_png,D9_png,H1_png,H10_png,H11_png,H12_png,H13_png,H2_png,H3_png,H4_png,H5_png,H6_png,H7_png,H8_png,H9_png,S1_png,S10_png,S11_png,S12_png,S13_png,S2_png,S3_png,S4_png,S5_png,S6_png,S7_png,S8_png,S9_png,queren_1_png,queren_2_png,queren_3_png,quxiao_1_png,quxiao_2_png,quxiao_3_png,paicai_anniu_png,paicai_anniu2_png,paicai_BGse_png,paicai_BGse2_png,paicai_BGse3_png,paicai_he_png,paicai_hongxian_png,paicai_riqikuang_png,paicai_xian_png,paicai_xianBK_png,paicai_yuan_png,paicai_zhuang_png,paicai_zhuangBK_png,liebiao_ludan_jpg,lunpan_ludan_jpg,lvdan_bg1_jpg,lvdan_bg2_jpg,lvdan_bg3_jpg,lvdan_bg4_jpg,beijingse_jpg,biankuang_png,da_png,k1_png,k2_png,lanpan_anniuxz_png,ling_png,lunpan_benjutz_png,lunpan_chex1_png,lunpan_chex3_png,lunpan_chongfu1_png,lunpan_chongfu2_png,lunpan_chongfu3_png,lunpan_fanhui1_png,lunpan_fanhui2_png,lunpan_fanhui3_png,lunpan_hei_png,lunpan_hong_png,lunpan_jiantou_png,lunpan_jiesuan_png,lunpan_jishi_png,lunpan_kaijiang_png,lunpan_lunpansp_png,lunpan_qieshipin_png,lunpan_qietouzhu_png,lunpan_queren2_png,lunpan_queren3_png,lunpan_quren1_png,lunpan_shipink_png,lunpan_shipink1_png,lunpan_shipink2_png,lunpan_xhez2_png,lunpan_xiazhu_png,lunpan-di_png,lunpan_png,lingx-h1_png,lingxhei_png,lingxhei1_png,lunpan_touzhu1_png,lunpan_touzhu2_png,lunpan_touzhu3_png,lunpan_ludan_anniu_png,lunpan_ludan_dalie_png,lunpan_ludan_hh_png,lunpan_ludan_xuanzhong_png,lunpan_ludan1_png,lunpan_ludan2_png,lunpan_ludan3-1_png,lunpan_ludan3_png,shipin_png,shu_png,shuang_png,shuzi_png,zhanbaibian_png,s_loadingscreen_bg_jpg,setting_png,title_png,tongyong_yuan_png,topbg_png,topbg2_png,touxiang_bg_png,touxiang_png,touzhu_qipao_png,touzhu_qipao1_png,xiazhuxx_png,xinxi_png,xuanze-cjlp_png,xuanze-dtbjl_png,xuanze-gbbjl_png,xuanze-jdbjl_png,xuanze-jsbjl_png,xuanze-mpbjl_png,zhunihaoyun1_png,zhunihaoyun2_png,zidingyi_png,baccaratbg_jpg,BetEffect2_0_png,BetEffect2_1_png,BetEffect2_10_png,BetEffect2_11_png,BetEffect2_12_png,BetEffect2_13_png,BetEffect2_14_png,BetEffect2_15_png,BetEffect2_16_png,BetEffect2_17_png,BetEffect2_18_png,BetEffect2_19_png,BetEffect2_2_png,BetEffect2_20_png,BetEffect2_21_png,BetEffect2_22_png,BetEffect2_23_png,BetEffect2_24_png,BetEffect2_25_png,BetEffect2_26_png,BetEffect2_3_png,BetEffect2_4_png,BetEffect2_5_png,BetEffect2_6_png,BetEffect2_7_png,BetEffect2_8_png,BetEffect2_9_png,BetEffect1_0_png,BetEffect1_1_png,BetEffect1_10_png,BetEffect1_11_png,BetEffect1_12_png,BetEffect1_13_png,BetEffect1_14_png,BetEffect1_15_png,BetEffect1_16_png,BetEffect1_17_png,BetEffect1_18_png,BetEffect1_19_png,BetEffect1_2_png,BetEffect1_20_png,BetEffect1_21_png,BetEffect1_22_png,BetEffect1_23_png,BetEffect1_24_png,BetEffect1_25_png,BetEffect1_26_png,BetEffect1_27_png,BetEffect1_28_png,BetEffect1_29_png,BetEffect1_3_png,BetEffect1_4_png,BetEffect1_5_png,BetEffect1_6_png,BetEffect1_7_png,BetEffect1_8_png,BetEffect1_9_png",
 			"name": "preload"
 		}
 	],
@@ -1785,6 +1785,291 @@
 			"name": "baccaratbg_jpg",
 			"type": "image",
 			"url": "res/baccarat/baccaratbg.jpg"
+		},
+		{
+			"name": "BetEffect2_0_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_0.png"
+		},
+		{
+			"name": "BetEffect2_1_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_1.png"
+		},
+		{
+			"name": "BetEffect2_10_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_10.png"
+		},
+		{
+			"name": "BetEffect2_11_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_11.png"
+		},
+		{
+			"name": "BetEffect2_12_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_12.png"
+		},
+		{
+			"name": "BetEffect2_13_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_13.png"
+		},
+		{
+			"name": "BetEffect2_14_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_14.png"
+		},
+		{
+			"name": "BetEffect2_15_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_15.png"
+		},
+		{
+			"name": "BetEffect2_16_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_16.png"
+		},
+		{
+			"name": "BetEffect2_17_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_17.png"
+		},
+		{
+			"name": "BetEffect2_18_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_18.png"
+		},
+		{
+			"name": "BetEffect2_19_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_19.png"
+		},
+		{
+			"name": "BetEffect2_2_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_2.png"
+		},
+		{
+			"name": "BetEffect2_20_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_20.png"
+		},
+		{
+			"name": "BetEffect2_21_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_21.png"
+		},
+		{
+			"name": "BetEffect2_22_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_22.png"
+		},
+		{
+			"name": "BetEffect2_23_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_23.png"
+		},
+		{
+			"name": "BetEffect2_24_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_24.png"
+		},
+		{
+			"name": "BetEffect2_25_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_25.png"
+		},
+		{
+			"name": "BetEffect2_26_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_26.png"
+		},
+		{
+			"name": "BetEffect2_3_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_3.png"
+		},
+		{
+			"name": "BetEffect2_4_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_4.png"
+		},
+		{
+			"name": "BetEffect2_5_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_5.png"
+		},
+		{
+			"name": "BetEffect2_6_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_6.png"
+		},
+		{
+			"name": "BetEffect2_7_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_7.png"
+		},
+		{
+			"name": "BetEffect2_8_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_8.png"
+		},
+		{
+			"name": "BetEffect2_9_png",
+			"type": "image",
+			"url": "res/chips/BetEffect2/BetEffect2_9.png"
+		},
+		{
+			"name": "BetEffect1_0_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_0.png"
+		},
+		{
+			"name": "BetEffect1_1_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_1.png"
+		},
+		{
+			"name": "BetEffect1_10_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_10.png"
+		},
+		{
+			"name": "BetEffect1_11_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_11.png"
+		},
+		{
+			"name": "BetEffect1_12_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_12.png"
+		},
+		{
+			"name": "BetEffect1_13_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_13.png"
+		},
+		{
+			"name": "BetEffect1_14_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_14.png"
+		},
+		{
+			"name": "BetEffect1_15_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_15.png"
+		},
+		{
+			"name": "BetEffect1_16_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_16.png"
+		},
+		{
+			"name": "BetEffect1_17_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_17.png"
+		},
+		{
+			"name": "BetEffect1_18_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_18.png"
+		},
+		{
+			"name": "BetEffect1_19_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_19.png"
+		},
+		{
+			"name": "BetEffect1_2_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_2.png"
+		},
+		{
+			"name": "BetEffect1_20_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_20.png"
+		},
+		{
+			"name": "BetEffect1_21_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_21.png"
+		},
+		{
+			"name": "BetEffect1_22_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_22.png"
+		},
+		{
+			"name": "BetEffect1_23_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_23.png"
+		},
+		{
+			"name": "BetEffect1_24_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_24.png"
+		},
+		{
+			"name": "BetEffect1_25_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_25.png"
+		},
+		{
+			"name": "BetEffect1_26_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_26.png"
+		},
+		{
+			"name": "BetEffect1_27_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_27.png"
+		},
+		{
+			"name": "BetEffect1_28_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_28.png"
+		},
+		{
+			"name": "BetEffect1_29_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_29.png"
+		},
+		{
+			"name": "BetEffect1_3_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_3.png"
+		},
+		{
+			"name": "BetEffect1_4_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_4.png"
+		},
+		{
+			"name": "BetEffect1_5_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_5.png"
+		},
+		{
+			"name": "BetEffect1_6_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_6.png"
+		},
+		{
+			"name": "BetEffect1_7_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_7.png"
+		},
+		{
+			"name": "BetEffect1_8_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_8.png"
+		},
+		{
+			"name": "BetEffect1_9_png",
+			"type": "image",
+			"url": "res/chips/BetEffect1/BetEffect1_9.png"
 		}
 	]
 }
