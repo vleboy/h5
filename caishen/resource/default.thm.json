@@ -29,7 +29,13 @@
 		"resource/skins/eui_skins/ToggleSwitchSkin.exml",
 		"resource/skins/eui_skins/VScrollBarSkin.exml",
 		"resource/skins/eui_skins/VSliderSkin.exml",
-		"resource/skins/game_skins/gameSceneSkin.exml"
+		"resource/skins/game_skins/bottomSkin.exml",
+		"resource/skins/game_skins/freeChooseSkin.exml",
+		"resource/skins/game_skins/gameSceneSkin.exml",
+		"resource/skins/game_skins/rullSkin.exml",
+		"resource/skins/game_skins/settingSkin.exml",
+		"resource/skins/game_skins/tipSkin.exml",
+		"resource/skins/game_skins/topBarSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }
