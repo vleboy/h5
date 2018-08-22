@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="settingSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Rect id="bgSetting" top="0" alpha="0.7" width="1920" height="1080" left="0"/>
+	<e:Rect id="bgSetting" top="0" alpha="0.5" width="1920" height="1080" left="0"/>
 	<e:Group id="groupSetting" width="1244" height="764" verticalCenter="0" horizontalCenter="0" anchorOffsetX="622" anchorOffsetY="382">
 		<e:Image source="InfoBG_png" width="100%" horizontalCenter="0" bottom="0" scale9Grid="14,96,90,38" height="696"/>
 		<e:Image source="setTitle_png" width="96" height="44" top="12" left="50"/>

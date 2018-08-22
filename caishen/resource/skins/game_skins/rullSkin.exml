@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="rullSkin" width="400" height="300" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="rullSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="groupOut" width="100%" height="100%" left="0" top="0">
+		<e:Image source="HelpBG_png" height="100%" horizontalCenter="0" verticalCenter="0" width="100%"/>
+		<e:Image source="asdad_png" right="60" top="14"/>
+		<e:Scroller id="scrollerRull" width="1726" height="672" verticalCenter="0" horizontalCenter="0">
+			<e:Group id="groupRull">
+				<e:Group id="groupRull0" width="1726" height="100%" verticalCenter="0" left="0"/>
+				<e:Group id="groupRull1" width="1726" height="100%" verticalCenter="0" left="1726"/>
+				<e:Group id="groupRull2" width="1726" height="100%" verticalCenter="0" horizontalCenter="3452"/>
+				<e:Group id="groupRull3" width="1726" height="100%" verticalCenter="0" horizontalCenter="5178"/>
+				<e:Group id="groupRull4" width="1726" height="100%" verticalCenter="0" horizontalCenter="6904"/>
+				<e:Group id="groupRull5" width="1726" height="100%" verticalCenter="0" horizontalCenter="8630"/>
+			</e:Group>
+		</e:Scroller>
+		<e:Group id="btnRull" width="384" height="50" bottom="40" horizontalCenter="0">
+			<e:Button label="Button" x="46" verticalCenter="0"/>
+		</e:Group>
+	</e:Group>
 </e:Skin>
