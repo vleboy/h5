@@ -2,12 +2,12 @@
 <e:Skin class="rullSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group id="groupOut" width="100%" height="100%" left="0" top="0">
 		<e:Image source="normalbg_jpg" width="1920" height="1080" top="0" left="0"/>
-		<e:Image height="100%" horizontalCenter="0" verticalCenter="0" width="100%" source="bg_png"/>
+		<e:Image height="100%" horizontalCenter="0" verticalCenter="0" width="100%" source="bg"/>
 		<e:Image source="asdad_png" right="60" top="14"/>
 		<e:Rect id="rullMask" width="1726" height="672" verticalCenter="0" horizontalCenter="0"/>
 		<e:Group id="groupRull" verticalCenter="0" left="97" width="10356">
 			<e:Group id="groupRull0" width="1726" height="672" verticalCenter="0" left="0">
-				<e:Image source="scatterBg_png" left="0" right="0" verticalCenter="0"/>
+				<e:Image left="0" right="0" verticalCenter="0" source="scatterBg_png"/>
 			</e:Group>
 			<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
 				<e:Image left="0" right="0" verticalCenter="0" source="number_bg_5_png"/>
