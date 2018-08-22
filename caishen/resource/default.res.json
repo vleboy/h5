@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "asdad_png,asdasd_png,FeatureChance_png,FreeGameFrame_png,FreeGameTips_png,GetTips_png,HelpBG_png,LineBG_png,Mutiply_png,normalbg_jpg,NormalFrame_png,OverBG2_png,A_png,add_png,Arrow_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_word_png,free_png,help_png,InfoBG_png,left_word_png,left_png,MaxBet_png,menu_png,minus_png,music_word_png,music_png,off_png,on_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_word_png,sound_png,spin_png,time_word_png,time_png,10_15_30_png,10_png,15_png,2_3_5_png,20_png,3_5_8_png,5_8_10_png,5_png,8_10_15_png,8_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,loading_jpg,IconFont_png,symbolName_0_png,symbolName_1_png,symbolName_10_png,symbolName_11_png,symbolName_12_png,symbolName_2_1_png,symbolName_2_2_png,symbolName_2_3_png,symbolName_2_4_png,symbolName_2_5_png,symbolName_2_png,symbolName_3_png,symbolName_4_png,symbolName_5_png,symbolName_6_png,symbolName_7_png,symbolName_8_png,symbolName_9_png,vague0_png,vague1_png,vague10_png,vague11_png,vague12_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png",
+			"keys": "asdad_png,asdasd_png,FeatureChance_png,FreeGameFrame_png,FreeGameTips_png,GetTips_png,HelpBG_png,LineBG_png,Mutiply_png,normalbg_jpg,NormalFrame_png,OverBG2_png,A_png,add_png,Arrow_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_word_png,free_png,help_png,InfoBG_png,left_word_png,left_png,MaxBet_png,menu_png,minus_png,music_word_png,music_png,off_png,on_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_word_png,sound_png,spin_png,time_word_png,time_png,10_15_30_png,10_png,15_png,2_3_5_png,20_png,3_5_8_png,5_8_10_png,5_png,8_10_15_png,8_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,loading_jpg,IconFont_png,symbolName_0_png,symbolName_1_png,symbolName_10_png,symbolName_11_png,symbolName_12_png,symbolName_2_1_png,symbolName_2_2_png,symbolName_2_3_png,symbolName_2_4_png,symbolName_2_5_png,symbolName_2_png,symbolName_3_png,symbolName_4_png,symbolName_5_png,symbolName_6_png,symbolName_7_png,symbolName_8_png,symbolName_9_png,vague0_png,vague1_png,vague10_png,vague11_png,vague12_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,dianchi_png,fanhui_png,fenjiexian_png,Gold_png,HeadBG_png,jinbidi_png,settingicon_png,wifi1_png,wifi2_png,wifi3_png,wifi4_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_png,BetButton_0_png,BetButton_1_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left2_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_png,Jump_png,Loading_png,Max_png,Max_Bet_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,vfx_lujinmask_png,Help_p_png",
 			"name": "preload"
 		}
 	],
@@ -585,6 +585,276 @@
 			"url": "res/Tile/vague/vague9.png",
 			"type": "image",
 			"name": "vague9_png"
+		},
+		{
+			"name": "dianchi_png",
+			"type": "image",
+			"url": "res/top/dianchi.png"
+		},
+		{
+			"name": "fanhui_png",
+			"type": "image",
+			"url": "res/top/fanhui.png"
+		},
+		{
+			"name": "fenjiexian_png",
+			"type": "image",
+			"url": "res/top/fenjiexian.png"
+		},
+		{
+			"name": "Gold_png",
+			"type": "image",
+			"url": "res/top/Gold.png"
+		},
+		{
+			"name": "HeadBG_png",
+			"type": "image",
+			"url": "res/top/HeadBG.png"
+		},
+		{
+			"name": "jinbidi_png",
+			"type": "image",
+			"url": "res/top/jinbidi.png"
+		},
+		{
+			"name": "settingicon_png",
+			"type": "image",
+			"url": "res/top/settingicon.png"
+		},
+		{
+			"name": "wifi1_png",
+			"type": "image",
+			"url": "res/top/wifi1.png"
+		},
+		{
+			"name": "wifi2_png",
+			"type": "image",
+			"url": "res/top/wifi2.png"
+		},
+		{
+			"name": "wifi3_png",
+			"type": "image",
+			"url": "res/top/wifi3.png"
+		},
+		{
+			"name": "wifi4_png",
+			"type": "image",
+			"url": "res/top/wifi4.png"
+		},
+		{
+			"name": "Add_0_png",
+			"type": "image",
+			"url": "res/bottom/Add_0.png"
+		},
+		{
+			"name": "Add_1_png",
+			"type": "image",
+			"url": "res/bottom/Add_1.png"
+		},
+		{
+			"name": "anniu1_png",
+			"type": "image",
+			"url": "res/bottom/anniu1.png"
+		},
+		{
+			"name": "Auto_0_png",
+			"type": "image",
+			"url": "res/bottom/Auto_0.png"
+		},
+		{
+			"name": "Auto_1_png",
+			"type": "image",
+			"url": "res/bottom/Auto_1.png"
+		},
+		{
+			"name": "Auto_Cancel_png",
+			"type": "image",
+			"url": "res/bottom/Auto_Cancel.png"
+		},
+		{
+			"name": "Bet_png",
+			"type": "image",
+			"url": "res/bottom/Bet.png"
+		},
+		{
+			"name": "BetAdd_png",
+			"type": "image",
+			"url": "res/bottom/BetAdd.png"
+		},
+		{
+			"name": "BetButton_png",
+			"type": "image",
+			"url": "res/bottom/BetButton.png"
+		},
+		{
+			"name": "BetButton_0_png",
+			"type": "image",
+			"url": "res/bottom/BetButton_0.png"
+		},
+		{
+			"name": "BetButton_1_png",
+			"type": "image",
+			"url": "res/bottom/BetButton_1.png"
+		},
+		{
+			"name": "BetInfoBG_png",
+			"type": "image",
+			"url": "res/bottom/BetInfoBG.png"
+		},
+		{
+			"name": "BetMax_png",
+			"type": "image",
+			"url": "res/bottom/BetMax.png"
+		},
+		{
+			"name": "BetMinus_png",
+			"type": "image",
+			"url": "res/bottom/BetMinus.png"
+		},
+		{
+			"name": "BG_Info_png",
+			"type": "image",
+			"url": "res/bottom/BG_Info.png"
+		},
+		{
+			"name": "BG_Left2_png",
+			"type": "image",
+			"url": "res/bottom/BG_Left.png"
+		},
+		{
+			"name": "BG_Middle_png",
+			"type": "image",
+			"url": "res/bottom/BG_Middle.png"
+		},
+		{
+			"name": "BG_new_png",
+			"type": "image",
+			"url": "res/bottom/BG_new.png"
+		},
+		{
+			"name": "BG_Number_png",
+			"type": "image",
+			"url": "res/bottom/BG_Number.png"
+		},
+		{
+			"name": "BG_Pop_png",
+			"type": "image",
+			"url": "res/bottom/BG_Pop.png"
+		},
+		{
+			"name": "BG_Right_png",
+			"type": "image",
+			"url": "res/bottom/BG_Right.png"
+		},
+		{
+			"name": "BG_Spin_png",
+			"type": "image",
+			"url": "res/bottom/BG_Spin.png"
+		},
+		{
+			"name": "Button_Red_png",
+			"type": "image",
+			"url": "res/bottom/Button_Red.png"
+		},
+		{
+			"name": "Count_Item_png",
+			"type": "image",
+			"url": "res/bottom/Count_Item.png"
+		},
+		{
+			"name": "Count_Selected_png",
+			"type": "image",
+			"url": "res/bottom/Count_Selected.png"
+		},
+		{
+			"name": "Free_png",
+			"type": "image",
+			"url": "res/bottom/Free.png"
+		},
+		{
+			"name": "guide_arrow_png",
+			"type": "image",
+			"url": "res/bottom/guide_arrow.png"
+		},
+		{
+			"name": "Help_png",
+			"type": "image",
+			"url": "res/bottom/Help.png"
+		},
+		{
+			"name": "Jump_png",
+			"type": "image",
+			"url": "res/bottom/Jump.png"
+		},
+		{
+			"name": "Loading_png",
+			"type": "image",
+			"url": "res/bottom/Loading.png"
+		},
+		{
+			"name": "Max_png",
+			"type": "image",
+			"url": "res/bottom/Max.png"
+		},
+		{
+			"name": "Max_Bet_png",
+			"type": "image",
+			"url": "res/bottom/Max_Bet.png"
+		},
+		{
+			"name": "Minus_0_png",
+			"type": "image",
+			"url": "res/bottom/Minus_0.png"
+		},
+		{
+			"name": "Minus_1_png",
+			"type": "image",
+			"url": "res/bottom/Minus_1.png"
+		},
+		{
+			"name": "Multiple_0_png",
+			"type": "image",
+			"url": "res/bottom/Multiple_0.png"
+		},
+		{
+			"name": "Multiple_1_png",
+			"type": "image",
+			"url": "res/bottom/Multiple_1.png"
+		},
+		{
+			"name": "Spin_png",
+			"type": "image",
+			"url": "res/bottom/Spin.png"
+		},
+		{
+			"name": "Spin_Arrow_png",
+			"type": "image",
+			"url": "res/bottom/Spin_Arrow.png"
+		},
+		{
+			"name": "Spin_Disabled_png",
+			"type": "image",
+			"url": "res/bottom/Spin_Disabled.png"
+		},
+		{
+			"name": "Spin_Light_png",
+			"type": "image",
+			"url": "res/bottom/Spin_Light.png"
+		},
+		{
+			"name": "Spin_Press_png",
+			"type": "image",
+			"url": "res/bottom/Spin_Press.png"
+		},
+		{
+			"name": "vfx_lujinmask_png",
+			"type": "image",
+			"url": "res/bottom/vfx_lujinmask.png"
+		},
+		{
+			"name": "Help_p_png",
+			"type": "image",
+			"url": "res/bottom/Help_p.png"
 		}
 	]
 }
