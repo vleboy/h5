@@ -2,8 +2,7 @@ module game {
 	export class GameScene extends BaseUI implements INotify{
 		private tileMask: eui.Rect;
 		private tileGroup: eui.Group;
-		private valueTiles: eui.Group;
-		private vagueTiles: eui.Group;
+		private bottomBar: BottomBar;
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "gameSceneSkin.exml";
@@ -45,6 +44,7 @@ module game {
 		}
 
 		public startRoll(){
+			this.bottomBar.setSpinEnable(false);
 			for(let i=0; i<15; i++){
 				this["tile"+i].visible = false;
 			}
@@ -113,6 +113,10 @@ module game {
 					this["tile"+(c*3+i)].visible = true;
 					this["tile"+(c*3+i)].source = "symbolName_"+(arr[i])+"_png";
 				})
+
+				if(c==4){
+					this.bottomBar.setSpinEnable(true);
+				}
 			}, delay);
 			
 		}

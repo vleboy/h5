@@ -13,5 +13,9 @@ module game {
 				NotifyManager.getInstance().sendNotify(NotifyConst.spin);
 			}, this)
 		}
+
+		public setSpinEnable(b:boolean){
+			this.spinBtn.enabled = b;
+		}
 	}
 }

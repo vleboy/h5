@@ -10,7 +10,7 @@
 	],
 	"game": [
 		"bin-debug/core/BaseUI.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/game/GlobalConfig.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
@@ -19,7 +19,7 @@
 		"bin-debug/core/FilterUtil.js",
 		"bin-debug/core/notify/INotify.js",
 		"bin-debug/core/notify/NotifyManager.js",
-		"bin-debug/game/ui/TopBar.js",
+		"bin-debug/LoadingUI.js",
 		"bin-debug/game/const/NotifyConst.js",
 		"bin-debug/game/service/GameService.js",
 		"bin-debug/game/ui/BottomBar.js",
@@ -28,6 +28,6 @@
 		"bin-debug/game/ui/Rull.js",
 		"bin-debug/game/ui/Setting.js",
 		"bin-debug/game/ui/Tips.js",
-		"bin-debug/game/GlobalConfig.js"
+		"bin-debug/game/ui/TopBar.js"
 	]
 }
