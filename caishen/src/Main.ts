@@ -60,8 +60,8 @@ class Main extends eui.UILayer {
         })
 
         
-        this.stage.addEventListener(egret.Event.RESIZE, this.resize, this);
-        this.resize();
+        // this.stage.addEventListener(egret.Event.RESIZE, this.resize, this);
+        // this.resize();
     }
 
     private resize(){
