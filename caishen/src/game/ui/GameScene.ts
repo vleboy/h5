@@ -8,6 +8,7 @@ module game {
 			super();
 			this.skinName = GlobalConfig.skinPath + "gameSceneSkin.exml";
 		}
+		/**初始化显示对象，注册通知 */
 		public initSetting(){
 			NotifyManager.getInstance().addRegister(this,[
 				NotifyConst.spin
@@ -15,6 +16,7 @@ module game {
 
 			FilterUtil.setLightFlowFilter(this["title"]);
 			this.tileGroup.mask = this.tileMask;
+			this.initTiles();
 
 		}
 		/**处理通知 */
@@ -29,12 +31,23 @@ module game {
 			}
 		}
 
+		/**初始化图标 */
+		private initTiles(){
+			for(let i=0; i<15; i++){
+				let n = Math.floor(Math.random()*13)+"";
+				n= (n=="2" ? "2_1":n);
+				this["tile"+i].visible = true;
+				this["tile"+i].source = "symbolName_"+n+"_png";
+			}
+			for(let i=0; i<20; i++){
+				this["vagueTile"+i].visible = false;
+			}
+		}
+
 		public startRoll(){
 			for(let i=0; i<15; i++){
 				this["tile"+i].visible = false;
 			}
-
-
 			for(let i=0; i<20; i++){
 				this.singleRoll(this["vagueTile"+i]);
 			}
