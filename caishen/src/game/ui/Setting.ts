@@ -1,10 +1,8 @@
 module game {
-	export class Setting extends eui.Component {
+	export class Setting extends BaseUI {
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "settingSkin.exml";
-			this.initData();
-			this.eventListen();
 		}
 		//-----------变量----------
 		/**关闭按钮*/
@@ -21,23 +19,28 @@ module game {
 		private groupSetting: eui.Group;
 
 		/**初始化*/
-		private initData(): void {
+		public initSetting(): void {
 			this.visible = false;
 			this.bgSetting.visible = false;
+			this.eventListen();
 		}
 		/**事件监听*/
 		private eventListen(): void {
-			this.btnClose.addEventListener(egret.TouchEvent.TOUCH_TAP, this.theClose, this);
-			this.btnMusic.addEventListener(egret.TouchEvent.TOUCH_TAP, this.theMusic, this);
-			this.btnSound.addEventListener(egret.TouchEvent.TOUCH_TAP, this.theSound, this);
-			this.btnFast.addEventListener(egret.TouchEvent.TOUCH_TAP, this.theFast, this);
+			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, this.theClose, this);
+			this.registerEvent(this.btnMusic, egret.TouchEvent.TOUCH_TAP, this.theMusic, this);
+			this.registerEvent(this.btnSound, egret.TouchEvent.TOUCH_TAP, this.theSound, this);
+			this.registerEvent(this.btnFast, egret.TouchEvent.TOUCH_TAP, this.theFast, this);
 		}
 		/**显示*/
 		public theShow(): void {
 			this.visible = true;
 			this.bgSetting.visible = true;
 			this.defaultUI(true);
-			egret.Tween.get(this.groupSetting).to({ scaleX: 1, scaleY: 1, alpha: 1 }, 500);
+			egret.Tween.get(this.groupSetting)
+				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 500)
+				.call(() => {
+					egret.Tween.removeTweens(this.groupSetting);
+				});
 		}
 		/**关闭*/
 		private theClose(): void {
@@ -47,6 +50,7 @@ module game {
 				.call(() => {
 					this.defaultUI(false);
 					this.visible = false;
+					egret.Tween.removeTweens(this.groupSetting);
 				});
 		}
 		/**默认显示*/
@@ -57,39 +61,22 @@ module game {
 		}
 		/**音乐*/
 		private theMusic(e: egret.TouchEvent): void {
-			//开音乐
-			let openMusic = () => {
-				console.warn("music open");
-			};
-			//关音乐
-			let closeMusic = () => {
-				console.warn("music close");
-			};
-			e.target.currentState == "up" ? openMusic() : closeMusic();
+			GlobalConfig.musicSwitch = e.target.currentState == "up";
 		}
 		/**音效*/
 		private theSound(e: egret.TouchEvent): void {
-			//开音效
-			let openSound = () => {
-				console.warn("Sound open");
-			};
-			//关音效
-			let closeSound = () => {
-				console.warn("Sound close");
-			};
-			e.target.currentState == "up" ? openSound() : closeSound();
+			GlobalConfig.soundSwitch = e.target.currentState == "up";
 		}
 		/**快速模式*/
 		private theFast(e: egret.TouchEvent): void {
-			//开快速模式
-			let openFast = () => {
-				console.warn("Fast open");
-			};
-			//关快速模式
-			let closeFast = () => {
-				console.warn("Fast close");
-			};
-			e.target.currentState == "up" ? openFast() : closeFast();
+			GlobalConfig.fastSwitch = e.target.currentState == "up";
 		}
+		/**
+         * 资源释放
+         * @$isDispos 是否彻底释放资源
+         */
+        public dispose(): void {
+            super.dispose();
+        }
 	}
 }
