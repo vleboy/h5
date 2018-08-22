@@ -14,7 +14,7 @@ module game {
 		/**极速模式按钮*/
 		private btnFast: eui.ToggleSwitch;
 		/**背景*/
-		private bgSetting: eui.Rect;
+		private bgSetting: eui.Image;
 		/**设置框*/
 		private groupSetting: eui.Group;
 
