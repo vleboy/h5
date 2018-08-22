@@ -58,6 +58,21 @@ class Main extends eui.UILayer {
         .catch(e => {
             console.log(e);
         })
+
+        
+        this.stage.addEventListener(egret.Event.RESIZE, this.resize, this);
+        this.resize();
+    }
+
+    private resize(){
+        //以高为准
+        if(this.stage.stageWidth/this.stage.stageHeight > 16/9){
+            this.stage.scaleMode = egret.StageScaleMode.FIXED_HEIGHT;
+        }
+        //以宽为准
+        else{
+            this.stage.scaleMode = egret.StageScaleMode.FIXED_WIDTH;
+        }
     }
 
     private async loadResource() {
@@ -84,10 +99,14 @@ class Main extends eui.UILayer {
         })
     }
 
+    private gameScene: game.GameScene;
     /**
      * 创建场景界面
      */
     protected createGameScene(): void {
-        this.addChild(new game.GameScene());
+        this.gameScene = new game.GameScene();
+        this.gameScene.percentWidth = 100;
+        this.gameScene.percentHeight = 100;
+        this.addChild(this.gameScene);
     }
 }

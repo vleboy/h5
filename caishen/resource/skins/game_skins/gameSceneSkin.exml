@@ -9,7 +9,7 @@
 			<e:Image source="LineBG_png" y="183" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image source="LineBG_png" x="834" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image source="LineBG_png" x="1099" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image source="asdad_png" y="31" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
+			<e:Image id="title" source="asdad_png" y="31" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
 		</e:Group>
 		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
 		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
@@ -58,7 +58,7 @@
 			</e:Group>
 		</e:Group>
 	</e:Group>
-	<game:BottomBar width="20" height="20" x="44" y="297"/>
+	<game:BottomBar width="1920" height="220" y="860" horizontalCenter="0"/>
 	<game:TopBar width="20" height="20" x="2045" y="739"/>
 	<game:Setting left="0" right="0" top="0" height="1080"/>
 	<game:FreeChoose width="20" height="20" x="2082" y="500"/>

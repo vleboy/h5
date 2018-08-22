@@ -1,5 +1,5 @@
 module game {
-	export class GameScene extends BaseUI{
+	export class GameScene extends BaseUI implements INotify{
 		private tileMask: eui.Rect;
 		private tileGroup: eui.Group;
 		private valueTiles: eui.Group;
@@ -9,12 +9,24 @@ module game {
 			this.skinName = GlobalConfig.skinPath + "gameSceneSkin.exml";
 		}
 		public initSetting(){
-			this.tileGroup.mask = this.tileMask;
-			this.startRoll();
+			NotifyManager.getInstance().addRegister(this,[
+				NotifyConst.spin
+			]);
 
-			setTimeout(()=> {
-				this.stopRoll([0,1,2,1,4,5,1,7,8,9,10,11,12,3,6]);
-			}, 1000);
+			FilterUtil.setLightFlowFilter(this["title"]);
+			this.tileGroup.mask = this.tileMask;
+
+		}
+		/**处理通知 */
+		public handleNotify(key:NotifyConst, body){
+			switch(key){
+				case NotifyConst.spin:
+					this.startRoll();
+					setTimeout(()=> {
+						this.stopRoll([0,1,2,1,4,5,1,7,8,9,10,11,12,3,6]);
+					}, 1000);
+					break;
+			}
 		}
 
 		public startRoll(){
@@ -22,7 +34,6 @@ module game {
 				this["tile"+i].visible = false;
 			}
 
-			this.vagueTiles.visible = true;
 
 			for(let i=0; i<20; i++){
 				this.singleRoll(this["vagueTile"+i]);
@@ -30,6 +41,7 @@ module game {
 		}
 
 		private singleRoll(tile){
+			tile.visible = true;
 			tile.source = "vague"+Math.floor(Math.random()*13)+"_png";
 			egret.Tween.get(tile, {loop:true})
 				.wait(20)
