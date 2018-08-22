@@ -35,22 +35,18 @@
 				<e:Image id="vagueTile1" source="vague0_png" x="35" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile2" source="vague0_png" x="35" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile3" source="vague0_png" x="35" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
-
 				<e:Image id="vagueTile4" source="vague0_png" x="300" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile5" source="vague0_png" x="300" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile6" source="vague0_png" x="300" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile7" source="vague0_png" x="300" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
-
 				<e:Image id="vagueTile8" source="vague0_png" x="565" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile9" source="vague0_png" x="565" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile10" source="vague0_png" x="565" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile11" source="vague0_png" x="565" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
-
 				<e:Image id="vagueTile12" source="vague0_png" x="830" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile13" source="vague0_png" x="830" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile14" source="vague0_png" x="830" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile15" source="vague0_png" x="830" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
-
 				<e:Image id="vagueTile16" source="vague0_png" x="1095" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile17" source="vague0_png" x="1095" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile18" source="vague0_png" x="1095" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
