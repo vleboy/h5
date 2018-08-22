@@ -60,7 +60,7 @@
 	</e:Group>
 	<game:BottomBar width="20" height="20" x="44" y="297"/>
 	<game:TopBar width="20" height="20" x="2045" y="739"/>
-	<game:Setting width="20" height="20" x="2024" y="670"/>
+	<game:Setting left="0" right="0" top="0" height="1080"/>
 	<game:FreeChoose width="20" height="20" x="2082" y="500"/>
 	<game:Rull width="20" height="20" x="2142" y="579"/>
 	<game:Tips width="20" height="20" x="2006" y="518"/>
