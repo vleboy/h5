@@ -36,10 +36,10 @@ module game {
 			})
 		}
 		/**下注 */
-		public sendSpin(betLevel:number, hotkey?: string){
+		public sendSpin(betLevel:number, hotkey: string="1"){
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
-					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin'+(hotkey?("?"+hotkey):""), 
+					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin'+(hotkey?("?hotkey="+hotkey):""), 
 					'{"betLevel":'+betLevel+',"multiLevel":0}',
 					{Authorization: 'Bearer ' + this.token})
 				.then(resolve)

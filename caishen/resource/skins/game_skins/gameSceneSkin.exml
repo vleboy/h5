@@ -2,14 +2,14 @@
 <e:Skin class="gameSceneSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Image x="0" y="0" width="100%" height="100%" source="normalbg_jpg"/>
 	<e:Group id="contentGroup" width="1396" height="1080" horizontalCenter="0" verticalCenter="0">
-		<e:Group width="100%" height="100%" x="0" y="86">
-			<e:Image source="NormalFrame_png" y="100" horizontalCenter="0" width="1388" height="761" x="4" scaleX="1" scaleY="1"/>
-			<e:Image source="LineBG_png" x="39" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image source="LineBG_png" x="304" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image source="LineBG_png" y="183" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image source="LineBG_png" x="834" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image source="LineBG_png" x="1099" y="183" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image id="title" source="asdad_png" y="31" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
+		<e:Group width="100%" height="100%" x="0" y="0">
+			<e:Image source="NormalFrame_png" y="186" horizontalCenter="0" width="1388" height="761" x="4" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="39" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="304" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" y="269" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="834" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="1099" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image id="title" source="asdad_png" y="117" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
 		</e:Group>
 		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
 		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
@@ -54,6 +54,7 @@
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
+		<e:Label id="lineWinTxt" text="0" scaleX="1" scaleY="1" horizontalCenter="0" size="60" textColor="0xce5223" y="557"/>
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" height="220" y="860" horizontalCenter="0"/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
