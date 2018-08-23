@@ -42,6 +42,8 @@ module game {
             }
             this.eventDic.clear();
         }
+        /**发送通知*/
+        protected sendNotify(key: NotifyConst, body?): void { NotifyManager.getInstance().sendNotify(key, body); }
         /**
          * 资源释放
          * @$isDispos 是否彻底释放资源
