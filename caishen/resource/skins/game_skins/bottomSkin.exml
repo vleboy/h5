@@ -4,7 +4,7 @@
 	<e:Image source="BG_Middle_png" height="140" width="408" horizontalCenter="0" bottom="0"/>
 	<e:Image source="BG_Right_png" bottom="0" right="0" width="794" height="120"/>
 	<e:Image source="BG_Spin_png" width="230" height="228" anchorOffsetX="115" anchorOffsetY="114" y="106" x="1805"/>
-	<e:Button id="helpBtn" label="" x="35" y="109" width="100" height="102">
+	<e:Button id="helpBtn" label="" width="100" height="102" left="35" bottom="9">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="Help_png" source.down="Help_p_png" source.disabled="Help_png"/>
@@ -12,7 +12,7 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<e:Button id="spinBtn" label="" x="1805" y="106" width="174" height="174" anchorOffsetX="87" anchorOffsetY="87">
+	<e:Button id="spinBtn" label="" width="174" height="174" anchorOffsetX="87" anchorOffsetY="87" bottom="27" right="28">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="Spin_png" source.down="Spin_Press_png" source.disabled="Spin_Disabled_png"/>
@@ -21,4 +21,12 @@
 		</e:skinName>
 	</e:Button>
 	<e:Image id="spinArrow" source="Spin_Arrow_png" width="144" height="136" anchorOffsetX="72" anchorOffsetY="68" x="1805" y="106" touchEnabled="false"/>
+	<e:Button id="betBtn" label="下注" width="168" height="85" left="200" bottom="15">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>
