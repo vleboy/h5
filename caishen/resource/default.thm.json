@@ -30,6 +30,7 @@
 		"resource/skins/eui_skins/VScrollBarSkin.exml",
 		"resource/skins/eui_skins/VSliderSkin.exml",
 		"resource/skins/game_skins/bottomSkin.exml",
+		"resource/skins/game_skins/connectTipSkin.exml",
 		"resource/skins/game_skins/freeChooseSkin.exml",
 		"resource/skins/game_skins/gameSceneSkin.exml",
 		"resource/skins/game_skins/rullSkin.exml",

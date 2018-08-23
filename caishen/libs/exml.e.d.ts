@@ -52,6 +52,8 @@ declare module skins{
 }
 declare class bottomSkin extends eui.Skin{
 }
+declare class connectTipSkin extends eui.Skin{
+}
 declare class freeChooseSkin extends eui.Skin{
 }
 declare class gameSceneSkin extends eui.Skin{
