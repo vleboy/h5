@@ -52,6 +52,7 @@
 				<e:Image id="vagueTile18" source="vague0_png" x="1095" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
 				<e:Image id="vagueTile19" source="vague0_png" x="1095" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
 			</e:Group>
+			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" height="220" y="860" horizontalCenter="0"/>
