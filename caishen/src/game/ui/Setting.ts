@@ -19,7 +19,7 @@ module game {
 		private groupSetting: eui.Group;
 
 		/**初始化*/
-		public initSetting(): void {
+		public init(): void {
 			this.visible = false;
 			this.bgSetting.visible = false;
 			this.eventListen();

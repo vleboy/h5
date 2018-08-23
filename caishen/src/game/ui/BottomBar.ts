@@ -7,7 +7,7 @@ module game {
 			this.skinName = GlobalConfig.skinPath + "bottomSkin.exml";
 		}
 
-        public initSetting(){
+        public init(){
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, ()=>{
 				console.log("spin");
 				NotifyManager.getInstance().sendNotify(NotifyConst.spin);

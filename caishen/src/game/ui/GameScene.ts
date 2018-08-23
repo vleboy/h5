@@ -3,38 +3,26 @@ module game {
 		private tileMask: eui.Rect;
 		private tileGroup: eui.Group;
 		private bottomBar: BottomBar;
+		private connectTip: ConnectTip;
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "gameSceneSkin.exml";
 		}
+		
+
+		// -------------------- 游戏初始化  ------------------------
+
 		/**初始化显示对象，注册通知 */
-		public initSetting(){
-			NotifyManager.getInstance().addRegister(this,[
-				NotifyConst.spin
-			]);
-
-			FilterUtil.setLightFlowFilter(this["title"]);
+		public init(){
+			this.initView();
+			this.initData();
+		}
+		/**初始化显示 */
+		private initView(){
+			this.connectTip.visible = true;
 			this.tileGroup.mask = this.tileMask;
-			this.initTiles();
-		}
-		/**处理通知 */
-		public handleNotify(key:NotifyConst, body){
-			switch(key){
-				case NotifyConst.spin:
-					this.startSpin();
-					setTimeout(()=> {
-						this.stopRoll([0,1,2,1,4,5,1,7,8,9,10,11,12,3,6]);
-					}, 1000);
-					break;
-			}
-		}
+			FilterUtil.setLightFlowFilter(this["title"]);
 
-		// -------------------- 游戏逻辑  ------------------------
-
-		// -------------------- 游戏显示  ------------------------
-
-		/**随机初始化图标 */
-		private initTiles(){
 			for(let i=0; i<15; i++){
 				let n = Math.floor(Math.random()*13)+"";
 				n= (n=="2" ? "2_1":n);
@@ -45,8 +33,45 @@ module game {
 				this["vagueTile"+i].visible = false;
 			}
 		}
+		/**初始化数据 */
+		private initData(){
+			NotifyManager.getInstance().addRegister(this,[
+				NotifyConst.spin
+			]);
+			
+			GameService.getInstance().login().then((resp:LoginVO)=>{
+				this.connectTip.visible = false;
+			});
+		}
+
+		// -------------------- 游戏逻辑  ------------------------
+
+		/**接收通知 */
+		public handleNotify(key:NotifyConst, body){
+			switch(key){
+				case NotifyConst.spin:
+					this.spin();
+					break;
+			}
+		}
+		/**spin的逻辑 */
+		private spin(){
+			//检查余额 再发
+			GameService.getInstance().sendSpin(0).then(this.spinBack.bind(this));
+			this.startSpin();
+		}
+		/**收到spin结果 */
+		private spinBack(resp: SpinVO){
+			console.log("UI收到spin返回 ",resp);
+			this.stopRoll(resp.payload.viewGrid);
+		}
+
+		
+		// -------------------- 游戏显示  ------------------------
+
+		
 		/**开始滚动 */
-		public startSpin(){
+		private startSpin(){
 			this.bottomBar.setSpinEnable(false);
 			for(let i=0; i<15; i++){
 				this["tile"+i].visible = false;
