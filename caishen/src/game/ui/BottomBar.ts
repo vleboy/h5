@@ -72,13 +72,7 @@ module game {
 		}
 		/**默认显示*/
 		private defaultUI(): void {
-			this.showAndBtm(this.groupBet, false, -100);
-			this.showAndBtm(this.groupAutoNum, false, -400);
-		}
-		/**某Group的显示隐藏和bottom*/
-		private showAndBtm(group: eui.Group, isShow: boolean, btm: number): void {
-			group.visible = isShow;
-			group.bottom = btm;
+
 		}
 		/**某Group显示隐藏动画*/
 		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
@@ -91,20 +85,32 @@ module game {
 		}
 		/**点击自动转到次数按钮*/
 		private touchAutoNum(e: egret.TouchEvent): void {
-			let num = e.target.name.split("_")[1];
+			let auto: string = e.target.name.split("_")[1];
 			this.showTween(this.groupAutoNum, -400, () => {
-				this.showAndBtm(this.groupAutoNum, false, -400);
+				this.groupAutoNum.visible = false;
+				this.sendNotify(NotifyConst.spin, auto);
+				this.showAutoBtn(false);
 			});
+		}
+		/**是否显示自动转动按钮*/
+		private showAutoBtn(isShow: boolean): void {
+			this.autoBtn.visible = isShow;
+			this.cancelAutoBtn.visible = !isShow;
+		}
+		/**图片旋转*/
+		private imgSpin(): void {
+			// egret.Tween.get(this.spinArrow)
+			// .to()
+			
 		}
 		/**点击单注*/
 		private chooseBetLevel(): void {
-			let group: eui.Group = this.groupBet;
 			let betShow = () => {
-				this.showAndBtm(this.groupBet, true, -100);
-				this.showTween(group, 126);
+				this.groupBet.visible = true;
+				this.showTween(this.groupBet, 126);
 			}
-			this.groupBet.visible ? this.showTween(group, -100, () => {
-				this.showAndBtm(this.groupBet, false, -100);
+			this.groupBet.visible ? this.showTween(this.groupBet, -100, () => {
+				this.groupBet.visible = false;
 				this.theBet.text = "单注：" + this.getBetMoney();
 				this.allBet.text = "总押注：" + this.getBetMoney() * this.theBetMulit;
 			}) : betShow();
@@ -134,7 +140,7 @@ module game {
 		/**自动转动*/
 		private touchAuto(): void {
 			if (this.groupAutoNum.visible) return;
-			this.showAndBtm(this.groupAutoNum, true, -400);
+			this.groupAutoNum.visible = true;
 			this.showTween(this.groupAutoNum, 107);
 		}
 		/**取消自动转动*/

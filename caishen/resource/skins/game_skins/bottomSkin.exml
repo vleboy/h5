@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="bottomSkin" width="1920" height="650" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Group id="groupBet" width="880" height="218" left="80" bottom="126">
+<e:Skin class="bottomSkin" width="1920" height="220" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="groupBet" width="880" height="218" left="80" bottom="-100" visible="false">
 		<e:Image source="BG_Pop_png" left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16"/>
 		<e:Image source="BetInfoBG_png" width="258" height="80" verticalCenter="0" left="200"/>
 		<e:Button id="BtnLess" label="" width="106" height="66" left="48" x="120" scaleX="1" scaleY="1" verticalCenter="0">
@@ -29,7 +29,7 @@
 		</e:Button>
 		<e:Label id="betTxt" text="0.00" height="60" width="248" verticalCenter="0" left="205" size="35" textAlign="center" verticalAlign="middle"/>
 	</e:Group>
-	<e:Group id="groupAutoNum" width="302" height="520" bottom="107" right="200">
+	<e:Group id="groupAutoNum" width="302" height="520" bottom="-400" right="200" visible="false">
 		<e:Image source="BG_Pop_png" left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16" x="-1338" y="283" scaleX="1" scaleY="1"/>
 		<e:Button id="btn_max" name="btn_max" label="MAX" height="74" width="234" horizontalCenter="0" top="27">
 			<e:skinName>
