@@ -4,6 +4,8 @@ module game {
 		private tileGroup: eui.Group;
 		private bottomBar: BottomBar;
 		private connectTip: ConnectTip;
+		private rull:Rull;
+		private setting:Setting;
 		private particleGroup: eui.Group;
 		private lineWinTxt: eui.Label;
 
@@ -49,7 +51,9 @@ module game {
 		/**初始化数据 */
 		private initData(){
 			NotifyManager.getInstance().addRegister(this,[
-				NotifyConst.spin
+				NotifyConst.spin,
+				NotifyConst.openHelp,
+				NotifyConst.openSetting,
 			]);
 			
 			GameService.getInstance().login().then((resp: LoginVO)=>{
@@ -69,6 +73,12 @@ module game {
 			switch(key){
 				case NotifyConst.spin:
 					this.spin();
+					break;
+				case NotifyConst.openHelp:
+					this.rull.rullShow(true);
+					break;
+				case NotifyConst.openSetting:
+					this.setting.settingShow();
 					break;
 			}
 		}

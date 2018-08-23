@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,asdad_png,asdasd_png,FeatureChance_png,FreeGameFrame_png,FreeGameTips_png,GetTips_png,HelpBG_png,LineBG_png,Mutiply_png,normalbg_jpg,NormalFrame_png,OverBG2_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,A_png,add_png,Arrow_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_word_png,free_png,help_png,InfoBG_png,left_word_png,left_png,MaxBet_png,menu_png,minus_png,music_word_png,music_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_word_png,sound_png,spin_png,time_word_png,time_png,10_15_30_png,10_png,15_png,2_3_5_png,20_png,3_5_8_png,5_8_10_png,5_png,8_10_15_png,8_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,loading_jpg,backgroud1_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,biaoti_png,close_png,FastModel_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,IconFont_png,symbolName_0_png,symbolName_1_png,symbolName_10_png,symbolName_11_png,symbolName_12_png,symbolName_2_1_png,symbolName_2_2_png,symbolName_2_3_png,symbolName_2_4_png,symbolName_2_5_png,symbolName_2_png,symbolName_3_png,symbolName_4_png,symbolName_5_png,symbolName_6_png,symbolName_7_png,symbolName_8_png,symbolName_9_png,vague0_png,vague1_png,vague10_png,vague11_png,vague12_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,dianchi_png,fanhui_png,fenjiexian_png,Gold_png,HeadBG_png,jinbidi_png,settingicon_png,wifi1_png,wifi2_png,wifi3_png,wifi4_png,light_lizi02_jpg,light_lizi01_png,particle_json,particle2_json,light_lizi012_png,light_lizi022_jpg",
+			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,particle_json,FreeGameTips_png,GetTips_png,HelpBG_png,normalbg_jpg,NormalFrame_png,OverBG2_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,FeatureChance_png,FreeGameFrame_png,LineBG_png,Mutiply_png,asdad_png,asdasd_png,add_png,Arrow_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fill_png,fastToggle_png,fillBg_png,free_png,free_word_png,help_png,left_word_png,InfoBG_png,MaxBet_png,left_png,menu_png,minus_png,music_word_png,music_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_word_png,sound_png,spin_png,time_word_png,time_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,A_png,fastTog_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague1_png,vague10_png,vague11_png,vague12_png,vague0_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png",
 			"name": "preload"
 		}
 	],
@@ -30,6 +30,21 @@
 			"url": "assets/ScrollBar/track_sb.png",
 			"type": "image",
 			"name": "track_sb_png"
+		},
+		{
+			"url": "config/particle.json",
+			"type": "json",
+			"name": "particle_json"
+		},
+		{
+			"url": "res/light_lizi01.png",
+			"type": "image",
+			"name": "light_lizi01_png"
+		},
+		{
+			"url": "res/light_lizi02.jpg",
+			"type": "image",
+			"name": "light_lizi02_jpg"
 		},
 		{
 			"url": "res/loading.jpg",
@@ -407,6 +422,191 @@
 			"name": "vfx_lujinmask_png"
 		},
 		{
+			"url": "res/explain/bg.png",
+			"type": "image",
+			"name": "bg_png"
+		},
+		{
+			"url": "res/explain/bg2.png",
+			"type": "image",
+			"name": "bg2_png"
+		},
+		{
+			"url": "res/explain/btn1.png",
+			"type": "image",
+			"name": "btn1_png"
+		},
+		{
+			"url": "res/explain/btn2.png",
+			"type": "image",
+			"name": "btn2_png"
+		},
+		{
+			"url": "res/explain/scatter.png",
+			"type": "image",
+			"name": "scatter_png"
+		},
+		{
+			"url": "res/explain/scatterBg.png",
+			"type": "image",
+			"name": "scatterBg_png"
+		},
+		{
+			"url": "res/explain/tese.png",
+			"type": "image",
+			"name": "tese_png"
+		},
+		{
+			"url": "res/explain/wild.png",
+			"type": "image",
+			"name": "wild_png"
+		},
+		{
+			"url": "res/freeGame/10.png",
+			"type": "image",
+			"name": "10_png"
+		},
+		{
+			"url": "res/freeGame/10_15_30.png",
+			"type": "image",
+			"name": "10_15_30_png"
+		},
+		{
+			"url": "res/freeGame/15.png",
+			"type": "image",
+			"name": "15_png"
+		},
+		{
+			"url": "res/freeGame/20.png",
+			"type": "image",
+			"name": "20_png"
+		},
+		{
+			"url": "res/freeGame/2_3_5.png",
+			"type": "image",
+			"name": "2_3_5_png"
+		},
+		{
+			"url": "res/freeGame/3_5_8.png",
+			"type": "image",
+			"name": "3_5_8_png"
+		},
+		{
+			"url": "res/freeGame/5.png",
+			"type": "image",
+			"name": "5_png"
+		},
+		{
+			"url": "res/freeGame/5_8_10.png",
+			"type": "image",
+			"name": "5_8_10_png"
+		},
+		{
+			"url": "res/freeGame/8.png",
+			"type": "image",
+			"name": "8_png"
+		},
+		{
+			"url": "res/freeGame/8_10_15.png",
+			"type": "image",
+			"name": "8_10_15_png"
+		},
+		{
+			"url": "res/freeGame/bg_10.png",
+			"type": "image",
+			"name": "bg_10_png"
+		},
+		{
+			"url": "res/freeGame/bg_15.png",
+			"type": "image",
+			"name": "bg_15_png"
+		},
+		{
+			"url": "res/freeGame/bg_20.png",
+			"type": "image",
+			"name": "bg_20_png"
+		},
+		{
+			"url": "res/freeGame/bg_5.png",
+			"type": "image",
+			"name": "bg_5_png"
+		},
+		{
+			"url": "res/freeGame/bg_8.png",
+			"type": "image",
+			"name": "bg_8_png"
+		},
+		{
+			"url": "res/freeGame/free_game_title.png",
+			"type": "image",
+			"name": "free_game_title_png"
+		},
+		{
+			"url": "res/freeGame/head.png",
+			"type": "image",
+			"name": "head_png"
+		},
+		{
+			"url": "res/freeGame/number_10.png",
+			"type": "image",
+			"name": "number_10_png"
+		},
+		{
+			"url": "res/freeGame/number_15.png",
+			"type": "image",
+			"name": "number_15_png"
+		},
+		{
+			"url": "res/freeGame/number_20.png",
+			"type": "image",
+			"name": "number_20_png"
+		},
+		{
+			"url": "res/freeGame/number_5.png",
+			"type": "image",
+			"name": "number_5_png"
+		},
+		{
+			"url": "res/freeGame/number_8.png",
+			"type": "image",
+			"name": "number_8_png"
+		},
+		{
+			"url": "res/freeGame/number_bg_10.png",
+			"type": "image",
+			"name": "number_bg_10_png"
+		},
+		{
+			"url": "res/freeGame/number_bg_15.png",
+			"type": "image",
+			"name": "number_bg_15_png"
+		},
+		{
+			"url": "res/freeGame/number_bg_20.png",
+			"type": "image",
+			"name": "number_bg_20_png"
+		},
+		{
+			"url": "res/freeGame/number_bg_5.png",
+			"type": "image",
+			"name": "number_bg_5_png"
+		},
+		{
+			"url": "res/freeGame/number_bg_8.png",
+			"type": "image",
+			"name": "number_bg_8_png"
+		},
+		{
+			"url": "res/freeGame/title.png",
+			"type": "image",
+			"name": "title_png"
+		},
+		{
+			"url": "res/freeGame/yuanbao.png",
+			"type": "image",
+			"name": "yuanbao_png"
+		},
+		{
 			"url": "res/btn/A.png",
 			"type": "image",
 			"name": "A_png"
@@ -582,61 +782,6 @@
 			"name": "time_word_png"
 		},
 		{
-			"url": "res/top/Gold.png",
-			"type": "image",
-			"name": "Gold_png"
-		},
-		{
-			"url": "res/top/HeadBG.png",
-			"type": "image",
-			"name": "HeadBG_png"
-		},
-		{
-			"url": "res/top/dianchi.png",
-			"type": "image",
-			"name": "dianchi_png"
-		},
-		{
-			"url": "res/top/fanhui.png",
-			"type": "image",
-			"name": "fanhui_png"
-		},
-		{
-			"url": "res/top/fenjiexian.png",
-			"type": "image",
-			"name": "fenjiexian_png"
-		},
-		{
-			"url": "res/top/jinbidi.png",
-			"type": "image",
-			"name": "jinbidi_png"
-		},
-		{
-			"url": "res/top/settingicon.png",
-			"type": "image",
-			"name": "settingicon_png"
-		},
-		{
-			"url": "res/top/wifi1.png",
-			"type": "image",
-			"name": "wifi1_png"
-		},
-		{
-			"url": "res/top/wifi2.png",
-			"type": "image",
-			"name": "wifi2_png"
-		},
-		{
-			"url": "res/top/wifi3.png",
-			"type": "image",
-			"name": "wifi3_png"
-		},
-		{
-			"url": "res/top/wifi4.png",
-			"type": "image",
-			"name": "wifi4_png"
-		},
-		{
 			"url": "res/setting/BetConfig.png",
 			"type": "image",
 			"name": "BetConfig_png"
@@ -702,149 +847,24 @@
 			"name": "yinxiao_png"
 		},
 		{
-			"url": "res/freeGame/10.png",
+			"url": "res/top/di.png",
 			"type": "image",
-			"name": "10_png"
+			"name": "di_png"
 		},
 		{
-			"url": "res/freeGame/10_15_30.png",
+			"url": "res/top/hx.png",
 			"type": "image",
-			"name": "10_15_30_png"
+			"name": "hx_png"
 		},
 		{
-			"url": "res/freeGame/15.png",
+			"url": "res/top/j.png",
 			"type": "image",
-			"name": "15_png"
+			"name": "j_png"
 		},
 		{
-			"url": "res/freeGame/20.png",
+			"url": "res/top/ssz.png",
 			"type": "image",
-			"name": "20_png"
-		},
-		{
-			"url": "res/freeGame/2_3_5.png",
-			"type": "image",
-			"name": "2_3_5_png"
-		},
-		{
-			"url": "res/freeGame/3_5_8.png",
-			"type": "image",
-			"name": "3_5_8_png"
-		},
-		{
-			"url": "res/freeGame/5.png",
-			"type": "image",
-			"name": "5_png"
-		},
-		{
-			"url": "res/freeGame/5_8_10.png",
-			"type": "image",
-			"name": "5_8_10_png"
-		},
-		{
-			"url": "res/freeGame/8.png",
-			"type": "image",
-			"name": "8_png"
-		},
-		{
-			"url": "res/freeGame/8_10_15.png",
-			"type": "image",
-			"name": "8_10_15_png"
-		},
-		{
-			"url": "res/freeGame/bg_10.png",
-			"type": "image",
-			"name": "bg_10_png"
-		},
-		{
-			"url": "res/freeGame/bg_15.png",
-			"type": "image",
-			"name": "bg_15_png"
-		},
-		{
-			"url": "res/freeGame/bg_20.png",
-			"type": "image",
-			"name": "bg_20_png"
-		},
-		{
-			"url": "res/freeGame/bg_5.png",
-			"type": "image",
-			"name": "bg_5_png"
-		},
-		{
-			"url": "res/freeGame/bg_8.png",
-			"type": "image",
-			"name": "bg_8_png"
-		},
-		{
-			"url": "res/freeGame/free_game_title.png",
-			"type": "image",
-			"name": "free_game_title_png"
-		},
-		{
-			"url": "res/freeGame/head.png",
-			"type": "image",
-			"name": "head_png"
-		},
-		{
-			"url": "res/freeGame/number_10.png",
-			"type": "image",
-			"name": "number_10_png"
-		},
-		{
-			"url": "res/freeGame/number_15.png",
-			"type": "image",
-			"name": "number_15_png"
-		},
-		{
-			"url": "res/freeGame/number_20.png",
-			"type": "image",
-			"name": "number_20_png"
-		},
-		{
-			"url": "res/freeGame/number_5.png",
-			"type": "image",
-			"name": "number_5_png"
-		},
-		{
-			"url": "res/freeGame/number_8.png",
-			"type": "image",
-			"name": "number_8_png"
-		},
-		{
-			"url": "res/freeGame/number_bg_10.png",
-			"type": "image",
-			"name": "number_bg_10_png"
-		},
-		{
-			"url": "res/freeGame/number_bg_15.png",
-			"type": "image",
-			"name": "number_bg_15_png"
-		},
-		{
-			"url": "res/freeGame/number_bg_20.png",
-			"type": "image",
-			"name": "number_bg_20_png"
-		},
-		{
-			"url": "res/freeGame/number_bg_5.png",
-			"type": "image",
-			"name": "number_bg_5_png"
-		},
-		{
-			"url": "res/freeGame/number_bg_8.png",
-			"type": "image",
-			"name": "number_bg_8_png"
-		},
-		{
-			"url": "res/freeGame/title.png",
-			"type": "image",
-			"name": "title_png"
-		},
-		{
-			"url": "res/freeGame/yuanbao.png",
-			"type": "image",
-			"name": "yuanbao_png"
+			"name": "ssz_png"
 		},
 		{
 			"url": "res/Tile/vague/vague0.png",
@@ -910,36 +930,6 @@
 			"url": "res/Tile/vague/vague9.png",
 			"type": "image",
 			"name": "vague9_png"
-		},
-		{
-			"name": "light_lizi02_jpg",
-			"type": "image",
-			"url": "res/light_lizi02.jpg"
-		},
-		{
-			"name": "light_lizi01_png",
-			"type": "image",
-			"url": "res/light_lizi01.png"
-		},
-		{
-			"name": "particle_json",
-			"type": "json",
-			"url": "config/particle.json"
-		},
-		{
-			"name": "particle2_json",
-			"type": "json",
-			"url": "config/particle.json"
-		},
-		{
-			"name": "light_lizi012_png",
-			"type": "image",
-			"url": "res/light_lizi01.png"
-		},
-		{
-			"name": "light_lizi022_jpg",
-			"type": "image",
-			"url": "res/light_lizi02.jpg"
 		}
 	]
 }

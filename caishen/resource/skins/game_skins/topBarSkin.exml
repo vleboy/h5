@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="topBarSkin" width="400" height="300" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="topBarSkin" width="1920" height="95" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+
+
+
+	<e:Group id="groupLeft" width="338" height="95" left="0" verticalCenter="0">
+		<e:Image source="di_png" width="338" height="95" left="0" verticalCenter="0" scale9Grid="74,28,67,33" x="338" y="0" scaleX="-1" scaleY="1"/>
+		<e:Image source="hx_png" verticalCenter="0" left="0" x="0" y="46" scaleX="1" scaleY="1"/>
+		<e:Image source="j_png" bottom="3" left="15" x="15" y="49" scaleX="1" scaleY="1"/>
+		<e:Label id="userName" text="游客12454" textColor="0xebebeb" scaleX="1" scaleY="1" right="55" size="30" textAlign="right" verticalAlign="middle" top="7"/>
+		<e:Label id="userMoney" text="888.888.88" textColor="0xffd75e" size="26" textAlign="right" verticalAlign="middle" scaleX="1" scaleY="1" right="50" bottom="12"/>
+	</e:Group>
+	<e:Group id="groupRight" width="150" height="95" verticalCenter="0" right="0">
+		<e:Image source="di_png" width="150" height="95" right="0" top="0" scale9Grid="68,23,73,35" x="0" y="0" scaleX="1" scaleY="1"/>
+		<e:Image source="ssz_png" width="63" height="59" scaleX="1" scaleY="1" verticalCenter="0" right="28"/>
+	</e:Group>
 </e:Skin>

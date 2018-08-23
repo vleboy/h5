@@ -7,6 +7,7 @@ module game {
 		private groupMove: eui.Group;
 		private groupRull: eui.Group;
 		private rullMask: eui.Rect;
+		private btnClose: eui.Button;
 		//-----------变量------------
 		/**页数数组*/
 		private pageArr: number[];
@@ -22,6 +23,8 @@ module game {
 			this.eventListen();
 			this.defaultUI();
 		}
+		/**是否显示规则，默认关闭*/
+		public rullShow(isShow: boolean = false): void { this.visible = isShow; console.warn("close", isShow) }
 		/**默认数据*/
 		private defaultData(): void {
 			this.pageArr = [0, 1, 2, 3, 4, 5];
@@ -30,6 +33,7 @@ module game {
 		}
 		/**默认显示*/
 		private defaultUI(): void {
+			this.rullShow();
 			this.groupRull.mask = this.rullMask;
 			this.btnState(0);
 		}
@@ -40,6 +44,7 @@ module game {
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_END, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onMove, this);
+			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => { this.rullShow(); }, this);
 		}
 		/**点击按钮到当前页*/
 		private toThePage(e: egret.TouchEvent): void {

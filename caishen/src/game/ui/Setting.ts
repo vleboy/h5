@@ -14,7 +14,7 @@ module game {
 		/**极速模式按钮*/
 		private btnFast: eui.ToggleSwitch;
 		/**背景*/
-		private bgSetting: eui.Rect;
+		private bgSetting: eui.Image;
 		/**设置框*/
 		private groupSetting: eui.Group;
 
@@ -26,13 +26,13 @@ module game {
 		}
 		/**事件监听*/
 		private eventListen(): void {
-			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, this.theClose, this);
+			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, this.settingClose, this);
 			this.registerEvent(this.btnMusic, egret.TouchEvent.TOUCH_TAP, this.theMusic, this);
 			this.registerEvent(this.btnSound, egret.TouchEvent.TOUCH_TAP, this.theSound, this);
 			this.registerEvent(this.btnFast, egret.TouchEvent.TOUCH_TAP, this.theFast, this);
 		}
 		/**显示*/
-		public theShow(): void {
+		public settingShow(): void {
 			this.visible = true;
 			this.bgSetting.visible = true;
 			this.defaultUI(true);
@@ -43,7 +43,7 @@ module game {
 				});
 		}
 		/**关闭*/
-		private theClose(): void {
+		private settingClose(): void {
 			this.bgSetting.visible = false;
 			egret.Tween.get(this.groupSetting)
 				.to({ scaleX: 0, scaleY: 0, alpha: 0 }, 500)

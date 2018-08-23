@@ -1,24 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="bottomSkin" width="1920" height="220" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image x="0" bottom="0" height="120" width="792" scaleY="-1" source="BG_Left_png"/>
-	<e:Image source="BG_Middle_png" height="140" width="408" horizontalCenter="0" bottom="0"/>
-	<e:Image source="BG_Right_png" bottom="0" right="0" width="794" height="120"/>
-	<e:Image source="BG_Spin_png" width="230" height="228" anchorOffsetX="115" anchorOffsetY="114" y="106" x="1805"/>
-	<e:Button id="helpBtn" label="" x="35" y="109">
+<e:Skin class="bottomSkin" width="1920" height="650" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="groupBet" width="880" height="218" left="80" bottom="126">
+		<e:Image source="BG_Pop_png" left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16"/>
+		<e:Image source="BetInfoBG_png" width="258" height="80" verticalCenter="0" left="200"/>
+		<e:Button id="BtnLess" label="" width="106" height="66" left="48" x="120" scaleX="1" scaleY="1" verticalCenter="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image source="BetMinus_png" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="BtnMore" label="" width="106" height="66" left="505" x="130" scaleX="1" scaleY="1" verticalCenter="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image source="BetAdd_png" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="BtnMax" label="" width="180" height="112" left="658" x="140" scaleX="1" scaleY="1" verticalCenter="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image source="BetMax_png" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Label id="betTxt" text="0.00" height="60" width="248" verticalCenter="0" left="205" size="35" textAlign="center" verticalAlign="middle"/>
+	</e:Group>
+	<e:Group id="groupAutoNum" width="302" height="520" bottom="107" right="200">
+		<e:Image source="BG_Pop_png" left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16" x="-1338" y="283" scaleX="1" scaleY="1"/>
+		<e:Button id="btn_max" name="btn_max" label="MAX" height="74" width="234" horizontalCenter="0" top="27">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="Count_Item_png" scale9Grid="22,18,35,16"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_100" name="btn_100" label="100" height="74" width="234" horizontalCenter="0" top="125">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="Count_Item_png" scale9Grid="22,18,35,16"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_50" name="btn_50" label="50" height="74" width="234" horizontalCenter="0" top="223">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="Count_Item_png" scale9Grid="22,18,35,16"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_20" name="btn_20" label="20" height="74" width="234" horizontalCenter="0" top="321">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="Count_Item_png" scale9Grid="22,18,35,16"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btn_10" name="btn_10" label="10" height="74" width="234" horizontalCenter="0" top="419">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="Count_Item_png" scale9Grid="22,18,35,16"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+	<e:Group id="groupBtm" width="1920" height="220" left="0" bottom="0" touchThrough="true">
+		<e:Image x="0" bottom="0" height="120" width="792" scaleY="-1" source="BG_Left_png" y="220" scaleX="1"/>
+		<e:Image id="winBg" source="BG_Middle_png" height="140" width="408" horizontalCenter="0" bottom="0" x="756" y="80" scaleX="1" scaleY="1"/>
+		<e:Image source="BG_Right_png" bottom="0" right="0" width="794" height="120" x="1126" y="100" scaleX="1" scaleY="1"/>
+		<e:Button id="helpBtn" label="" width="100" height="102" left="35" bottom="9" x="35" y="109" scaleX="1" scaleY="1">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="Help_png" source.down="Help_p_png" source.disabled="Help_png"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
-	</e:Button>
-	<e:Button id="spinBtn" label="" x="1805" y="106" width="174" height="174" anchorOffsetX="87" anchorOffsetY="87">
+		</e:Button>
+		<e:Button id="betBtn" label="下注" width="168" height="85" left="200" bottom="15" x="200" y="120" scaleX="1" scaleY="1">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="Spin_png" source.down="Spin_Press_png" source.disabled="Spin_Disabled_png"/>
+			<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
-	</e:Button>
-	<e:Image id="spinArrow" source="Spin_Arrow_png" width="144" height="136" anchorOffsetX="72" anchorOffsetY="68" x="1805" y="106" touchEnabled="false"/>
+		</e:Button>
+		<e:Image source="BG_Info_png" height="118" bottom="0" left="432" width="345" scaleX="-1" scale9Grid="66,31,60,58"/>
+		<e:Label id="theBet" text="单注：0.00" height="36" size="35" textColor="0xf3f4f4" bottom="40" width="270" textAlign="center" verticalAlign="middle" left="448"/>
+		<e:Label text="赢得" y="104" size="38" height="38" horizontalCenter="0"/>
+		<e:Label id="winTxt" text="0.00" size="42" height="38" horizontalCenter="0" textColor="0xfdc020" textAlign="center" verticalAlign="middle" width="340" bottom="23"/>
+		<e:Image source="BG_Info_png" height="118" bottom="0" width="345" right="432" scale9Grid="75,42,59,34"/>
+		<e:Label id="allBet" text="总押注：0.00" height="36" size="35" textColor="0xF3F4F4" bottom="40" width="270" textAlign="center" verticalAlign="middle" right="448"/>
+		<e:Button id="autoBtn" label="自动旋转" width="168" height="85" bottom="15" right="255">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="cancelAutoBtn" label="取消自动" width="168" height="85" bottom="15" right="255" visible="false">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+
+		<e:Group id="groupSpin" width="230" height="228" right="0" bottom="0">
+			<e:Image source="BG_Spin_png" width="230" height="228" anchorOffsetX="115" anchorOffsetY="114" right="0" bottom="0" x="0" y="0" scaleX="1" scaleY="1"/>
+			<e:Button id="spinBtn" label="" width="174" height="174" anchorOffsetX="87" anchorOffsetY="87" bottom="23" right="28" x="28" y="30" scaleX="1" scaleY="1" enabled="true">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="Spin_png" source.down="Spin_Press_png" source.disabled="Spin_Disabled_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
+
+			<e:Image id="spinArrow" source="Spin_Arrow_png" width="144" height="136" anchorOffsetX="72" anchorOffsetY="68" touchEnabled="false" right="42" bottom="40" x="43" y="46" scaleX="1" scaleY="1"/>
+			<e:Group id="groupAuto" width="230" height="228" verticalCenter="0" horizontalCenter="0" visible="false">
+				<e:Image id="autoImg" source="Auto_1_png" horizontalCenter="0" top="60" x="57" y="60" scaleX="1" scaleY="1"/>
+				<e:Label id="autoNum" text="9" height="55" textAlign="center" verticalAlign="middle" horizontalCenter="0" bold="true" size="55" top="120" x="100" y="120" scaleX="1" scaleY="1"/>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+
+
+
+
+
+
+
+
+
 </e:Skin>
