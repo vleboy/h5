@@ -32,6 +32,10 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "particle",
+      "path": "../libsrc"
     }
   ]
 }

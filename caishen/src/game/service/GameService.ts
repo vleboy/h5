@@ -7,15 +7,15 @@ module game {
 			return this._instance ? this._instance : (this._instance=new GameService());
 		}
 		/**游戏初始数据 */
-		public initData:LoginVO;
+		private token:string;
 		/**登录游戏 */
 		public login(){
 			return new Promise(async (resolve, reject)=>{
 				try{
 					window["isDebug"] && await DefaultUser.getInstance().login();
 					this.requestInitData().then((resp:LoginVO)=>{
-						this.initData = resp;
-						resolve();
+						this.token = resp.payload.token;
+						resolve(resp);
 					});
 				}
 				catch(e){
@@ -41,7 +41,7 @@ module game {
 				HttpUtil.sendRequest("POST",  
 					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin'+(hotkey?("?"+hotkey):""), 
 					'{"betLevel":'+betLevel+',"multiLevel":0}',
-					{Authorization: 'Bearer ' + this.initData.payload.token})
+					{Authorization: 'Bearer ' + this.token})
 				.then(resolve)
 				.catch(reject);
 			})
