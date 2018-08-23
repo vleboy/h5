@@ -16,8 +16,6 @@ module game {
 		}
 		/**默认数据*/
 		private defaultData(): void {
-
-		}
 		/**事件监听*/
 		private eventListen(): void {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.spin); }, this);

@@ -18,7 +18,7 @@ module game {
 		/**某一页groupRull的x位置*/
 		private rullX: number;
 		/**初始化*/
-		public initSetting(): void {
+		public init(): void {
 			this.defaultData();
 			this.eventListen();
 			this.defaultUI();

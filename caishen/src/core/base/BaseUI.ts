@@ -6,12 +6,12 @@ module game {
             this.eventDic = new Dictionary();
             this.once(egret.Event.COMPLETE, () => {
                 console.log("egret.Event.COMPLETE" + egret.getQualifiedClassName(this));
-                this.initSetting();
+                this.init();
                 this.onStageResize();
             }, this);
         }
 
-        public abstract initSetting();
+        public abstract init();
 
         public onStageResize(): void {
         }
