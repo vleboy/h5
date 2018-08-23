@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,FreeGameTips_png,LineBG_png,Mutiply_png,normalbg_jpg,NormalFrame_png,OverBG2_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,FeatureChance_png,FreeGameFrame_png,GetTips_png,HelpBG_png,asdad_png,asdasd_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,10_png,10_15_30_png,15_png,20_png,2_3_5_png,3_5_8_png,5_png,5_8_10_png,8_png,8_10_15_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague12_png,vague2_png,vague1_png,vague10_png,vague11_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague0_png,vague9_png,hx_png,j_png,ssz_png,di_png",
+			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,FreeGameTips_png,FeatureChance_png,FreeGameFrame_png,GetTips_png,HelpBG_png,LineBG_png,Mutiply_png,NormalFrame_png,OverBG2_png,asdad_png,asdasd_png,normalbg_jpg,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BG_new_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Add_1_png,Auto_0_png,anniu1_png,Auto_1_png,Auto_Cancel_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_png,Max_Bet_png,Minus_0_png,Multiple_0_png,Minus_1_png,Add_0_png,Multiple_1_png,Spin_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,vfx_lujinmask_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,10_png,10_15_30_png,15_png,20_png,2_3_5_png,3_5_8_png,5_png,5_8_10_png,8_png,8_10_15_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague1_png,vague10_png,vague11_png,vague12_png,vague0_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png",
 			"name": "preload"
 		}
 	],
@@ -35,6 +35,66 @@
 			"url": "res/loading.jpg",
 			"type": "image",
 			"name": "loading_jpg"
+		},
+		{
+			"url": "res/bg/FeatureChance.png",
+			"type": "image",
+			"name": "FeatureChance_png"
+		},
+		{
+			"url": "res/bg/FreeGameFrame.png",
+			"type": "image",
+			"name": "FreeGameFrame_png"
+		},
+		{
+			"url": "res/bg/FreeGameTips.png",
+			"type": "image",
+			"name": "FreeGameTips_png"
+		},
+		{
+			"url": "res/bg/GetTips.png",
+			"type": "image",
+			"name": "GetTips_png"
+		},
+		{
+			"url": "res/bg/HelpBG.png",
+			"type": "image",
+			"name": "HelpBG_png"
+		},
+		{
+			"url": "res/bg/LineBG.png",
+			"type": "image",
+			"name": "LineBG_png"
+		},
+		{
+			"url": "res/bg/Mutiply.png",
+			"type": "image",
+			"name": "Mutiply_png"
+		},
+		{
+			"url": "res/bg/NormalFrame.png",
+			"type": "image",
+			"name": "NormalFrame_png"
+		},
+		{
+			"url": "res/bg/OverBG2.png",
+			"type": "image",
+			"name": "OverBG2_png"
+		},
+		{
+			"url": "res/bg/asdad.png",
+			"type": "image",
+			"name": "asdad_png"
+		},
+		{
+			"url": "res/bg/asdasd.png",
+			"type": "image",
+			"name": "asdasd_png"
+		},
+		{
+			"url": "res/bg/normalbg.jpg",
+			"type": "image",
+			"name": "normalbg_jpg"
 		},
 		{
 			"url": "res/Tile/IconFont.png",
@@ -130,66 +190,6 @@
 			"url": "res/Tile/symbolName_9.png",
 			"type": "image",
 			"name": "symbolName_9_png"
-		},
-		{
-			"url": "res/bg/FeatureChance.png",
-			"type": "image",
-			"name": "FeatureChance_png"
-		},
-		{
-			"url": "res/bg/FreeGameFrame.png",
-			"type": "image",
-			"name": "FreeGameFrame_png"
-		},
-		{
-			"url": "res/bg/FreeGameTips.png",
-			"type": "image",
-			"name": "FreeGameTips_png"
-		},
-		{
-			"url": "res/bg/GetTips.png",
-			"type": "image",
-			"name": "GetTips_png"
-		},
-		{
-			"url": "res/bg/HelpBG.png",
-			"type": "image",
-			"name": "HelpBG_png"
-		},
-		{
-			"url": "res/bg/LineBG.png",
-			"type": "image",
-			"name": "LineBG_png"
-		},
-		{
-			"url": "res/bg/Mutiply.png",
-			"type": "image",
-			"name": "Mutiply_png"
-		},
-		{
-			"url": "res/bg/NormalFrame.png",
-			"type": "image",
-			"name": "NormalFrame_png"
-		},
-		{
-			"url": "res/bg/OverBG2.png",
-			"type": "image",
-			"name": "OverBG2_png"
-		},
-		{
-			"url": "res/bg/asdad.png",
-			"type": "image",
-			"name": "asdad_png"
-		},
-		{
-			"url": "res/bg/asdasd.png",
-			"type": "image",
-			"name": "asdasd_png"
-		},
-		{
-			"url": "res/bg/normalbg.jpg",
-			"type": "image",
-			"name": "normalbg_jpg"
 		},
 		{
 			"url": "res/btn/A.png",
@@ -832,6 +832,26 @@
 			"name": "yinxiao_png"
 		},
 		{
+			"url": "res/top/di.png",
+			"type": "image",
+			"name": "di_png"
+		},
+		{
+			"url": "res/top/hx.png",
+			"type": "image",
+			"name": "hx_png"
+		},
+		{
+			"url": "res/top/j.png",
+			"type": "image",
+			"name": "j_png"
+		},
+		{
+			"url": "res/top/ssz.png",
+			"type": "image",
+			"name": "ssz_png"
+		},
+		{
 			"url": "res/Tile/vague/vague0.png",
 			"type": "image",
 			"name": "vague0_png"
@@ -895,26 +915,6 @@
 			"url": "res/Tile/vague/vague9.png",
 			"type": "image",
 			"name": "vague9_png"
-		},
-		{
-			"name": "hx_png",
-			"type": "image",
-			"url": "res/top/hx.png"
-		},
-		{
-			"name": "j_png",
-			"type": "image",
-			"url": "res/top/j.png"
-		},
-		{
-			"name": "ssz_png",
-			"type": "image",
-			"url": "res/top/ssz.png"
-		},
-		{
-			"name": "di_png",
-			"type": "image",
-			"url": "res/top/di.png"
 		}
 	]
 }

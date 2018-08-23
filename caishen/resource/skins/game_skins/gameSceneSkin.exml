@@ -60,4 +60,5 @@
 	<game:FreeChoose id="freeChoose" width="20" height="20" x="2082" y="500" visible="false"/>
 	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0"/>
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20"/>
+	<game:ConnectTip id="connectTip" width="20" height="20" verticalCenter="0" horizontalCenter="0"/>
 </e:Skin>

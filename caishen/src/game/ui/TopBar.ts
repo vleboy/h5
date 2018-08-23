@@ -8,7 +8,7 @@ module game {
 		private userName: eui.Label;
 		private userMoney: eui.Label;
 		/**初始化*/
-		public initSetting() {
+		public init() {
 			this.eventListen();
 		}
 		/**事件监听*/
