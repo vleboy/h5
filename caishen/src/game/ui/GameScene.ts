@@ -7,6 +7,7 @@ module game {
 		private rull:Rull;
 		private setting:Setting;
 		private particleGroup: eui.Group;
+		private lineWinTxt: eui.Label;
 
 		private balance: number;
 		private betcfg: number[];
@@ -33,6 +34,7 @@ module game {
 		private initView(){
 			this.initPaticles();
 			this.connectTip.visible = true;
+			this.lineWinTxt.visible = false;
 			this.tileGroup.mask = this.tileMask;
 			FilterUtil.setLightFlowFilter(this["title"]);
 
@@ -192,11 +194,13 @@ module game {
 			console.log("判定结果 中奖线"+this.spinResp.payload.winGrid.length);
 			if(this.spinResp.payload.winGrid.length > 0){
 				await this.showAllWinGrid(this.spinResp.payload.winGrid);
+				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+				console.log("各个中奖线展示结束");
 			}
 		}
 
 		private showAllWinGrid(arr:Array<any>){
-			return new Promise(()=>{
+			return new Promise((resolve, reject)=>{
 				let grids = [];
 				arr.forEach((v)=>{
 					v.winCard.forEach((value:number,column:number)=>{
@@ -230,7 +234,7 @@ module game {
 							if(!flag){
 								flag = true;
 								setTimeout(()=> {
-									this.showEveryLineGrid();
+									resolve();
 								}, 1000);
 							}
 						})
@@ -238,8 +242,45 @@ module game {
 			})
 		}
 
-		private showEveryLineGrid(){
-
+		private showEveryLineGrid(arr:Array<any>){
+			let promiseArr = [];
+			arr.forEach((v)=>{
+				promiseArr.push(new Promise((resolve, reject)=>{
+					this.lineWinTxt.visible = true;
+					this.lineWinTxt.text = v.gold+"";
+					let flag = false;
+					v.winCard.forEach((value:number,column:number)=>{
+						if(value!=-1){
+							let gridIndex = value+column*3;
+							let p: particle.GravityParticleSystem = this.particles[gridIndex];
+							let grid: eui.Image = this["tile"+v];
+							p.visible = true;
+							p.start();
+							p.emitterX = p.emitterY = 0;
+							p.x = grid.x;
+							p.y = grid.y;
+							egret.Tween.get(p)
+								.to({emitterX: grid.width}, 300)
+								.to({emitterY: grid.height}, 300)
+								.to({emitterX: 0}, 300)
+								.to({emitterY: 0}, 300)
+								.call(()=>{
+									egret.Tween.removeTweens(p);
+									p.stop();
+									p.visible = false;
+									this.lineWinTxt.visible = false;
+									if(!flag){
+										flag = true;
+										setTimeout(()=> {
+											resolve();
+										}, 200);
+									}
+								})
+						}
+					})
+				}))
+			})
+			return Promise.all(promiseArr);
 		}
 	}
 }
