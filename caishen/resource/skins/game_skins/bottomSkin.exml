@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="bottomSkin" width="1920" height="220" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="BG_Left2_png" x="0" bottom="0" height="120" width="792" scaleY="-1"/>
+	<e:Image x="0" bottom="0" height="120" width="792" scaleY="-1" source="BG_Left_png"/>
 	<e:Image source="BG_Middle_png" height="140" width="408" horizontalCenter="0" bottom="0"/>
 	<e:Image source="BG_Right_png" bottom="0" right="0" width="794" height="120"/>
 	<e:Image source="BG_Spin_png" width="230" height="228" anchorOffsetX="115" anchorOffsetY="114" y="106" x="1805"/>
