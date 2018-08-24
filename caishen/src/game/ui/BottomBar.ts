@@ -171,8 +171,8 @@ module game {
 		/**按钮状态
 		 * type--1:等待转动状态，2：正在转动状态，3：转动完成但还没有数据，4：还没转动完成就有数据，5：转动完成，已有数据，6：自动转动状，7：免费状态
 		*/
-		public btnState(type:number){
-			switch(type){
+		public btnState(type: number) {
+			switch (type) {
 				case 1:
 					break;
 				case 2:
