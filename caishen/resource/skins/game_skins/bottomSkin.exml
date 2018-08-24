@@ -98,7 +98,7 @@
 		<e:Label id="winTxt" text="0.00" size="42" height="38" horizontalCenter="0" textColor="0xfdc020" textAlign="center" verticalAlign="middle" width="340" bottom="23"/>
 		<e:Image source="BG_Info_png" height="118" bottom="0" width="345" right="432" scale9Grid="75,42,59,34"/>
 		<e:Label id="allBet" text="总押注：0.00" height="36" size="35" textColor="0xF3F4F4" bottom="40" width="270" textAlign="center" verticalAlign="middle" right="448"/>
-		<e:Button id="autoBtn" label="自动旋转" width="168" height="85" bottom="15" right="255">
+		<e:Button id="autoBtn" label="自动转动" width="168" height="85" bottom="15" right="255">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
@@ -117,7 +117,7 @@
 
 		<e:Group id="groupSpin" width="230" height="228" right="0" bottom="0">
 			<e:Image source="BG_Spin_png" width="230" height="228" anchorOffsetX="115" anchorOffsetY="114" right="0" bottom="0" x="0" y="0" scaleX="1" scaleY="1"/>
-			<e:Button id="spinBtn" label="" width="174" height="174" anchorOffsetX="87" anchorOffsetY="87" bottom="23" right="28" x="28" y="30" scaleX="1" scaleY="1" enabled="true">
+			<e:Button id="spinBtn" label="" width="174" height="174" anchorOffsetX="87" anchorOffsetY="87" scaleX="1" scaleY="1" enabled="true" verticalCenter="4" horizontalCenter="0">
 				<e:skinName>
 				<e:Skin states="up,down,disabled">
 					<e:Image width="100%" height="100%" source="Spin_png" source.down="Spin_Press_png" source.disabled="Spin_Disabled_png"/>
@@ -126,7 +126,7 @@
 				</e:skinName>
 			</e:Button>
 
-			<e:Image id="spinArrow" source="Spin_Arrow_png" width="144" height="136" anchorOffsetX="72" anchorOffsetY="68" touchEnabled="false" right="42" bottom="40" x="43" y="46" scaleX="1" scaleY="1"/>
+			<e:Image id="spinArrow" source="Spin_Arrow_png" width="144" height="136" anchorOffsetX="72" anchorOffsetY="68" touchEnabled="false" scaleX="1" scaleY="1" verticalCenter="6" horizontalCenter="1"/>
 			<e:Group id="groupAuto" width="230" height="228" verticalCenter="0" horizontalCenter="0" visible="false">
 				<e:Image id="autoImg" source="Auto_1_png" horizontalCenter="0" top="60" x="57" y="60" scaleX="1" scaleY="1"/>
 				<e:Label id="autoNum" text="9" height="55" textAlign="center" verticalAlign="middle" horizontalCenter="0" bold="true" size="55" top="120" x="100" y="120" scaleX="1" scaleY="1"/>
