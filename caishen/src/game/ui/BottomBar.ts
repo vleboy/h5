@@ -51,31 +51,22 @@ module game {
 		}
 		/**初始化*/
 		public init() {
-			this.defaultData();
 			this.eventListen();
-			this.defaultUI();
-		}
-		/**默认数据*/
-		private defaultData(): void {
-			this.setBetData([0.1, 0.2, 0.5, 1, 2, 5, 10, 20], 0, 25);
-			this.setWinMoney(40);
 		}
 		/**事件监听*/
 		private eventListen(): void {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.spin); }, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.openHelp); }, this);
-			["max", "100", "50", "20", "10"].forEach(v => { this.registerEvent(this["btn_" + v] as eui.Button, egret.TouchEvent.TOUCH_TAP, this.touchAutoNum, this); });
+			["max", "100", "50", "20", "10"].forEach(v => { 
+				this.registerEvent(this["btn_" + v] as eui.Button, egret.TouchEvent.TOUCH_TAP, this.touchAutoNum, this); 
+			});
 			this.registerEvent(this.betBtn, egret.TouchEvent.TOUCH_TAP, this.chooseBetLevel, this);
 			this.registerEvent(this.autoBtn, egret.TouchEvent.TOUCH_TAP, this.touchAuto, this);
 			this.registerEvent(this.cancelAutoBtn, egret.TouchEvent.TOUCH_TAP, this.touchCancelAuto, this);
 			this.registerEvent(this.BtnLess, egret.TouchEvent.TOUCH_TAP, this.reduceBetLevel, this);
 			this.registerEvent(this.BtnMore, egret.TouchEvent.TOUCH_TAP, this.addBetLevel, this);
 			this.registerEvent(this.BtnMax, egret.TouchEvent.TOUCH_TAP, this.maxBetLevel, this);
-		}
-		/**默认显示*/
-		private defaultUI(): void {
-
 		}
 		/**某Group显示隐藏动画*/
 		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
@@ -251,7 +242,9 @@ module game {
 			}
 		}
 		/**自动或免费下注次数*/
-		public setAutoBetNum(num: number): void { this.autoNum.text = num + ""; }
+		public setAutoBetNum(num: number): void { 
+			this.autoNum.text = num + ""; 
+		}
 		/**
          * 资源释放
          * @$isDispos 是否彻底释放资源
