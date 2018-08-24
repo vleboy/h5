@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="load" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="loading2_jpg" verticalCenter="0" horizontalCenter="0" width="1920" height="1080"/>
+	<e:Image source="bar2_png" width="996" height="20" horizontalCenter="0" verticalCenter="325"/>
+	<e:Label text="Loading..." size="45" height="45" textColor="0xa59153" textAlign="left" verticalAlign="middle" horizontalCenter="0" width="200" verticalCenter="277"/>
+	<e:Group width="996" height="20" verticalCenter="325" left="-534">
+		<e:Image source="bar1_png" width="996" height="20" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
+		<e:Image source="light_png" width="150" height="20" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="423"/>
+	</e:Group>
+</e:Skin>
