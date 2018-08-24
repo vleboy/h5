@@ -36,7 +36,7 @@ module game {
 			})
 		}
 		/**下注 */
-		public sendSpin(betLevel:number, hotkey: string="1"){
+		public sendSpin(betLevel:number, hotkey?: string){
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
 					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin'+(hotkey?("?hotkey="+hotkey):""), 
@@ -46,12 +46,12 @@ module game {
 				.catch(reject);
 			})
 		}
-		/**选择免费游戏 */
-		public sendFreeChoose(){
+		/**选择免费游戏 传入1-5,代表5:20, 4:15, 3:10, 2:8, 1:5*/
+		public sendFreeChoose(n:number){
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
-					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin',
-					'{}',
+					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/choosebuff',
+					'{"buff":'+n+'}',
 					{Authorization: 'Bearer ' + this.token})
 				.then(resolve)
 				.catch(reject);

@@ -8,6 +8,20 @@ module game {
 		private setting:Setting;
 		private particleGroup: eui.Group;
 		private lineWinTxt: eui.Label;
+		private freeChoose: BaseUI;
+		
+		private bg: eui.Image;
+		private bgFree: eui.Image;
+		private kuang: eui.Image;
+		private kuangFree: eui.Image;
+		private title: eui.Image;
+		private titleFree: eui.Image;
+		private freeCountBg: eui.Image;
+		private freeChooseCountBg: eui.Image;
+		private freeCountTxt: eui.Label;
+		private freeChooseCountTxt: eui.Label;
+
+		private particles:particle.GravityParticleSystem[];
 
 		private balance: number;
 		private betcfg: number[];
@@ -15,7 +29,14 @@ module game {
 		private multicfg: number[];
 		private multiLevel: number;
 		private spinResp: SpinVO;
-		private particles:particle.GravityParticleSystem[];
+		/**当前是否在免费游戏中 */
+		private isFree: boolean;
+		/**剩余免费转动次数 */
+		private freeSpinRemainCount: number;
+		/**剩余免费选择次数 */
+		private featureChanceCount: number;
+		/**下次出免费 */
+		private nextFree:boolean = false;
 
 		public constructor() {
 			super();
@@ -47,6 +68,9 @@ module game {
 			for(let i=0; i<20; i++){
 				this["vagueTile"+i].visible = false;
 			}
+			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, ()=>{
+				this.nextFree = true;
+			}, this);
 		}
 		/**初始化数据 */
 		private initData(){
@@ -57,6 +81,7 @@ module game {
 				NotifyConst.cancelSpin,
 				NotifyConst.cancelAutoSpin,
 				NotifyConst.betLevelIndex,
+				NotifyConst.chooseFreeBack
 			]);
 			
 			GameService.getInstance().login().then((resp: LoginVO)=>{
@@ -66,7 +91,36 @@ module game {
 				this.betLevel = resp.payload.betLevel;
 				this.multicfg = resp.payload.multicfg;
 				this.multiLevel = resp.payload.multiLevel;
+				
+				//数据恢复检查
+				this.checkDataRecover(resp);
 			});
+		}
+		/**数据恢复 */
+		private checkDataRecover(resp: LoginVO){
+			if(resp.payload.featureData){
+				//进免费游戏玩
+				if(resp.payload.featureData.freeSpinRemainCount>0) {
+					this.isFree = true;
+					this.freeSpinRemainCount = resp.payload.featureData.freeSpinRemainCount;
+					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
+					this.showFreeChoose(false);
+					this.showFreeGame(true);
+				}
+				//去选择免费游戏
+				else if(resp.payload.featureData.featureChanceCount > 0) {
+					this.showFreeChoose(true);
+					this.showFreeGame(false);
+					this.freeSpinRemainCount = resp.payload.featureData.freeSpinRemainCount;
+					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
+				}
+				else{
+					this.showFreeChoose(false);
+					this.showFreeGame(false);
+					this.freeSpinRemainCount = 0;
+					this.featureChanceCount = 0;
+				}
+			}
 		}
 
 		// -------------------- 游戏逻辑  ------------------------
@@ -89,6 +143,15 @@ module game {
 					break;
 				case NotifyConst.betLevelIndex:
 					break;
+				case NotifyConst.chooseFreeBack:
+					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+					this.featureChanceCount --;
+					this.isFree = true;
+					this.setFreeCount();
+					this.setFreeChooseCount();
+					this.showFreeChoose(false);
+					this.showFreeGame(true);
+					break;
 			}
 		}
 		/**spin的逻辑 */
@@ -98,12 +161,20 @@ module game {
 				return;
 			}
 			this.startSpin();
-			GameService.getInstance().sendSpin(this.betLevel).then(this.spinBack.bind(this));
+			GameService.getInstance().sendSpin(this.betLevel, this.nextFree?"1":"").then(this.spinBack.bind(this));
+			this.nextFree = false;
 		}
 		/**收到spin结果 */
 		private spinBack(resp: SpinVO){
 			console.log("UI收到spin返回 ",resp);
 			this.spinResp = resp;
+			if(this.isFree){
+				this.freeSpinRemainCount = this.spinResp.payload.featureData.freeSpinRemainCount;
+				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
+					
+				this.setFreeCount();
+				this.setFreeChooseCount();
+			}
 			this.stopRoll(resp.payload.viewGrid);
 		}
 
@@ -149,9 +220,10 @@ module game {
 		/**停下来 */
 		private stopRoll(arr:any[]){
 			// 3 4 5列是否缓停
-			let is3Delay: boolean = (arr.slice(0,3).indexOf(1)>-1 && arr.slice(3,6).indexOf(1)>-1);
-			let is4Delay: boolean = is3Delay && arr.slice(6,9).indexOf(1)>-1;
-			let is5Delay: boolean = is4Delay && arr.slice(9,12).indexOf(1)>-1;
+			let is3Delay: boolean = (arr.slice(0,3).indexOf("0")>-1 && arr.slice(3,6).indexOf("0")>-1);
+			let is4Delay: boolean = is3Delay && arr.slice(6,9).indexOf("0")>-1;
+			let is5Delay: boolean = is4Delay && arr.slice(9,12).indexOf("0")>-1;
+			console.log("是否缓停：",is3Delay,is4Delay,is5Delay)
 			//处理wild图标的多样性
 			arr = arr.map( v => (v==2? "2_1" : (v+"")));
 
@@ -172,6 +244,8 @@ module game {
 		}
 		/**单列停下来 */
 		private stopColumn(column, arr:any[], delay){
+			console.log("第"+column+"列停止 "+delay);
+			
 			setTimeout(()=> {
 				[0,1,2,3].forEach(i=>{
 					egret.Tween.removeTweens(this["vagueTile"+(column+i)]);
@@ -200,12 +274,28 @@ module game {
 		}
 		/**判定结果 */
 		private async judgeResult(){
+			/**获得免费游戏 */
+			if(this.spinResp.payload.getFeatureChance && !this.isFree){
+				this.showFreeChoose(true);
+			}
 			console.log("判定结果 中奖线"+this.spinResp.payload.winGrid.length);
 			if(this.spinResp.payload.winGrid.length > 0){
 				await this.showAllWinGrid(this.spinResp.payload.winGrid);
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
 				console.log("各个中奖线展示结束");
+
 			}
+			
+			//	免费游戏结束判定
+			if(this.isFree && this.freeSpinRemainCount==0){
+				if(this.featureChanceCount>0){
+					this.showFreeChoose(true);
+				}
+				else{
+					this.showFreeGame(false);
+				}
+			}
+			
 		}
 
 		private showAllWinGrid(arr:Array<any>){
@@ -253,43 +343,74 @@ module game {
 
 		private showEveryLineGrid(arr:Array<any>){
 			let promiseArr = [];
-			arr.forEach((v)=>{
+			arr.forEach((v, lineIndex:number)=>{
 				promiseArr.push(new Promise((resolve, reject)=>{
-					this.lineWinTxt.visible = true;
-					this.lineWinTxt.text = v.gold+"";
 					let flag = false;
 					v.winCard.forEach((value:number,column:number)=>{
 						if(value!=-1){
-							let gridIndex = value+column*3;
-							let p: particle.GravityParticleSystem = this.particles[gridIndex];
-							let grid: eui.Image = this["tile"+v];
-							p.visible = true;
-							p.start();
-							p.emitterX = p.emitterY = 0;
-							p.x = grid.x;
-							p.y = grid.y;
-							egret.Tween.get(p)
-								.to({emitterX: grid.width}, 300)
-								.to({emitterY: grid.height}, 300)
-								.to({emitterX: 0}, 300)
-								.to({emitterY: 0}, 300)
-								.call(()=>{
-									egret.Tween.removeTweens(p);
-									p.stop();
-									p.visible = false;
-									this.lineWinTxt.visible = false;
-									if(!flag){
-										flag = true;
-										setTimeout(()=> {
-											resolve();
-										}, 200);
-									}
-								})
+							setTimeout(()=> {
+								this.lineWinTxt.visible = true;
+								this.lineWinTxt.text = v.gold+"";
+								let gridIndex = value+column*3;
+								let p: particle.GravityParticleSystem = this.particles[gridIndex];
+								let grid: eui.Image = this["tile"+gridIndex];
+								p.visible = true;
+								p.start();
+								p.emitterX = p.emitterY = 0;
+								p.x = grid.x;
+								p.y = grid.y;
+								egret.Tween.get(p)
+									.to({emitterX: grid.width}, 300)
+									.to({emitterY: grid.height}, 300)
+									.to({emitterX: 0}, 300)
+									.to({emitterY: 0}, 300)
+									.call(()=>{
+										egret.Tween.removeTweens(p);
+										p.stop();
+										p.visible = false;
+										this.lineWinTxt.visible = false;
+										if(!flag){
+											flag = true;
+											setTimeout(()=> {
+												resolve();
+											}, 200);
+										}
+									})
+							}, lineIndex*1500);
 						}
 					})
 				}))
 			})
 			return Promise.all(promiseArr);
 		}
+
+
+		private showFreeChoose(b: boolean){
+			this.freeChoose.visible = b;
+		}
+		/**显示免费游戏的ui */
+		private showFreeGame(b: boolean){
+			this.bg.visible = !b;
+			this.bgFree.visible = b;
+			this.kuang.visible = !b;
+			this.kuangFree.visible = b;
+			this.title.visible = !b;
+			this.titleFree.visible = b;
+			this.freeCountBg.visible = b;
+			this.freeChooseCountBg.visible = b;
+			this.freeCountTxt.visible = b;
+			this.freeChooseCountTxt.visible = b;
+			this.setFreeCount();
+			this.setFreeChooseCount();
+		}
+		
+		private setFreeCount(){
+			this.freeCountTxt.text = "X"+this.freeSpinRemainCount;
+		}
+		private setFreeChooseCount(){
+			this.freeChooseCountTxt.text = "X"+this.featureChanceCount;
+		}
+
+
 	}
 }
