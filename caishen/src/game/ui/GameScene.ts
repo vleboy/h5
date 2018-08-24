@@ -55,6 +55,9 @@ module game {
 				NotifyConst.spin,
 				NotifyConst.openHelp,
 				NotifyConst.openSetting,
+				NotifyConst.cancelSpin,
+				NotifyConst.cancelAutoSpin,
+				NotifyConst.betLevelIndex,
 			]);
 			
 			GameService.getInstance().login().then((resp: LoginVO)=>{
@@ -80,6 +83,12 @@ module game {
 					break;
 				case NotifyConst.openSetting:
 					this.setting.settingShow();
+					break;
+				case NotifyConst.cancelSpin:
+					break;
+				case NotifyConst.cancelAutoSpin:
+					break;
+				case NotifyConst.betLevelIndex:
 					break;
 			}
 		}

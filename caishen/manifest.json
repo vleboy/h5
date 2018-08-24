@@ -25,6 +25,7 @@
 		"bin-debug/core/vo/LoginVO.js",
 		"bin-debug/game/ui/TopBar.js",
 		"bin-debug/game/GlobalConfig.js",
+		"bin-debug/game/const/BottomState.js",
 		"bin-debug/game/const/NotifyConst.js",
 		"bin-debug/game/service/DefaultUser.js",
 		"bin-debug/game/service/GameService.js",
