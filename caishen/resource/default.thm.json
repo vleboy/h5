@@ -16,6 +16,14 @@
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
+		"resource/skins/game_skins/bottomSkin.exml",
+		"resource/skins/game_skins/connectTipSkin.exml",
+		"resource/skins/game_skins/freeChooseSkin.exml",
+		"resource/skins/game_skins/gameSceneSkin.exml",
+		"resource/skins/game_skins/rullSkin.exml",
+		"resource/skins/game_skins/settingSkin.exml",
+		"resource/skins/game_skins/tipSkin.exml",
+		"resource/skins/game_skins/topBarSkin.exml",
 		"resource/skins/eui_skins/ButtonSkin.exml",
 		"resource/skins/eui_skins/CheckBoxSkin.exml",
 		"resource/skins/eui_skins/HScrollBarSkin.exml",
@@ -28,15 +36,7 @@
 		"resource/skins/eui_skins/TextInputSkin.exml",
 		"resource/skins/eui_skins/ToggleSwitchSkin.exml",
 		"resource/skins/eui_skins/VScrollBarSkin.exml",
-		"resource/skins/eui_skins/VSliderSkin.exml",
-		"resource/skins/game_skins/bottomSkin.exml",
-		"resource/skins/game_skins/connectTipSkin.exml",
-		"resource/skins/game_skins/freeChooseSkin.exml",
-		"resource/skins/game_skins/gameSceneSkin.exml",
-		"resource/skins/game_skins/rullSkin.exml",
-		"resource/skins/game_skins/settingSkin.exml",
-		"resource/skins/game_skins/tipSkin.exml",
-		"resource/skins/game_skins/topBarSkin.exml"
+		"resource/skins/eui_skins/VSliderSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }

@@ -12,5 +12,7 @@ module game {
 		openHelp,
 		/**打开设置*/
 		openSetting,
+		/**选择免费次数返回 */
+		chooseFreeBack
 	}
 }
