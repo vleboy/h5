@@ -8,6 +8,7 @@ module game {
 		private setting:Setting;
 		private particleGroup: eui.Group;
 		private lineWinTxt: eui.Label;
+		private freeChoose: BaseUI;
 
 		private balance: number;
 		private betcfg: number[];
@@ -200,6 +201,10 @@ module game {
 		}
 		/**判定结果 */
 		private async judgeResult(){
+			/**获得免费游戏 */
+			if(this.spinResp.payload.getFeatureChance){
+				this.freeChoose.visible = true;
+			}
 			console.log("判定结果 中奖线"+this.spinResp.payload.winGrid.length);
 			if(this.spinResp.payload.winGrid.length > 0){
 				await this.showAllWinGrid(this.spinResp.payload.winGrid);
