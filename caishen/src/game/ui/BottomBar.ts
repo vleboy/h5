@@ -2,8 +2,10 @@ module game {
 	export class BottomBar extends BaseUI {
 		/**说明按钮*/
 		private helpBtn: eui.Button;
-		/**游戏开始按钮*/
+		/**游戏开始转动按钮*/
 		private spinBtn: eui.Button;
+		/**游戏停止转动按钮*/
+		private stopSpinBtn: eui.Button;
 		/**下注*/
 		private betBtn: eui.Button;
 		/**单注*/
@@ -23,7 +25,7 @@ module game {
 		/**自动图片*/
 		private autoImg: eui.Image;
 		/**自动次数*/
-		private autoNum: eui.Image;
+		private autoNum: eui.Label;
 		/**选择自动转动次数框*/
 		private groupAutoNum: eui.Group;
 		/**单注选择框*/
@@ -61,6 +63,7 @@ module game {
 		/**事件监听*/
 		private eventListen(): void {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.spin); }, this);
+			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.openHelp); }, this);
 			["max", "100", "50", "20", "10"].forEach(v => { this.registerEvent(this["btn_" + v] as eui.Button, egret.TouchEvent.TOUCH_TAP, this.touchAutoNum, this); });
 			this.registerEvent(this.betBtn, egret.TouchEvent.TOUCH_TAP, this.chooseBetLevel, this);
@@ -72,7 +75,7 @@ module game {
 		}
 		/**默认显示*/
 		private defaultUI(): void {
-			this.imgSpin();
+
 		}
 		/**某Group显示隐藏动画*/
 		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
@@ -96,10 +99,6 @@ module game {
 			this.autoBtn.visible = isShow;
 			this.cancelAutoBtn.visible = !isShow;
 		}
-		/**图片旋转*/
-		private imgSpin(isStop: boolean = false): void {
-			isStop ? egret.Tween.removeTweens(this.spinArrow) : egret.Tween.get(this.spinArrow).to({ rotation: 360 }, 500);
-		}
 		/**点击单注*/
 		private chooseBetLevel(): void {
 			let betShow = () => {
@@ -117,6 +116,7 @@ module game {
 			this.betTxt.text = this.theBetArr[this.theBetIndex] + "";
 			this.theBet.text = "单注：" + this.theBetArr[this.theBetIndex];
 			this.allBet.text = "总押注：" + this.theBetArr[this.theBetIndex] * this.theBetMulit;
+			this.sendNotify(NotifyConst.betLevelIndex, this.theBetIndex);
 		}
 
 		/**单注增加*/
@@ -147,6 +147,29 @@ module game {
 		private touchCancelAuto(): void {
 			this.sendNotify(NotifyConst.cancelAutoSpin);
 		}
+		/**获得派彩的动画*/
+		private payOutAni(mon: number): void {
+			let interval, theMon: number = 0, newMon: number = 0;
+			if (interval) clearInterval(interval);
+			egret.Tween.removeTweens(this.winTxt);
+			interval = setInterval(() => {
+				newMon++;
+				theMon = newMon / 10;
+				if (theMon >= mon) {
+					theMon = mon;
+					clearInterval(interval);
+				}
+				this.winTxt.text = theMon + "";
+			}, 10);
+			egret.Tween.get(this.winTxt)
+				.to({ scaleX: 1.5, scaleY: 1.5 }, 500)
+				.to({ scaleX: 1, scaleY: 1 }, 500)
+				.call(() => {
+					egret.Tween.removeTweens(this.winTxt);
+					if (interval) clearInterval(interval);
+					this.winTxt.text = mon + "";
+				});
+		}
 		/**单注数据和倍数
 		 * @param betArr 单注数字数组
 		 * @param index 当前注在数组的下标
@@ -158,38 +181,77 @@ module game {
 			if (mulit != undefined) this.theBetMulit = mulit;
 			this.checkPlusReduceState();
 		}
-		/**返回单注金额下标*/
-		public getBetMoneyIndex(): number { return this.theBetIndex; }
 		/**赢得钱*/
 		public setWinMoney(mon: number): void {
 			this.winTxt.text = mon + "";
+			this.payOutAni(mon);
 		}
 		/**开始转动按钮状态*/
 		public setSpinEnable(b: boolean) {
 			this.spinBtn.enabled = b;
 		}
-		/**按钮状态
-		 * type--1:等待转动状态，2：正在转动状态，3：转动完成但还没有数据，4：还没转动完成就有数据，5：转动完成，已有数据，6：自动转动状，7：免费状态
+		/**图片旋转
+		 * @param isStop 是不是停止动画
 		*/
-		public btnState(type:number){
-			switch(type){
-				case 1:
+		public imgSpin(isStop: boolean = false): void {
+			isStop ? egret.Tween.removeTweens(this.spinArrow) : egret.Tween.get(this.spinArrow).to({ rotation: 360 }, 500);
+		}
+		/**按钮状态*/
+		public setBtnState(type: BottomState) {
+			/**下注按钮和自动转动按钮状态*/
+			let betAutoState = (isEn: boolean = true) => {
+				this.betBtn.enabled = isEn;
+				this.autoBtn.enabled = isEn;
+			};
+			/**转动按钮显示*/
+			let spinBtnShow = (isShow: boolean = true, isEn: boolean = true) => {
+				this.spinBtn.visible = isShow;
+				this.spinBtn.enabled = isEn;
+				this.stopSpinBtn.visible = !isShow;
+				this.spinArrow.visible = isShow;
+			}
+			/**是不是自动状态*/
+			let autoState = (isAuto: boolean = false, isFree?: boolean) => {
+				this.spinArrow.visible = !isAuto;
+				this.groupAuto.visible = isAuto;
+				this.autoImg.source = isFree ? "Free_png" : "Auto_1_png";
+			};
+			switch (type) {
+				case BottomState.spinAble:
+					betAutoState();
+					autoState();
+					spinBtnShow();
 					break;
-				case 2:
+				case BottomState.spining:
+					betAutoState(false);
+					autoState();
+					spinBtnShow(true, false);
 					break;
-				case 3:
+				case BottomState.stoping:
+					betAutoState(false);
+					autoState();
+					this.imgSpin(true);
+					spinBtnShow(false);
 					break;
-				case 4:
+				case BottomState.stop:
+					betAutoState(false);
+					autoState();
+					spinBtnShow(false);
 					break;
-				case 5:
+				case BottomState.auto:
+					betAutoState(false);
+					spinBtnShow(true, false);
+					autoState(true);
 					break;
-				case 6:
-					break;
-				case 7:
+				case BottomState.free:
+					betAutoState(false);
+					spinBtnShow(true, false);
+					autoState(true, true);
 					break;
 			}
 		}
-		/***/
+		/**自动或免费下注次数*/
+		public setAutoBetNum(num: number): void { this.autoNum.text = num + ""; }
 		/**
          * 资源释放
          * @$isDispos 是否彻底释放资源

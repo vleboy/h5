@@ -6,6 +6,8 @@ module game {
 		cancelSpin,
 		/**停止自动转动*/
 		cancelAutoSpin,
+		/**下注档次下标*/
+		betLevelIndex,
 		/**打开说明*/
 		openHelp,
 		/**打开设置*/
