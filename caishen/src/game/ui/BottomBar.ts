@@ -72,7 +72,7 @@ module game {
 		}
 		/**默认显示*/
 		private defaultUI(): void {
-
+			this.imgSpin();
 		}
 		/**某Group显示隐藏动画*/
 		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
@@ -85,11 +85,10 @@ module game {
 		}
 		/**点击自动转到次数按钮*/
 		private touchAutoNum(e: egret.TouchEvent): void {
-			let auto: string = e.target.name.split("_")[1];
+			this.sendNotify(NotifyConst.spin, e.target.name.split("_")[1]);
+			this.showAutoBtn(false);
 			this.showTween(this.groupAutoNum, -400, () => {
 				this.groupAutoNum.visible = false;
-				this.sendNotify(NotifyConst.spin, auto);
-				this.showAutoBtn(false);
 			});
 		}
 		/**是否显示自动转动按钮*/
@@ -98,10 +97,8 @@ module game {
 			this.cancelAutoBtn.visible = !isShow;
 		}
 		/**图片旋转*/
-		private imgSpin(): void {
-			// egret.Tween.get(this.spinArrow)
-			// .to()
-			
+		private imgSpin(isStop: boolean = false): void {
+			isStop ? egret.Tween.removeTweens(this.spinArrow) : egret.Tween.get(this.spinArrow).to({ rotation: 360 }, 500);
 		}
 		/**点击单注*/
 		private chooseBetLevel(): void {
@@ -111,8 +108,6 @@ module game {
 			}
 			this.groupBet.visible ? this.showTween(this.groupBet, -100, () => {
 				this.groupBet.visible = false;
-				this.theBet.text = "单注：" + this.getBetMoney();
-				this.allBet.text = "总押注：" + this.getBetMoney() * this.theBetMulit;
 			}) : betShow();
 		}
 		/**校验加减号状态和设置单注下注档次*/
@@ -120,6 +115,8 @@ module game {
 			this.BtnLess.touchEnabled = this.theBetIndex != 0;
 			this.BtnMore.touchEnabled = this.theBetIndex != this.theBetArr.length - 1;
 			this.betTxt.text = this.theBetArr[this.theBetIndex] + "";
+			this.theBet.text = "单注：" + this.theBetArr[this.theBetIndex];
+			this.allBet.text = "总押注：" + this.theBetArr[this.theBetIndex] * this.theBetMulit;
 		}
 
 		/**单注增加*/
@@ -139,13 +136,16 @@ module game {
 		}
 		/**自动转动*/
 		private touchAuto(): void {
-			if (this.groupAutoNum.visible) return;
-			this.groupAutoNum.visible = true;
-			this.showTween(this.groupAutoNum, 107);
+			if (this.groupAutoNum.visible) {
+				this.showTween(this.groupAutoNum, -400, () => { this.groupAutoNum.visible = false; });
+			} else {
+				this.groupAutoNum.visible = true;
+				this.showTween(this.groupAutoNum, 107);
+			}
 		}
 		/**取消自动转动*/
 		private touchCancelAuto(): void {
-
+			this.sendNotify(NotifyConst.cancelAutoSpin);
 		}
 		/**单注数据和倍数
 		 * @param betArr 单注数字数组
@@ -157,18 +157,39 @@ module game {
 			if (index != undefined) this.theBetIndex = index;
 			if (mulit != undefined) this.theBetMulit = mulit;
 			this.checkPlusReduceState();
-			this.theBet.text = "单注：" + this.getBetMoney();
-			this.allBet.text = "总押注：" + this.getBetMoney() * this.theBetMulit;
 		}
-		/**返回单注金额*/
-		public getBetMoney(): number { return this.theBetArr[this.theBetIndex]; }
+		/**返回单注金额下标*/
+		public getBetMoneyIndex(): number { return this.theBetIndex; }
 		/**赢得钱*/
 		public setWinMoney(mon: number): void {
 			this.winTxt.text = mon + "";
 		}
+		/**开始转动按钮状态*/
 		public setSpinEnable(b: boolean) {
 			this.spinBtn.enabled = b;
 		}
+		/**按钮状态
+		 * type--1:等待转动状态，2：正在转动状态，3：转动完成但还没有数据，4：还没转动完成就有数据，5：转动完成，已有数据，6：自动转动状，7：免费状态
+		*/
+		public btnState(type:number){
+			switch(type){
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				case 7:
+					break;
+			}
+		}
+		/***/
 		/**
          * 资源释放
          * @$isDispos 是否彻底释放资源
