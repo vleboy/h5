@@ -46,5 +46,16 @@ module game {
 				.catch(reject);
 			})
 		}
+		/**选择免费游戏 */
+		public sendFreeChoose(){
+			return new Promise((resolve, reject)=>{
+				HttpUtil.sendRequest("POST",  
+					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin',
+					'{}',
+					{Authorization: 'Bearer ' + this.token})
+				.then(resolve)
+				.catch(reject);
+			})
+		}
 	}
 }
