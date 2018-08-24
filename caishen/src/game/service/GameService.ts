@@ -36,7 +36,7 @@ module game {
 			})
 		}
 		/**下注 */
-		public sendSpin(betLevel:number, hotkey: string="1"){
+		public sendSpin(betLevel:number, hotkey?: string){
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
 					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin'+(hotkey?("?hotkey="+hotkey):""), 
@@ -51,7 +51,7 @@ module game {
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
 					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/choosebuff',
-					'{{"buff":'+n+'}}',
+					'{"buff":'+n+'}',
 					{Authorization: 'Bearer ' + this.token})
 				.then(resolve)
 				.catch(reject);
