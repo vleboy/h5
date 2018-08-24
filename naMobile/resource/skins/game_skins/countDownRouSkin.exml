@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="countDownRouSkin" width="420" height="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="groupMax" width="420" height="100" left="0" top="0">
+		<e:Image id="timerBg" scaleX="1" scaleY="1" left="0" top="0" width="420" height="100" source="lunpan_jishi_png"/>
+		<e:Group id="timer" width="100" height="100" verticalCenter="0" left="0">
+			<e:Label id="timerTxt" text="23" width="100" horizontalCenter="0" verticalCenter="0" verticalAlign="middle" textAlign="center" size="38" textColor="0x00bd10"/>
+		</e:Group>
+		<e:Label id="timerState" text="投注中" verticalCenter="0" left="100" textAlign="center" verticalAlign="middle" height="32" width="320" textColor="0x00bd10" size="32"/>
+	</e:Group>
+</e:Skin>
