@@ -6,8 +6,16 @@ module game {
 		}
 
 		public init(){
-			["20","15","10","8","5"].forEach(v=>{
-				this.registerEvent(this["choose"+v], egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
+			["20","15","10","8","5"].forEach((v,i)=>{
+				let target = this["choose"+v];
+				let defaultY = target.y;
+				egret.Tween.get(target)
+					.set({y:-200})
+					.wait(i*200+200)
+					.to({y:defaultY},500)
+					.call(()=>{
+						this.registerEvent(target, egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
+					})
 			})
 			
 		}
