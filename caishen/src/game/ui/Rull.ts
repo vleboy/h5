@@ -24,31 +24,39 @@ module game {
 			this.defaultUI();
 		}
 		/**是否显示规则，默认关闭*/
-		public rullShow(isShow: boolean = false): void { this.visible = isShow; console.warn("close", isShow) }
+		public rullShow(isShow: boolean = false, theBet?: number): void {
+			this.visible = isShow;
+			this.btnState(0);
+			this.setOdds();
+		}
 		/**默认数据*/
 		private defaultData(): void {
 			this.pageArr = [0, 1, 2, 3, 4, 5];
 			this.startX = 0;
-			this.dragDistance = 200;
+			this.dragDistance = 400;
 		}
 		/**默认显示*/
 		private defaultUI(): void {
 			this.rullShow();
 			this.groupRull.mask = this.rullMask;
-			this.btnState(0);
-			this.setPage23();
 		}
-		/**设置第二三页富文本*/
-		private setPage23(): void {
-			let setTextFlow = (lab: eui.Label) => {
-				let txt: string = lab.text;
-				lab.textFlow = [
-					{ text: txt.slice(0, 1), style: { "textColor": 0xFCC434 } },
-					{ text: txt.slice(1), style: { "textColor": 0xF1EABD } }
-				];
+		/**设置赔率*/
+		private setOdds(): void {
+			for (let i = 0; i <= 14; i++) {
+				let lab: eui.Label = this["page2_" + i] as eui.Label;
+				this.setTextFlow(lab, lab.text)
 			}
-			for (let i = 0; i <= 14; i++) { setTextFlow(this["page2_" + i] as eui.Label);}
-			for (let i = 0; i <= 17; i++) { setTextFlow(this["page3_" + i] as eui.Label);}
+			for (let i = 0; i <= 17; i++) { 
+				let lab: eui.Label = this["page3_" + i] as eui.Label;
+				this.setTextFlow(lab, lab.text)
+			}
+		}
+		/**设置富文本*/
+		private setTextFlow(lab: eui.Label, txt: string): void {
+			lab.textFlow = [
+				{ text: txt.slice(0, 1), style: { "textColor": 0xFCC434 } },
+				{ text: txt.slice(1), style: { "textColor": 0xF1EABD } }
+			];
 		}
 		/**事件监听*/
 		private eventListen(): void {
