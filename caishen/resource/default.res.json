@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,particle_json,FeatureChance_png,GetTips_png,HelpBG_png,Mutiply_png,OverBG2_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,FreeGameFrame_png,FreeGameTips_png,LineBG_png,NormalFrame_png,asdad_png,asdasd_png,normalbg_jpg,A_png,Arrow_png,InfoBG_png,MaxBet_png,add_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_png,free_word_png,help_png,left_png,left_word_png,menu_png,minus_png,music_png,music_word_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_png,sound_word_png,spin_png,time_png,time_word_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,10_png,10_15_30_png,15_png,20_png,2_3_5_png,3_5_8_png,5_png,5_8_10_png,8_png,8_10_15_png,addsadfg_jpg,asdad2_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,Loading..._png,bar1_png,bar2_png,light_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague1_png,vague10_png,vague11_png,vague12_png,vague0_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,light_lizi01_png,yigeyuanb_png",
+			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,particle_json,FeatureChance_png,GetTips_png,HelpBG_png,OverBG2_png,NormalFrame_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,FreeGameFrame_png,FreeGameTips_png,LineBG_png,Mutiply_png,asdad_png,asdasd_png,normalbg_jpg,A_png,Arrow_png,InfoBG_png,MaxBet_png,add_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_png,free_word_png,help_png,left_png,left_word_png,menu_png,minus_png,music_png,music_word_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_png,sound_word_png,spin_png,time_png,time_word_png,Erro_png,LineErro_png,LineRight_png,OverBG_jpg,Right_png,Tips_Back_png,Word_0_png,Word_1_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,10_png,10_15_30_png,15_png,20_png,2_3_5_png,3_5_8_png,5_png,5_8_10_png,8_png,8_10_15_png,addsadfg_jpg,asdad2_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,Loading..._png,bar1_png,bar2_png,light_png,loading_jpg,symbolName_2_3_png,symbolName_2_4_png,symbolName_2_5_png,symbolName_2_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague0_png,vague1_png,vague10_png,vague11_png,vague12_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png",
 			"name": "preload"
 		}
 	],
@@ -50,6 +50,11 @@
 			"url": "res/light_lizi02.jpg",
 			"type": "image",
 			"name": "light_lizi02_jpg"
+		},
+		{
+			"url": "res/yigeyuanb.png",
+			"type": "image",
+			"name": "yigeyuanb_png"
 		},
 		{
 			"url": "res/Tile/IconFont.png",
@@ -597,6 +602,46 @@
 			"name": "time_word_png"
 		},
 		{
+			"url": "res/explain/Erro.png",
+			"type": "image",
+			"name": "Erro_png"
+		},
+		{
+			"url": "res/explain/LineErro.png",
+			"type": "image",
+			"name": "LineErro_png"
+		},
+		{
+			"url": "res/explain/LineRight.png",
+			"type": "image",
+			"name": "LineRight_png"
+		},
+		{
+			"url": "res/explain/OverBG.jpg",
+			"type": "image",
+			"name": "OverBG_jpg"
+		},
+		{
+			"url": "res/explain/Right.png",
+			"type": "image",
+			"name": "Right_png"
+		},
+		{
+			"url": "res/explain/Tips_Back.png",
+			"type": "image",
+			"name": "Tips_Back_png"
+		},
+		{
+			"url": "res/explain/Word_0.png",
+			"type": "image",
+			"name": "Word_0_png"
+		},
+		{
+			"url": "res/explain/Word_1.png",
+			"type": "image",
+			"name": "Word_1_png"
+		},
+		{
 			"url": "res/explain/bg.png",
 			"type": "image",
 			"name": "bg_png"
@@ -817,6 +862,26 @@
 			"name": "loading_jpg"
 		},
 		{
+			"url": "res/top/di.png",
+			"type": "image",
+			"name": "di_png"
+		},
+		{
+			"url": "res/top/hx.png",
+			"type": "image",
+			"name": "hx_png"
+		},
+		{
+			"url": "res/top/j.png",
+			"type": "image",
+			"name": "j_png"
+		},
+		{
+			"url": "res/top/ssz.png",
+			"type": "image",
+			"name": "ssz_png"
+		},
+		{
 			"url": "res/setting/BetConfig.png",
 			"type": "image",
 			"name": "BetConfig_png"
@@ -882,26 +947,6 @@
 			"name": "yinxiao_png"
 		},
 		{
-			"url": "res/top/di.png",
-			"type": "image",
-			"name": "di_png"
-		},
-		{
-			"url": "res/top/hx.png",
-			"type": "image",
-			"name": "hx_png"
-		},
-		{
-			"url": "res/top/j.png",
-			"type": "image",
-			"name": "j_png"
-		},
-		{
-			"url": "res/top/ssz.png",
-			"type": "image",
-			"name": "ssz_png"
-		},
-		{
 			"url": "res/Tile/vague/vague0.png",
 			"type": "image",
 			"name": "vague0_png"
@@ -965,11 +1010,6 @@
 			"url": "res/Tile/vague/vague9.png",
 			"type": "image",
 			"name": "vague9_png"
-		},
-		{
-			"name": "yigeyuanb_png",
-			"type": "image",
-			"url": "res/yigeyuanb.png"
 		}
 	]
 }
