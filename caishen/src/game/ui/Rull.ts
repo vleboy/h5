@@ -17,6 +17,8 @@ module game {
 		private dragDistance: number;
 		/**某一页groupRull的x位置*/
 		private rullX: number;
+		/**赔率数组*/
+		private oddsArr: number[][];
 		/**初始化*/
 		public init(): void {
 			this.defaultData();
@@ -24,39 +26,52 @@ module game {
 			this.defaultUI();
 		}
 		/**是否显示规则，默认关闭*/
-		public rullShow(isShow: boolean = false, theBet?: number): void {
+		public rullShow(theBet: number, isShow: boolean = false): void {
 			this.visible = isShow;
-			this.btnState(0);
-			this.setOdds();
+			if (isShow) {
+				this.btnState(0);
+				this.setOdds(theBet);
+			}
 		}
 		/**默认数据*/
 		private defaultData(): void {
 			this.pageArr = [0, 1, 2, 3, 4, 5];
 			this.startX = 0;
 			this.dragDistance = 400;
+			this.oddsArr = [
+				[800, 100, 50],
+				[800, 100, 35],
+				[800, 100, 30],
+				[300, 50, 20],
+				[300, 35, 15],
+				[200, 30, 10],
+				[200, 20, 10],
+				[100, 15, 10],
+				[100, 15, 5],
+				[100, 10, 5],
+				[50, 10, 5],
+			]
 		}
 		/**默认显示*/
 		private defaultUI(): void {
-			this.rullShow();
+			this.rullShow(0.01);
 			this.groupRull.mask = this.rullMask;
 		}
 		/**设置赔率*/
-		private setOdds(): void {
-			for (let i = 0; i <= 14; i++) {
-				let lab: eui.Label = this["page2_" + i] as eui.Label;
-				this.setTextFlow(lab, lab.text)
-			}
-			for (let i = 0; i <= 17; i++) { 
-				let lab: eui.Label = this["page3_" + i] as eui.Label;
-				this.setTextFlow(lab, lab.text)
-			}
-		}
-		/**设置富文本*/
-		private setTextFlow(lab: eui.Label, txt: string): void {
-			lab.textFlow = [
-				{ text: txt.slice(0, 1), style: { "textColor": 0xFCC434 } },
-				{ text: txt.slice(1), style: { "textColor": 0xF1EABD } }
-			];
+		private setOdds(theBet: number): void {
+			let bet: number = theBet * 100;
+			[[], [], [], [], [], [], [], [], [], [], []].forEach((v, i) => {
+				this.oddsArr[i].forEach((k, j) => {
+					let mon: string = k * bet / 100 + "";
+					if (mon.length == 1) { mon = mon + ".00"; }
+					if (mon.length == 3) { mon = mon + "0"; }
+					let lab: eui.Label = this["pageTxt_" + i + "_" + j] as eui.Label;
+					lab.textFlow = [
+						{ text: (5 - j) + "", style: { "textColor": 0xFCC434 } },
+						{ text: mon, style: { "textColor": 0xF1EABD } }
+					]
+				});
+			});
 		}
 		/**事件监听*/
 		private eventListen(): void {
@@ -65,7 +80,7 @@ module game {
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_END, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onMove, this);
-			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => { this.rullShow(); }, this);
+			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => { this.rullShow(0.01); }, this);
 		}
 		/**点击按钮到当前页*/
 		private toThePage(e: egret.TouchEvent): void {
