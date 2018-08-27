@@ -13,6 +13,8 @@ module game {
 		/**打开设置*/
 		openSetting,
 		/**选择免费次数返回 */
-		chooseFreeBack
+		chooseFreeBack,
+		/**免费结算完成 */
+		freeComplete
 	}
 }
