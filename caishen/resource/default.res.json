@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,particle_json,FeatureChance_png,GetTips_png,HelpBG_png,Mutiply_png,OverBG2_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,FreeGameFrame_png,FreeGameTips_png,LineBG_png,NormalFrame_png,asdad_png,asdasd_png,normalbg_jpg,A_png,Arrow_png,InfoBG_png,MaxBet_png,add_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_png,free_word_png,help_png,left_png,left_word_png,menu_png,minus_png,music_png,music_word_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_png,sound_word_png,spin_png,time_png,time_word_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,10_png,10_15_30_png,15_png,20_png,2_3_5_png,3_5_8_png,5_png,5_8_10_png,8_png,8_10_15_png,addsadfg_jpg,asdad2_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,Loading..._png,bar1_png,bar2_png,light_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague1_png,vague10_png,vague11_png,vague12_png,vague0_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,light_lizi01_png",
+			"keys": "button_down_png,button_up_png,selected_png,roundthumb_png,track_sb_png,particle_json,FeatureChance_png,GetTips_png,HelpBG_png,Mutiply_png,OverBG2_png,Add_0_png,Add_1_png,anniu1_png,Auto_0_png,Auto_1_png,Auto_Cancel_png,Bet_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_new_png,BG_Number_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Button_Red_png,Count_Item_png,Count_Selected_png,Free_png,guide_arrow_png,Help_p_png,Help_png,Jump_png,Loading_png,Max_Bet_png,Max_png,Minus_0_png,Minus_1_png,Multiple_0_png,Multiple_1_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,vfx_lujinmask_png,FreeGameFrame_png,FreeGameTips_png,LineBG_png,NormalFrame_png,asdad_png,asdasd_png,normalbg_jpg,A_png,Arrow_png,InfoBG_png,MaxBet_png,add_png,auto_png,betLine_png,cancel_png,cancelBtn_png,comfirm_png,exit_png,fastTog_png,fastToggle_png,fill_png,fillBg_png,free_png,free_word_png,help_png,left_png,left_word_png,menu_png,minus_png,music_png,music_word_png,return_png,riseBtn_png,set_png,setTitle_png,singleBet_png,sliderBg_png,sound_png,sound_word_png,spin_png,time_png,time_word_png,bg_png,bg2_png,btn1_png,btn2_png,scatter_png,scatterBg_png,tese_png,wild_png,10_png,10_15_30_png,15_png,20_png,2_3_5_png,3_5_8_png,5_png,5_8_10_png,8_png,8_10_15_png,addsadfg_jpg,asdad2_png,bg_10_png,bg_15_png,bg_20_png,bg_5_png,bg_8_png,free_game_title_png,head_png,number_10_png,number_15_png,number_20_png,number_5_png,number_8_png,number_bg_10_png,number_bg_15_png,number_bg_20_png,number_bg_5_png,number_bg_8_png,title_png,yuanbao_png,Loading..._png,bar1_png,bar2_png,light_png,BetConfig_png,BetSliderBG_png,BetSliderDisable_png,FastModel_png,backgroud1_png,biaoti_png,close_png,mengban_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,vague1_png,vague10_png,vague11_png,vague12_png,vague0_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,light_lizi01_png,OverBG_jpg,Tips_Back_png,Word_0_png,Word_1_png,Erro_png,Right_png,LineRight_png,LineErro_png",
 			"name": "preload"
 		}
 	],
@@ -965,6 +965,46 @@
 			"url": "res/Tile/vague/vague9.png",
 			"type": "image",
 			"name": "vague9_png"
+		},
+		{
+			"name": "OverBG_jpg",
+			"type": "image",
+			"url": "res/explain/OverBG.jpg"
+		},
+		{
+			"name": "Tips_Back_png",
+			"type": "image",
+			"url": "res/explain/Tips_Back.png"
+		},
+		{
+			"name": "Word_0_png",
+			"type": "image",
+			"url": "res/explain/Word_0.png"
+		},
+		{
+			"name": "Word_1_png",
+			"type": "image",
+			"url": "res/explain/Word_1.png"
+		},
+		{
+			"name": "Erro_png",
+			"type": "image",
+			"url": "res/explain/Erro.png"
+		},
+		{
+			"name": "Right_png",
+			"type": "image",
+			"url": "res/explain/Right.png"
+		},
+		{
+			"name": "LineRight_png",
+			"type": "image",
+			"url": "res/explain/LineRight.png"
+		},
+		{
+			"name": "LineErro_png",
+			"type": "image",
+			"url": "res/explain/LineErro.png"
 		}
 	]
 }

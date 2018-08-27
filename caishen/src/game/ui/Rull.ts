@@ -36,6 +36,19 @@ module game {
 			this.rullShow();
 			this.groupRull.mask = this.rullMask;
 			this.btnState(0);
+			this.setPage23();
+		}
+		/**设置第二三页富文本*/
+		private setPage23(): void {
+			let setTextFlow = (lab: eui.Label) => {
+				let txt: string = lab.text;
+				lab.textFlow = [
+					{ text: txt.slice(0, 1), style: { "textColor": 0xFCC434 } },
+					{ text: txt.slice(1), style: { "textColor": 0xF1EABD } }
+				];
+			}
+			for (let i = 0; i <= 14; i++) { setTextFlow(this["page2_" + i] as eui.Label);}
+			for (let i = 0; i <= 17; i++) { setTextFlow(this["page3_" + i] as eui.Label);}
 		}
 		/**事件监听*/
 		private eventListen(): void {
