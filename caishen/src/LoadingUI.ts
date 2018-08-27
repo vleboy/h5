@@ -7,7 +7,7 @@ class LoadingUI extends eui.Component {
 	private interval;
 	public createView() {
 		let urlArr = [
-			{url: "resource/res/load/loading.jpg", texture: null},
+			{ url: "resource/res/load/loading.jpg", texture: null },
 			{ url: "resource/res/load/bar2.png", texture: null },
 			{ url: "resource/res/load/bar1.png", texture: null },
 			{ url: "resource/res/load/light.png", texture: null }
@@ -26,7 +26,7 @@ class LoadingUI extends eui.Component {
 			}));
 		})
 
-		let createImg = (texture:egret.Texture, parent:egret.DisplayObjectContainer, hor:number, ver:number, w?:number, h?:number)=>{
+		let createImg = (texture: egret.Texture, parent: egret.DisplayObjectContainer, hor: number, ver: number, w?: number, h?: number) => {
 			let img = new eui.Image(texture);
 			parent.addChild(img);
 			img.horizontalCenter = hor;
@@ -46,14 +46,9 @@ class LoadingUI extends eui.Component {
 			this.group.height = 20;
 			createImg(urlArr[2].texture, this.group, 0, 0);
 			createImg(urlArr[3].texture, this.group, 423, 0);
-			let rect = new eui.Rect;
-			rect.fillColor = 0x000000;
-			rect.left = 462;
-			rect.bottom = 205;
-			rect.width = 996;
-			rect.height = 20;
-			this.addChild(rect);
-			this.group.mask = rect;
+			let img = createImg(urlArr[1].texture, this, 0, 325, 996, 20);
+			this.addChild(img);
+			this.group.mask = img;
 
 			///label
 			this.progressTxt = new eui.Label();
