@@ -47,7 +47,10 @@ module game {
 		private theBetMulit: number;
 
 		/**是否在免费游戏中 通过主场景控制它的值*/
-		public isFree:boolean;
+		private _isFree:boolean;
+		public set isFree(b:boolean){
+			this._isFree = b;
+		}
 
 		public constructor() {
 			super();
