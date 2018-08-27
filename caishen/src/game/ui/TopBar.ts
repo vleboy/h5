@@ -15,10 +15,11 @@ module game {
 		private eventListen(): void {
 			this.registerEvent(this.groupRight, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.openSetting);}, this);
 		}
-		/**玩家信息*/
-		public userInfo(theName: string, theMoney: string): void {
-			this.userName.text = theName;
-			this.userMoney.text = theMoney;
+		public setUser(name:string ){
+			this.userName.text = name;
+		}
+		public setBalance(money:string ){
+			this.userMoney.text = money;
 		}
 		/**
          * 资源释放
