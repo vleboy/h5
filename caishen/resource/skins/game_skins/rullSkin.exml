@@ -1,22 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="rullSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group id="groupOut" width="100%" height="100%" left="0" top="0">
-		<e:Image source="normalbg_jpg" width="1920" height="1080" top="0" left="0"/>
+		<e:Image width="1920" height="1080" top="0" left="0" source="OverBG_jpg"/>
 		<e:Image height="100%" horizontalCenter="0" verticalCenter="0" width="100%" source="bg_png"/>
-		<e:Image source="asdad_png" right="60" top="14"/>
+		<e:Image source="asdad_png" right="60" top="65"/>
 		<e:Rect id="rullMask" width="1726" height="672" verticalCenter="0" horizontalCenter="0"/>
 		<e:Group id="groupRull" verticalCenter="0" left="97" width="10356">
-			<e:Group id="groupRull0" width="1726" height="672" verticalCenter="0" left="0">
-				<e:Image left="0" right="0" verticalCenter="0" source="BetButton_png"/>
+			<e:Group id="groupRull0" width="1726" height="672" left="0" verticalCenter="0">
+				<e:Image source="scatterBg_png" width="900" height="445" scale9Grid="78,38,468,233" top="25" left="0"/>
+				<e:Image source="scatter_png" top="65" left="85" height="42" width="245"/>
+				<e:Image source="symbolName_0_png" width="235" height="235" top="110" left="85"/>
+				<e:Image source="Word_1_png" width="218" height="186" left="460" top="135"/>
+				<e:Label text="奖励从转轴最左至最右边任意相邻位置的组合" size="28" textColor="0xfde9b7" top="382" left="80"/>
+				<e:Image source="wild_png" top="70" left="1027" height="40" width="130"/>
+				<e:Image source="symbolName_2_png" width="200" height="200" top="125" left="990"/>
+				<e:Image source="Word_0_png" height="98" width="320" top="170" left="1290"/>
+				<e:Label text="在普通游戏中，" size="25" textColor="0x680101" top="368" left="968"/>
+				<e:Label text="只能出现在2,3,4根转轴上" size="25" textColor="0x680101" top="368" left="1250" width="281"/>
+				<e:Image source="symbolName_2_png" width="100" height="100" top="310" left="1140"/>
+				<e:Label text="在特色游戏中，所选择的" size="35" textColor="0x680101" left="78" top="550" height="35"/>
+				<e:Label text="也只会出现在2,3,4根转轴上，并且替换除scatter外的所有符号." size="35" textColor="0x680101" left="78" top="622"/>
+				<e:Image source="symbolName_2_1_png" width="145" height="145" top="475" left="480"/>
+				<e:Image width="145" height="145" top="475" left="620" source="symbolName_2_2_png"/>
+				<e:Image width="145" height="145" top="475" left="760" source="symbolName_2_3_png"/>
+				<e:Image width="145" height="145" top="475" left="900" source="symbolName_2_4_png"/>
+				<e:Image width="145" height="145" top="475" left="1040" source="symbolName_2_5_png"/>
+
 			</e:Group>
 			<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
-				<e:Image left="0" right="0" verticalCenter="0" source="number_bg_5_png"/>
+				<e:Group width="505" height="224" left="0" top="45">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image source="symbolName_1_png" width="215" height="215" verticalCenter="0" left="30"/>
+					<e:Label id="page2_0" text="58.00" size="34" top="52" textColor="0xf1eabd" left="280"/>
+					<e:Label id="page2_1" text="41.00" size="34" top="102" textColor="0xF1EABD" left="280"/>
+					<e:Label id="page2_2" text="30.50" size="34" top="152" textColor="0xF1EABD" left="280"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="600" top="45">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_3_png"/>
+					<e:Label text="58.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page2_3"/>
+					<e:Label text="41.00" size="34" top="102" textColor="0xF1EABD" left="280" id="page2_4"/>
+					<e:Label text="30.35" size="34" top="152" textColor="0xF1EABD" left="280" id="page2_5"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="1200" top="45">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_4_png"/>
+					<e:Label text="58.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page2_6"/>
+					<e:Label text="41.00" size="34" top="102" textColor="0xF1EABD" left="280" id="page2_7"/>
+					<e:Label text="30.30" size="34" top="152" textColor="0xF1EABD" left="280" id="page2_8"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="345" top="410">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_5_png"/>
+					<e:Label text="53.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page2_9"/>
+					<e:Label text="40.50" size="34" top="102" textColor="0xF1EABD" left="280" id="page2_10"/>
+					<e:Label text="30.20" size="34" top="152" textColor="0xF1EABD" left="280" id="page2_11"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="930" top="410">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_6_png"/>
+					<e:Label text="53.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page2_12"/>
+					<e:Label text="40.35" size="34" top="102" textColor="0xF1EABD" left="280" id="page2_13"/>
+					<e:Label text="30.15" size="34" top="152" textColor="0xF1EABD" left="280" id="page2_14"/>
+				</e:Group>
 			</e:Group>
 			<e:Group id="groupRull2" width="1726" height="672" verticalCenter="0" left="3452">
-				<e:Image left="0" right="0" verticalCenter="0" source="number_bg_8_png"/>
+				<e:Group width="505" height="224" left="0" top="45">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_7_png"/>
+					<e:Label id="page3_0" text="52.00" size="34" top="52" textColor="0xf1eabd" left="280"/>
+					<e:Label id="page3_1" text="40.30" size="34" top="102" textColor="0xF1EABD" left="280"/>
+					<e:Label id="page3_2" text="30.10" size="34" top="152" textColor="0xF1EABD" left="280"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="600" top="45">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_8_png"/>
+					<e:Label text="52.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page3_3"/>
+					<e:Label text="40.20" size="34" top="102" textColor="0xF1EABD" left="280" id="page3_4"/>
+					<e:Label text="30.10" size="34" top="152" textColor="0xF1EABD" left="280" id="page3_5"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="1200" top="45">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_9_png"/>
+					<e:Label text="51.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page3_6"/>
+					<e:Label text="40.15" size="34" top="102" textColor="0xF1EABD" left="280" id="page3_7"/>
+					<e:Label text="30.10" size="34" top="152" textColor="0xF1EABD" left="280" id="page3_8"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="0" top="410">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_10_png"/>
+					<e:Label text="51.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page3_9"/>
+					<e:Label text="40.15" size="34" top="102" textColor="0xF1EABD" left="280" id="page3_10"/>
+					<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="page3_11"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="600" top="410">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_11_png"/>
+					<e:Label text="51.00" size="34" top="52" textColor="0xF1EABD" left="280" id="page3_12"/>
+					<e:Label text="40.10" size="34" top="102" textColor="0xF1EABD" left="280" id="page3_13"/>
+					<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="page3_14"/>
+				</e:Group>
+				<e:Group width="505" height="224" left="1200" top="410">
+					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_12_png"/>
+					<e:Label text="50.50" size="34" top="52" textColor="0xF1EABD" left="280" id="page3_15"/>
+					<e:Label text="40.10" size="34" top="102" textColor="0xF1EABD" left="280" id="page3_16"/>
+					<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="page3_17"/>
+				</e:Group>
 			</e:Group>
 			<e:Group id="groupRull3" width="1726" height="672" verticalCenter="0" left="5178">
-				<e:Image left="0" right="0" verticalCenter="0" source="number_bg_20_png"/>
+				<e:Image source="tese_png" height="40" left="100" top="40" width="156"/>
+
 			</e:Group>
 			<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
 				<e:Image left="0" right="0" verticalCenter="0" source="number_bg_15_png"/>
@@ -30,7 +124,8 @@
 			<e:Button id="btnRull0" name="touch_0" label="" verticalCenter="0" left="0" width="46" height="46">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-					<e:Image width="100%" height="100%" source="btn1_png" source.down="btn2_png"/>
+					<e:Image width="100%" height="100%" source="btn1_png"/>
+					<e:Image width="100%" height="100%" source.down="btn2_png"/>
 					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
@@ -39,7 +134,8 @@
 			<e:Button id="btnRull1" name="touch_1" label="" verticalCenter="0" left="66" width="46" height="46">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-						<e:Image width="100%" height="100%" source="btn1_png" source.down="btn2_png"/>
+						<e:Image width="100%" height="100%" source="btn1_png"/>
+						<e:Image width="100%" height="100%" source.down="btn2_png"/>	
 						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
@@ -47,7 +143,8 @@
 			<e:Button id="btnRull2" name="touch_2" label="" verticalCenter="0" left="132" width="46" height="46">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-						<e:Image width="100%" height="100%" source="btn1_png" source.down="btn2_png"/>
+						<e:Image width="100%" height="100%" source="btn1_png"/>
+						<e:Image width="100%" height="100%" source.down="btn2_png"/>
 						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
@@ -55,7 +152,8 @@
 			<e:Button id="btnRull3" name="touch_3" label="" verticalCenter="0" left="198" width="46" height="46">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-						<e:Image width="100%" height="100%" source="btn1_png" source.down="btn2_png"/>
+						<e:Image width="100%" height="100%" source="btn1_png"/>
+						<e:Image width="100%" height="100%" source.down="btn2_png"/>
 						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
@@ -63,7 +161,8 @@
 			<e:Button id="btnRull4" name="touch_4" label="" verticalCenter="0" left="264" width="46" height="46">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-						<e:Image width="100%" height="100%" source="btn1_png" source.down="btn2_png"/>
+						<e:Image width="100%" height="100%" source="btn1_png"/>
+						<e:Image width="100%" height="100%" source.down="btn2_png"/>
 						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
@@ -71,19 +170,21 @@
 			<e:Button id="btnRull5" name="touch_5" label="" verticalCenter="0" height="46" left="330" width="46">
 				<e:skinName>
 					<e:Skin states="up,down,disabled">
-						<e:Image width="100%" height="100%" source="btn1_png" source.down="btn2_png"/>
+						<e:Image width="100%" height="100%" source="btn1_png"/>
+						<e:Image width="100%" height="100%" source.down="btn2_png"/>
 						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 					</e:Skin>
 				</e:skinName>
 			</e:Button>
 		</e:Group>
-		<e:Button id="btnClose" label="" width="110" height="130" top="12" left="70">
+		<e:Button id="btnClose" label="" top="12" left="70" width="130" height="112">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
-				<e:Image scaleX="-1" horizontalCenter="0" verticalCenter="0" source="Jump_png"/>
+				<e:Image width="100%" height="100%" source="Tips_Back_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 				</e:Skin>
 			</e:skinName>
+
 		</e:Button>
 	</e:Group>
 </e:Skin>
