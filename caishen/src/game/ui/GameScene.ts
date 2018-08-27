@@ -61,8 +61,10 @@ module game {
 		/**初始化显示 */
 		private initView(){
 			this.initPaticles();
+			[this.border2, this.border3, this.border4, this.lineWinTxt].forEach(v=>{
+				v.visible = false;
+			})
 			this.connectTip.visible = true;
-			this.lineWinTxt.visible = false;
 			this.tileGroup.mask = this.tileMask;
 			this.setState(GameState.BET);
 			FilterUtil.setLightFlowFilter(this["title"]);
@@ -248,6 +250,9 @@ module game {
 				else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), is3Delay);
 				else if(i==3) await this.stopColumn(i, arr.slice(i*3,i*3+3), is4Delay);
 				else if(i==4) await this.stopColumn(i, arr.slice(i*3,i*3+3), is5Delay);
+				// else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), true);
+				// else if(i==3) await this.stopColumn(i, arr.slice(i*3,i*3+3), true);
+				// else if(i==4) await this.stopColumn(i, arr.slice(i*3,i*3+3), true);
 			}
 			this.judgeResult();
 		}
@@ -376,7 +381,7 @@ module game {
 				}else{
 					this["effectGroup"].visible = true;
 					this["bigwinTxt"].text = "大赢家 "+level+" "+win;
-					setTimeout(function() {
+					setTimeout(()=> {
 						this["effectGroup"].visible = false;
 						resolve();
 					}, 2000);
