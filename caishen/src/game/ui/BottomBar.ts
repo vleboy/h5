@@ -72,12 +72,15 @@ module game {
 		}
 		/**事件监听*/
 		private eventListen(): void {
-			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => { 
-				this.sendNotify(NotifyConst.spin); 
+			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
+				this.sendNotify(NotifyConst.spin);
 				this.imgSpin();
 			}, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
-			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.openHelp); }, this);
+			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => { 
+				let theBet = 0;
+				this.sendNotify(NotifyConst.openHelp, theBet); 
+			}, this);
 			["max", "100", "50", "20", "10"].forEach(v => {
 				this.registerEvent(this["btn_" + v] as eui.Button, egret.TouchEvent.TOUCH_TAP, this.touchAutoNum, this);
 			});
@@ -221,7 +224,7 @@ module game {
 				this.spinArrow.visible = isShow;
 			}
 			/**是不是自动状态*/
-			let autoState = ( isFree?: boolean) => {
+			let autoState = (isFree?: boolean) => {
 				this.spinArrow.visible = !this.isAuto;
 				this.groupAuto.visible = this.isAuto;
 			};

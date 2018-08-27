@@ -143,7 +143,7 @@ module game {
 					this.spin();
 					break;
 				case NotifyConst.openHelp:
-					this.rull.rullShow(true);
+					this.rull.rullShow(true,body);
 					break;
 				case NotifyConst.openSetting:
 					this.setting.settingShow();
