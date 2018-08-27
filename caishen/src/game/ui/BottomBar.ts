@@ -53,7 +53,9 @@ module game {
 		private isFree: boolean;
 		public setFree(b: boolean) {
 			this.isFree = b;
+			this.isAuto = b;
 			this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
+			this.autoState();
 		}
 
 		public constructor() {
@@ -64,6 +66,7 @@ module game {
 		public init() {
 			this.initData();
 			this.eventListen();
+			this.setState(GameState.STOP)
 		}
 		/**初始化数据*/
 		private initData(): void {
@@ -164,6 +167,12 @@ module game {
 			this.sendNotify(NotifyConst.cancelAutoSpin);
 			this.isAuto = false;
 		}
+		/**是不是自动状态*/
+		private autoState():void {
+			this.spinArrow.visible = !this.isAuto;
+			this.stopSpinBtn.visible = !this.isAuto;
+			this.groupAuto.visible = this.isAuto;
+		}
 		/**获得派彩的动画*/
 		private payOutAni(mon: number): void {
 			let interval, theMon: number = 0, newMon: number = 0;
@@ -219,34 +228,29 @@ module game {
 			};
 			/**转动按钮显示*/
 			let spinBtnShow = (isShow: boolean = true, isEn: boolean = true) => {
-				this.spinBtn.visible = isShow;
+				this.spinBtn.visible = this.isAuto ? true : isShow;
 				this.spinBtn.enabled = isEn;
-				this.stopSpinBtn.visible = !isShow;
-				this.spinArrow.visible = isShow;
+				this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
+				this.spinArrow.visible = this.isAuto ? false : isShow;
 			}
-			/**是不是自动状态*/
-			let autoState = (isFree?: boolean) => {
-				this.spinArrow.visible = !this.isAuto;
-				this.groupAuto.visible = this.isAuto;
-			};
+			this.autoState();
 			switch (n) {
 				case GameState.BET:
 				case GameState.SHOW_SINGLE_LINES:
 					betAutoState();
-					autoState();
 					spinBtnShow();
 					break;
 				case GameState.SPINNING:
 				case GameState.SHOW_RESULT:
 					betAutoState(false);
-					autoState();
 					spinBtnShow(true, false);
+					if(this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 					betAutoState(false);
-					autoState();
 					this.imgSpin(true);
 					spinBtnShow(false);
+					if(this.isAuto) this.spinBtn.enabled = false;
 					break;
 			}
 		}
