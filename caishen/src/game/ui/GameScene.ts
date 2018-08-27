@@ -169,7 +169,7 @@ module game {
 		/**控制游戏状态 */
 		private setState(n: GameState){
 			this.state = n;
-			// this.bottomBar.setState(n);
+			this.bottomBar.setState(n);
 		}
 		/**spin的逻辑 */
 		private spin(){
