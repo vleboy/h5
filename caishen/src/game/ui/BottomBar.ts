@@ -45,6 +45,10 @@ module game {
 		private theBetIndex: number;
 		/**倍数*/
 		private theBetMulit: number;
+
+		/**是否在免费游戏中 通过主场景控制它的值*/
+		public isFree:boolean;
+
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "bottomSkin.exml";

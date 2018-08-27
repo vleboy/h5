@@ -102,6 +102,7 @@ module game {
 				//进免费游戏玩
 				if(resp.payload.featureData.freeSpinRemainCount>0) {
 					this.isFree = true;
+					this.bottomBar.isFree = true;
 					this.freeSpinRemainCount = resp.payload.featureData.freeSpinRemainCount;
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
@@ -147,6 +148,7 @@ module game {
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
 					this.featureChanceCount --;
 					this.isFree = true;
+					this.bottomBar.isFree = true;
 					this.setFreeCount();
 					this.setFreeChooseCount();
 					this.showFreeChoose(false);
