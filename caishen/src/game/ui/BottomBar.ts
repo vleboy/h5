@@ -46,8 +46,12 @@ module game {
 		/**倍数*/
 		private theBetMulit: number;
 
+		private state:GameState;
 		/**是否在免费游戏中 通过主场景控制它的值*/
-		public isFree:boolean;
+		private isFree:boolean;
+		public setFree(b:boolean){
+			this.isFree = b;
+		}
 
 		public constructor() {
 			super();
@@ -242,6 +246,23 @@ module game {
 					betAutoState(false);
 					spinBtnShow(true, false);
 					autoState(true, true);
+					break;
+			}
+		}
+		
+		/**控制游戏状态 */
+		public setState(n: GameState){
+			this.state = n;
+			switch(n){
+				case GameState.BET:
+					break;
+				case GameState.SPINNING:
+					break;
+				case GameState.STOP:
+					break;
+				case GameState.SHOW_RESULT:
+					break;
+				case GameState.SHOW_SINGLE_LINES:
 					break;
 			}
 		}
