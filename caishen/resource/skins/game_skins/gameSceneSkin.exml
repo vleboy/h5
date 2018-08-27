@@ -56,9 +56,13 @@
 				<e:Image id="vagueTile19" source="vague0_png" x="1095" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
-			<e:Group id="freeEffectGroup" width="100%" height="100%" y="0" horizontalCenter="0" x="0" scaleX="1" scaleY="1"/>
+			<e:Group id="freeEffectGroup" width="100%" height="100%" y="0" horizontalCenter="0" x="0" scaleX="1" scaleY="1">
+				<game:AMovieClip id="border2" width="332" height="468" horizontalCenter="0" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-18|_png"/>
+				<game:AMovieClip id="border3" width="332" height="468" horizontalCenter="265" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-18|_png"/>
+				<game:AMovieClip id="border4" width="332" height="468" horizontalCenter="530" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-18|_png"/>
+			</e:Group>
 		</e:Group>
-		<e:Label id="lineWinTxt" text="0" scaleX="1" scaleY="1" horizontalCenter="0" size="100" y="538" textColor="0xffffff"/>
+		<e:BitmapLabel id="lineWinTxt" width="600" height="63" horizontalCenter="0" verticalCenter="45" font="fnt63_fnt" text="1232" letterSpacing="-35" touchEnabled="false" textAlign="center"/>
 		<e:Image id="freeCountBg" source="Mutiply_png" x="-99" y="133" scaleX="1" scaleY="1"/>
 		<e:Image id="freeChooseCountBg" source="FeatureChance_png" x="1394" y="112"/>
 		<e:Label id="freeCountTxt" text="" x="-74" y="180" textColor="0xf36c06" size="50" textAlign="center" width="176"/>

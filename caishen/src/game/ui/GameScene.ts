@@ -3,11 +3,12 @@ module game {
 		private tileMask: eui.Rect;
 		private tileGroup: eui.Group;
 		private bottomBar: BottomBar;
+		private topBar: TopBar;
 		private connectTip: ConnectTip;
 		private rull:Rull;
 		private setting:Setting;
 		private particleGroup: eui.Group;
-		private lineWinTxt: eui.Label;
+		private lineWinTxt: eui.BitmapLabel;
 		private freeChoose: BaseUI;
 		
 		private bg: eui.Image;
@@ -20,6 +21,10 @@ module game {
 		private freeChooseCountBg: eui.Image;
 		private freeCountTxt: eui.Label;
 		private freeChooseCountTxt: eui.Label;
+
+		private border2: AMovieClip;
+		private border3: AMovieClip;
+		private border4: AMovieClip;
 
 		private particles:particle.GravityParticleSystem[];
 
@@ -94,6 +99,8 @@ module game {
 				this.betLevel = resp.payload.betLevel;
 				this.multicfg = resp.payload.multicfg;
 				this.multiLevel = resp.payload.multiLevel;
+
+				this.topBar.setBalance(resp.payload.userBalance);
 				
 				//数据恢复检查
 				this.checkDataRecover(resp);
@@ -162,7 +169,7 @@ module game {
 		/**控制游戏状态 */
 		private setState(n: GameState){
 			this.state = n;
-			// this.bottomBar.setState(n);
+			this.bottomBar.setState(n);
 		}
 		/**spin的逻辑 */
 		private spin(){
@@ -276,6 +283,9 @@ module game {
 		/**单列freespin缓停动画 */
 		private freeEffect(column:number){
 			return new Promise((resolve, reject)=>{
+				(this["border"+column] as AMovieClip).visible = true;
+				(this["border"+column] as AMovieClip).play();
+
 				let startX = this["tile"+column*3].x+this["tile"+column*3].width/2;
 				let startY = this["tile"+column*3].y;
 				let c = new egret.DisplayObjectContainer();
@@ -323,6 +333,8 @@ module game {
 						img.parent.removeChild(img);
 					}
 					this["freeEffectGroup"].removeChild(c);
+					(this["border"+column] as AMovieClip).stop();
+					(this["border"+column] as AMovieClip).visible = false;
 					resolve();
 				}, 2000);
 			})

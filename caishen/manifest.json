@@ -12,9 +12,10 @@
 	"game": [
 		"bin-debug/core/base/BaseUI.js",
 		"bin-debug/core/vo/BaseVO.js",
-		"bin-debug/core/vo/SpinVO.js",
+		"bin-debug/core/vo/LoginVO.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
+		"bin-debug/core/base/AMovieClip.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/core/notify/INotify.js",
 		"bin-debug/core/notify/NotifyManager.js",
@@ -23,8 +24,8 @@
 		"bin-debug/core/util/HttpUtil.js",
 		"bin-debug/Main.js",
 		"bin-debug/core/vo/ChooseBuffVO.js",
-		"bin-debug/core/vo/LoginVO.js",
-		"bin-debug/game/ui/TopBar.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/core/vo/SpinVO.js",
 		"bin-debug/game/GlobalConfig.js",
 		"bin-debug/game/const/BottomState.js",
 		"bin-debug/game/const/NotifyConst.js",
@@ -37,6 +38,6 @@
 		"bin-debug/game/ui/Rull.js",
 		"bin-debug/game/ui/Setting.js",
 		"bin-debug/game/ui/Tips.js",
-		"bin-debug/LoadingUI.js"
+		"bin-debug/game/ui/TopBar.js"
 	]
 }
