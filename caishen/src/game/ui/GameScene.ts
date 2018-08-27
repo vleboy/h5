@@ -59,6 +59,7 @@ module game {
 			this.connectTip.visible = true;
 			this.lineWinTxt.visible = false;
 			this.tileGroup.mask = this.tileMask;
+			this.setState(GameState.BET);
 			FilterUtil.setLightFlowFilter(this["title"]);
 
 			for(let i=0; i<15; i++){
@@ -172,6 +173,7 @@ module game {
 			this.startSpin();
 			GameService.getInstance().sendSpin(this.betLevel, this.nextFree?"1":"").then(this.spinBack.bind(this));
 			this.nextFree = false;
+			this.setState(GameState.SPINNING);
 		}
 		/**收到spin结果 */
 		private spinBack(resp: SpinVO){
@@ -185,6 +187,7 @@ module game {
 				this.setFreeChooseCount();
 			}
 			this.stopRoll(resp.payload.viewGrid);
+			this.setState(GameState.STOP);
 		}
 
 		
@@ -204,7 +207,6 @@ module game {
 		}
 		/**开始滚动 */
 		private startSpin(){
-			this.bottomBar.setSpinEnable(false);
 			for(let i=0; i<15; i++){
 				this["tile"+i].visible = false;
 			}
@@ -221,41 +223,34 @@ module game {
 				.call(()=>{
 					tile.y += 70;
 					if(tile.y > 658){
-						tile.y = -200;
+						tile.y -= 208*4;
 						tile.source = "vague"+Math.floor(Math.random()*13)+"_png";
 					}
 				})
 		}
 		/**停下来 */
-		private stopRoll(arr:any[]){
+		private async stopRoll(arr:any[]){
 			// 3 4 5列是否缓停
 			let is3Delay: boolean = (arr.slice(0,3).indexOf("0")>-1 && arr.slice(3,6).indexOf("0")>-1);
 			let is4Delay: boolean = is3Delay && arr.slice(6,9).indexOf("0")>-1;
 			let is5Delay: boolean = is4Delay && arr.slice(9,12).indexOf("0")>-1;
-			console.log("是否缓停：",is3Delay,is4Delay,is5Delay)
 			//处理wild图标的多样性
 			arr = arr.map( v => (v==2? "2_1" : (v+"")));
-
-
 			for(let i=0; i<5; i++){
-				let delay = i*250;
-				if(is3Delay && i>=2) {
-					delay += 2000;
-					if(is4Delay && i>=3) {
-						delay += 2000;
-						if(is5Delay && i==4) {
-							delay += 2000;
-						}
-					}
-				}
-				this.stopColumn(i, arr.slice(i*3,i*3+3), delay);
+				if(i<2) await this.stopColumn(i, arr.slice(i*3,i*3+3));
+				else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), is3Delay);
+				else if(i==3) await this.stopColumn(i, arr.slice(i*3,i*3+3), is4Delay);
+				else if(i==4) await this.stopColumn(i, arr.slice(i*3,i*3+3), is5Delay);
 			}
+			this.judgeResult();
 		}
 		/**单列停下来 */
-		private stopColumn(column, arr:any[], delay){
-			console.log("第"+column+"列停止 "+delay);
+		private stopColumn(column, arr:any[], isFree:boolean = false){
+			console.log("stopColumn "+column);
 			
-			setTimeout(()=> {
+			return new Promise(async(resolve, reject)=>{
+				if(isFree) await this.freeEffect(column);
+
 				[0,1,2,3].forEach(i=>{
 					egret.Tween.removeTweens(this["vagueTile"+(column+i)]);
 					this["vagueTile"+(column*4+i)].visible = false;
@@ -269,30 +264,84 @@ module game {
 					tile.source = "symbolName_"+(arr[i])+"_png";
 					egret.Tween.get(tile).set({y:defaultY-100}).to({y:defaultY},500).call(()=>{
 						egret.Tween.removeTweens(tile);
-						if(column==4 && i==2){
-							this.judgeResult();
+						if(i==2){
+							setTimeout( resolve, 250);
 						}
 					});
 				})
-
-				if(column==4){
-					this.bottomBar.setSpinEnable(true);
-				}
-			}, delay);
+				
+			})
 			
 		}
-		/**判定结果 */
+		/**单列freespin缓停动画 */
+		private freeEffect(column:number){
+			return new Promise((resolve, reject)=>{
+				let startX = this["tile"+column*3].x+this["tile"+column*3].width/2;
+				let startY = this["tile"+column*3].y;
+				let c = new egret.DisplayObjectContainer();
+				this["freeEffectGroup"].addChild(c);
+				let arr = [];
+				let createCoins = ()=>{
+					for(let i=0; i<7; i++){
+						let img = new eui.Image("yigeyuanb_png");
+						let ran = Math.random()*0.08+0.03;
+						img.width = 435*ran;
+						img.height = 239*ran;
+						img.anchorOffsetX = img.width/2;
+						img.anchorOffsetY = img.height/2;
+						img.rotation = Math.random()*360;
+						img["speed"] = Math.round(Math.random()*10+7);
+						img["alphaSpeed"] = Math.round(Math.random()*0.02+0.01);
+						img.x = startX + (0.5-Math.random())*(this["tile"+column*3].width);
+						c.addChild(img);
+						arr.push(img);
+					}
+				}
+				let index=0;
+				egret.Tween.get(c, {loop:true})
+					.wait(20)
+					.call(()=>{
+						if(index++ % 5 == 0){
+							createCoins();
+						}
+						for(let j=arr.length-1; j>=0; j--){
+							let img = arr[j];
+							img.rotation += 5;
+							img.y += img["speed"];
+							img.alpha -= img["alphaSpeed"];
+
+							if(img.y >=269+658){
+								img.parent.removeChild(img);
+								arr.splice(j,1);
+							}
+						}
+					})
+				setTimeout(()=> {
+					egret.Tween.removeTweens(c);
+					while(arr.length>0){
+						let img = arr.pop();
+						img.parent.removeChild(img);
+					}
+					this["freeEffectGroup"].removeChild(c);
+					resolve();
+				}, 2000);
+			})
+			
+		}
+		/**判定结果 大赢家=> 所有线 =>freespin =>各条单线*/
 		private async judgeResult(){
-			/**获得免费游戏 */
+			console.log("判定结果 中奖线"+this.spinResp.payload.winGrid.length);
+
+			this.setState(GameState.SHOW_RESULT);
+			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
+			await this.showAllWinGrid(this.spinResp.payload.winGrid);
+
+			/**在普通游戏中获得免费游戏 */
 			if(this.spinResp.payload.getFeatureChance && !this.isFree){
 				this.showFreeChoose(true);
 			}
-			console.log("判定结果 中奖线"+this.spinResp.payload.winGrid.length);
-			if(this.spinResp.payload.winGrid.length > 0){
-				await this.showAllWinGrid(this.spinResp.payload.winGrid);
+			else{
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
-				console.log("各个中奖线展示结束");
-
 			}
 			
 			//	免费游戏结束判定
@@ -302,13 +351,31 @@ module game {
 				}
 				else{
 					this.showFreeGame(false);
+					this.setState(GameState.BET);
 				}
 			}
 			
 		}
+		/**normal middle big mega super */
+		private showBigWin(level:string, win:number){
+			return new Promise((resolve, reject)=>{
+				if(level == "normal"){
+					resolve();
+				}else{
+					this["effectGroup"].visible = true;
+					this["bigwinTxt"].text = "大赢家 "+level+" "+win;
+					setTimeout(function() {
+						this["effectGroup"].visible = false;
+						resolve();
+					}, 2000);
+				}
+			})
+		}
 
 		private showAllWinGrid(arr:Array<any>){
 			return new Promise((resolve, reject)=>{
+				if(arr.length == 0) resolve();
+
 				let grids = [];
 				arr.forEach((v)=>{
 					v.winCard.forEach((value:number,column:number)=>{
@@ -351,6 +418,7 @@ module game {
 		}
 
 		private showEveryLineGrid(arr:Array<any>){
+			this.setState(GameState.SHOW_SINGLE_LINES);
 			let promiseArr = [];
 			arr.forEach((v, lineIndex:number)=>{
 				promiseArr.push(new Promise((resolve, reject)=>{
