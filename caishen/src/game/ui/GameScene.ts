@@ -29,6 +29,7 @@ module game {
 		private multicfg: number[];
 		private multiLevel: number;
 		private spinResp: SpinVO;
+		private state: GameState;
 		/**当前是否在免费游戏中 */
 		private isFree: boolean;
 		/**剩余免费转动次数 */
@@ -37,6 +38,7 @@ module game {
 		private featureChanceCount: number;
 		/**下次出免费 */
 		private nextFree:boolean = false;
+		
 
 		public constructor() {
 			super();
@@ -102,7 +104,7 @@ module game {
 				//进免费游戏玩
 				if(resp.payload.featureData.freeSpinRemainCount>0) {
 					this.isFree = true;
-					this.bottomBar.isFree = true;
+					this.bottomBar.setFree(true);
 					this.freeSpinRemainCount = resp.payload.featureData.freeSpinRemainCount;
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
@@ -148,13 +150,18 @@ module game {
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
 					this.featureChanceCount --;
 					this.isFree = true;
-					this.bottomBar.isFree = true;
+					this.bottomBar.setFree(true);
 					this.setFreeCount();
 					this.setFreeChooseCount();
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
 					break;
 			}
+		}
+		/**控制游戏状态 */
+		private setState(n: GameState){
+			this.state = n;
+			this.bottomBar.setState(n);
 		}
 		/**spin的逻辑 */
 		private spin(){
