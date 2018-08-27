@@ -66,7 +66,6 @@ module game {
 		public init() {
 			this.initData();
 			this.eventListen();
-			this.setState(GameState.STOP)
 		}
 		/**初始化数据*/
 		private initData(): void {
