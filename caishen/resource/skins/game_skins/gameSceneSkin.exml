@@ -3,7 +3,7 @@
 	<e:Image id="bg" x="0" y="0" width="100%" height="100%" source="normalbg_jpg"/>
 	<e:Image id="bgFree" x="0" y="0" width="100%" height="100%" source="addsadfg_jpg" visible="false"/>
 	<e:Group id="contentGroup" width="1396" height="1080" horizontalCenter="0" verticalCenter="0">
-		<e:Group width="100%" height="100%" x="0" y="0">
+		<e:Group id="borderGroup" width="100%" height="100%" x="0" y="0">
 			<e:Image id="kuang" source="NormalFrame_png" y="186" horizontalCenter="0" width="1388" height="761" x="4" scaleX="1" scaleY="1"/>
 			<e:Image id="kuangFree" y="137" width="1400" height="817" scaleX="1" scaleY="1" source="FreeGameFrame_png" horizontalCenter="0" visible="false"/>
 			<e:Image source="LineBG_png" x="39" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
@@ -56,6 +56,7 @@
 				<e:Image id="vagueTile19" source="vague0_png" x="1095" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
+			<e:Group id="freeEffectGroup" width="100%" height="100%" y="0" horizontalCenter="0" x="0" scaleX="1" scaleY="1"/>
 		</e:Group>
 		<e:Label id="lineWinTxt" text="0" scaleX="1" scaleY="1" horizontalCenter="0" size="100" y="538" textColor="0xffffff"/>
 		<e:Image id="freeCountBg" source="Mutiply_png" x="-99" y="133" scaleX="1" scaleY="1"/>
@@ -65,6 +66,9 @@
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" height="220" y="860" horizontalCenter="0"/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
+	<e:Group id="effectGroup" width="100%" x="0" y="0" height="100%" visible="false">
+		<e:Label id="bigwinTxt" text="大赢家" textColor="0x20c929" size="100" horizontalCenter="0" verticalCenter="0"/>
+	</e:Group>
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0"/>
 	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0"/>
