@@ -103,10 +103,10 @@ module game {
 				this.multiLevel = resp.payload.multiLevel;
 
 				this.topBar.setBalance(resp.payload.userBalance);
-				
 				//数据恢复检查
 				this.checkDataRecover(resp);
 			});
+			this.setting.defaultOpen();
 		}
 		/**数据恢复 */
 		private checkDataRecover(resp: LoginVO){
