@@ -54,9 +54,9 @@ class LoadingUI extends eui.Component {
 			this.progressTxt = new eui.Label();
 			this.progressTxt.horizontalCenter = 0;
 			this.progressTxt.verticalCenter = 277;
+			this.progressTxt.width = 200;
 			this.progressTxt.text = "Loading...";
 			this.progressTxt.textColor = 0xa59153;
-			this.progressTxt.textAlign = "left";
 			this.progressTxt.verticalAlign = "middle";
 			this.progressTxt.size = 45;
 			this.addChild(this.progressTxt);
