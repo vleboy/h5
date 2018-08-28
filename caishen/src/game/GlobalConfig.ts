@@ -19,7 +19,7 @@ module game {
 		/**音乐是否打开*/
 		public static musicSwitch: boolean = true;
 		/**音效是否打开*/
-		public static soundSwitch: boolean = true;
+		public static effectSwitch: boolean = true;
 		/**极速模式是否打开*/
 		public static fastSwitch: boolean = true;
 	}

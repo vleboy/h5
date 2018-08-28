@@ -10,7 +10,7 @@ module game {
 		/**音乐按钮*/
 		private btnMusic: eui.ToggleSwitch;
 		/**音效按钮*/
-		private btnSound: eui.ToggleSwitch;
+		private btnEffect: eui.ToggleSwitch;
 		/**极速模式按钮*/
 		private btnFast: eui.ToggleSwitch;
 		/**背景*/
@@ -28,7 +28,7 @@ module game {
 		private eventListen(): void {
 			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, this.settingClose, this);
 			this.registerEvent(this.btnMusic, egret.TouchEvent.TOUCH_TAP, this.theMusic, this);
-			this.registerEvent(this.btnSound, egret.TouchEvent.TOUCH_TAP, this.theSound, this);
+			this.registerEvent(this.btnEffect, egret.TouchEvent.TOUCH_TAP, this.theEffect, this);
 			this.registerEvent(this.btnFast, egret.TouchEvent.TOUCH_TAP, this.theFast, this);
 		}
 		/**显示*/
@@ -40,6 +40,7 @@ module game {
 				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 500)
 				.call(() => {
 					egret.Tween.removeTweens(this.groupSetting);
+					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 				});
 		}
 		/**关闭*/
@@ -51,6 +52,7 @@ module game {
 					this.defaultUI(false);
 					this.visible = false;
 					egret.Tween.removeTweens(this.groupSetting);
+					SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 				});
 		}
 		/**默认显示*/
@@ -59,13 +61,22 @@ module game {
 			this.groupSetting.scaleY = isShow ? 0 : 1;
 			this.groupSetting.alpha = isShow ? 0 : 1;
 		}
+		/**默认音乐音效开启*/
+		public defaultOpen():void{
+			SoundPlayer.closeMusic(false);
+			SoundPlayer.closeEffect(false);
+			SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+		}
 		/**音乐*/
 		private theMusic(e: egret.TouchEvent): void {
-			GlobalConfig.musicSwitch = e.target.currentState == "up";
+			let isOpen:boolean = e.target.currentState == "up";
+			SoundPlayer.closeMusic(!isOpen);
+			SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
 		}
 		/**音效*/
-		private theSound(e: egret.TouchEvent): void {
-			GlobalConfig.soundSwitch = e.target.currentState == "up";
+		private theEffect(e: egret.TouchEvent): void {
+			let isOpen:boolean = e.target.currentState == "up";
+			SoundPlayer.closeEffect(!isOpen);
 		}
 		/**快速模式*/
 		private theFast(e: egret.TouchEvent): void {
