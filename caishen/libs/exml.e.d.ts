@@ -50,6 +50,8 @@ declare module skins{
 	class VSliderSkin extends eui.Skin{
 	}
 }
+declare class bigWinSkin extends eui.Skin{
+}
 declare class bottomSkin extends eui.Skin{
 }
 declare class connectTipSkin extends eui.Skin{
@@ -59,8 +61,6 @@ declare class freeChooseSkin extends eui.Skin{
 declare class freeTotalWinSkin extends eui.Skin{
 }
 declare class gameSceneSkin extends eui.Skin{
-}
-declare class load extends eui.Skin{
 }
 declare class rullSkin extends eui.Skin{
 }
