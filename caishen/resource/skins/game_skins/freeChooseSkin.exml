@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect width="100%" height="100%" x="0" y="0" fillAlpha="0.5"/>
-	<e:Image id="choose20" source="20_png" y="150" horizontalCenter="-670" name="choose20"/>
-	<e:Image id="choose15" source="15_png" y="150" horizontalCenter="0" name="choose15"/>
-	<e:Image id="choose10" source="10_png" y="150" horizontalCenter="670" name="choose10"/>
-	<e:Image id="choose8" source="8_png" bottom="0" horizontalCenter="-350" name="choose8"/>
-	<e:Image id="choose5" source="5_png" bottom="0" horizontalCenter="350" name="choose5"/>
+	<e:Image id="choose20" source="20_png" y="120" horizontalCenter="-670" name="choose20"/>
+	<e:Image id="choose15" source="15_png" y="120" horizontalCenter="0" name="choose15"/>
+	<e:Image id="choose10" source="10_png" y="120" horizontalCenter="670" name="choose10"/>
+	<e:Image id="choose8" source="8_png" horizontalCenter="-350" name="choose8" y="502"/>
+	<e:Image id="choose5" source="5_png" horizontalCenter="350" name="choose5" y="502"/>
+	<e:Image source="freeChoose_png" y="1010" horizontalCenter="0"/>
 </e:Skin>

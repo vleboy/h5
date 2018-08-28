@@ -21,10 +21,15 @@ module game {
 		private freeChooseCountBg: eui.Image;
 		private freeCountTxt: eui.Label;
 		private freeChooseCountTxt: eui.Label;
+		private freeTotalWin: FreeTotalWin;
 
 		private border2: AMovieClip;
 		private border3: AMovieClip;
 		private border4: AMovieClip;
+		/**免费机会奖励 */
+		private freeChanceGroup: eui.Group;
+		/**免费机会奖励 文字 */
+		private freeChangeImg: eui.Image;
 
 		private particles:particle.GravityParticleSystem[];
 
@@ -91,7 +96,8 @@ module game {
 				NotifyConst.cancelSpin,
 				NotifyConst.cancelAutoSpin,
 				NotifyConst.betLevelIndex,
-				NotifyConst.chooseFreeBack
+				NotifyConst.chooseFreeBack,
+				NotifyConst.freeComplete
 			]);
 			
 			GameService.getInstance().login().then((resp: LoginVO)=>{
@@ -166,6 +172,9 @@ module game {
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
 					break;
+				case NotifyConst.freeComplete:
+					this.freeComplete();
+					break;
 			}
 		}
 		/**控制游戏状态 */
@@ -186,6 +195,13 @@ module game {
 		}
 		/**收到spin结果 */
 		private spinBack(resp: SpinVO){
+			resp.payload.winGrid.length>0 && resp.payload.winGrid.forEach((v, i)=>{
+				for(let i=v.winCard.length-1;i>=0;i--){
+					if(v.winCard[i]==-1){
+						v.winCard.splice(i,1);
+					}
+				}
+			})
 			console.log("UI收到spin返回 ",resp);
 			this.spinResp = resp;
 			if(this.isFree){
@@ -352,37 +368,57 @@ module game {
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
+			await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+			await this.showFreeChange(this.spinResp.payload.getFeatureChance);
 
-			/**在普通游戏中获得免费游戏 */
-			if(this.spinResp.payload.getFeatureChance && !this.isFree){
-				this.showFreeChoose(true);
+
+			if(this.isFree){
+				if(this.freeSpinRemainCount==0){
+					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+				}
+				else{
+					this.setState(GameState.BET);
+				}
 			}
 			else{
-				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
-			}
-			
-			//	免费游戏结束判定
-			if(this.isFree && this.freeSpinRemainCount==0){
-				if(this.featureChanceCount>0){
+				if(this.spinResp.payload.getFeatureChance){
 					this.showFreeChoose(true);
 				}
 				else{
-					this.showFreeGame(false);
 					this.setState(GameState.BET);
 				}
 			}
 			
 		}
+		/**进入免费结算面板，显示免费总奖励*/
+		private showFreeTotalWin(n:string){
+			this.freeTotalWin.showTotalWin(n);
+		}
+
+		/**免费结算完成 */
+		private freeComplete(){
+			if(this.featureChanceCount>0){
+				this.showFreeChoose(true);
+			}
+			else{
+				this.showFreeGame(false);
+				this.isFree = false;
+				this.bottomBar.setFree(false);
+				this.setState(GameState.BET);
+			}
+		}
+
+
 		/**normal middle big mega super */
 		private showBigWin(level:string, win:number){
 			return new Promise((resolve, reject)=>{
 				if(level == "normal"){
 					resolve();
 				}else{
-					this["effectGroup"].visible = true;
+					this["bigWinGroup"].visible = true;
 					this["bigwinTxt"].text = "大赢家 "+level+" "+win;
 					setTimeout(()=> {
-						this["effectGroup"].visible = false;
+						this["bigWinGroup"].visible = false;
 						resolve();
 					}, 2000);
 				}
@@ -390,92 +426,152 @@ module game {
 		}
 
 		private showAllWinGrid(arr:Array<any>){
-			return new Promise((resolve, reject)=>{
-				if(arr.length == 0) resolve();
+			let grids = [];
+			arr.forEach((v)=>{
+				v.winCard.forEach((value:number,column:number)=>{
+					let gridIndex = value+column*3;
+					value!=-1 && grids.indexOf(gridIndex)==-1 && grids.push(gridIndex);
+				});
+			})
+			
+			return Promise.all(
+				grids.map((v)=>{
+					return new Promise((resolve, reject)=>{
+						let mc: AMovieClip;
+						if(this.spinResp.payload.viewGrid[v] == "0"){
+							mc = new AMovieClip();
+							mc.sources = "T_tongqian_|1-16|_png";
+							mc.x = this["tile"+v].x;
+							mc.y = this["tile"+v].y;
+							mc.width = this["tile"+v].width;
+							mc.height = this["tile"+v].height;
+							this["valueTiles"].addChild(mc);
+							mc.play();
+							this["tile"+v].visible = false;
+						}
 
-				let grids = [];
-				arr.forEach((v)=>{
-					v.winCard.forEach((value:number,column:number)=>{
-						let gridIndex = value+column*3;
-						value!=-1 && grids.indexOf(gridIndex)==-1 && grids.push(gridIndex);
-					});
-				})
+						let p: particle.GravityParticleSystem = this.particles[v];
+						let grid: eui.Image = this["tile"+v];
+						p.visible = true;
+						p.start();
+						p.emitterX = p.emitterY = 0;
+						p.x = grid.x;
+						p.y = grid.y;
+						egret.Tween.get(p)
+							.to({emitterX: grid.width}, 300)
+							.to({emitterY: grid.height}, 300)
+							.to({emitterX: 0}, 300)
+							.to({emitterY: 0}, 300)
+							.to({emitterX: grid.width}, 300)
+							.to({emitterY: grid.height}, 300)
+							.to({emitterX: 0}, 300)
+							.to({emitterY: 0}, 300)
+							.call(()=>{
+								egret.Tween.removeTweens(p);
+								p.stop();
+								p.visible = false;
 
-				let flag=false;
-				grids.forEach((v)=>{
-					let p: particle.GravityParticleSystem = this.particles[v];
-					let grid: eui.Image = this["tile"+v];
-					p.visible = true;
-					p.start();
-					p.emitterX = p.emitterY = 0;
-					p.x = grid.x;
-					p.y = grid.y;
-					egret.Tween.get(p)
-						.to({emitterX: grid.width}, 300)
-						.to({emitterY: grid.height}, 300)
-						.to({emitterX: 0}, 300)
-						.to({emitterY: 0}, 300)
-						.to({emitterX: grid.width}, 300)
-						.to({emitterY: grid.height}, 300)
-						.to({emitterX: 0}, 300)
-						.to({emitterY: 0}, 300)
-						.call(()=>{
-							egret.Tween.removeTweens(p);
-							p.stop();
-							p.visible = false;
-							if(!flag){
-								flag = true;
+								if(mc){
+									mc.stop();
+									mc.parent.removeChild(mc);
+									this["tile"+v].visible = true;
+								}
+
 								setTimeout(()=> {
 									resolve();
 								}, 1000);
-							}
-						})
+							})
+					})
 				})
-			})
+			);
 		}
 
 		private showEveryLineGrid(arr:Array<any>){
 			this.setState(GameState.SHOW_SINGLE_LINES);
-			let promiseArr = [];
-			arr.forEach((v, lineIndex:number)=>{
-				promiseArr.push(new Promise((resolve, reject)=>{
-					let flag = false;
-					v.winCard.forEach((value:number,column:number)=>{
-						if(value!=-1){
-							setTimeout(()=> {
-								this.lineWinTxt.visible = true;
-								this.lineWinTxt.text = v.gold+"";
-								let gridIndex = value+column*3;
-								let p: particle.GravityParticleSystem = this.particles[gridIndex];
-								let grid: eui.Image = this["tile"+gridIndex];
-								p.visible = true;
-								p.start();
-								p.emitterX = p.emitterY = 0;
-								p.x = grid.x;
-								p.y = grid.y;
-								egret.Tween.get(p)
-									.to({emitterX: grid.width}, 300)
-									.to({emitterY: grid.height}, 300)
-									.to({emitterX: 0}, 300)
-									.to({emitterY: 0}, 300)
-									.call(()=>{
-										egret.Tween.removeTweens(p);
-										p.stop();
-										p.visible = false;
-										this.lineWinTxt.visible = false;
-										if(!flag){
-											flag = true;
-											setTimeout(()=> {
-												resolve();
-											}, 200);
+			return Promise.all(
+				arr.map((v, lineIndex:number)=>{
+					return new Promise((resolve, reject)=>{
+						setTimeout(async ()=> {
+							await Promise.all(
+								v.winCard.map((value:number,column:number)=>{
+									return new Promise((res, rej)=>{
+										if(value!=-1){
+											this.lineWinTxt.visible = true;
+											this.lineWinTxt.text = v.gold+"";
+											let gridIndex = value+column*3;
+											console.log("展示图标动画"+gridIndex);
+											let mc: AMovieClip;
+											if(this.spinResp.payload.viewGrid[gridIndex] == "0"){
+												mc = new AMovieClip();
+												mc.sources = "T_tongqian_|1-16|_png";
+												mc.x = this["tile"+gridIndex].x;
+												mc.y = this["tile"+gridIndex].y;
+												mc.width = this["tile"+gridIndex].width;
+												mc.height = this["tile"+gridIndex].height;
+												this["valueTiles"].addChild(mc);
+												mc.play();
+												this["tile"+gridIndex].visible = false;
+											}
+											
+											let p: particle.GravityParticleSystem = this.particles[gridIndex];
+											let grid: eui.Image = this["tile"+gridIndex];
+											p.visible = true;
+											p.start();
+											p.emitterX = p.emitterY = 0;
+											p.x = grid.x;
+											p.y = grid.y;
+											egret.Tween.get(p)
+												.to({emitterX: grid.width}, 300)
+												.to({emitterY: grid.height}, 300)
+												.to({emitterX: 0}, 300)
+												.to({emitterY: 0}, 300)
+												.call(()=>{
+													egret.Tween.removeTweens(p);
+													p.stop();
+													p.visible = false;
+													this.lineWinTxt.visible = false;
+													if(mc){
+														mc.stop();
+														mc.parent.removeChild(mc);
+														this["tile"+gridIndex].visible = true;
+													}
+													setTimeout(()=> {
+														res();
+														console.log("展示图标动画"+gridIndex+"完成");
+													}, 200);
+												})
+
 										}
 									})
-							}, lineIndex*1500);
-						}
+								})
+							);
+							console.log("第"+lineIndex+"条中奖线展示完成",v);
+							resolve();
+						}, 1500*lineIndex);
 					})
-				}))
-			})
-			return Promise.all(promiseArr);
+				})
+			);
+		}
+
+		/**展示本局获得免费机会 */
+		private showFreeChange(b: boolean){
+			return new Promise((resolve, reject)=>{
+				if(b){
+					this.freeChanceGroup.visible = true;
+					egret.Tween.get(this.freeChangeImg)
+						.set({scaleX:0.3, scaleY:0.3})
+						.to({scaleX:1, scaleY:1}, 500)
+						.wait(500)
+						.call(()=>{
+							egret.Tween.removeTweens(this.freeChangeImg);
+							this.freeChanceGroup.visible = false;
+							resolve();
+						})
+				}
+				else{
+					resolve();
+				}
+			});
 		}
 
 
@@ -504,7 +600,6 @@ module game {
 		private setFreeChooseCount(){
 			this.freeChooseCountTxt.text = "X"+this.featureChanceCount;
 		}
-
 
 	}
 }
