@@ -77,6 +77,9 @@ module game {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
 				this.sendNotify(NotifyConst.spin);
 				this.imgSpin();
+				this.setWinMoney(0.00);
+				if (this.groupAutoNum) this.showTween(this.groupAutoNum, -400, () => { this.groupAutoNum.visible = false; });
+				if (this.groupBet) this.showTween(this.groupBet, -100, () => { this.groupBet.visible = false; });
 			}, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => {
@@ -121,10 +124,13 @@ module game {
 		private chooseBetLevel(): void {
 			let betShow = () => {
 				this.groupBet.visible = true;
-				this.showTween(this.groupBet, 126);
+				this.showTween(this.groupBet, 126, () => {
+					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+				});
 			}
 			this.groupBet.visible ? this.showTween(this.groupBet, -100, () => {
 				this.groupBet.visible = false;
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}) : betShow();
 		}
 		/**校验加减号状态和设置单注下注档次*/
@@ -139,26 +145,34 @@ module game {
 
 		/**单注增加*/
 		private addBetLevel(): void {
+			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			this.theBetIndex < this.theBetArr.length - 1 && this.theBetIndex++;
 			this.checkPlusReduceState();
 		}
 		/**单注减少*/
 		private reduceBetLevel(): void {
+			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			this.theBetIndex > 0 && this.theBetIndex--;
 			this.checkPlusReduceState();
 		}
 		/**单注最大*/
 		private maxBetLevel(): void {
+			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			this.theBetIndex = this.theBetArr.length - 1;
 			this.checkPlusReduceState();
 		}
 		/**自动转动*/
 		private touchAuto(): void {
 			if (this.groupAutoNum.visible) {
-				this.showTween(this.groupAutoNum, -400, () => { this.groupAutoNum.visible = false; });
+				this.showTween(this.groupAutoNum, -400, () => {
+					this.groupAutoNum.visible = false;
+					SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+				});
 			} else {
 				this.groupAutoNum.visible = true;
-				this.showTween(this.groupAutoNum, 107);
+				this.showTween(this.groupAutoNum, 107, () => {
+					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+				});
 			}
 		}
 		/**取消自动转动*/
@@ -167,7 +181,7 @@ module game {
 			this.isAuto = false;
 		}
 		/**是不是自动状态*/
-		private autoState():void {
+		private autoState(): void {
 			this.spinArrow.visible = !this.isAuto;
 			this.stopSpinBtn.visible = !this.isAuto;
 			this.groupAuto.visible = this.isAuto;
@@ -243,13 +257,13 @@ module game {
 				case GameState.SHOW_RESULT:
 					betAutoState(false);
 					spinBtnShow(true, false);
-					if(this.isAuto) this.spinBtn.enabled = false;
+					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 					betAutoState(false);
 					this.imgSpin(true);
 					spinBtnShow(false);
-					if(this.isAuto) this.spinBtn.enabled = false;
+					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 			}
 		}

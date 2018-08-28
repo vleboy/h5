@@ -31,6 +31,7 @@ module game {
 			if (isShow) {
 				this.btnState(0);
 				this.setOdds(theBet);
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			}
 		}
 		/**默认数据*/
@@ -80,7 +81,10 @@ module game {
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_END, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onMove, this);
-			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => { this.rullShow(0.01); }, this);
+			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => { 
+				this.rullShow(0.01); 
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+			}, this);
 		}
 		/**点击按钮到当前页*/
 		private toThePage(e: egret.TouchEvent): void {
