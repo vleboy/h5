@@ -6,6 +6,7 @@ module game {
 		}
 
 		public init(){
+			this["yuanbaoGroup"].visible = false;
 			["20","15","10","8","5"].forEach((v,i)=>{
 				let target = this["choose"+v];
 				let defaultY = target.y;
@@ -29,9 +30,34 @@ module game {
 				case "choose8":  n=2;break;
 				case "choose5":  n=1;break;
 			}
-			n>0 && GameService.getInstance().sendFreeChoose(n).then((resp)=>{
+			n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
+				await this.yuanbaoAni();
 				this.sendNotify(NotifyConst.chooseFreeBack, resp);
 			});
 		}
+
+		private yuanbaoAni(){
+			let g = (this["yuanbaoGroup"] as eui.Group);
+			let arr = [];
+			g.visible = true;
+			for(let i=0; i<g.numChildren; i++){
+				g.getChildAt(i).alpha = 0;
+				arr.push(g.getChildAt(i));
+			}
+
+			return Promise.all(
+				arr.map((v,i)=>{
+					return new Promise((resolve, reject)=>{
+						setTimeout(()=> {
+							egret.Tween.get(v).to({alpha:1},200).call(()=>{
+								egret.Tween.removeTweens(v);
+								resolve();
+							})
+						}, 50*i);
+					})
+				})
+			);
+		}
+
 	}
 }
