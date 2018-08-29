@@ -90,5 +90,6 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
-	<game:BigWin id="bigWin" height="1080" width="1920" verticalCenter="0" horizontalCenter="0"/>
+	<game:BigWin id="bigWin" height="1080" width="1920" verticalCenter="0" horizontalCenter="0" visible="false"/>
+	<game:ErrTip id="err" width="100%" height="100%" verticalCenter="0" horizontalCenter="0"/>
 </e:Skin>

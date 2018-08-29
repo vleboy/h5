@@ -26,7 +26,7 @@
 		"bin-debug/Main.js",
 		"bin-debug/core/vo/ChooseBuffVO.js",
 		"bin-debug/core/vo/LoginVO.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/game/ui/TopBar.js",
 		"bin-debug/game/GlobalConfig.js",
 		"bin-debug/game/const/BottomState.js",
 		"bin-debug/game/const/NotifyConst.js",
@@ -35,12 +35,13 @@
 		"bin-debug/game/ui/BigWin.js",
 		"bin-debug/game/ui/BottomBar.js",
 		"bin-debug/game/ui/ConnectTip.js",
+		"bin-debug/game/ui/ErrTip.js",
 		"bin-debug/game/ui/FreeChoose.js",
 		"bin-debug/game/ui/FreeTotalWin.js",
 		"bin-debug/game/ui/GameScene.js",
 		"bin-debug/game/ui/Rull.js",
 		"bin-debug/game/ui/Setting.js",
 		"bin-debug/game/ui/Tips.js",
-		"bin-debug/game/ui/TopBar.js"
+		"bin-debug/LoadingUI.js"
 	]
 }
