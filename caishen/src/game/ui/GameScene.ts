@@ -476,10 +476,7 @@ module game {
 				if (level == "normal" || level == "middle") {
 					resolve();
 				} else {
-					let timer = this.bigWin.bigWinStart(level, win);
-					setTimeout(() => {
-						resolve();
-				}, timer * 1000);
+					this.bigWin.bigWinStart(level, win).then(()=>resolve());
 				}
 			})
 		}
