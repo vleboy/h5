@@ -9,8 +9,7 @@ module game {
 		private setting:Setting;
 		private particleGroup: eui.Group;
 		private lineWinTxt: eui.BitmapLabel;
-		private freeChoose: BaseUI;
-		
+		private freeChoose: FreeChoose;
 		private bg: eui.Image;
 		private bgFree: eui.Image;
 		private kuang: eui.Image;
@@ -22,7 +21,6 @@ module game {
 		private freeCountTxt: eui.Label;
 		private freeChooseCountTxt: eui.Label;
 		private freeTotalWin: FreeTotalWin;
-
 		private border2: AMovieClip;
 		private border3: AMovieClip;
 		private border4: AMovieClip;
@@ -30,8 +28,7 @@ module game {
 		private freeChanceGroup: eui.Group;
 		/**免费机会奖励 文字 */
 		private freeChangeImg: eui.Image;
-
-		private particles:particle.GravityParticleSystem[];
+		private gridParticles:particle.GravityParticleSystem[];
 
 		private balance: number;
 		private betcfg: number[];
@@ -48,6 +45,8 @@ module game {
 		private featureChanceCount: number;
 		/**下次出免费 */
 		private nextFree:boolean = false;
+		/**下次出bonus */
+		private nextBonus:boolean = false;
 		/**自动次数 */
 		private autoCount:number;
 		private autoMax:boolean;
@@ -87,6 +86,9 @@ module game {
 			}
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, ()=>{
 				this.nextFree = true;
+			}, this);
+			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, ()=>{
+				this.nextBonus = true;
 			}, this);
 		}
 		/**初始化数据 */
@@ -210,11 +212,20 @@ module game {
 			}
 
 			this.startSpin();
-			GameService.getInstance().sendSpin(this.betLevel, this.nextFree?"1":"").then(this.spinBack.bind(this));
+			if(this.nextFree){
+				GameService.getInstance().sendSpin(this.betLevel, "1").then(this.spinBack.bind(this));
+			}
+			else if(this.nextBonus){
+				GameService.getInstance().sendSpin(this.betLevel, "666").then(this.spinBack.bind(this));
+			}
+			else{
+				GameService.getInstance().sendSpin(this.betLevel).then(this.spinBack.bind(this));
+			}
+			
 			this.nextFree = false;
 			this.setState(GameState.SPINNING);
 		}
-		/**收到spin结果 */
+		/**收到spin结果 ，把-1的图标筛选掉*/
 		private spinBack(resp: SpinVO){
 			resp.payload.winGrid.length>0 && resp.payload.winGrid.forEach((v, i)=>{
 				for(let i=v.winCard.length-1;i>=0;i--){
@@ -223,6 +234,14 @@ module game {
 					}
 				}
 			})
+			if(resp.payload.scatterGrid.length>0){
+				for(let i=resp.payload.scatterGrid.length-1;i>=0;i--){
+					if(resp.payload.scatterGrid[i]==-1){
+						resp.payload.scatterGrid.splice(i,1);
+					}
+				}
+			}
+
 			console.log("UI收到spin返回 ",resp);
 			this.spinResp = resp;
 			if(this.isFree){
@@ -241,14 +260,14 @@ module game {
 
 		/**初始化图标粒子 */
 		private initPaticles(){
-			this.particles = [];
+			this.gridParticles = [];
 			for(let i=0; i<15; i++){
 				let texture = RES.getRes("light_lizi01_png");
 				let cfg = RES.getRes("particle_json");
 				let p = new particle.GravityParticleSystem(texture, cfg);
 				this.particleGroup.addChild(p);
 				p.visible = false;
-				this.particles.push(p);
+				this.gridParticles.push(p);
 			}
 		}
 		/**开始滚动 */
@@ -310,9 +329,6 @@ module game {
 				else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), is3Delay);
 				else if(i==3) await this.stopColumn(i, arr.slice(i*3,i*3+3), is4Delay);
 				else if(i==4) await this.stopColumn(i, arr.slice(i*3,i*3+3), is5Delay);
-				// else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), true);
-				// else if(i==3) await this.stopColumn(i, arr.slice(i*3,i*3+3), true);
-				// else if(i==4) await this.stopColumn(i, arr.slice(i*3,i*3+3), true);
 			}
 			this.judgeResult();
 		}
@@ -405,18 +421,22 @@ module game {
 			})
 			
 		}
-		/**判定结果 大赢家=> 所有线 =>freespin =>各条单线*/
+
+		/**判定结果 大赢家=> 所有线 =>freespin =>bonus =>各条单线*/
 		private async judgeResult(){
 			console.log("判定结果 中奖线"+this.spinResp.payload.winGrid.length);
 
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
-			await this.showEveryLineGrid(this.spinResp.payload.winGrid);
-			await this.showFreeChange(this.spinResp.payload.getFeatureChance);
+			await this.showScatterLine();
+			await this.showFreeChange();
+			await this.showBonusLine();
+			
 
 
 			if(this.isFree){
+				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
 				if(this.freeSpinRemainCount==0){
 					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
 				}
@@ -431,30 +451,13 @@ module game {
 					this.showFreeChoose(true);
 				}
 				else{
+					await this.showEveryLineGrid(this.spinResp.payload.winGrid);
 					this.setState(GameState.BET);
 					if(this.autoMax || this.autoCount>0) this.spin();
 				}
 			}
 			
 		}
-		/**进入免费结算面板，显示免费总奖励*/
-		private showFreeTotalWin(n:string){
-			this.freeTotalWin.showTotalWin(n);
-		}
-
-		/**免费结算完成 */
-		private freeComplete(){
-			if(this.featureChanceCount>0){
-				this.showFreeChoose(true);
-			}
-			else{
-				this.showFreeGame(false);
-				this.isFree = false;
-				this.bottomBar.setFree(false);
-				this.setState(GameState.BET);
-			}
-		}
-
 
 		/**normal middle big mega super */
 		private showBigWin(level:string, win:number){
@@ -497,7 +500,7 @@ module game {
 							this["tile"+v].visible = false;
 						}
 
-						let p: particle.GravityParticleSystem = this.particles[v];
+						let p: particle.GravityParticleSystem = this.gridParticles[v];
 						let grid: eui.Image = this["tile"+v];
 						p.visible = true;
 						p.start();
@@ -532,6 +535,93 @@ module game {
 				})
 			);
 		}
+		/**scatter图标动画 */
+		private showScatterLine(){
+			return Promise.all(
+				this.spinResp.payload.scatterGrid.map((value:number,column:number)=>{
+					return new Promise((res, rej)=>{
+						this.lineWinTxt.visible = true;
+						this.lineWinTxt.text = this.spinResp.payload.scatterGold+"";
+						let gridIndex = value+column*3;
+						console.log("展示scatter图标动画"+gridIndex);
+						let mc: AMovieClip = new AMovieClip();
+						mc.sources = "T_tongqian_|1-16|_png";
+						mc.x = this["tile"+gridIndex].x;
+						mc.y = this["tile"+gridIndex].y;
+						mc.width = this["tile"+gridIndex].width;
+						mc.height = this["tile"+gridIndex].height;
+						this["valueTiles"].addChild(mc);
+						this["tile"+gridIndex].visible = false;
+						mc.loop = 2;
+						mc.play();
+						mc.once(AMovieClip.COMPLETE, ()=>{
+							console.log("展示scatter图标动画完成 "+gridIndex);
+							mc.parent.removeChild(mc);
+							this["tile"+gridIndex].visible = true;
+							this.lineWinTxt.visible = false;
+							res();
+						}, this);
+					})
+				})
+			)
+		}
+		/**展示本局获得免费机会 */
+		private showFreeChange(){
+			return new Promise((resolve, reject)=>{
+				if(this.spinResp.payload.getFeatureChance){
+					this.freeChanceGroup.visible = true;
+					egret.Tween.get(this.freeChangeImg)
+						.set({scaleX:0.3, scaleY:0.3})
+						.to({scaleX:1, scaleY:1}, 500)
+						.wait(500)
+						.call(()=>{
+							egret.Tween.removeTweens(this.freeChangeImg);
+							this.freeChanceGroup.visible = false;
+							resolve();
+						})
+				}
+				else{
+					resolve();
+				}
+			});
+		}
+
+		/**bonus图标动画 */
+		private showBonusLine(){
+			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
+			return Promise.all(
+				grids.map((value:number,column:number)=>{
+					return new Promise((res, rej)=>{
+						if(value == -1){
+							res();
+						}
+						else{
+							this.lineWinTxt.visible = true;
+							this.lineWinTxt.text = this.spinResp.payload.featureData.featureBonusData.gold+"";
+							let gridIndex = value+column*3;
+							console.log("展示bonus图标动画"+gridIndex);
+							let mc: AMovieClip = new AMovieClip();
+							mc.sources = "T_hongbao_|1-16|_png";
+							mc.x = this["tile"+gridIndex].x;
+							mc.y = this["tile"+gridIndex].y;
+							// mc.width = this["tile"+gridIndex].width;
+							// mc.height = this["tile"+gridIndex].height;
+							this["valueTiles"].addChild(mc);
+							this["tile"+gridIndex].visible = false;
+							mc.loop = 2;
+							mc.play();
+							mc.once(AMovieClip.COMPLETE, ()=>{
+								mc.parent.removeChild(mc);
+								this["tile"+gridIndex].visible = true;
+								this.lineWinTxt.visible = false;
+								res();
+							}, this);
+						}
+						
+					})
+				})
+			)
+		}
 
 		private showEveryLineGrid(arr:Array<any>){
 			this.setState(GameState.SHOW_SINGLE_LINES);
@@ -546,7 +636,6 @@ module game {
 											this.lineWinTxt.visible = true;
 											this.lineWinTxt.text = v.gold+"";
 											let gridIndex = value+column*3;
-											console.log("展示图标动画"+gridIndex);
 											let mc: AMovieClip;
 											if(this.spinResp.payload.viewGrid[gridIndex] == "0"){
 												mc = new AMovieClip();
@@ -560,7 +649,7 @@ module game {
 												this["tile"+gridIndex].visible = false;
 											}
 											
-											let p: particle.GravityParticleSystem = this.particles[gridIndex];
+											let p: particle.GravityParticleSystem = this.gridParticles[gridIndex];
 											let grid: eui.Image = this["tile"+gridIndex];
 											p.visible = true;
 											p.start();
@@ -584,7 +673,6 @@ module game {
 													}
 													setTimeout(()=> {
 														res();
-														console.log("展示图标动画"+gridIndex+"完成");
 													}, 200);
 												})
 
@@ -600,30 +688,9 @@ module game {
 			);
 		}
 
-		/**展示本局获得免费机会 */
-		private showFreeChange(b: boolean){
-			return new Promise((resolve, reject)=>{
-				if(b){
-					this.freeChanceGroup.visible = true;
-					egret.Tween.get(this.freeChangeImg)
-						.set({scaleX:0.3, scaleY:0.3})
-						.to({scaleX:1, scaleY:1}, 500)
-						.wait(500)
-						.call(()=>{
-							egret.Tween.removeTweens(this.freeChangeImg);
-							this.freeChanceGroup.visible = false;
-							resolve();
-						})
-				}
-				else{
-					resolve();
-				}
-			});
-		}
-
-
 		private showFreeChoose(b: boolean){
 			this.freeChoose.visible = b;
+			this.freeChoose.show();
 		}
 		/**显示免费游戏的ui */
 		private showFreeGame(b: boolean){
@@ -654,6 +721,24 @@ module game {
 		}
 		private setFreeChooseCount(){
 			this.freeChooseCountTxt.text = "X"+this.featureChanceCount;
+		}
+
+		/**进入免费结算面板，显示免费总奖励*/
+		private showFreeTotalWin(n:string){
+			this.freeTotalWin.showTotalWin(n);
+		}
+
+		/**免费结算完成 */
+		private freeComplete(){
+			if(this.featureChanceCount>0){
+				this.showFreeChoose(true);
+			}
+			else{
+				this.showFreeGame(false);
+				this.isFree = false;
+				this.bottomBar.setFree(false);
+				this.setState(GameState.BET);
+			}
 		}
 
 	}

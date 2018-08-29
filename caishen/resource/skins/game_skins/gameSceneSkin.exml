@@ -13,6 +13,22 @@
 			<e:Image source="LineBG_png" x="1099" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image id="title" source="asdad_png" y="117" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
 			<e:Image id="titleFree" y="108" horizontalCenter="0" width="700" height="250" x="373" scaleX="1" scaleY="1" source="asdad2_png" visible="false"/>
+			<e:Button id="testBtn" label="下次免费" x="394" y="47" width="200" height="60">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="BetSliderBG_png" source.down="BetSliderBG_png" source.disabled="BetSliderBG_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
+			<e:Button id="testBtn1" label="下次bonus" x="798" y="52" width="200" height="60">
+				<e:skinName>
+				<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="BetSliderBG_png" source.down="BetSliderBG_png" source.disabled="BetSliderBG_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+				</e:skinName>
+			</e:Button>
 		</e:Group>
 		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
 		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
@@ -77,20 +93,13 @@
 	<e:Group id="freeChanceGroup" width="100%" x="0" y="0" height="100%" visible="false">
 		<e:Image id="freeChangeImg" source="FreeChance_png" horizontalCenter="0" verticalCenter="0" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
 	</e:Group>
-	<game:Setting id="setting" left="0" right="0" top="0" bottom="0"/>
+	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
 	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false"/>
-	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0"/>
-	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20"/>
+	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
-	<e:Button id="testBtn" label="下次免费" x="903" y="100" width="100" height="40">
-		<e:skinName>
-			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="BetSliderBG_png" source.down="BetSliderBG_png" source.disabled="BetSliderBG_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
-		</e:skinName>
-	</e:Button>
+
 
 
 </e:Skin>

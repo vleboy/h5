@@ -8,17 +8,24 @@ module game {
 		public init(){
 			this["yuanbaoGroup"].visible = false;
 			["20","15","10","8","5"].forEach((v,i)=>{
+				this.registerEvent(this["choose"+v], egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
+			})
+			this.show();
+		}
+
+		public show(){
+			this["yuanbaoGroup"].visible = false;
+			["20","15","10","8","5"].forEach((v,i)=>{
 				let target = this["choose"+v];
 				let defaultY = target.y;
 				egret.Tween.get(target)
-					.set({y:-200})
-					.wait(i*200+200)
-					.to({y:defaultY},500)
+					.set({y:defaultY-1000})
+					.wait(i*100+100)
+					.to({y:defaultY},200)
 					.call(()=>{
 						this.registerEvent(target, egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
 					})
 			})
-			
 		}
 
 		private onTouch(e: egret.TouchEvent){
