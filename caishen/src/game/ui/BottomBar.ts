@@ -179,6 +179,7 @@ module game {
 		private touchCancelAuto(): void {
 			this.sendNotify(NotifyConst.cancelAutoSpin);
 			this.isAuto = false;
+			this.showAutoBtn(true);
 		}
 		/**是不是自动状态*/
 		private autoState(): void {
