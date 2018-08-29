@@ -330,8 +330,9 @@ module game {
 			let is3Delay: boolean = (arr.slice(0,3).indexOf("0")>-1 && arr.slice(3,6).indexOf("0")>-1);
 			let is4Delay: boolean = is3Delay && arr.slice(6,9).indexOf("0")>-1;
 			let is5Delay: boolean = is4Delay && arr.slice(9,12).indexOf("0")>-1;
+			let buff = this.spinResp.payload.featureData.buff
 			//处理wild图标的多样性
-			arr = arr.map( v => (v==1? "1_1" : (v+"")));
+			arr = arr.map( v => (v==1? "1"+(buff=="-1"?"":"_"+buff) : (v+"")));
 			for(let i=0; i<5; i++){
 				if(i<2) await this.stopColumn(i, arr.slice(i*3,i*3+3));
 				else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), is3Delay);
