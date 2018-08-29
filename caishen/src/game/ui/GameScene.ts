@@ -48,6 +48,9 @@ module game {
 		private featureChanceCount: number;
 		/**下次出免费 */
 		private nextFree:boolean = false;
+		/**自动次数 */
+		private autoCount:number;
+		private autoMax:boolean;
 		
 
 		public constructor() {
@@ -148,7 +151,7 @@ module game {
 		public handleNotify(key:NotifyConst, body){
 			switch(key){
 				case NotifyConst.spin:
-					this.spin();
+					this.spin(body);
 					break;
 				case NotifyConst.openHelp:
 					this.rull.rullShow(body,true);
@@ -159,8 +162,11 @@ module game {
 				case NotifyConst.cancelSpin:
 					break;
 				case NotifyConst.cancelAutoSpin:
+					this.autoMax = false;
+					this.autoCount = 0;
 					break;
 				case NotifyConst.betLevelIndex:
+					this.betLevel = body;
 					break;
 				case NotifyConst.chooseFreeBack:
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
@@ -183,11 +189,27 @@ module game {
 			this.bottomBar.setState(n);
 		}
 		/**spin的逻辑 */
-		private spin(){
+		private spin(autoCount?:any){
 			if(this.balance < this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]){
 				console.log("余额不足");
 				return;
 			}
+			if(autoCount=="max") 
+			{
+				this.autoMax = true;
+			}
+			else if(autoCount>0) {
+				this.autoMax = false;
+				this.autoCount = autoCount;
+			}
+			
+			if(this.autoMax){
+				this.bottomBar.setAutoBetNum(-1);
+			}
+			else if(this.autoCount>0){
+				this.bottomBar.setAutoBetNum(--this.autoCount);
+			}
+
 			this.startSpin();
 			GameService.getInstance().sendSpin(this.betLevel, this.nextFree?"1":"").then(this.spinBack.bind(this));
 			this.nextFree = false;
@@ -411,6 +433,7 @@ module game {
 				}
 				else{
 					this.setState(GameState.BET);
+					if(this.autoMax || this.autoCount>0) this.spin();
 				}
 			}
 			
