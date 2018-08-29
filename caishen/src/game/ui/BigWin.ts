@@ -18,7 +18,7 @@ module game {
         public init(): void {
             this.visible = false;
         }
-        public bigWinStart(type: string, money: number): void {
+        public bigWinStart(type: string, money: number): number {
             this.visible = true;
             //元宝数和喷元宝的时间
             let num: number = 50, timer: number = 10;
@@ -45,6 +45,7 @@ module game {
             this.bigWinLight();
             this.winTxtAni(sou);
             SoundPlayer.playMusic("CaiShen_243_BigWin_mp3");
+            return timer;
         }
         /**喷元宝
          * @param timer 喷元宝时间

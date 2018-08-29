@@ -99,6 +99,7 @@
 	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+	<game:BigWin id="bigWin" height="1080" width="1920" horizontalCenter="0" verticalCenter="0"/>
 
 
 
