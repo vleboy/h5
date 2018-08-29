@@ -52,7 +52,6 @@ module game {
 		private autoCount:number;
 		private autoMax:boolean;
 		
-
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "gameSceneSkin.exml";

@@ -49,7 +49,6 @@ class LoadingUI extends eui.Component {
 			let img = createImg(urlArr[1].texture, this, 0, 325, 996, 20);
 			this.addChild(img);
 			this.group.mask = img;
-
 			///label
 			this.progressTxt = new eui.Label();
 			this.progressTxt.horizontalCenter = 0;

@@ -35,6 +35,7 @@
 		"bin-debug/game/ui/BigWin.js",
 		"bin-debug/game/ui/BottomBar.js",
 		"bin-debug/game/ui/ConnectTip.js",
+		"bin-debug/game/ui/ErrTip.js",
 		"bin-debug/game/ui/FreeChoose.js",
 		"bin-debug/game/ui/FreeTotalWin.js",
 		"bin-debug/game/ui/GameScene.js",

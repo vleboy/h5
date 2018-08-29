@@ -32,6 +32,7 @@
 		"resource/skins/game_skins/bigWinSkin.exml",
 		"resource/skins/game_skins/bottomSkin.exml",
 		"resource/skins/game_skins/connectTipSkin.exml",
+		"resource/skins/game_skins/errSkin.exml",
 		"resource/skins/game_skins/freeChooseSkin.exml",
 		"resource/skins/game_skins/freeTotalWinSkin.exml",
 		"resource/skins/game_skins/gameSceneSkin.exml",
