@@ -14,8 +14,7 @@ module game {
 		private bgFree: eui.Image;
 		private kuang: eui.Image;
 		private kuangFree: eui.Image;
-		private title: eui.Image;
-		private titleFree: eui.Image;
+		private title: AMovieClip;
 		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
 		private freeCountTxt: eui.Label;
@@ -70,10 +69,20 @@ module game {
 			[this.border2, this.border3, this.border4, this.lineWinTxt].forEach(v=>{
 				v.visible = false;
 			})
+
+			let f = ()=>{
+				setTimeout(()=> {
+					this.title.loop = 1;
+					this.title.play();
+					this.title.once(AMovieClip.COMPLETE, f, this);
+				}, 5000);
+			}
+			f();
+
 			this.connectTip.visible = true;
 			this.tileGroup.mask = this.tileMask;
 			this.setState(GameState.BET);
-			FilterUtil.setLightFlowFilter(this["title"]);
+			// FilterUtil.setLightFlowFilter(this["title"]);
 
 			for(let i=0; i<15; i++){
 				let n = Math.floor(Math.random()*13)+"";
@@ -104,18 +113,17 @@ module game {
 				NotifyConst.freeComplete
 			]);
 			
-			GameService.getInstance().login().then((resp: LoginVO)=>{
-				this.connectTip.visible = false;
-				this.balance = +resp.payload.userBalance;
-				this.betcfg = resp.payload.betcfg;
-				this.betLevel = resp.payload.betLevel;
-				this.multicfg = resp.payload.multicfg;
-				this.multiLevel = resp.payload.multiLevel;
+			this.connectTip.visible = false;
+			let loginVo = GameService.getInstance().loginVo;
+			this.balance = +loginVo.payload.userBalance;
+			this.betcfg = loginVo.payload.betcfg;
+			this.betLevel = loginVo.payload.betLevel;
+			this.multicfg = loginVo.payload.multicfg;
+			this.multiLevel = loginVo.payload.multiLevel;
 
-				this.topBar.setBalance(resp.payload.userBalance);
-				//数据恢复检查
-				this.checkDataRecover(resp);
-			});
+			this.topBar.setBalance(loginVo.payload.userBalance);
+			//数据恢复检查
+			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
 		}
 		/**数据恢复 */
@@ -322,8 +330,9 @@ module game {
 			let is3Delay: boolean = (arr.slice(0,3).indexOf("0")>-1 && arr.slice(3,6).indexOf("0")>-1);
 			let is4Delay: boolean = is3Delay && arr.slice(6,9).indexOf("0")>-1;
 			let is5Delay: boolean = is4Delay && arr.slice(9,12).indexOf("0")>-1;
+			let buff = this.spinResp.payload.featureData.buff
 			//处理wild图标的多样性
-			arr = arr.map( v => (v==1? "1_1" : (v+"")));
+			arr = arr.map( v => (v==1? "1"+(buff=="-1"?"":"_"+buff) : (v+"")));
 			for(let i=0; i<5; i++){
 				if(i<2) await this.stopColumn(i, arr.slice(i*3,i*3+3));
 				else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), is3Delay);
@@ -350,7 +359,7 @@ module game {
 					let tile = this["tile"+(column*3+i)];
 					tile.visible = true;
 					tile.source = "symbolName_"+(arr[i])+"_png";
-					egret.Tween.get(tile).set({y:defaultY-100}).to({y:defaultY},500).call(()=>{
+					egret.Tween.get(tile).set({y:defaultY-100}).to({y:defaultY},200).call(()=>{
 						egret.Tween.removeTweens(tile);
 						if(i==2){
 							setTimeout( resolve, 250);
@@ -538,7 +547,7 @@ module game {
 		/**scatter图标动画 */
 		private showScatterLine(){
 			return Promise.all(
-				this.spinResp.payload.scatterGrid.map((value:number,column:number)=>{
+				this.spinResp.payload.getFeatureChance? this.spinResp.payload.scatterGrid.map((value:number,column:number)=>{
 					return new Promise((res, rej)=>{
 						this.lineWinTxt.visible = true;
 						this.lineWinTxt.text = this.spinResp.payload.scatterGold+"";
@@ -562,7 +571,7 @@ module game {
 							res();
 						}, this);
 					})
-				})
+				}):[]
 			)
 		}
 		/**展示本局获得免费机会 */
@@ -589,15 +598,16 @@ module game {
 		/**bonus图标动画 */
 		private showBonusLine(){
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
+			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
 			return Promise.all(
-				grids.map((value:number,column:number)=>{
+				gold>0 ? grids.map((value:number,column:number)=>{
 					return new Promise((res, rej)=>{
 						if(value == -1){
 							res();
 						}
 						else{
 							this.lineWinTxt.visible = true;
-							this.lineWinTxt.text = this.spinResp.payload.featureData.featureBonusData.gold+"";
+							this.lineWinTxt.text = gold+"";
 							let gridIndex = value+column*3;
 							console.log("展示bonus图标动画"+gridIndex);
 							let mc: AMovieClip = new AMovieClip();
@@ -619,7 +629,7 @@ module game {
 						}
 						
 					})
-				})
+				}):[]
 			)
 		}
 
@@ -698,8 +708,6 @@ module game {
 			this.bgFree.visible = b;
 			this.kuang.visible = !b;
 			this.kuangFree.visible = b;
-			this.title.visible = !b;
-			this.titleFree.visible = b;
 			this.freeCountBg.visible = b;
 			this.freeChooseCountBg.visible = b;
 			this.freeCountTxt.visible = b;

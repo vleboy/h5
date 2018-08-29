@@ -23,6 +23,7 @@
 		"bin-debug/core/util/Dictionary.js",
 		"bin-debug/core/util/FilterUtil.js",
 		"bin-debug/core/util/HttpUtil.js",
+		"bin-debug/core/util/StageUtil.js",
 		"bin-debug/Main.js",
 		"bin-debug/core/vo/ChooseBuffVO.js",
 		"bin-debug/core/vo/LoginVO.js",

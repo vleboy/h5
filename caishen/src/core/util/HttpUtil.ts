@@ -40,6 +40,7 @@ module game {
 
 				};
 				xhr.onerror = (err) => {
+					StageUtil.stage.addChild(new game.ErrTip("网络错误", ()=>{location.reload();}, this));
 					reject();
 				};
 				if (data) xhr.send(data);
