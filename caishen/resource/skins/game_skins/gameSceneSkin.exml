@@ -90,4 +90,5 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<game:BigWin id="bigWin" height="1080" width="1920" verticalCenter="0" horizontalCenter="0"/>
 </e:Skin>

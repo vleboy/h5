@@ -49,6 +49,7 @@ module game {
 		/**下次出免费 */
 		private nextFree:boolean = false;
 		
+		private bigWin:BigWin;
 
 		public constructor() {
 			super();
@@ -111,6 +112,7 @@ module game {
 				this.topBar.setBalance(resp.payload.userBalance);
 				//数据恢复检查
 				this.checkDataRecover(resp);
+				this.bigWin.bigWinStart("super",400);
 			});
 			this.setting.defaultOpen();
 		}
