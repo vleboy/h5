@@ -645,6 +645,9 @@ module game {
 				this.spin();
 				this.bottomBar.setAutoBetNum(this.freeSpinRemainCount-1);
 			}
+			else{
+				if(this.autoMax || this.autoCount>0) this.spin();
+			}
 		}
 		
 		private setFreeCount(){
