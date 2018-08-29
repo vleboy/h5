@@ -11,7 +11,7 @@
 			<e:Image source="LineBG_png" y="269" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image source="LineBG_png" x="834" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image source="LineBG_png" x="1099" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
-			<e:Image id="title" source="asdad_png" y="117" horizontalCenter="0" width="670" height="157" x="363" scaleX="1" scaleY="1"/>
+			<game:AMovieClip id="title" width="670" height="157" y="117" horizontalCenter="0" source="title1_png" sources="title|1-28|_png"/>
 			<e:Image id="titleFree" y="108" horizontalCenter="0" width="700" height="250" x="373" scaleX="1" scaleY="1" source="asdad2_png" visible="false"/>
 			<e:Button id="testBtn" label="下次免费" x="394" y="47" width="200" height="60">
 				<e:skinName>
