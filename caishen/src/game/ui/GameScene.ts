@@ -77,7 +77,7 @@ module game {
 
 			for(let i=0; i<15; i++){
 				let n = Math.floor(Math.random()*13)+"";
-				n= (n=="2" ? "2_1": n);
+				n= (n=="1" ? "1_1": n);
 				this["tile"+i].visible = true;
 				this["tile"+i].source = "symbolName_"+n+"_png";
 			}
@@ -240,6 +240,10 @@ module game {
 			for(let i=0; i<20; i++){
 				this.singleRoll(this["vagueTile"+i]);
 			}
+			for(let i=0; i<5; i++){
+				// this.singleRoll(this["vagueTile"+i]);
+				this.singleColumRoll(i);
+			}
 		}
 		/**单个模糊图标的滚动逻辑 */
 		private singleRoll(tile){
@@ -248,10 +252,29 @@ module game {
 			egret.Tween.get(tile, {loop:true})
 				.wait(20)
 				.call(()=>{
-					tile.y += 70;
+					tile.y += 52;
 					if(tile.y > 658){
 						tile.y -= 208*4;
 						tile.source = "vague"+Math.floor(Math.random()*13)+"_png";
+					}
+				})
+		}
+		/**单列模糊图标转动 */
+		private singleColumRoll(column){
+			for(let i=0; i<4; i++){
+				this["vagueTile"+(column*4+i)].visible = true;
+				this["vagueTile"+(column*4+i)].source = "vague"+Math.floor(Math.random()*13)+"_png";
+			}
+			egret.Tween.get(this["vagueTile"+(column*4)], {loop: true})
+				.wait(20)
+				.call(()=>{
+					for(let i=0; i<4; i++){
+						let tile = this["vagueTile"+(column*4+i)];
+						tile.y += 52;
+						if(tile.y > 658){
+							tile.y -= 208*4;
+							tile.source = "vague"+Math.floor(Math.random()*13)+"_png";
+						}
 					}
 				})
 		}
@@ -262,7 +285,7 @@ module game {
 			let is4Delay: boolean = is3Delay && arr.slice(6,9).indexOf("0")>-1;
 			let is5Delay: boolean = is4Delay && arr.slice(9,12).indexOf("0")>-1;
 			//处理wild图标的多样性
-			arr = arr.map( v => (v==2? "2_1" : (v+"")));
+			arr = arr.map( v => (v==1? "1_1" : (v+"")));
 			for(let i=0; i<5; i++){
 				if(i<2) await this.stopColumn(i, arr.slice(i*3,i*3+3));
 				else if(i==2) await this.stopColumn(i, arr.slice(i*3,i*3+3), is3Delay);
@@ -280,9 +303,9 @@ module game {
 			
 			return new Promise(async(resolve, reject)=>{
 				if(isFree) await this.freeEffect(column);
-
+				
+				egret.Tween.removeTweens(this["vagueTile"+(column*4)]);
 				[0,1,2,3].forEach(i=>{
-					egret.Tween.removeTweens(this["vagueTile"+(column+i)]);
 					this["vagueTile"+(column*4+i)].visible = false;
 					this["vagueTile"+(column*4+i)].y = 21+ i*208;
 				});
