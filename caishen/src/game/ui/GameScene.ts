@@ -14,8 +14,7 @@ module game {
 		private bgFree: eui.Image;
 		private kuang: eui.Image;
 		private kuangFree: eui.Image;
-		private title: eui.Image;
-		private titleFree: eui.Image;
+		private title: AMovieClip;
 		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
 		private freeCountTxt: eui.Label;
@@ -70,10 +69,20 @@ module game {
 			[this.border2, this.border3, this.border4, this.lineWinTxt].forEach(v=>{
 				v.visible = false;
 			})
+
+			let f = ()=>{
+				setTimeout(()=> {
+					this.title.loop = 1;
+					this.title.play();
+					this.title.once(AMovieClip.COMPLETE, f, this);
+				}, 5000);
+			}
+			f();
+
 			this.connectTip.visible = true;
 			this.tileGroup.mask = this.tileMask;
 			this.setState(GameState.BET);
-			FilterUtil.setLightFlowFilter(this["title"]);
+			// FilterUtil.setLightFlowFilter(this["title"]);
 
 			for(let i=0; i<15; i++){
 				let n = Math.floor(Math.random()*13)+"";
@@ -538,7 +547,7 @@ module game {
 		/**scatter图标动画 */
 		private showScatterLine(){
 			return Promise.all(
-				this.spinResp.payload.scatterGrid.map((value:number,column:number)=>{
+				this.spinResp.payload.getFeatureChance? this.spinResp.payload.scatterGrid.map((value:number,column:number)=>{
 					return new Promise((res, rej)=>{
 						this.lineWinTxt.visible = true;
 						this.lineWinTxt.text = this.spinResp.payload.scatterGold+"";
@@ -562,7 +571,7 @@ module game {
 							res();
 						}, this);
 					})
-				})
+				}):[]
 			)
 		}
 		/**展示本局获得免费机会 */
@@ -589,15 +598,16 @@ module game {
 		/**bonus图标动画 */
 		private showBonusLine(){
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
+			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
 			return Promise.all(
-				grids.map((value:number,column:number)=>{
+				gold>0 ? grids.map((value:number,column:number)=>{
 					return new Promise((res, rej)=>{
 						if(value == -1){
 							res();
 						}
 						else{
 							this.lineWinTxt.visible = true;
-							this.lineWinTxt.text = this.spinResp.payload.featureData.featureBonusData.gold+"";
+							this.lineWinTxt.text = gold+"";
 							let gridIndex = value+column*3;
 							console.log("展示bonus图标动画"+gridIndex);
 							let mc: AMovieClip = new AMovieClip();
@@ -619,7 +629,7 @@ module game {
 						}
 						
 					})
-				})
+				}):[]
 			)
 		}
 
@@ -698,8 +708,6 @@ module game {
 			this.bgFree.visible = b;
 			this.kuang.visible = !b;
 			this.kuangFree.visible = b;
-			this.title.visible = !b;
-			this.titleFree.visible = b;
 			this.freeCountBg.visible = b;
 			this.freeChooseCountBg.visible = b;
 			this.freeCountTxt.visible = b;
