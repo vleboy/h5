@@ -18,7 +18,7 @@ module game {
         public init(): void {
             this.visible = false;
         }
-        public bigWinStart(type: string, money: number): void {
+        public bigWinStart(type: string, money: number): number {
             this.visible = true;
             //元宝数和喷元宝的时间
             let num: number = 50, timer: number = 10;
@@ -30,12 +30,12 @@ module game {
                     sou = "BigWin_png";
                     break;
                 case "mega":
-                    num = 200;
+                    num = 100;
                     timer = 20;
                     sou = "MegaWin_png";
                     break;
                 case "super":
-                    num = 400;
+                    num = 200;
                     timer = 30;
                     sou = "SuperWin_png";
                     break;
@@ -45,6 +45,7 @@ module game {
             this.bigWinLight();
             this.winTxtAni(sou);
             SoundPlayer.playMusic("CaiShen_243_BigWin_mp3");
+            return timer;
         }
         /**喷元宝
          * @param timer 喷元宝时间
@@ -55,24 +56,23 @@ module game {
             let cfg = RES.getRes("particle_yuanbao_json");
             this.theParticle = new particle.GravityParticleSystem(texture, cfg);
             this.yuanbaoGroup.addChild(this.theParticle);
+            this.theParticle.maxParticles = num;
             this.theParticle.start();
 
-            let _helf = this;
-            let timeOut, interval;
+            let timeOut;
             timeOut && clearTimeout(timeOut);
-            interval && clearInterval(interval);
             timeOut = setTimeout(() => {
-                _helf.theParticle && _helf.theParticle.stop();
-                interval && clearInterval(interval);
-                _helf.visible = false;
+                this.theParticle && this.theParticle.stop();
+                this.visible = false;
+                this.theParticle.parent.removeChild(this.theParticle);
                 SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
             }, timer * 1000);
 
-            let particlesNum: number = 30;
-            interval = setInterval(() => {
-                particlesNum += Math.ceil((num - particlesNum) / (timer * 1000 / 500));
-                _helf.theParticle && (_helf.theParticle.maxParticles = particlesNum);
-            }, 200);
+            // let particlesNum: number = 30;
+            // interval = setInterval(() => {
+            //     particlesNum += Math.ceil((num - particlesNum) / (timer * 1000 / 500));
+            //     this.theParticle && (this.theParticle.maxParticles = 150);
+            // }, 200);
         }
         /**派彩*/
         private payOut(mon: number, timer: number): void {
