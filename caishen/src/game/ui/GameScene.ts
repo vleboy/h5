@@ -49,8 +49,6 @@ module game {
 		/**下次出免费 */
 		private nextFree:boolean = false;
 		
-		private bigWin:BigWin;
-
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "gameSceneSkin.exml";
@@ -112,17 +110,9 @@ module game {
 				this.topBar.setBalance(resp.payload.userBalance);
 				//数据恢复检查
 				this.checkDataRecover(resp);
-				this.bigWin.bigWinStart("super",400);
-
-				this.err.showErr("重连",()=>{
-					console.warn("cancel")
-				},()=>{
-					console.warn("srue")
-				})
 			});
 			this.setting.defaultOpen();
 		}
-		private err:ErrTip;
 		/**数据恢复 */
 		private checkDataRecover(resp: LoginVO){
 			if(resp.payload.featureData){
