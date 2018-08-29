@@ -1,6 +1,7 @@
 module game {
-	export class LoginVO {
+	export class LoginVO extends BaseVO{
 		public constructor() {
+			super();
 		}
 		public payload:{
 			betLevel: number;

@@ -113,18 +113,17 @@ module game {
 				NotifyConst.freeComplete
 			]);
 			
-			GameService.getInstance().login().then((resp: LoginVO)=>{
-				this.connectTip.visible = false;
-				this.balance = +resp.payload.userBalance;
-				this.betcfg = resp.payload.betcfg;
-				this.betLevel = resp.payload.betLevel;
-				this.multicfg = resp.payload.multicfg;
-				this.multiLevel = resp.payload.multiLevel;
+			this.connectTip.visible = false;
+			let loginVo = GameService.getInstance().loginVo;
+			this.balance = +loginVo.payload.userBalance;
+			this.betcfg = loginVo.payload.betcfg;
+			this.betLevel = loginVo.payload.betLevel;
+			this.multicfg = loginVo.payload.multicfg;
+			this.multiLevel = loginVo.payload.multiLevel;
 
-				this.topBar.setBalance(resp.payload.userBalance);
-				//数据恢复检查
-				this.checkDataRecover(resp);
-			});
+			this.topBar.setBalance(loginVo.payload.userBalance);
+			//数据恢复检查
+			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
 		}
 		/**数据恢复 */
@@ -359,7 +358,7 @@ module game {
 					let tile = this["tile"+(column*3+i)];
 					tile.visible = true;
 					tile.source = "symbolName_"+(arr[i])+"_png";
-					egret.Tween.get(tile).set({y:defaultY-100}).to({y:defaultY},500).call(()=>{
+					egret.Tween.get(tile).set({y:defaultY-100}).to({y:defaultY},200).call(()=>{
 						egret.Tween.removeTweens(tile);
 						if(i==2){
 							setTimeout( resolve, 250);

@@ -6,6 +6,7 @@ module game {
 		public static getInstance(){
 			return this._instance ? this._instance : (this._instance=new GameService());
 		}
+		public loginVo:LoginVO;
 		/**游戏初始数据 */
 		private token:string;
 		/**登录游戏 */
@@ -14,8 +15,15 @@ module game {
 				try{
 					window["isDebug"] && await DefaultUser.getInstance().login();
 					this.requestInitData().then((resp:LoginVO)=>{
+						this.loginVo = resp;
 						this.token = resp.payload.token;
-						resolve(resp);
+
+						if(resp.code == 0){
+							resolve(resp);
+						}
+						else{
+							reject();
+						}
 					});
 				}
 				catch(e){
