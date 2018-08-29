@@ -56,6 +56,8 @@ declare class bottomSkin extends eui.Skin{
 }
 declare class connectTipSkin extends eui.Skin{
 }
+declare class errSkin extends eui.Skin{
+}
 declare class freeChooseSkin extends eui.Skin{
 }
 declare class freeTotalWinSkin extends eui.Skin{
