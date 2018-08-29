@@ -401,6 +401,8 @@ module game {
 				}
 				else{
 					this.setState(GameState.BET);
+					this.spin();
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount-1);
 				}
 			}
 			else{
@@ -615,6 +617,11 @@ module game {
 			this.freeChooseCountTxt.visible = b;
 			this.setFreeCount();
 			this.setFreeChooseCount();
+			this.setState(GameState.BET);
+			if(b) {
+				this.spin();
+				this.bottomBar.setAutoBetNum(this.freeSpinRemainCount-1);
+			}
 		}
 		
 		private setFreeCount(){
