@@ -179,6 +179,7 @@ module game {
 		private touchCancelAuto(): void {
 			this.sendNotify(NotifyConst.cancelAutoSpin);
 			this.isAuto = false;
+			this.showAutoBtn(true);
 		}
 		/**是不是自动状态*/
 		private autoState(): void {
@@ -269,8 +270,8 @@ module game {
 		}
 		/**自动或免费下注次数*/
 		public setAutoBetNum(num: number): void {
-			this.isAuto = num > 0;
-			this.autoNum.text = num + "";
+			this.isAuto = num != 0;
+			this.autoNum.text = num > 0 ? (num + "") : "MAX";
 		}
 		/**
          * 资源释放
