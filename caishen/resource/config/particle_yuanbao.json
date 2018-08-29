@@ -13,7 +13,7 @@
 ,"startSizeVariance":5
 ,"gravity":{"x":0,"y":1200}
 ,"speedVariance":20
-,"maxParticles":30
+,"maxParticles":100
 ,"startAlphaVariance":0
 ,"blendFactorSource":"one"
 ,"startRedVariance":0
