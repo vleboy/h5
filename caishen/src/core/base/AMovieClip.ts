@@ -4,12 +4,14 @@ module game {
 		private imgs:Array<string> = [];
 		/**当前帧 */
 		private currentFrame: number = 0;
-		/**是否循环播放 默认true */
-		public loop:boolean = true;
+		/**是否循环播放 默认-1 循环 */
+		public loop:number = -1;
 		/**播放速度 值越大播放越慢 */
 		public speed: number = 5;
 		/**计数器 */
 		private _flag:number = 0;
+		/**结束事件 */
+		public static COMPLETE:string = "loopComplete";
 
 		public constructor() {
 			super();
@@ -45,15 +47,16 @@ module game {
 			this.currentFrame++;
 			if(this.currentFrame == this.imgs.length)
 			{
-				this.dispatchEventWith(egret.Event.COMPLETE);
-				if(this.loop)
+				this.loop--;
+				if(this.loop==0)
 				{
-					this.currentFrame = 0;
+					this.dispatchEventWith(AMovieClip.COMPLETE);
+					this.stop();
+					return;
 				}
 				else
 				{
-					this.stop();
-					return;
+					this.currentFrame = 0;
 				}
 			}
 			this.source = this.imgs[this.currentFrame];

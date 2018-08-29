@@ -50,6 +50,7 @@ class Main extends eui.UILayer {
         let assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+        this.mask = new egret.Rectangle(0,0,1920,1080);
 
 
         this.loadResource().then(()=>{
