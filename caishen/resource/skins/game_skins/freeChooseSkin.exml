@@ -7,4 +7,40 @@
 	<e:Image id="choose8" source="8_png" horizontalCenter="-350" name="choose8" y="502"/>
 	<e:Image id="choose5" source="5_png" horizontalCenter="350" name="choose5" y="502"/>
 	<e:Image source="freeChoose_png" y="1010" horizontalCenter="0"/>
+	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
+		<e:Image source="yuanbao_png" x="448.5" y="668"/>
+		<e:Image source="yuanbao_png" x="704" y="668"/>
+		<e:Image source="yuanbao_png" x="1054" y="754"/>
+		<e:Image source="yuanbao_png" x="227" y="668"/>
+		<e:Image source="yuanbao_png" x="-63.5" y="708"/>
+		<e:Image source="yuanbao_png" x="1374" y="708"/>
+		<e:Image source="yuanbao_png" x="1566" y="590"/>
+		<e:Image source="yuanbao_png" x="-151.5" y="515.5"/>
+		<e:Image source="yuanbao_png" x="98" y="452"/>
+		<e:Image source="yuanbao_png" x="406" y="412"/>
+		<e:Image source="yuanbao_png" x="756" y="452"/>
+		<e:Image source="yuanbao_png" x="1066" y="498"/>
+		<e:Image source="yuanbao_png" x="1362" y="412"/>
+		<e:Image source="yuanbao_png" x="1566" y="334"/>
+		<e:Image source="yuanbao_png" x="1566" y="120"/>
+		<e:Image source="yuanbao_png" x="1310" y="196"/>
+		<e:Image source="yuanbao_png" x="1002" y="196"/>
+		<e:Image source="yuanbao_png" x="798" y="284"/>
+		<e:Image source="yuanbao_png" x="448" y="196"/>
+		<e:Image source="yuanbao_png" x="104.5" y="242"/>
+		<e:Image source="yuanbao_png" x="-151.5" y="242"/>
+		<e:Image source="yuanbao_png" x="-106" y="78"/>
+		<e:Image source="yuanbao_png" x="244" y="78"/>
+		<e:Image source="yuanbao_png" x="483" y="-14"/>
+		<e:Image source="yuanbao_png" x="850" y="28"/>
+		<e:Image source="yuanbao_png" x="1106" y="-14"/>
+		<e:Image source="yuanbao_png" x="1322" y="-118"/>
+		<e:Image source="yuanbao_png" x="1618" y="-136"/>
+		<e:Image source="yuanbao_png" x="918" y="-178"/>
+		<e:Image source="yuanbao_png" x="616.5" y="-178"/>
+		<e:Image source="yuanbao_png" x="338" y="-178"/>
+		<e:Image source="yuanbao_png" x="-106" y="-136"/>
+		<e:Image source="yuanbao_png" x="34" y="-228"/>
+		<e:Image source="yuanbao_png" x="1182" y="-316"/>
+	</e:Group>
 </e:Skin>
