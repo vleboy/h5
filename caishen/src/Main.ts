@@ -50,16 +50,12 @@ class Main extends eui.UILayer {
         let assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
-        this.mask = new egret.Rectangle(0,0,1920,1080);
+
+        game.StageUtil.stage = this.stage;
+        this.stage.mask = new egret.Rectangle(0,0,1920,1080);
 
 
-        this.loadResource().then(()=>{
-            this.createGameScene();
-        })
-        .catch(e => {
-            console.log(e);
-        })
-
+        this.loadResource();
         
         // this.stage.addEventListener(egret.Event.RESIZE, this.resize, this);
         // this.resize();
@@ -83,8 +79,17 @@ class Main extends eui.UILayer {
             await loadingView.createView();
             await RES.loadConfig("resource/default.res.json", "resource/");
             await this.loadTheme();
-            await RES.loadGroup("preload", 0, loadingView);
-            this.stage.removeChild(loadingView);
+
+            Promise.all([
+                game.GameService.getInstance().login(),
+                RES.loadGroup("preload", 0, loadingView)
+            ]).then(()=>{
+                this.stage.removeChild(loadingView);
+                this.createGameScene();
+            }).catch(()=>{
+                console.log("用户初始化失败");
+                this.stage.addChild(new game.ErrTip("没连上，刷新一下", ()=>{location.reload();}, this));
+            })
         }
         catch (e) {
             console.error(e);
@@ -100,6 +105,7 @@ class Main extends eui.UILayer {
         })
     }
 
+    private loginSuccess:boolean;
     private gameScene: game.GameScene;
     /**
      * 创建场景界面
