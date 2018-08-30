@@ -78,14 +78,14 @@ module game {
 				this.sendNotify(NotifyConst.spin);
 				this.imgSpin();
 				this.setWinMoney(0.00);
-				if (this.groupAutoNum) this.showTween(this.groupAutoNum, -400, () => { this.groupAutoNum.visible = false; });
-				if (this.groupBet) this.showTween(this.groupBet, -100, () => { this.groupBet.visible = false; });
+				this.hideCutGroup(true);
 			}, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => {
 				// let theBet: number = this.theBetArr[this.theBetIndex];
 				let theBet: number = 0.02;
 				this.sendNotify(NotifyConst.openHelp, theBet);
+				this.hideCutGroup();
 			}, this);
 			["max", "100", "50", "20", "10"].forEach(v => {
 				this.registerEvent(this["btn_" + v] as eui.Button, egret.TouchEvent.TOUCH_TAP, this.touchAutoNum, this);
@@ -96,6 +96,7 @@ module game {
 			this.registerEvent(this.BtnLess, egret.TouchEvent.TOUCH_TAP, this.reduceBetLevel, this);
 			this.registerEvent(this.BtnMore, egret.TouchEvent.TOUCH_TAP, this.addBetLevel, this);
 			this.registerEvent(this.BtnMax, egret.TouchEvent.TOUCH_TAP, this.maxBetLevel, this);
+			
 		}
 		/**某Group显示隐藏动画*/
 		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
@@ -123,6 +124,7 @@ module game {
 		/**点击单注*/
 		private chooseBetLevel(): void {
 			let betShow = () => {
+				this.hideCutGroup();
 				this.groupBet.visible = true;
 				this.showTween(this.groupBet, 126, () => {
 					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
@@ -169,11 +171,23 @@ module game {
 					SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 				});
 			} else {
+				this.hideCutGroup();
 				this.groupAutoNum.visible = true;
 				this.showTween(this.groupAutoNum, 107, () => {
 					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 				});
 			}
+		}
+		/**隐藏切入框*/
+		public hideCutGroup(isSound:boolean = false): void {
+			if (this.groupBet.visible) this.showTween(this.groupBet, -100, () => { 
+				this.groupBet.visible = false; 
+				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+			});
+			if (this.groupAutoNum.visible) this.showTween(this.groupAutoNum, -400, () => { 
+				this.groupAutoNum.visible = false; 
+				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+			});
 		}
 		/**取消自动转动*/
 		private touchCancelAuto(): void {
@@ -229,7 +243,7 @@ module game {
 		}
 		/**赢得钱*/
 		public setWinMoney(mon: number): void {
-			if(!mon) return;
+			if (!mon) return;
 			this.winTxt.text = mon + "";
 			this.payOutAni(mon);
 		}
@@ -251,12 +265,12 @@ module game {
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
-					this.winTxt.text = "0";
 				case GameState.SHOW_SINGLE_LINES:
 					betAutoState();
 					spinBtnShow();
 					break;
 				case GameState.SPINNING:
+					this.winTxt.text = "0";
 				case GameState.SHOW_RESULT:
 					betAutoState(false);
 					spinBtnShow(true, false);

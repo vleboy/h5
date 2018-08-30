@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="settingSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="bgSetting" source="mengban_png" left="0" right="0" top="0" bottom="0" scale9Grid="7,5,42,34"/>
+	<e:Rect id="bgSetting" left="0" right="0" top="0" bottom="0" alpha="0.65"/>
 	<e:Group id="groupSetting" width="1244" height="764" verticalCenter="0" horizontalCenter="0" anchorOffsetX="622" anchorOffsetY="382">
 		<e:Image source="biaoti_png" left="0" top="0" width="225" height="69" scale9Grid="12,25,45,26"/>
 		<e:Label text="设置" size="32" height="44" verticalAlign="middle" textAlign="center" top="12" width="195" left="0" textColor="0xaba3a2"/>

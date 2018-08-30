@@ -101,6 +101,10 @@ module game {
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
 			}, this);
+			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => { 
+				this.bottomBar.hideCutGroup(true);
+			}, this);
+
 		}
 		/**初始化数据 */
 		private initData() {
@@ -477,7 +481,7 @@ module game {
 				if (level == "normal" || level == "middle") {
 					resolve();
 				} else {
-					this.bigWin.bigWinStart(level, win).then(()=>resolve());
+					this.bigWin.bigWinStart(level, win).then(() => resolve());
 				}
 			})
 		}
