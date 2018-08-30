@@ -41,7 +41,7 @@ module game {
                     break;
             }
             SoundPlayer.playMusic("CaiShen_243_BigWin_mp3");
-            return Promise.all([this.yuanbao(timer, num),this.payOut(money, timer),this.bigWinLight(),this.winTxtAni(sou)])
+            return Promise.all([this.yuanbao(timer, num),this.payOut(money, timer),this.bigWinLight(),this.winTxtAni(sou)]);
         }
         /**喷元宝
          * @param timer 喷元宝时间
