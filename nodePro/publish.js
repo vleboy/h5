@@ -20,16 +20,29 @@ process.argv.forEach((val, index, array) =>{
             break;
     }
 });
+/**记录每步操作时间 */
+var time = new Date().getTime();
+var logTime = (str)=>{
+    console.log(str+" "+(new Date().getTime()-time))/1000+"s";
+    time = new Date().getTime();
+}
+
+var changeFile = new Promise((resolve, reject)=>{
+    var data = fs.readFileSync("../"+proName+"/bin-release/web/na/index.html", 'utf8');
+    data.replace("var isDebug = true", "var isDebug = false");
+    fs.writeFileSync("../"+proName+"/bin-release/web/na/index.html", data);
+    resolve();
+})
 
 (async ()=>{
-    var t = new Date().getTime();
-    console.log("开始egret发版");
+    console.log("脚本开始执行");
     await exec("egret publish --version na", {cwd:"../"+proName, encoding:"utf8"});
-    console.log("egret发版完成，耗时"+(new Date().getTime()-t)/1000+"s");
-    t = new Date().getTime();
-    console.log("开始压缩图片");
+    logTime("egret发版完成，耗时");
     await compress("../"+proName+"/bin-release/web/na/resource/res", "../"+proName+"/bin-release/web/na/resource/img");
-    console.log("图片压缩完成，耗时"+(new Date().getTime()-t)/1000+"s");
+    logTime("图片压缩完成，耗时");
+    await changeFile();
+    logTime("文件修改完成，耗时");
+
     console.log("发版结束，文件目录 "+"../"+proName+"/bin-release/web/na/");
 })();
 
