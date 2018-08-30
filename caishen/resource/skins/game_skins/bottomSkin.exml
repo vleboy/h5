@@ -72,7 +72,7 @@
 			</e:skinName>
 		</e:Button>
 	</e:Group>
-	<e:Group id="groupBtm" width="1920" height="220" left="0" bottom="0" touchThrough="true">
+	<e:Group id="groupBtm" name="groupBtm" width="1920" height="220" left="0" bottom="0" touchThrough="true">
 		<e:Image x="0" bottom="0" height="120" width="792" scaleY="-1" source="BG_Left_png" y="220" scaleX="1"/>
 		<e:Image id="winBg" source="BG_Middle_png" height="140" width="408" horizontalCenter="0" bottom="0" x="756" y="80" scaleX="1" scaleY="1"/>
 		<e:Image source="BG_Right_png" bottom="0" right="0" width="794" height="120" x="1126" y="100" scaleX="1" scaleY="1"/>
