@@ -39,7 +39,14 @@ module game {
 				HttpUtil.sendRequest("POST",  
 					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/authuser', 
 					'{"GameUserID":'+GlobalConfig.gameUserID+',"VerifyCode":'+GlobalConfig.verifyCode+'}')
-				.then(resolve)
+				.then((resp:LoginVO)=>{
+					if(resp.code == 0){
+						resolve(resp);
+					}
+					else{
+						reject();
+					}
+				})
 				.catch(reject);
 			})
 		}
