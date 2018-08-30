@@ -250,6 +250,7 @@ module game {
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
+					this.winTxt.text = "0";
 				case GameState.SHOW_SINGLE_LINES:
 					betAutoState();
 					spinBtnShow();
