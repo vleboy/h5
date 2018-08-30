@@ -65,11 +65,6 @@ module game {
                     SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
                     res();
                 }, timer * 1000);
-                // let particlesNum: number = 30;
-                // interval = setInterval(() => {
-                //     particlesNum += Math.ceil((num - particlesNum) / (timer * 1000 / 500));
-                //     this.theParticle && (this.theParticle.maxParticles = 150);
-                // }, 200);
             });
         }
         /**派彩*/

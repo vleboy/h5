@@ -11,10 +11,10 @@ module game {
 		private btnMusic: eui.ToggleSwitch;
 		/**音效按钮*/
 		private btnEffect: eui.ToggleSwitch;
-		/**极速模式按钮*/
+		/**快速模式按钮*/
 		private btnFast: eui.ToggleSwitch;
 		/**背景*/
-		private bgSetting: eui.Image;
+		private bgSetting: eui.Rect;
 		/**设置框*/
 		private groupSetting: eui.Group;
 
