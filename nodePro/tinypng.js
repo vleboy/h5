@@ -37,7 +37,6 @@ exports.compress = function(srcUrl){
             })
         )
         .then(()=>{
-            console.log("压缩结束")
             deleteAll(srcUrl);
             fs.renameSync(copyUrl, srcUrl);
             resolve();
