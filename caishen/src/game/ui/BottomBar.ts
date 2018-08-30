@@ -229,6 +229,7 @@ module game {
 		}
 		/**赢得钱*/
 		public setWinMoney(mon: number): void {
+			if(!mon) return;
 			this.winTxt.text = mon + "";
 			this.payOutAni(mon);
 		}
@@ -250,6 +251,7 @@ module game {
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
+					this.winTxt.text = "0";
 				case GameState.SHOW_SINGLE_LINES:
 					betAutoState();
 					spinBtnShow();
