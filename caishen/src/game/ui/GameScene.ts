@@ -124,6 +124,7 @@ module game {
 			this.multiLevel = loginVo.payload.multiLevel;
 
 			this.topBar.setBalance(loginVo.payload.userBalance);
+			this.bottomBar.setBetData(this.betcfg, this.betLevel, this.multicfg[this.multiLevel]);
 			//数据恢复检查
 			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
@@ -489,6 +490,8 @@ module game {
 					value != -1 && grids.indexOf(gridIndex) == -1 && grids.push(gridIndex);
 				});
 			})
+
+			this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
 
 			return Promise.all(
 				grids.map((v) => {
