@@ -14,7 +14,7 @@ module game {
 		/**开发模式下默认账号的join名称 */
 		public static defaultUserNameJoin: string = (GlobalConfig.testUser==1) ? "BZB_sj04": "BZB_sj05";
 		/**auth接口的默认地址 */
-		public static host:string = "https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/authuser";
+		public static host:string = "https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001";
 		
 		/**skin路径*/
 		public static skinPath: string = "resource/skins/game_skins/";

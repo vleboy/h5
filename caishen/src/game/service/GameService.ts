@@ -38,7 +38,7 @@ module game {
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest(
 					"POST",   
-					GlobalConfig.host,  
+					GlobalConfig.host+"/authuser",  
 					'{"GameUserID":'+GlobalConfig.gameUserID+',"VerifyCode":'+GlobalConfig.verifyCode+'}'
 				)
 				.then((resp:LoginVO)=>{
@@ -56,7 +56,7 @@ module game {
 		public sendSpin(betLevel:number, hotkey?: string){
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
-					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/spin'+(hotkey?("?hotkey="+hotkey):""), 
+					GlobalConfig.host+'/spin'+(hotkey?("?hotkey="+hotkey):""), 
 					'{"betLevel":'+betLevel+',"multiLevel":0}',
 					{Authorization: 'Bearer ' + this.token})
 				.then(resolve)
@@ -67,7 +67,7 @@ module game {
 		public sendFreeChoose(n:number){
 			return new Promise((resolve, reject)=>{
 				HttpUtil.sendRequest("POST",  
-					'https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001/choosebuff',
+					GlobalConfig.host+'/choosebuff',
 					'{"buff":'+n+'}',
 					{Authorization: 'Bearer ' + this.token})
 				.then(resolve)
