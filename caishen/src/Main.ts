@@ -53,6 +53,9 @@ class Main extends eui.UILayer {
 
         game.StageUtil.stage = this.stage;
         this.stage.mask = new egret.Rectangle(0,0,1920,1080);
+        if(window["urlParams"].game_host) game.GlobalConfig.host = decodeURIComponent(window["urlParams"].game_host);
+        if(window["urlParams"].game_user_id) game.GlobalConfig.gameUserID = window["urlParams"].game_user_id;
+        if(window["urlParams"].verify_code) game.GlobalConfig.verifyCode = window["urlParams"].verify_code;
 
 
         this.loadResource();
