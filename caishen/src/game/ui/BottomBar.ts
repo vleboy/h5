@@ -82,9 +82,7 @@ module game {
 			}, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => {
-				// let theBet: number = this.theBetArr[this.theBetIndex];
-				let theBet: number = 0.02;
-				this.sendNotify(NotifyConst.openHelp, theBet);
+				this.sendNotify(NotifyConst.openHelp, this.theBetArr[this.theBetIndex]);
 				this.hideCutGroup();
 			}, this);
 			["max", "100", "50", "20", "10"].forEach(v => {
