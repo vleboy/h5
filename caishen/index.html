@@ -36,6 +36,13 @@
     </div>
 <script>
     var isDebug = true;
+    var urlParams = {};
+    var paramStr = location.href.slice(location.href.indexOf("?")+1).split("&");
+    for(var i=0; i<paramStr.length; i++){
+        var data = paramStr[i].split("=")
+        urlParams[data[0]] = data[1];
+    }
+    
     var loadScript = function (list, callback) {
         var loaded = 0;
         var loadNext = function () {
