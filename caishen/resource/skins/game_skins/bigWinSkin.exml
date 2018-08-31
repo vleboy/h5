@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="bigWinSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Group id="bgGroup" width="1920" height="1080" verticalCenter="0" horizontalCenter="0">
-		<game:AMovieClip id="light" source="bigwinLight1_png" verticalCenter="0" horizontalCenter="0"/>
+		<game:AMovieClip id="light" source="bigwinLight1_png" verticalCenter="0" horizontalCenter="0" width="1920" height="960"/>
 	</e:Group>
 	<e:Group id="yuanbaoGroup" width="1920" height="1080" verticalCenter="0" horizontalCenter="0" locked="true"/>
 	<e:Group id="payoutGroup" width="1920" height="1080" verticalCenter="0" horizontalCenter="0" x="10" y="10">
