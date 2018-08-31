@@ -26,13 +26,13 @@ module game {
 		public static fastSwitch: boolean = true;
 
 		public static txtAddZero(txt:string){
-				let strArr: string[] = txt.split(".");
-				if (strArr.length > 1) {
-					if (strArr[1].length == 1) txt += "0";
-				} else {
-					txt += ".00";
-				}
-				return txt;
+			let strArr: string[] = txt.split(".");
+			if (strArr.length > 1) {
+				if (strArr[1].length == 1) txt += "0";
+			} else {
+				txt += ".00";
+			}
+			return txt;
 		}
 	}
 }
