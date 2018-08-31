@@ -33,6 +33,17 @@ var changeFile = ()=>{
     var data = fs.readFileSync("../"+proName+"/bin-release/web/"+proName+"/index.html", 'utf8');
     data.replace("var isDebug = true", "var isDebug = false");
     fs.writeFileSync("../"+proName+"/bin-release/web/"+proName+"/index.html", data);
+
+    var pa = fs.readdirSync("../"+proName+"/bin-release/web/"+proName+"/js");
+    pa.forEach((v, i)=>{
+        if(v.indexOf("default.thm")==0){
+            var file = fs.readFileSync("../"+proName+"/bin-release/web/"+proName+"/js/"+v, 'utf8');
+            while(file.indexOf("100%")>0){
+                file = file.replace("100%", "100");
+            }
+            fs.writeFileSync("../"+proName+"/bin-release/web/"+proName+"/js/"+v, file);
+        }
+    })
 }
 
 (async ()=>{
@@ -44,7 +55,7 @@ var changeFile = ()=>{
     console.log("脚本开始执行");
     await exec("egret publish --version "+proName, {cwd:"../"+proName, encoding:"utf8"});
     logTime("egret发版完成，耗时");
-    await compress("../"+proName+"/bin-release/web/"+proName+"/resource/res");
+    await compress("../"+proName+"/bin-release/web/"+proName+"/resource/img");
     logTime("图片压缩完成，耗时");
     changeFile();
     logTime("文件修改完成，耗时");
