@@ -8,7 +8,7 @@
 		<e:Image source="hx_png" verticalCenter="0" left="0" x="0" y="46" scaleX="1" scaleY="1"/>
 		<e:Image source="j_png" bottom="3" left="15" x="15" y="49" scaleX="1" scaleY="1"/>
 		<e:Label id="userName" text="游客12454" textColor="0xebebeb" scaleX="1" scaleY="1" right="55" size="30" textAlign="right" verticalAlign="middle" top="7"/>
-		<e:Label id="userMoney" text="888.888.88" textColor="0xffd75e" size="26" textAlign="right" verticalAlign="middle" scaleX="1" scaleY="1" right="50" bottom="12"/>
+		<e:Label id="userMoney" text="888.888.88" textColor="0xffd75e" size="26" textAlign="right" verticalAlign="middle" scaleX="1" scaleY="1" right="50" bottom="12" height="26" width="230" anchorOffsetX="115" anchorOffsetY="13"/>
 	</e:Group>
 	<e:Group id="groupRight" width="150" height="95" verticalCenter="0" right="0">
 		<e:Image source="di_png" width="150" height="95" right="0" top="0" scale9Grid="68,23,73,35" x="0" y="0" scaleX="1" scaleY="1"/>
