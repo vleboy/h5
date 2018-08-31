@@ -7,10 +7,10 @@ class LoadingUI extends eui.Component {
 	private interval;
 	public createView() {
 		let urlArr = [
-			{ url: "resource/res/load/loading.jpg", texture: null },
-			{ url: "resource/res/load/bar2.png", texture: null },
-			{ url: "resource/res/load/bar1.png", texture: null },
-			{ url: "resource/res/load/light.png", texture: null }
+			{ url: "resource/img/load/loading.jpg", texture: null },
+			{ url: "resource/img/load/bar2.png", texture: null },
+			{ url: "resource/img/load/bar1.png", texture: null },
+			{ url: "resource/img/load/light.png", texture: null }
 		];
 		let promiseArr = [];
 		urlArr.forEach(v => {
