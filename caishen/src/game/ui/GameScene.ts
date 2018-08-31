@@ -212,18 +212,8 @@ module game {
 				console.log("余额不足");
 				return;
 			}
-			let mon: number = this.betcfg[this.betLevel] * this.multicfg[this.multiLevel];
-			let change = () => {
-				let txt:string = "" + (+this.theBalance - mon);
-				let strArr: string[] = txt.split(".");
-				if (strArr.length > 1) {
-					if (strArr[1].length == 1) txt += "0";
-				} else {
-					txt += ".00";
-				}
-				return txt;
-			}
-			this.topBar.setBalance(change());
+			let txt:string = "" + (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]);
+			this.topBar.setBalance(GlobalConfig.txtAddZero(txt));
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -281,8 +271,9 @@ module game {
 				this.setFreeChooseCount();
 			}
 			this.stopRoll(resp.payload.viewGrid).then(() => {
-				this.topBar.setBalance(resp.payload.userBalance);
-				this.theBalance = resp.payload.userBalance;
+				let balance:string = resp.payload.userBalance;
+				this.topBar.setBalance(balance,resp.payload.totalGold);
+				this.theBalance = balance;
 			});
 			this.setState(GameState.STOP);
 		}
