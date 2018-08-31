@@ -51,6 +51,7 @@ module game {
 		/**自动次数 */
 		private autoCount: number;
 		private autoMax: boolean;
+		private theBalance: string;
 
 		public constructor() {
 			super();
@@ -101,7 +102,7 @@ module game {
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
 			}, this);
-			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => { 
+			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
 			}, this);
 
@@ -128,6 +129,7 @@ module game {
 			this.multiLevel = loginVo.payload.multiLevel;
 
 			this.topBar.setBalance(loginVo.payload.userBalance);
+			this.theBalance = loginVo.payload.userBalance;
 			this.bottomBar.setBetData(this.betcfg, this.betLevel, this.multicfg[this.multiLevel]);
 			//数据恢复检查
 			this.checkDataRecover(loginVo);
@@ -210,6 +212,18 @@ module game {
 				console.log("余额不足");
 				return;
 			}
+			let mon: number = this.betcfg[this.betLevel] * this.multicfg[this.multiLevel];
+			let change = () => {
+				let txt:string = "" + (+this.theBalance - mon);
+				let strArr: string[] = txt.split(".");
+				if (strArr.length > 1) {
+					if (strArr[1].length == 1) txt += "0";
+				} else {
+					txt += ".00";
+				}
+				return txt;
+			}
+			this.topBar.setBalance(change());
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -266,7 +280,10 @@ module game {
 				this.setFreeCount();
 				this.setFreeChooseCount();
 			}
-			this.stopRoll(resp.payload.viewGrid);
+			this.stopRoll(resp.payload.viewGrid).then(() => {
+				this.topBar.setBalance(resp.payload.userBalance);
+				this.theBalance = resp.payload.userBalance;
+			});
 			this.setState(GameState.STOP);
 		}
 
