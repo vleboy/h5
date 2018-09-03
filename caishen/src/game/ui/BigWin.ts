@@ -15,6 +15,9 @@ module game {
         private theParticle: particle.GravityParticleSystem;
         private win: number = 0;
         private num: number = 0;
+
+        private winChannel: egret.SoundChannel;
+
         public init(): void {
             this.visible = false;
         }
@@ -36,10 +39,12 @@ module game {
                     timer = 30;
                     break;
             }
-            SoundPlayer.playMusic("CaiShen_243_BigWin_mp3");
+            this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
             this.win = 0;
             this.num = 0;
-            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.bigWinLight(), this.winTxtAni(type, num)]);
+            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.bigWinLight(), this.winTxtAni(type, num)]).then(()=>{
+                if(this.winChannel) this.winChannel.stop();
+            });
         }
         /**喷元宝
          * @param timer 喷元宝时间
@@ -59,7 +64,6 @@ module game {
                     this.theParticle && this.theParticle.stop();
                     this.visible = false;
                     this.theParticle.parent.removeChild(this.theParticle);
-                    SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
                     res();
                 }, timer * 1000);
             });
@@ -79,7 +83,7 @@ module game {
                             .call(() => {
                                 egret.Tween.removeTweens(this.payout);
                                 this.fireworks();
-                                SoundPlayer.playMusic("CaiShen_243_BigWinOver_mp3");
+                                SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
                                 res();
                             });
                     });

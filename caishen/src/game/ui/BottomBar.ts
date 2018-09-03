@@ -77,7 +77,8 @@ module game {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
 				if (this.isAuto) {
 					this.sendNotify(NotifyConst.cancelSpin);
-				} else {
+				}else{
+					SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
 					this.setWinMoney(0.00);
