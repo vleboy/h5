@@ -23,6 +23,7 @@ module game {
 			this.visible = false;
 			this.bgSetting.visible = false;
 			this.eventListen();
+			this.btnFast.currentState = "down";
 		}
 		/**事件监听*/
 		private eventListen(): void {
