@@ -89,8 +89,8 @@ class Main extends eui.UILayer {
             ]).then(()=>{
                 this.stage.removeChild(loadingView);
                 this.createGameScene();
-            }).catch(()=>{
-                console.log("用户初始化失败");
+            }).catch((e)=>{
+                console.log("用户初始化失败",e);
                 this.stage.addChild(new game.ErrTip("没连上，刷新一下", ()=>{location.reload();}, this));
             })
         }

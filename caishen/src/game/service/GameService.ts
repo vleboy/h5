@@ -22,12 +22,12 @@ module game {
 							resolve(resp);
 						}
 						else{
-							reject();
+							reject("auth code err");
 						}
 					});
 				}
 				catch(e){
-					reject();
+					reject(e);
 				}
 				
 			});
@@ -46,7 +46,7 @@ module game {
 						resolve(resp);
 					}
 					else{
-						reject();
+						reject("auth err");
 					}
 				})
 				.catch(reject);
