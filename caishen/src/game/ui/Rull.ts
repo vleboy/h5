@@ -29,7 +29,7 @@ module game {
 		public rullShow(theBet: number, isShow: boolean = false): void {
 			this.visible = isShow;
 			if (isShow) {
-				this.btnState(0);
+				this.btnState(0, false);
 				this.setOdds(theBet);
 				SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			}
@@ -38,7 +38,7 @@ module game {
 		private defaultData(): void {
 			this.pageArr = [0, 1, 2, 3, 4, 5];
 			this.startX = 0;
-			this.dragDistance = 400;
+			this.dragDistance = 500;
 			this.oddsArr = [
 				[800, 100, 50],
 				[800, 100, 35],
@@ -89,21 +89,28 @@ module game {
 		/**点击按钮到当前页*/
 		private toThePage(e: egret.TouchEvent): void {
 			let tou: string = e.target.name.split("_")[1];
-			this.btnState(+tou, true);
+			this.btnState(+tou);
 		}
 		/**按钮状态*/
-		private btnState(num: number, isTou?: boolean): void {
+		private btnState(num: number, isAni: boolean = true, callBack?: Function): void {
 			this.pageArr.forEach(v => { (this["btnRull" + v] as eui.Button).currentState = "up"; });
 			(this["btnRull" + num] as eui.Button).currentState = "down";
-			if(isTou){
+			let move: number = -(num * 1726) + 97;
+			isAni ? this.moveAni(move).then(() => {
+				callBack && callBack.call(this);
+			}) : this.groupRull.left = move;
+		}
+		/**滑动动画*/
+		private moveAni(move: number) {
+			return new Promise((res, rej) => {
+				egret.Tween.removeTweens(this.groupRull);
 				egret.Tween.get(this.groupRull)
-					.to({ left: -(num * 1726) + 97 },300)
-					.call(()=>{
+					.to({ left: move }, 500)
+					.call(() => {
 						egret.Tween.removeTweens(this.groupRull);
+						res();
 					});
-			}else{
-				this.groupRull.left = -(num * 1726) + 97;
-			}
+			})
 		}
 		/**手指滑动*/
 		private onMove(e: egret.TouchEvent): void {
@@ -117,17 +124,16 @@ module game {
 					break;
 				case egret.TouchEvent.TOUCH_END://翻页或回弹
 					if (this.groupRull.left > 97 || this.groupRull.left < -8533) {
-						this.groupRull.left = this.rullX;
+						this.moveAni(this.rullX).then(() => this.rullX = this.groupRull.left);
 					} else {
 						let moveX: number = this.groupRull.left - this.rullX;
 						let pageDistance: number = moveX >= 0 ? 1726 : -1726;
-						this.groupRull.left = Math.abs(moveX) >= this.dragDistance ? this.rullX + pageDistance : this.rullX;
-						this.btnState(Math.abs((this.groupRull.left - 97) / 1726));
+						let theLeft: number = Math.abs(moveX) < this.dragDistance ? this.rullX : this.rullX + pageDistance;
+						this.btnState(Math.abs((theLeft - 97) / 1726), true, () => this.rullX = this.groupRull.left);
 					}
-					this.rullX = this.groupRull.left;
 					break;
 				case egret.TouchEvent.TOUCH_RELEASE_OUTSIDE:
-					this.groupRull.left = this.rullX;
+					this.moveAni(this.rullX);
 					break;
 			}
 		}
