@@ -38,7 +38,8 @@ module game {
 			this.bgSetting.visible = true;
 			this.defaultUI(true);
 			egret.Tween.get(this.groupSetting)
-				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 300)
+				.to({ scaleX: 1.1, scaleY: 1.1, alpha: 1 }, 250)
+				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 50)
 				.call(() => {
 					egret.Tween.removeTweens(this.groupSetting);
 					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
@@ -48,7 +49,8 @@ module game {
 		private settingClose(): void {
 			this.bgSetting.visible = false;
 			egret.Tween.get(this.groupSetting)
-				.to({ scaleX: 0.3, scaleY: 0.3, alpha: 0 }, 300)
+				.to({ scaleX: 1.1, scaleY: 1.1, alpha: 1 }, 50)
+				.to({ scaleX: 0.3, scaleY: 0.3, alpha: 0 }, 250)
 				.call(() => {
 					this.defaultUI(false);
 					this.visible = false;
