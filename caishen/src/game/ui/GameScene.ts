@@ -128,6 +128,7 @@ module game {
 			this.multicfg = loginVo.payload.multicfg;
 			this.multiLevel = loginVo.payload.multiLevel;
 
+			this.topBar.setUser(loginVo.payload.nickname);
 			this.topBar.setBalance(loginVo.payload.userBalance);
 			this.theBalance = loginVo.payload.userBalance;
 			this.bottomBar.setBetData(this.betcfg, this.betLevel, this.multicfg[this.multiLevel]);
