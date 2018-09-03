@@ -19,15 +19,18 @@ module game {
             }
         }
         /**播放某一个音效*/
-        public static playEffect(name: string) {
+        public static playEffect(name: string, count:number=1) :egret.SoundChannel{
+            console.log("playeffect "+name);
+            
             if (GlobalConfig.effectSwitch) {
-                let channel: egret.SoundChannel = RES.getRes(name).play(0, 1);
+                let channel: egret.SoundChannel = RES.getRes(name).play(0, count);
                 this.effectArr.push(channel);
                 channel.addEventListener(egret.Event.SOUND_COMPLETE, () => {
                     let newArr: egret.SoundChannel[] = [];
                     this.effectArr.forEach(v => { !v["isStopped"] && newArr.push(v); });
                     this.effectArr = newArr;
                 }, this);
+                return channel;
             }
 
         }

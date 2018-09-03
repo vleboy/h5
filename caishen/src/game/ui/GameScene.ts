@@ -52,6 +52,7 @@ module game {
 		private autoCount: number;
 		private autoMax: boolean;
 		private theBalance: string;
+		private rollChannel: egret.SoundChannel;
 
 		public constructor() {
 			super();
@@ -117,7 +118,8 @@ module game {
 				NotifyConst.cancelAutoSpin,
 				NotifyConst.betLevelIndex,
 				NotifyConst.chooseFreeBack,
-				NotifyConst.freeComplete
+				NotifyConst.freeComplete,
+				NotifyConst.updateBgm
 			]);
 
 			this.connectTip.visible = false;
@@ -135,7 +137,6 @@ module game {
 			//数据恢复检查
 			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
-
 		}
 		/**数据恢复 */
 		private checkDataRecover(resp: LoginVO) {
@@ -203,6 +204,23 @@ module game {
 				case NotifyConst.freeComplete:
 					this.freeComplete();
 					break;
+				case NotifyConst.updateBgm:
+					this.updateBgm();
+					break;
+			}
+		}
+		/**更新背景音乐 */
+		private updateBgm(){
+			if(this.isFree){
+				SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+			}
+			else{
+				if(this.freeChoose.visible){
+					SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+				}
+				else{
+					SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+				}
 			}
 		}
 		/**控制游戏状态 */
@@ -248,6 +266,7 @@ module game {
 			this.nextBonus = false;
 			this.setState(GameState.SPINNING);
 		}
+
 		/**收到spin结果 ，把-1的图标筛选掉*/
 		private spinBack(resp: SpinVO) {
 			resp.payload.winGrid.length > 0 && resp.payload.winGrid.forEach((v, i) => {
@@ -299,6 +318,8 @@ module game {
 		}
 		/**开始滚动 */
 		private startSpin() {
+			this.rollChannel = SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
+
 			for (let i = 0; i < 15; i++) {
 				this["tile" + i].visible = false;
 			}
@@ -345,6 +366,7 @@ module game {
 		}
 		/**停下来 */
 		private async stopRoll(arr: any[]) {
+			if(this.rollChannel) this.rollChannel.stop();
 			// 3 4 5列是否缓停
 			let is3Delay: boolean = (arr.slice(0, 3).indexOf("0") > -1 && arr.slice(3, 6).indexOf("0") > -1);
 			let is4Delay: boolean = is3Delay && arr.slice(6, 9).indexOf("0") > -1;
@@ -362,8 +384,6 @@ module game {
 		}
 		/**单列停下来 */
 		private stopColumn(column, arr: any[], isFree: boolean = false) {
-			console.log("stopColumn " + column);
-
 			return new Promise(async (resolve, reject) => {
 				if (isFree) await this.freeEffect(column);
 
@@ -373,7 +393,10 @@ module game {
 					this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
 				});
 
+				let haveScatterThisColumn = false;
 				[0, 1, 2].forEach(i => {
+					if(arr[i]=="0") haveScatterThisColumn=true;
+
 					let defaultY = this["tile" + (column * 3 + i)].y;
 					let tile = this["tile" + (column * 3 + i)];
 					tile.visible = true;
@@ -383,12 +406,14 @@ module game {
 						resolve();
 					});
 				})
-
+				if(haveScatterThisColumn) SoundPlayer.playEffect("CaiShen_243_Scatter_"+(column+1)+"_mp3");
+				SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
 			})
 
 		}
 		/**单列freespin缓停动画 */
 		private freeEffect(column: number) {
+			SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
 			return new Promise((resolve, reject) => {
 				(this["border" + column] as AMovieClip).visible = true;
 				(this["border" + column] as AMovieClip).play();
@@ -507,10 +532,20 @@ module game {
 		/**normal middle big mega super */
 		private showBigWin(level: string, win: number) {
 			return new Promise((resolve, reject) => {
-				if (level == "normal" || level == "middle") {
+				if(win<=0) resolve();
+				else if (level == "normal") {
+					SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
 					resolve();
-				} else {
-					this.bigWin.bigWinStart(level, win).then(() => resolve());
+				}
+				else if(level == "middle") {
+					SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+					resolve();
+				}
+				else {
+					this.bigWin.bigWinStart(level, win).then(() => {
+						resolve();
+                    	SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+					});
 				}
 			})
 		}
@@ -632,6 +667,8 @@ module game {
 		private showBonusLine() {
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
 			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
+			gold>0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+			
 			return Promise.all(
 				gold > 0 ? grids.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -769,7 +806,7 @@ module game {
 
 		private showFreeChoose(b: boolean) {
 			this.freeChoose.visible = b;
-			this.freeChoose.show();
+			if(b) this.freeChoose.show();
 		}
 		/**显示免费游戏的ui */
 		private showFreeGame(b: boolean) {
@@ -807,6 +844,7 @@ module game {
 
 		/**免费结算完成 */
 		private freeComplete() {
+			SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
 			if (this.featureChanceCount > 0) {
 				this.showFreeChoose(true);
 			}
