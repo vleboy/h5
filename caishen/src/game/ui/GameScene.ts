@@ -135,6 +135,7 @@ module game {
 			//数据恢复检查
 			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
+
 		}
 		/**数据恢复 */
 		private checkDataRecover(resp: LoginVO) {
