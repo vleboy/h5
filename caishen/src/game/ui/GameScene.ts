@@ -748,6 +748,21 @@ module game {
 				if(v.parent) v.parent.removeChild(v);
 			})
 			this.winTileMcArr=[];
+
+			if (this.isFree) {
+				if (this.freeSpinRemainCount == 0) {
+					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+				}
+				else {
+					this.setState(GameState.BET);
+					this.spin();
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
+				}
+			}
+			else {
+				this.setState(GameState.BET);
+				if (this.autoMax || this.autoCount > 0) this.spin();
+			}
 		}
 
 		private showFreeChoose(b: boolean) {
