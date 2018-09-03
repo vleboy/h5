@@ -75,9 +75,9 @@ module game {
 		/**事件监听*/
 		private eventListen(): void {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
-				if(this.isAuto){
+				if (this.isAuto) {
 					this.sendNotify(NotifyConst.cancelSpin);
-				}else{
+				} else {
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
 					this.setWinMoney(0.00);
@@ -98,7 +98,7 @@ module game {
 			this.registerEvent(this.BtnLess, egret.TouchEvent.TOUCH_TAP, this.reduceBetLevel, this);
 			this.registerEvent(this.BtnMore, egret.TouchEvent.TOUCH_TAP, this.addBetLevel, this);
 			this.registerEvent(this.BtnMax, egret.TouchEvent.TOUCH_TAP, this.maxBetLevel, this);
-			
+
 		}
 		/**某Group显示隐藏动画*/
 		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
@@ -139,8 +139,8 @@ module game {
 		}
 		/**校验加减号状态和设置单注下注档次*/
 		private checkPlusReduceState(): void {
-			this.BtnLess.touchEnabled = this.theBetIndex != 0;
-			this.BtnMore.touchEnabled = this.theBetIndex != this.theBetArr.length - 1;
+			this.BtnLess.enabled = this.theBetIndex != 0;
+			this.BtnMore.enabled = this.theBetIndex != this.theBetArr.length - 1;
 			this.betTxt.text = this.theBetArr[this.theBetIndex] + "";
 			this.theBet.text = "单注：" + this.theBetArr[this.theBetIndex];
 			this.allBet.text = "总押注：" + this.theBetArr[this.theBetIndex] * this.theBetMulit;
@@ -181,13 +181,13 @@ module game {
 			}
 		}
 		/**隐藏切入框*/
-		public hideCutGroup(isSound:boolean = false): void {
-			if (this.groupBet.visible) this.showTween(this.groupBet, -100, () => { 
-				this.groupBet.visible = false; 
+		public hideCutGroup(isSound: boolean = false): void {
+			if (this.groupBet.visible) this.showTween(this.groupBet, -100, () => {
+				this.groupBet.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
-			if (this.groupAutoNum.visible) this.showTween(this.groupAutoNum, -400, () => { 
-				this.groupAutoNum.visible = false; 
+			if (this.groupAutoNum.visible) this.showTween(this.groupAutoNum, -400, () => {
+				this.groupAutoNum.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
 		}
@@ -253,9 +253,9 @@ module game {
 		public setState(n: GameState) {
 			this.state = n;
 			/**下注按钮和自动转动按钮状态*/
-			let betAutoState = (isEn: boolean = true) => {
-				this.betBtn.enabled = isEn;
-				this.autoBtn.enabled = isEn;
+			let betAutoState = (isBetEn: boolean = true, isAutoEn: boolean = true) => {
+				this.betBtn.enabled = isBetEn;
+				this.autoBtn.enabled = isAutoEn;
 			};
 			/**转动按钮显示*/
 			let spinBtnShow = (isShow: boolean = true, isEn: boolean = true) => {
@@ -272,6 +272,10 @@ module game {
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0";
+					betAutoState(false,false);
+					spinBtnShow(true, false);
+					if (this.isAuto) this.spinBtn.enabled = false;
+					break;
 				case GameState.SHOW_RESULT:
 					betAutoState(false);
 					spinBtnShow(true, false);
@@ -279,7 +283,7 @@ module game {
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					betAutoState(false);
+					betAutoState(false,false);
 					this.imgSpin(true);
 					spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;
