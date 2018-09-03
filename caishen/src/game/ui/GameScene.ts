@@ -178,6 +178,7 @@ module game {
 					this.setting.settingShow();
 					break;
 				case NotifyConst.cancelSpin:
+					this.cancelSpin();
 					break;
 				case NotifyConst.cancelAutoSpin:
 					this.autoMax = false;
@@ -374,11 +375,9 @@ module game {
 					let tile = this["tile" + (column * 3 + i)];
 					tile.visible = true;
 					tile.source = "symbolName_" + (arr[i]) + "_png";
-					egret.Tween.get(tile).set({ y: defaultY - 100 }).to({ y: defaultY }, 200).call(() => {
+					egret.Tween.get(tile).set({ y: defaultY - 100 }).to({ y: defaultY }, 250).wait(200).call(() => {
 						egret.Tween.removeTweens(tile);
-						if (i == 2) {
-							setTimeout(resolve, 250);
-						}
+						resolve();
 					});
 				})
 
@@ -444,6 +443,25 @@ module game {
 				}, 2000);
 			})
 
+		}
+		/**立即停止 */
+		private cancelSpin(){
+			for(let i=0; i<20; i++){
+				egret.Tween.removeTweens(this["vagueTile" + i]);
+				this["vagueTile" + i].visible = false;
+				this["vagueTile" + i].y = (i%4)*208+21;
+			}
+
+			let buff = this.spinResp.payload.featureData.buff;
+			let arr = this.spinResp.payload.viewGrid.map(v => (v == "1" ? "1" + (buff == "-1" ? "" : "_" + buff) : (v + "")));
+			for(let i=0; i<15; i++){
+				egret.Tween.removeTweens(this["tile" + i]);
+				this["tile" + i].visible = true;
+				this["tile" + i].y = (i%3)*208+21;
+				this["tile" + i].source = "symbolName_" + (arr[i]) + "_png";
+			}
+			
+			this.judgeResult();
 		}
 
 		/**判定结果 大赢家=> 所有线 =>freespin =>bonus =>各条单线*/
