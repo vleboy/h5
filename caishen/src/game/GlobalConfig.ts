@@ -23,7 +23,7 @@ module game {
 		/**音效是否打开*/
 		public static effectSwitch: boolean = true;
 		/**极速模式是否打开*/
-		public static fastSwitch: boolean = true;
+		public static fastSwitch: boolean = false;
 
 		public static txtAddZero(txt:string){
 			let strArr: string[] = txt.split(".");
