@@ -5,7 +5,7 @@ module game {
             super();
             this.eventDic = new Dictionary();
             this.once(egret.Event.COMPLETE, () => {
-                console.log("egret.Event.COMPLETE" + egret.getQualifiedClassName(this));
+                // console.log("egret.Event.COMPLETE" + egret.getQualifiedClassName(this));
                 this.init();
                 this.onStageResize();
             }, this);

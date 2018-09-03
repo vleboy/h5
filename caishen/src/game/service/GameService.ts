@@ -15,6 +15,8 @@ module game {
 				try{
 					window["isDebug"] && await DefaultUser.getInstance().login();
 					this.requestInitData().then((resp:LoginVO)=>{
+						console.log("login resp ",resp);
+						
 						this.loginVo = resp;
 						this.token = resp.payload.token;
 
@@ -24,10 +26,14 @@ module game {
 						else{
 							reject("auth code err");
 						}
-					});
+					})
+					.catch(()=>{
+						reject("login err");
+					})
 				}
 				catch(e){
-					reject(e);
+					console.log("22222222222222");
+					reject("default login err");
 				}
 				
 			});
@@ -42,14 +48,11 @@ module game {
 					'{"GameUserID":'+GlobalConfig.gameUserID+',"VerifyCode":'+GlobalConfig.verifyCode+'}'
 				)
 				.then((resp:LoginVO)=>{
-					if(resp.code == 0){
-						resolve(resp);
-					}
-					else{
-						reject("auth err");
-					}
+					resolve(resp);
 				})
-				.catch(reject);
+				.catch(()=>{
+					reject("auth error");
+				});
 			})
 		}
 		/**下注 */
