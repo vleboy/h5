@@ -47,7 +47,7 @@ module game {
 			let g = (this["yuanbaoGroup"] as eui.Group);
 			let arr = [];
 			g.visible = true;
-			for(let i=0; i<g.numChildren; i++){
+			for(let i=g.numChildren-1; i>=0; i--){
 				g.getChildAt(i).alpha = 0;
 				arr.push(g.getChildAt(i));
 			}
@@ -60,7 +60,7 @@ module game {
 								egret.Tween.removeTweens(v);
 								resolve();
 							})
-						}, 50*i);
+						}, 200*i);
 					})
 				})
 			);
