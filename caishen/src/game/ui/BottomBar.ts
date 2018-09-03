@@ -78,6 +78,7 @@ module game {
 				if(this.isAuto){
 					this.sendNotify(NotifyConst.cancelSpin);
 				}else{
+					SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
 					this.setWinMoney(0.00);

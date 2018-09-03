@@ -65,13 +65,13 @@ module game {
 		public defaultOpen():void{
 			SoundPlayer.closeMusic(false);
 			SoundPlayer.closeEffect(false);
-			SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+			this.sendNotify(NotifyConst.updateBgm);
 		}
 		/**音乐*/
 		private theMusic(e: egret.TouchEvent): void {
 			let isOpen:boolean = e.target.currentState == "up";
 			SoundPlayer.closeMusic(!isOpen);
-			SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+			this.sendNotify(NotifyConst.updateBgm);
 		}
 		/**音效*/
 		private theEffect(e: egret.TouchEvent): void {

@@ -15,6 +15,7 @@ module game {
 		/**选择免费次数返回 */
 		chooseFreeBack,
 		/**免费结算完成 */
-		freeComplete
+		freeComplete,
+		updateBgm
 	}
 }
