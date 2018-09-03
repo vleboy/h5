@@ -178,7 +178,8 @@ module game {
 					this.setting.settingShow();
 					break;
 				case NotifyConst.cancelSpin:
-					this.cancelSpin();
+					if(this.state == GameState.STOP) this.cancelSpin();
+					else if(this.state == GameState.SHOW_SINGLE_LINES) this.cancelLinesWin();
 					break;
 				case NotifyConst.cancelAutoSpin:
 					this.autoMax = false;
@@ -663,6 +664,8 @@ module game {
 			)
 		}
 
+		private winTileMcArr: Array<AMovieClip> = [];
+
 		private showEveryLineGrid(arr: Array<any>) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
 			return Promise.all(
@@ -685,6 +688,7 @@ module game {
 												mc.width = this["tile" + gridIndex].width;
 												mc.height = this["tile" + gridIndex].height;
 												this["valueTiles"].addChild(mc);
+												this.winTileMcArr.push(mc);
 												mc.play();
 												this["tile" + gridIndex].visible = false;
 											}
@@ -709,6 +713,7 @@ module game {
 													if (mc) {
 														mc.stop();
 														mc.parent.removeChild(mc);
+														if(this.winTileMcArr.indexOf(mc)>-1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
 														this["tile" + gridIndex].visible = true;
 													}
 													setTimeout(() => {
@@ -726,6 +731,23 @@ module game {
 					})
 				})
 			);
+		}
+		/**停止中奖展示 */
+		private cancelLinesWin(){
+			this.setState(GameState.BET);
+			this.lineWinTxt.visible = false;
+			this.lineWinTxt.text = "";
+			this.gridParticles.forEach(p=>{
+				p.stop();
+				p.visible = false;
+				egret.Tween.removeTweens(p);
+			})
+			this.winTileMcArr.forEach(v=>{
+				v.visible = false;
+				v.stop();
+				if(v.parent) v.parent.removeChild(v);
+			})
+			this.winTileMcArr=[];
 		}
 
 		private showFreeChoose(b: boolean) {
