@@ -8,39 +8,54 @@
 	<e:Image id="choose5" source="5_png" horizontalCenter="350" name="choose5" y="502"/>
 	<e:Image source="freeChoose_png" y="1010" horizontalCenter="0"/>
 	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
-		<e:Image source="yuanbao_png" x="448.5" y="668"/>
-		<e:Image source="yuanbao_png" x="704" y="668"/>
-		<e:Image source="yuanbao_png" x="1054" y="754"/>
-		<e:Image source="yuanbao_png" x="227" y="668"/>
-		<e:Image source="yuanbao_png" x="-63.5" y="708"/>
-		<e:Image source="yuanbao_png" x="1374" y="708"/>
-		<e:Image source="yuanbao_png" x="1566" y="590"/>
-		<e:Image source="yuanbao_png" x="-151.5" y="515.5"/>
-		<e:Image source="yuanbao_png" x="98" y="452"/>
-		<e:Image source="yuanbao_png" x="406" y="412"/>
-		<e:Image source="yuanbao_png" x="756" y="452"/>
-		<e:Image source="yuanbao_png" x="1066" y="498"/>
-		<e:Image source="yuanbao_png" x="1362" y="412"/>
-		<e:Image source="yuanbao_png" x="1566" y="334"/>
-		<e:Image source="yuanbao_png" x="1566" y="120"/>
-		<e:Image source="yuanbao_png" x="1310" y="196"/>
-		<e:Image source="yuanbao_png" x="1002" y="196"/>
-		<e:Image source="yuanbao_png" x="798" y="284"/>
-		<e:Image source="yuanbao_png" x="448" y="196"/>
-		<e:Image source="yuanbao_png" x="104.5" y="242"/>
-		<e:Image source="yuanbao_png" x="-151.5" y="242"/>
-		<e:Image source="yuanbao_png" x="-106" y="78"/>
-		<e:Image source="yuanbao_png" x="244" y="78"/>
-		<e:Image source="yuanbao_png" x="483" y="-14"/>
-		<e:Image source="yuanbao_png" x="850" y="28"/>
-		<e:Image source="yuanbao_png" x="1106" y="-14"/>
-		<e:Image source="yuanbao_png" x="1322" y="-118"/>
-		<e:Image source="yuanbao_png" x="1618" y="-136"/>
-		<e:Image source="yuanbao_png" x="918" y="-178"/>
-		<e:Image source="yuanbao_png" x="616.5" y="-178"/>
-		<e:Image source="yuanbao_png" x="338" y="-178"/>
-		<e:Image source="yuanbao_png" x="-106" y="-136"/>
-		<e:Image source="yuanbao_png" x="34" y="-228"/>
-		<e:Image source="yuanbao_png" x="1182" y="-316"/>
+
+
+
+
+		<e:Group width="1" height="1" x="0" y="0">
+			<e:Image source="yuanbao_png" x="1322.0000000000002" y="-118.00000000000001" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1618.0000000000002" y="-136" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="918" y="-178" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="616.5000000000001" y="-178" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="338" y="-178" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="34" y="-228.00000000000003" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1182" y="-316" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="-106.00000000000001" y="-136" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group width="1" height="1" x="0" y="0">
+			<e:Image source="yuanbao_png" x="-106.00000000000001" y="78" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="244.00000000000003" y="78" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="483.00000000000006" y="-14" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1106" y="-14" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="850" y="28" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group width="1" height="1" x="0" y="0">
+			<e:Image source="yuanbao_png" x="1566" y="334" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1566" y="120" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1310" y="196.00000000000003" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1002.0000000000001" y="196.00000000000003" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="798.0000000000001" y="284" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="448" y="196.00000000000003" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="104.5" y="242" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="-151.5" y="242" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group width="1" height="1" x="0" y="0">
+			<e:Image source="yuanbao_png" x="98.00000000000001" y="452" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="406.00000000000006" y="412" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="756" y="452" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="-151.5" y="515.5" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1066" y="498" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1362" y="412" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group width="1" height="1" x="0" y="0">
+			<e:Image source="yuanbao_png" x="448.5" y="668" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="704.0000000000001" y="668" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1054" y="754.0000000000001" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="227" y="668" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="-63.50000000000001" y="708" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1374" y="708" scaleX="1" scaleY="1"/>
+			<e:Image source="yuanbao_png" x="1566" y="590" scaleX="1" scaleY="1"/>
+		</e:Group>
+
 	</e:Group>
 </e:Skin>

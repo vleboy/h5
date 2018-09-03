@@ -75,10 +75,14 @@ module game {
 		/**事件监听*/
 		private eventListen(): void {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
-				this.sendNotify(NotifyConst.spin);
-				this.imgSpin();
-				this.setWinMoney(0.00);
-				this.hideCutGroup(true);
+				if(this.isAuto){
+					this.sendNotify(NotifyConst.cancelSpin);
+				}else{
+					this.sendNotify(NotifyConst.spin);
+					this.imgSpin();
+					this.setWinMoney(0.00);
+					this.hideCutGroup(true);
+				}
 			}, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.cancelSpin); }, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, () => {
@@ -263,7 +267,6 @@ module game {
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
-				case GameState.SHOW_SINGLE_LINES:
 					betAutoState();
 					spinBtnShow();
 					break;
@@ -275,10 +278,11 @@ module game {
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
+				case GameState.SHOW_SINGLE_LINES:
 					betAutoState(false);
 					this.imgSpin(true);
 					spinBtnShow(false);
-					if (this.isAuto) this.spinBtn.enabled = false;
+					if (this.isAuto) this.spinBtn.enabled = true;
 					break;
 			}
 		}

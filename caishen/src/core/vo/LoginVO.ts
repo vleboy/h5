@@ -18,6 +18,7 @@ module game {
 			multicfg: number[];
 			token: string;
 			userBalance: string;
+			nickname: string;
 		}
 	}
 }

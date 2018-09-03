@@ -16,6 +16,7 @@ module game {
 		public showTotalWin(n:string){
 			this.visible = true;
 			this.win = +n;
+			this.num = 0;
 			egret.Tween.get(this,{onChange:this.onChange, onChangeObj:this})
 				.to({num:+n}, 2000)
 				.call(this.stop);

@@ -23,7 +23,7 @@ module game {
 					});
 				}
 				catch(e){
-					reject();
+					reject("login join err");
 				}
 			})
 		}

@@ -22,40 +22,35 @@ module game {
             this.visible = true;
             //元宝数和喷元宝的时间
             let num: number = 50, timer: number = 10;
-            let sou: string = "BigWin_png";
             switch (type) {
                 case "big":
                     num = 50;
                     timer = 10;
-                    sou = "BigWin_png";
                     break;
                 case "mega":
                     num = 100;
                     timer = 20;
-                    sou = "MegaWin_png";
                     break;
                 case "super":
                     num = 200;
                     timer = 30;
-                    sou = "SuperWin_png";
                     break;
             }
             SoundPlayer.playMusic("CaiShen_243_BigWin_mp3");
             this.win = 0;
             this.num = 0;
-            return Promise.all([this.yuanbao(timer, num),this.payOut(money, timer),this.bigWinLight(),this.winTxtAni(sou)]);
+            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.bigWinLight(), this.winTxtAni(type, num)]);
         }
         /**喷元宝
          * @param timer 喷元宝时间
          * @param num 喷元宝数量
         */
-        private yuanbao(timer: number, num: number) {
+        private yuanbao(timer: number) {
             return new Promise((res, rej) => {
                 let texture = RES.getRes("yigeyuanb_png");
                 let cfg = RES.getRes("particle_yuanbao_json");
                 this.theParticle = new particle.GravityParticleSystem(texture, cfg);
                 this.yuanbaoGroup.addChild(this.theParticle);
-                this.theParticle.maxParticles = num;
                 this.theParticle.start();
 
                 let timeOut;
@@ -71,7 +66,7 @@ module game {
         }
         /**派彩*/
         private payOut(mon: number, timer: number) {
-            return new Promise((res,rej)=>{
+            return new Promise((res, rej) => {
                 this.win = mon;
                 egret.Tween.get(this, { onChange: this.onChange, onChangeObj: this })
                     .to({ num: mon }, timer * 1000 - 2000).
@@ -89,7 +84,7 @@ module game {
                             });
                     });
             });
-            
+
         }
         private onChange(): void {
             this.payout.text = this.num.toFixed(2);
@@ -101,22 +96,49 @@ module game {
         }
 
         /**winTxtAni*/
-        private winTxtAni(sou: string) {
-            return new Promise((res,rej)=>{
-                this.winImg.source = sou;
-                egret.Tween.get(this.winImg)
-                    .to({ scaleX: 5, scaleY: 5 }, 200)
-                    .to({ scaleX: 1, scaleY: 1 }, 200)
-                    .call(() => {
-                        egret.Tween.removeTweens(this.winImg);
-                        res();
-                    });
+        private winTxtAni(type: string, num: number) {
+            return new Promise((res, rej) => {
+                let txtAni = (theSou: string, callBack?: Function) => {
+                    this.winImg.source = theSou;
+                    egret.Tween.get(this.winImg)
+                        .to({ scaleX: 5, scaleY: 5 }, 200)
+                        .to({ scaleX: 1, scaleY: 1 }, 200)
+                        .call(() => {
+                            egret.Tween.removeTweens(this.winImg);
+                            callBack && callBack.call(this);
+                        });
+                }
+                this.theParticle && (this.theParticle.maxParticles = 50);
+                switch (type) {
+                    case "big":
+                        txtAni("BigWin_png", () => { res() });
+                        break;
+                    case "mega":
+                        txtAni("BigWin_png");
+                        setTimeout(() => { 
+                            txtAni("MegaWin_png", () => { res() }); 
+                            this.theParticle && (this.theParticle.maxParticles = num);
+                        }, 10000);
+                        break;
+                    case "super":
+                        txtAni("BigWin_png");
+                        setTimeout(() => { 
+                            txtAni("MegaWin_png"); 
+                            this.theParticle && (this.theParticle.maxParticles = 100);
+                        }, 10000);
+                        setTimeout(() => { 
+                            txtAni("SuperWin_png", () => { res() }); 
+                            this.theParticle && (this.theParticle.maxParticles = num);
+                        }, 20000);
+                        break;
+                }
+
             });
         }
 
         /**喷烟花*/
         private fireworks() {
-            return new Promise((res,rej)=>{
+            return new Promise((res, rej) => {
                 let texture = RES.getRes("glow_321_png");
                 let cfg = RES.getRes("particle_fireworks_json");
                 let rand: number = Math.ceil(Math.random() * 10);
