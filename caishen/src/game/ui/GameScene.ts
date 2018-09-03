@@ -178,6 +178,8 @@ module game {
 					this.setting.settingShow();
 					break;
 				case NotifyConst.cancelSpin:
+					if(this.state == GameState.STOP) this.cancelSpin();
+					else if(this.state == GameState.SHOW_SINGLE_LINES) this.cancelLinesWin();
 					break;
 				case NotifyConst.cancelAutoSpin:
 					this.autoMax = false;
@@ -374,11 +376,9 @@ module game {
 					let tile = this["tile" + (column * 3 + i)];
 					tile.visible = true;
 					tile.source = "symbolName_" + (arr[i]) + "_png";
-					egret.Tween.get(tile).set({ y: defaultY - 100 }).to({ y: defaultY }, 200).call(() => {
+					egret.Tween.get(tile).set({ y: defaultY - 100 }).to({ y: defaultY }, 250).wait(200).call(() => {
 						egret.Tween.removeTweens(tile);
-						if (i == 2) {
-							setTimeout(resolve, 250);
-						}
+						resolve();
 					});
 				})
 
@@ -444,6 +444,25 @@ module game {
 				}, 2000);
 			})
 
+		}
+		/**立即停止 */
+		private cancelSpin(){
+			for(let i=0; i<20; i++){
+				egret.Tween.removeTweens(this["vagueTile" + i]);
+				this["vagueTile" + i].visible = false;
+				this["vagueTile" + i].y = (i%4)*208+21;
+			}
+
+			let buff = this.spinResp.payload.featureData.buff;
+			let arr = this.spinResp.payload.viewGrid.map(v => (v == "1" ? "1" + (buff == "-1" ? "" : "_" + buff) : (v + "")));
+			for(let i=0; i<15; i++){
+				egret.Tween.removeTweens(this["tile" + i]);
+				this["tile" + i].visible = true;
+				this["tile" + i].y = (i%3)*208+21;
+				this["tile" + i].source = "symbolName_" + (arr[i]) + "_png";
+			}
+			
+			this.judgeResult();
 		}
 
 		/**判定结果 大赢家=> 所有线 =>freespin =>bonus =>各条单线*/
@@ -645,6 +664,8 @@ module game {
 			)
 		}
 
+		private winTileMcArr: Array<AMovieClip> = [];
+
 		private showEveryLineGrid(arr: Array<any>) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
 			return Promise.all(
@@ -667,6 +688,7 @@ module game {
 												mc.width = this["tile" + gridIndex].width;
 												mc.height = this["tile" + gridIndex].height;
 												this["valueTiles"].addChild(mc);
+												this.winTileMcArr.push(mc);
 												mc.play();
 												this["tile" + gridIndex].visible = false;
 											}
@@ -691,6 +713,7 @@ module game {
 													if (mc) {
 														mc.stop();
 														mc.parent.removeChild(mc);
+														if(this.winTileMcArr.indexOf(mc)>-1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
 														this["tile" + gridIndex].visible = true;
 													}
 													setTimeout(() => {
@@ -708,6 +731,38 @@ module game {
 					})
 				})
 			);
+		}
+		/**停止中奖展示 */
+		private cancelLinesWin(){
+			this.setState(GameState.BET);
+			this.lineWinTxt.visible = false;
+			this.lineWinTxt.text = "";
+			this.gridParticles.forEach(p=>{
+				p.stop();
+				p.visible = false;
+				egret.Tween.removeTweens(p);
+			})
+			this.winTileMcArr.forEach(v=>{
+				v.visible = false;
+				v.stop();
+				if(v.parent) v.parent.removeChild(v);
+			})
+			this.winTileMcArr=[];
+
+			if (this.isFree) {
+				if (this.freeSpinRemainCount == 0) {
+					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+				}
+				else {
+					this.setState(GameState.BET);
+					this.spin();
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
+				}
+			}
+			else {
+				this.setState(GameState.BET);
+				if (this.autoMax || this.autoCount > 0) this.spin();
+			}
 		}
 
 		private showFreeChoose(b: boolean) {
