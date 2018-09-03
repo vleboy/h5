@@ -23,6 +23,7 @@ module game {
 			this.visible = false;
 			this.bgSetting.visible = false;
 			this.eventListen();
+			this.btnFast.currentState = "down";
 		}
 		/**事件监听*/
 		private eventListen(): void {
@@ -37,7 +38,7 @@ module game {
 			this.bgSetting.visible = true;
 			this.defaultUI(true);
 			egret.Tween.get(this.groupSetting)
-				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 500)
+				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 300)
 				.call(() => {
 					egret.Tween.removeTweens(this.groupSetting);
 					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
@@ -47,7 +48,7 @@ module game {
 		private settingClose(): void {
 			this.bgSetting.visible = false;
 			egret.Tween.get(this.groupSetting)
-				.to({ scaleX: 0, scaleY: 0, alpha: 0 }, 500)
+				.to({ scaleX: 0.3, scaleY: 0.3, alpha: 0 }, 300)
 				.call(() => {
 					this.defaultUI(false);
 					this.visible = false;
@@ -57,8 +58,8 @@ module game {
 		}
 		/**默认显示*/
 		private defaultUI(isShow: boolean): void {
-			this.groupSetting.scaleX = isShow ? 0 : 1;
-			this.groupSetting.scaleY = isShow ? 0 : 1;
+			this.groupSetting.scaleX = isShow ? 0.3 : 1;
+			this.groupSetting.scaleY = isShow ? 0.3 : 1;
 			this.groupSetting.alpha = isShow ? 0 : 1;
 		}
 		/**默认音乐音效开启*/

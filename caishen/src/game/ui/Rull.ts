@@ -81,21 +81,29 @@ module game {
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_END, this.onMove, this);
 			this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onMove, this);
-			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => { 
-				this.rullShow(0.01); 
+			this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, () => {
+				this.rullShow(0.01);
 				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}, this);
 		}
 		/**点击按钮到当前页*/
 		private toThePage(e: egret.TouchEvent): void {
 			let tou: string = e.target.name.split("_")[1];
-			this.btnState(+tou);
+			this.btnState(+tou, true);
 		}
 		/**按钮状态*/
-		private btnState(num: number): void {
+		private btnState(num: number, isTou?: boolean): void {
 			this.pageArr.forEach(v => { (this["btnRull" + v] as eui.Button).currentState = "up"; });
 			(this["btnRull" + num] as eui.Button).currentState = "down";
-			this.groupRull.left = -(num * 1726) + 97;
+			if(isTou){
+				egret.Tween.get(this.groupRull)
+					.to({ left: -(num * 1726) + 97 },300)
+					.call(()=>{
+						egret.Tween.removeTweens(this.groupRull);
+					});
+			}else{
+				this.groupRull.left = -(num * 1726) + 97;
+			}
 		}
 		/**手指滑动*/
 		private onMove(e: egret.TouchEvent): void {
