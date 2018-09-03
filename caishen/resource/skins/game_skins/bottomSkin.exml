@@ -6,7 +6,7 @@
 		<e:Button id="BtnLess" label="" width="106" height="66" left="48" x="120" scaleX="1" scaleY="1" verticalCenter="0">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Image source="BetMinus_png" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -14,7 +14,7 @@
 		<e:Button id="BtnMore" label="" width="106" height="66" left="505" x="130" scaleX="1" scaleY="1" verticalCenter="0">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Image source="BetAdd_png" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -22,7 +22,7 @@
 		<e:Button id="BtnMax" label="" width="180" height="112" left="658" x="140" scaleX="1" scaleY="1" verticalCenter="0">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Image source="BetMax_png" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -87,7 +87,7 @@
 		<e:Button id="betBtn" label="下注" width="168" height="85" left="200" bottom="15" x="200" y="120" scaleX="1" scaleY="1">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+			<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
@@ -101,7 +101,7 @@
 		<e:Button id="autoBtn" label="自动转动" width="168" height="85" bottom="15" right="255">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -109,7 +109,7 @@
 		<e:Button id="cancelAutoBtn" label="取消自动" width="168" height="85" bottom="15" right="255" visible="false">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="BetButton_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
