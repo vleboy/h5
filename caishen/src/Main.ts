@@ -95,6 +95,7 @@ class Main extends eui.UILayer {
             })
         }
         catch (e) {
+            console.log("aaaaaaaaaaa")
             console.error(e);
         }
     }

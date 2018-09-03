@@ -23,6 +23,11 @@ module game {
 		private border2: AMovieClip;
 		private border3: AMovieClip;
 		private border4: AMovieClip;
+		private valueTiles: eui.Group;
+		/**中奖图标的黑色背景 */
+		private particleBg: eui.Rect;
+		/**中奖图标的展示group */
+		private winGridGroup: eui.Group;
 		/**大赢家*/
 		private bigWin: BigWin;
 		/**免费机会奖励 */
@@ -308,9 +313,10 @@ module game {
 		private initPaticles() {
 			this.gridParticles = [];
 			for (let i = 0; i < 15; i++) {
-				let texture = RES.getRes("light_lizi01_png");
+				let texture = RES.getRes("light_lizi_png");
 				let cfg = RES.getRes("particle_json");
 				let p = new particle.GravityParticleSystem(texture, cfg);
+				p.blendMode = egret.BlendMode.ADD;
 				this.particleGroup.addChild(p);
 				p.visible = false;
 				this.gridParticles.push(p);
@@ -572,11 +578,13 @@ module game {
 							mc.y = this["tile" + v].y;
 							mc.width = this["tile" + v].width;
 							mc.height = this["tile" + v].height;
-							this["valueTiles"].addChild(mc);
+							this["winGridGroup"].addChild(mc);
 							mc.play();
 							this["tile" + v].visible = false;
 						}
+						this.winGridGroup.addChild(this["tile"+v]);
 
+						this.particleBg.visible = true;
 						let p: particle.GravityParticleSystem = this.gridParticles[v];
 						let grid: eui.Image = this["tile" + v];
 						p.visible = true;
@@ -585,24 +593,26 @@ module game {
 						p.x = grid.x;
 						p.y = grid.y;
 						egret.Tween.get(p)
-							.to({ emitterX: grid.width }, 300)
-							.to({ emitterY: grid.height }, 300)
-							.to({ emitterX: 0 }, 300)
-							.to({ emitterY: 0 }, 300)
-							.to({ emitterX: grid.width }, 300)
-							.to({ emitterY: grid.height }, 300)
-							.to({ emitterX: 0 }, 300)
-							.to({ emitterY: 0 }, 300)
+							.to({ emitterX: grid.width }, 400)
+							.to({ emitterY: grid.height }, 400)
+							.to({ emitterX: 0 }, 400)
+							.to({ emitterY: 0 }, 400)
+							.to({ emitterX: grid.width }, 400)
+							.to({ emitterY: grid.height }, 400)
+							.to({ emitterX: 0 }, 400)
+							.to({ emitterY: 0 }, 400)
 							.call(() => {
 								egret.Tween.removeTweens(p);
 								p.stop();
 								p.visible = false;
+								this.particleBg.visible = false;
 
 								if (mc) {
 									mc.stop();
 									mc.parent.removeChild(mc);
 									this["tile" + v].visible = true;
 								}
+								this.valueTiles.addChild(this["tile"+v]);
 
 								setTimeout(() => {
 									resolve();
@@ -620,14 +630,14 @@ module game {
 						this.lineWinTxt.visible = true;
 						this.lineWinTxt.text = this.spinResp.payload.scatterGold + "";
 						let gridIndex = value + column * 3;
-						console.log("展示scatter图标动画" + gridIndex);
+						this.particleBg.visible = true;
 						let mc: AMovieClip = new AMovieClip();
 						mc.sources = "T_tongqian_|1-16|_png";
 						mc.x = this["tile" + gridIndex].x;
 						mc.y = this["tile" + gridIndex].y;
 						mc.width = this["tile" + gridIndex].width;
 						mc.height = this["tile" + gridIndex].height;
-						this["valueTiles"].addChild(mc);
+						this["winGridGroup"].addChild(mc);
 						this["tile" + gridIndex].visible = false;
 						mc.loop = 2;
 						mc.play();
@@ -635,6 +645,7 @@ module game {
 							console.log("展示scatter图标动画完成 " + gridIndex);
 							mc.parent.removeChild(mc);
 							this["tile" + gridIndex].visible = true;
+							this.particleBg.visible = false;
 							this.lineWinTxt.visible = false;
 							res();
 						}, this);
@@ -679,20 +690,21 @@ module game {
 							this.lineWinTxt.visible = true;
 							this.lineWinTxt.text = gold + "";
 							let gridIndex = value + column * 3;
-							console.log("展示bonus图标动画" + gridIndex);
+							this.particleBg.visible = true;
 							let mc: AMovieClip = new AMovieClip();
 							mc.sources = "T_hongbao_|1-16|_png";
 							mc.x = this["tile" + gridIndex].x;
 							mc.y = this["tile" + gridIndex].y;
 							// mc.width = this["tile"+gridIndex].width;
 							// mc.height = this["tile"+gridIndex].height;
-							this["valueTiles"].addChild(mc);
+							this["winGridGroup"].addChild(mc);
 							this["tile" + gridIndex].visible = false;
 							mc.loop = 2;
 							mc.play();
 							mc.once(AMovieClip.COMPLETE, () => {
 								mc.parent.removeChild(mc);
 								this["tile" + gridIndex].visible = true;
+								this.particleBg.visible = false;
 								this.lineWinTxt.visible = false;
 								res();
 							}, this);
@@ -726,12 +738,14 @@ module game {
 												mc.y = this["tile" + gridIndex].y;
 												mc.width = this["tile" + gridIndex].width;
 												mc.height = this["tile" + gridIndex].height;
-												this["valueTiles"].addChild(mc);
+												this["winGridGroup"].addChild(mc);
 												this.winTileMcArr.push(mc);
 												mc.play();
 												this["tile" + gridIndex].visible = false;
 											}
+											this.winGridGroup.addChild(this["tile"+gridIndex]);
 
+											this.particleBg.visible = true;
 											let p: particle.GravityParticleSystem = this.gridParticles[gridIndex];
 											let grid: eui.Image = this["tile" + gridIndex];
 											p.visible = true;
@@ -740,10 +754,10 @@ module game {
 											p.x = grid.x;
 											p.y = grid.y;
 											egret.Tween.get(p)
-												.to({ emitterX: grid.width }, 300)
-												.to({ emitterY: grid.height }, 300)
-												.to({ emitterX: 0 }, 300)
-												.to({ emitterY: 0 }, 300)
+												.to({ emitterX: grid.width }, 400)
+												.to({ emitterY: grid.height }, 400)
+												.to({ emitterX: 0 }, 400)
+												.to({ emitterY: 0 }, 400)
 												.call(() => {
 													egret.Tween.removeTweens(p);
 													p.stop();
@@ -754,7 +768,9 @@ module game {
 														mc.parent.removeChild(mc);
 														if(this.winTileMcArr.indexOf(mc)>-1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
 														this["tile" + gridIndex].visible = true;
+														this.particleBg.visible = false;
 													}
+													this.valueTiles.addChild(this["tile"+gridIndex]);
 													setTimeout(() => {
 														res();
 													}, 200);
@@ -775,6 +791,7 @@ module game {
 		private cancelLinesWin(){
 			this.setState(GameState.BET);
 			this.lineWinTxt.visible = false;
+			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
 			this.gridParticles.forEach(p=>{
 				p.stop();
@@ -821,13 +838,15 @@ module game {
 			this.setFreeCount();
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
-			if (b) {
-				this.spin();
-				this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
-			}
-			else {
-				if (this.autoMax || this.autoCount > 0) this.spin();
-			}
+			setTimeout(()=> {
+				if (b) {
+						this.spin();
+						this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
+				}
+				else {
+					if (this.autoMax || this.autoCount > 0) this.spin();
+				}
+			}, 500);
 		}
 
 		private setFreeCount() {

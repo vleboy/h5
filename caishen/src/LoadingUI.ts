@@ -74,7 +74,6 @@ class LoadingUI extends eui.Component {
 			return;
 		}
 		let arr: string[] = ["Loading", "Loading.", "Loading..", "Loading..."], num: number = 0;
-		console.warn("do")
 		this.interval = setInterval(v => {
 			this.progressTxt.text = arr[num];
 			num >= 3 ? num = 0 : num++;
