@@ -263,7 +263,6 @@ module game {
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
-				case GameState.SHOW_SINGLE_LINES:
 					betAutoState();
 					spinBtnShow();
 					break;
@@ -275,6 +274,7 @@ module game {
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
+				case GameState.SHOW_SINGLE_LINES:
 					betAutoState(false);
 					this.imgSpin(true);
 					spinBtnShow(false);
