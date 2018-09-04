@@ -27,11 +27,7 @@ module game {
 
 		public static txtAddZero(txt:string){
 			let strArr: string[] = txt.split(".");
-			if (strArr.length > 1) {
-				if (strArr[1].length == 1) txt += "0";
-			} else {
-				txt += ".00";
-			}
+			strArr.length > 1 ? strArr[1].length == 1 && (txt += "0") : (txt += ".00");
 			return txt;
 		}
 	}
