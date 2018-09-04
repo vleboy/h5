@@ -40,7 +40,7 @@ module game {
 		/**单注金额*/
 		private betTxt: eui.Label;
 		/**中间闪烁图片*/
-		private winLight:eui.Image;
+		private winLight: eui.Image;
 		//--------------变量-------------
 		/**单注数字数组*/
 		private theBetArr: number[];
@@ -213,40 +213,18 @@ module game {
 				.to({ scaleX: 1.5, scaleY: 1.5 }, 400)
 				.to({ scaleX: 1, scaleY: 1 }, 400)
 				.call(() => { egret.Tween.removeTweens(this.winTxt); });
-			let lightMove = () => {
-				//底部粒子效果
-				let texture = RES.getRes("light_lizi01_png");
-				let cfg = RES.getRes("particle_btmLight_json");
-				let theParticle: particle.GravityParticleSystem = new particle.GravityParticleSystem(texture, cfg);
-				theParticle.emitterX = 0;
-				theParticle.emitterY = 210;
-				theParticle.start();
-				this.groupBtm.addChild(theParticle);
-				egret.Tween.get(theParticle)
-					.to({emitterX:750},310)
-					.to({emitterX:800,emitterY:84},20)
-					.to({emitterX:1105},140)
-					.to({emitterX:1155,emitterY:210},20)
-					.to({emitterX:1900},310)
-					.call(()=>{
-						egret.Tween.removeTweens(theParticle);
-						theParticle.stop();
-						theParticle.visible = false;
-					});
-			}
-			lightMove();
 
 			this.winLight.visible = true;
 			egret.Tween.get(this.winLight)
-				.to({aplha:0.7},200)
-				.to({aplha:1},200)
-				.to({aplha:0.7},200)
-				.to({aplha:1},200)
-				.call(()=>{
+				.to({ aplha: 0.7 }, 200)
+				.to({ aplha: 1 }, 200)
+				.to({ aplha: 0.7 }, 200)
+				.to({ aplha: 1 }, 200)
+				.call(() => {
 					egret.Tween.removeTweens(this.winLight);
 					this.winLight.visible = false;
 				})
-			
+
 		}
 		/**图片旋转
 		 * @param isStop 是不是停止动画
