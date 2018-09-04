@@ -51,6 +51,10 @@ module game {
 		private state: GameState;
 		/**是否在免费游戏中 通过主场景控制它的值*/
 		private isFree: boolean;
+
+		private win: number = 0;
+		private num: number = 0;
+
 		public setFree(b: boolean) {
 			this.isFree = b;
 			this.isAuto = b;
@@ -198,27 +202,19 @@ module game {
 			this.groupAuto.visible = this.isAuto;
 		}
 		/**获得派彩的动画*/
-		private payOutAni(mon: number): void {
-			let interval, theMon: number = 0, newMon: number = 0;
-			if (interval) clearInterval(interval);
-			egret.Tween.removeTweens(this.winTxt);
-			interval = setInterval(() => {
-				newMon++;
-				theMon = newMon / 10;
-				if (theMon >= mon) {
-					theMon = mon;
-					clearInterval(interval);
-				}
-				this.winTxt.text = theMon + "";
-			}, 10);
-			egret.Tween.get(this.winTxt)
-				.to({ scaleX: 1.5, scaleY: 1.5 }, 500)
-				.to({ scaleX: 1, scaleY: 1 }, 500)
+		private payout(mon: number) {
+			this.win = mon;
+			this.num = 0;
+			egret.Tween.get(this, { onChange: () => { this.winTxt.text = this.num.toFixed(2); }, onChangeObj: this })
+				.to({ num: mon }, 800)
 				.call(() => {
-					egret.Tween.removeTweens(this.winTxt);
-					if (interval) clearInterval(interval);
-					this.winTxt.text = mon + "";
+					egret.Tween.removeTweens(this);
+					this.winTxt.text = "" + this.win;
 				});
+			egret.Tween.get(this.winTxt)
+				.to({ scaleX: 1.5, scaleY: 1.5 }, 400)
+				.to({ scaleX: 1, scaleY: 1 }, 400)
+				.call(() => {egret.Tween.removeTweens(this.winTxt);});
 		}
 		/**图片旋转
 		 * @param isStop 是不是停止动画
@@ -241,7 +237,7 @@ module game {
 		public setWinMoney(mon: number): void {
 			if (!mon) return;
 			this.winTxt.text = mon + "";
-			this.payOutAni(mon);
+			this.payout(mon);
 		}
 		/**控制游戏状态 */
 		public setState(n: GameState) {
@@ -265,7 +261,7 @@ module game {
 					spinBtnShow();
 					break;
 				case GameState.SPINNING:
-					this.winTxt.text = "0";
+					this.winTxt.text = "0.00";
 					betAutoState(false, false);
 					spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
