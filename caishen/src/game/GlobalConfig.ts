@@ -4,7 +4,7 @@ module game {
 		}
 
 		/**1 小丰 2提莫 */
-		private static testUser:number = 1;
+		private static testUser:number = 2;
 		/**游戏初始数据用的用户id */
 		public static gameUserID:number = (GlobalConfig.testUser==1) ? 276064: 363048;
 		/**游戏初始数据用的验证码 */
@@ -27,11 +27,7 @@ module game {
 
 		public static txtAddZero(txt:string){
 			let strArr: string[] = txt.split(".");
-			if (strArr.length > 1) {
-				if (strArr[1].length == 1) txt += "0";
-			} else {
-				txt += ".00";
-			}
+			strArr.length > 1 ? strArr[1].length == 1 && (txt += "0") : (txt += ".00");
 			return txt;
 		}
 	}
