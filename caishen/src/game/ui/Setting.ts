@@ -83,7 +83,9 @@ module game {
 		}
 		/**快速模式*/
 		private theFast(e: egret.TouchEvent): void {
-			GlobalConfig.fastSwitch = e.target.currentState == "up";
+			let state:boolean = e.target.currentState == "up";
+			this.btnFast.currentState = state ? "down" : "up";
+			GlobalConfig.fastSwitch = state;
 		}
 		/**
          * 资源释放
