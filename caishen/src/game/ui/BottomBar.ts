@@ -77,7 +77,7 @@ module game {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
 				if (this.isAuto) {
 					this.sendNotify(NotifyConst.cancelSpin);
-				}else{
+				} else {
 					SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
@@ -102,22 +102,20 @@ module game {
 
 		}
 		/**某Group显示隐藏动画*/
-		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
-			egret.Tween.get(group)
-				.to({ bottom: btm }, 400)
-				.call(() => {
+		private showTween(group: eui.Group, btm: number) {
+			return new Promise((res, rej) => {
+				egret.Tween.get(group).to({ bottom: btm }, 400).call(() => {
 					egret.Tween.removeTweens(group);
-					callFun && callFun.call(this);
+					res();
 				});
+			})
 		}
 		/**点击自动转到次数按钮*/
 		private touchAutoNum(e: egret.TouchEvent): void {
 			this.sendNotify(NotifyConst.spin, e.target.name.split("_")[1]);
 			this.showAutoBtn(false);
 			this.isAuto = true;
-			this.showTween(this.groupAutoNum, -400, () => {
-				this.groupAutoNum.visible = false;
-			});
+			this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);
 		}
 		/**是否显示自动转动按钮*/
 		private showAutoBtn(isShow: boolean): void {
@@ -129,11 +127,9 @@ module game {
 			let betShow = () => {
 				this.hideCutGroup();
 				this.groupBet.visible = true;
-				this.showTween(this.groupBet, 126, () => {
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
-				});
+				this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
-			this.groupBet.visible ? this.showTween(this.groupBet, -100, () => {
+			this.groupBet.visible ? this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
 				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}) : betShow();
@@ -168,26 +164,23 @@ module game {
 		}
 		/**自动转动*/
 		private touchAuto(): void {
-			if (this.groupAutoNum.visible) {
-				this.showTween(this.groupAutoNum, -400, () => {
-					this.groupAutoNum.visible = false;
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
-				});
-			} else {
+			let autoShow = () => {
 				this.hideCutGroup();
 				this.groupAutoNum.visible = true;
-				this.showTween(this.groupAutoNum, 107, () => {
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
-				});
+				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
+			this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(() => {
+				this.groupAutoNum.visible = false;
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+			}) : autoShow();
 		}
 		/**隐藏切入框*/
 		public hideCutGroup(isSound: boolean = false): void {
-			if (this.groupBet.visible) this.showTween(this.groupBet, -100, () => {
+			this.groupBet.visible && this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
-			if (this.groupAutoNum.visible) this.showTween(this.groupAutoNum, -400, () => {
+			this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(() => {
 				this.groupAutoNum.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
@@ -273,7 +266,7 @@ module game {
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0";
-					betAutoState(false,false);
+					betAutoState(false, false);
 					spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
@@ -284,7 +277,7 @@ module game {
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					betAutoState(false,false);
+					betAutoState(false, false);
 					this.imgSpin(true);
 					spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;

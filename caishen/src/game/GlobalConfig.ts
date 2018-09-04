@@ -4,7 +4,7 @@ module game {
 		}
 
 		/**1 小丰 2提莫 */
-		private static testUser:number = 1;
+		private static testUser:number = 2;
 		/**游戏初始数据用的用户id */
 		public static gameUserID:number = (GlobalConfig.testUser==1) ? 276064: 363048;
 		/**游戏初始数据用的验证码 */
