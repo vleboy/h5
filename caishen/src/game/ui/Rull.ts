@@ -92,20 +92,20 @@ module game {
 			this.btnState(+tou);
 		}
 		/**按钮状态*/
-		private btnState(num: number, isAni: boolean = true, callBack?: Function): void {
+		private btnState(num: number, isAni: boolean = true, timer: number = 500, callBack?: Function): void {
 			this.pageArr.forEach(v => { (this["btnRull" + v] as eui.Button).currentState = "up"; });
 			(this["btnRull" + num] as eui.Button).currentState = "down";
 			let move: number = -(num * 1726) + 97;
-			isAni ? this.moveAni(move).then(() => {
+			isAni ? this.moveAni(move, timer).then(() => {
 				callBack && callBack.call(this);
 			}) : this.groupRull.left = move;
 		}
 		/**滑动动画*/
-		private moveAni(move: number) {
+		private moveAni(move: number, timer: number = 500) {
 			return new Promise((res, rej) => {
 				egret.Tween.removeTweens(this.groupRull);
 				egret.Tween.get(this.groupRull)
-					.to({ left: move }, 500)
+					.to({ left: move }, timer)
 					.call(() => {
 						egret.Tween.removeTweens(this.groupRull);
 						res();
@@ -124,16 +124,16 @@ module game {
 					break;
 				case egret.TouchEvent.TOUCH_END://翻页或回弹
 					if (this.groupRull.left > 97 || this.groupRull.left < -8533) {
-						this.moveAni(this.rullX).then(() => this.rullX = this.groupRull.left);
+						this.moveAni(this.rullX, 300).then(() => this.rullX = this.groupRull.left);
 					} else {
 						let moveX: number = this.groupRull.left - this.rullX;
 						let pageDistance: number = moveX >= 0 ? 1726 : -1726;
 						let theLeft: number = Math.abs(moveX) < this.dragDistance ? this.rullX : this.rullX + pageDistance;
-						this.btnState(Math.abs((theLeft - 97) / 1726), true, () => this.rullX = this.groupRull.left);
+						this.btnState(Math.abs((theLeft - 97) / 1726), true, 300, () => this.rullX = this.groupRull.left);
 					}
 					break;
 				case egret.TouchEvent.TOUCH_RELEASE_OUTSIDE:
-					this.moveAni(this.rullX);
+					this.moveAni(this.rullX, 300);
 					break;
 			}
 		}
