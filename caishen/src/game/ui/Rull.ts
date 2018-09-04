@@ -65,7 +65,7 @@ module game {
 				v.forEach((k, j) => {
 					(this["pageTxt_" + i + "_" + j] as eui.Label).textFlow = [
 						{ text: (5 - j) + "", style: { "textColor": 0xFCC434 } },
-						{ text: GlobalConfig.txtAddZero(k * bet / 100 + ""), style: { "textColor": 0xF1EABD } }
+						{ text: (k * bet / 100).toFixed(2) , style: { "textColor": 0xF1EABD } }
 					]
 				})
 			})

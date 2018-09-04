@@ -187,8 +187,8 @@ module game {
 					this.setting.settingShow();
 					break;
 				case NotifyConst.cancelSpin:
-					if(this.state == GameState.STOP) this.cancelSpin();
-					else if(this.state == GameState.SHOW_SINGLE_LINES) this.cancelLinesWin();
+					if (this.state == GameState.STOP) this.cancelSpin();
+					else if (this.state == GameState.SHOW_SINGLE_LINES) this.cancelLinesWin();
 					break;
 				case NotifyConst.cancelAutoSpin:
 					this.autoMax = false;
@@ -216,15 +216,15 @@ module game {
 			}
 		}
 		/**更新背景音乐 */
-		private updateBgm(){
-			if(this.isFree){
+		private updateBgm() {
+			if (this.isFree) {
 				SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
 			}
-			else{
-				if(this.freeChoose.visible){
+			else {
+				if (this.freeChoose.visible) {
 					SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
 				}
-				else{
+				else {
 					SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
 				}
 			}
@@ -240,8 +240,8 @@ module game {
 				console.log("余额不足");
 				return;
 			}
-			let txt:string = "" + (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]);
-			this.topBar.setBalance(GlobalConfig.txtAddZero(txt));
+			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+			this.topBar.setBalance(txt);
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -300,8 +300,8 @@ module game {
 				this.setFreeChooseCount();
 			}
 			this.stopRoll(resp.payload.viewGrid).then(() => {
-				let balance:string = resp.payload.userBalance;
-				this.topBar.setBalance(balance,resp.payload.totalGold);
+				let balance: string = resp.payload.userBalance;
+				this.topBar.setBalance(balance, resp.payload.totalGold);
 				this.theBalance = balance;
 			});
 			this.setState(GameState.STOP);
@@ -373,7 +373,7 @@ module game {
 		}
 		/**停下来 */
 		private async stopRoll(arr: any[]) {
-			if(this.rollChannel) this.rollChannel.stop();
+			if (this.rollChannel) this.rollChannel.stop();
 			// 3 4 5列是否缓停
 			let is3Delay: boolean = (arr.slice(0, 3).indexOf("0") > -1 && arr.slice(3, 6).indexOf("0") > -1);
 			let is4Delay: boolean = is3Delay && arr.slice(6, 9).indexOf("0") > -1;
@@ -402,7 +402,7 @@ module game {
 
 				let haveScatterThisColumn = false;
 				[0, 1, 2].forEach(i => {
-					if(arr[i]=="0") haveScatterThisColumn=true;
+					if (arr[i] == "0") haveScatterThisColumn = true;
 
 					let defaultY = this["tile" + (column * 3 + i)].y;
 					let tile = this["tile" + (column * 3 + i)];
@@ -413,7 +413,7 @@ module game {
 						resolve();
 					});
 				})
-				if(haveScatterThisColumn) SoundPlayer.playEffect("CaiShen_243_Scatter_"+(column+1)+"_mp3");
+				if (haveScatterThisColumn) SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
 				SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
 			})
 
@@ -480,22 +480,22 @@ module game {
 
 		}
 		/**立即停止 */
-		private cancelSpin(){
-			for(let i=0; i<20; i++){
+		private cancelSpin() {
+			for (let i = 0; i < 20; i++) {
 				egret.Tween.removeTweens(this["vagueTile" + i]);
 				this["vagueTile" + i].visible = false;
-				this["vagueTile" + i].y = (i%4)*208+21;
+				this["vagueTile" + i].y = (i % 4) * 208 + 21;
 			}
 
 			let buff = this.spinResp.payload.featureData.buff;
 			let arr = this.spinResp.payload.viewGrid.map(v => (v == "1" ? "1" + (buff == "-1" ? "" : "_" + buff) : (v + "")));
-			for(let i=0; i<15; i++){
+			for (let i = 0; i < 15; i++) {
 				egret.Tween.removeTweens(this["tile" + i]);
 				this["tile" + i].visible = true;
-				this["tile" + i].y = (i%3)*208+21;
+				this["tile" + i].y = (i % 3) * 208 + 21;
 				this["tile" + i].source = "symbolName_" + (arr[i]) + "_png";
 			}
-			
+
 			this.judgeResult();
 		}
 
@@ -539,19 +539,19 @@ module game {
 		/**normal middle big mega super */
 		private showBigWin(level: string, win: number) {
 			return new Promise((resolve, reject) => {
-				if(win<=0) resolve();
+				if (win <= 0) resolve();
 				else if (level == "normal") {
 					SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
 					resolve();
 				}
-				else if(level == "middle") {
+				else if (level == "middle") {
 					SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
 					resolve();
 				}
 				else {
 					this.bigWin.bigWinStart(level, win).then(() => {
 						resolve();
-                    	SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+						SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
 					});
 				}
 			})
@@ -583,7 +583,7 @@ module game {
 							mc.play();
 							this["tile" + v].visible = false;
 						}
-						this.winGridGroup.addChild(this["tile"+v]);
+						this.winGridGroup.addChild(this["tile" + v]);
 
 						this.particleBg.visible = true;
 						let p: particle.GravityParticleSystem = this.gridParticles[v];
@@ -613,7 +613,7 @@ module game {
 									mc.parent.removeChild(mc);
 									this["tile" + v].visible = true;
 								}
-								this.valueTiles.addChild(this["tile"+v]);
+								this.valueTiles.addChild(this["tile" + v]);
 
 								setTimeout(() => {
 									resolve();
@@ -680,8 +680,8 @@ module game {
 		private showBonusLine() {
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
 			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
-			gold>0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
-			
+			gold > 0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+
 			return Promise.all(
 				gold > 0 ? grids.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -721,8 +721,8 @@ module game {
 
 		private showEveryLineGrid(arr: Array<any>) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
-			return new Promise(async (resolve, reject)=>{
-				let singleLineShow = async (v, lineIndex: number)=>{
+			return new Promise(async (resolve, reject) => {
+				let singleLineShow = async (v, lineIndex: number) => {
 					await Promise.all(
 						v.winCard.map((value: number, column: number) => {
 							return new Promise((res, rej) => {
@@ -743,7 +743,7 @@ module game {
 										mc.play();
 										this["tile" + gridIndex].visible = false;
 									}
-									this.winGridGroup.addChild(this["tile"+gridIndex]);
+									this.winGridGroup.addChild(this["tile" + gridIndex]);
 
 									this.particleBg.visible = true;
 									let p: particle.GravityParticleSystem = this.gridParticles[gridIndex];
@@ -765,14 +765,14 @@ module game {
 											if (mc) {
 												mc.stop();
 												mc.parent.removeChild(mc);
-												if(this.winTileMcArr.indexOf(mc)>-1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
+												if (this.winTileMcArr.indexOf(mc) > -1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
 												this["tile" + gridIndex].visible = true;
 												this.particleBg.visible = false;
 											}
-											this.valueTiles.addChild(this["tile"+gridIndex]);
+											this.valueTiles.addChild(this["tile" + gridIndex]);
 										})
 										.wait(200)
-										.call(()=>{
+										.call(() => {
 											egret.Tween.removeTweens(p);
 											res();
 										})
@@ -784,7 +784,7 @@ module game {
 					console.log("第" + lineIndex + "条中奖线展示完成", v);
 				}
 
-				for(let i=0; i<arr.length; i++){
+				for (let i = 0; i < arr.length; i++) {
 					await singleLineShow(arr[i], i);
 				}
 				this.particleBg.visible = false;
@@ -792,22 +792,22 @@ module game {
 			})
 		}
 		/**停止中奖展示 */
-		private cancelLinesWin(){
+		private cancelLinesWin() {
 			this.setState(GameState.BET);
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
-			this.gridParticles.forEach(p=>{
+			this.gridParticles.forEach(p => {
 				p.stop();
 				p.visible = false;
 				egret.Tween.removeTweens(p);
 			})
-			this.winTileMcArr.forEach(v=>{
+			this.winTileMcArr.forEach(v => {
 				v.visible = false;
 				v.stop();
-				if(v.parent) v.parent.removeChild(v);
+				if (v.parent) v.parent.removeChild(v);
 			})
-			this.winTileMcArr=[];
+			this.winTileMcArr = [];
 
 			if (this.isFree) {
 				if (this.freeSpinRemainCount == 0) {
@@ -827,7 +827,7 @@ module game {
 
 		private showFreeChoose(b: boolean) {
 			this.freeChoose.visible = b;
-			if(b) this.freeChoose.show();
+			if (b) this.freeChoose.show();
 		}
 		/**显示免费游戏的ui */
 		private showFreeGame(b: boolean) {
@@ -842,10 +842,10 @@ module game {
 			this.setFreeCount();
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
-			setTimeout(()=> {
+			setTimeout(() => {
 				if (b) {
-						this.spin();
-						this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
+					this.spin();
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
 				}
 				else {
 					if (this.autoMax || this.autoCount > 0) this.spin();
