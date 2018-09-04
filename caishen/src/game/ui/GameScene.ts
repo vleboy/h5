@@ -625,6 +625,10 @@ module game {
 		}
 		/**scatter图标动画 */
 		private showScatterLine() {
+			if(this.spinResp.payload.getFeatureChance && this.spinResp.payload.scatterGrid.length>0){
+				SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
+			}
+			
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
