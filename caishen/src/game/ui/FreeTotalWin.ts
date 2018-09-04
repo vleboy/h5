@@ -33,6 +33,7 @@ module game {
 			egret.Tween.get(this.winTxt)
 				.to({scaleX:1.2, scaleY:1.2},300)
 				.to({scaleX:1, scaleY:1},300)
+				.wait(2000)
 				.call(()=>{
 					egret.Tween.removeTweens(this.winTxt);
 					this.dispose();
