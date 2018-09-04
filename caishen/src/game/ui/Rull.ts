@@ -61,18 +61,14 @@ module game {
 		/**设置赔率*/
 		private setOdds(theBet: number): void {
 			let bet: number = theBet * 100;
-			[[], [], [], [], [], [], [], [], [], [], []].forEach((v, i) => {
-				this.oddsArr[i].forEach((k, j) => {
-					let mon: string = k * bet / 100 + "";
-					if (mon.length == 1) { mon = mon + ".00"; }
-					if (mon.length == 3) { mon = mon + "0"; }
-					let lab: eui.Label = this["pageTxt_" + i + "_" + j] as eui.Label;
-					lab.textFlow = [
+			this.oddsArr.forEach((v, i) => {
+				v.forEach((k, j) => {
+					(this["pageTxt_" + i + "_" + j] as eui.Label).textFlow = [
 						{ text: (5 - j) + "", style: { "textColor": 0xFCC434 } },
-						{ text: mon, style: { "textColor": 0xF1EABD } }
+						{ text: GlobalConfig.txtAddZero(k * bet / 100 + ""), style: { "textColor": 0xF1EABD } }
 					]
-				});
-			});
+				})
+			})
 		}
 		/**事件监听*/
 		private eventListen(): void {
