@@ -21,7 +21,6 @@ module game {
         /**播放某一个音效*/
         public static playEffect(name: string, count:number=1) :egret.SoundChannel{
             console.log("playeffect "+name);
-            
             if (GlobalConfig.effectSwitch) {
                 let channel: egret.SoundChannel = RES.getRes(name).play(0, count);
                 this.effectArr.push(channel);

@@ -52,8 +52,7 @@ module game {
 		/**是否在免费游戏中 通过主场景控制它的值*/
 		private isFree: boolean;
 
-		private win: number = 0;
-		private num: number = 0;
+		private winNum: number = 0;
 
 		public setFree(b: boolean) {
 			this.isFree = b;
@@ -203,14 +202,10 @@ module game {
 		}
 		/**获得派彩的动画*/
 		private payout(mon: number) {
-			this.win = mon;
-			this.num = 0;
-			egret.Tween.get(this, { onChange: () => { this.winTxt.text = this.num.toFixed(2); }, onChangeObj: this })
-				.to({ num: mon }, 800)
-				.call(() => {
-					egret.Tween.removeTweens(this);
-					this.winTxt.text = "" + this.win;
-				});
+			this.winNum = 0;
+			egret.Tween.get(this, { onChange: () => { this.winTxt.text = this.winNum.toFixed(2); }, onChangeObj: this })
+				.to({ winNum: mon }, 800)
+				.call(() => {egret.Tween.removeTweens(this);});
 			egret.Tween.get(this.winTxt)
 				.to({ scaleX: 1.5, scaleY: 1.5 }, 400)
 				.to({ scaleX: 1, scaleY: 1 }, 400)
