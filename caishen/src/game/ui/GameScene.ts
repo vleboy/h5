@@ -314,7 +314,7 @@ module game {
 		private initPaticles() {
 			this.gridParticles = [];
 			for (let i = 0; i < 15; i++) {
-				let texture = RES.getRes("light_lizi_png");
+				let texture = RES.getRes("light_lizi01_png");
 				let cfg = RES.getRes("particle_json");
 				let p = new particle.GravityParticleSystem(texture, cfg);
 				p.blendMode = egret.BlendMode.ADD;
@@ -408,7 +408,7 @@ module game {
 					let tile = this["tile" + (column * 3 + i)];
 					tile.visible = true;
 					tile.source = "symbolName_" + (arr[i]) + "_png";
-					egret.Tween.get(tile).set({ y: defaultY - 100 }).to({ y: defaultY }, 250).wait(200).call(() => {
+					egret.Tween.get(tile).set({ y: defaultY + 100 }).to({ y: defaultY }, 250).wait(200).call(() => {
 						egret.Tween.removeTweens(tile);
 						resolve();
 					});
@@ -663,7 +663,7 @@ module game {
 					egret.Tween.get(this.freeChangeImg)
 						.set({ scaleX: 0.3, scaleY: 0.3 })
 						.to({ scaleX: 1, scaleY: 1 }, 1000)
-						.wait(2000)
+						.wait(3000)
 						.call(() => {
 							egret.Tween.removeTweens(this.freeChangeImg);
 							this.freeChanceGroup.visible = false;
