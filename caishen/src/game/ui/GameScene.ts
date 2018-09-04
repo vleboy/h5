@@ -869,13 +869,12 @@ module game {
 
 		/**免费结算完成 */
 		private freeComplete() {
-			SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
 			if (this.featureChanceCount > 0) {
 				this.showFreeChoose(true);
 			}
 			else {
-				this.showFreeGame(false);
 				this.isFree = false;
+				this.showFreeGame(false);
 				this.bottomBar.setFree(false);
 				this.setState(GameState.BET);
 			}
