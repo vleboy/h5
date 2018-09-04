@@ -593,8 +593,8 @@ module game {
 						p.x = grid.x;
 						p.y = grid.y;
 						egret.Tween.get(p)
-							.to({ emitterX: grid.width }, 400)
-							.to({ emitterY: grid.height }, 400)
+							.to({ emitterX: grid.width-10 }, 400)
+							.to({ emitterY: grid.height-10 }, 400)
 							.to({ emitterX: 0 }, 400)
 							.to({ emitterY: 0 }, 400)
 							.to({ emitterX: grid.width }, 400)
@@ -757,8 +757,8 @@ module game {
 									p.x = grid.x;
 									p.y = grid.y;
 									egret.Tween.get(p)
-										.to({ emitterX: grid.width }, 400)
-										.to({ emitterY: grid.height }, 400)
+										.to({ emitterX: grid.width-10 }, 400)
+										.to({ emitterY: grid.height-10 }, 400)
 										.to({ emitterX: 0 }, 400)
 										.to({ emitterY: 0 }, 400)
 										.call(() => {
