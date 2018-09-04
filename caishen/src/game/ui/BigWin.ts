@@ -39,7 +39,8 @@ module game {
                     break;
             }
             this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
-            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.bigWinLight(), this.winTxtAni(type, num)]).then(() => {
+            this.bigWinLight();
+            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.winTxtAni(type, num)]).then(() => {
                 if (this.winChannel) this.winChannel.stop();
             });
         }

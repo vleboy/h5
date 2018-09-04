@@ -136,7 +136,7 @@
 			</e:Button>
 
 			<e:Image id="spinArrow" source="Spin_Arrow_png" width="144" height="136" anchorOffsetX="72" anchorOffsetY="68" touchEnabled="false" scaleX="1" scaleY="1" verticalCenter="6" horizontalCenter="1"/>
-			<e:Group id="groupAuto" width="230" height="228" verticalCenter="0" horizontalCenter="0" visible="false">
+			<e:Group id="groupAuto" width="230" height="228" verticalCenter="0" horizontalCenter="0" touchChildren="false" touchThrough="true" touchEnabled="false" visible="false">
 				<e:Image id="autoImg" source="Auto_1_png" horizontalCenter="0" top="60" x="57" y="60" scaleX="1" scaleY="1"/>
 				<e:Label id="autoNum" text="9" height="55" textAlign="center" verticalAlign="middle" horizontalCenter="0" bold="true" size="55" top="120" x="100" y="120" scaleX="1" scaleY="1"/>
 			</e:Group>
