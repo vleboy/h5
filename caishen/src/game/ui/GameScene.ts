@@ -663,7 +663,7 @@ module game {
 					egret.Tween.get(this.freeChangeImg)
 						.set({ scaleX: 0.3, scaleY: 0.3 })
 						.to({ scaleX: 1, scaleY: 1 }, 1000)
-						.wait(2000)
+						.wait(3000)
 						.call(() => {
 							egret.Tween.removeTweens(this.freeChangeImg);
 							this.freeChanceGroup.visible = false;
