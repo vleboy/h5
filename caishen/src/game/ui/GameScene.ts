@@ -828,6 +828,7 @@ module game {
 		private showFreeChoose(b: boolean) {
 			this.freeChoose.visible = b;
 			if (b) this.freeChoose.show();
+			this.updateBgm();
 		}
 		/**显示免费游戏的ui */
 		private showFreeGame(b: boolean) {
@@ -842,6 +843,7 @@ module game {
 			this.setFreeCount();
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
+			this.updateBgm();
 			setTimeout(() => {
 				if (b) {
 					this.spin();
