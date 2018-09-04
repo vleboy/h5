@@ -32,6 +32,7 @@ module game {
 		private bigWin: BigWin;
 		/**免费机会奖励 */
 		private freeChanceGroup: eui.Group;
+		private freeChangeMc: AMovieClip;
 		/**免费机会奖励 文字 */
 		private freeChangeImg: eui.Image;
 		private gridParticles: particle.GravityParticleSystem[];
@@ -658,10 +659,11 @@ module game {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
 					this.freeChanceGroup.visible = true;
+					this.freeChangeMc.play();
 					egret.Tween.get(this.freeChangeImg)
 						.set({ scaleX: 0.3, scaleY: 0.3 })
-						.to({ scaleX: 1, scaleY: 1 }, 500)
-						.wait(500)
+						.to({ scaleX: 1, scaleY: 1 }, 1000)
+						.wait(2000)
 						.call(() => {
 							egret.Tween.removeTweens(this.freeChangeImg);
 							this.freeChanceGroup.visible = false;
