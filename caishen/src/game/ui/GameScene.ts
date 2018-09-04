@@ -719,73 +719,75 @@ module game {
 
 		private showEveryLineGrid(arr: Array<any>) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
-			return Promise.all(
-				arr.map((v, lineIndex: number) => {
-					return new Promise((resolve, reject) => {
-						setTimeout(async () => {
-							await Promise.all(
-								v.winCard.map((value: number, column: number) => {
-									return new Promise((res, rej) => {
-										if (value != -1) {
-											this.lineWinTxt.visible = true;
-											this.lineWinTxt.text = v.gold + "";
-											let gridIndex = value + column * 3;
-											let mc: AMovieClip;
-											if (this.spinResp.payload.viewGrid[gridIndex] == "0") {
-												mc = new AMovieClip();
-												mc.sources = "T_tongqian_|1-16|_png";
-												mc.x = this["tile" + gridIndex].x;
-												mc.y = this["tile" + gridIndex].y;
-												mc.width = this["tile" + gridIndex].width;
-												mc.height = this["tile" + gridIndex].height;
-												this["winGridGroup"].addChild(mc);
-												this.winTileMcArr.push(mc);
-												mc.play();
-												this["tile" + gridIndex].visible = false;
+			return new Promise(async (resolve, reject)=>{
+				let singleLineShow = async (v, lineIndex: number)=>{
+					await Promise.all(
+						v.winCard.map((value: number, column: number) => {
+							return new Promise((res, rej) => {
+								if (value != -1) {
+									this.lineWinTxt.visible = true;
+									this.lineWinTxt.text = v.gold + "";
+									let gridIndex = value + column * 3;
+									let mc: AMovieClip;
+									if (this.spinResp.payload.viewGrid[gridIndex] == "0") {
+										mc = new AMovieClip();
+										mc.sources = "T_tongqian_|1-16|_png";
+										mc.x = this["tile" + gridIndex].x;
+										mc.y = this["tile" + gridIndex].y;
+										mc.width = this["tile" + gridIndex].width;
+										mc.height = this["tile" + gridIndex].height;
+										this["winGridGroup"].addChild(mc);
+										this.winTileMcArr.push(mc);
+										mc.play();
+										this["tile" + gridIndex].visible = false;
+									}
+									this.winGridGroup.addChild(this["tile"+gridIndex]);
+
+									this.particleBg.visible = true;
+									let p: particle.GravityParticleSystem = this.gridParticles[gridIndex];
+									let grid: eui.Image = this["tile" + gridIndex];
+									p.visible = true;
+									p.start();
+									p.emitterX = p.emitterY = 0;
+									p.x = grid.x;
+									p.y = grid.y;
+									egret.Tween.get(p)
+										.to({ emitterX: grid.width }, 400)
+										.to({ emitterY: grid.height }, 400)
+										.to({ emitterX: 0 }, 400)
+										.to({ emitterY: 0 }, 400)
+										.call(() => {
+											p.stop();
+											p.visible = false;
+											this.lineWinTxt.visible = false;
+											if (mc) {
+												mc.stop();
+												mc.parent.removeChild(mc);
+												if(this.winTileMcArr.indexOf(mc)>-1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
+												this["tile" + gridIndex].visible = true;
+												this.particleBg.visible = false;
 											}
-											this.winGridGroup.addChild(this["tile"+gridIndex]);
+											this.valueTiles.addChild(this["tile"+gridIndex]);
+										})
+										.wait(200)
+										.call(()=>{
+											egret.Tween.removeTweens(p);
+											res();
+										})
 
-											this.particleBg.visible = true;
-											let p: particle.GravityParticleSystem = this.gridParticles[gridIndex];
-											let grid: eui.Image = this["tile" + gridIndex];
-											p.visible = true;
-											p.start();
-											p.emitterX = p.emitterY = 0;
-											p.x = grid.x;
-											p.y = grid.y;
-											egret.Tween.get(p)
-												.to({ emitterX: grid.width }, 400)
-												.to({ emitterY: grid.height }, 400)
-												.to({ emitterX: 0 }, 400)
-												.to({ emitterY: 0 }, 400)
-												.call(() => {
-													egret.Tween.removeTweens(p);
-													p.stop();
-													p.visible = false;
-													this.lineWinTxt.visible = false;
-													if (mc) {
-														mc.stop();
-														mc.parent.removeChild(mc);
-														if(this.winTileMcArr.indexOf(mc)>-1) this.winTileMcArr.splice(this.winTileMcArr.indexOf(mc), 1);
-														this["tile" + gridIndex].visible = true;
-														this.particleBg.visible = false;
-													}
-													this.valueTiles.addChild(this["tile"+gridIndex]);
-													setTimeout(() => {
-														res();
-													}, 200);
-												})
+								}
+							})
+						})
+					);
+					console.log("第" + lineIndex + "条中奖线展示完成", v);
+				}
 
-										}
-									})
-								})
-							);
-							console.log("第" + lineIndex + "条中奖线展示完成", v);
-							resolve();
-						}, 1500 * lineIndex);
-					})
-				})
-			);
+				for(let i=0; i<arr.length; i++){
+					await singleLineShow(arr[i], i);
+				}
+				this.particleBg.visible = false;
+				resolve();
+			})
 		}
 		/**停止中奖展示 */
 		private cancelLinesWin(){
