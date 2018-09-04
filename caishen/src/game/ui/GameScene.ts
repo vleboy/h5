@@ -552,7 +552,6 @@ module game {
 				else {
 					this.bigWin.bigWinStart(level, win).then(() => {
 						resolve();
-						SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
 					});
 				}
 			})
@@ -595,8 +594,8 @@ module game {
 						p.x = grid.x;
 						p.y = grid.y;
 						egret.Tween.get(p)
-							.to({ emitterX: grid.width }, 400)
-							.to({ emitterY: grid.height }, 400)
+							.to({ emitterX: grid.width-10 }, 400)
+							.to({ emitterY: grid.height-10 }, 400)
 							.to({ emitterX: 0 }, 400)
 							.to({ emitterY: 0 }, 400)
 							.to({ emitterX: grid.width }, 400)
@@ -626,6 +625,10 @@ module game {
 		}
 		/**scatter图标动画 */
 		private showScatterLine() {
+			if(this.spinResp.payload.getFeatureChance && this.spinResp.payload.scatterGrid.length>0){
+				SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
+			}
+			
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -755,8 +758,8 @@ module game {
 									p.x = grid.x;
 									p.y = grid.y;
 									egret.Tween.get(p)
-										.to({ emitterX: grid.width }, 400)
-										.to({ emitterY: grid.height }, 400)
+										.to({ emitterX: grid.width-10 }, 400)
+										.to({ emitterY: grid.height-10 }, 400)
 										.to({ emitterX: 0 }, 400)
 										.to({ emitterY: 0 }, 400)
 										.call(() => {
@@ -870,13 +873,12 @@ module game {
 
 		/**免费结算完成 */
 		private freeComplete() {
-			SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
 			if (this.featureChanceCount > 0) {
 				this.showFreeChoose(true);
 			}
 			else {
-				this.showFreeGame(false);
 				this.isFree = false;
+				this.showFreeGame(false);
 				this.bottomBar.setFree(false);
 				this.setState(GameState.BET);
 			}
