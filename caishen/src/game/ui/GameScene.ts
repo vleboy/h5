@@ -551,7 +551,6 @@ module game {
 				else {
 					this.bigWin.bigWinStart(level, win).then(() => {
 						resolve();
-						SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
 					});
 				}
 			})
