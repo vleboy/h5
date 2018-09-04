@@ -19,9 +19,9 @@
 		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
 		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
 			<e:Group id="freeEffectGroup" width="100%" height="100%" y="0" horizontalCenter="0" x="0" scaleX="1" scaleY="1">
-				<game:AMovieClip id="border2" width="332" height="468" horizontalCenter="0" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-18|_png" visible="false"/>
-				<game:AMovieClip id="border3" width="332" height="468" horizontalCenter="265" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-18|_png" visible="false"/>
-				<game:AMovieClip id="border4" width="332" height="468" horizontalCenter="530" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-18|_png" visible="false"/>
+				<game:AMovieClip id="border2" width="332" height="468" horizontalCenter="0" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" visible="false" speed="3"/>
+				<game:AMovieClip id="border3" width="332" height="468" horizontalCenter="265" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" visible="false" speed="3"/>
+				<game:AMovieClip id="border4" width="332" height="468" horizontalCenter="530" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" visible="false" speed="3"/>
 			</e:Group>
 			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
 				<e:Image id="tile0" source="symbolName_0_png" x="35" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
@@ -96,7 +96,9 @@
 		<e:Label id="bigwinTxt" text="大赢家" textColor="0x20c929" size="100" horizontalCenter="0" verticalCenter="0"/>
 	</e:Group>
 	<e:Group id="freeChanceGroup" width="100%" x="0" y="0" height="100%" visible="false">
-		<e:Image id="freeChangeImg" source="FreeChance_png" horizontalCenter="0" verticalCenter="0" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
+		<game:AMovieClip id="freeChangeMc" width="292" height="141" source="freeChange28_png" horizontalCenter="0" verticalCenter="-90" scaleX="5" scaleY="5" loop="1" sources="freeChange|1-33|_png" speed="4"/>
+		<e:Image id="freeChangeImg" source="FreeChance_png" horizontalCenter="0" verticalCenter="-90" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
+
 	</e:Group>
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
 	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>
