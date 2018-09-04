@@ -8,8 +8,7 @@ module game {
 		private userName: eui.Label;
 		private userMoney: eui.Label;
 
-		private win:number;
-		private num:number;
+		private winNum: number;
 		/**初始化*/
 		public init() {
 			this.eventListen();
@@ -22,37 +21,23 @@ module game {
 			this.userName.text = name;
 		}
 		public setBalance(money: string, win?: number) {
-			if(win){
-				this.win = +money - win;
-				this.num = +money - win;
+			if (win) {
+				this.winNum = +money - win;
 				this.payOut(+money);
-			}else{
+			} else {
 				this.userMoney.text = money;
 			}
 		}
 		/**派彩*/
-        private payOut(mon: number) {
-            return new Promise((res,rej)=>{
-                this.win = mon;
-                egret.Tween.get(this, { onChange: this.onChange, onChangeObj: this })
-                    .to({ num: mon }, 800)
-                    .call(() => {
-                        egret.Tween.removeTweens(this);
-                        this.userMoney.text = "" + this.win;
-                        egret.Tween.get(this.userMoney)
-                            .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
-                            .to({ scaleX: 1, scaleY: 1 }, 300)
-                            .call(() => {
-                                egret.Tween.removeTweens(this.userMoney);
-                                res();
-                            });
-                    });
-            });
-            
-        }
-        private onChange(): void {
-            this.userMoney.text = this.num.toFixed(2);
-        }
+		private payOut(mon: number) {
+			egret.Tween.get(this, { onChange: () => { this.userMoney.text = this.winNum.toFixed(2) }, onChangeObj: this })
+				.to({ winNum: mon }, 800)
+				.call(() => egret.Tween.removeTweens(this));
+			egret.Tween.get(this.userMoney)
+				.to({ scaleX: 1.2, scaleY: 1.2 }, 400)
+				.to({ scaleX: 1, scaleY: 1 }, 400)
+				.call(() => egret.Tween.removeTweens(this.userMoney));
+		}
 		/**
          * 资源释放
          * @$isDispos 是否彻底释放资源

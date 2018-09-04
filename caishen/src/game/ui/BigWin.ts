@@ -13,8 +13,7 @@ module game {
         private payoutGroup: eui.Group;
 
         private theParticle: particle.GravityParticleSystem;
-        private win: number = 0;
-        private num: number = 0;
+        private winNum: number = 0;
 
         private winChannel: egret.SoundChannel;
 
@@ -40,10 +39,8 @@ module game {
                     break;
             }
             this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
-            this.win = 0;
-            this.num = 0;
-            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.bigWinLight(), this.winTxtAni(type, num)]).then(()=>{
-                if(this.winChannel) this.winChannel.stop();
+            return Promise.all([this.yuanbao(timer), this.payOut(money, timer), this.bigWinLight(), this.winTxtAni(type, num)]).then(() => {
+                if (this.winChannel) this.winChannel.stop();
             });
         }
         /**喷元宝
@@ -70,13 +67,11 @@ module game {
         }
         /**派彩*/
         private payOut(mon: number, timer: number) {
+            this.winNum = 0;
             return new Promise((res, rej) => {
-                this.win = mon;
-                egret.Tween.get(this, { onChange: this.onChange, onChangeObj: this })
-                    .to({ num: mon }, timer * 1000 - 2000).
-                    call(() => {
+                egret.Tween.get(this, { onChange: () => { this.payout.text = this.winNum.toFixed(2) }, onChangeObj: this })
+                    .to({ winNum: mon }, timer * 1000 - 2000).call(() => {
                         egret.Tween.removeTweens(this);
-                        this.payout.text = "" + this.win;
                         egret.Tween.get(this.payout)
                             .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
                             .to({ scaleX: 1, scaleY: 1 }, 300)
@@ -89,9 +84,6 @@ module game {
                     });
             });
 
-        }
-        private onChange(): void {
-            this.payout.text = this.num.toFixed(2);
         }
         /**light*/
         private bigWinLight(): void {
@@ -115,23 +107,23 @@ module game {
                 this.theParticle && (this.theParticle.maxParticles = 50);
                 switch (type) {
                     case "big":
-                        txtAni("BigWin_png", () => { res() });
+                        txtAni("BigWin_png", () => res() );
                         break;
                     case "mega":
                         txtAni("BigWin_png");
-                        setTimeout(() => { 
-                            txtAni("MegaWin_png", () => { res() }); 
+                        setTimeout(() => {
+                            txtAni("MegaWin_png", () => res());
                             this.theParticle && (this.theParticle.maxParticles = num);
                         }, 10000);
                         break;
                     case "super":
                         txtAni("BigWin_png");
-                        setTimeout(() => { 
-                            txtAni("MegaWin_png"); 
+                        setTimeout(() => {
+                            txtAni("MegaWin_png");
                             this.theParticle && (this.theParticle.maxParticles = 100);
                         }, 10000);
-                        setTimeout(() => { 
-                            txtAni("SuperWin_png", () => { res() }); 
+                        setTimeout(() => {
+                            txtAni("SuperWin_png", () => res());
                             this.theParticle && (this.theParticle.maxParticles = num);
                         }, 20000);
                         break;

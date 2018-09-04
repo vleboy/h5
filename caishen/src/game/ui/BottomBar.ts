@@ -51,6 +51,9 @@ module game {
 		private state: GameState;
 		/**是否在免费游戏中 通过主场景控制它的值*/
 		private isFree: boolean;
+
+		private winNum: number = 0;
+
 		public setFree(b: boolean) {
 			this.isFree = b;
 			this.isAuto = b;
@@ -77,7 +80,7 @@ module game {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, () => {
 				if (this.isAuto) {
 					this.sendNotify(NotifyConst.cancelSpin);
-				}else{
+				} else {
 					SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
@@ -102,22 +105,20 @@ module game {
 
 		}
 		/**某Group显示隐藏动画*/
-		private showTween(group: eui.Group, btm: number, callFun?: Function): void {
-			egret.Tween.get(group)
-				.to({ bottom: btm }, 400)
-				.call(() => {
+		private showTween(group: eui.Group, btm: number) {
+			return new Promise((res, rej) => {
+				egret.Tween.get(group).to({ bottom: btm }, 400).call(() => {
 					egret.Tween.removeTweens(group);
-					callFun && callFun.call(this);
+					res();
 				});
+			})
 		}
 		/**点击自动转到次数按钮*/
 		private touchAutoNum(e: egret.TouchEvent): void {
 			this.sendNotify(NotifyConst.spin, e.target.name.split("_")[1]);
 			this.showAutoBtn(false);
 			this.isAuto = true;
-			this.showTween(this.groupAutoNum, -400, () => {
-				this.groupAutoNum.visible = false;
-			});
+			this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);
 		}
 		/**是否显示自动转动按钮*/
 		private showAutoBtn(isShow: boolean): void {
@@ -129,11 +130,9 @@ module game {
 			let betShow = () => {
 				this.hideCutGroup();
 				this.groupBet.visible = true;
-				this.showTween(this.groupBet, 126, () => {
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
-				});
+				this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
-			this.groupBet.visible ? this.showTween(this.groupBet, -100, () => {
+			this.groupBet.visible ? this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
 				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}) : betShow();
@@ -168,26 +167,23 @@ module game {
 		}
 		/**自动转动*/
 		private touchAuto(): void {
-			if (this.groupAutoNum.visible) {
-				this.showTween(this.groupAutoNum, -400, () => {
-					this.groupAutoNum.visible = false;
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
-				});
-			} else {
+			let autoShow = () => {
 				this.hideCutGroup();
 				this.groupAutoNum.visible = true;
-				this.showTween(this.groupAutoNum, 107, () => {
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
-				});
+				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
+			this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(() => {
+				this.groupAutoNum.visible = false;
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+			}) : autoShow();
 		}
 		/**隐藏切入框*/
 		public hideCutGroup(isSound: boolean = false): void {
-			if (this.groupBet.visible) this.showTween(this.groupBet, -100, () => {
+			this.groupBet.visible && this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
-			if (this.groupAutoNum.visible) this.showTween(this.groupAutoNum, -400, () => {
+			this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(() => {
 				this.groupAutoNum.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
@@ -205,27 +201,15 @@ module game {
 			this.groupAuto.visible = this.isAuto;
 		}
 		/**获得派彩的动画*/
-		private payOutAni(mon: number): void {
-			let interval, theMon: number = 0, newMon: number = 0;
-			if (interval) clearInterval(interval);
-			egret.Tween.removeTweens(this.winTxt);
-			interval = setInterval(() => {
-				newMon++;
-				theMon = newMon / 10;
-				if (theMon >= mon) {
-					theMon = mon;
-					clearInterval(interval);
-				}
-				this.winTxt.text = theMon + "";
-			}, 10);
+		private payout(mon: number) {
+			this.winNum = 0;
+			egret.Tween.get(this, { onChange: () => { this.winTxt.text = this.winNum.toFixed(2); }, onChangeObj: this })
+				.to({ winNum: mon }, 800)
+				.call(() => {egret.Tween.removeTweens(this);});
 			egret.Tween.get(this.winTxt)
-				.to({ scaleX: 1.5, scaleY: 1.5 }, 500)
-				.to({ scaleX: 1, scaleY: 1 }, 500)
-				.call(() => {
-					egret.Tween.removeTweens(this.winTxt);
-					if (interval) clearInterval(interval);
-					this.winTxt.text = mon + "";
-				});
+				.to({ scaleX: 1.5, scaleY: 1.5 }, 400)
+				.to({ scaleX: 1, scaleY: 1 }, 400)
+				.call(() => {egret.Tween.removeTweens(this.winTxt);});
 		}
 		/**图片旋转
 		 * @param isStop 是不是停止动画
@@ -248,7 +232,7 @@ module game {
 		public setWinMoney(mon: number): void {
 			if (!mon) return;
 			this.winTxt.text = mon + "";
-			this.payOutAni(mon);
+			this.payout(mon);
 		}
 		/**控制游戏状态 */
 		public setState(n: GameState) {
@@ -272,8 +256,8 @@ module game {
 					spinBtnShow();
 					break;
 				case GameState.SPINNING:
-					this.winTxt.text = "0";
-					betAutoState(false,false);
+					this.winTxt.text = "0.00";
+					betAutoState(false, false);
 					spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
@@ -284,7 +268,7 @@ module game {
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					betAutoState(false,false);
+					betAutoState(false, false);
 					this.imgSpin(true);
 					spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;
