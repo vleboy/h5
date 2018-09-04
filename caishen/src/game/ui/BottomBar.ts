@@ -1,5 +1,6 @@
 module game {
 	export class BottomBar extends BaseUI {
+		private groupBtm: eui.Group;
 		/**说明按钮*/
 		private helpBtn: eui.Button;
 		/**游戏开始转动按钮*/
@@ -38,6 +39,8 @@ module game {
 		private BtnMax: eui.Button;
 		/**单注金额*/
 		private betTxt: eui.Label;
+		/**中间闪烁图片*/
+		private winLight: eui.Image;
 		//--------------变量-------------
 		/**单注数字数组*/
 		private theBetArr: number[];
@@ -201,15 +204,27 @@ module game {
 			this.groupAuto.visible = this.isAuto;
 		}
 		/**获得派彩的动画*/
-		private payout(mon: number) {
+		private payout(mon: number): void {
 			this.winNum = 0;
 			egret.Tween.get(this, { onChange: () => { this.winTxt.text = this.winNum.toFixed(2); }, onChangeObj: this })
 				.to({ winNum: mon }, 800)
-				.call(() => {egret.Tween.removeTweens(this);});
+				.call(() => { egret.Tween.removeTweens(this); });
 			egret.Tween.get(this.winTxt)
 				.to({ scaleX: 1.5, scaleY: 1.5 }, 400)
 				.to({ scaleX: 1, scaleY: 1 }, 400)
-				.call(() => {egret.Tween.removeTweens(this.winTxt);});
+				.call(() => { egret.Tween.removeTweens(this.winTxt); });
+
+			this.winLight.visible = true;
+			egret.Tween.get(this.winLight)
+				.to({ aplha: 0.7 }, 200)
+				.to({ aplha: 1 }, 200)
+				.to({ aplha: 0.7 }, 200)
+				.to({ aplha: 1 }, 200)
+				.call(() => {
+					egret.Tween.removeTweens(this.winLight);
+					this.winLight.visible = false;
+				})
+
 		}
 		/**图片旋转
 		 * @param isStop 是不是停止动画

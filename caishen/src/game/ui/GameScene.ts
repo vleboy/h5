@@ -105,6 +105,7 @@ module game {
 			}
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
+				this.bottomBar.setWinMoney(100);
 			}, this);
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
