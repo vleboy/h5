@@ -330,9 +330,9 @@ module game {
 			for (let i = 0; i < 15; i++) {
 				this["tile" + i].visible = false;
 			}
-			for (let i = 0; i < 20; i++) {
-				this.singleRoll(this["vagueTile" + i]);
-			}
+			// for (let i = 0; i < 20; i++) {
+			// 	this.singleRoll(this["vagueTile" + i]);
+			// }
 			for (let i = 0; i < 5; i++) {
 				// this.singleRoll(this["vagueTile"+i]);
 				this.singleColumRoll(i);
@@ -363,7 +363,7 @@ module game {
 				.call(() => {
 					for (let i = 0; i < 4; i++) {
 						let tile = this["vagueTile" + (column * 4 + i)];
-						tile.y += 52;
+						tile.y += (GlobalConfig.fastSwitch? 104:80);
 						if (tile.y > 658) {
 							tile.y -= 208 * 4;
 							tile.source = "vague" + Math.floor(Math.random() * 13) + "_png";
