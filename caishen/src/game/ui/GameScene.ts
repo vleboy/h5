@@ -238,6 +238,7 @@ module game {
 		private spin(autoCount?: any) {
 			if (this.balance < this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]) {
 				console.log("余额不足");
+                this.stage.addChild(new game.ErrTip("余额不足", ()=>{}, this));
 				return;
 			}
 			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
@@ -330,33 +331,16 @@ module game {
 			for (let i = 0; i < 15; i++) {
 				this["tile" + i].visible = false;
 			}
-			// for (let i = 0; i < 20; i++) {
-			// 	this.singleRoll(this["vagueTile" + i]);
-			// }
 			for (let i = 0; i < 5; i++) {
 				// this.singleRoll(this["vagueTile"+i]);
 				this.singleColumRoll(i);
 			}
 		}
-		/**单个模糊图标的滚动逻辑 */
-		private singleRoll(tile) {
-			tile.visible = true;
-			tile.source = "vague" + Math.floor(Math.random() * 13) + "_png";
-			egret.Tween.get(tile, { loop: true })
-				.wait(20)
-				.call(() => {
-					tile.y += 52;
-					if (tile.y > 658) {
-						tile.y -= 208 * 4;
-						tile.source = "vague" + Math.floor(Math.random() * 13) + "_png";
-					}
-				})
-		}
 		/**单列模糊图标转动 */
 		private singleColumRoll(column) {
 			for (let i = 0; i < 4; i++) {
 				this["vagueTile" + (column * 4 + i)].visible = true;
-				this["vagueTile" + (column * 4 + i)].source = "vague" + Math.floor(Math.random() * 13) + "_png";
+				this["vagueTile" + (column * 4 + i)].source = "vague" + Math.floor(Math.random() * 11+2) + "_png";
 			}
 			egret.Tween.get(this["vagueTile" + (column * 4)], { loop: true })
 				.wait(20)
@@ -366,7 +350,7 @@ module game {
 						tile.y += (GlobalConfig.fastSwitch? 104:80);
 						if (tile.y > 658) {
 							tile.y -= 208 * 4;
-							tile.source = "vague" + Math.floor(Math.random() * 13) + "_png";
+							tile.source = "vague" + Math.floor(Math.random() * 11+2) + "_png";
 						}
 					}
 				})
