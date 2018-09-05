@@ -618,7 +618,7 @@ module game {
 						}
 						else {
 							this.lineWinTxt.visible = true;
-							this.lineWinTxt.text = gold + "";
+							this.lineWinTxt.text = gold.toFixed(2);
 							let gridIndex = value + column * 3;
 							this.particleBg.visible = true;
 							let mc: AMovieClip = new AMovieClip();
