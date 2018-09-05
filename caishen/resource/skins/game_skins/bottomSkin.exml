@@ -142,15 +142,6 @@
 				<e:Label id="autoNum" text="9" height="55" textAlign="center" verticalAlign="middle" horizontalCenter="0" bold="true" size="55" top="120" x="100" y="120" scaleX="1" scaleY="1"/>
 			</e:Group>
 		</e:Group>
-
+		<e:Image id="btmLight" source="guang_png" width="1920" height="145" bottom="0" horizontalCenter="0" visible="false"/>
 	</e:Group>
-
-
-
-
-
-
-
-
-
 </e:Skin>

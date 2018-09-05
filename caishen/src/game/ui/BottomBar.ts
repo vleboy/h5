@@ -41,6 +41,8 @@ module game {
 		private betTxt: eui.Label;
 		/**中间闪烁图片*/
 		private winLight: eui.Image;
+		/**底部闪烁图片*/
+		private btmLight: eui.Image;
 		//--------------变量-------------
 		/**单注数字数组*/
 		private theBetArr: number[];
@@ -144,9 +146,9 @@ module game {
 		private checkPlusReduceState(): void {
 			this.BtnLess.enabled = this.theBetIndex != 0;
 			this.BtnMore.enabled = this.theBetIndex != this.theBetArr.length - 1;
-			this.betTxt.text = this.theBetArr[this.theBetIndex] + "";
-			this.theBet.text = "单注：" + this.theBetArr[this.theBetIndex];
-			this.allBet.text = "总押注：" + this.theBetArr[this.theBetIndex] * this.theBetMulit;
+			this.betTxt.text = this.theBetArr[this.theBetIndex].toFixed(2);
+			this.theBet.text = "单注：" + this.theBetArr[this.theBetIndex].toFixed(2);
+			this.allBet.text = "总押注：" + (this.theBetArr[this.theBetIndex] * this.theBetMulit).toFixed(2);
 			this.sendNotify(NotifyConst.betLevelIndex, this.theBetIndex);
 		}
 
@@ -214,19 +216,30 @@ module game {
 				.to({ scaleX: 1, scaleY: 1 }, 400)
 				.call(() => { egret.Tween.removeTweens(this.winTxt); });
 
-			let light = (img: eui.Image) => {
+			let light = (img: eui.Image, alphaArr: number[]) => {
 				img.visible = true;
+				img.alpha = 0;
 				egret.Tween.get(img)
-					.to({ alpha: 0 }, 200)
-					.to({ alpha: 1 }, 200)
-					.to({ alpha: 0 }, 200)
-					.to({ alpha: 1 }, 200)
+					.to({ alpha: alphaArr[0] }, 200)
+					.to({ alpha: alphaArr[1] }, 200)
+					.to({ alpha: alphaArr[2] }, 200)
+					.to({ alpha: alphaArr[3] }, 200)
 					.call(() => {
 						egret.Tween.removeTweens(img);
 						img.visible = false;
 					});
 			}
-			light(this.winLight);
+			light(this.winLight, [1, .5, 1, 0]);
+
+			this.btmLight.visible = true;
+			this.btmLight.alpha = 0;
+			egret.Tween.get(this.btmLight)
+				.to({ alpha: .7 }, 400)
+				.to({ alpha: 0 }, 400)
+				.call(() => {
+					egret.Tween.removeTweens(this.btmLight);
+					this.btmLight.visible = false;
+				})
 
 
 		}
