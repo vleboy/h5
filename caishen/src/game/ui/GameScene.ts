@@ -105,7 +105,6 @@ module game {
 			}
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
-				this.bottomBar.setWinMoney(100);
 			}, this);
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
@@ -629,7 +628,7 @@ module game {
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
 						this.lineWinTxt.visible = true;
-						this.lineWinTxt.text = this.spinResp.payload.scatterGold + "";
+						this.lineWinTxt.text = (this.spinResp.payload.scatterGold).toFixed(2);
 						let gridIndex = value + column * 3;
 						this.particleBg.visible = true;
 						let mc: AMovieClip = new AMovieClip();
