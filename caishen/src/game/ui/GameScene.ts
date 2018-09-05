@@ -575,7 +575,7 @@ module game {
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					egret.Tween.get(this.freeChangeImg)
-						.set({ scaleX: 0.3, scaleY: 0.3 })
+						.set({ scaleX: 3, scaleY: 3 })
 						.to({ scaleX: 1, scaleY: 1 }, 1000)
 						.wait(3000)
 						.call(() => {

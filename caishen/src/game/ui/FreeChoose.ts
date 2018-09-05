@@ -1,5 +1,6 @@
 module game {
 	export class FreeChoose extends BaseUI{
+		private tipTxt: eui.Image;
 		public constructor() {
 			super();
 			this.skinName = GlobalConfig.skinPath + "freeChooseSkin.exml";
@@ -23,11 +24,18 @@ module game {
 					.call(()=>{
 						SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
 					})
-					.to({y:defaultY},200)
+					.to({y:defaultY+50},200)
+					.to({y:defaultY},30)
 					.call(()=>{
 						this.registerEvent(target, egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
 					})
 			})
+
+			this.tipTxt.alpha = 0.5;
+			egret.Tween.get(this.tipTxt, {loop:true})
+				.set({alpha: 0.5})
+				.to({alpha: 1}, 500)
+				.to({alpha: 0.5}, 500)
 		}
 
 		private onTouch(e: egret.TouchEvent){
@@ -40,14 +48,37 @@ module game {
 				case "choose8":  n=2;break;
 				case "choose5":  n=1;break;
 			}
-			n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
-				await this.yuanbaoAni();
-				this.sendNotify(NotifyConst.chooseFreeBack, resp);
-			});
+
+			["20","15","10","8","5"].forEach((v)=>{
+				let target = this["choose"+v];
+				if(e.target != target){
+					this.setChildIndex(target, 0);
+				}
+				else{
+					let mc = new AMovieClip();
+					mc.sources = "caishenAni|1-16|_png";
+					mc.x = target.x + 131;
+					mc.y = target.y + 98;
+					mc.width = 331;
+					mc.height = 320;
+					mc.speed = 4;
+					mc.loop = 2;
+					this["mcGroup"].addChild(mc);
+					mc.play();
+					mc.once(AMovieClip.COMPLETE, ()=>{
+						this["mcGroup"].removeChild(mc);
+						n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
+							await this.yuanbaoAni();
+							this.sendNotify(NotifyConst.chooseFreeBack, resp);
+						});
+					}, this);
+				}
+			})
 		}
 
 		private yuanbaoAni(){
 			SoundPlayer.playEffect("CaiShen_243_CardEffect_mp3");
+			egret.Tween.removeTweens(this.tipTxt);
 			let g = (this["yuanbaoGroup"] as eui.Group);
 			let arr = [];
 			g.visible = true;

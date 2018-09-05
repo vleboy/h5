@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect width="100%" height="100%" x="0" y="0" fillAlpha="0.7"/>
-	<e:Image id="choose20" source="20_png" y="120" horizontalCenter="-670" name="choose20"/>
-	<e:Image id="choose15" source="15_png" y="120" horizontalCenter="0" name="choose15"/>
-	<e:Image id="choose10" source="10_png" y="120" horizontalCenter="670" name="choose10"/>
-	<e:Image id="choose8" source="8_png" horizontalCenter="-350" name="choose8" y="502"/>
-	<e:Image id="choose5" source="5_png" horizontalCenter="350" name="choose5" y="502"/>
-	<e:Image source="freeChoose_png" y="1010" horizontalCenter="0"/>
-	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
+	<e:Image id="choose20" source="20_png" y="120" name="choose20" x="-18"/>
+	<e:Image id="choose15" source="15_png" y="120" name="choose15" x="652"/>
+	<e:Image id="choose10" source="10_png" y="120" name="choose10" x="1322"/>
+	<e:Image id="choose8" source="8_png" name="choose8" y="502" x="302"/>
+	<e:Image id="choose5" source="5_png" name="choose5" y="502" x="1002"/>
+	<e:Image id="tipTxt" source="freeChoose_png" y="1010" horizontalCenter="0"/>
+	<e:Group id="mcGroup" width="1" height="1" x="0" y="0"/>
+	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0" visible="false">
 
 
 
@@ -58,4 +59,6 @@
 		</e:Group>
 
 	</e:Group>
+	<e:Image source="caishenAni1_png" x="113" y="218" anchorOffsetX="0" width="317" anchorOffsetY="0" height="268"/>
+	<e:Group width="1" height="1" x="0" y="0"/>
 </e:Skin>
