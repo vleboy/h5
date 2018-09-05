@@ -674,7 +674,7 @@ module game {
 						}
 						else {
 							this.lineWinTxt.visible = true;
-							this.lineWinTxt.text = gold + "";
+							this.lineWinTxt.text = gold.toFixed(2);
 							let gridIndex = value + column * 3;
 							this.particleBg.visible = true;
 							let mc: AMovieClip = new AMovieClip();
@@ -712,7 +712,7 @@ module game {
 							return new Promise((res, rej) => {
 								if (value != -1) {
 									this.lineWinTxt.visible = true;
-									this.lineWinTxt.text = v.gold + "";
+									this.lineWinTxt.text = (v.gold).toFixed(2);
 									let gridIndex = value + column * 3;
 									let mc: AMovieClip;
 									if (this.spinResp.payload.viewGrid[gridIndex] == "0") {
