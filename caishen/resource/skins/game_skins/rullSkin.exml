@@ -5,14 +5,14 @@
 		<e:Image height="100%" horizontalCenter="0" verticalCenter="0" width="100%" source="bg_png"/>
 		<e:Image source="asdad_png" right="60" top="65"/>
 		<e:Rect id="rullMask" width="1726" height="672" verticalCenter="0" horizontalCenter="0"/>
-		<e:Group id="groupRull" verticalCenter="0" left="-5081" width="10356">
+		<e:Group id="groupRull" verticalCenter="0" left="97" width="10356" locked="true">
 			<e:Group id="groupRull0" width="1726" height="672" left="0" verticalCenter="0">
 				<e:Image source="page1_png" verticalCenter="0" horizontalCenter="0" height="670" width="1698"/>
 			</e:Group>
 			<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
 				<e:Group width="505" height="224" left="0" top="45">
 					<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
-					<e:Image source="symbolName_1_png" width="215" height="215" verticalCenter="0" left="30"/>
+					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_2_png"/>
 					<e:Label id="pageTxt_0_0" text="58.00" size="34" top="52" textColor="0xf1eabd" left="280"/>
 					<e:Label id="pageTxt_0_1" text="41.00" size="34" top="102" textColor="0xF1EABD" left="280"/>
 					<e:Label id="pageTxt_0_2" text="30.50" size="34" top="152" textColor="0xF1EABD" left="280"/>

@@ -214,16 +214,20 @@ module game {
 				.to({ scaleX: 1, scaleY: 1 }, 400)
 				.call(() => { egret.Tween.removeTweens(this.winTxt); });
 
-			this.winLight.visible = true;
-			egret.Tween.get(this.winLight)
-				.to({ aplha: 0.7 }, 200)
-				.to({ aplha: 1 }, 200)
-				.to({ aplha: 0.7 }, 200)
-				.to({ aplha: 1 }, 200)
-				.call(() => {
-					egret.Tween.removeTweens(this.winLight);
-					this.winLight.visible = false;
-				})
+			let light = (img: eui.Image) => {
+				img.visible = true;
+				egret.Tween.get(img)
+					.to({ alpha: 0 }, 200)
+					.to({ alpha: 1 }, 200)
+					.to({ alpha: 0 }, 200)
+					.to({ alpha: 1 }, 200)
+					.call(() => {
+						egret.Tween.removeTweens(img);
+						img.visible = false;
+					});
+			}
+			light(this.winLight);
+
 
 		}
 		/**图片旋转
