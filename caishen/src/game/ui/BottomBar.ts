@@ -309,7 +309,7 @@ module game {
 		}
 		/**自动或免费下注次数*/
 		public setAutoBetNum(num: number): void {
-			num == 0 && this.showAutoBtn(true);
+			this.showAutoBtn(num == 0);
 			this.isAuto = num != 0;
 			this.autoNum.text = num > 0 ? (num + "") : "MAX";
 		}
