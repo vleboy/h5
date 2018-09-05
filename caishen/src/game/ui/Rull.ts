@@ -38,7 +38,7 @@ module game {
 		private defaultData(): void {
 			this.pageArr = [0, 1, 2, 3, 4, 5];
 			this.startX = 0;
-			this.dragDistance = 500;
+			this.dragDistance = 300;
 			this.oddsArr = [
 				[800, 100, 50],
 				[800, 100, 35],

@@ -409,7 +409,7 @@ module game {
 					let tile = this["tile" + (column * 3 + i)];
 					tile.visible = true;
 					tile.source = "symbolName_" + (arr[i]) + "_png";
-					egret.Tween.get(tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch?150:250 ).wait(GlobalConfig.fastSwitch?100:200).call(() => {
+					egret.Tween.get(tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch?150:250 ).wait(GlobalConfig.fastSwitch?50:200).call(() => {
 						egret.Tween.removeTweens(tile);
 						resolve();
 					});
@@ -625,10 +625,6 @@ module game {
 		}
 		/**scatter图标动画 */
 		private showScatterLine() {
-			if(this.spinResp.payload.getFeatureChance && this.spinResp.payload.scatterGrid.length>0){
-				SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
-			}
-			
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -644,7 +640,7 @@ module game {
 						mc.height = this["tile" + gridIndex].height;
 						this["winGridGroup"].addChild(mc);
 						this["tile" + gridIndex].visible = false;
-						mc.loop = 2;
+						mc.loop = 1;
 						mc.play();
 						mc.once(AMovieClip.COMPLETE, () => {
 							console.log("展示scatter图标动画完成 " + gridIndex);
@@ -662,6 +658,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
+					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					egret.Tween.get(this.freeChangeImg)
