@@ -6,6 +6,7 @@ module game {
             this.errTxt.text = txt;
             this.visible = true;
             this.sureBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                if(this.parent) this.parent.removeChild(this);
                 sureBack && sureBack.call(thisObject);
                 this.visible = false;
                 this.parent.removeChild(this);
