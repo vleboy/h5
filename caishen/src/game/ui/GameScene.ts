@@ -625,10 +625,6 @@ module game {
 		}
 		/**scatter图标动画 */
 		private showScatterLine() {
-			if(this.spinResp.payload.getFeatureChance && this.spinResp.payload.scatterGrid.length>0){
-				SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
-			}
-			
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -644,7 +640,7 @@ module game {
 						mc.height = this["tile" + gridIndex].height;
 						this["winGridGroup"].addChild(mc);
 						this["tile" + gridIndex].visible = false;
-						mc.loop = 2;
+						mc.loop = 1;
 						mc.play();
 						mc.once(AMovieClip.COMPLETE, () => {
 							console.log("展示scatter图标动画完成 " + gridIndex);
@@ -662,6 +658,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
+					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					egret.Tween.get(this.freeChangeImg)
