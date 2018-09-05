@@ -409,7 +409,7 @@ module game {
 					let tile = this["tile" + (column * 3 + i)];
 					tile.visible = true;
 					tile.source = "symbolName_" + (arr[i]) + "_png";
-					egret.Tween.get(tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch?150:250 ).wait(GlobalConfig.fastSwitch?100:200).call(() => {
+					egret.Tween.get(tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch?150:250 ).wait(GlobalConfig.fastSwitch?50:200).call(() => {
 						egret.Tween.removeTweens(tile);
 						resolve();
 					});
