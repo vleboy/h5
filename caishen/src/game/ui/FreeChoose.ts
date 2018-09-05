@@ -18,6 +18,7 @@ module game {
 			["20","15","10","8","5"].forEach((v,i)=>{
 				let target = this["choose"+v];
 				let defaultY = target.y;
+				this["chooseGroup"].setChildIndex(target, 1);
 				egret.Tween.get(target)
 					.set({y:defaultY-1000})
 					.wait(i*100+100)
@@ -41,32 +42,32 @@ module game {
 		private onTouch(e: egret.TouchEvent){
 			SoundPlayer.playEffect("CaiShen_243_ChoseCard_mp3");
 			let n = 0;
-			switch(e.target.name){
-				case "choose20": n=5;break;
-				case "choose15": n=4;break;
-				case "choose10": n=3;break;
-				case "choose8":  n=2;break;
-				case "choose5":  n=1;break;
+			switch(e.target){
+				case this["choose20"]: n=5;break;
+				case this["choose15"]: n=4;break;
+				case this["choose10"]: n=3;break;
+				case this["choose8"]:  n=2;break;
+				case this["choose5"]:  n=1;break;
 			}
 
 			["20","15","10","8","5"].forEach((v)=>{
-				let target = this["choose"+v];
+				let target = this["choose"+v] as eui.Group;
 				if(e.target != target){
-					this.setChildIndex(target, 0);
+					this["chooseGroup"].setChildIndex(target, 0);
 				}
 				else{
 					let mc = new AMovieClip();
 					mc.sources = "caishenAni|1-16|_png";
-					mc.x = target.x + 131;
-					mc.y = target.y + 98;
-					mc.width = 331;
-					mc.height = 320;
+					mc.x = 94;
+					mc.y = 67;
+					mc.width = 319;
+					mc.height = 321;
 					mc.speed = 4;
 					mc.loop = 2;
-					this["mcGroup"].addChild(mc);
+					target.addChildAt(mc, 2);
 					mc.play();
 					mc.once(AMovieClip.COMPLETE, ()=>{
-						this["mcGroup"].removeChild(mc);
+						mc.parent.removeChild(mc);
 						n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
 							await this.yuanbaoAni();
 							this.sendNotify(NotifyConst.chooseFreeBack, resp);

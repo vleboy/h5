@@ -576,7 +576,7 @@ module game {
 					this.freeChangeMc.play();
 					egret.Tween.get(this.freeChangeImg)
 						.set({ scaleX: 3, scaleY: 3 })
-						.to({ scaleX: 1, scaleY: 1 }, 1000)
+						.to({ scaleX: 1, scaleY: 1 }, 200)
 						.wait(3000)
 						.call(() => {
 							egret.Tween.removeTweens(this.freeChangeImg);
