@@ -397,14 +397,8 @@ module game {
 					//处理wild图标的多样性
 					let symbol: Symbol = this.symbols[(column * 3 + i)];
 					let buff = this.spinResp.payload.featureData.buff;
-<<<<<<< HEAD
-					let str = arr[i] == "1" ? "1" + (buff == "-1" ? "" : "_" + buff) : arr[i];
-					let defaultY = this["tile" + (column * 3 + i)].y;
-					let symbol: Symbol = this.symbols[(column * 3 + i)];
-=======
 					let str = arr[i]=="1" ? "1" + (buff == "-1" ? "" : "_" + buff) : arr[i];
 					let defaultY = symbol.tile.y;
->>>>>>> master
 					symbol.tile.visible = true;
 					symbol.value = arr[i];
 					symbol.setTexture("symbolName_" + str + "_png");
@@ -718,8 +712,6 @@ module game {
 				}
 			}, 500);
 		}
-
-<<<<<<< HEAD
 		private setFreeChooseCount(isAn: boolean = false) {
 			this.freeChooseCountBoom.sources = "zz_|1-61|_png";
 			egret.Tween.removeTweens(this.freeChooseCountBoom);
@@ -749,16 +741,6 @@ module game {
 				this.freeChooseCountTxt.visible = isShow;
 				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
 			}
-			
-=======
-		private setFreeCount() {
-			this.freeCountTxt.text = "X" + this.freeSpinRemainCount;
-		}
-		private setFreeChooseCount() {
-			this.freeChooseCountTxt.text = "X" + this.featureChanceCount;
-			this.freeChooseCountBg.visible = this.featureChanceCount>0;
-			this.freeChooseCountTxt.visible = this.featureChanceCount>0;
->>>>>>> master
 		}
 
 		/**免费的倍数*/
@@ -836,15 +818,9 @@ module game {
 		public setTexture(v) {
 			this.tile.source = v;
 		}
-<<<<<<< HEAD
-		/**所有中奖图标展示时的图标动画 */
-		public showWinAni(isAllWin: boolean = true) {
-			return new Promise((resolve, reject) => {
-=======
 		/**图标中奖动画 isLong：是否是长动画 */
 		public showWinAni(isLong:boolean = true){
 			return new Promise((resolve, reject)=>{
->>>>>>> master
 				this.gameScene.winGridGroup.addChild(this.tile);
 				//scatter 金币图标
 				if (this.value == "0") {
@@ -892,40 +868,6 @@ module game {
 				p.emitterX = p.emitterY = 0;
 				p.x = grid.x;
 				p.y = grid.y;
-<<<<<<< HEAD
-				egret.Tween.get(p)
-					.to({ emitterX: grid.width - 10 }, 450)
-					.to({ emitterY: grid.height - 10 }, 450)
-					.to({ emitterX: 0 }, 450)
-					.to({ emitterY: 0 }, 450)
-					.to({ emitterX: grid.width }, 450)
-					.to({ emitterY: grid.height }, 450)
-					.to({ emitterX: 0 }, 450)
-					.to({ emitterY: 0 }, 450)
-					.call(() => {
-						egret.Tween.removeTweens(p);
-						p.stop();
-						p.visible = false;
-						this.gameScene.particleBg.visible = false;
-
-						if (this.mc) {
-							this.mc.stop();
-							this.mc.parent.removeChild(this.mc);
-							this.mc = null;
-							this.tile.visible = true;
-						}
-						if (this.mc2) {
-							this.mc2.stop();
-							this.mc2.parent.removeChild(this.mc2);
-							this.mc2 = null;
-						}
-						if (this.value == "1") {
-							this.tile.source = this.gameScene.isFree ? "symbolName_1_" + this.gameScene.spinResp.payload.featureData.buff + "_png" : "symbolName_1_png";
-						}
-						this.gameScene.valueTiles.addChild(this.tile);
-=======
->>>>>>> master
-
 				let f = ()=>{
 					egret.Tween.get(p)
 						.to({ emitterX: grid.width }, 450)
