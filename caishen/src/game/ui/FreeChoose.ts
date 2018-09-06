@@ -15,7 +15,8 @@ module game {
 
 		public show(){
 			this["yuanbaoGroup"].visible = false;
-			["20","15","10","8","5"].forEach((v,i)=>{
+			this["chooseGroup"].setChildIndex(this["rect"], 0);
+			["5","8","10","15","20"].forEach((v,i)=>{
 				let target = this["choose"+v];
 				let defaultY = target.y;
 				this["chooseGroup"].setChildIndex(target, 1);
@@ -32,11 +33,10 @@ module game {
 					})
 			})
 
-			this.tipTxt.alpha = 0.5;
 			egret.Tween.get(this.tipTxt, {loop:true})
-				.set({alpha: 0.5})
-				.to({alpha: 1}, 500)
+				.wait(2000)
 				.to({alpha: 0.5}, 500)
+				.to({alpha: 1}, 500)
 		}
 
 		private onTouch(e: egret.TouchEvent){
@@ -56,23 +56,36 @@ module game {
 					this["chooseGroup"].setChildIndex(target, 0);
 				}
 				else{
-					let mc = new AMovieClip();
-					mc.sources = "caishenAni|1-16|_png";
-					mc.x = 94;
-					mc.y = 67;
-					mc.width = 319;
-					mc.height = 321;
-					mc.speed = 4;
-					mc.loop = 2;
-					target.addChildAt(mc, 2);
-					mc.play();
-					mc.once(AMovieClip.COMPLETE, ()=>{
-						mc.parent.removeChild(mc);
-						n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
-							await this.yuanbaoAni();
-							this.sendNotify(NotifyConst.chooseFreeBack, resp);
-						});
-					}, this);
+					let respData;
+					Promise.all([
+						new Promise((resolve, reject)=>{
+							let mc = new AMovieClip();
+							mc.sources = "caishenAni|1-16|_png";
+							mc.x = 94;
+							mc.y = 67;
+							mc.width = 319;
+							mc.height = 321;
+							mc.speed = 4;
+							mc.loop = 2;
+							target.addChildAt(mc, 2);
+							mc.play();
+							mc.once(AMovieClip.COMPLETE, ()=>{
+								mc.parent.removeChild(mc);
+								resolve();
+							}, this);
+						}),
+						new Promise((resolve, reject)=>{
+							n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
+								respData = resp;
+								resolve();
+									
+							});
+						})
+					]).then(async()=>{
+						await this.yuanbaoAni();
+						this.sendNotify(NotifyConst.chooseFreeBack, respData);
+					})
+					
 				}
 			})
 		}

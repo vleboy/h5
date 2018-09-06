@@ -711,6 +711,8 @@ module game {
 		}
 		private setFreeChooseCount() {
 			this.freeChooseCountTxt.text = "X" + this.featureChanceCount;
+			this.freeChooseCountBg.visible = this.featureChanceCount>0;
+			this.freeChooseCountTxt.visible = this.featureChanceCount>0;
 		}
 
 		/**进入免费结算面板，显示免费总奖励*/
