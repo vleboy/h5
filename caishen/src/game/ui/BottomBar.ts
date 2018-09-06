@@ -216,32 +216,27 @@ module game {
 				.to({ scaleX: 1, scaleY: 1 }, 400)
 				.call(() => { egret.Tween.removeTweens(this.winTxt); });
 
-			let light = (img: eui.Image, alphaArr: number[]) => {
+			let imgLight = (img: eui.Image, alphaArr: number[], timer: number, isline?: boolean) => {
 				img.visible = true;
 				img.alpha = 0;
 				egret.Tween.get(img)
-					.to({ alpha: alphaArr[0] }, 200)
-					.to({ alpha: alphaArr[1] }, 200)
-					.to({ alpha: alphaArr[2] }, 200)
-					.to({ alpha: alphaArr[3] }, 200)
+					.to({ alpha: alphaArr[0] }, timer)
+					.to({ alpha: alphaArr[1] }, timer)
+					.call(() => {
+						if (isline) {
+							egret.Tween.removeTweens(img);
+							img.visible = false;
+						}
+					})
+					.to({ alpha: alphaArr[2] }, timer)
+					.to({ alpha: alphaArr[3] }, timer)
 					.call(() => {
 						egret.Tween.removeTweens(img);
 						img.visible = false;
 					});
 			}
-			light(this.winLight, [1, .5, 1, 0]);
-
-			this.btmLight.visible = true;
-			this.btmLight.alpha = 0;
-			egret.Tween.get(this.btmLight)
-				.to({ alpha: .7 }, 400)
-				.to({ alpha: 0 }, 400)
-				.call(() => {
-					egret.Tween.removeTweens(this.btmLight);
-					this.btmLight.visible = false;
-				})
-
-
+			imgLight(this.winLight, [1, .5, 1, 0], 200);
+			imgLight(this.btmLight, [.7, 0], 400, true);
 		}
 		/**图片旋转
 		 * @param isStop 是不是停止动画
