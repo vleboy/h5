@@ -41,6 +41,10 @@ module game {
 		private freeMultiGroup: eui.Group;
 		/**免费倍数*/
 		private freeMulti: eui.BitmapLabel;
+		/**免费次数*/
+		private freeChooseCountBoom: AMovieClip;
+		private contentGroup: eui.Group;
+
 
 		private balance: number;
 		private betcfg: number[];
@@ -55,6 +59,8 @@ module game {
 		private freeSpinRemainCount: number;
 		/**剩余免费选择次数 */
 		private featureChanceCount: number;
+		/**当前由于wild替换所随机到的翻倍因子*/
+		private featureMultiplier: number
 		/**下次出免费 */
 		private nextFree: boolean = false;
 		/**下次出bonus */
@@ -64,6 +70,7 @@ module game {
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
+		private thePArr: particle.GravityParticleSystem[];
 
 		public constructor() {
 			super();
@@ -113,7 +120,6 @@ module game {
 			}
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
-				this.freeMultiAni(10);
 			}, this);
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
@@ -211,8 +217,6 @@ module game {
 					this.featureChanceCount--;
 					this.isFree = true;
 					this.bottomBar.setFree(true);
-					this.setFreeCount();
-					this.setFreeChooseCount();
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
 					break;
@@ -305,9 +309,7 @@ module game {
 			if (this.isFree) {
 				this.freeSpinRemainCount = this.spinResp.payload.featureData.freeSpinRemainCount;
 				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
-
-				this.setFreeCount();
-				this.setFreeChooseCount();
+				this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			}
 			this.stopRoll(resp.payload.viewGrid).then(() => {
 				let balance: string = resp.payload.userBalance;
@@ -331,6 +333,7 @@ module game {
 				// this.singleRoll(this["vagueTile"+i]);
 				this.singleColumRoll(i);
 			}
+			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
 		}
 		/**单列模糊图标转动 */
 		private singleColumRoll(column) {
@@ -548,7 +551,8 @@ module game {
 			})
 
 			this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
-
+			/**中奖的里面有没有wild*/
+			grids.some(v => this.spinResp.payload.viewGrid[v] == "1") && this.isFree && this.freeMultiAni(this.featureMultiplier);
 			return Promise.all(
 				grids.map((v) => {
 					return this.symbols[v].showWinAni();
@@ -593,6 +597,7 @@ module game {
 					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
+					this.setFreeChooseCount(true);
 					egret.Tween.get(this.freeChangeImg)
 						.set({ scaleX: 0.3, scaleY: 0.3 })
 						.to({ scaleX: 1, scaleY: 1 }, 1000)
@@ -707,10 +712,6 @@ module game {
 			this.kuang.visible = !b;
 			this.kuangFree.visible = b;
 			this.freeCountBg.visible = b;
-			this.freeChooseCountBg.visible = b;
-			this.freeCountTxt.visible = b;
-			this.freeChooseCountTxt.visible = b;
-			this.setFreeCount();
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
 			this.updateBgm();
@@ -725,47 +726,72 @@ module game {
 			}, 500);
 		}
 
-		private setFreeCount() {
-			this.freeCountTxt.text = "X" + this.freeSpinRemainCount;
-		}
-		private setFreeChooseCount() {
-			this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-		}
-		
-		/**免费的倍数*/
-		private freeMultiAni(mul: number): void {
-			this.freeMultiGroup.visible = true;
-			//倍数
-			this.freeMulti.text = "X" + mul;
-			let theParticle = (texture,cfg,index,isLight?:boolean) => {
-				let theP = new particle.GravityParticleSystem(texture, cfg);
-				this.freeMultiGroup.addChildAt(theP, index);
-				theP.emitterX = 100;
-				theP.emitterY = 70;
-				isLight && (theP.blendMode = egret.BlendMode.ADD);
-				theP.start();
-				return theP;
+		private setFreeChooseCount(isAn: boolean = false) {
+			this.freeChooseCountBoom.sources = "zz_|1-61|_png";
+			egret.Tween.removeTweens(this.freeChooseCountBoom);
+			this.freeChooseCountBoom.scaleX = 1;
+			this.freeChooseCountBoom.scaleY = 1;
+			this.freeChooseCountBoom.x = 960;
+			this.freeChooseCountBoom.y = 540;
+
+			let isShow: boolean = this.featureChanceCount > 0;
+			if(isAn){
+				isShow && egret.Tween.get(this.freeChooseCountBoom)
+				.call(() => this.freeChooseCountBoom.visible = true)
+				.to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
+				.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
+				.call(() => {
+					this.freeChooseCountBoom.play();
+					this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
+					this.freeChooseCountBg.visible = isShow;
+					this.freeChooseCountTxt.visible = isShow;
+					setTimeout(() => {
+						this.freeChooseCountBoom.stop();
+						this.freeChooseCountBoom.visible = false;
+					}, 1000)
+				})
+			}else{
+				this.freeChooseCountBg.visible = isShow;
+				this.freeChooseCountTxt.visible = isShow;
+				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
 			}
-			let thePArr:particle.GravityParticleSystem[] = [];
-			//光晕效果
-			thePArr.push(theParticle(RES.getRes("freemultiLight_png"),RES.getRes("particle_multiLight_json"),0,true));
-			//粒子发散效果
-			thePArr.push(theParticle(RES.getRes("freemulti_png"),RES.getRes("particle_multi_json"),1));
-			let timer;
-			timer && clearTimeout(timer);
-			timer = setTimeout(() => {
-				thePArr.forEach(v=>{
+			
+		}
+
+		/**免费的倍数*/
+		private freeMultiAni(mul: number, isStart: boolean = true): void {
+			if (isStart) {
+				this.freeMultiGroup.visible = true;
+				//倍数
+				this.freeMulti.text = "X" + mul;
+				let theParticle = (texture, cfg, index, isLight?: boolean) => {
+					let theP = new particle.GravityParticleSystem(texture, cfg);
+					this.freeMultiGroup.addChildAt(theP, index);
+					theP.emitterX = 100;
+					theP.emitterY = 70;
+					isLight && (theP.blendMode = egret.BlendMode.ADD);
+					theP.start();
+					return theP;
+				}
+				this.thePArr = [];
+				//光晕效果
+				this.thePArr.push(theParticle(RES.getRes("freemultiLight_png"), RES.getRes("particle_multiLight_json"), 0, true));
+				//粒子发散效果
+				this.thePArr.push(theParticle(RES.getRes("freemulti_png"), RES.getRes("particle_multi_json"), 1));
+			} else {
+				this.thePArr.forEach(v => {
 					v.stop();
 					v.visible = false;
 					v.parent && v.parent.removeChild(v);
 				})
+				this.thePArr = [];
 				this.freeMultiGroup.visible = false;
-				clearTimeout(timer);
-			}, 3000);
+			}
 		}
 		/**进入免费结算面板，显示免费总奖励*/
 		private showFreeTotalWin(n: string) {
 			this.freeTotalWin.showTotalWin(n);
+			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
 		}
 
 		/**免费结算完成 */
