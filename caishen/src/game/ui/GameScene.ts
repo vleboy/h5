@@ -18,7 +18,7 @@ module game {
 		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
 		private freeCountTxt: eui.Label;
-		private freeChooseCountTxt: eui.Label;
+		private freeChooseCountTxt: eui.BitmapLabel;
 		private freeTotalWin: FreeTotalWin;
 		private border2: AMovieClip;
 		private border3: AMovieClip;
@@ -36,7 +36,11 @@ module game {
 		/**免费机会奖励 文字 */
 		private freeChangeImg: eui.Image;
 		/**所有图标对象 */
-		private symbols:Array<Symbol>;
+		private symbols: Array<Symbol>;
+		/**免费倍数框*/
+		private freeMultiGroup: eui.Group;
+		/**免费倍数*/
+		private freeMulti: eui.BitmapLabel;
 
 		private balance: number;
 		private betcfg: number[];
@@ -90,8 +94,8 @@ module game {
 			f();
 
 			this.symbols = [];
-			for(let i=0; i<15; i++){
-				this.symbols.push(new Symbol(this["tile"+i], this));
+			for (let i = 0; i < 15; i++) {
+				this.symbols.push(new Symbol(this["tile" + i], this));
 			}
 
 			this.connectTip.visible = true;
@@ -109,6 +113,7 @@ module game {
 			}
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
+				this.freeMultiAni(10);
 			}, this);
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
@@ -242,7 +247,7 @@ module game {
 		private spin(autoCount?: any) {
 			if (this.balance < this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]) {
 				console.log("余额不足");
-                this.stage.addChild(new game.ErrTip("余额不足", ()=>{}, this));
+				this.stage.addChild(new game.ErrTip("余额不足", () => { }, this));
 				return;
 			}
 			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
@@ -331,17 +336,17 @@ module game {
 		private singleColumRoll(column) {
 			for (let i = 0; i < 4; i++) {
 				this["vagueTile" + (column * 4 + i)].visible = true;
-				this["vagueTile" + (column * 4 + i)].source = "vague" + Math.floor(Math.random() * 11+2) + "_png";
+				this["vagueTile" + (column * 4 + i)].source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
 			}
 			egret.Tween.get(this["vagueTile" + (column * 4)], { loop: true })
 				.wait(20)
 				.call(() => {
 					for (let i = 0; i < 4; i++) {
 						let tile = this["vagueTile" + (column * 4 + i)];
-						tile.y += (GlobalConfig.fastSwitch? 104:80);
+						tile.y += (GlobalConfig.fastSwitch ? 104 : 80);
 						if (tile.y > 658) {
 							tile.y -= 208 * 4;
-							tile.source = "vague" + Math.floor(Math.random() * 11+2) + "_png";
+							tile.source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
 						}
 					}
 				})
@@ -353,7 +358,7 @@ module game {
 			let is3Delay: boolean = (arr.slice(0, 3).indexOf("0") > -1 && arr.slice(3, 6).indexOf("0") > -1);
 			let is4Delay: boolean = is3Delay && arr.slice(6, 9).indexOf("0") > -1;
 			let is5Delay: boolean = is4Delay && arr.slice(9, 12).indexOf("0") > -1;
-			
+
 			for (let i = 0; i < 5; i++) {
 				if (i < 2) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3));
 				else if (i == 2) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is3Delay);
@@ -379,14 +384,14 @@ module game {
 
 					//处理wild图标的多样性
 					let buff = this.spinResp.payload.featureData.buff;
-					let str = arr[i]=="1" ? "1" + (buff == "-1" ? "" : "_" + buff) : arr[i];
+					let str = arr[i] == "1" ? "1" + (buff == "-1" ? "" : "_" + buff) : arr[i];
 					let defaultY = this["tile" + (column * 3 + i)].y;
 					let symbol: Symbol = this.symbols[(column * 3 + i)];
 					symbol.tile.visible = true;
 					symbol.value = arr[i];
 					symbol.setTexture("symbolName_" + str + "_png");
-					
-					egret.Tween.get(symbol.tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch?150:250 ).wait(GlobalConfig.fastSwitch?50:200).call(() => {
+
+					egret.Tween.get(symbol.tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch ? 150 : 250).wait(GlobalConfig.fastSwitch ? 50 : 200).call(() => {
 						egret.Tween.removeTweens(symbol.tile);
 						resolve();
 					});
@@ -724,9 +729,40 @@ module game {
 			this.freeCountTxt.text = "X" + this.freeSpinRemainCount;
 		}
 		private setFreeChooseCount() {
-			this.freeChooseCountTxt.text = "X" + this.featureChanceCount;
+			this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
 		}
-
+		
+		/**免费的倍数*/
+		private freeMultiAni(mul: number): void {
+			this.freeMultiGroup.visible = true;
+			//倍数
+			this.freeMulti.text = "X" + mul;
+			let theParticle = (texture,cfg,index,isLight?:boolean) => {
+				let theP = new particle.GravityParticleSystem(texture, cfg);
+				this.freeMultiGroup.addChildAt(theP, index);
+				theP.emitterX = 100;
+				theP.emitterY = 70;
+				isLight && (theP.blendMode = egret.BlendMode.ADD);
+				theP.start();
+				return theP;
+			}
+			let thePArr:particle.GravityParticleSystem[] = [];
+			//光晕效果
+			thePArr.push(theParticle(RES.getRes("freemultiLight_png"),RES.getRes("particle_multiLight_json"),0,true));
+			//粒子发散效果
+			thePArr.push(theParticle(RES.getRes("freemulti_png"),RES.getRes("particle_multi_json"),1));
+			let timer;
+			timer && clearTimeout(timer);
+			timer = setTimeout(() => {
+				thePArr.forEach(v=>{
+					v.stop();
+					v.visible = false;
+					v.parent && v.parent.removeChild(v);
+				})
+				this.freeMultiGroup.visible = false;
+				clearTimeout(timer);
+			}, 3000);
+		}
 		/**进入免费结算面板，显示免费总奖励*/
 		private showFreeTotalWin(n: string) {
 			this.freeTotalWin.showTotalWin(n);
@@ -747,16 +783,16 @@ module game {
 
 	}
 
-	
+
 	/**图标动画类 */
-	class Symbol{
-		public value:string;
+	class Symbol {
+		public value: string;
 		public tile: eui.Image;
 		private p: particle.GravityParticleSystem;
 		private gameScene: GameScene;
 		private mc: AMovieClip;
 		private mc2: AMovieClip;
-		public constructor(tile: eui.Image, gameScene: GameScene){
+		public constructor(tile: eui.Image, gameScene: GameScene) {
 			this.tile = tile;
 			this.gameScene = gameScene;
 
@@ -768,12 +804,12 @@ module game {
 			this.p.visible = false;
 		}
 		/**设置图标结果 */
-		public setTexture(v){
+		public setTexture(v) {
 			this.tile.source = v;
 		}
 		/**所有中奖图标展示时的图标动画 */
-		public showWinAni(isAllWin:boolean = true){
-			return new Promise((resolve, reject)=>{
+		public showWinAni(isAllWin: boolean = true) {
+			return new Promise((resolve, reject) => {
 				this.gameScene.winGridGroup.addChild(this.tile);
 				//scatter 金币图标
 				if (this.value == "0") {
@@ -788,12 +824,12 @@ module game {
 					this.tile.visible = false;
 				}
 				//wild图标
-				else if(this.value == "1"){
-					this.tile.source = this.gameScene.isFree ? ("wildbg"+this.gameScene.spinResp.payload.featureData.buff+"_png") :"wildBg0_png";
+				else if (this.value == "1") {
+					this.tile.source = this.gameScene.isFree ? ("wildbg" + this.gameScene.spinResp.payload.featureData.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
 					this.mc.sources = "caishenAni|1-16|_png";
-					this.mc.x = this.tile.x+10;
+					this.mc.x = this.tile.x + 10;
 					this.mc.y = this.tile.y;
 					this.mc.width = 173;
 					this.mc.height = 173;
@@ -801,11 +837,11 @@ module game {
 					this.mc.loop = 2;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
-					
+
 					this.mc2 = new AMovieClip();
 					this.mc2.sources = "wildText|1-20|_png";
 					this.mc2.x = this.tile.x;
-					this.mc2.y = this.tile.y+99;
+					this.mc2.y = this.tile.y + 99;
 					this.mc2.speed = 4;
 					this.mc2.loop = 2;
 					this.gameScene["winGridGroup"].addChild(this.mc2);
@@ -813,7 +849,7 @@ module game {
 				}
 
 				this.gameScene.particleBg.visible = true;
-				let p= this.p;
+				let p = this.p;
 				let grid: eui.Image = this.tile
 				p.visible = true;
 				p.start();
@@ -821,9 +857,9 @@ module game {
 				p.x = grid.x;
 				p.y = grid.y;
 				egret.Tween.get(p)
-					.to({ emitterX: grid.width-10 }, 450)
-					.to({ emitterY: grid.height-10 }, 450)
-					.to({ emitterX: 0 },450)
+					.to({ emitterX: grid.width - 10 }, 450)
+					.to({ emitterY: grid.height - 10 }, 450)
+					.to({ emitterX: 0 }, 450)
 					.to({ emitterY: 0 }, 450)
 					.to({ emitterX: grid.width }, 450)
 					.to({ emitterY: grid.height }, 450)
@@ -846,8 +882,8 @@ module game {
 							this.mc2.parent.removeChild(this.mc2);
 							this.mc2 = null;
 						}
-						if(this.value == "1"){
-							this.tile.source = this.gameScene.isFree ? "symbolName_1_"+this.gameScene.spinResp.payload.featureData.buff+"_png" :"symbolName_1_png";
+						if (this.value == "1") {
+							this.tile.source = this.gameScene.isFree ? "symbolName_1_" + this.gameScene.spinResp.payload.featureData.buff + "_png" : "symbolName_1_png";
 						}
 						this.gameScene.valueTiles.addChild(this.tile);
 
@@ -858,13 +894,13 @@ module game {
 			})
 		}
 		/**停止动画 */
-		public reset(){
-			if(this.p){
+		public reset() {
+			if (this.p) {
 				this.p.stop();
 				this.p.visible = false;
 				egret.Tween.removeTweens(this.p);
 			}
-			
+
 			if (this.mc) {
 				this.mc.stop();
 				this.mc.parent.removeChild(this.mc);
@@ -873,19 +909,19 @@ module game {
 			if (this.mc2) {
 				this.mc2.stop();
 				this.mc2.parent.removeChild(this.mc2);
-				this.mc2= null;
+				this.mc2 = null;
 			}
-			if(this.value == "1"){
-				if(this.gameScene.isFree){
-					this.tile.source = "symbolName_1_"+this.gameScene.spinResp.payload.featureData.buff+"_png";
+			if (this.value == "1") {
+				if (this.gameScene.isFree) {
+					this.tile.source = "symbolName_1_" + this.gameScene.spinResp.payload.featureData.buff + "_png";
 				}
-				else{
+				else {
 					this.tile.source = "symbolName_1_png";
 				}
 			}
-			
+
 			this.tile.visible = true;
-			if(this.tile.parent != this.gameScene.valueTiles) this.gameScene.valueTiles.addChild(this.tile);
+			if (this.tile.parent != this.gameScene.valueTiles) this.gameScene.valueTiles.addChild(this.tile);
 		}
 	}
 }
