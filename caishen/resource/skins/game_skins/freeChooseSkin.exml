@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Rect width="100%" height="100%" x="0" y="0" fillAlpha="0.7"/>
-	<e:Image id="choose20" source="20_png" y="120" horizontalCenter="-670" name="choose20"/>
-	<e:Image id="choose15" source="15_png" y="120" horizontalCenter="0" name="choose15"/>
-	<e:Image id="choose10" source="10_png" y="120" horizontalCenter="670" name="choose10"/>
-	<e:Image id="choose8" source="8_png" horizontalCenter="-350" name="choose8" y="502"/>
-	<e:Image id="choose5" source="5_png" horizontalCenter="350" name="choose5" y="502"/>
-	<e:Image source="freeChoose_png" y="1010" horizontalCenter="0"/>
-	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
+	<e:Group id="chooseGroup" width="1920" height="1" x="0" y="0">
+		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
+		<e:Group id="choose20" width="517" height="462" scaleX="1" scaleY="1" horizontalCenter="-520" verticalCenter="294.5" touchChildren="false" touchEnabled="true">
+		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg5_png"/>
+		<e:Image source="head_png" y="88" horizontalCenter="0"/>
+		<e:Image source="freegame_png" x="252" y="15"/>
+		<e:Image source="num20_png" x="138" y="10"/>
+		<e:Image source="cardBottom20_png" y="343" horizontalCenter="0"/>
+		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
+		</e:Group>
+		<e:Group id="choose15" width="517" height="462" scaleX="1" scaleY="1" verticalCenter="294.5" horizontalCenter="0" touchChildren="false" touchEnabled="true">
+		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg4_png" width="517" height="462"/>
+		<e:Image source="head_png" y="88" horizontalCenter="0"/>
+		<e:Image source="freegame_png" x="252" y="15"/>
+		<e:Image x="138" y="10" source="num15_png"/>
+		<e:Image y="343" horizontalCenter="0" source="cardBottom15_png"/>
+		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
+		</e:Group>
+		<e:Group id="choose10" width="517" height="462" scaleX="1" scaleY="1" horizontalCenter="520" verticalCenter="294.5" touchChildren="false" touchEnabled="true">
+		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg3_png" width="517" height="462"/>
+		<e:Image source="head_png" y="88" horizontalCenter="0"/>
+		<e:Image source="freegame_png" x="252" y="15"/>
+		<e:Image x="138" y="10" source="num10_png"/>
+		<e:Image y="343" horizontalCenter="0" source="cardBottom10_png"/>
+		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
+		</e:Group>
+		<e:Group id="choose8" width="517" height="462" scaleX="1" scaleY="1" horizontalCenter="-330" y="512" touchChildren="false" touchEnabled="true">
+		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg2_png"/>
+		<e:Image source="head_png" y="88" horizontalCenter="0"/>
+		<e:Image source="freegame_png" x="252" y="15"/>
+		<e:Image x="138" y="10" source="num8_png"/>
+		<e:Image y="343" horizontalCenter="0" source="cardBottom8_png"/>
+		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
+		</e:Group>
+		<e:Group id="choose5" width="517" height="462" scaleX="1" scaleY="1" horizontalCenter="330" y="512" touchChildren="false" touchEnabled="true">
+		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg1_png" width="517" height="462"/>
+		<e:Image source="head_png" y="88" horizontalCenter="0"/>
+		<e:Image source="freegame_png" x="252" y="15"/>
+		<e:Image x="138" y="10" source="num5_png"/>
+		<e:Image y="343" horizontalCenter="0" source="cardBottom5_png"/>
+		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
+		</e:Group>
+	</e:Group>
+
+	<e:Image id="tipTxt" source="freeChoose_png" y="1010" horizontalCenter="0"/>
+
+	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0" visible="false">
 
 
 
@@ -58,4 +97,6 @@
 		</e:Group>
 
 	</e:Group>
+
+
 </e:Skin>
