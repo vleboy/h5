@@ -11,7 +11,7 @@
 			<e:Image source="LineBG_png" y="269" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image source="LineBG_png" x="834" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
 			<e:Image source="LineBG_png" x="1099" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
-			<game:AMovieClip id="title" width="670" height="157" y="117" horizontalCenter="0" source="title1_png" sources="title|1-10|_png" speed="8"/>
+			<game:AMovieClip id="title" width="670" height="157" y="117" horizontalCenter="0" source="title1_png" sources="title|1-20|_png" speed="8"/>
 
 
 
