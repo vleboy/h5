@@ -6,7 +6,7 @@ module game {
 		private topBar: TopBar;
 		private rull: Rull;
 		private setting: Setting;
-		private particleGroup: eui.Group;
+		public particleGroup: eui.Group;
 		private lineWinTxt: eui.BitmapLabel;
 		private freeChoose: FreeChoose;
 		private bg: eui.Image;
@@ -16,34 +16,22 @@ module game {
 		private title: AMovieClip;
 		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
-		private freeCountTxt: eui.Label;
 		private freeChooseCountTxt: eui.BitmapLabel;
 		private freeTotalWin: FreeTotalWin;
 		private border2: AMovieClip;
 		private border3: AMovieClip;
 		private border4: AMovieClip;
 		public valueTiles: eui.Group;
-		/**中奖图标的黑色背景 */
 		public particleBg: eui.Rect;
-		/**中奖图标的展示group */
 		public winGridGroup: eui.Group;
-		/**大赢家*/
 		private bigWin: BigWin;
-		/**免费机会奖励 */
 		private freeChanceGroup: eui.Group;
 		private freeChangeMc: AMovieClip;
-		/**免费机会奖励 文字 */
 		private freeChangeImg: eui.Image;
-		/**所有图标对象 */
 		private symbols: Array<Symbol>;
-		/**免费倍数框*/
 		private freeMultiGroup: eui.Group;
-		/**免费倍数*/
 		private freeMulti: eui.BitmapLabel;
-		/**免费次数*/
 		private freeChooseCountBoom: AMovieClip;
-		private contentGroup: eui.Group;
-
 
 		private balance: number;
 		private betcfg: number[];
@@ -66,6 +54,8 @@ module game {
 		private nextBonus: boolean = false;
 		/**自动次数 */
 		private autoCount: number;
+		/**免费模式下本次转动的buff */
+		private buff: string;
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
@@ -79,12 +69,16 @@ module game {
 
 		// -------------------- 游戏初始化  ------------------------
 
-		/**初始化显示对象，注册通知 */
+		/**
+		 * 初始化显示对象，注册通知
+		 * */
 		public init() {
 			this.initView();
 			this.initData();
 		}
-		/**初始化显示 */
+		/**
+		 * 初始化显示
+		 * */
 		private initView() {
 			this.initTitle();
 			this.initSymbols();
@@ -93,11 +87,15 @@ module game {
 			this.initVisible();
 			this.initListener();
 		}
-		/**标题流光 */
+		/**
+		 * 标题流光
+		 * */
 		private initTitle(){
 			this.title.play();
 		}
-		/**初始图标对象 */
+		/**
+		 * 初始图标对象
+		 * */
 		private initSymbols(){
 			this.symbols = [];
 			for (let i = 0; i < 15; i++) {
@@ -110,7 +108,9 @@ module game {
 				this["tile" + i].source = "symbolName_" + n + "_png";
 			}
 		}
-		/**初始化一些visible */
+		/**
+		 * 初始化一些visible
+		 * */
 		private initVisible(){
 			[this.border2, this.border3, this.border4, this.lineWinTxt].forEach(v => {
 				v.visible = false;
@@ -119,7 +119,9 @@ module game {
 				this["vagueTile" + i].visible = false;
 			}
 		}
-		/**初始事件监听 */
+		/**
+		 * 初始事件监听
+		 * */
 		private initListener(){
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
@@ -131,9 +133,26 @@ module game {
 				this.bottomBar.hideCutGroup(true);
 			}, this);
 		}
+        /**
+         * 更新背景音乐
+         * */
+        private updateBgm() {
+            if (this.isFree) {
+                SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+            }
+            else {
+                if (this.freeChoose.visible) {
+                    SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+                }
+                else {
+                    SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+                }
+            }
+        }
 
-
-		/**初始化数据 */
+		/**
+		 * 初始化数据
+		 * */
 		private initData() {
 			NotifyManager.getInstance().addRegister(this, [
 				NotifyConst.spin,
@@ -162,13 +181,16 @@ module game {
 			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
 		}
-		/**数据恢复 */
+		/**
+		 * 数据恢复
+		 * */
 		private checkDataRecover(resp: LoginVO) {
 			if (resp.payload.featureData) {
 				//进免费游戏玩
 				if (resp.payload.featureData.freeSpinRemainCount > 0) {
 					this.isFree = true;
 					this.bottomBar.setFree(true);
+					this.buff = resp.payload.featureData.buff;
 					this.freeSpinRemainCount = resp.payload.featureData.freeSpinRemainCount;
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
@@ -190,9 +212,11 @@ module game {
 			}
 		}
 
-		// -------------------- 游戏逻辑  ------------------------
+		// -------------------- 游戏交互逻辑  ------------------------
 
-		/**接收通知 */
+		/**
+		 * 接收通知
+		 * */
 		public handleNotify(key: NotifyConst, body) {
 			switch (key) {
 				case NotifyConst.spin:
@@ -231,26 +255,16 @@ module game {
 					break;
 			}
 		}
-		/**更新背景音乐 */
-		private updateBgm() {
-			if (this.isFree) {
-				SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
-			}
-			else {
-				if (this.freeChoose.visible) {
-					SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
-				}
-				else {
-					SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
-				}
-			}
-		}
-		/**控制游戏状态 */
+		/**
+		 * 控制游戏状态
+		 * */
 		private setState(n: GameState) {
 			this.state = n;
 			this.bottomBar.setState(n);
 		}
-		/**spin的逻辑 */
+		/**
+		 * spin的逻辑
+		 * */
 		private spin(autoCount?: any) {
 			if (this.balance < this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]) {
 				console.log("余额不足");
@@ -274,6 +288,7 @@ module game {
 				this.bottomBar.setAutoBetNum(--this.autoCount);
 			}
 
+			if(this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
 			this.startSpin();
 			if (this.nextFree) {
 				GameService.getInstance().sendSpin(this.betLevel, "1").then(this.spinBack.bind(this));
@@ -289,8 +304,9 @@ module game {
 			this.nextBonus = false;
 			this.setState(GameState.SPINNING);
 		}
-
-		/**收到spin结果 ，把-1的图标筛选掉*/
+		/**
+		 * 收到spin结果 ，把-1的图标筛选掉
+		 * */
 		private spinBack(resp: SpinVO) {
 			resp.payload.winGrid.length > 0 && resp.payload.winGrid.forEach((v, i) => {
 				for (let i = v.winCard.length - 1; i >= 0; i--) {
@@ -323,9 +339,11 @@ module game {
 		}
 
 
-		// -------------------- 游戏显示  ------------------------
+		// -------------------- 游戏转动显示  ------------------------
 
-		/**开始滚动 */
+		/**
+		 * 开始滚动
+		 * */
 		private startSpin() {
 			this.rollChannel = SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
 			for (let i = 0; i < 15; i++) {
@@ -336,7 +354,9 @@ module game {
 			}
 			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
 		}
-		/**单列模糊图标转动 */
+		/**
+		 * 单列模糊图标转动
+		 * */
 		private singleColumRoll(column) {
 			for (let i = 0; i < 4; i++) {
 				this["vagueTile" + (column * 4 + i)].visible = true;
@@ -355,7 +375,9 @@ module game {
 					}
 				})
 		}
-		/**停下来 */
+		/**
+		 * 停下来
+		 * */
 		private async stopRoll(arr: any[]) {
 			if (this.rollChannel) this.rollChannel.stop();
 			// 3 4 5列是否缓停
@@ -371,7 +393,9 @@ module game {
 			}
 			this.judgeResult();
 		}
-		/**单列停下来 */
+		/**
+		 * 单列停下来
+		 * */
 		private stopColumn(column, arr: any[], isFree: boolean = false) {
 			return new Promise(async (resolve, reject) => {
 				if (isFree) await this.freeEffect(column);
@@ -388,8 +412,7 @@ module game {
 
 					//处理wild图标的多样性
 					let symbol: Symbol = this.symbols[(column * 3 + i)];
-					let buff = this.spinResp.payload.featureData.buff;
-					let str = arr[i]=="1" ? "1" + (buff == "-1" ? "" : "_" + buff) : arr[i];
+					let str = arr[i]=="1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : arr[i];
 					let defaultY = symbol.tile.y;
 					symbol.tile.visible = true;
 					symbol.value = arr[i];
@@ -405,7 +428,9 @@ module game {
 			})
 
 		}
-		/**单列freespin缓停动画 */
+		/**
+		 * 单列freespin缓停动画
+		 * */
 		private freeEffect(column: number) {
 			SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
 			return new Promise((resolve, reject) => {
@@ -466,7 +491,9 @@ module game {
 			})
 
 		}
-		/**立即停止 */
+		/**
+		 * 立即停止
+		 * */
 		private cancelSpin() {
 			for (let i = 0; i < 20; i++) {
 				egret.Tween.removeTweens(this["vagueTile" + i]);
@@ -474,21 +501,24 @@ module game {
 				this["vagueTile" + i].y = (i % 4) * 208 + 21;
 			}
 
-			let buff = this.spinResp.payload.featureData.buff;
 			let viewGrid = this.spinResp.payload.viewGrid;
 			for (let i = 0; i < 15; i++) {
 				egret.Tween.removeTweens(this.symbols[i].tile);
 				this.symbols[i].value = this.spinResp.payload.viewGrid[i];
 				this.symbols[i].tile.visible = true;
 				this.symbols[i].tile.y = (i % 3) * 208 + 21;
-				let str = viewGrid[i]=="1" ? "1"+(buff == "-1" ? "" : "_" + buff) : viewGrid[i];
+				let str = viewGrid[i]=="1" ? "1"+(this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
 
 			this.judgeResult();
 		}
 
-		/**判定结果 大赢家=> 所有线 =>freespin =>bonus =>各条单线*/
+        // -------------------- 游戏结果显示  ------------------------
+
+		/**
+		 * 判定结果 大赢家=> 所有线 =>freespin =>bonus =>各条单线
+		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
 
@@ -521,8 +551,9 @@ module game {
 				}
 			}
 		}
-
-		/**normal middle big mega super */
+		/**
+		 * 大赢家 normal middle big mega super
+		 * */
 		private showBigWin(level: string, win: number) {
 			return new Promise((resolve, reject) => {
 				if (win <= 0) resolve();
@@ -541,7 +572,9 @@ module game {
 				}
 			})
 		}
-		/**展示所有中奖图标 */
+		/**
+		 * 展示所有中奖图标
+		 * */
 		private showAllWinGrid(arr: Array<any>) {
 			let grids = [];
 			arr.forEach((v) => {
@@ -560,7 +593,9 @@ module game {
 				})
 			);
 		}
-		/**scatter图标动画 */
+		/**
+		 * scatter图标动画
+		 * */
 		private showScatterLine() {
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
@@ -569,7 +604,9 @@ module game {
 				}) : []
 			)
 		}
-		/**展示本局获得免费机会 */
+		/**
+		 * 展示本局获得免费机会
+		 * */
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
@@ -592,8 +629,9 @@ module game {
 				}
 			});
 		}
-
-		/**bonus图标动画 */
+		/**
+		 * bonus图标动画
+		 * */
 		private showBonusLine() {
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
 			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
@@ -631,9 +669,9 @@ module game {
 				}) : []
 			)
 		}
-
-		private winTileMcArr: Array<AMovieClip> = [];
-
+		/**
+		 * 各单线中奖展示
+		 * */
 		private showEveryLineGrid(arr: Array<any>) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
 			return new Promise(async (resolve, reject) => {
@@ -653,7 +691,9 @@ module game {
 				resolve();
 			})
 		}
-		/**停止中奖展示 */
+		/**
+		 * 停止中奖展示
+		 * */
 		private cancelLinesWin() {
 			this.setState(GameState.BET);
 			this.lineWinTxt.visible = false;
@@ -679,12 +719,19 @@ module game {
 			}
 		}
 
+        // -------------------- 免费游戏显示  ------------------------
+
+        /**
+         * 显示免费游戏选择的ui
+         * */
 		private showFreeChoose(b: boolean) {
 			this.freeChoose.visible = b;
 			if (b) this.freeChoose.show();
 			this.updateBgm();
 		}
-		/**显示免费游戏的ui */
+		/**
+		 * 显示免费游戏的ui
+		 * */
 		private showFreeGame(b: boolean) {
 			this.bg.visible = !b;
 			this.bgFree.visible = b;
@@ -704,6 +751,9 @@ module game {
 				}
 			}, 500);
 		}
+		/**
+		 * 刷新免费选择次数
+		 * */
 		private setFreeChooseCount(isAn: boolean = false) {
 			this.freeChooseCountBoom.sources = "zz_|1-61|_png";
 			egret.Tween.removeTweens(this.freeChooseCountBoom);
@@ -734,8 +784,9 @@ module game {
 				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
 			}
 		}
-
-		/**免费的倍数*/
+		/**
+		 * 显示免费的倍数
+		 * */
 		private freeMultiAni(mul: number, isStart: boolean = true): void {
 			if (isStart) {
 				this.freeMultiGroup.visible = true;
@@ -765,13 +816,16 @@ module game {
 				this.freeMultiGroup.visible = false;
 			}
 		}
-		/**进入免费结算面板，显示免费总奖励*/
+		/**
+		 * 进入免费结算面板，显示免费总奖励
+		 * */
 		private showFreeTotalWin(n: string) {
 			this.freeTotalWin.showTotalWin(n);
 			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
 		}
-
-		/**免费结算完成 */
+		/**
+		 * 免费结算完成
+		 * */
 		private freeComplete() {
 			if (this.featureChanceCount > 0) {
 				this.showFreeChoose(true);
@@ -787,7 +841,9 @@ module game {
 	}
 
 
-	/**图标动画类 */
+	/**
+	 * 图标动画类
+	 * */
 	class Symbol {
 		public value: string;
 		public tile: eui.Image;
@@ -803,14 +859,18 @@ module game {
 			let cfg = RES.getRes("particle_json");
 			this.p = new particle.GravityParticleSystem(texture, cfg);
 			this.p.blendMode = egret.BlendMode.ADD;
-			gameScene["particleGroup"].addChild(this.p);
+			gameScene.particleGroup.addChild(this.p);
 			this.p.visible = false;
 		}
-		/**设置图标结果 */
+		/**
+		 * 设置图标结果
+		 * */
 		public setTexture(v) {
 			this.tile.source = v;
 		}
-		/**图标中奖动画 isLong：是否是长动画 */
+		/**
+		 * 图标中奖动画 isLong：是否是长动画
+		 * */
 		public showWinAni(isLong:boolean = true){
 			return new Promise((resolve, reject)=>{
 				this.gameScene.winGridGroup.addChild(this.tile);
@@ -907,7 +967,9 @@ module game {
 				}
 			})
 		}
-		/**停止动画 */
+		/**
+		 * 停止动画
+		 * */
 		public reset() {
 			if (this.p) {
 				this.p.stop();
