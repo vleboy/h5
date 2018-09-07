@@ -95,15 +95,7 @@ module game {
 		}
 		/**标题流光 */
 		private initTitle(){
-			let f = () => {
-				setTimeout(() => {
-					this.title.loop = 1;
-					this.title.play();
-					this.title.once(AMovieClip.COMPLETE, f, this);
-				}, 5000);
-			}
-			
-			f();
+			this.title.play();
 		}
 		/**初始图标对象 */
 		private initSymbols(){
