@@ -55,7 +55,7 @@ module game {
 		/**自动次数 */
 		private autoCount: number;
 		/**免费模式下本次转动的buff */
-		private buff: string;
+		public buff: string;
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
@@ -248,7 +248,13 @@ module game {
 					this.showFreeGame(true);
 					break;
 				case NotifyConst.freeComplete:
-					this.freeComplete();
+					egret.Tween.get(this)
+						.to({alpha:0}, 700)
+						.wait(700)
+						.call(()=>{
+							this.freeTotalWin.visible = false;
+							this.freeComplete();
+						})
 					break;
 				case NotifyConst.updateBgm:
 					this.updateBgm();
@@ -312,6 +318,11 @@ module game {
 				for (let i = v.winCard.length - 1; i >= 0; i--) {
 					if (v.winCard[i] == -1) {
 						v.winCard.splice(i, 1);
+					}
+				}
+				for (let i = v.line.length - 1; i >= 0; i--) {
+					if (v.line[i] == -1) {
+						v.line.splice(i, 1);
 					}
 				}
 			})
@@ -725,6 +736,7 @@ module game {
          * 显示免费游戏选择的ui
          * */
 		private showFreeChoose(b: boolean) {
+			this.freeTotalWin.visible = false;
 			this.freeChoose.visible = b;
 			if (b) this.freeChoose.show();
 			this.updateBgm();
@@ -733,6 +745,7 @@ module game {
 		 * 显示免费游戏的ui
 		 * */
 		private showFreeGame(b: boolean) {
+			this.freeTotalWin.visible = false;
 			this.bg.visible = !b;
 			this.bgFree.visible = b;
 			this.kuang.visible = !b;
@@ -750,6 +763,8 @@ module game {
 					if (this.autoMax || this.autoCount > 0) this.spin();
 				}
 			}, 500);
+		
+			
 		}
 		/**
 		 * 刷新免费选择次数
@@ -878,18 +893,23 @@ module game {
 				if (this.value == "0") {
 					this.mc = new AMovieClip();
 					this.mc.sources = "T_tongqian_|1-16|_png";
+                    this.mc.speed = 2;
 					this.mc.x = this.tile.x;
 					this.mc.y = this.tile.y;
 					this.mc.width = this.tile.width;
 					this.mc.height = this.tile.height;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
-					this.mc.loop = isLong ? 2 : 1;
+					this.mc.loop = isLong ? 4 : 2;
 					this.tile.visible = false;
+                    this.mc.once(AMovieClip.COMPLETE, ()=>{
+                        this.mc.visible = false;
+                        this.tile.visible = true;
+					}, this)
 				}
 				//wild图标
 				else if (this.value == "1") {
-					this.tile.source = this.gameScene.isFree ? ("wildbg" + this.gameScene.spinResp.payload.featureData.buff + "_png") : "wildBg0_png";
+					this.tile.source = this.gameScene.isFree ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
 					this.mc.sources = "caishenAni|1-16|_png";
