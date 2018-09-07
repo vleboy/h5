@@ -306,7 +306,7 @@ module game {
 		public setAutoBetNum(num: number): void {
 			this.showAutoBtn(num == 0);
 			this.isAuto = num != 0;
-			this.autoNum.text = num > 0 ? (num + "") : "MAX";
+			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
 		}
 		/**
          * 资源释放
