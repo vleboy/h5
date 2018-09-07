@@ -37,12 +37,8 @@ module game {
 				.wait(2000)
 				.call(()=>{
 					egret.Tween.removeTweens(this.winTxt);
-					this.dispose();
+					this.sendNotify(NotifyConst.freeComplete);
 				});
-		}
-		public dispose(){
-			this.visible = false;
-			this.sendNotify(NotifyConst.freeComplete);
 		}
 	}
 }
