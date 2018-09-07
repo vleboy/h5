@@ -125,7 +125,6 @@ module game {
 		private initListener(){
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
-				this.bigWin.bigWinStart("big",400);
 			}, this);
 			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextBonus = true;
