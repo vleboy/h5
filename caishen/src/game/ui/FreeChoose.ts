@@ -22,7 +22,7 @@ module game {
 				this["chooseGroup"].setChildIndex(target, 1);
 				egret.Tween.get(target)
 					.set({y:defaultY-1000})
-					.wait(i*100+100)
+					.wait((4-i)*100+500)
 					.call(()=>{
 						SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
 					})
@@ -105,7 +105,7 @@ module game {
 				arr.map((v,i)=>{
 					return new Promise((resolve, reject)=>{
 						setTimeout(()=> {
-							egret.Tween.get(v).to({alpha:1},200).call(()=>{
+							egret.Tween.get(v).to({alpha:1},200).wait(500).call(()=>{
 								egret.Tween.removeTweens(v);
 								resolve();
 							})
