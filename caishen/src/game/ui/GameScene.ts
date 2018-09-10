@@ -370,8 +370,8 @@ module game {
 				this.theBalance = balance;
 			});
 			this.setState(GameState.STOP);
-			// this.isReturnData = true;
-			// if (this.connectTip.visible) this.connectTip.show(false);
+			this.isReturnData = true;
+			if (this.connectTip.visible) this.connectTip.show(false);
 		}
 
 
