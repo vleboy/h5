@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="rullSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="rullSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Group id="groupOut" width="100%" height="100%" left="0" top="0">
 		<e:Image width="1920" height="1080" top="0" left="0" source="OverBG_jpg"/>
 		<e:Image height="100%" horizontalCenter="0" verticalCenter="0" width="100%" source="bg_png"/>
@@ -159,14 +159,13 @@
 				</e:skinName>
 			</e:Button>
 		</e:Group>
-		<e:Button id="btnClose" label="" top="12" left="70" width="130" height="112">
+		<game:SmallButton id="btnClose" label="" width="130" height="112" horizontalCenter="-825" verticalCenter="-472" scaleX="1" scaleY="1">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="Tips_Back_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 				</e:Skin>
 			</e:skinName>
-
-		</e:Button>
+		</game:SmallButton>
 	</e:Group>
 </e:Skin>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="settingSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="settingSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Rect id="bgSetting" left="0" right="0" top="0" bottom="0" alpha="0.65"/>
 	<e:Group id="groupSetting" width="1244" height="764" verticalCenter="0" horizontalCenter="0" anchorOffsetX="622" anchorOffsetY="382">
 		<e:Image source="biaoti_png" left="0" top="0" width="225" height="69" scale9Grid="12,25,45,26"/>
@@ -13,11 +13,19 @@
 		<e:Label text="音乐" size="38" height="55" horizontalCenter="0" verticalAlign="middle" textAlign="center" top="229"/>
 		<e:Label text="音效" size="38" height="55" horizontalCenter="0" verticalAlign="middle" textAlign="center" top="396"/>
 		<e:Label text="快速模式" size="38" height="55" horizontalCenter="0" verticalAlign="middle" textAlign="center" top="556"/>
+		<game:SmallButton id="btnClose" label="" width="70" height="70" horizontalCenter="587" verticalCenter="-279">
+			<game:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="close_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
 
 
 
 
-		<e:Image id="btnClose" top="68" right="0" source="close_png" width="70" height="70"/>
+
 		<e:ToggleSwitch id="btnMusic" label="" height="55" top="229" left="774" width="118">
 			<e:skinName>
 				<e:Skin states="up,down,disabled">

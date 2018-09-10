@@ -6,7 +6,7 @@ module game {
 		}
 		//-----------变量----------
 		/**关闭按钮*/
-		private btnClose: eui.Image;
+		private btnClose: eui.Button;
 		/**音乐按钮*/
 		private btnMusic: eui.ToggleSwitch;
 		/**音效按钮*/
