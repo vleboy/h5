@@ -63,6 +63,8 @@ module game {
 		private thePArr: particle.GravityParticleSystem[];
 		/**是否返回数据*/
 		private isReturnData: boolean;
+		/**spin等待*/
+		private spinWain: any;
 
 		public constructor() {
 			super();
@@ -318,9 +320,8 @@ module game {
 		private showConnect(): void {
 			let timeOut = (wait: number) => {
 				return new Promise((res, rej) => {
-					let timer;
-					timer && clearTimeout(timer);
-					timer = setTimeout(() => res(), wait);
+					this.spinWain && clearTimeout(this.spinWain);
+					this.spinWain = setTimeout(() => res(), wait);
 				});
 			}
 			timeOut(12000).then(() => {
