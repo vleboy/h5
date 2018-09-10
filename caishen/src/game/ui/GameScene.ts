@@ -32,6 +32,7 @@ module game {
 		private freeMultiGroup: eui.Group;
 		private freeMulti: eui.BitmapLabel;
 		private freeChooseCountBoom: AMovieClip;
+		private connectTip: ConnectTip;
 
 		private balance: number;
 		private betcfg: number[];
@@ -55,11 +56,15 @@ module game {
 		/**自动次数 */
 		private autoCount: number;
 		/**免费模式下本次转动的buff */
-		public buff: string="-1";
+		public buff: string = "-1";
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
 		private thePArr: particle.GravityParticleSystem[];
+		/**是否返回数据*/
+		private isReturnData: boolean;
+		/**spin等待*/
+		private spinWain: any;
 
 		public constructor() {
 			super();
@@ -90,13 +95,13 @@ module game {
 		/**
 		 * 标题流光
 		 * */
-		private initTitle(){
+		private initTitle() {
 			this.title.play();
 		}
 		/**
 		 * 初始图标对象
 		 * */
-		private initSymbols(){
+		private initSymbols() {
 			this.symbols = [];
 			for (let i = 0; i < 15; i++) {
 				this.symbols.push(new Symbol(this["tile" + i], this));
@@ -111,7 +116,7 @@ module game {
 		/**
 		 * 初始化一些visible
 		 * */
-		private initVisible(){
+		private initVisible() {
 			[this.border2, this.border3, this.border4, this.lineWinTxt].forEach(v => {
 				v.visible = false;
 			})
@@ -122,7 +127,7 @@ module game {
 		/**
 		 * 初始事件监听
 		 * */
-		private initListener(){
+		private initListener() {
 			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
 				this.nextFree = true;
 			}, this);
@@ -136,19 +141,19 @@ module game {
         /**
          * 更新背景音乐
          * */
-        private updateBgm() {
-            if (this.isFree) {
-                SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
-            }
-            else {
-                if (this.freeChoose.visible) {
-                    SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
-                }
-                else {
-                    SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
-                }
-            }
-        }
+		private updateBgm() {
+			if (this.isFree) {
+				SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+			}
+			else {
+				if (this.freeChoose.visible) {
+					SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+				}
+				else {
+					SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+				}
+			}
+		}
 
 		/**
 		 * 初始化数据
@@ -195,6 +200,7 @@ module game {
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 				}
 				//去选择免费游戏
 				else if (resp.payload.featureData.featureChanceCount > 0) {
@@ -251,13 +257,13 @@ module game {
 					break;
 				case NotifyConst.freeComplete:
 					egret.Tween.get(this)
-						.to({alpha:0}, 700)
+						.to({ alpha: 0 }, 700)
 						.wait(700)
-						.call(()=>{
+						.call(() => {
 							this.freeTotalWin.visible = false;
 							this.freeComplete();
 						})
-						.to({alpha:1}, 700)
+						.to({ alpha: 1 }, 700)
 					break;
 				case NotifyConst.updateBgm:
 					this.updateBgm();
@@ -290,7 +296,7 @@ module game {
 				this.autoCount = autoCount;
 			}
 
-			if(this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
+			if (this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
 			this.startSpin();
 			if (this.nextFree) {
 				GameService.getInstance().sendSpin(this.betLevel, "1").then(this.spinBack.bind(this));
@@ -304,7 +310,29 @@ module game {
 
 			this.nextFree = false;
 			this.nextBonus = false;
+			this.isReturnData = false;
 			this.setState(GameState.SPINNING);
+			this.showConnect();
+		}
+		/**
+		 * 显示连接
+		*/
+		private showConnect(): void {
+			let timeOut = (wait: number) => {
+				return new Promise((res, rej) => {
+					this.spinWain && clearTimeout(this.spinWain);
+					this.spinWain = setTimeout(() => res(), wait);
+				});
+			}
+			timeOut(12000).then(() => {
+				if (!this.isReturnData) this.connectTip.show(true);
+				timeOut(8000).then(() => {
+					if (!this.isReturnData) {
+						this.connectTip.show(false);
+						this.stage.addChild(new game.ErrTip("网络连接错误，是否重连?", () => location.reload(), this));
+					}
+				});
+			});
 		}
 		/**
 		 * 收到spin结果 ，把-1的图标筛选掉
@@ -343,6 +371,8 @@ module game {
 				this.theBalance = balance;
 			});
 			this.setState(GameState.STOP);
+			this.isReturnData = true;
+			if (this.connectTip.visible) this.connectTip.show(false);
 		}
 
 
@@ -419,7 +449,7 @@ module game {
 
 					//处理wild图标的多样性
 					let symbol: Symbol = this.symbols[(column * 3 + i)];
-					let str = arr[i]=="1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : arr[i];
+					let str = arr[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : arr[i];
 					let defaultY = symbol.tile.y;
 					symbol.tile.visible = true;
 					symbol.value = arr[i];
@@ -451,25 +481,25 @@ module game {
 				let arr = [];
 				let createCoins = () => {
 					for (let i = 0; i < 4; i++) {
-						let img = new eui.Image("yigeyuanb_png");
-						let ran = Math.random() * 0.05 + 0.02;
-						img.width = 435 * ran;
-						img.height = 239 * ran;
-						img.anchorOffsetX = img.width / 2;
-						img.anchorOffsetY = img.height / 2;
-						img.rotation = Math.random() * 360;
-						img["speed"] = Math.round(Math.random() * 6 + 3);
-						img["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-						img.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-						c.addChild(img);
-						arr.push(img);
+						let mc = new AMovieClip();
+						mc.sources = "coin_pin_|1-9|_png";
+						mc.width = mc.height = 20;
+						mc.anchorOffsetX = 10;
+						mc.anchorOffsetY = 10;
+						mc.rotation = Math.random() * 360;
+						mc.play();
+						mc["speed"] = Math.round(Math.random() * 6 + 3);
+						mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
+						mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
+						c.addChild(mc);
+						arr.push(mc);
 					}
 				}
 				let index = 0;
 				egret.Tween.get(this["freeEffectGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
-						if (index++ % 5 == 0) {
+						if (index++ % 10 == 0) {
 							createCoins();
 						}
 						for (let j = arr.length - 1; j >= 0; j--) {
@@ -514,17 +544,17 @@ module game {
 				this.symbols[i].value = this.spinResp.payload.viewGrid[i];
 				this.symbols[i].tile.visible = true;
 				this.symbols[i].tile.y = (i % 3) * 208 + 21;
-				let str = viewGrid[i]=="1" ? "1"+(this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
+				let str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
-			
+
 			egret.Tween.removeTweens(this["freeEffectGroup"]);
 			(this["freeEffectGroup"] as eui.Group).removeChildren();
 
 			this.judgeResult();
 		}
 
-        // -------------------- 游戏结果显示  ------------------------
+		// -------------------- 游戏结果显示  ------------------------
 
 		/**
 		 * 判定结果 大赢家=> 所有线 =>freespin =>bonus =>各条单线
@@ -557,7 +587,7 @@ module game {
 				else if (this.autoCount > 0) {
 					this.bottomBar.setAutoBetNum(--this.autoCount);
 				}
-				
+
 				if (this.spinResp.payload.getFeatureChance) {
 					this.showFreeChoose(true);
 				}
@@ -568,7 +598,7 @@ module game {
 				}
 			}
 
-			
+
 		}
 		/**
 		 * 大赢家 normal middle big mega super
@@ -740,7 +770,7 @@ module game {
 			}
 		}
 
-        // -------------------- 免费游戏显示  ------------------------
+		// -------------------- 免费游戏显示  ------------------------
 
         /**
          * 显示免费游戏选择的ui
@@ -772,8 +802,8 @@ module game {
 					if (this.autoMax || this.autoCount > 0) this.spin();
 				}
 			}, 500);
-		
-			
+
+
 		}
 		/**
 		 * 刷新免费选择次数
@@ -787,22 +817,22 @@ module game {
 			this.freeChooseCountBoom.y = 540;
 
 			let isShow: boolean = this.featureChanceCount > 0;
-			if(isAn){
+			if (isAn) {
 				isShow && egret.Tween.get(this.freeChooseCountBoom)
-				.call(() => this.freeChooseCountBoom.visible = true)
-				.to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
-				.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
-				.call(() => {
-					this.freeChooseCountBoom.play();
-					this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-					this.freeChooseCountBg.visible = isShow;
-					this.freeChooseCountTxt.visible = isShow;
-					setTimeout(() => {
-						this.freeChooseCountBoom.stop();
-						this.freeChooseCountBoom.visible = false;
-					}, 1000)
-				})
-			}else{
+					.call(() => this.freeChooseCountBoom.visible = true)
+					.to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
+					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
+					.call(() => {
+						this.freeChooseCountBoom.play();
+						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
+						this.freeChooseCountBg.visible = isShow;
+						this.freeChooseCountTxt.visible = isShow;
+						setTimeout(() => {
+							this.freeChooseCountBoom.stop();
+							this.freeChooseCountBoom.visible = false;
+						}, 1000)
+					})
+			} else {
 				this.freeChooseCountBg.visible = isShow;
 				this.freeChooseCountTxt.visible = isShow;
 				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
@@ -895,14 +925,14 @@ module game {
 		/**
 		 * 图标中奖动画 isLong：是否是长动画
 		 * */
-		public showWinAni(isLong:boolean = true){
-			return new Promise((resolve, reject)=>{
+		public showWinAni(isLong: boolean = true) {
+			return new Promise((resolve, reject) => {
 				this.gameScene.winGridGroup.addChild(this.tile);
 				//scatter 金币图标
 				if (this.value == "0") {
 					this.mc = new AMovieClip();
 					this.mc.sources = "T_tongqian_|1-16|_png";
-                    this.mc.speed = 2;
+					this.mc.speed = 2;
 					this.mc.x = this.tile.x;
 					this.mc.y = this.tile.y;
 					this.mc.width = this.tile.width;
@@ -911,14 +941,14 @@ module game {
 					this.mc.play();
 					this.mc.loop = isLong ? 4 : 2;
 					this.tile.visible = false;
-                    this.mc.once(AMovieClip.COMPLETE, ()=>{
-                        this.mc.visible = false;
-                        this.tile.visible = true;
+					this.mc.once(AMovieClip.COMPLETE, () => {
+						this.mc.visible = false;
+						this.tile.visible = true;
 					}, this)
 				}
 				//wild图标
 				else if (this.value == "1") {
-					this.tile.source = this.gameScene.buff!="-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
+					this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
 					this.mc.sources = "caishenAni|1-16|_png";
@@ -949,7 +979,7 @@ module game {
 				p.emitterX = p.emitterY = 0;
 				p.x = grid.x;
 				p.y = grid.y;
-				let f = ()=>{
+				let f = () => {
 					egret.Tween.get(p)
 						.to({ emitterX: grid.width }, 450)
 						.to({ emitterY: grid.height }, 450)
@@ -971,21 +1001,21 @@ module game {
 								this.mc2.parent.removeChild(this.mc2);
 								this.mc2 = null;
 							}
-							if(this.value == "1"){
-								this.tile.source = this.gameScene.buff!="-1" ? "symbolName_1_"+this.gameScene.buff+"_png" :"symbolName_1_png";
+							if (this.value == "1") {
+								this.tile.source = this.gameScene.buff != "-1" ? "symbolName_1_" + this.gameScene.buff + "_png" : "symbolName_1_png";
 							}
 							this.gameScene.valueTiles.addChild(this.tile);
 							this.gameScene.lineWinTxt.visible = false;
 						})
 						//单线展示的间隔时间
 						.wait(1000)
-						.call(()=>{
+						.call(() => {
 							egret.Tween.removeTweens(p);
-								resolve();
+							resolve();
 						})
 				}
 
-				if(isLong){
+				if (isLong) {
 					egret.Tween.get(p)
 						.to({ emitterX: grid.width }, 450)
 						.to({ emitterY: grid.height }, 450)
@@ -993,7 +1023,7 @@ module game {
 						.to({ emitterY: 0 }, 450)
 						.call(f);
 				}
-				else{
+				else {
 					f();
 				}
 			})

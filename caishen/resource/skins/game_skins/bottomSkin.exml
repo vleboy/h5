@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="bottomSkin" width="1920" height="220" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="bottomSkin" width="1920" height="220" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Group id="groupBet" width="880" height="218" left="80" bottom="-100" visible="false">
 		<e:Image source="BG_Pop_png" left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16"/>
 		<e:Image source="BetInfoBG_png" width="258" height="80" verticalCenter="0" left="200"/>
 		<e:Button id="BtnLess" label="" width="106" height="66" left="48" x="120" scaleX="1" scaleY="1" verticalCenter="0">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Image source="BetMinus_png" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -14,7 +14,7 @@
 		<e:Button id="BtnMore" label="" width="106" height="66" left="505" x="130" scaleX="1" scaleY="1" verticalCenter="0">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Image source="BetAdd_png" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -22,7 +22,7 @@
 		<e:Button id="BtnMax" label="" width="180" height="112" left="658" x="140" scaleX="1" scaleY="1" verticalCenter="0">
 			<e:skinName>
 			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
+				<e:Image width="100%" height="100%" source="BetButton_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Image source="BetMax_png" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 			</e:skinName>
@@ -85,14 +85,15 @@
 			</e:Skin>
 		</e:skinName>
 		</e:Button>
-		<e:Button id="betBtn" label="下注" width="168" height="85" left="200" bottom="15" x="200" y="120" scaleX="1" scaleY="1">
-		<e:skinName>
-			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
-		</e:skinName>
-		</e:Button>
+		<game:SmallButton id="betBtn" label="下注" width="168" height="85" scaleX="1" scaleY="1" horizontalCenter="-676" verticalCenter="52.5">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+
+		</game:SmallButton>
 		<e:Image source="BG_Info_png" height="118" bottom="0" left="432" width="345" scaleX="-1" scale9Grid="66,31,60,58"/>
 		<e:Label id="theBet" text="单注：0.00" height="36" size="35" textColor="0xf3f4f4" bottom="40" width="270" textAlign="center" verticalAlign="middle" left="448"/>
 		<e:Label text="赢得" y="104" size="38" height="38" horizontalCenter="0"/>
@@ -101,11 +102,12 @@
 		<e:Label id="allBet" text="总押注：0.00" height="36" size="35" textColor="0xF3F4F4" bottom="40" width="270" textAlign="center" verticalAlign="middle" right="448"/>
 		<e:Button id="autoBtn" label="自动转动" width="168" height="85" bottom="15" right="255">
 			<e:skinName>
-			<e:Skin states="up,down,disabled">
-				<e:Image width="100%" height="100%" source="BetButton_0_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="BetButton_png" source.down="BetButton_1_png" source.disabled="disable_png"/>
 				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
+				</e:Skin>
 			</e:skinName>
+
 		</e:Button>
 		<e:Button id="cancelAutoBtn" label="取消自动" width="168" height="85" bottom="15" right="255" visible="false">
 			<e:skinName>
