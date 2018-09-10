@@ -30,7 +30,7 @@
 		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg2_png"/>
 		<e:Image source="head_png" y="88" horizontalCenter="0"/>
 		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image x="138" y="10" source="num8_png"/>
+		<e:Image x="186" y="10" source="num8_png"/>
 		<e:Image y="343" horizontalCenter="0" source="cardBottom8_png"/>
 		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
 		</e:Group>
@@ -38,7 +38,7 @@
 		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg1_png" width="517" height="462"/>
 		<e:Image source="head_png" y="88" horizontalCenter="0"/>
 		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image x="138" y="10" source="num5_png"/>
+		<e:Image x="192" y="10" source="num5_png"/>
 		<e:Image y="343" horizontalCenter="0" source="cardBottom5_png"/>
 		<e:Image source="multi5_png" y="377" horizontalCenter="0"/>
 		</e:Group>

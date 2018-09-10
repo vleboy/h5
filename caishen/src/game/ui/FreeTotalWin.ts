@@ -30,7 +30,7 @@ module game {
 		/**跳过缓动 */
 		public stop(){
 			egret.Tween.removeTweens(this);
-			this.winTxt.text = ""+this.win;
+			this.winTxt.text = this.win.toFixed(2);
 			egret.Tween.get(this.winTxt)
 				.to({scaleX:1.2, scaleY:1.2},300)
 				.to({scaleX:1, scaleY:1},300)

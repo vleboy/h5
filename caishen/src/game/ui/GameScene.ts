@@ -7,7 +7,7 @@ module game {
 		private rull: Rull;
 		private setting: Setting;
 		public particleGroup: eui.Group;
-		private lineWinTxt: eui.BitmapLabel;
+		public lineWinTxt: eui.BitmapLabel;
 		private freeChoose: FreeChoose;
 		private bg: eui.Image;
 		private bgFree: eui.Image;
@@ -55,7 +55,7 @@ module game {
 		/**自动次数 */
 		private autoCount: number;
 		/**免费模式下本次转动的buff */
-		public buff: string;
+		public buff: string="-1";
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
@@ -241,9 +241,11 @@ module game {
 					break;
 				case NotifyConst.chooseFreeBack:
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
 					this.featureChanceCount--;
 					this.isFree = true;
 					this.bottomBar.setFree(true);
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
 					break;
@@ -255,6 +257,7 @@ module game {
 							this.freeTotalWin.visible = false;
 							this.freeComplete();
 						})
+						.to({alpha:1}, 700)
 					break;
 				case NotifyConst.updateBgm:
 					this.updateBgm();
@@ -285,13 +288,6 @@ module game {
 			else if (autoCount > 0) {
 				this.autoMax = false;
 				this.autoCount = autoCount;
-			}
-
-			if (this.autoMax) {
-				this.bottomBar.setAutoBetNum(-1);
-			}
-			else if (this.autoCount > 0) {
-				this.bottomBar.setAutoBetNum(--this.autoCount);
 			}
 
 			if(this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
@@ -454,15 +450,15 @@ module game {
 				this["freeEffectGroup"].addChild(c);
 				let arr = [];
 				let createCoins = () => {
-					for (let i = 0; i < 7; i++) {
+					for (let i = 0; i < 4; i++) {
 						let img = new eui.Image("yigeyuanb_png");
-						let ran = Math.random() * 0.08 + 0.03;
+						let ran = Math.random() * 0.05 + 0.02;
 						img.width = 435 * ran;
 						img.height = 239 * ran;
 						img.anchorOffsetX = img.width / 2;
 						img.anchorOffsetY = img.height / 2;
 						img.rotation = Math.random() * 360;
-						img["speed"] = Math.round(Math.random() * 10 + 7);
+						img["speed"] = Math.round(Math.random() * 6 + 3);
 						img["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
 						img.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
 						c.addChild(img);
@@ -470,7 +466,7 @@ module game {
 					}
 				}
 				let index = 0;
-				egret.Tween.get(c, { loop: true })
+				egret.Tween.get(this["freeEffectGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
 						if (index++ % 5 == 0) {
@@ -489,7 +485,7 @@ module game {
 						}
 					})
 				setTimeout(() => {
-					egret.Tween.removeTweens(c);
+					egret.Tween.removeTweens(this["freeEffectGroup"]);
 					while (arr.length > 0) {
 						let img = arr.pop();
 						img.parent.removeChild(img);
@@ -521,6 +517,9 @@ module game {
 				let str = viewGrid[i]=="1" ? "1"+(this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
+			
+			egret.Tween.removeTweens(this["freeEffectGroup"]);
+			(this["freeEffectGroup"] as eui.Group).removeChildren();
 
 			this.judgeResult();
 		}
@@ -548,10 +547,17 @@ module game {
 				else {
 					this.setState(GameState.BET);
 					this.spin();
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 				}
 			}
 			else {
+				if (this.autoMax) {
+					this.bottomBar.setAutoBetNum(-1);
+				}
+				else if (this.autoCount > 0) {
+					this.bottomBar.setAutoBetNum(--this.autoCount);
+				}
+				
 				if (this.spinResp.payload.getFeatureChance) {
 					this.showFreeChoose(true);
 				}
@@ -561,6 +567,8 @@ module game {
 					if (this.autoMax || this.autoCount > 0) this.spin();
 				}
 			}
+
+			
 		}
 		/**
 		 * 大赢家 normal middle big mega super
@@ -687,6 +695,8 @@ module game {
 			this.setState(GameState.SHOW_SINGLE_LINES);
 			return new Promise(async (resolve, reject) => {
 				let singleLineShow = async (v, lineIndex: number) => {
+					this.lineWinTxt.visible = true;
+					this.lineWinTxt.text = v.gold.toFixed(2);
 					await Promise.all(
 						v.winCard.map((value: number, column: number) => {
 							return this.symbols[value + column * 3].showWinAni(false);
@@ -721,7 +731,7 @@ module game {
 				else {
 					this.setState(GameState.BET);
 					this.spin();
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 				}
 			}
 			else {
@@ -757,7 +767,6 @@ module game {
 			setTimeout(() => {
 				if (b) {
 					this.spin();
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount - 1);
 				}
 				else {
 					if (this.autoMax || this.autoCount > 0) this.spin();
@@ -909,7 +918,7 @@ module game {
 				}
 				//wild图标
 				else if (this.value == "1") {
-					this.tile.source = this.gameScene.isFree ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
+					this.tile.source = this.gameScene.buff!="-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
 					this.mc.sources = "caishenAni|1-16|_png";
@@ -947,7 +956,6 @@ module game {
 						.to({ emitterX: 0 }, 450)
 						.to({ emitterY: 0 }, 450)
 						.call(() => {
-							egret.Tween.removeTweens(p);
 							p.stop();
 							p.visible = false;
 							this.gameScene.particleBg.visible = false;
@@ -964,13 +972,16 @@ module game {
 								this.mc2 = null;
 							}
 							if(this.value == "1"){
-								this.tile.source = this.gameScene.isFree ? "symbolName_1_"+this.gameScene.spinResp.payload.featureData.buff+"_png" :"symbolName_1_png";
+								this.tile.source = this.gameScene.buff!="-1" ? "symbolName_1_"+this.gameScene.buff+"_png" :"symbolName_1_png";
 							}
 							this.gameScene.valueTiles.addChild(this.tile);
-
-							setTimeout(() => {
+							this.gameScene.lineWinTxt.visible = false;
+						})
+						//单线展示的间隔时间
+						.wait(1000)
+						.call(()=>{
+							egret.Tween.removeTweens(p);
 								resolve();
-							}, 1000);
 						})
 				}
 
@@ -1009,7 +1020,7 @@ module game {
 			}
 			if (this.value == "1") {
 				if (this.gameScene.isFree) {
-					this.tile.source = "symbolName_1_" + this.gameScene.spinResp.payload.featureData.buff + "_png";
+					this.tile.source = "symbolName_1_" + this.gameScene.buff + "_png";
 				}
 				else {
 					this.tile.source = "symbolName_1_png";
