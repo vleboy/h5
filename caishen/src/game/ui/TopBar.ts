@@ -4,7 +4,7 @@ module game {
 			super();
 			this.skinName = GlobalConfig.skinPath + "topBarSkin.exml";
 		}
-		private groupRight: eui.Group;
+		private setBtn: eui.Button;
 		private userName: eui.Label;
 		private userMoney: eui.Label;
 
@@ -15,7 +15,7 @@ module game {
 		}
 		/**事件监听*/
 		private eventListen(): void {
-			this.registerEvent(this.groupRight, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.openSetting); }, this);
+			this.registerEvent(this.setBtn, egret.TouchEvent.TOUCH_TAP, () => { this.sendNotify(NotifyConst.openSetting); }, this);
 		}
 		public setUser(name: string) {
 			this.userName.text = name;
