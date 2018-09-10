@@ -108,6 +108,7 @@ module game {
 			}
 			for (let i = 0; i < 15; i++) {
 				let n = Math.floor(Math.random() * 13) + "";
+				if(((i<3 && i>11) && n=="1")) n="2";
 				n = (n == "1" ? "1_1" : n);
 				this["tile" + i].visible = true;
 				this["tile" + i].source = "symbolName_" + n + "_png";
