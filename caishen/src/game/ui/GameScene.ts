@@ -195,6 +195,7 @@ module game {
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
+					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 				}
 				//去选择免费游戏
 				else if (resp.payload.featureData.featureChanceCount > 0) {
@@ -451,25 +452,25 @@ module game {
 				let arr = [];
 				let createCoins = () => {
 					for (let i = 0; i < 4; i++) {
-						let img = new eui.Image("yigeyuanb_png");
-						let ran = Math.random() * 0.05 + 0.02;
-						img.width = 435 * ran;
-						img.height = 239 * ran;
-						img.anchorOffsetX = img.width / 2;
-						img.anchorOffsetY = img.height / 2;
-						img.rotation = Math.random() * 360;
-						img["speed"] = Math.round(Math.random() * 6 + 3);
-						img["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-						img.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-						c.addChild(img);
-						arr.push(img);
+						let mc = new AMovieClip();
+						mc.sources = "coin_pin_|1-9|_png";
+						mc.width = mc.height = 20;
+						mc.anchorOffsetX = 10;
+						mc.anchorOffsetY = 10;
+						mc.rotation = Math.random() * 360;
+						mc.play();
+						mc["speed"] = Math.round(Math.random() * 6 + 3);
+						mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
+						mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
+						c.addChild(mc);
+						arr.push(mc);
 					}
 				}
 				let index = 0;
 				egret.Tween.get(this["freeEffectGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
-						if (index++ % 5 == 0) {
+						if (index++ % 10 == 0) {
 							createCoins();
 						}
 						for (let j = arr.length - 1; j >= 0; j--) {
