@@ -120,7 +120,9 @@ module game {
 		}
 		/**点击自动转到次数按钮*/
 		private touchAutoNum(e: egret.TouchEvent): void {
-			this.sendNotify(NotifyConst.spin, e.target.name.split("_")[1]);
+			let str:string = e.target.name.split("_")[1];
+			this.sendNotify(NotifyConst.spin, str);
+			str == "max" ? this.setAutoBetNum(-1) : this.setAutoBetNum(+str);
 			this.showAutoBtn(false);
 			this.isAuto = true;
 			this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);

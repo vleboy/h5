@@ -113,13 +113,13 @@ module game {
                 egret.Tween.get(this, { onChange: () => { this.payout.text = this.winNum.toFixed(2) }, onChangeObj: this })
                     .to({ winNum: mon }, timer - 2000).call(() => {
                         egret.Tween.removeTweens(this);
+                        SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
                         egret.Tween.get(this.payout)
                             .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
                             .to({ scaleX: 1, scaleY: 1 }, 300)
                             .call(() => {
                                 egret.Tween.removeTweens(this.payout);
                                 this.fireworks();
-                                SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
                                 res();
                             });
                     });
