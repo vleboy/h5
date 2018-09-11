@@ -478,7 +478,7 @@ module game {
 				let startX = this["tile" + column * 3].x + this["tile" + column * 3].width / 2;
 				let startY = this["tile" + column * 3].y;
 				let c = new egret.DisplayObjectContainer();
-				this["freeEffectGroup"].addChild(c);
+				this["freeCoinsGroup"].addChild(c);
 				let arr = [];
 				let createCoins = () => {
 					for (let i = 0; i < 4; i++) {
@@ -497,7 +497,7 @@ module game {
 					}
 				}
 				let index = 0;
-				egret.Tween.get(this["freeEffectGroup"], { loop: true })
+				egret.Tween.get(this["freeCoinsGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
 						if (index++ % 10 == 0) {
@@ -516,12 +516,12 @@ module game {
 						}
 					})
 				setTimeout(() => {
-					egret.Tween.removeTweens(this["freeEffectGroup"]);
+					egret.Tween.removeTweens(this["freeCoinsGroup"]);
 					while (arr.length > 0) {
 						let img = arr.pop();
 						img.parent.removeChild(img);
 					}
-					this["freeEffectGroup"].removeChild(c);
+					this["freeCoinsGroup"].removeChild(c);
 					(this["border" + column] as AMovieClip).stop();
 					(this["border" + column] as AMovieClip).visible = false;
 					resolve();
@@ -549,8 +549,8 @@ module game {
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
 
-			egret.Tween.removeTweens(this["freeEffectGroup"]);
-			(this["freeEffectGroup"] as eui.Group).removeChildren();
+			egret.Tween.removeTweens(this["freeCoinsGroup"]);
+			(this["freeCoinsGroup"] as eui.Group).removeChildren();
 
 			this.judgeResult();
 		}

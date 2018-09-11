@@ -22,6 +22,7 @@
 				<game:AMovieClip id="border2" width="332" height="468" horizontalCenter="0" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>
 				<game:AMovieClip id="border3" width="332" height="468" horizontalCenter="265" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" visible="false" speed="3"/>
 				<game:AMovieClip id="border4" width="332" height="468" horizontalCenter="530" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" visible="false" speed="3"/>
+				<e:Group id="freeCoinsGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
 				<e:Image id="tile0" x="35" width="200" height="200" y="21" scaleX="1" scaleY="1" source="symbolName_1_png"/>
