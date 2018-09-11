@@ -66,6 +66,8 @@
 			<e:Group id="winGridGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
 				<e:Rect id="particleBg" width="1334" height="658" x="0" y="0" scaleX="1" scaleY="1" fillAlpha="0.5" visible="false"/>
 			</e:Group>
+			<e:Group id="bonusEffectGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 
 		</e:Group>
