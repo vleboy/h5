@@ -49,10 +49,6 @@ module game {
 		private featureChanceCount: number;
 		/**当前由于wild替换所随机到的翻倍因子*/
 		private featureMultiplier: number
-		/**下次出免费 */
-		private nextFree: boolean = false;
-		/**下次出bonus */
-		private nextBonus: boolean = false;
 		/**自动次数 */
 		private autoCount: number;
 		/**免费模式下本次转动的buff */
@@ -129,12 +125,6 @@ module game {
 		 * 初始事件监听
 		 * */
 		private initListener() {
-			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
-				this.nextFree = true;
-			}, this);
-			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
-				this.nextBonus = true;
-			}, this);
 			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
 			}, this);
@@ -299,18 +289,13 @@ module game {
 
 			if (this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
 			this.startSpin();
-			if (this.nextFree) {
-				GameService.getInstance().sendSpin(this.betLevel, "1").then(this.spinBack.bind(this));
+			if(this["testInput"].text){
+				GameService.getInstance().sendSpin(this.betLevel, this["testInput"].text).then(this.spinBack.bind(this));
 			}
-			else if (this.nextBonus) {
-				GameService.getInstance().sendSpin(this.betLevel, "3").then(this.spinBack.bind(this));
-			}
-			else {
+			else{
 				GameService.getInstance().sendSpin(this.betLevel).then(this.spinBack.bind(this));
 			}
-
-			this.nextFree = false;
-			this.nextBonus = false;
+			this["testInput"].text = "";
 			this.isReturnData = false;
 			this.setState(GameState.SPINNING);
 			this.showConnect();
