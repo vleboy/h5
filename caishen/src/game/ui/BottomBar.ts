@@ -126,6 +126,7 @@ module game {
 			this.showAutoBtn(false);
 			this.isAuto = true;
 			this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);
+			this.autoState();
 		}
 		/**是否显示自动转动按钮*/
 		private showAutoBtn(isShow: boolean): void {
