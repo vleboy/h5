@@ -108,7 +108,7 @@ module game {
 			}
 			for (let i = 0; i < 15; i++) {
 				let n = Math.floor(Math.random() * 13) + "";
-				if(((i<3 && i>11) && n=="1")) n="2";
+				if(((i<3 || i>11) && n=="1")) n="2";
 				n = (n == "1" ? "1_1" : n);
 				this["tile" + i].visible = true;
 				this["tile" + i].source = "symbolName_" + n + "_png";
@@ -478,7 +478,7 @@ module game {
 				let startX = this["tile" + column * 3].x + this["tile" + column * 3].width / 2;
 				let startY = this["tile" + column * 3].y;
 				let c = new egret.DisplayObjectContainer();
-				this["freeEffectGroup"].addChild(c);
+				this["freeCoinsGroup"].addChild(c);
 				let arr = [];
 				let createCoins = () => {
 					for (let i = 0; i < 4; i++) {
@@ -497,7 +497,7 @@ module game {
 					}
 				}
 				let index = 0;
-				egret.Tween.get(this["freeEffectGroup"], { loop: true })
+				egret.Tween.get(this["freeCoinsGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
 						if (index++ % 10 == 0) {
@@ -516,12 +516,12 @@ module game {
 						}
 					})
 				setTimeout(() => {
-					egret.Tween.removeTweens(this["freeEffectGroup"]);
+					egret.Tween.removeTweens(this["freeCoinsGroup"]);
 					while (arr.length > 0) {
 						let img = arr.pop();
 						img.parent.removeChild(img);
 					}
-					this["freeEffectGroup"].removeChild(c);
+					this["freeCoinsGroup"].removeChild(c);
 					(this["border" + column] as AMovieClip).stop();
 					(this["border" + column] as AMovieClip).visible = false;
 					resolve();
@@ -549,8 +549,8 @@ module game {
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
 
-			egret.Tween.removeTweens(this["freeEffectGroup"]);
-			(this["freeEffectGroup"] as eui.Group).removeChildren();
+			egret.Tween.removeTweens(this["freeCoinsGroup"]);
+			(this["freeCoinsGroup"] as eui.Group).removeChildren();
 
 			this.judgeResult();
 		}
@@ -686,7 +686,6 @@ module game {
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
 			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
 			gold > 0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
-
 			return Promise.all(
 				gold > 0 ? grids.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -697,20 +696,81 @@ module game {
 							this.lineWinTxt.visible = true;
 							this.lineWinTxt.text = gold.toFixed(2);
 							let gridIndex = value + column * 3;
+							let target = this["tile" + gridIndex];
 							this.particleBg.visible = true;
+							//红包动画
 							let mc: AMovieClip = new AMovieClip();
 							mc.sources = "T_hongbao_|1-16|_png";
-							mc.x = this["tile" + gridIndex].x;
-							mc.y = this["tile" + gridIndex].y;
+							mc.x = target.x;
+							mc.y = target.y;
 							this["winGridGroup"].addChild(mc);
-							this["tile" + gridIndex].visible = false;
+							target.visible = false;
 							mc.loop = 2;
 							mc.play();
+
+							/**喷金币 */
+							let coins = [];
+							let flag = 0;
+							let createCoins = ()=>{
+								let coin = new AMovieClip();
+								coin.sources = "SU_Coin_Gold_3x3_|1-9|_png";
+								coin.x = target.x+target.width/2;
+								coin.y = target.y+70;
+								coin.width = coin.height = 30;
+								coin.anchorOffsetX = coin.anchorOffsetY = 15;
+								coin["speedx"] = Math.round((Math.random()*10-5));
+								coin["speedy"] = -Math.round((Math.random()*7+7));
+								coin["count"] = 0;
+								this["bonusEffectGroup"].addChild(coin);
+								coins.push(coin);
+								coin.play();
+							}
+
+							egret.Tween.get(this["bonusEffectGroup"], {loop:true})
+								.wait(30)
+								.call(()=>{
+									if(++flag % 3 == 0)createCoins();
+									coins.forEach((v,i)=>{
+										v.x += v["speedx"];
+										v.y += v["speedy"];
+										v["speedy"]++;
+										if(++v.count > 24){
+											v.stop();
+											v.parent.removeChild(v);
+											coins.splice(i,1);
+										}
+									})
+								})
+
+							//粒子发散效果
+							
+							let texture = RES.getRes("star_png");
+							let cfg = RES.getRes("bonusParticle_json");
+							let p = new particle.GravityParticleSystem(texture, cfg);
+							p.blendMode = egret.BlendMode.ADD;
+							p.emitterX = target.x+target.width/2;
+							p.emitterY = target.y+70;
+							this["bonusEffectGroup"].addChild(p);
+							p.start();
+
+
 							mc.once(AMovieClip.COMPLETE, () => {
 								mc.parent.removeChild(mc);
 								this["tile" + gridIndex].visible = true;
 								this.particleBg.visible = false;
 								this.lineWinTxt.visible = false;
+
+								egret.Tween.removeTweens(this["bonusEffectGroup"]);
+								while(coins.length>0){
+									coins.pop().stop();
+								}
+								this["bonusEffectGroup"].removeChildren();
+
+								if(p){
+									p.stop();
+									if(p.parent) p.parent.removeChild(p);
+								}
+
 								res();
 							}, this);
 						}

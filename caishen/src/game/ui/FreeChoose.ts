@@ -16,13 +16,15 @@ module game {
 		public show(){
 			this["yuanbaoGroup"].visible = false;
 			this["chooseGroup"].setChildIndex(this["rect"], 0);
-			["5","8","10","15","20"].forEach((v,i)=>{
+			["10","5","15","8","20"].forEach((v,i)=>{
+				this["chooseGroup"].setChildIndex(this["choose"+v], 1);
+			});
+			["20","8","15","5","10"].forEach((v,i)=>{
 				let target = this["choose"+v];
 				let defaultY = target.y;
-				this["chooseGroup"].setChildIndex(target, 1);
 				egret.Tween.get(target)
 					.set({y:defaultY-1000})
-					.wait((4-i)*100+500)
+					.wait(i*100+500)
 					.call(()=>{
 						SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
 					})
