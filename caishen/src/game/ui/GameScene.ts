@@ -566,6 +566,7 @@ module game {
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
 			await this.showScatterLine();
 			await this.showFreeChange();
+			this.stopScatterLine();
 			await this.showBonusLine();
 
 			if (this.isFree) {
@@ -651,6 +652,13 @@ module game {
 					return this.symbols[gridIndex].showWinAni(false);
 				}) : []
 			)
+		}
+		private stopScatterLine(){
+            this.particleBg.visible = false;
+            this.spinResp.payload.scatterGrid.forEach((value: number, column: number)=>{
+                let gridIndex = value + column * 3;
+                this.symbols[gridIndex].reset();
+			})
 		}
 		/**
 		 * 展示本局获得免费机会
@@ -810,6 +818,7 @@ module game {
 		 * */
 		private cancelLinesWin() {
 			this.setState(GameState.BET);
+            this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
@@ -1051,9 +1060,8 @@ module game {
 						.call(() => {
 							p.stop();
 							p.visible = false;
-							this.gameScene.particleBg.visible = false;
 
-							if (this.mc) {
+							if (this.mc && this.value!="0") {
 								this.mc.stop();
 								this.mc.parent.removeChild(this.mc);
 								this.mc = null;
@@ -1071,7 +1079,7 @@ module game {
 							this.gameScene.lineWinTxt.visible = false;
 						})
 						//单线展示的间隔时间
-						.wait(1000)
+						.wait(200)
 						.call(() => {
 							egret.Tween.removeTweens(p);
 							resolve();
