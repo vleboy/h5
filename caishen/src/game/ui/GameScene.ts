@@ -780,8 +780,12 @@ module game {
 		/**
 		 * 各单线中奖展示
 		 * */
-		private showEveryLineGrid(arr: Array<any>) {
+		private showEveryLineGrid(arr: { gold: number; line: number[]; lineIndex: number; multiplier: number; symbol: string; winCard: number[]}[] ) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
+			//去掉scatter线
+			arr.forEach((v, i)=>{
+				v.symbol == "0" && arr.splice(i,1);
+			})
 			return new Promise(async (resolve, reject) => {
 				let singleLineShow = async (v, lineIndex: number) => {
 					this.lineWinTxt.visible = true;
@@ -998,7 +1002,7 @@ module game {
 					this.mc.height = this.tile.height;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
-					this.mc.loop = isLong ? 4 : 2;
+					this.mc.loop = isLong ? 3 : -1;
 					this.tile.visible = false;
 					this.mc.once(AMovieClip.COMPLETE, () => {
 						this.mc.visible = false;
@@ -1040,10 +1044,10 @@ module game {
 				p.y = grid.y;
 				let f = () => {
 					egret.Tween.get(p)
-						.to({ emitterX: grid.width }, 450)
-						.to({ emitterY: grid.height }, 450)
-						.to({ emitterX: 0 }, 450)
-						.to({ emitterY: 0 }, 450)
+						.to({ emitterX: grid.width }, 300)
+						.to({ emitterY: grid.height }, 300)
+						.to({ emitterX: 0 }, 300)
+						.to({ emitterY: 0 }, 300)
 						.call(() => {
 							p.stop();
 							p.visible = false;
@@ -1076,10 +1080,10 @@ module game {
 
 				if (isLong) {
 					egret.Tween.get(p)
-						.to({ emitterX: grid.width }, 450)
-						.to({ emitterY: grid.height }, 450)
-						.to({ emitterX: 0 }, 450)
-						.to({ emitterY: 0 }, 450)
+						.to({ emitterX: grid.width }, 300)
+						.to({ emitterY: grid.height }, 300)
+						.to({ emitterX: 0 }, 300)
+						.to({ emitterY: 0 }, 300)
 						.call(f);
 				}
 				else {
@@ -1108,12 +1112,7 @@ module game {
 				this.mc2 = null;
 			}
 			if (this.value == "1") {
-				if (this.gameScene.isFree) {
-					this.tile.source = "symbolName_1_" + this.gameScene.buff + "_png";
-				}
-				else {
-					this.tile.source = "symbolName_1_png";
-				}
+				this.tile.source = (this.gameScene.buff=="-1"? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
 			}
 
 			this.tile.visible = true;
