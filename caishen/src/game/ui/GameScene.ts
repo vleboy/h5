@@ -466,6 +466,8 @@ module game {
 			})
 
 		}
+
+		private freeColumnTimeout:number;
 		/**
 		 * 单列freespin缓停动画
 		 * */
@@ -515,13 +517,15 @@ module game {
 							}
 						}
 					})
-				setTimeout(() => {
+
+				if(this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
+				this.freeColumnTimeout = setTimeout(() => {
 					egret.Tween.removeTweens(this["freeCoinsGroup"]);
 					while (arr.length > 0) {
 						let img = arr.pop();
 						img.parent.removeChild(img);
 					}
-					this["freeCoinsGroup"].removeChild(c);
+					if(c.parent) c.parent.removeChild(c);
 					(this["border" + column] as AMovieClip).stop();
 					(this["border" + column] as AMovieClip).visible = false;
 					resolve();
@@ -533,6 +537,8 @@ module game {
 		 * 立即停止
 		 * */
 		private cancelSpin() {
+			if(this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
+			
 			for (let i = 0; i < 20; i++) {
 				egret.Tween.removeTweens(this["vagueTile" + i]);
 				this["vagueTile" + i].visible = false;
@@ -548,6 +554,13 @@ module game {
 				let str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
+
+			this.border2.stop();
+			this.border3.stop();
+			this.border4.stop();
+			this.border2.visible = false;
+			this.border3.visible = false;
+			this.border4.visible = false;
 
 			egret.Tween.removeTweens(this["freeCoinsGroup"]);
 			(this["freeCoinsGroup"] as eui.Group).removeChildren();
