@@ -11,7 +11,7 @@
 
 
 
-			<game:AMovieClip id="title" horizontalCenter="0" speed="8" source="asd_png" top="105" height="75" width="500"/>
+			<game:AMovieClip id="title" horizontalCenter="0" speed="8" top="105" height="75" width="500" source="title1_png" sources="title|1-20|_png"/>
 
 
 
