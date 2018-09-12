@@ -1,0 +1,2385 @@
+{
+	"groups": [
+		{
+			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,CaiShen_243_BigWin_mp3,CaiShen_243_BigWinOver_mp3,CaiShen_243_Bonus_mp3,CaiShen_243_CardAppear_mp3,CaiShen_243_CardEffect_mp3,CaiShen_243_ChoseCard_mp3,CaiShen_243_featureChoose_mp3,CaiShen_243_freeGame_mp3,CaiShen_243_FreeOver_mp3,CaiShen_243_GUI_Generic1_mp3,CaiShen_243_GUI_Generic2_mp3,CaiShen_243_MiddleWin_mp3,CaiShen_243_normalGame_mp3,CaiShen_243_Roll_mp3,CaiShen_243_RollStop_mp3,CaiShen_243_Scatter_1_mp3,CaiShen_243_Scatter_2_mp3,CaiShen_243_Scatter_3_mp3,CaiShen_243_Scatter_4_mp3,CaiShen_243_Scatter_5_mp3,CaiShen_243_Scatter_wait_mp3,CaiShen_243_SmallWin_mp3,CaiShen_243_Spin_mp3,CaiShen_243_Get_FreeGame_ogg,Auto_1_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Count_Item_png,Count_Item2_png,disable_png,Free_png,guang_png,Help_p_png,Help_png,Jump_png,light_Middle_png,Max_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,Arrow_png,InfoBG_png,fillBg_png,sliderBg_png,particle_json,particle_fireworks_json,particle_multi_json,particle_multiLight_json,particle_yuanbao_json,bonusParticle_json,10_1_png,10_10_png,10_11_png,10_12_png,10_13_png,10_14_png,10_15_png,10_2_png,10_3_png,10_4_png,10_5_png,10_6_png,10_7_png,10_8_png,10_9_png,9_1_png,9_10_png,9_11_png,9_12_png,9_13_png,9_14_png,9_15_png,9_2_png,9_3_png,9_4_png,9_5_png,9_6_png,9_7_png,9_8_png,9_9_png,a_1_png,a_10_png,a_11_png,a_12_png,a_13_png,a_14_png,a_15_png,a_2_png,a_3_png,a_4_png,a_5_png,a_6_png,a_7_png,a_8_png,a_9_png,j_1_png,j_10_png,j_11_png,j_12_png,j_13_png,j_14_png,j_15_png,j_2_png,j_3_png,j_4_png,j_5_png,j_6_png,j_7_png,j_8_png,j_9_png,k_1_png,k_10_png,k_11_png,k_12_png,k_13_png,k_14_png,k_15_png,k_2_png,k_3_png,k_4_png,k_5_png,k_6_png,k_7_png,k_8_png,k_9_png,q_1_png,q_10_png,q_11_png,q_12_png,q_13_png,q_14_png,q_15_png,q_2_png,q_3_png,q_4_png,q_5_png,q_6_png,q_7_png,q_8_png,q_9_png,wheel_1_png,wheel_10_png,wheel_11_png,wheel_12_png,wheel_13_png,wheel_14_png,wheel_15_png,wheel_2_png,wheel_3_png,wheel_4_png,wheel_5_png,wheel_6_png,wheel_7_png,wheel_8_png,wheel_9_png,grail_1_png,grail_10_png,grail_11_png,grail_12_png,grail_13_png,grail_14_png,grail_15_png,grail_2_png,grail_3_png,grail_4_png,grail_5_png,grail_6_png,grail_7_png,grail_8_png,grail_9_png,jian_1_png,jian_10_png,jian_11_png,jian_12_png,jian_13_png,jian_14_png,jian_15_png,jian_2_png,jian_3_png,jian_4_png,jian_5_png,jian_6_png,jian_7_png,jian_8_png,jian_9_png,starCoin_1_png,starCoin_10_png,starCoin_11_png,starCoin_12_png,starCoin_13_png,starCoin_14_png,starCoin_15_png,starCoin_2_png,starCoin_3_png,starCoin_4_png,starCoin_5_png,starCoin_6_png,starCoin_7_png,starCoin_8_png,starCoin_9_png,lightBuleWild_1_png,lightBuleWild_10_png,lightBuleWild_11_png,lightBuleWild_12_png,lightBuleWild_13_png,lightBuleWild_14_png,lightBuleWild_15_png,lightBuleWild_2_png,lightBuleWild_3_png,lightBuleWild_4_png,lightBuleWild_5_png,lightBuleWild_6_png,lightBuleWild_7_png,lightBuleWild_8_png,lightBuleWild_9_png,staff_1_png,staff_10_png,staff_11_png,staff_12_png,staff_13_png,staff_14_png,staff_15_png,staff_2_png,staff_3_png,staff_4_png,staff_5_png,staff_6_png,staff_7_png,staff_8_png,staff_9_png,buleWild_1_png,buleWild_10_png,buleWild_11_png,buleWild_12_png,buleWild_13_png,buleWild_14_png,buleWild_15_png,buleWild_2_png,buleWild_3_png,buleWild_4_png,buleWild_5_png,buleWild_6_png,buleWild_7_png,buleWild_8_png,buleWild_9_png,crown_1_png,crown_10_png,crown_11_png,crown_12_png,crown_13_png,crown_14_png,crown_15_png,crown_2_png,crown_3_png,crown_4_png,crown_5_png,crown_6_png,crown_7_png,crown_8_png,crown_9_png,purpleWild_1_png,purpleWild_10_png,purpleWild_11_png,purpleWild_12_png,purpleWild_13_png,purpleWild_14_png,purpleWild_15_png,purpleWild_2_png,purpleWild_3_png,purpleWild_4_png,purpleWild_5_png,purpleWild_6_png,purpleWild_7_png,purpleWild_8_png,purpleWild_9_png,redWild_1_png,redWild_10_png,redWild_11_png,redWild_12_png,redWild_13_png,redWild_14_png,redWild_15_png,redWild_2_png,redWild_3_png,redWild_4_png,redWild_5_png,redWild_6_png,redWild_7_png,redWild_8_png,redWild_9_png,greenWild_1_png,greenWild_10_png,greenWild_11_png,greenWild_12_png,greenWild_13_png,greenWild_14_png,greenWild_15_png,greenWild_2_png,greenWild_3_png,greenWild_4_png,greenWild_5_png,greenWild_6_png,greenWild_7_png,greenWild_8_png,greenWild_9_png,yellowWild_1_png,yellowWild_10_png,yellowWild_11_png,yellowWild_12_png,yellowWild_13_png,yellowWild_14_png,yellowWild_15_png,yellowWild_2_png,yellowWild_3_png,yellowWild_4_png,yellowWild_5_png,yellowWild_6_png,yellowWild_7_png,yellowWild_8_png,yellowWild_9_png,A1_png,asd_png,blue1_png,btm_png,crown1_png,gameBg_png,gameBg2_png,grail1_png,green1_png,item_png,J1_png,jian1_png,lightBlue1_png,nine1_png,purple1_png,Q1_png,red1_png,staff1_png,starCoin1_png,ten1_png,A2_png,blue2_png,crown2_png,grail2_png,green2_png,J2_png,jian2_png,K2_png,lightBlue2_png,nine2_png,purple2_png,Q2_png,red2_png,staff2_png,starCoin2_png,ten2_png,wheel2_png,yellow2_png,wheel1_png,yellow1_png,blueLight1_png,blueLight10_png,blueLight11_png,blueLight12_png,blueLight13_png,blueLight14_png,blueLight2_png,blueLight3_png,blueLight4_png,blueLight5_png,blueLight6_png,blueLight7_png,blueLight8_png,blueLight9_png,blueStar1_png,blueStar10_png,blueStar11_png,blueStar12_png,blueStar13_png,blueStar2_png,blueStar3_png,blueStar4_png,blueStar5_png,blueStar6_png,blueStar7_png,blueStar8_png,blueStar9_png,blueStarBg_png,orangeLight1_png,orangeLight10_png,orangeLight11_png,orangeLight12_png,orangeLight13_png,orangeLight14_png,orangeLight2_png,orangeLight3_png,orangeLight4_png,orangeLight5_png,orangeLight6_png,orangeLight7_png,orangeLight8_png,orangeLight9_png,yellowStar1_png,yellowStar10_png,yellowStar11_png,yellowStar12_png,yellowStar13_png,yellowStar2_png,yellowStar3_png,yellowStar4_png,yellowStar5_png,yellowStar6_png,yellowStar7_png,yellowStar8_png,yellowStar9_png,yellowStarBg_png,fnt156_fnt,fnt156_png,asd2_png,bigWin_png,megaWin_png,sad_png,superWin_png,blue_png,free_png,green_png,orange_png,purple_png,tese_png,totalWin_png,totalWinBg_png,yellow_png,yellowLight_png,btn1_png,btn2_png,fanhuei_png,helpBg_png,K1_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "sound/CaiShen_243_BigWin.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_BigWin_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_BigWinOver.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_BigWinOver_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Bonus.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Bonus_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_CardAppear.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_CardAppear_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_CardEffect.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_CardEffect_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_ChoseCard.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_ChoseCard_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_featureChoose.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_featureChoose_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_freeGame.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_freeGame_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_FreeOver.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_FreeOver_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_GUI_Generic1.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_GUI_Generic1_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_GUI_Generic2.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_GUI_Generic2_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_MiddleWin.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_MiddleWin_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_normalGame.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_normalGame_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Roll.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Roll_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_RollStop.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_RollStop_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Scatter_1.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Scatter_1_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Scatter_2.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Scatter_2_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Scatter_3.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Scatter_3_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Scatter_4.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Scatter_4_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Scatter_5.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Scatter_5_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Scatter_wait.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Scatter_wait_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_SmallWin.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_SmallWin_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Spin.mp3",
+			"type": "sound",
+			"name": "CaiShen_243_Spin_mp3"
+		},
+		{
+			"url": "sound/CaiShen_243_Get_FreeGame.ogg",
+			"type": "sound",
+			"name": "CaiShen_243_Get_FreeGame_ogg"
+		},
+		{
+			"url": "img/circlcce.png",
+			"type": "image",
+			"name": "circlcce_png"
+		},
+		{
+			"url": "img/bottom/Auto_1.png",
+			"type": "image",
+			"name": "Auto_1_png"
+		},
+		{
+			"url": "img/bottom/BG_Info.png",
+			"type": "image",
+			"name": "BG_Info_png"
+		},
+		{
+			"url": "img/bottom/BG_Left.png",
+			"type": "image",
+			"name": "BG_Left_png"
+		},
+		{
+			"url": "img/bottom/BG_Middle.png",
+			"type": "image",
+			"name": "BG_Middle_png"
+		},
+		{
+			"url": "img/bottom/BG_Pop.png",
+			"type": "image",
+			"name": "BG_Pop_png"
+		},
+		{
+			"url": "img/bottom/BG_Right.png",
+			"type": "image",
+			"name": "BG_Right_png"
+		},
+		{
+			"url": "img/bottom/BG_Spin.png",
+			"type": "image",
+			"name": "BG_Spin_png"
+		},
+		{
+			"url": "img/bottom/BetAdd.png",
+			"type": "image",
+			"name": "BetAdd_png"
+		},
+		{
+			"url": "img/bottom/BetButton.png",
+			"type": "image",
+			"name": "BetButton_png"
+		},
+		{
+			"url": "img/bottom/BetButton_0.png",
+			"type": "image",
+			"name": "BetButton_0_png"
+		},
+		{
+			"url": "img/bottom/BetButton_1.png",
+			"type": "image",
+			"name": "BetButton_1_png"
+		},
+		{
+			"url": "img/bottom/BetInfoBG.png",
+			"type": "image",
+			"name": "BetInfoBG_png"
+		},
+		{
+			"url": "img/bottom/BetMax.png",
+			"type": "image",
+			"name": "BetMax_png"
+		},
+		{
+			"url": "img/bottom/BetMinus.png",
+			"type": "image",
+			"name": "BetMinus_png"
+		},
+		{
+			"url": "img/bottom/Count_Item.png",
+			"type": "image",
+			"name": "Count_Item_png"
+		},
+		{
+			"url": "img/bottom/Count_Item2.png",
+			"type": "image",
+			"name": "Count_Item2_png"
+		},
+		{
+			"url": "img/bottom/Free.png",
+			"type": "image",
+			"name": "Free_png"
+		},
+		{
+			"url": "img/bottom/Help.png",
+			"type": "image",
+			"name": "Help_png"
+		},
+		{
+			"url": "img/bottom/Help_p.png",
+			"type": "image",
+			"name": "Help_p_png"
+		},
+		{
+			"url": "img/bottom/Jump.png",
+			"type": "image",
+			"name": "Jump_png"
+		},
+		{
+			"url": "img/bottom/Max.png",
+			"type": "image",
+			"name": "Max_png"
+		},
+		{
+			"url": "img/bottom/Spin.png",
+			"type": "image",
+			"name": "Spin_png"
+		},
+		{
+			"url": "img/bottom/Spin_Arrow.png",
+			"type": "image",
+			"name": "Spin_Arrow_png"
+		},
+		{
+			"url": "img/bottom/Spin_Disabled.png",
+			"type": "image",
+			"name": "Spin_Disabled_png"
+		},
+		{
+			"url": "img/bottom/Spin_Light.png",
+			"type": "image",
+			"name": "Spin_Light_png"
+		},
+		{
+			"url": "img/bottom/Spin_Press.png",
+			"type": "image",
+			"name": "Spin_Press_png"
+		},
+		{
+			"url": "img/bottom/disable.png",
+			"type": "image",
+			"name": "disable_png"
+		},
+		{
+			"url": "img/bottom/guang.png",
+			"type": "image",
+			"name": "guang_png"
+		},
+		{
+			"url": "img/bottom/light_Middle.png",
+			"type": "image",
+			"name": "light_Middle_png"
+		},
+		{
+			"url": "img/btn/Arrow.png",
+			"type": "image",
+			"name": "Arrow_png"
+		},
+		{
+			"url": "img/btn/InfoBG.png",
+			"type": "image",
+			"name": "InfoBG_png"
+		},
+		{
+			"url": "img/btn/fillBg.png",
+			"type": "image",
+			"name": "fillBg_png"
+		},
+		{
+			"url": "img/btn/sliderBg.png",
+			"type": "image",
+			"name": "sliderBg_png"
+		},
+		{
+			"url": "img/load/Loading....png",
+			"type": "image",
+			"name": "Loading..._png"
+		},
+		{
+			"url": "img/load/bar1.png",
+			"type": "image",
+			"name": "bar1_png"
+		},
+		{
+			"url": "img/load/bar2.png",
+			"type": "image",
+			"name": "bar2_png"
+		},
+		{
+			"url": "img/load/light.png",
+			"type": "image",
+			"name": "light_png"
+		},
+		{
+			"url": "img/load/loading.jpg",
+			"type": "image",
+			"name": "loading_jpg"
+		},
+		{
+			"url": "img/setting/BetSliderBG.png",
+			"type": "image",
+			"name": "BetSliderBG_png"
+		},
+		{
+			"url": "img/setting/FastModel.png",
+			"type": "image",
+			"name": "FastModel_png"
+		},
+		{
+			"url": "img/setting/backgroud1.png",
+			"type": "image",
+			"name": "backgroud1_png"
+		},
+		{
+			"url": "img/setting/biaoti.png",
+			"type": "image",
+			"name": "biaoti_png"
+		},
+		{
+			"url": "img/setting/close.png",
+			"type": "image",
+			"name": "close_png"
+		},
+		{
+			"url": "img/setting/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "img/setting/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "img/setting/shengyin.png",
+			"type": "image",
+			"name": "shengyin_png"
+		},
+		{
+			"url": "img/setting/windowdi.png",
+			"type": "image",
+			"name": "windowdi_png"
+		},
+		{
+			"url": "img/setting/yinxiao.png",
+			"type": "image",
+			"name": "yinxiao_png"
+		},
+		{
+			"url": "img/top/di.png",
+			"type": "image",
+			"name": "di_png"
+		},
+		{
+			"url": "img/top/hx.png",
+			"type": "image",
+			"name": "hx_png"
+		},
+		{
+			"url": "img/top/j.png",
+			"type": "image",
+			"name": "j_png"
+		},
+		{
+			"url": "img/top/ssz.png",
+			"type": "image",
+			"name": "ssz_png"
+		},
+		{
+			"url": "config/particle.json",
+			"type": "json",
+			"name": "particle_json"
+		},
+		{
+			"url": "config/particle_fireworks.json",
+			"type": "json",
+			"name": "particle_fireworks_json"
+		},
+		{
+			"url": "config/particle_multi.json",
+			"type": "json",
+			"name": "particle_multi_json"
+		},
+		{
+			"url": "config/particle_multiLight.json",
+			"type": "json",
+			"name": "particle_multiLight_json"
+		},
+		{
+			"url": "config/particle_yuanbao.json",
+			"type": "json",
+			"name": "particle_yuanbao_json"
+		},
+		{
+			"url": "config/bonusParticle.json",
+			"type": "json",
+			"name": "bonusParticle_json"
+		},
+		{
+			"url": "img/effect/10/10_1.png",
+			"type": "image",
+			"name": "10_1_png"
+		},
+		{
+			"url": "img/effect/10/10_10.png",
+			"type": "image",
+			"name": "10_10_png"
+		},
+		{
+			"url": "img/effect/10/10_11.png",
+			"type": "image",
+			"name": "10_11_png"
+		},
+		{
+			"url": "img/effect/10/10_12.png",
+			"type": "image",
+			"name": "10_12_png"
+		},
+		{
+			"url": "img/effect/10/10_13.png",
+			"type": "image",
+			"name": "10_13_png"
+		},
+		{
+			"url": "img/effect/10/10_14.png",
+			"type": "image",
+			"name": "10_14_png"
+		},
+		{
+			"url": "img/effect/10/10_15.png",
+			"type": "image",
+			"name": "10_15_png"
+		},
+		{
+			"url": "img/effect/10/10_2.png",
+			"type": "image",
+			"name": "10_2_png"
+		},
+		{
+			"url": "img/effect/10/10_3.png",
+			"type": "image",
+			"name": "10_3_png"
+		},
+		{
+			"url": "img/effect/10/10_4.png",
+			"type": "image",
+			"name": "10_4_png"
+		},
+		{
+			"url": "img/effect/10/10_5.png",
+			"type": "image",
+			"name": "10_5_png"
+		},
+		{
+			"url": "img/effect/10/10_6.png",
+			"type": "image",
+			"name": "10_6_png"
+		},
+		{
+			"url": "img/effect/10/10_7.png",
+			"type": "image",
+			"name": "10_7_png"
+		},
+		{
+			"url": "img/effect/10/10_8.png",
+			"type": "image",
+			"name": "10_8_png"
+		},
+		{
+			"url": "img/effect/10/10_9.png",
+			"type": "image",
+			"name": "10_9_png"
+		},
+		{
+			"url": "img/effect/9/9_1.png",
+			"type": "image",
+			"name": "9_1_png"
+		},
+		{
+			"url": "img/effect/9/9_10.png",
+			"type": "image",
+			"name": "9_10_png"
+		},
+		{
+			"url": "img/effect/9/9_11.png",
+			"type": "image",
+			"name": "9_11_png"
+		},
+		{
+			"url": "img/effect/9/9_12.png",
+			"type": "image",
+			"name": "9_12_png"
+		},
+		{
+			"url": "img/effect/9/9_13.png",
+			"type": "image",
+			"name": "9_13_png"
+		},
+		{
+			"url": "img/effect/9/9_14.png",
+			"type": "image",
+			"name": "9_14_png"
+		},
+		{
+			"url": "img/effect/9/9_15.png",
+			"type": "image",
+			"name": "9_15_png"
+		},
+		{
+			"url": "img/effect/9/9_2.png",
+			"type": "image",
+			"name": "9_2_png"
+		},
+		{
+			"url": "img/effect/9/9_3.png",
+			"type": "image",
+			"name": "9_3_png"
+		},
+		{
+			"url": "img/effect/9/9_4.png",
+			"type": "image",
+			"name": "9_4_png"
+		},
+		{
+			"url": "img/effect/9/9_5.png",
+			"type": "image",
+			"name": "9_5_png"
+		},
+		{
+			"url": "img/effect/9/9_6.png",
+			"type": "image",
+			"name": "9_6_png"
+		},
+		{
+			"url": "img/effect/9/9_7.png",
+			"type": "image",
+			"name": "9_7_png"
+		},
+		{
+			"url": "img/effect/9/9_8.png",
+			"type": "image",
+			"name": "9_8_png"
+		},
+		{
+			"url": "img/effect/9/9_9.png",
+			"type": "image",
+			"name": "9_9_png"
+		},
+		{
+			"url": "img/effect/A/a_1.png",
+			"type": "image",
+			"name": "a_1_png"
+		},
+		{
+			"url": "img/effect/A/a_10.png",
+			"type": "image",
+			"name": "a_10_png"
+		},
+		{
+			"url": "img/effect/A/a_11.png",
+			"type": "image",
+			"name": "a_11_png"
+		},
+		{
+			"url": "img/effect/A/a_12.png",
+			"type": "image",
+			"name": "a_12_png"
+		},
+		{
+			"url": "img/effect/A/a_13.png",
+			"type": "image",
+			"name": "a_13_png"
+		},
+		{
+			"url": "img/effect/A/a_14.png",
+			"type": "image",
+			"name": "a_14_png"
+		},
+		{
+			"url": "img/effect/A/a_15.png",
+			"type": "image",
+			"name": "a_15_png"
+		},
+		{
+			"url": "img/effect/A/a_2.png",
+			"type": "image",
+			"name": "a_2_png"
+		},
+		{
+			"url": "img/effect/A/a_3.png",
+			"type": "image",
+			"name": "a_3_png"
+		},
+		{
+			"url": "img/effect/A/a_4.png",
+			"type": "image",
+			"name": "a_4_png"
+		},
+		{
+			"url": "img/effect/A/a_5.png",
+			"type": "image",
+			"name": "a_5_png"
+		},
+		{
+			"url": "img/effect/A/a_6.png",
+			"type": "image",
+			"name": "a_6_png"
+		},
+		{
+			"url": "img/effect/A/a_7.png",
+			"type": "image",
+			"name": "a_7_png"
+		},
+		{
+			"url": "img/effect/A/a_8.png",
+			"type": "image",
+			"name": "a_8_png"
+		},
+		{
+			"url": "img/effect/A/a_9.png",
+			"type": "image",
+			"name": "a_9_png"
+		},
+		{
+			"url": "img/effect/J/j_1.png",
+			"type": "image",
+			"name": "j_1_png"
+		},
+		{
+			"url": "img/effect/J/j_10.png",
+			"type": "image",
+			"name": "j_10_png"
+		},
+		{
+			"url": "img/effect/J/j_11.png",
+			"type": "image",
+			"name": "j_11_png"
+		},
+		{
+			"url": "img/effect/J/j_12.png",
+			"type": "image",
+			"name": "j_12_png"
+		},
+		{
+			"url": "img/effect/J/j_13.png",
+			"type": "image",
+			"name": "j_13_png"
+		},
+		{
+			"url": "img/effect/J/j_14.png",
+			"type": "image",
+			"name": "j_14_png"
+		},
+		{
+			"url": "img/effect/J/j_15.png",
+			"type": "image",
+			"name": "j_15_png"
+		},
+		{
+			"url": "img/effect/J/j_2.png",
+			"type": "image",
+			"name": "j_2_png"
+		},
+		{
+			"url": "img/effect/J/j_3.png",
+			"type": "image",
+			"name": "j_3_png"
+		},
+		{
+			"url": "img/effect/J/j_4.png",
+			"type": "image",
+			"name": "j_4_png"
+		},
+		{
+			"url": "img/effect/J/j_5.png",
+			"type": "image",
+			"name": "j_5_png"
+		},
+		{
+			"url": "img/effect/J/j_6.png",
+			"type": "image",
+			"name": "j_6_png"
+		},
+		{
+			"url": "img/effect/J/j_7.png",
+			"type": "image",
+			"name": "j_7_png"
+		},
+		{
+			"url": "img/effect/J/j_8.png",
+			"type": "image",
+			"name": "j_8_png"
+		},
+		{
+			"url": "img/effect/J/j_9.png",
+			"type": "image",
+			"name": "j_9_png"
+		},
+		{
+			"url": "img/effect/K/k_1.png",
+			"type": "image",
+			"name": "k_1_png"
+		},
+		{
+			"url": "img/effect/K/k_10.png",
+			"type": "image",
+			"name": "k_10_png"
+		},
+		{
+			"url": "img/effect/K/k_11.png",
+			"type": "image",
+			"name": "k_11_png"
+		},
+		{
+			"url": "img/effect/K/k_12.png",
+			"type": "image",
+			"name": "k_12_png"
+		},
+		{
+			"url": "img/effect/K/k_13.png",
+			"type": "image",
+			"name": "k_13_png"
+		},
+		{
+			"url": "img/effect/K/k_14.png",
+			"type": "image",
+			"name": "k_14_png"
+		},
+		{
+			"url": "img/effect/K/k_15.png",
+			"type": "image",
+			"name": "k_15_png"
+		},
+		{
+			"url": "img/effect/K/k_2.png",
+			"type": "image",
+			"name": "k_2_png"
+		},
+		{
+			"url": "img/effect/K/k_3.png",
+			"type": "image",
+			"name": "k_3_png"
+		},
+		{
+			"url": "img/effect/K/k_4.png",
+			"type": "image",
+			"name": "k_4_png"
+		},
+		{
+			"url": "img/effect/K/k_5.png",
+			"type": "image",
+			"name": "k_5_png"
+		},
+		{
+			"url": "img/effect/K/k_6.png",
+			"type": "image",
+			"name": "k_6_png"
+		},
+		{
+			"url": "img/effect/K/k_7.png",
+			"type": "image",
+			"name": "k_7_png"
+		},
+		{
+			"url": "img/effect/K/k_8.png",
+			"type": "image",
+			"name": "k_8_png"
+		},
+		{
+			"url": "img/effect/K/k_9.png",
+			"type": "image",
+			"name": "k_9_png"
+		},
+		{
+			"url": "img/effect/Q/q_1.png",
+			"type": "image",
+			"name": "q_1_png"
+		},
+		{
+			"url": "img/effect/Q/q_10.png",
+			"type": "image",
+			"name": "q_10_png"
+		},
+		{
+			"url": "img/effect/Q/q_11.png",
+			"type": "image",
+			"name": "q_11_png"
+		},
+		{
+			"url": "img/effect/Q/q_12.png",
+			"type": "image",
+			"name": "q_12_png"
+		},
+		{
+			"url": "img/effect/Q/q_13.png",
+			"type": "image",
+			"name": "q_13_png"
+		},
+		{
+			"url": "img/effect/Q/q_14.png",
+			"type": "image",
+			"name": "q_14_png"
+		},
+		{
+			"url": "img/effect/Q/q_15.png",
+			"type": "image",
+			"name": "q_15_png"
+		},
+		{
+			"url": "img/effect/Q/q_2.png",
+			"type": "image",
+			"name": "q_2_png"
+		},
+		{
+			"url": "img/effect/Q/q_3.png",
+			"type": "image",
+			"name": "q_3_png"
+		},
+		{
+			"url": "img/effect/Q/q_4.png",
+			"type": "image",
+			"name": "q_4_png"
+		},
+		{
+			"url": "img/effect/Q/q_5.png",
+			"type": "image",
+			"name": "q_5_png"
+		},
+		{
+			"url": "img/effect/Q/q_6.png",
+			"type": "image",
+			"name": "q_6_png"
+		},
+		{
+			"url": "img/effect/Q/q_7.png",
+			"type": "image",
+			"name": "q_7_png"
+		},
+		{
+			"url": "img/effect/Q/q_8.png",
+			"type": "image",
+			"name": "q_8_png"
+		},
+		{
+			"url": "img/effect/Q/q_9.png",
+			"type": "image",
+			"name": "q_9_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_1.png",
+			"type": "image",
+			"name": "wheel_1_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_10.png",
+			"type": "image",
+			"name": "wheel_10_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_11.png",
+			"type": "image",
+			"name": "wheel_11_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_12.png",
+			"type": "image",
+			"name": "wheel_12_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_13.png",
+			"type": "image",
+			"name": "wheel_13_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_14.png",
+			"type": "image",
+			"name": "wheel_14_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_15.png",
+			"type": "image",
+			"name": "wheel_15_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_2.png",
+			"type": "image",
+			"name": "wheel_2_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_3.png",
+			"type": "image",
+			"name": "wheel_3_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_4.png",
+			"type": "image",
+			"name": "wheel_4_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_5.png",
+			"type": "image",
+			"name": "wheel_5_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_6.png",
+			"type": "image",
+			"name": "wheel_6_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_7.png",
+			"type": "image",
+			"name": "wheel_7_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_8.png",
+			"type": "image",
+			"name": "wheel_8_png"
+		},
+		{
+			"url": "img/effect/命运之轮/wheel_9.png",
+			"type": "image",
+			"name": "wheel_9_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_1.png",
+			"type": "image",
+			"name": "grail_1_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_10.png",
+			"type": "image",
+			"name": "grail_10_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_11.png",
+			"type": "image",
+			"name": "grail_11_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_12.png",
+			"type": "image",
+			"name": "grail_12_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_13.png",
+			"type": "image",
+			"name": "grail_13_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_14.png",
+			"type": "image",
+			"name": "grail_14_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_15.png",
+			"type": "image",
+			"name": "grail_15_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_2.png",
+			"type": "image",
+			"name": "grail_2_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_3.png",
+			"type": "image",
+			"name": "grail_3_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_4.png",
+			"type": "image",
+			"name": "grail_4_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_5.png",
+			"type": "image",
+			"name": "grail_5_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_6.png",
+			"type": "image",
+			"name": "grail_6_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_7.png",
+			"type": "image",
+			"name": "grail_7_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_8.png",
+			"type": "image",
+			"name": "grail_8_png"
+		},
+		{
+			"url": "img/effect/圣杯/grail_9.png",
+			"type": "image",
+			"name": "grail_9_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_1.png",
+			"type": "image",
+			"name": "jian_1_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_10.png",
+			"type": "image",
+			"name": "jian_10_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_11.png",
+			"type": "image",
+			"name": "jian_11_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_12.png",
+			"type": "image",
+			"name": "jian_12_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_13.png",
+			"type": "image",
+			"name": "jian_13_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_14.png",
+			"type": "image",
+			"name": "jian_14_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_15.png",
+			"type": "image",
+			"name": "jian_15_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_2.png",
+			"type": "image",
+			"name": "jian_2_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_3.png",
+			"type": "image",
+			"name": "jian_3_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_4.png",
+			"type": "image",
+			"name": "jian_4_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_5.png",
+			"type": "image",
+			"name": "jian_5_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_6.png",
+			"type": "image",
+			"name": "jian_6_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_7.png",
+			"type": "image",
+			"name": "jian_7_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_8.png",
+			"type": "image",
+			"name": "jian_8_png"
+		},
+		{
+			"url": "img/effect/宝剑/jian_9.png",
+			"type": "image",
+			"name": "jian_9_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_1.png",
+			"type": "image",
+			"name": "starCoin_1_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_10.png",
+			"type": "image",
+			"name": "starCoin_10_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_11.png",
+			"type": "image",
+			"name": "starCoin_11_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_12.png",
+			"type": "image",
+			"name": "starCoin_12_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_13.png",
+			"type": "image",
+			"name": "starCoin_13_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_14.png",
+			"type": "image",
+			"name": "starCoin_14_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_15.png",
+			"type": "image",
+			"name": "starCoin_15_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_2.png",
+			"type": "image",
+			"name": "starCoin_2_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_3.png",
+			"type": "image",
+			"name": "starCoin_3_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_4.png",
+			"type": "image",
+			"name": "starCoin_4_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_5.png",
+			"type": "image",
+			"name": "starCoin_5_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_6.png",
+			"type": "image",
+			"name": "starCoin_6_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_7.png",
+			"type": "image",
+			"name": "starCoin_7_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_8.png",
+			"type": "image",
+			"name": "starCoin_8_png"
+		},
+		{
+			"url": "img/effect/星币/starCoin_9.png",
+			"type": "image",
+			"name": "starCoin_9_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_1.png",
+			"type": "image",
+			"name": "lightBuleWild_1_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_10.png",
+			"type": "image",
+			"name": "lightBuleWild_10_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_11.png",
+			"type": "image",
+			"name": "lightBuleWild_11_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_12.png",
+			"type": "image",
+			"name": "lightBuleWild_12_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_13.png",
+			"type": "image",
+			"name": "lightBuleWild_13_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_14.png",
+			"type": "image",
+			"name": "lightBuleWild_14_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_15.png",
+			"type": "image",
+			"name": "lightBuleWild_15_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_2.png",
+			"type": "image",
+			"name": "lightBuleWild_2_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_3.png",
+			"type": "image",
+			"name": "lightBuleWild_3_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_4.png",
+			"type": "image",
+			"name": "lightBuleWild_4_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_5.png",
+			"type": "image",
+			"name": "lightBuleWild_5_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_6.png",
+			"type": "image",
+			"name": "lightBuleWild_6_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_7.png",
+			"type": "image",
+			"name": "lightBuleWild_7_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_8.png",
+			"type": "image",
+			"name": "lightBuleWild_8_png"
+		},
+		{
+			"url": "img/effect/普兰/lightBuleWild_9.png",
+			"type": "image",
+			"name": "lightBuleWild_9_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_1.png",
+			"type": "image",
+			"name": "staff_1_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_10.png",
+			"type": "image",
+			"name": "staff_10_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_11.png",
+			"type": "image",
+			"name": "staff_11_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_12.png",
+			"type": "image",
+			"name": "staff_12_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_13.png",
+			"type": "image",
+			"name": "staff_13_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_14.png",
+			"type": "image",
+			"name": "staff_14_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_15.png",
+			"type": "image",
+			"name": "staff_15_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_2.png",
+			"type": "image",
+			"name": "staff_2_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_3.png",
+			"type": "image",
+			"name": "staff_3_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_4.png",
+			"type": "image",
+			"name": "staff_4_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_5.png",
+			"type": "image",
+			"name": "staff_5_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_6.png",
+			"type": "image",
+			"name": "staff_6_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_7.png",
+			"type": "image",
+			"name": "staff_7_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_8.png",
+			"type": "image",
+			"name": "staff_8_png"
+		},
+		{
+			"url": "img/effect/法杖/staff_9.png",
+			"type": "image",
+			"name": "staff_9_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_1.png",
+			"type": "image",
+			"name": "buleWild_1_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_10.png",
+			"type": "image",
+			"name": "buleWild_10_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_11.png",
+			"type": "image",
+			"name": "buleWild_11_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_12.png",
+			"type": "image",
+			"name": "buleWild_12_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_13.png",
+			"type": "image",
+			"name": "buleWild_13_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_14.png",
+			"type": "image",
+			"name": "buleWild_14_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_15.png",
+			"type": "image",
+			"name": "buleWild_15_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_2.png",
+			"type": "image",
+			"name": "buleWild_2_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_3.png",
+			"type": "image",
+			"name": "buleWild_3_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_4.png",
+			"type": "image",
+			"name": "buleWild_4_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_5.png",
+			"type": "image",
+			"name": "buleWild_5_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_6.png",
+			"type": "image",
+			"name": "buleWild_6_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_7.png",
+			"type": "image",
+			"name": "buleWild_7_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_8.png",
+			"type": "image",
+			"name": "buleWild_8_png"
+		},
+		{
+			"url": "img/effect/深蓝/buleWild_9.png",
+			"type": "image",
+			"name": "buleWild_9_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_1.png",
+			"type": "image",
+			"name": "crown_1_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_10.png",
+			"type": "image",
+			"name": "crown_10_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_11.png",
+			"type": "image",
+			"name": "crown_11_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_12.png",
+			"type": "image",
+			"name": "crown_12_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_13.png",
+			"type": "image",
+			"name": "crown_13_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_14.png",
+			"type": "image",
+			"name": "crown_14_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_15.png",
+			"type": "image",
+			"name": "crown_15_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_2.png",
+			"type": "image",
+			"name": "crown_2_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_3.png",
+			"type": "image",
+			"name": "crown_3_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_4.png",
+			"type": "image",
+			"name": "crown_4_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_5.png",
+			"type": "image",
+			"name": "crown_5_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_6.png",
+			"type": "image",
+			"name": "crown_6_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_7.png",
+			"type": "image",
+			"name": "crown_7_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_8.png",
+			"type": "image",
+			"name": "crown_8_png"
+		},
+		{
+			"url": "img/effect/皇冠/crown_9.png",
+			"type": "image",
+			"name": "crown_9_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_1.png",
+			"type": "image",
+			"name": "purpleWild_1_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_10.png",
+			"type": "image",
+			"name": "purpleWild_10_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_11.png",
+			"type": "image",
+			"name": "purpleWild_11_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_12.png",
+			"type": "image",
+			"name": "purpleWild_12_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_13.png",
+			"type": "image",
+			"name": "purpleWild_13_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_14.png",
+			"type": "image",
+			"name": "purpleWild_14_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_15.png",
+			"type": "image",
+			"name": "purpleWild_15_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_2.png",
+			"type": "image",
+			"name": "purpleWild_2_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_3.png",
+			"type": "image",
+			"name": "purpleWild_3_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_4.png",
+			"type": "image",
+			"name": "purpleWild_4_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_5.png",
+			"type": "image",
+			"name": "purpleWild_5_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_6.png",
+			"type": "image",
+			"name": "purpleWild_6_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_7.png",
+			"type": "image",
+			"name": "purpleWild_7_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_8.png",
+			"type": "image",
+			"name": "purpleWild_8_png"
+		},
+		{
+			"url": "img/effect/紫色/purpleWild_9.png",
+			"type": "image",
+			"name": "purpleWild_9_png"
+		},
+		{
+			"url": "img/effect/红/redWild_1.png",
+			"type": "image",
+			"name": "redWild_1_png"
+		},
+		{
+			"url": "img/effect/红/redWild_10.png",
+			"type": "image",
+			"name": "redWild_10_png"
+		},
+		{
+			"url": "img/effect/红/redWild_11.png",
+			"type": "image",
+			"name": "redWild_11_png"
+		},
+		{
+			"url": "img/effect/红/redWild_12.png",
+			"type": "image",
+			"name": "redWild_12_png"
+		},
+		{
+			"url": "img/effect/红/redWild_13.png",
+			"type": "image",
+			"name": "redWild_13_png"
+		},
+		{
+			"url": "img/effect/红/redWild_14.png",
+			"type": "image",
+			"name": "redWild_14_png"
+		},
+		{
+			"url": "img/effect/红/redWild_15.png",
+			"type": "image",
+			"name": "redWild_15_png"
+		},
+		{
+			"url": "img/effect/红/redWild_2.png",
+			"type": "image",
+			"name": "redWild_2_png"
+		},
+		{
+			"url": "img/effect/红/redWild_3.png",
+			"type": "image",
+			"name": "redWild_3_png"
+		},
+		{
+			"url": "img/effect/红/redWild_4.png",
+			"type": "image",
+			"name": "redWild_4_png"
+		},
+		{
+			"url": "img/effect/红/redWild_5.png",
+			"type": "image",
+			"name": "redWild_5_png"
+		},
+		{
+			"url": "img/effect/红/redWild_6.png",
+			"type": "image",
+			"name": "redWild_6_png"
+		},
+		{
+			"url": "img/effect/红/redWild_7.png",
+			"type": "image",
+			"name": "redWild_7_png"
+		},
+		{
+			"url": "img/effect/红/redWild_8.png",
+			"type": "image",
+			"name": "redWild_8_png"
+		},
+		{
+			"url": "img/effect/红/redWild_9.png",
+			"type": "image",
+			"name": "redWild_9_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_1.png",
+			"type": "image",
+			"name": "greenWild_1_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_10.png",
+			"type": "image",
+			"name": "greenWild_10_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_11.png",
+			"type": "image",
+			"name": "greenWild_11_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_12.png",
+			"type": "image",
+			"name": "greenWild_12_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_13.png",
+			"type": "image",
+			"name": "greenWild_13_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_14.png",
+			"type": "image",
+			"name": "greenWild_14_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_15.png",
+			"type": "image",
+			"name": "greenWild_15_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_2.png",
+			"type": "image",
+			"name": "greenWild_2_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_3.png",
+			"type": "image",
+			"name": "greenWild_3_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_4.png",
+			"type": "image",
+			"name": "greenWild_4_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_5.png",
+			"type": "image",
+			"name": "greenWild_5_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_6.png",
+			"type": "image",
+			"name": "greenWild_6_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_7.png",
+			"type": "image",
+			"name": "greenWild_7_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_8.png",
+			"type": "image",
+			"name": "greenWild_8_png"
+		},
+		{
+			"url": "img/effect/绿色/greenWild_9.png",
+			"type": "image",
+			"name": "greenWild_9_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_1.png",
+			"type": "image",
+			"name": "yellowWild_1_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_10.png",
+			"type": "image",
+			"name": "yellowWild_10_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_11.png",
+			"type": "image",
+			"name": "yellowWild_11_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_12.png",
+			"type": "image",
+			"name": "yellowWild_12_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_13.png",
+			"type": "image",
+			"name": "yellowWild_13_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_14.png",
+			"type": "image",
+			"name": "yellowWild_14_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_15.png",
+			"type": "image",
+			"name": "yellowWild_15_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_2.png",
+			"type": "image",
+			"name": "yellowWild_2_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_3.png",
+			"type": "image",
+			"name": "yellowWild_3_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_4.png",
+			"type": "image",
+			"name": "yellowWild_4_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_5.png",
+			"type": "image",
+			"name": "yellowWild_5_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_6.png",
+			"type": "image",
+			"name": "yellowWild_6_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_7.png",
+			"type": "image",
+			"name": "yellowWild_7_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_8.png",
+			"type": "image",
+			"name": "yellowWild_8_png"
+		},
+		{
+			"url": "img/effect/黄色/yellowWild_9.png",
+			"type": "image",
+			"name": "yellowWild_9_png"
+		},
+		{
+			"url": "img/game/A1.png",
+			"type": "image",
+			"name": "A1_png"
+		},
+		{
+			"url": "img/game/asd.png",
+			"type": "image",
+			"name": "asd_png"
+		},
+		{
+			"url": "img/game/blue1.png",
+			"type": "image",
+			"name": "blue1_png"
+		},
+		{
+			"url": "img/game/btm.png",
+			"type": "image",
+			"name": "btm_png"
+		},
+		{
+			"url": "img/game/crown1.png",
+			"type": "image",
+			"name": "crown1_png"
+		},
+		{
+			"url": "img/game/gameBg.png",
+			"type": "image",
+			"name": "gameBg_png"
+		},
+		{
+			"url": "img/game/gameBg2.png",
+			"type": "image",
+			"name": "gameBg2_png"
+		},
+		{
+			"url": "img/game/grail1.png",
+			"type": "image",
+			"name": "grail1_png"
+		},
+		{
+			"url": "img/game/green1.png",
+			"type": "image",
+			"name": "green1_png"
+		},
+		{
+			"url": "img/game/item.png",
+			"type": "image",
+			"name": "item_png"
+		},
+		{
+			"url": "img/game/J1.png",
+			"type": "image",
+			"name": "J1_png"
+		},
+		{
+			"url": "img/game/jian1.png",
+			"type": "image",
+			"name": "jian1_png"
+		},
+		{
+			"url": "img/game/lightBlue1.png",
+			"type": "image",
+			"name": "lightBlue1_png"
+		},
+		{
+			"url": "img/game/nine1.png",
+			"type": "image",
+			"name": "nine1_png"
+		},
+		{
+			"url": "img/game/purple1.png",
+			"type": "image",
+			"name": "purple1_png"
+		},
+		{
+			"url": "img/game/Q1.png",
+			"type": "image",
+			"name": "Q1_png"
+		},
+		{
+			"url": "img/game/red1.png",
+			"type": "image",
+			"name": "red1_png"
+		},
+		{
+			"url": "img/game/staff1.png",
+			"type": "image",
+			"name": "staff1_png"
+		},
+		{
+			"url": "img/game/starCoin1.png",
+			"type": "image",
+			"name": "starCoin1_png"
+		},
+		{
+			"url": "img/game/ten1.png",
+			"type": "image",
+			"name": "ten1_png"
+		},
+		{
+			"url": "img/game/vague/A2.png",
+			"type": "image",
+			"name": "A2_png"
+		},
+		{
+			"url": "img/game/vague/blue2.png",
+			"type": "image",
+			"name": "blue2_png"
+		},
+		{
+			"url": "img/game/vague/crown2.png",
+			"type": "image",
+			"name": "crown2_png"
+		},
+		{
+			"url": "img/game/vague/grail2.png",
+			"type": "image",
+			"name": "grail2_png"
+		},
+		{
+			"url": "img/game/vague/green2.png",
+			"type": "image",
+			"name": "green2_png"
+		},
+		{
+			"url": "img/game/vague/J2.png",
+			"type": "image",
+			"name": "J2_png"
+		},
+		{
+			"url": "img/game/vague/jian2.png",
+			"type": "image",
+			"name": "jian2_png"
+		},
+		{
+			"url": "img/game/vague/K2.png",
+			"type": "image",
+			"name": "K2_png"
+		},
+		{
+			"url": "img/game/vague/lightBlue2.png",
+			"type": "image",
+			"name": "lightBlue2_png"
+		},
+		{
+			"url": "img/game/vague/nine2.png",
+			"type": "image",
+			"name": "nine2_png"
+		},
+		{
+			"url": "img/game/vague/purple2.png",
+			"type": "image",
+			"name": "purple2_png"
+		},
+		{
+			"url": "img/game/vague/Q2.png",
+			"type": "image",
+			"name": "Q2_png"
+		},
+		{
+			"url": "img/game/vague/red2.png",
+			"type": "image",
+			"name": "red2_png"
+		},
+		{
+			"url": "img/game/vague/staff2.png",
+			"type": "image",
+			"name": "staff2_png"
+		},
+		{
+			"url": "img/game/vague/starCoin2.png",
+			"type": "image",
+			"name": "starCoin2_png"
+		},
+		{
+			"url": "img/game/vague/ten2.png",
+			"type": "image",
+			"name": "ten2_png"
+		},
+		{
+			"url": "img/game/vague/wheel2.png",
+			"type": "image",
+			"name": "wheel2_png"
+		},
+		{
+			"url": "img/game/vague/yellow2.png",
+			"type": "image",
+			"name": "yellow2_png"
+		},
+		{
+			"url": "img/game/wheel1.png",
+			"type": "image",
+			"name": "wheel1_png"
+		},
+		{
+			"url": "img/game/yellow1.png",
+			"type": "image",
+			"name": "yellow1_png"
+		},
+		{
+			"url": "img/effect/star/blueLight1.png",
+			"type": "image",
+			"name": "blueLight1_png"
+		},
+		{
+			"url": "img/effect/star/blueLight10.png",
+			"type": "image",
+			"name": "blueLight10_png"
+		},
+		{
+			"url": "img/effect/star/blueLight11.png",
+			"type": "image",
+			"name": "blueLight11_png"
+		},
+		{
+			"url": "img/effect/star/blueLight12.png",
+			"type": "image",
+			"name": "blueLight12_png"
+		},
+		{
+			"url": "img/effect/star/blueLight13.png",
+			"type": "image",
+			"name": "blueLight13_png"
+		},
+		{
+			"url": "img/effect/star/blueLight14.png",
+			"type": "image",
+			"name": "blueLight14_png"
+		},
+		{
+			"url": "img/effect/star/blueLight2.png",
+			"type": "image",
+			"name": "blueLight2_png"
+		},
+		{
+			"url": "img/effect/star/blueLight3.png",
+			"type": "image",
+			"name": "blueLight3_png"
+		},
+		{
+			"url": "img/effect/star/blueLight4.png",
+			"type": "image",
+			"name": "blueLight4_png"
+		},
+		{
+			"url": "img/effect/star/blueLight5.png",
+			"type": "image",
+			"name": "blueLight5_png"
+		},
+		{
+			"url": "img/effect/star/blueLight6.png",
+			"type": "image",
+			"name": "blueLight6_png"
+		},
+		{
+			"url": "img/effect/star/blueLight7.png",
+			"type": "image",
+			"name": "blueLight7_png"
+		},
+		{
+			"url": "img/effect/star/blueLight8.png",
+			"type": "image",
+			"name": "blueLight8_png"
+		},
+		{
+			"url": "img/effect/star/blueLight9.png",
+			"type": "image",
+			"name": "blueLight9_png"
+		},
+		{
+			"url": "img/effect/star/blueStar1.png",
+			"type": "image",
+			"name": "blueStar1_png"
+		},
+		{
+			"url": "img/effect/star/blueStar10.png",
+			"type": "image",
+			"name": "blueStar10_png"
+		},
+		{
+			"url": "img/effect/star/blueStar11.png",
+			"type": "image",
+			"name": "blueStar11_png"
+		},
+		{
+			"url": "img/effect/star/blueStar12.png",
+			"type": "image",
+			"name": "blueStar12_png"
+		},
+		{
+			"url": "img/effect/star/blueStar13.png",
+			"type": "image",
+			"name": "blueStar13_png"
+		},
+		{
+			"url": "img/effect/star/blueStar2.png",
+			"type": "image",
+			"name": "blueStar2_png"
+		},
+		{
+			"url": "img/effect/star/blueStar3.png",
+			"type": "image",
+			"name": "blueStar3_png"
+		},
+		{
+			"url": "img/effect/star/blueStar4.png",
+			"type": "image",
+			"name": "blueStar4_png"
+		},
+		{
+			"url": "img/effect/star/blueStar5.png",
+			"type": "image",
+			"name": "blueStar5_png"
+		},
+		{
+			"url": "img/effect/star/blueStar6.png",
+			"type": "image",
+			"name": "blueStar6_png"
+		},
+		{
+			"url": "img/effect/star/blueStar7.png",
+			"type": "image",
+			"name": "blueStar7_png"
+		},
+		{
+			"url": "img/effect/star/blueStar8.png",
+			"type": "image",
+			"name": "blueStar8_png"
+		},
+		{
+			"url": "img/effect/star/blueStar9.png",
+			"type": "image",
+			"name": "blueStar9_png"
+		},
+		{
+			"url": "img/effect/star/blueStarBg.png",
+			"type": "image",
+			"name": "blueStarBg_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight1.png",
+			"type": "image",
+			"name": "orangeLight1_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight10.png",
+			"type": "image",
+			"name": "orangeLight10_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight11.png",
+			"type": "image",
+			"name": "orangeLight11_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight12.png",
+			"type": "image",
+			"name": "orangeLight12_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight13.png",
+			"type": "image",
+			"name": "orangeLight13_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight14.png",
+			"type": "image",
+			"name": "orangeLight14_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight2.png",
+			"type": "image",
+			"name": "orangeLight2_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight3.png",
+			"type": "image",
+			"name": "orangeLight3_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight4.png",
+			"type": "image",
+			"name": "orangeLight4_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight5.png",
+			"type": "image",
+			"name": "orangeLight5_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight6.png",
+			"type": "image",
+			"name": "orangeLight6_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight7.png",
+			"type": "image",
+			"name": "orangeLight7_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight8.png",
+			"type": "image",
+			"name": "orangeLight8_png"
+		},
+		{
+			"url": "img/effect/star/orangeLight9.png",
+			"type": "image",
+			"name": "orangeLight9_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar1.png",
+			"type": "image",
+			"name": "yellowStar1_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar10.png",
+			"type": "image",
+			"name": "yellowStar10_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar11.png",
+			"type": "image",
+			"name": "yellowStar11_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar12.png",
+			"type": "image",
+			"name": "yellowStar12_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar13.png",
+			"type": "image",
+			"name": "yellowStar13_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar2.png",
+			"type": "image",
+			"name": "yellowStar2_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar3.png",
+			"type": "image",
+			"name": "yellowStar3_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar4.png",
+			"type": "image",
+			"name": "yellowStar4_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar5.png",
+			"type": "image",
+			"name": "yellowStar5_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar6.png",
+			"type": "image",
+			"name": "yellowStar6_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar7.png",
+			"type": "image",
+			"name": "yellowStar7_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar8.png",
+			"type": "image",
+			"name": "yellowStar8_png"
+		},
+		{
+			"url": "img/effect/star/yellowStar9.png",
+			"type": "image",
+			"name": "yellowStar9_png"
+		},
+		{
+			"url": "img/effect/star/yellowStarBg.png",
+			"type": "image",
+			"name": "yellowStarBg_png"
+		},
+		{
+			"url": "config/fnt156.fnt",
+			"type": "font",
+			"name": "fnt156_fnt"
+		},
+		{
+			"url": "config/fnt156.png",
+			"type": "image",
+			"name": "fnt156_png"
+		},
+		{
+			"url": "img/bigwin/asd.png",
+			"type": "image",
+			"name": "asd2_png"
+		},
+		{
+			"url": "img/bigwin/bigWin.png",
+			"type": "image",
+			"name": "bigWin_png"
+		},
+		{
+			"url": "img/bigwin/megaWin.png",
+			"type": "image",
+			"name": "megaWin_png"
+		},
+		{
+			"url": "img/bigwin/sad.png",
+			"type": "image",
+			"name": "sad_png"
+		},
+		{
+			"url": "img/bigwin/superWin.png",
+			"type": "image",
+			"name": "superWin_png"
+		},
+		{
+			"url": "img/freeGame/blue.png",
+			"type": "image",
+			"name": "blue_png"
+		},
+		{
+			"url": "img/freeGame/free.png",
+			"type": "image",
+			"name": "free_png"
+		},
+		{
+			"url": "img/freeGame/green.png",
+			"type": "image",
+			"name": "green_png"
+		},
+		{
+			"url": "img/freeGame/orange.png",
+			"type": "image",
+			"name": "orange_png"
+		},
+		{
+			"url": "img/freeGame/purple.png",
+			"type": "image",
+			"name": "purple_png"
+		},
+		{
+			"url": "img/freeGame/tese.png",
+			"type": "image",
+			"name": "tese_png"
+		},
+		{
+			"url": "img/freeGame/totalWin.png",
+			"type": "image",
+			"name": "totalWin_png"
+		},
+		{
+			"url": "img/freeGame/totalWinBg.png",
+			"type": "image",
+			"name": "totalWinBg_png"
+		},
+		{
+			"url": "img/freeGame/yellow.png",
+			"type": "image",
+			"name": "yellow_png"
+		},
+		{
+			"url": "img/freeGame/yellowLight.png",
+			"type": "image",
+			"name": "yellowLight_png"
+		},
+		{
+			"url": "img/help/btn1.png",
+			"type": "image",
+			"name": "btn1_png"
+		},
+		{
+			"url": "img/help/btn2.png",
+			"type": "image",
+			"name": "btn2_png"
+		},
+		{
+			"url": "img/help/fanhuei.png",
+			"type": "image",
+			"name": "fanhuei_png"
+		},
+		{
+			"url": "img/help/helpBg.png",
+			"type": "image",
+			"name": "helpBg_png"
+		},
+		{
+			"name": "K1_png",
+			"type": "image",
+			"url": "img/game/K1.png"
+		}
+	]
+}
