@@ -571,13 +571,15 @@ module game {
 
 			if (this.isFree) {
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+				this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 				if (this.freeSpinRemainCount == 0) {
-					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+					setTimeout(()=> {
+						this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+					}, 1000);
 				}
 				else {
 					this.setState(GameState.BET);
 					this.spin();
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
 				}
 			}
 			else {

@@ -23,13 +23,12 @@ module game {
 				let target = this["choose"+v];
 				let defaultY = target.y;
 				egret.Tween.get(target)
-					.set({y:defaultY-1000})
-					.wait(i*100+500)
+					.set({y:defaultY-900})
+					.wait(i*150+500)
 					.call(()=>{
 						SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
 					})
-					.to({y:defaultY+50},200)
-					.to({y:defaultY},30)
+					.to({y:defaultY},400, egret.Ease.backOut)
 					.call(()=>{
 						this.registerEvent(target, egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
 					})

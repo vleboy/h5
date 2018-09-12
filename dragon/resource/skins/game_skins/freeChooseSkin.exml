@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="chooseGroup" width="1920" height="1" x="0" y="0">
+		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
+		<e:Group id="choose20" scaleX="1" scaleY="1" horizontalCenter="-520" touchChildren="false" touchEnabled="true" y="64">
+			<e:Image y="19" name="choose20" scaleX="1" scaleY="1" source="yxxz_bg_00_png" horizontalCenter="0"/>
+			<e:Image y="58" horizontalCenter="0" source="symbolName_1_5_png" width="220" height="220"/>
+			<e:Image source="freegame_png" x="188" y="0"/>
+			<e:Image source="num20_png" x="98" y="0"/>
+			<e:Image y="263" horizontalCenter="0" source="yxxz_bg_01_png"/>
+			<e:Image source="yxxz_beishu_1_png" y="279" horizontalCenter="0"/>
+			<e:Image source="yxxz_yun_1_png" x="-35" y="214"/>
+		</e:Group>
+		<e:Group id="choose15" scaleX="1" scaleY="1" touchChildren="false" touchEnabled="true" y="64" horizontalCenter="0">
+			<e:Image y="19" name="choose20" scaleX="1" scaleY="1" source="yxxz_bg_00_png" horizontalCenter="0"/>
+			<e:Image y="58" horizontalCenter="0" width="220" height="220" source="symbolName_1_4_png"/>
+			<e:Image source="freegame_png" x="188" y="0"/>
+			<e:Image x="98" y="0" source="num15_png"/>
+			<e:Image y="263" horizontalCenter="0" source="yxxz_bg_01_png"/>
+			<e:Image y="279" horizontalCenter="0" source="yxxz_beishu_2_png"/>
+			<e:Image x="-35" y="214" source="yxxz_yun_2_png"/>
+		</e:Group>
+		<e:Group id="choose10" scaleX="1" scaleY="1" horizontalCenter="520" touchChildren="false" touchEnabled="true" y="64">
+			<e:Image y="19" name="choose20" scaleX="1" scaleY="1" source="yxxz_bg_00_png" horizontalCenter="0"/>
+			<e:Image y="58" horizontalCenter="0" width="220" height="220" source="symbolName_1_3_png"/>
+			<e:Image source="freegame_png" x="188" y="0"/>
+			<e:Image x="98" y="0" source="num10_png"/>
+			<e:Image y="263" horizontalCenter="0" source="yxxz_bg_01_png"/>
+			<e:Image y="279" horizontalCenter="0" source="yxxz_beishu_3_png"/>
+			<e:Image x="-35" y="214" source="yxxz_yun_3_png"/>
+		</e:Group>
+		<e:Group id="choose8" scaleX="1" scaleY="1" horizontalCenter="-268" touchChildren="false" touchEnabled="true" y="475">
+			<e:Image y="19" name="choose20" scaleX="1" scaleY="1" source="yxxz_bg_00_png" horizontalCenter="0"/>
+			<e:Image y="58" horizontalCenter="0" width="220" height="220" source="symbolName_1_2_png"/>
+			<e:Image source="freegame_png" x="172" y="0"/>
+			<e:Image x="124" y="0" source="num8_png"/>
+			<e:Image y="263" horizontalCenter="0" source="yxxz_bg_01_png"/>
+			<e:Image y="279" horizontalCenter="0" source="yxxz_beishu_4_png"/>
+			<e:Image x="-35" y="214" source="yxxz_yun_4_png"/>
+		</e:Group>
+		<e:Group id="choose5" scaleX="1" scaleY="1" horizontalCenter="268" touchChildren="false" touchEnabled="true" y="475">
+			<e:Image y="19" name="choose20" scaleX="1" scaleY="1" source="yxxz_bg_00_png" horizontalCenter="0"/>
+			<e:Image y="58" horizontalCenter="0" width="220" height="220" source="symbolName_1_1_png"/>
+			<e:Image source="freegame_png" x="172" y="0"/>
+			<e:Image x="122" y="0" source="num5_png"/>
+			<e:Image y="263" horizontalCenter="0" source="yxxz_bg_01_png"/>
+			<e:Image y="279" horizontalCenter="0" source="yxxz_beishu_5_png"/>
+			<e:Image x="-35" y="214" source="yxxz_yun_5_png"/>
+		</e:Group>
+		
+	</e:Group>
+
+	<e:Image id="tipTxt" source="freeChoose_png" y="923" horizontalCenter="0"/>
+
+	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
+		<e:Image id="yun1" source="yuanbao_png" x="-31" y="-77.5" scaleX="1" scaleY="1"/>
+		<e:Image id="yun2" source="yuanbao_png" x="842" y="-62" scaleX="1" scaleY="1"/>
+		<e:Image id="yun3" source="yuanbao_png" x="8" y="494" scaleX="1" scaleY="1"/>
+		<e:Image id="yun4" source="yuanbao_png" x="882" y="418" scaleX="1" scaleY="1"/>
+	</e:Group>
+
+
+</e:Skin>
