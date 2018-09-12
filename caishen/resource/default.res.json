@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,CaiShen_243_BigWin_mp3,CaiShen_243_BigWinOver_mp3,CaiShen_243_Bonus_mp3,CaiShen_243_CardAppear_mp3,CaiShen_243_CardEffect_mp3,CaiShen_243_ChoseCard_mp3,CaiShen_243_featureChoose_mp3,CaiShen_243_freeGame_mp3,CaiShen_243_FreeOver_mp3,CaiShen_243_GUI_Generic1_mp3,CaiShen_243_GUI_Generic2_mp3,CaiShen_243_MiddleWin_mp3,CaiShen_243_normalGame_mp3,CaiShen_243_Roll_mp3,CaiShen_243_RollStop_mp3,CaiShen_243_Scatter_1_mp3,CaiShen_243_Scatter_2_mp3,CaiShen_243_Scatter_3_mp3,CaiShen_243_Scatter_4_mp3,CaiShen_243_Scatter_5_mp3,CaiShen_243_Scatter_wait_mp3,CaiShen_243_SmallWin_mp3,CaiShen_243_Spin_mp3,CaiShen_243_Get_FreeGame_ogg,BigWin_png,Mutiply_png,ToastBG2_png,Auto_1_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Count_Item_png,Count_Item2_png,disable_png,Free_png,guang_png,Help_p_png,Help_png,Jump_png,light_Middle_png,Max_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,normalbg_jpg,NormalFrame_png,OverBG2_png,SuperWin_png,ToastBG_png,FeatureChance_png,FreeGameFrame_png,GetTips_png,LineBG_png,MegaWin_png,asdad_png,asdasd_png,freeWinBG_jpg,Arrow_png,InfoBG_png,fillBg_png,sliderBg_png,vague0_png,vague1_png,vague10_png,vague11_png,vague12_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,fnt135_fnt,fnt135_png,fnt173_fnt,fnt173_png,fnt40_fnt,fnt40_png,fnt63_fnt,fnt63_png,fnt70_fnt,fnt70_png,particle_json,particle_fireworks_json,particle_multi_json,particle_multiLight_json,particle_yuanbao_json,border1_png,border10_png,border11_png,border12_png,border13_png,border14_png,border15_png,border16_png,border17_png,border18_png,border19_png,border2_png,border20_png,border21_png,border22_png,border23_png,border24_png,border26_png,border27_png,border28_png,border29_png,border3_png,border30_png,border31_png,border32_png,border33_png,border34_png,border35_png,border36_png,border37_png,border38_png,border39_png,border4_png,border40_png,border41_png,border42_png,border43_png,border44_png,border45_png,border5_png,border6_png,border7_png,border8_png,border9_png,caishenAni1_png,caishenAni10_png,caishenAni11_png,caishenAni12_png,caishenAni13_png,caishenAni14_png,caishenAni15_png,caishenAni16_png,caishenAni2_png,caishenAni3_png,caishenAni4_png,caishenAni5_png,caishenAni6_png,caishenAni7_png,caishenAni8_png,caishenAni9_png,freeChange1_png,freeChange10_png,freeChange11_png,freeChange12_png,freeChange13_png,freeChange14_png,freeChange15_png,freeChange16_png,freeChange17_png,freeChange18_png,freeChange19_png,freeChange2_png,freeChange20_png,freeChange21_png,freeChange22_png,freeChange23_png,freeChange24_png,freeChange25_png,freeChange26_png,freeChange27_png,freeChange28_png,freeChange29_png,freeChange3_png,freeChange30_png,freeChange31_png,freeChange32_png,freeChange33_png,freeChange4_png,freeChange5_png,freeChange6_png,freeChange7_png,freeChange8_png,freeChange9_png,freemulti_png,freemultiLight_png,glow_321_png,light_lizi_png,light_lizi01_png,light_lizi02_jpg,T_hongbao_1_png,T_hongbao_10_png,T_hongbao_11_png,T_hongbao_12_png,T_hongbao_13_png,T_hongbao_14_png,T_hongbao_15_png,T_hongbao_16_png,T_hongbao_2_png,T_hongbao_3_png,T_hongbao_4_png,T_hongbao_5_png,T_hongbao_6_png,T_hongbao_7_png,T_hongbao_8_png,T_hongbao_9_png,T_tongqian_1_png,T_tongqian_10_png,T_tongqian_11_png,T_tongqian_12_png,T_tongqian_13_png,T_tongqian_14_png,T_tongqian_15_png,T_tongqian_16_png,T_tongqian_2_png,T_tongqian_3_png,T_tongqian_4_png,T_tongqian_5_png,T_tongqian_6_png,T_tongqian_7_png,T_tongqian_8_png,T_tongqian_9_png,wildText1_png,wildText10_png,wildText11_png,wildText12_png,wildText13_png,wildText14_png,wildText15_png,wildText16_png,wildText17_png,wildText18_png,wildText19_png,wildText2_png,wildText20_png,wildText3_png,wildText4_png,wildText5_png,wildText6_png,wildText7_png,wildText8_png,wildText9_png,yigeyuanb_png,zz_1_png,zz_10_png,zz_11_png,zz_12_png,zz_13_png,zz_14_png,zz_15_png,zz_16_png,zz_17_png,zz_18_png,zz_19_png,zz_2_png,zz_20_png,zz_21_png,zz_22_png,zz_23_png,zz_24_png,zz_25_png,zz_26_png,zz_27_png,zz_28_png,zz_29_png,zz_3_png,zz_30_png,zz_31_png,zz_32_png,zz_33_png,zz_34_png,zz_35_png,zz_36_png,zz_37_png,zz_38_png,zz_39_png,zz_4_png,zz_40_png,zz_41_png,zz_42_png,zz_43_png,zz_44_png,zz_45_png,zz_46_png,zz_47_png,zz_48_png,zz_49_png,zz_5_png,zz_50_png,zz_51_png,zz_52_png,zz_53_png,zz_54_png,zz_55_png,zz_56_png,zz_57_png,zz_58_png,zz_59_png,zz_6_png,zz_60_png,zz_61_png,zz_7_png,zz_8_png,zz_9_png,title20_png,title1_png,title2_png,title3_png,title4_png,title5_png,title6_png,title7_png,title8_png,title9_png,title10_png,title11_png,title12_png,title13_png,title14_png,title15_png,title16_png,title17_png,title18_png,title19_png,bigwinLight1_png,bigwinLight2_png,bigwinLight3_png,bigwinLight4_png,bigwinLight5_png,bigwinLight6_png,bigwinLight7_png,bigwinLight8_png,bigwinLight9_png,bigwinLight10_png,bigwinLight11_png,bigwinLight12_png,bigwinLight13_png,bigwinLight14_png,bigwinLight15_png,bigwinLight16_png,bigwinLight17_png,bigwinLight18_png,bigwinLight19_png,bigwinLight20_png,bigwinLight21_png,bigwinLight22_png,bigwinLight23_png,bigwinLight24_png,bigwinLight25_png,bigwinLight26_png,bigwinLight27_png,bigwinLight28_png,bigwinLight29_png,bigwinLight30_png,fireworks_png,border25_png,coin_pin_9_png,coin_pin_1_png,coin_pin_2_png,coin_pin_3_png,coin_pin_4_png,coin_pin_5_png,coin_pin_6_png,coin_pin_7_png,coin_pin_8_png,SU_Coin_Gold_3x3_9_png,SU_Coin_Gold_3x3_1_png,SU_Coin_Gold_3x3_2_png,SU_Coin_Gold_3x3_3_png,SU_Coin_Gold_3x3_4_png,SU_Coin_Gold_3x3_5_png,SU_Coin_Gold_3x3_6_png,SU_Coin_Gold_3x3_7_png,SU_Coin_Gold_3x3_8_png,star_png,bonusParticle_json",
+			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,CaiShen_243_BigWin_mp3,CaiShen_243_BigWinOver_mp3,CaiShen_243_Bonus_mp3,CaiShen_243_CardAppear_mp3,CaiShen_243_CardEffect_mp3,CaiShen_243_ChoseCard_mp3,CaiShen_243_featureChoose_mp3,CaiShen_243_freeGame_mp3,CaiShen_243_FreeOver_mp3,CaiShen_243_GUI_Generic1_mp3,CaiShen_243_GUI_Generic2_mp3,CaiShen_243_MiddleWin_mp3,CaiShen_243_normalGame_mp3,CaiShen_243_Roll_mp3,CaiShen_243_RollStop_mp3,CaiShen_243_Scatter_1_mp3,CaiShen_243_Scatter_2_mp3,CaiShen_243_Scatter_3_mp3,CaiShen_243_Scatter_4_mp3,CaiShen_243_Scatter_5_mp3,CaiShen_243_Scatter_wait_mp3,CaiShen_243_SmallWin_mp3,CaiShen_243_Spin_mp3,CaiShen_243_Get_FreeGame_ogg,BigWin_png,Mutiply_png,ToastBG2_png,Auto_1_png,BetAdd_png,BetButton_0_png,BetButton_1_png,BetButton_png,BetInfoBG_png,BetMax_png,BetMinus_png,BG_Info_png,BG_Left_png,BG_Middle_png,BG_Pop_png,BG_Right_png,BG_Spin_png,Count_Item_png,Count_Item2_png,disable_png,Free_png,guang_png,Help_p_png,Help_png,Jump_png,light_Middle_png,Max_png,Spin_Arrow_png,Spin_Disabled_png,Spin_Light_png,Spin_Press_png,Spin_png,normalbg_jpg,NormalFrame_png,OverBG2_png,SuperWin_png,ToastBG_png,FeatureChance_png,FreeGameFrame_png,GetTips_png,LineBG_png,MegaWin_png,asdad_png,asdasd_png,freeWinBG_jpg,Arrow_png,InfoBG_png,fillBg_png,sliderBg_png,vague0_png,vague1_png,vague10_png,vague11_png,vague12_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,fnt135_fnt,fnt135_png,fnt173_fnt,fnt173_png,fnt40_fnt,fnt40_png,fnt63_fnt,fnt63_png,fnt70_fnt,fnt70_png,particle_json,particle_fireworks_json,particle_multi_json,particle_multiLight_json,particle_yuanbao_json,caishenAni1_png,caishenAni10_png,caishenAni11_png,caishenAni12_png,caishenAni13_png,caishenAni14_png,caishenAni15_png,caishenAni16_png,caishenAni2_png,caishenAni3_png,caishenAni4_png,caishenAni5_png,caishenAni6_png,caishenAni7_png,caishenAni8_png,caishenAni9_png,freeChange1_png,freeChange10_png,freeChange11_png,freeChange12_png,freeChange13_png,freeChange14_png,freeChange15_png,freeChange16_png,freeChange17_png,freeChange18_png,freeChange19_png,freeChange2_png,freeChange20_png,freeChange21_png,freeChange22_png,freeChange23_png,freeChange24_png,freeChange25_png,freeChange26_png,freeChange27_png,freeChange28_png,freeChange29_png,freeChange3_png,freeChange30_png,freeChange31_png,freeChange32_png,freeChange33_png,freeChange4_png,freeChange5_png,freeChange6_png,freeChange7_png,freeChange8_png,freeChange9_png,freemulti_png,freemultiLight_png,glow_321_png,light_lizi_png,light_lizi01_png,light_lizi02_jpg,T_hongbao_1_png,T_hongbao_10_png,T_hongbao_11_png,T_hongbao_12_png,T_hongbao_13_png,T_hongbao_14_png,T_hongbao_15_png,T_hongbao_16_png,T_hongbao_2_png,T_hongbao_3_png,T_hongbao_4_png,T_hongbao_5_png,T_hongbao_6_png,T_hongbao_7_png,T_hongbao_8_png,T_hongbao_9_png,T_tongqian_1_png,T_tongqian_10_png,T_tongqian_11_png,T_tongqian_12_png,T_tongqian_13_png,T_tongqian_14_png,T_tongqian_15_png,T_tongqian_16_png,T_tongqian_2_png,T_tongqian_3_png,T_tongqian_4_png,T_tongqian_5_png,T_tongqian_6_png,T_tongqian_7_png,T_tongqian_8_png,T_tongqian_9_png,wildText1_png,wildText10_png,wildText11_png,wildText12_png,wildText13_png,wildText14_png,wildText15_png,wildText16_png,wildText17_png,wildText18_png,wildText19_png,wildText2_png,wildText20_png,wildText3_png,wildText4_png,wildText5_png,wildText6_png,wildText7_png,wildText8_png,wildText9_png,yigeyuanb_png,zz_1_png,zz_10_png,zz_11_png,zz_12_png,zz_13_png,zz_14_png,zz_15_png,zz_16_png,zz_17_png,zz_18_png,zz_19_png,zz_2_png,zz_20_png,zz_21_png,zz_22_png,zz_23_png,zz_24_png,zz_25_png,zz_26_png,zz_27_png,zz_28_png,zz_29_png,zz_3_png,zz_30_png,zz_31_png,zz_32_png,zz_33_png,zz_34_png,zz_35_png,zz_36_png,zz_37_png,zz_38_png,zz_39_png,zz_4_png,zz_40_png,zz_41_png,zz_42_png,zz_43_png,zz_44_png,zz_45_png,zz_46_png,zz_47_png,zz_48_png,zz_49_png,zz_5_png,zz_50_png,zz_51_png,zz_52_png,zz_53_png,zz_54_png,zz_55_png,zz_56_png,zz_57_png,zz_58_png,zz_59_png,zz_6_png,zz_60_png,zz_61_png,zz_7_png,zz_8_png,zz_9_png,title20_png,title1_png,title2_png,title3_png,title4_png,title5_png,title6_png,title7_png,title8_png,title9_png,title10_png,title11_png,title12_png,title13_png,title14_png,title15_png,title16_png,title17_png,title18_png,title19_png,bigwinLight1_png,bigwinLight2_png,bigwinLight3_png,bigwinLight4_png,bigwinLight5_png,bigwinLight6_png,bigwinLight7_png,bigwinLight8_png,bigwinLight9_png,bigwinLight10_png,bigwinLight11_png,bigwinLight12_png,bigwinLight13_png,bigwinLight14_png,bigwinLight15_png,bigwinLight16_png,bigwinLight17_png,bigwinLight18_png,bigwinLight19_png,bigwinLight20_png,bigwinLight21_png,bigwinLight22_png,bigwinLight23_png,bigwinLight24_png,bigwinLight25_png,bigwinLight26_png,bigwinLight27_png,bigwinLight28_png,bigwinLight29_png,bigwinLight30_png,fireworks_png,coin_pin_9_png,coin_pin_1_png,coin_pin_2_png,coin_pin_3_png,coin_pin_4_png,coin_pin_5_png,coin_pin_6_png,coin_pin_7_png,coin_pin_8_png,SU_Coin_Gold_3x3_9_png,SU_Coin_Gold_3x3_1_png,SU_Coin_Gold_3x3_2_png,SU_Coin_Gold_3x3_3_png,SU_Coin_Gold_3x3_4_png,SU_Coin_Gold_3x3_5_png,SU_Coin_Gold_3x3_6_png,SU_Coin_Gold_3x3_7_png,SU_Coin_Gold_3x3_8_png,star_png,bonusParticle_json,border30_png,border1_png,border2_png,border3_png,border4_png,border5_png,border6_png,border7_png,border8_png,border9_png,border10_png,border11_png,zz_012_png,border13_png,border14_png,border15_png,border16_png,border17_png,border18_png,border19_png,border20_png,border21_png,border22_png,border23_png,border24_png,border25_png,border26_png,border27_png,border28_png,border29_png",
 			"name": "preload"
 		}
 	],
@@ -1122,226 +1122,6 @@
 			"name": "T_tongqian_9_png"
 		},
 		{
-			"url": "img/effect/border1.png",
-			"type": "image",
-			"name": "border1_png"
-		},
-		{
-			"url": "img/effect/border10.png",
-			"type": "image",
-			"name": "border10_png"
-		},
-		{
-			"url": "img/effect/border11.png",
-			"type": "image",
-			"name": "border11_png"
-		},
-		{
-			"url": "img/effect/border12.png",
-			"type": "image",
-			"name": "border12_png"
-		},
-		{
-			"url": "img/effect/border13.png",
-			"type": "image",
-			"name": "border13_png"
-		},
-		{
-			"url": "img/effect/border14.png",
-			"type": "image",
-			"name": "border14_png"
-		},
-		{
-			"url": "img/effect/border15.png",
-			"type": "image",
-			"name": "border15_png"
-		},
-		{
-			"url": "img/effect/border16.png",
-			"type": "image",
-			"name": "border16_png"
-		},
-		{
-			"url": "img/effect/border17.png",
-			"type": "image",
-			"name": "border17_png"
-		},
-		{
-			"url": "img/effect/border18.png",
-			"type": "image",
-			"name": "border18_png"
-		},
-		{
-			"url": "img/effect/border19.png",
-			"type": "image",
-			"name": "border19_png"
-		},
-		{
-			"url": "img/effect/border2.png",
-			"type": "image",
-			"name": "border2_png"
-		},
-		{
-			"url": "img/effect/border20.png",
-			"type": "image",
-			"name": "border20_png"
-		},
-		{
-			"url": "img/effect/border21.png",
-			"type": "image",
-			"name": "border21_png"
-		},
-		{
-			"url": "img/effect/border22.png",
-			"type": "image",
-			"name": "border22_png"
-		},
-		{
-			"url": "img/effect/border23.png",
-			"type": "image",
-			"name": "border23_png"
-		},
-		{
-			"url": "img/effect/border24.png",
-			"type": "image",
-			"name": "border24_png"
-		},
-		{
-			"url": "img/effect/border26.png",
-			"type": "image",
-			"name": "border26_png"
-		},
-		{
-			"url": "img/effect/border27.png",
-			"type": "image",
-			"name": "border27_png"
-		},
-		{
-			"url": "img/effect/border28.png",
-			"type": "image",
-			"name": "border28_png"
-		},
-		{
-			"url": "img/effect/border29.png",
-			"type": "image",
-			"name": "border29_png"
-		},
-		{
-			"url": "img/effect/border3.png",
-			"type": "image",
-			"name": "border3_png"
-		},
-		{
-			"url": "img/effect/border30.png",
-			"type": "image",
-			"name": "border30_png"
-		},
-		{
-			"url": "img/effect/border31.png",
-			"type": "image",
-			"name": "border31_png"
-		},
-		{
-			"url": "img/effect/border32.png",
-			"type": "image",
-			"name": "border32_png"
-		},
-		{
-			"url": "img/effect/border33.png",
-			"type": "image",
-			"name": "border33_png"
-		},
-		{
-			"url": "img/effect/border34.png",
-			"type": "image",
-			"name": "border34_png"
-		},
-		{
-			"url": "img/effect/border35.png",
-			"type": "image",
-			"name": "border35_png"
-		},
-		{
-			"url": "img/effect/border36.png",
-			"type": "image",
-			"name": "border36_png"
-		},
-		{
-			"url": "img/effect/border37.png",
-			"type": "image",
-			"name": "border37_png"
-		},
-		{
-			"url": "img/effect/border38.png",
-			"type": "image",
-			"name": "border38_png"
-		},
-		{
-			"url": "img/effect/border39.png",
-			"type": "image",
-			"name": "border39_png"
-		},
-		{
-			"url": "img/effect/border4.png",
-			"type": "image",
-			"name": "border4_png"
-		},
-		{
-			"url": "img/effect/border40.png",
-			"type": "image",
-			"name": "border40_png"
-		},
-		{
-			"url": "img/effect/border41.png",
-			"type": "image",
-			"name": "border41_png"
-		},
-		{
-			"url": "img/effect/border42.png",
-			"type": "image",
-			"name": "border42_png"
-		},
-		{
-			"url": "img/effect/border43.png",
-			"type": "image",
-			"name": "border43_png"
-		},
-		{
-			"url": "img/effect/border44.png",
-			"type": "image",
-			"name": "border44_png"
-		},
-		{
-			"url": "img/effect/border45.png",
-			"type": "image",
-			"name": "border45_png"
-		},
-		{
-			"url": "img/effect/border5.png",
-			"type": "image",
-			"name": "border5_png"
-		},
-		{
-			"url": "img/effect/border6.png",
-			"type": "image",
-			"name": "border6_png"
-		},
-		{
-			"url": "img/effect/border7.png",
-			"type": "image",
-			"name": "border7_png"
-		},
-		{
-			"url": "img/effect/border8.png",
-			"type": "image",
-			"name": "border8_png"
-		},
-		{
-			"url": "img/effect/border9.png",
-			"type": "image",
-			"name": "border9_png"
-		},
-		{
 			"url": "img/effect/caishenAni1.png",
 			"type": "image",
 			"name": "caishenAni1_png"
@@ -2282,11 +2062,6 @@
 			"url": "img/effect/fireworks.png"
 		},
 		{
-			"name": "border25_png",
-			"type": "image",
-			"url": "img/effect/border25.png"
-		},
-		{
 			"name": "coin_pin_9_png",
 			"type": "image",
 			"url": "img/effect/coin_pin_9.png"
@@ -2385,6 +2160,156 @@
 			"name": "bonusParticle_json",
 			"type": "json",
 			"url": "config/bonusParticle.json"
+		},
+		{
+			"name": "border30_png",
+			"type": "image",
+			"url": "img/effect/border30.png"
+		},
+		{
+			"name": "border1_png",
+			"type": "image",
+			"url": "img/effect/border1.png"
+		},
+		{
+			"name": "border2_png",
+			"type": "image",
+			"url": "img/effect/border2.png"
+		},
+		{
+			"name": "border3_png",
+			"type": "image",
+			"url": "img/effect/border3.png"
+		},
+		{
+			"name": "border4_png",
+			"type": "image",
+			"url": "img/effect/border4.png"
+		},
+		{
+			"name": "border5_png",
+			"type": "image",
+			"url": "img/effect/border5.png"
+		},
+		{
+			"name": "border6_png",
+			"type": "image",
+			"url": "img/effect/border6.png"
+		},
+		{
+			"name": "border7_png",
+			"type": "image",
+			"url": "img/effect/border7.png"
+		},
+		{
+			"name": "border8_png",
+			"type": "image",
+			"url": "img/effect/border8.png"
+		},
+		{
+			"name": "border9_png",
+			"type": "image",
+			"url": "img/effect/border9.png"
+		},
+		{
+			"name": "border10_png",
+			"type": "image",
+			"url": "img/effect/border10.png"
+		},
+		{
+			"name": "border11_png",
+			"type": "image",
+			"url": "img/effect/border11.png"
+		},
+		{
+			"name": "zz_012_png",
+			"type": "image",
+			"url": "img/effect/zz_012.png"
+		},
+		{
+			"name": "border13_png",
+			"type": "image",
+			"url": "img/effect/border13.png"
+		},
+		{
+			"name": "border14_png",
+			"type": "image",
+			"url": "img/effect/border14.png"
+		},
+		{
+			"name": "border15_png",
+			"type": "image",
+			"url": "img/effect/border15.png"
+		},
+		{
+			"name": "border16_png",
+			"type": "image",
+			"url": "img/effect/border16.png"
+		},
+		{
+			"name": "border17_png",
+			"type": "image",
+			"url": "img/effect/border17.png"
+		},
+		{
+			"name": "border18_png",
+			"type": "image",
+			"url": "img/effect/border18.png"
+		},
+		{
+			"name": "border19_png",
+			"type": "image",
+			"url": "img/effect/border19.png"
+		},
+		{
+			"name": "border20_png",
+			"type": "image",
+			"url": "img/effect/border20.png"
+		},
+		{
+			"name": "border21_png",
+			"type": "image",
+			"url": "img/effect/border21.png"
+		},
+		{
+			"name": "border22_png",
+			"type": "image",
+			"url": "img/effect/border22.png"
+		},
+		{
+			"name": "border23_png",
+			"type": "image",
+			"url": "img/effect/border23.png"
+		},
+		{
+			"name": "border24_png",
+			"type": "image",
+			"url": "img/effect/border24.png"
+		},
+		{
+			"name": "border25_png",
+			"type": "image",
+			"url": "img/effect/border25.png"
+		},
+		{
+			"name": "border26_png",
+			"type": "image",
+			"url": "img/effect/border26.png"
+		},
+		{
+			"name": "border27_png",
+			"type": "image",
+			"url": "img/effect/border27.png"
+		},
+		{
+			"name": "border28_png",
+			"type": "image",
+			"url": "img/effect/border28.png"
+		},
+		{
+			"name": "border29_png",
+			"type": "image",
+			"url": "img/effect/border29.png"
 		}
 	]
 }
