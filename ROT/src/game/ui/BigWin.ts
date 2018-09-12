@@ -128,7 +128,7 @@ module game {
         }
         /**light*/
         private bigWinLight(): void {
-            this.light.sources = "bigwinLight|1-30|_png";
+            // this.light.sources = "bigwinLight|1-30|_png";
             this.light.play();
         }
 
