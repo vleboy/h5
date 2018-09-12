@@ -49,10 +49,6 @@ module game {
 		private featureChanceCount: number;
 		/**当前由于wild替换所随机到的翻倍因子*/
 		private featureMultiplier: number
-		/**下次出免费 */
-		private nextFree: boolean = false;
-		/**下次出bonus */
-		private nextBonus: boolean = false;
 		/**自动次数 */
 		private autoCount: number;
 		/**免费模式下本次转动的buff */
@@ -129,12 +125,6 @@ module game {
 		 * 初始事件监听
 		 * */
 		private initListener() {
-			this.registerEvent(this["testBtn"], egret.TouchEvent.TOUCH_TAP, () => {
-				this.nextFree = true;
-			}, this);
-			this.registerEvent(this["testBtn1"], egret.TouchEvent.TOUCH_TAP, () => {
-				this.nextBonus = true;
-			}, this);
 			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
 			}, this);
@@ -299,18 +289,13 @@ module game {
 
 			if (this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
 			this.startSpin();
-			if (this.nextFree) {
-				GameService.getInstance().sendSpin(this.betLevel, "1").then(this.spinBack.bind(this));
+			if(this["testInput"].text){
+				GameService.getInstance().sendSpin(this.betLevel, this["testInput"].text).then(this.spinBack.bind(this));
 			}
-			else if (this.nextBonus) {
-				GameService.getInstance().sendSpin(this.betLevel, "3").then(this.spinBack.bind(this));
-			}
-			else {
+			else{
 				GameService.getInstance().sendSpin(this.betLevel).then(this.spinBack.bind(this));
 			}
-
-			this.nextFree = false;
-			this.nextBonus = false;
+			this["testInput"].text = "";
 			this.isReturnData = false;
 			this.setState(GameState.SPINNING);
 			this.showConnect();
@@ -581,6 +566,7 @@ module game {
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
 			await this.showScatterLine();
 			await this.showFreeChange();
+			this.stopScatterLine();
 			await this.showBonusLine();
 
 			if (this.isFree) {
@@ -666,6 +652,13 @@ module game {
 					return this.symbols[gridIndex].showWinAni(false);
 				}) : []
 			)
+		}
+		private stopScatterLine(){
+            this.particleBg.visible = false;
+            this.spinResp.payload.scatterGrid.forEach((value: number, column: number)=>{
+                let gridIndex = value + column * 3;
+                this.symbols[gridIndex].reset();
+			})
 		}
 		/**
 		 * 展示本局获得免费机会
@@ -795,8 +788,12 @@ module game {
 		/**
 		 * 各单线中奖展示
 		 * */
-		private showEveryLineGrid(arr: Array<any>) {
+		private showEveryLineGrid(arr: { gold: number; line: number[]; lineIndex: number; multiplier: number; symbol: string; winCard: number[]}[] ) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
+			//去掉scatter线
+			arr.forEach((v, i)=>{
+				v.symbol == "0" && arr.splice(i,1);
+			})
 			return new Promise(async (resolve, reject) => {
 				let singleLineShow = async (v, lineIndex: number) => {
 					this.lineWinTxt.visible = true;
@@ -821,6 +818,7 @@ module game {
 		 * */
 		private cancelLinesWin() {
 			this.setState(GameState.BET);
+            this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
@@ -1013,7 +1011,7 @@ module game {
 					this.mc.height = this.tile.height;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
-					this.mc.loop = isLong ? 4 : 2;
+					this.mc.loop = isLong ? 3 : -1;
 					this.tile.visible = false;
 					this.mc.once(AMovieClip.COMPLETE, () => {
 						this.mc.visible = false;
@@ -1055,16 +1053,15 @@ module game {
 				p.y = grid.y;
 				let f = () => {
 					egret.Tween.get(p)
-						.to({ emitterX: grid.width }, 450)
-						.to({ emitterY: grid.height }, 450)
-						.to({ emitterX: 0 }, 450)
-						.to({ emitterY: 0 }, 450)
+						.to({ emitterX: grid.width }, 300)
+						.to({ emitterY: grid.height }, 300)
+						.to({ emitterX: 0 }, 300)
+						.to({ emitterY: 0 }, 300)
 						.call(() => {
 							p.stop();
 							p.visible = false;
-							this.gameScene.particleBg.visible = false;
 
-							if (this.mc) {
+							if (this.mc && this.value!="0") {
 								this.mc.stop();
 								this.mc.parent.removeChild(this.mc);
 								this.mc = null;
@@ -1082,7 +1079,7 @@ module game {
 							this.gameScene.lineWinTxt.visible = false;
 						})
 						//单线展示的间隔时间
-						.wait(1000)
+						.wait(200)
 						.call(() => {
 							egret.Tween.removeTweens(p);
 							resolve();
@@ -1091,10 +1088,10 @@ module game {
 
 				if (isLong) {
 					egret.Tween.get(p)
-						.to({ emitterX: grid.width }, 450)
-						.to({ emitterY: grid.height }, 450)
-						.to({ emitterX: 0 }, 450)
-						.to({ emitterY: 0 }, 450)
+						.to({ emitterX: grid.width }, 300)
+						.to({ emitterY: grid.height }, 300)
+						.to({ emitterX: 0 }, 300)
+						.to({ emitterY: 0 }, 300)
 						.call(f);
 				}
 				else {
@@ -1123,12 +1120,7 @@ module game {
 				this.mc2 = null;
 			}
 			if (this.value == "1") {
-				if (this.gameScene.isFree) {
-					this.tile.source = "symbolName_1_" + this.gameScene.buff + "_png";
-				}
-				else {
-					this.tile.source = "symbolName_1_png";
-				}
+				this.tile.source = (this.gameScene.buff=="-1"? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
 			}
 
 			this.tile.visible = true;

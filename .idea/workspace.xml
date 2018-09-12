@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="526b1640-caa7-4875-9e00-ad75710978c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caishen/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/caishen/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caishen/src/game/ui/FreeChoose.ts" beforeDir="false" afterPath="$PROJECT_DIR$/caishen/src/game/ui/FreeChoose.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/caishen/src/game/ui/GameScene.ts" beforeDir="false" afterPath="$PROJECT_DIR$/caishen/src/game/ui/GameScene.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +18,9 @@
     <session id="1456953301">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -36,37 +35,37 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="TypeScriptServerServiceImpl" value="1" />
+          <entry key="TypeScriptServerServiceImpl" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ts" value="326" />
+          <entry key="ts" value="410" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="TypeScript" value="326" />
+          <entry key="TypeScript" value="410" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caishen/src/game/ui/GameScene.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="940" column="38" lean-forward="true" selection-start-line="940" selection-start-column="38" selection-end-line="940" selection-end-column="38" />
+            <state relative-caret-position="479">
+              <caret line="811" column="48" lean-forward="true" selection-start-line="811" selection-start-column="48" selection-end-line="811" selection-end-column="48" />
               <folding>
-                <element signature="e#1333#1349#0" />
-                <element signature="e#1378#1392#0" />
-                <element signature="e#1434#1448#0" />
-                <element signature="e#1489#1513#0" />
-                <element signature="e#1552#1563#0" />
-                <element signature="e#1603#1617#0" />
-                <element signature="e#1658#1668#0" />
-                <element signature="e#1700#1720#0" />
+                <element signature="e#1366#1382#0" />
+                <element signature="e#1411#1425#0" />
+                <element signature="e#1467#1481#0" />
+                <element signature="e#1522#1546#0" />
+                <element signature="e#1585#1595#0" />
+                <element signature="e#1627#1647#0" />
+                <element signature="e#1834#1845#0" />
+                <element signature="e#1881#1892#0" />
                 <element signature="n#!!block;n#constructor#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!doc;n#init#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#init#0;n#GameScene#0;n#game#0" />
@@ -76,145 +75,197 @@
                 <element signature="n#!!block;n#initTitle#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!doc;n#initSymbols#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#initSymbols#0;n#GameScene#0;n#game#0" />
-                <element signature="e#2555#2620#0" />
-                <element signature="e#2653#2835#0" />
+                <element signature="e#2576#2641#0" />
+                <element signature="e#2674#2897#0" />
                 <element signature="n#!!doc;n#initVisible#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#initVisible#0;n#GameScene#0;n#game#0" />
-                <element signature="e#2973#3002#0" />
-                <element signature="e#3036#3085#0" />
+                <element signature="e#3036#3065#0" />
+                <element signature="e#3099#3148#0" />
                 <element signature="n#!!doc;n#initListener#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#initListener#0;n#GameScene#0;n#game#0" />
-                <element signature="e#3215#3247#0" />
-                <element signature="e#3330#3363#0" />
-                <element signature="e#3437#3482#0" />
+                <element signature="e#3271#3316#0" />
                 <element signature="n#!!doc;n#updateBgm#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#updateBgm#0;n#GameScene#0;n#game#0" />
-                <element signature="e#3598#3680#0" />
-                <element signature="e#3698#3968#0" />
-                <element signature="e#3745#3840#0" />
-                <element signature="e#3862#3954#0" />
+                <element signature="e#3417#3478#0" />
+                <element signature="e#3487#3670#0" />
+                <element signature="e#3522#3590#0" />
+                <element signature="e#3600#3665#0" />
                 <element signature="n#!!doc;n#initData#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#initData#0;n#GameScene#0;n#game#0" />
-                <element signature="e#4077#4339#0" />
+                <element signature="e#3773#4035#0" />
                 <element signature="n#!!doc;n#checkDataRecover#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#checkDataRecover#0;n#GameScene#0;n#game#0" />
-                <element signature="e#5053#5914#0" />
-                <element signature="e#5126#5458#0" />
-                <element signature="e#5535#5759#0" />
-                <element signature="e#5769#5909#0" />
+                <element signature="e#4749#5671#0" />
+                <element signature="e#4822#5215#0" />
+                <element signature="e#5292#5516#0" />
+                <element signature="e#5526#5666#0" />
                 <element signature="n#!!doc;n#handleNotify#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#handleNotify#0;n#GameScene#0;n#game#0" />
-                <element signature="e#6055#7093#0" />
-                <element signature="e#6074#6130#0" />
-                <element signature="e#6135#6210#0" />
-                <element signature="e#6215#6289#0" />
-                <element signature="e#6294#6472#0" />
-                <element signature="e#6477#6573#0" />
-                <element signature="e#6578#6648#0" />
-                <element signature="e#6653#6948#0" />
-                <element signature="e#6953#7021#0" />
-                <element signature="e#7026#7088#0" />
+                <element signature="e#5812#7152#0" />
+                <element signature="e#5831#5887#0" />
+                <element signature="e#5892#5967#0" />
+                <element signature="e#5972#6046#0" />
+                <element signature="e#6051#6229#0" />
+                <element signature="e#6234#6330#0" />
+                <element signature="e#6335#6405#0" />
+                <element signature="e#6410#6832#0" />
+                <element signature="e#6837#7080#0" />
+                <element signature="e#6959#7038#0" />
+                <element signature="e#7085#7147#0" />
                 <element signature="n#!!doc;n#setState#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#setState#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!doc;n#spin#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#spin#0;n#GameScene#0;n#game#0" />
-                <element signature="e#7357#7467#0" />
-                <element signature="e#7641#7672#0" />
-                <element signature="e#7700#7764#0" />
-                <element signature="e#7787#7831#0" />
-                <element signature="e#7864#7922#0" />
-                <element signature="e#8040#8137#0" />
-                <element signature="e#8166#8263#0" />
-                <element signature="e#8272#8364#0" />
+                <element signature="e#7416#7526#0" />
+                <element signature="e#7700#7731#0" />
+                <element signature="e#7759#7823#0" />
+                <element signature="e#7949#8065#0" />
+                <element signature="e#8073#8165#0" />
+                <element signature="n#!!doc;n#showConnect#0;n#GameScene#0;n#game#0" />
+                <element signature="n#!!block;n#showConnect#0;n#GameScene#0;n#game#0" />
+                <element signature="e#8381#8537#0" />
+                <element signature="e#8420#8530#0" />
+                <element signature="e#8567#8832#0" />
+                <element signature="e#8654#8825#0" />
+                <element signature="e#8685#8819#0" />
                 <element signature="n#!!doc;n#spinBack#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#spinBack#0;n#GameScene#0;n#game#0" />
-                <element signature="e#8612#8746#0" />
-                <element signature="e#8666#8741#0" />
-                <element signature="e#8697#8735#0" />
-                <element signature="e#8792#8971#0" />
-                <element signature="e#8861#8966#0" />
-                <element signature="e#8907#8960#0" />
-                <element signature="e#9055#9313#0" />
-                <element signature="e#9365#9515#0" />
+                <element signature="e#8990#9243#0" />
+                <element signature="e#9044#9119#0" />
+                <element signature="e#9075#9113#0" />
+                <element signature="e#9169#9238#0" />
+                <element signature="e#9197#9232#0" />
+                <element signature="e#9289#9468#0" />
+                <element signature="e#9358#9463#0" />
+                <element signature="e#9404#9457#0" />
+                <element signature="e#9552#9810#0" />
+                <element signature="e#9862#10012#0" />
                 <element signature="n#!!doc;n#startSpin#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#startSpin#0;n#GameScene#0;n#game#0" />
-                <element signature="e#9772#9816#0" />
-                <element signature="e#9848#9883#0" />
+                <element signature="e#10359#10403#0" />
+                <element signature="e#10435#10470#0" />
                 <element signature="n#!!doc;n#singleColumRoll#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#singleColumRoll#0;n#GameScene#0;n#game#0" />
-                <element signature="e#10079#10247#0" />
-                <element signature="e#10347#10641#0" />
-                <element signature="e#10382#10635#0" />
-                <element signature="e#10517#10628#0" />
+                <element signature="e#10666#10834#0" />
+                <element signature="e#10934#11228#0" />
+                <element signature="e#10969#11222#0" />
+                <element signature="e#11104#11215#0" />
                 <element signature="n#!!doc;n#stopRoll#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#stopRoll#0;n#GameScene#0;n#game#0" />
-                <element signature="e#11058#11392#0" />
+                <element signature="e#11645#11979#0" />
                 <element signature="n#!!doc;n#stopColumn#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#stopColumn#0;n#GameScene#0;n#game#0" />
-                <element signature="e#11562#12689#0" />
-                <element signature="e#11706#11832#0" />
-                <element signature="e#11902#12524#0" />
-                <element signature="e#12446#12516#0" />
+                <element signature="e#12149#13278#0" />
+                <element signature="e#12293#12419#0" />
+                <element signature="e#12489#13113#0" />
+                <element signature="e#13035#13105#0" />
                 <element signature="n#!!doc;n#freeEffect#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#freeEffect#0;n#GameScene#0;n#game#0" />
-                <element signature="e#12871#14622#0" />
-                <element signature="e#13251#13827#0" />
-                <element signature="e#13286#13821#0" />
-                <element signature="e#13918#14270#0" />
-                <element signature="e#13948#13979#0" />
-                <element signature="e#14028#14263#0" />
-                <element signature="e#14182#14255#0" />
-                <element signature="e#14293#14609#0" />
-                <element signature="e#14357#14427#0" />
+                <element signature="e#13497#15323#0" />
+                <element signature="e#13876#14392#0" />
+                <element signature="e#13911#14386#0" />
+                <element signature="e#14504#14857#0" />
+                <element signature="e#14535#14566#0" />
+                <element signature="e#14615#14850#0" />
+                <element signature="e#14769#14842#0" />
+                <element signature="e#14975#15310#0" />
+                <element signature="e#15060#15130#0" />
                 <element signature="n#!!doc;n#cancelSpin#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#cancelSpin#0;n#GameScene#0;n#game#0" />
-                <element signature="e#14710#14862#0" />
-                <element signature="e#14946#15314#0" />
+                <element signature="e#15483#15635#0" />
+                <element signature="e#15719#16091#0" />
                 <element signature="n#!!doc;n#judgeResult#0;n#GameScene#0;n#game#0" />
-                <element signature="n#!!block;n#judgeResult#0;n#GameScene#0;n#game#0" />
+                <element signature="e#16936#17265#0" />
+                <element signature="e#17042#17129#0" />
+                <element signature="e#17139#17260#0" />
+                <element signature="e#17274#17708#0" />
+                <element signature="e#17298#17344#0" />
+                <element signature="e#17378#17438#0" />
+                <element signature="e#17488#17527#0" />
+                <element signature="e#17537#17703#0" />
                 <element signature="n#!!doc;n#showBigWin#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#showBigWin#0;n#GameScene#0;n#game#0" />
+                <element signature="e#17861#18220#0" />
+                <element signature="e#17924#18004#0" />
+                <element signature="e#18037#18118#0" />
+                <element signature="e#18128#18215#0" />
+                <element signature="e#18182#18207#0" />
                 <element signature="n#!!doc;n#showAllWinGrid#0;n#GameScene#0;n#game#0" />
-                <element signature="n#!!block;n#showAllWinGrid#0;n#GameScene#0;n#game#0" />
+                <element signature="e#18398#18523#0" />
+                <element signature="e#18600#18617#0" />
                 <element signature="n#!!doc;n#showScatterLine#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#showScatterLine#0;n#GameScene#0;n#game#0" />
+                <element signature="e#19047#19150#0" />
                 <element signature="n#!!doc;n#showFreeChange#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#showFreeChange#0;n#GameScene#0;n#game#0" />
+                <element signature="e#19268#19815#0" />
+                <element signature="e#19318#19777#0" />
+                <element signature="e#19645#19770#0" />
+                <element signature="e#19787#19810#0" />
                 <element signature="n#!!doc;n#showBonusLine#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#showBonusLine#0;n#GameScene#0;n#game#0" />
+                <element signature="e#20169#22669#0" />
+                <element signature="e#20209#22662#0" />
+                <element signature="e#20234#20257#0" />
+                <element signature="e#20269#22654#0" />
+                <element signature="e#20756#20765#0" />
+                <element signature="e#20839#21345#0" />
+                <element signature="e#21445#21757#0" />
+                <element signature="e#21520#21746#0" />
+                <element signature="e#21635#21735#0" />
+                <element signature="e#22172#22638#0" />
+                <element signature="e#22430#22470#0" />
+                <element signature="e#22536#22613#0" />
                 <element signature="n#!!doc;n#showEveryLineGrid#0;n#GameScene#0;n#game#0" />
-                <element signature="n#!!block;n#showEveryLineGrid#0;n#GameScene#0;n#game#0" />
+                <element signature="e#22943#22989#0" />
                 <element signature="n#!!doc;n#cancelLinesWin#0;n#GameScene#0;n#game#0" />
-                <element signature="n#!!block;n#cancelLinesWin#0;n#GameScene#0;n#game#0" />
+                <element signature="e#23780#23806#0" />
+                <element signature="e#23829#24093#0" />
+                <element signature="e#23870#23957#0" />
+                <element signature="e#23967#24088#0" />
+                <element signature="e#24102#24199#0" />
                 <element signature="n#!!doc;n#showFreeChoose#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#showFreeChoose#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!doc;n#showFreeGame#0;n#GameScene#0;n#game#0" />
+                <element signature="n#!!block;n#showFreeGame#0;n#GameScene#0;n#game#0" />
+                <element signature="e#24835#24953#0" />
+                <element signature="e#24848#24873#0" />
+                <element signature="e#24883#24948#0" />
                 <element signature="n#!!doc;n#setFreeChooseCount#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#setFreeChooseCount#0;n#GameScene#0;n#game#0" />
+                <element signature="e#25381#25964#0" />
+                <element signature="e#25619#25958#0" />
+                <element signature="e#25846#25944#0" />
+                <element signature="e#25970#26145#0" />
                 <element signature="n#!!doc;n#freeMultiAni#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#freeMultiAni#0;n#GameScene#0;n#game#0" />
+                <element signature="e#26262#26957#0" />
+                <element signature="e#26416#26683#0" />
+                <element signature="e#26963#27153#0" />
+                <element signature="e#26995#27083#0" />
                 <element signature="n#!!doc;n#showFreeTotalWin#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#showFreeTotalWin#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!doc;n#freeComplete#0;n#GameScene#0;n#game#0" />
                 <element signature="n#!!block;n#freeComplete#0;n#GameScene#0;n#game#0" />
-                <element signature="e#24496#24533#0" />
+                <element signature="e#27461#27498#0" />
+                <element signature="e#27507#27637#0" />
                 <element signature="n#!!doc;n#Symbol#0;n#game#0" />
                 <element signature="n#!!block;n#constructor#0;n#Symbol#0;n#game#0" />
                 <element signature="n#!!doc;n#setTexture#0;n#Symbol#0;n#game#0" />
                 <element signature="n#!!block;n#setTexture#0;n#Symbol#0;n#game#0" />
                 <element signature="n#!!doc;n#showWinAni#0;n#Symbol#0;n#game#0" />
+                <element signature="e#28563#29082#0" />
+                <element signature="e#28998#29069#0" />
+                <element signature="e#29128#29871#0" />
+                <element signature="e#30565#30672#0" />
+                <element signature="e#30703#30839#0" />
                 <element signature="n#!!doc;n#reset#0;n#Symbol#0;n#game#0" />
                 <element signature="n#!!block;n#reset#0;n#Symbol#0;n#game#0" />
+                <element signature="e#31385#31476#0" />
+                <element signature="e#31494#31581#0" />
+                <element signature="e#31599#31690#0" />
+                <element signature="e#31717#31846#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/caishen/src/game/ui/FreeChoose.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -226,6 +277,7 @@
       <find>/**</find>
       <find>particleGroup</find>
       <find>freeCountTxt</find>
+      <find>particleBg</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -785,6 +837,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -828,7 +881,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -860,24 +912,20 @@
       <option name="presentableId" value="Default" />
       <updated>1536286000780</updated>
       <workItem from="1536286003774" duration="3344000" />
+      <workItem from="1536655413605" duration="773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3344000" />
+    <option name="totallyTimeSpent" value="4117000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25237092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -885,6 +933,11 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -897,19 +950,26 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/caishen/src/game/ui/FreeChoose.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="74" lean-forward="true" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/caishen/src/game/ui/GameScene.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="940" column="38" lean-forward="true" selection-start-line="940" selection-start-column="38" selection-end-line="940" selection-end-column="38" />
+        <state relative-caret-position="479">
+          <caret line="811" column="48" lean-forward="true" selection-start-line="811" selection-start-column="48" selection-end-line="811" selection-end-column="48" />
           <folding>
-            <element signature="e#1333#1349#0" />
-            <element signature="e#1378#1392#0" />
-            <element signature="e#1434#1448#0" />
-            <element signature="e#1489#1513#0" />
-            <element signature="e#1552#1563#0" />
-            <element signature="e#1603#1617#0" />
-            <element signature="e#1658#1668#0" />
-            <element signature="e#1700#1720#0" />
+            <element signature="e#1366#1382#0" />
+            <element signature="e#1411#1425#0" />
+            <element signature="e#1467#1481#0" />
+            <element signature="e#1522#1546#0" />
+            <element signature="e#1585#1595#0" />
+            <element signature="e#1627#1647#0" />
+            <element signature="e#1834#1845#0" />
+            <element signature="e#1881#1892#0" />
             <element signature="n#!!block;n#constructor#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!doc;n#init#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#init#0;n#GameScene#0;n#game#0" />
@@ -919,143 +979,197 @@
             <element signature="n#!!block;n#initTitle#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!doc;n#initSymbols#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#initSymbols#0;n#GameScene#0;n#game#0" />
-            <element signature="e#2555#2620#0" />
-            <element signature="e#2653#2835#0" />
+            <element signature="e#2576#2641#0" />
+            <element signature="e#2674#2897#0" />
             <element signature="n#!!doc;n#initVisible#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#initVisible#0;n#GameScene#0;n#game#0" />
-            <element signature="e#2973#3002#0" />
-            <element signature="e#3036#3085#0" />
+            <element signature="e#3036#3065#0" />
+            <element signature="e#3099#3148#0" />
             <element signature="n#!!doc;n#initListener#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#initListener#0;n#GameScene#0;n#game#0" />
-            <element signature="e#3215#3247#0" />
-            <element signature="e#3330#3363#0" />
-            <element signature="e#3437#3482#0" />
+            <element signature="e#3271#3316#0" />
             <element signature="n#!!doc;n#updateBgm#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#updateBgm#0;n#GameScene#0;n#game#0" />
-            <element signature="e#3598#3680#0" />
-            <element signature="e#3698#3968#0" />
-            <element signature="e#3745#3840#0" />
-            <element signature="e#3862#3954#0" />
+            <element signature="e#3417#3478#0" />
+            <element signature="e#3487#3670#0" />
+            <element signature="e#3522#3590#0" />
+            <element signature="e#3600#3665#0" />
             <element signature="n#!!doc;n#initData#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#initData#0;n#GameScene#0;n#game#0" />
-            <element signature="e#4077#4339#0" />
+            <element signature="e#3773#4035#0" />
             <element signature="n#!!doc;n#checkDataRecover#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#checkDataRecover#0;n#GameScene#0;n#game#0" />
-            <element signature="e#5053#5914#0" />
-            <element signature="e#5126#5458#0" />
-            <element signature="e#5535#5759#0" />
-            <element signature="e#5769#5909#0" />
+            <element signature="e#4749#5671#0" />
+            <element signature="e#4822#5215#0" />
+            <element signature="e#5292#5516#0" />
+            <element signature="e#5526#5666#0" />
             <element signature="n#!!doc;n#handleNotify#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#handleNotify#0;n#GameScene#0;n#game#0" />
-            <element signature="e#6055#7093#0" />
-            <element signature="e#6074#6130#0" />
-            <element signature="e#6135#6210#0" />
-            <element signature="e#6215#6289#0" />
-            <element signature="e#6294#6472#0" />
-            <element signature="e#6477#6573#0" />
-            <element signature="e#6578#6648#0" />
-            <element signature="e#6653#6948#0" />
-            <element signature="e#6953#7021#0" />
-            <element signature="e#7026#7088#0" />
+            <element signature="e#5812#7152#0" />
+            <element signature="e#5831#5887#0" />
+            <element signature="e#5892#5967#0" />
+            <element signature="e#5972#6046#0" />
+            <element signature="e#6051#6229#0" />
+            <element signature="e#6234#6330#0" />
+            <element signature="e#6335#6405#0" />
+            <element signature="e#6410#6832#0" />
+            <element signature="e#6837#7080#0" />
+            <element signature="e#6959#7038#0" />
+            <element signature="e#7085#7147#0" />
             <element signature="n#!!doc;n#setState#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#setState#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!doc;n#spin#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#spin#0;n#GameScene#0;n#game#0" />
-            <element signature="e#7357#7467#0" />
-            <element signature="e#7641#7672#0" />
-            <element signature="e#7700#7764#0" />
-            <element signature="e#7787#7831#0" />
-            <element signature="e#7864#7922#0" />
-            <element signature="e#8040#8137#0" />
-            <element signature="e#8166#8263#0" />
-            <element signature="e#8272#8364#0" />
+            <element signature="e#7416#7526#0" />
+            <element signature="e#7700#7731#0" />
+            <element signature="e#7759#7823#0" />
+            <element signature="e#7949#8065#0" />
+            <element signature="e#8073#8165#0" />
+            <element signature="n#!!doc;n#showConnect#0;n#GameScene#0;n#game#0" />
+            <element signature="n#!!block;n#showConnect#0;n#GameScene#0;n#game#0" />
+            <element signature="e#8381#8537#0" />
+            <element signature="e#8420#8530#0" />
+            <element signature="e#8567#8832#0" />
+            <element signature="e#8654#8825#0" />
+            <element signature="e#8685#8819#0" />
             <element signature="n#!!doc;n#spinBack#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#spinBack#0;n#GameScene#0;n#game#0" />
-            <element signature="e#8612#8746#0" />
-            <element signature="e#8666#8741#0" />
-            <element signature="e#8697#8735#0" />
-            <element signature="e#8792#8971#0" />
-            <element signature="e#8861#8966#0" />
-            <element signature="e#8907#8960#0" />
-            <element signature="e#9055#9313#0" />
-            <element signature="e#9365#9515#0" />
+            <element signature="e#8990#9243#0" />
+            <element signature="e#9044#9119#0" />
+            <element signature="e#9075#9113#0" />
+            <element signature="e#9169#9238#0" />
+            <element signature="e#9197#9232#0" />
+            <element signature="e#9289#9468#0" />
+            <element signature="e#9358#9463#0" />
+            <element signature="e#9404#9457#0" />
+            <element signature="e#9552#9810#0" />
+            <element signature="e#9862#10012#0" />
             <element signature="n#!!doc;n#startSpin#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#startSpin#0;n#GameScene#0;n#game#0" />
-            <element signature="e#9772#9816#0" />
-            <element signature="e#9848#9883#0" />
+            <element signature="e#10359#10403#0" />
+            <element signature="e#10435#10470#0" />
             <element signature="n#!!doc;n#singleColumRoll#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#singleColumRoll#0;n#GameScene#0;n#game#0" />
-            <element signature="e#10079#10247#0" />
-            <element signature="e#10347#10641#0" />
-            <element signature="e#10382#10635#0" />
-            <element signature="e#10517#10628#0" />
+            <element signature="e#10666#10834#0" />
+            <element signature="e#10934#11228#0" />
+            <element signature="e#10969#11222#0" />
+            <element signature="e#11104#11215#0" />
             <element signature="n#!!doc;n#stopRoll#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#stopRoll#0;n#GameScene#0;n#game#0" />
-            <element signature="e#11058#11392#0" />
+            <element signature="e#11645#11979#0" />
             <element signature="n#!!doc;n#stopColumn#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#stopColumn#0;n#GameScene#0;n#game#0" />
-            <element signature="e#11562#12689#0" />
-            <element signature="e#11706#11832#0" />
-            <element signature="e#11902#12524#0" />
-            <element signature="e#12446#12516#0" />
+            <element signature="e#12149#13278#0" />
+            <element signature="e#12293#12419#0" />
+            <element signature="e#12489#13113#0" />
+            <element signature="e#13035#13105#0" />
             <element signature="n#!!doc;n#freeEffect#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#freeEffect#0;n#GameScene#0;n#game#0" />
-            <element signature="e#12871#14622#0" />
-            <element signature="e#13251#13827#0" />
-            <element signature="e#13286#13821#0" />
-            <element signature="e#13918#14270#0" />
-            <element signature="e#13948#13979#0" />
-            <element signature="e#14028#14263#0" />
-            <element signature="e#14182#14255#0" />
-            <element signature="e#14293#14609#0" />
-            <element signature="e#14357#14427#0" />
+            <element signature="e#13497#15323#0" />
+            <element signature="e#13876#14392#0" />
+            <element signature="e#13911#14386#0" />
+            <element signature="e#14504#14857#0" />
+            <element signature="e#14535#14566#0" />
+            <element signature="e#14615#14850#0" />
+            <element signature="e#14769#14842#0" />
+            <element signature="e#14975#15310#0" />
+            <element signature="e#15060#15130#0" />
             <element signature="n#!!doc;n#cancelSpin#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#cancelSpin#0;n#GameScene#0;n#game#0" />
-            <element signature="e#14710#14862#0" />
-            <element signature="e#14946#15314#0" />
+            <element signature="e#15483#15635#0" />
+            <element signature="e#15719#16091#0" />
             <element signature="n#!!doc;n#judgeResult#0;n#GameScene#0;n#game#0" />
-            <element signature="n#!!block;n#judgeResult#0;n#GameScene#0;n#game#0" />
+            <element signature="e#16936#17265#0" />
+            <element signature="e#17042#17129#0" />
+            <element signature="e#17139#17260#0" />
+            <element signature="e#17274#17708#0" />
+            <element signature="e#17298#17344#0" />
+            <element signature="e#17378#17438#0" />
+            <element signature="e#17488#17527#0" />
+            <element signature="e#17537#17703#0" />
             <element signature="n#!!doc;n#showBigWin#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#showBigWin#0;n#GameScene#0;n#game#0" />
+            <element signature="e#17861#18220#0" />
+            <element signature="e#17924#18004#0" />
+            <element signature="e#18037#18118#0" />
+            <element signature="e#18128#18215#0" />
+            <element signature="e#18182#18207#0" />
             <element signature="n#!!doc;n#showAllWinGrid#0;n#GameScene#0;n#game#0" />
-            <element signature="n#!!block;n#showAllWinGrid#0;n#GameScene#0;n#game#0" />
+            <element signature="e#18398#18523#0" />
+            <element signature="e#18600#18617#0" />
             <element signature="n#!!doc;n#showScatterLine#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#showScatterLine#0;n#GameScene#0;n#game#0" />
+            <element signature="e#19047#19150#0" />
             <element signature="n#!!doc;n#showFreeChange#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#showFreeChange#0;n#GameScene#0;n#game#0" />
+            <element signature="e#19268#19815#0" />
+            <element signature="e#19318#19777#0" />
+            <element signature="e#19645#19770#0" />
+            <element signature="e#19787#19810#0" />
             <element signature="n#!!doc;n#showBonusLine#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#showBonusLine#0;n#GameScene#0;n#game#0" />
+            <element signature="e#20169#22669#0" />
+            <element signature="e#20209#22662#0" />
+            <element signature="e#20234#20257#0" />
+            <element signature="e#20269#22654#0" />
+            <element signature="e#20756#20765#0" />
+            <element signature="e#20839#21345#0" />
+            <element signature="e#21445#21757#0" />
+            <element signature="e#21520#21746#0" />
+            <element signature="e#21635#21735#0" />
+            <element signature="e#22172#22638#0" />
+            <element signature="e#22430#22470#0" />
+            <element signature="e#22536#22613#0" />
             <element signature="n#!!doc;n#showEveryLineGrid#0;n#GameScene#0;n#game#0" />
-            <element signature="n#!!block;n#showEveryLineGrid#0;n#GameScene#0;n#game#0" />
+            <element signature="e#22943#22989#0" />
             <element signature="n#!!doc;n#cancelLinesWin#0;n#GameScene#0;n#game#0" />
-            <element signature="n#!!block;n#cancelLinesWin#0;n#GameScene#0;n#game#0" />
+            <element signature="e#23780#23806#0" />
+            <element signature="e#23829#24093#0" />
+            <element signature="e#23870#23957#0" />
+            <element signature="e#23967#24088#0" />
+            <element signature="e#24102#24199#0" />
             <element signature="n#!!doc;n#showFreeChoose#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#showFreeChoose#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!doc;n#showFreeGame#0;n#GameScene#0;n#game#0" />
+            <element signature="n#!!block;n#showFreeGame#0;n#GameScene#0;n#game#0" />
+            <element signature="e#24835#24953#0" />
+            <element signature="e#24848#24873#0" />
+            <element signature="e#24883#24948#0" />
             <element signature="n#!!doc;n#setFreeChooseCount#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#setFreeChooseCount#0;n#GameScene#0;n#game#0" />
+            <element signature="e#25381#25964#0" />
+            <element signature="e#25619#25958#0" />
+            <element signature="e#25846#25944#0" />
+            <element signature="e#25970#26145#0" />
             <element signature="n#!!doc;n#freeMultiAni#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#freeMultiAni#0;n#GameScene#0;n#game#0" />
+            <element signature="e#26262#26957#0" />
+            <element signature="e#26416#26683#0" />
+            <element signature="e#26963#27153#0" />
+            <element signature="e#26995#27083#0" />
             <element signature="n#!!doc;n#showFreeTotalWin#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#showFreeTotalWin#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!doc;n#freeComplete#0;n#GameScene#0;n#game#0" />
             <element signature="n#!!block;n#freeComplete#0;n#GameScene#0;n#game#0" />
-            <element signature="e#24496#24533#0" />
+            <element signature="e#27461#27498#0" />
+            <element signature="e#27507#27637#0" />
             <element signature="n#!!doc;n#Symbol#0;n#game#0" />
             <element signature="n#!!block;n#constructor#0;n#Symbol#0;n#game#0" />
             <element signature="n#!!doc;n#setTexture#0;n#Symbol#0;n#game#0" />
             <element signature="n#!!block;n#setTexture#0;n#Symbol#0;n#game#0" />
             <element signature="n#!!doc;n#showWinAni#0;n#Symbol#0;n#game#0" />
+            <element signature="e#28563#29082#0" />
+            <element signature="e#28998#29069#0" />
+            <element signature="e#29128#29871#0" />
+            <element signature="e#30565#30672#0" />
+            <element signature="e#30703#30839#0" />
             <element signature="n#!!doc;n#reset#0;n#Symbol#0;n#game#0" />
             <element signature="n#!!block;n#reset#0;n#Symbol#0;n#game#0" />
+            <element signature="e#31385#31476#0" />
+            <element signature="e#31494#31581#0" />
+            <element signature="e#31599#31690#0" />
+            <element signature="e#31717#31846#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caishen/src/game/ui/FreeChoose.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
