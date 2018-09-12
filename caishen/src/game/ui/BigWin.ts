@@ -86,12 +86,12 @@ module game {
                 let superTime: number = this.yuanbaoTime[2] - this.yuanbaoTime[1];
                 switch (type) {
                     case "big":
-                        this.yuanbao(this.yuanbaoTime[0], this.yuanbaoNum[0]).then(() => {this.visible = false;res();});
+                        this.yuanbao(this.yuanbaoTime[0], this.yuanbaoNum[0]).then(() => { this.visible = false; res(); });
                         break;
                     case "mega":
                         this.yuanbao(this.yuanbaoTime[0], this.yuanbaoNum[0]).then(() => {
                             txtAni("MegaWin_png");
-                            this.yuanbao(megaTime, this.yuanbaoNum[1]).then(() => {this.visible = false;res();});
+                            this.yuanbao(megaTime, this.yuanbaoNum[1]).then(() => { this.visible = false; res(); });
                         });
                         break;
                     case "super":
@@ -99,7 +99,7 @@ module game {
                             txtAni("MegaWin_png");
                             this.yuanbao(megaTime, this.yuanbaoNum[1]).then(() => {
                                 txtAni("SuperWin_png");
-                                this.yuanbao(superTime, this.yuanbaoNum[2]).then(() => {this.visible = false;res();});
+                                this.yuanbao(superTime, this.yuanbaoNum[2]).then(() => { this.visible = false; res(); });
                             });
                         });
                         break;
@@ -113,6 +113,7 @@ module game {
                 egret.Tween.get(this, { onChange: () => { this.payout.text = this.winNum.toFixed(2) }, onChangeObj: this })
                     .to({ winNum: mon }, timer - 2000).call(() => {
                         egret.Tween.removeTweens(this);
+                        if (GlobalConfig.effectSwitch) { SoundPlayer.closeEffect(); SoundPlayer.closeEffect(false); }
                         SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
                         egret.Tween.get(this.payout)
                             .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
