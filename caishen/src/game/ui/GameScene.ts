@@ -596,7 +596,11 @@ module game {
 				else {
 					await this.showEveryLineGrid(this.spinResp.payload.winGrid);
 					this.setState(GameState.BET);
-					if (this.autoMax || this.autoCount > 0) this.spin();
+					if (this.autoMax || this.autoCount > 0) {
+						setTimeout(()=> {
+							if(this.state == GameState.BET) this.spin();
+						}, 1000);
+					}
 				}
 			}
 
