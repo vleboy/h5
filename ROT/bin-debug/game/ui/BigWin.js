@@ -129,7 +129,7 @@ var game;
         };
         /**light*/
         BigWin.prototype.bigWinLight = function () {
-            this.light.sources = "bigwinLight|1-30|_png";
+            // this.light.sources = "bigwinLight|1-30|_png";
             this.light.play();
         };
         /**喷烟花*/
