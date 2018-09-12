@@ -23,7 +23,7 @@ module game {
         public init(): void {
             this.visible = false;
             this.yuanbaoTime = [10000, 20000, 30000];
-            this.yuanbaoNum = [30, 60, 90];
+            this.yuanbaoNum = [50, 80, 110];
         }
         public bigWinStart(type: string, money: number) {
             this.visible = true;
