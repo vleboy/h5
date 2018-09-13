@@ -7,14 +7,14 @@ module game {
 		}
 
 		public init(){
-			this["yuanbaoGroup"].visible = false;
+			// this["yuanbaoGroup"].visible = false;
 			["20","15","10","8","5"].forEach((v,i)=>{
 				this.registerEvent(this["choose"+v], egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
 			})
 		}
 
 		public show(){
-			this["yuanbaoGroup"].visible = false;
+			// this["yuanbaoGroup"].visible = false;
 			this["chooseGroup"].setChildIndex(this["rect"], 0);
 			["10","5","15","8","20"].forEach((v,i)=>{
 				this["chooseGroup"].setChildIndex(this["choose"+v], 1);
@@ -84,7 +84,7 @@ module game {
 							});
 						})
 					]).then(async()=>{
-						await this.yuanbaoAni();
+						// await this.yuanbaoAni();
 						this.sendNotify(NotifyConst.chooseFreeBack, respData);
 					})
 					

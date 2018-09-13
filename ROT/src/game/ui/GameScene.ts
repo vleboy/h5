@@ -11,8 +11,6 @@ module game {
 		private freeChoose: FreeChoose;
 		private bg: eui.Image;
 		private bgFree: eui.Image;
-		private kuang: eui.Image;
-		private kuangFree: eui.Image;
 		private title: AMovieClip;
 		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
@@ -860,8 +858,6 @@ module game {
 			this.freeTotalWin.visible = false;
 			this.bg.visible = !b;
 			this.bgFree.visible = b;
-			this.kuang.visible = !b;
-			this.kuangFree.visible = b;
 			this.freeCountBg.visible = b;
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);

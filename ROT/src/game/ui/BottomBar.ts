@@ -282,23 +282,23 @@ module game {
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
-					betAutoState();
+					this.isFree ? betAutoState(false, false) : betAutoState();
 					spinBtnShow();
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0.00";
-					betAutoState(false, false);
+					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
 					spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.SHOW_RESULT:
-					betAutoState(false);
+					this.isFree ? betAutoState(false, false) : betAutoState(false);
 					spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					betAutoState(false, false);
+					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
 					this.imgSpin(true);
 					spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;
@@ -307,7 +307,9 @@ module game {
 		}
 		/**自动或免费下注次数*/
 		public setAutoBetNum(num: number): void {
-			this.showAutoBtn(num == 0);
+			if (!this.isFree) this.showAutoBtn(num == 0);
+			if (this.isFree && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
+			if (!this.isFree && this.isAuto && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = true;
 			this.isAuto = num != 0;
 			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
 		}
