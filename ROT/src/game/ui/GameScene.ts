@@ -874,7 +874,8 @@ module game {
          * */
 		private showFreeChoose(b: boolean) {
 			this.freeTotalWin.visible = false;
-			this.freeChoose.visible = b;
+			// this.freeChoose.visible = b;
+			this.freeChoose.visible = false;
 			if (b) this.freeChoose.show();
 			this.updateBgm();
 		}
@@ -1022,9 +1023,9 @@ module game {
 		 * 图标中奖动画
 		*/
 		public imgWinAni(isLong: boolean = true): Promise<{}> {
-			console.warn("this.value",this.value,isLong)
 			return new Promise((res,rej) => {
 				let theLoop: number = isLong ? 2 : 1;
+				let wait:number = isLong ? 2800 : 1400;
 				this.gameScene.winGridGroup.addChild(this.tile);
 				this.mc = new AMovieClip();
 				this.mc.sources = this.value + "_|1-15|_png";
@@ -1040,9 +1041,10 @@ module game {
 				this.mc.once(AMovieClip.COMPLETE, () => {
 					this.mc.visible = false;
 					this.tile.visible = true;
+					!isLong && (this.gameScene.lineWinTxt.visible = false);
 				}, this);
 				//单线展示的间隔时间
-				setTimeout(()=>res(),1400);
+				setTimeout(()=>{res();this.mc.parent.removeChild(this.mc);},wait);
 				
 			});
 		}
