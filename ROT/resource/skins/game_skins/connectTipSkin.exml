@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="connectTipSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Rect left="0" top="0" right="0" bottom="0" alpha="0"/>
-	<e:Rect width="200" height="200" fillAlpha="0.5" verticalCenter="0" horizontalCenter="0"/>
+	<e:Rect width="256" height="256" fillAlpha="0.5" verticalCenter="0" horizontalCenter="0" ellipseWidth="50" ellipseHeight="50"/>
 
 	<e:Image id="circle" source="circlcce_png" anchorOffsetX="82" anchorOffsetY="87" horizontalCenter="0" verticalCenter="0" width="164" height="174"/>
 </e:Skin>

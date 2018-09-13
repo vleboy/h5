@@ -54,14 +54,12 @@ var game;
         }
         FreeChoose.prototype.init = function () {
             var _this = this;
-            // this["yuanbaoGroup"].visible = false;
             ["20", "15", "10", "8", "5"].forEach(function (v, i) {
                 _this.registerEvent(_this["choose" + v], egret.TouchEvent.TOUCH_TAP, _this.onTouch, _this);
             });
         };
         FreeChoose.prototype.show = function () {
             var _this = this;
-            // this["yuanbaoGroup"].visible = false;
             this["chooseGroup"].setChildIndex(this["rect"], 0);
             ["10", "5", "15", "8", "20"].forEach(function (v, i) {
                 _this["chooseGroup"].setChildIndex(_this["choose" + v], 1);
@@ -115,22 +113,6 @@ var game;
                 else {
                     var respData_1;
                     Promise.all([
-                        new Promise(function (resolve, reject) {
-                            var mc = new game.AMovieClip();
-                            mc.sources = "caishenAni|1-16|_png";
-                            mc.x = 94;
-                            mc.y = 67;
-                            mc.width = 319;
-                            mc.height = 321;
-                            mc.speed = 4;
-                            mc.loop = 2;
-                            target.addChildAt(mc, 2);
-                            mc.play();
-                            mc.once(game.AMovieClip.COMPLETE, function () {
-                                mc.parent.removeChild(mc);
-                                resolve();
-                            }, _this);
-                        }),
                         new Promise(function (resolve, reject) {
                             n > 0 && game.GameService.getInstance().sendFreeChoose(n).then(function (resp) { return __awaiter(_this, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
