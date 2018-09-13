@@ -583,22 +583,29 @@ module game {
 				}
 				else {
 					this.setState(GameState.BET);
-					this.spin();
+					setTimeout(()=> {
+						if(this.state == GameState.BET) this.spin();
+					}, 1000);
 				}
 			}
 			else {
-				if (this.autoMax) {
-					this.bottomBar.setAutoBetNum(-1);
-				}
-				else if (this.autoCount > 0) {
-					this.bottomBar.setAutoBetNum(--this.autoCount);
-				}
-
 				if (this.spinResp.payload.getFeatureChance) {
+					if (this.autoMax) {
+						this.bottomBar.setAutoBetNum(-1);
+					}
+					else if (this.autoCount > 0) {
+						this.bottomBar.setAutoBetNum(--this.autoCount);
+					}
 					this.showFreeChoose(true);
 				}
 				else {
 					await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+					if (this.autoMax) {
+						this.bottomBar.setAutoBetNum(-1);
+					}
+					else if (this.autoCount > 0) {
+						this.bottomBar.setAutoBetNum(--this.autoCount);
+					}
 					this.setState(GameState.BET);
 					if (this.autoMax || this.autoCount > 0) {
 						setTimeout(()=> {
@@ -827,7 +834,6 @@ module game {
 		 * 停止中奖展示
 		 * */
 		private cancelLinesWin() {
-			this.setState(GameState.BET);
             this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
@@ -850,6 +856,12 @@ module game {
 			}
 			else {
 				this.setState(GameState.BET);
+				if (this.autoMax) {
+					this.bottomBar.setAutoBetNum(-1);
+				}
+				else if (this.autoCount > 0) {
+					this.bottomBar.setAutoBetNum(--this.autoCount);
+				}
 				if (this.autoMax || this.autoCount > 0) {
 					setTimeout(()=> {
 						if(this.state == GameState.BET) this.spin();
