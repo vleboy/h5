@@ -7,14 +7,12 @@ module game {
 		}
 
 		public init(){
-			// this["yuanbaoGroup"].visible = false;
 			["20","15","10","8","5"].forEach((v,i)=>{
 				this.registerEvent(this["choose"+v], egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
 			})
 		}
 
 		public show(){
-			// this["yuanbaoGroup"].visible = false;
 			this["chooseGroup"].setChildIndex(this["rect"], 0);
 			["10","5","15","8","20"].forEach((v,i)=>{
 				this["chooseGroup"].setChildIndex(this["choose"+v], 1);
@@ -60,22 +58,6 @@ module game {
 				else{
 					let respData;
 					Promise.all([
-						new Promise((resolve, reject)=>{
-							let mc = new AMovieClip();
-							mc.sources = "caishenAni|1-16|_png";
-							mc.x = 94;
-							mc.y = 67;
-							mc.width = 319;
-							mc.height = 321;
-							mc.speed = 4;
-							mc.loop = 2;
-							target.addChildAt(mc, 2);
-							mc.play();
-							mc.once(AMovieClip.COMPLETE, ()=>{
-								mc.parent.removeChild(mc);
-								resolve();
-							}, this);
-						}),
 						new Promise((resolve, reject)=>{
 							n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
 								respData = resp;
