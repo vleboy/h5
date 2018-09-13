@@ -7,7 +7,7 @@ var game;
         function GlobalConfig() {
         }
         /**1 小丰 2提莫 */
-        GlobalConfig.testUser = 2;
+        GlobalConfig.testUser = 1;
         /**游戏初始数据用的用户id */
         GlobalConfig.gameUserID = (GlobalConfig.testUser == 1) ? 276064 : 363048;
         /**游戏初始数据用的验证码 */
