@@ -12,6 +12,8 @@ module game {
 		private _flag:number = 0;
 		/**结束事件 */
 		public static COMPLETE:string = "loopComplete";
+		/**每一次循环完成*/
+		public static VERYLOOPCOMPLETE:string = "veryLoopComplete";
 
 		public constructor() {
 			super();
@@ -57,6 +59,7 @@ module game {
 				else
 				{
 					this.currentFrame = 0;
+					this.dispatchEventWith(AMovieClip.VERYLOOPCOMPLETE);
 				}
 			}
 			this.source = this.imgs[this.currentFrame];

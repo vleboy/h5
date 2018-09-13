@@ -59,6 +59,9 @@ module game {
 		private isReturnData: boolean;
 		/**spin等待*/
 		private spinWain: any;
+		/**播放的星星数组*/
+		private starArr: Array<game.AMovieClip>;
+
 
 		public constructor() {
 			super();
@@ -79,6 +82,7 @@ module game {
 		 * 初始化显示
 		 * */
 		private initView() {
+			this.starArr = [];
 			this.initTitle();
 			this.initStar();
 			this.initSymbols();
@@ -97,17 +101,22 @@ module game {
 		 * 星星
 		*/
 		private initStar(isFree: boolean = false): void {
-			let num: number = Math.floor(Math.random() * 6);
+			let starBg: string = isFree ? "blueStarBg_png" : "yellowStarBg_png";
+			let starSources: string = isFree ? "blueStar|1-13|_png" : "yellowStar|1-13|_png";
+			[0, 1, 2, 3, 4, 5].forEach(v => (this["starBg" + v] as eui.Image).source = starBg);
 			let starPlay = (index: number) => {
-				let starBg: eui.Image = this["starBg" + index] as game.AMovieClip;
-				let star: game.AMovieClip = this["starAni" + index] as game.AMovieClip;
-				starBg.source = isFree ? "blueStarBg_png" : "yellowStarBg_png";
-				star.sources = isFree ? "blueStar|1-13|_png" : "yellowStar|1-13|_png";
-				star.speed = 15;
-				star.play();
-			}
-			for (var i = num; i <= 5; i++) {starPlay(i);};
-			for (var i = num; i <= 5; i++) {starPlay(i);};
+				return new Promise((res, rej) => {
+					let star: game.AMovieClip = this["starAni" + index] as game.AMovieClip;
+					star.sources = starSources;
+					star.speed = 8;
+					star.play();
+					this.starArr.push(star);
+					star.addEventListener(AMovieClip.VERYLOOPCOMPLETE, () => res(), this);
+				});
+			};
+			let num: number = 0;
+			let play = () => { starPlay(num).then(() => { if (num <= 5) { num++; play(); } }); };
+			play();
 		}
 		/**
 		 * 初始图标对象
@@ -877,7 +886,7 @@ module game {
 			this.bgFree.visible = b;
 			this.freeCountBg.visible = b;
 			this.setFreeChooseCount();
-			this.initStar(true);
+			b && this.initStar(true);
 			this.setState(GameState.BET);
 			this.updateBgm();
 			setTimeout(() => {

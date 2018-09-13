@@ -66,6 +66,7 @@ var game;
          * 初始化显示
          * */
         GameScene.prototype.initView = function () {
+            this.starArr = [];
             this.initTitle();
             this.initStar();
             this.initSymbols();
@@ -86,14 +87,25 @@ var game;
         GameScene.prototype.initStar = function (isFree) {
             var _this = this;
             if (isFree === void 0) { isFree = false; }
-            [0, 1, 2, 3, 4, 5].forEach(function (v) {
-                var starBg = _this["starBg" + v];
-                var star = _this["starAni" + v];
-                starBg.source = isFree ? "blueStarBg_png" : "yellowStarBg_png";
-                star.sources = isFree ? "blueStar|1-13|_png" : "yellowStar|1-13|_png";
-                star.speed = 15;
-                star.play();
-            });
+            var starBg = isFree ? "blueStarBg_png" : "yellowStarBg_png";
+            var starSources = isFree ? "blueStar|1-13|_png" : "yellowStar|1-13|_png";
+            [0, 1, 2, 3, 4, 5].forEach(function (v) { return _this["starBg" + v].source = starBg; });
+            var starPlay = function (index) {
+                return new Promise(function (res, rej) {
+                    var star = _this["starAni" + index];
+                    star.sources = starSources;
+                    star.speed = 8;
+                    star.play();
+                    _this.starArr.push(star);
+                    star.addEventListener(game.AMovieClip.VERYLOOPCOMPLETE, function () { return res(); }, _this);
+                });
+            };
+            var num = 0;
+            var play = function () { starPlay(num).then(function () { if (num <= 5) {
+                num++;
+                play();
+            } }); };
+            play();
         };
         /**
          * 初始图标对象
@@ -931,7 +943,7 @@ var game;
             this.bgFree.visible = b;
             this.freeCountBg.visible = b;
             this.setFreeChooseCount();
-            this.initStar(true);
+            b && this.initStar(true);
             this.setState(game.GameState.BET);
             this.updateBgm();
             setTimeout(function () {
