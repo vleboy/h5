@@ -101,7 +101,7 @@ var game;
                 });
             };
             var num = 0;
-            var play = function () { starPlay(num).then(function () { if (num <= 5) {
+            var play = function () { starPlay(num).then(function () { if (num < 5) {
                 num++;
                 play();
             } }); };
@@ -704,7 +704,7 @@ var game;
             /**中奖的里面有没有wild*/
             grids.some(function (v) { return _this.spinResp.payload.viewGrid[v] == "1"; }) && this.isFree && this.freeMultiAni(this.featureMultiplier);
             return Promise.all(grids.map(function (v) {
-                return _this.symbols[v].showWinAni();
+                return _this.symbols[v].imgWinAni();
             }));
         };
         /**
@@ -714,7 +714,7 @@ var game;
             var _this = this;
             return Promise.all(this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map(function (value, column) {
                 var gridIndex = value + column * 3;
-                return _this.symbols[gridIndex].showWinAni(false);
+                return _this.symbols[gridIndex].imgWinAni(false);
             }) : []);
         };
         GameScene.prototype.stopScatterLine = function () {
@@ -767,77 +767,76 @@ var game;
                     else {
                         _this.lineWinTxt.visible = true;
                         _this.lineWinTxt.text = gold.toFixed(2);
-                        var gridIndex_1 = value + column * 3;
-                        var target_1 = _this["tile" + gridIndex_1];
+                        var gridIndex = value + column * 3;
+                        var target = _this["tile" + gridIndex];
                         _this.particleBg.visible = true;
-                        //红包动画
-                        var mc_1 = new game.AMovieClip();
-                        mc_1.sources = "T_hongbao_|1-16|_png";
-                        mc_1.x = target_1.x;
-                        mc_1.y = target_1.y;
-                        _this["winGridGroup"].addChild(mc_1);
-                        target_1.visible = false;
-                        mc_1.loop = 2;
-                        mc_1.play();
-                        /**喷金币 */
-                        var coins_1 = [];
-                        var flag_1 = 0;
-                        var createCoins_1 = function () {
-                            var coin = new game.AMovieClip();
-                            coin.sources = "SU_Coin_Gold_3x3_|1-9|_png";
-                            coin.x = target_1.x + target_1.width / 2;
-                            coin.y = target_1.y + 70;
-                            coin.width = coin.height = 30;
-                            coin.anchorOffsetX = coin.anchorOffsetY = 15;
-                            coin["speedx"] = Math.round((Math.random() * 10 - 5));
-                            coin["speedy"] = -Math.round((Math.random() * 7 + 7));
-                            coin["count"] = 0;
-                            _this["bonusEffectGroup"].addChild(coin);
-                            coins_1.push(coin);
-                            coin.play();
-                        };
-                        egret.Tween.get(_this["bonusEffectGroup"], { loop: true })
-                            .wait(30)
-                            .call(function () {
-                            if (++flag_1 % 3 == 0)
-                                createCoins_1();
-                            coins_1.forEach(function (v, i) {
-                                v.x += v["speedx"];
-                                v.y += v["speedy"];
-                                v["speedy"]++;
-                                if (++v.count > 24) {
-                                    v.stop();
-                                    v.parent.removeChild(v);
-                                    coins_1.splice(i, 1);
-                                }
-                            });
-                        });
-                        //粒子发散效果
-                        var texture = RES.getRes("star_png");
-                        var cfg = RES.getRes("bonusParticle_json");
-                        var p_1 = new particle.GravityParticleSystem(texture, cfg);
-                        p_1.blendMode = egret.BlendMode.ADD;
-                        p_1.emitterX = target_1.x + target_1.width / 2;
-                        p_1.emitterY = target_1.y + 70;
-                        _this["bonusEffectGroup"].addChild(p_1);
-                        p_1.start();
-                        mc_1.once(game.AMovieClip.COMPLETE, function () {
-                            mc_1.parent.removeChild(mc_1);
-                            _this["tile" + gridIndex_1].visible = true;
-                            _this.particleBg.visible = false;
-                            _this.lineWinTxt.visible = false;
-                            egret.Tween.removeTweens(_this["bonusEffectGroup"]);
-                            while (coins_1.length > 0) {
-                                coins_1.pop().stop();
-                            }
-                            _this["bonusEffectGroup"].removeChildren();
-                            if (p_1) {
-                                p_1.stop();
-                                if (p_1.parent)
-                                    p_1.parent.removeChild(p_1);
-                            }
-                            res();
-                        }, _this);
+                        // //红包动画
+                        // let mc: AMovieClip = new AMovieClip();
+                        // mc.sources = "T_hongbao_|1-16|_png";
+                        // mc.x = target.x;
+                        // mc.y = target.y;
+                        // this["winGridGroup"].addChild(mc);
+                        // target.visible = false;
+                        // mc.loop = 2;
+                        // mc.play();
+                        // /**喷金币 */
+                        // let coins = [];
+                        // let flag = 0;
+                        // let createCoins = () => {
+                        // 	let coin = new AMovieClip();
+                        // 	coin.sources = "SU_Coin_Gold_3x3_|1-9|_png";
+                        // 	coin.x = target.x + target.width / 2;
+                        // 	coin.y = target.y + 70;
+                        // 	coin.width = coin.height = 30;
+                        // 	coin.anchorOffsetX = coin.anchorOffsetY = 15;
+                        // 	coin["speedx"] = Math.round((Math.random() * 10 - 5));
+                        // 	coin["speedy"] = -Math.round((Math.random() * 7 + 7));
+                        // 	coin["count"] = 0;
+                        // 	this["bonusEffectGroup"].addChild(coin);
+                        // 	coins.push(coin);
+                        // 	coin.play();
+                        // }
+                        // egret.Tween.get(this["bonusEffectGroup"], { loop: true })
+                        // 	.wait(30)
+                        // 	.call(() => {
+                        // 		if (++flag % 3 == 0) createCoins();
+                        // 		coins.forEach((v, i) => {
+                        // 			v.x += v["speedx"];
+                        // 			v.y += v["speedy"];
+                        // 			v["speedy"]++;
+                        // 			if (++v.count > 24) {
+                        // 				v.stop();
+                        // 				v.parent.removeChild(v);
+                        // 				coins.splice(i, 1);
+                        // 			}
+                        // 		})
+                        // 	})
+                        // //粒子发散效果
+                        // let texture = RES.getRes("star_png");
+                        // let cfg = RES.getRes("bonusParticle_json");
+                        // let p = new particle.GravityParticleSystem(texture, cfg);
+                        // p.blendMode = egret.BlendMode.ADD;
+                        // p.emitterX = target.x + target.width / 2;
+                        // p.emitterY = target.y + 70;
+                        // this["bonusEffectGroup"].addChild(p);
+                        // p.start();
+                        // mc.once(AMovieClip.COMPLETE, () => {
+                        // 	mc.parent.removeChild(mc);
+                        // 	this["tile" + gridIndex].visible = true;
+                        // 	this.particleBg.visible = false;
+                        // 	this.lineWinTxt.visible = false;
+                        // 	egret.Tween.removeTweens(this["bonusEffectGroup"]);
+                        // 	while (coins.length > 0) {
+                        // 		coins.pop().stop();
+                        // 	}
+                        // 	this["bonusEffectGroup"].removeChildren();
+                        // 	if (p) {
+                        // 		p.stop();
+                        // 		if (p.parent) p.parent.removeChild(p);
+                        // 	}
+                        // 	res();
+                        // }, this);
+                        res();
                     }
                 });
             }) : []);
@@ -866,7 +865,7 @@ var game;
                                             this.lineWinTxt.visible = true;
                                             this.lineWinTxt.text = v.gold.toFixed(2);
                                             return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) {
-                                                    return _this.symbols[value + column * 3].showWinAni(false);
+                                                    return _this.symbols[value + column * 3].imgWinAni(false);
                                                 }))];
                                         case 1:
                                             _a.sent();
@@ -1070,6 +1069,35 @@ var game;
          * */
         Symbol.prototype.setTexture = function (v) {
             this.tile.source = v;
+        };
+        /**
+         * 图标中奖动画
+        */
+        Symbol.prototype.imgWinAni = function (isLong) {
+            var _this = this;
+            if (isLong === void 0) { isLong = true; }
+            console.warn("this.value", this.value, isLong);
+            return new Promise(function (res, rej) {
+                var theLoop = isLong ? 2 : 1;
+                _this.gameScene.winGridGroup.addChild(_this.tile);
+                _this.mc = new game.AMovieClip();
+                _this.mc.sources = _this.value + "_|1-15|_png";
+                _this.mc.speed = 5;
+                _this.mc.x = _this.tile.x;
+                _this.mc.y = _this.tile.y;
+                _this.mc.width = _this.tile.width;
+                _this.mc.height = _this.tile.height;
+                _this.gameScene["winGridGroup"].addChild(_this.mc);
+                _this.mc.play();
+                _this.mc.loop = isLong ? 2 : 1;
+                _this.tile.visible = false;
+                _this.mc.once(game.AMovieClip.COMPLETE, function () {
+                    _this.mc.visible = false;
+                    _this.tile.visible = true;
+                }, _this);
+                //单线展示的间隔时间
+                setTimeout(function () { return res(); }, 1400);
+            });
         };
         /**
          * 图标中奖动画 isLong：是否是长动画
