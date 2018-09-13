@@ -927,7 +927,8 @@ var game;
          * */
         GameScene.prototype.showFreeChoose = function (b) {
             this.freeTotalWin.visible = false;
-            this.freeChoose.visible = b;
+            // this.freeChoose.visible = b;
+            this.freeChoose.visible = false;
             if (b)
                 this.freeChoose.show();
             this.updateBgm();
@@ -1076,9 +1077,9 @@ var game;
         Symbol.prototype.imgWinAni = function (isLong) {
             var _this = this;
             if (isLong === void 0) { isLong = true; }
-            console.warn("this.value", this.value, isLong);
             return new Promise(function (res, rej) {
                 var theLoop = isLong ? 2 : 1;
+                var wait = isLong ? 2800 : 1400;
                 _this.gameScene.winGridGroup.addChild(_this.tile);
                 _this.mc = new game.AMovieClip();
                 _this.mc.sources = _this.value + "_|1-15|_png";
@@ -1094,9 +1095,10 @@ var game;
                 _this.mc.once(game.AMovieClip.COMPLETE, function () {
                     _this.mc.visible = false;
                     _this.tile.visible = true;
+                    !isLong && (_this.gameScene.lineWinTxt.visible = false);
                 }, _this);
                 //单线展示的间隔时间
-                setTimeout(function () { return res(); }, 1400);
+                setTimeout(function () { res(); _this.mc.parent.removeChild(_this.mc); }, wait);
             });
         };
         /**
