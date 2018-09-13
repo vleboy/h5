@@ -409,17 +409,18 @@ module game {
 			let is5Delay: boolean = is4Delay && arr.slice(9, 12).indexOf("0") > -1;
 
 			for (let i = 0; i < 5; i++) {
-				if (i < 2) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3));
-				else if (i == 2) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is3Delay);
-				else if (i == 3) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is4Delay);
-				else if (i == 4) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is5Delay);
+				if (i < 2) await this.stopColumn(i, arr);
+				else if (i == 2) await this.stopColumn(i, arr, is3Delay);
+				else if (i == 3) await this.stopColumn(i, arr, is4Delay);
+				else if (i == 4) await this.stopColumn(i, arr, is5Delay);
 			}
 			this.judgeResult();
 		}
 		/**
-		 * 单列停下来
+		 * 单列停下来 isFree 是否freespin缓停
 		 * */
 		private stopColumn(column, arr: any[], isFree: boolean = false) {
+			let columnArr = arr.slice(column * 3, column * 3 + 3);
 			return new Promise(async (resolve, reject) => {
 				if (isFree) await this.freeEffect(column);
 
@@ -429,16 +430,19 @@ module game {
 					this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
 				});
 
-				let haveScatterThisColumn = false;
+				let haveScatterThisColumn = true;
+				for(let c=0; c<=column; c++){
+					if(arr[c*3]!="0" && arr[c*3+1]!="0" && arr[c*3+2]!="0"){
+						haveScatterThisColumn = false;
+					}
+				}
 				[0, 1, 2].forEach(i => {
-					if (arr[i] == "0") haveScatterThisColumn = true;
-
 					//处理wild图标的多样性
 					let symbol: Symbol = this.symbols[(column * 3 + i)];
-					let str = arr[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : arr[i];
+					let str = columnArr[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : columnArr[i];
 					let defaultY = symbol.tile.y;
 					symbol.tile.visible = true;
-					symbol.value = arr[i];
+					symbol.value = columnArr[i];
 					symbol.setTexture("symbolName_" + str + "_png");
 
 					egret.Tween.get(symbol.tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch ? 150 : 250).wait(GlobalConfig.fastSwitch ? 50 : 200).call(() => {
@@ -579,22 +583,29 @@ module game {
 				}
 				else {
 					this.setState(GameState.BET);
-					this.spin();
+					setTimeout(()=> {
+						if(this.state == GameState.BET) this.spin();
+					}, 1000);
 				}
 			}
 			else {
-				if (this.autoMax) {
-					this.bottomBar.setAutoBetNum(-1);
-				}
-				else if (this.autoCount > 0) {
-					this.bottomBar.setAutoBetNum(--this.autoCount);
-				}
-
 				if (this.spinResp.payload.getFeatureChance) {
+					if (this.autoMax) {
+						this.bottomBar.setAutoBetNum(-1);
+					}
+					else if (this.autoCount > 0) {
+						this.bottomBar.setAutoBetNum(--this.autoCount);
+					}
 					this.showFreeChoose(true);
 				}
 				else {
 					await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+					if (this.autoMax) {
+						this.bottomBar.setAutoBetNum(-1);
+					}
+					else if (this.autoCount > 0) {
+						this.bottomBar.setAutoBetNum(--this.autoCount);
+					}
 					this.setState(GameState.BET);
 					if (this.autoMax || this.autoCount > 0) {
 						setTimeout(()=> {
@@ -823,7 +834,6 @@ module game {
 		 * 停止中奖展示
 		 * */
 		private cancelLinesWin() {
-			this.setState(GameState.BET);
             this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
@@ -846,6 +856,12 @@ module game {
 			}
 			else {
 				this.setState(GameState.BET);
+				if (this.autoMax) {
+					this.bottomBar.setAutoBetNum(-1);
+				}
+				else if (this.autoCount > 0) {
+					this.bottomBar.setAutoBetNum(--this.autoCount);
+				}
 				if (this.autoMax || this.autoCount > 0) {
 					setTimeout(()=> {
 						if(this.state == GameState.BET) this.spin();
