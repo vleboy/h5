@@ -55,6 +55,7 @@ var game;
                 }
                 else {
                     this.currentFrame = 0;
+                    this.dispatchEventWith(AMovieClip.VERYLOOPCOMPLETE);
                 }
             }
             this.source = this.imgs[this.currentFrame];
@@ -76,6 +77,8 @@ var game;
         });
         /**结束事件 */
         AMovieClip.COMPLETE = "loopComplete";
+        /**每一次循环完成*/
+        AMovieClip.VERYLOOPCOMPLETE = "veryLoopComplete";
         return AMovieClip;
     }(eui.Image));
     game.AMovieClip = AMovieClip;

@@ -56,12 +56,18 @@ module game {
 		private state: GameState;
 		/**是否在免费游戏中 通过主场景控制它的值*/
 		private isFree: boolean;
-
+		/**免费开始前是不是自动*/
+		private freeAuto: boolean;
+		/**自动的次数*/
+		private autoCount: number = 0;
+		/**赢得钱*/
 		private winNum: number = 0;
 
 		public setFree(b: boolean) {
 			this.isFree = b;
+			b && (this.freeAuto = this.isAuto);
 			this.isAuto = b;
+			!b && (this.isAuto = this.freeAuto);
 			this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
 			this.autoState();
 		}
@@ -79,6 +85,8 @@ module game {
 		private initData(): void {
 			this.isAuto = false;
 			this.isFree = false;
+			this.freeAuto = false;
+			this.autoCount = 0;
 		}
 		/**事件监听*/
 		private eventListen(): void {
@@ -305,13 +313,19 @@ module game {
 					break;
 			}
 		}
-		/**自动或免费下注次数*/
+		/**自动下注次数*/
 		public setAutoBetNum(num: number): void {
-			if (!this.isFree) this.showAutoBtn(num == 0);
-			if (this.isFree && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
-			if (!this.isFree && this.isAuto && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = true;
+			this.showAutoBtn(num == 0);
+			if (this.isAuto && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = true;
 			this.isAuto = num != 0;
+			this.autoCount = num;
 			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
+		}
+		/**免费下注次数*/
+		public setFreeBetNum(num: number): void {
+			if (this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
+			this.autoNum.text = num + "";
+			if (num == 0) { this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"; }
 		}
 		/**
          * 资源释放
