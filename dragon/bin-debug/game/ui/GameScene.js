@@ -581,6 +581,7 @@ var game;
          * */
         GameScene.prototype.judgeResult = function () {
             return __awaiter(this, void 0, void 0, function () {
+                var _this = this;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
@@ -611,8 +612,11 @@ var game;
                             }
                             else {
                                 this.setState(game.GameState.BET);
-                                this.spin();
                                 this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                                setTimeout(function () {
+                                    if (_this.state == game.GameState.BET)
+                                        _this.spin();
+                                }, 1000);
                             }
                             return [3 /*break*/, 10];
                         case 7:
@@ -629,8 +633,12 @@ var game;
                         case 9:
                             _a.sent();
                             this.setState(game.GameState.BET);
-                            if (this.autoMax || this.autoCount > 0)
-                                this.spin();
+                            if (this.autoMax || this.autoCount > 0) {
+                                setTimeout(function () {
+                                    if (_this.state == game.GameState.BET)
+                                        _this.spin();
+                                }, 1000);
+                            }
                             _a.label = 10;
                         case 10: return [2 /*return*/];
                     }
@@ -870,6 +878,7 @@ var game;
          * 停止中奖展示
          * */
         GameScene.prototype.cancelLinesWin = function () {
+            var _this = this;
             this.setState(game.GameState.BET);
             this.particleBg.visible = false;
             this.lineWinTxt.visible = false;
@@ -884,14 +893,21 @@ var game;
                 }
                 else {
                     this.setState(game.GameState.BET);
-                    this.spin();
                     this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    setTimeout(function () {
+                        if (_this.state == game.GameState.BET)
+                            _this.spin();
+                    }, 1000);
                 }
             }
             else {
                 this.setState(game.GameState.BET);
-                if (this.autoMax || this.autoCount > 0)
-                    this.spin();
+                if (this.autoMax || this.autoCount > 0) {
+                    setTimeout(function () {
+                        if (_this.state == game.GameState.BET)
+                            _this.spin();
+                    }, 1000);
+                }
             }
         };
         // -------------------- 免费游戏显示  ------------------------
