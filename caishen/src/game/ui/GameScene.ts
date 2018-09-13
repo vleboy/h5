@@ -838,13 +838,19 @@ module game {
 				}
 				else {
 					this.setState(GameState.BET);
-					this.spin();
 					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					setTimeout(()=> {
+						if(this.state == GameState.BET) this.spin();
+					}, 1000);
 				}
 			}
 			else {
 				this.setState(GameState.BET);
-				if (this.autoMax || this.autoCount > 0) this.spin();
+				if (this.autoMax || this.autoCount > 0) {
+					setTimeout(()=> {
+						if(this.state == GameState.BET) this.spin();
+					}, 1000);
+				}
 			}
 		}
 
