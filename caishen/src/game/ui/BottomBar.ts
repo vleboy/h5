@@ -68,6 +68,7 @@ module game {
 			b && (this.freeAuto = this.isAuto);
 			this.isAuto = b;
 			!b && (this.isAuto = this.freeAuto);
+			!b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"); 
 			this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
 			this.autoState();
 		}
@@ -272,6 +273,13 @@ module game {
 			this.winTxt.text = mon + "";
 			this.payout(mon);
 		}
+		/**转动按钮显示*/
+		private spinBtnShow(isShow: boolean = true, isEn: boolean = true): void {
+			this.spinBtn.visible = this.isAuto ? true : isShow;
+			this.spinBtn.enabled = isEn;
+			this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
+			this.spinArrow.visible = this.isAuto ? false : isShow;
+		}
 		/**控制游戏状态 */
 		public setState(n: GameState) {
 			this.state = n;
@@ -280,35 +288,28 @@ module game {
 				this.betBtn.enabled = isBetEn;
 				this.autoBtn.enabled = isAutoEn;
 			};
-			/**转动按钮显示*/
-			let spinBtnShow = (isShow: boolean = true, isEn: boolean = true) => {
-				this.spinBtn.visible = this.isAuto ? true : isShow;
-				this.spinBtn.enabled = isEn;
-				this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
-				this.spinArrow.visible = this.isAuto ? false : isShow;
-			}
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
 					this.isFree ? betAutoState(false, false) : betAutoState();
-					spinBtnShow();
+					this.spinBtnShow();
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0.00";
 					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
-					spinBtnShow(true, false);
+					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.SHOW_RESULT:
 					this.isFree ? betAutoState(false, false) : betAutoState(false);
-					spinBtnShow(true, false);
+					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
 					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
 					this.imgSpin(true);
-					spinBtnShow(false);
+					this.spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;
 					break;
 			}
@@ -320,12 +321,12 @@ module game {
 			this.isAuto = num != 0;
 			this.autoCount = num;
 			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
+			if(num == 0) this.spinBtnShow();
 		}
 		/**免费下注次数*/
 		public setFreeBetNum(num: number): void {
 			if (this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
 			this.autoNum.text = num + "";
-			if (num == 0) { this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"; }
 		}
 		/**
          * 资源释放
