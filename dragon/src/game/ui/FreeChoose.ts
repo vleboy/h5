@@ -22,13 +22,14 @@ module game {
 			["20","8","15","5","10"].forEach((v,i)=>{
 				let target = this["choose"+v];
 				let defaultY = target.y;
+				this["chooseMc"+v].visible = false;
 				egret.Tween.get(target)
-					.set({y:defaultY-1000})
-					.wait(i*100+500)
+					.set({y:defaultY-900})
+					.wait(i*150+500)
 					.call(()=>{
 						SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
 					})
-					.to({y:defaultY+50},200)
+					.to({y:defaultY},400, egret.Ease.backOut)
 					.to({y:defaultY},30)
 					.call(()=>{
 						this.registerEvent(target, egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
@@ -36,9 +37,9 @@ module game {
 			})
 
 			egret.Tween.get(this.tipTxt, {loop:true})
-				.wait(2000)
-				.to({alpha: 0.5}, 500)
-				.to({alpha: 1}, 500)
+				.wait(500)
+				.to({alpha: 0.5}, 1000)
+				.to({alpha: 1}, 1000)
 		}
 
 		private onTouch(e: egret.TouchEvent){
@@ -61,18 +62,13 @@ module game {
 					let respData;
 					Promise.all([
 						new Promise((resolve, reject)=>{
-							let mc = new AMovieClip();
-							mc.sources = "caishenAni|1-16|_png";
-							mc.x = 94;
-							mc.y = 67;
-							mc.width = 319;
-							mc.height = 321;
+							let mc = this["chooseMc"+v];
+							mc.visible = true;
 							mc.speed = 4;
 							mc.loop = 2;
-							target.addChildAt(mc, 2);
 							mc.play();
 							mc.once(AMovieClip.COMPLETE, ()=>{
-								mc.parent.removeChild(mc);
+								// mc.parent.removeChild(mc);
 								resolve();
 							}, this);
 						}),
@@ -98,23 +94,28 @@ module game {
 			let g = (this["yuanbaoGroup"] as eui.Group);
 			let arr = [];
 			g.visible = true;
-			for(let i=g.numChildren-1; i>=0; i--){
-				g.getChildAt(i).alpha = 0;
-				arr.push(g.getChildAt(i));
-			}
 
 			return Promise.all(
-				arr.map((v,i)=>{
+				[1,2,3,4,5,6].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let startx = v%2==0 ? 1920 : -1000;
+					let starty = v%2==0 ? 1080 : -500;
 					return new Promise((resolve, reject)=>{
-						setTimeout(()=> {
-							egret.Tween.get(v).to({alpha:1},200).wait(500).call(()=>{
-								egret.Tween.removeTweens(v);
+						egret.Tween.get(target)
+							.set({x:startx, y:starty})
+							.wait( Math.floor(i/2)*250)
+							.to({x:defaultx, y:defaulty}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.call(()=>{
+								egret.Tween.removeTweens(target);
 								resolve();
 							})
-						}, 200*i);
 					})
 				})
 			);
+			
 		}
 
 	}
