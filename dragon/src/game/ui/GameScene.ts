@@ -1051,18 +1051,21 @@ module game {
 				}
 				//wild图标
 				else if (this.value == "1") {
-					this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
-
 					this.mc = new AMovieClip();
-					this.mc.sources = "caishenAni|1-16|_png";
-					this.mc.x = this.tile.x + 10;
-					this.mc.y = this.tile.y;
-					this.mc.width = 173;
-					this.mc.height = 173;
-					this.mc.speed = 4;
-					this.mc.loop = isLong ? 2 : 1;
+					this.mc.sources = this.gameScene.buff=="-1" ? "wildAni_|1-16|_png" : ("wildAni_"+this.gameScene.buff+"_|1-16|_png");
+					this.mc.speed = 2;
+					this.mc.x = this.tile.x-21;
+					this.mc.y = this.tile.y-29;
+					this.mc.width = 242;
+					this.mc.height = 242;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
+					this.mc.loop = isLong ? 2 : 1;
+					this.tile.visible = false;
+					this.mc.once(AMovieClip.COMPLETE, () => {
+						this.mc.visible = false;
+						this.tile.visible = true;
+					}, this)
 
 					this.mc2 = new AMovieClip();
 					this.mc2.sources = "wildText|1-20|_png";
