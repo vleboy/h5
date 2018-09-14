@@ -135,13 +135,14 @@ var game;
                 this["vagueTile" + i].visible = false;
             }
         };
-        /**
-         * 初始事件监听
-         * */
         GameScene.prototype.initListener = function () {
             var _this = this;
-            this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, function () {
+            this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
+                // this.freeChoose.visible = true;
+                // this.freeChoose.show();
+                console.warn("do this");
+                _this.connectTip.show(true);
             }, this);
         };
         /**
@@ -524,39 +525,39 @@ var game;
                 _this["freeCoinsGroup"].addChild(c);
                 var arr = [];
                 var createCoins = function () {
-                    for (var i = 0; i < 4; i++) {
-                        var mc = new game.AMovieClip();
-                        mc.sources = "coin_pin_|1-9|_png";
-                        mc.width = mc.height = 20;
-                        mc.anchorOffsetX = 10;
-                        mc.anchorOffsetY = 10;
-                        mc.rotation = Math.random() * 360;
-                        mc.play();
-                        mc["speed"] = Math.round(Math.random() * 6 + 3);
-                        mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-                        mc.x = startX + (0.5 - Math.random()) * (_this["tile" + column * 3].width);
-                        c.addChild(mc);
-                        arr.push(mc);
-                    }
+                    // for (let i = 0; i < 4; i++) {
+                    // 	let mc = new AMovieClip();
+                    // 	mc.sources = "coin_pin_|1-9|_png";
+                    // 	mc.width = mc.height = 20;
+                    // 	mc.anchorOffsetX = 10;
+                    // 	mc.anchorOffsetY = 10;
+                    // 	mc.rotation = Math.random() * 360;
+                    // 	mc.play();
+                    // 	mc["speed"] = Math.round(Math.random() * 6 + 3);
+                    // 	mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
+                    // 	mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
+                    // 	c.addChild(mc);
+                    // 	arr.push(mc);
+                    // }
                 };
-                var index = 0;
-                egret.Tween.get(_this["freeCoinsGroup"], { loop: true })
-                    .wait(20)
-                    .call(function () {
-                    if (index++ % 10 == 0) {
-                        createCoins();
-                    }
-                    for (var j = arr.length - 1; j >= 0; j--) {
-                        var img = arr[j];
-                        img.rotation += 5;
-                        img.y += img["speed"];
-                        img.alpha -= img["alphaSpeed"];
-                        if (img.y >= 269 + 658) {
-                            img.parent.removeChild(img);
-                            arr.splice(j, 1);
-                        }
-                    }
-                });
+                // let index = 0;
+                // egret.Tween.get(this["freeCoinsGroup"], { loop: true })
+                // 	.wait(20)
+                // 	.call(() => {
+                // 		if (index++ % 10 == 0) {
+                // 			createCoins();
+                // 		}
+                // 		for (let j = arr.length - 1; j >= 0; j--) {
+                // 			let img = arr[j];
+                // 			img.rotation += 5;
+                // 			img.y += img["speed"];
+                // 			img.alpha -= img["alphaSpeed"];
+                // 			if (img.y >= 269 + 658) {
+                // 				img.parent.removeChild(img);
+                // 				arr.splice(j, 1);
+                // 			}
+                // 		}
+                // 	})
                 if (_this.freeColumnTimeout)
                     clearTimeout(_this.freeColumnTimeout);
                 _this.freeColumnTimeout = setTimeout(function () {
