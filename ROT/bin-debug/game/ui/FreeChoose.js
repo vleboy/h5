@@ -52,37 +52,198 @@ var game;
             _this.skinName = game.GlobalConfig.skinPath + "freeChooseSkin.exml";
             return _this;
         }
+        /**初始化*/
         FreeChoose.prototype.init = function () {
             var _this = this;
-            ["20", "15", "10", "8", "5"].forEach(function (v, i) {
-                _this.registerEvent(_this["choose" + v], egret.TouchEvent.TOUCH_TAP, _this.onTouch, _this);
-            });
+            this.countArr = ["20", "15", "10", "8", "5"];
+            this.parArr = [];
+            this.countArr.forEach(function (v) { return _this.registerEvent(_this["choose" + v], egret.TouchEvent.TOUCH_TAP, _this.onClick, _this); });
+            this.registerEvent(this["closeBtn"], egret.TouchEvent.TOUCH_TAP, function () {
+                _this.close();
+            }, this);
         };
+        /**显示*/
         FreeChoose.prototype.show = function () {
             var _this = this;
-            this["chooseGroup"].setChildIndex(this["rect"], 0);
-            ["10", "5", "15", "8", "20"].forEach(function (v, i) {
-                _this["chooseGroup"].setChildIndex(_this["choose" + v], 1);
+            //默认显示
+            var defShow = function () {
+                _this.chooseGroup.setChildIndex(_this.rect, 0);
+                _this.chooseGroup.setChildIndex(_this.freeTxtAni, 1);
+                _this.chooseGroup.setChildIndex(_this.cardBgLight, 2);
+                //选项卡默认位置,隐藏黄光
+                _this.countArr.forEach(function (v, i) {
+                    var tar = _this["choose" + v];
+                    tar.left = -310;
+                    _this.chooseGroup.setChildIndex(tar, i + 3);
+                    _this["cardBg" + v].alpha = 0;
+                    _this["minArr_" + v].alpha = 0;
+                    _this.bgLight.alpha = 0;
+                    _this.maxArr.alpha = 0;
+                });
+                //初始化粒子
+                _this.parArr.forEach(function (v) {
+                    v.visible = false;
+                    v.stop();
+                    v.parent && v.parent.removeChild(v);
+                });
+                _this.parArr = [];
+            };
+            defShow();
+            //免费游戏文字帧动画，选项卡动画
+            this.freeTxtIn().then(function () { return _this.cardIn(); });
+            //下方选择免费提示文字图片动画
+            egret.Tween.get(this.tipTxt, { loop: true }).wait(2000).to({ alpha: 0.5 }, 500).to({ alpha: 1 }, 500);
+        };
+        /**
+         * 免费游戏文字帧动画
+        */
+        FreeChoose.prototype.freeTxtIn = function () {
+            var _this = this;
+            return new Promise(function (res, rej) {
+                _this.freeTxtAni.play();
+                _this.freeTxtAni.loop = 1;
+                _this.freeTxtAni.once(game.AMovieClip.COMPLETE, function () { return res(); }, _this);
             });
-            ["20", "8", "15", "5", "10"].forEach(function (v, i) {
-                var target = _this["choose" + v];
-                var defaultY = target.y;
-                egret.Tween.get(target)
-                    .set({ y: defaultY - 1000 })
-                    .wait(i * 100 + 500)
+        };
+        /**
+         * 选项卡进入动画(免费类型进入动画)
+        */
+        FreeChoose.prototype.cardIn = function () {
+            var _this = this;
+            return new Promise(function (res, rej) {
+                var moveAni = function (tar, leftNum, moveTime, wait) {
+                    return new Promise(function (res2, rej2) {
+                        egret.Tween.get(tar).wait(wait).to({ left: leftNum }, moveTime).call(function () { egret.Tween.removeTweens(tar); res2(); });
+                    });
+                };
+                var moveTimeArr = [600, 450, 300, 150, 80];
+                var waitTaimArr = [0, 200, 400, 600, 800];
+                var cardArr = [1550, 1178, 806, 434, 62];
+                var proArr = [];
+                ["5", "8", "10", "15", "20"].forEach(function (v, i) { proArr.push(moveAni(_this["choose" + v], cardArr[i], moveTimeArr[i], waitTaimArr[i])); });
+                Promise.all(proArr).then(function () { return res(); });
+            });
+        };
+        /**点击某选项卡其他选项卡退出动画*/
+        FreeChoose.prototype.cardOut = function (tar) {
+            var _this = this;
+            return new Promise(function (res, rej) {
+                var freeType = tar.name.split("_")[1];
+                var moveAni = function (gro, leftNum, moveTime, wait) {
+                    return new Promise(function (res2, rej2) {
+                        egret.Tween.get(gro).wait(wait).to({ left: leftNum }, moveTime).call(function () { egret.Tween.removeTweens(gro); res2(); });
+                    });
+                };
+                var moveCenterTime = [400, 200, 0, 200, 400];
+                var moveOutTime = [80, 150, 300, 450, 600];
+                var index = _this.countArr.indexOf(freeType);
+                //闪黄光
+                egret.Tween.get(_this["cardBg" + freeType])
+                    .to({ alpha: 1 }, 200)
+                    .to({ alpha: 0 }, 200)
                     .call(function () {
-                    game.SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
-                })
-                    .to({ y: defaultY + 50 }, 200)
-                    .to({ y: defaultY }, 30)
-                    .call(function () {
-                    _this.registerEvent(target, egret.TouchEvent.TOUCH_TAP, _this.onTouch, _this);
+                    egret.Tween.removeTweens(_this["cardBg" + freeType]);
+                    //移动动画
+                    var outArr = ["20", "15", "10", "8", "5"];
+                    outArr.splice(index, 1);
+                    var proArr = [];
+                    //先设其他卡片的层次
+                    outArr.forEach(function (v) { return _this.chooseGroup.setChildIndex(_this["choose" + v], 0); });
+                    //其他卡片飞出
+                    outArr.forEach(function (v) { return proArr.push(moveAni(_this["choose" + v], -310, moveOutTime[index], 0)); });
+                    //设卡片的层次
+                    _this.chooseGroup.setChildIndex(tar, _this.chooseGroup.numChildren);
+                    //选中卡片飞到中间
+                    proArr.push(moveAni(tar, 806, moveCenterTime[index], 100));
+                    Promise.all(proArr).then(function () { return res(); });
                 });
             });
-            egret.Tween.get(this.tipTxt, { loop: true })
-                .wait(2000)
-                .to({ alpha: 0.5 }, 500)
-                .to({ alpha: 1 }, 500);
+        };
+        /**选项卡背景光动画*/
+        FreeChoose.prototype.cardBgAni = function (cardType) {
+            var _this = this;
+            return new Promise(function (res, rej) {
+                //显示背景
+                var bgShow = function (tar, timer) {
+                    return new Promise(function (res2, rej2) {
+                        tar.scaleX = .8;
+                        tar.scaleY = .8;
+                        tar.alpha = 0;
+                        egret.Tween.get(tar).wait(100).to({ scaleX: 1, scaleY: 1, alpha: 1 }, timer).call(function () { egret.Tween.removeTweens(tar); res2(); });
+                    });
+                };
+                //粒子效果
+                var particleEffect = function () {
+                    var texture = RES.getRes("particle_" + cardType + "_png");
+                    var cfg1 = RES.getRes("freeParticle1_json");
+                    var cfg2 = RES.getRes("freeParticle2_json");
+                    var p1 = new particle.GravityParticleSystem(texture, cfg1);
+                    var p2 = new particle.GravityParticleSystem(texture, cfg2);
+                    var playP = function (p, index) {
+                        _this.cardBgLight.addChildAt(p, index);
+                        p.start();
+                        p.emitterX = 155;
+                        p.emitterY = 300;
+                        p.visible = true;
+                        _this.parArr.push(p);
+                    };
+                    playP(p1, 0);
+                    setTimeout(function () { return playP(p2, 1); }, 1000);
+                };
+                //显示小发阵
+                egret.Tween.get(_this["minArr_" + cardType])
+                    .wait(200)
+                    .to({ alpha: 1 }, 400)
+                    .call(function () {
+                    egret.Tween.removeTweens(_this["minArr_" + cardType]);
+                    _this.bgLight.source = "light_" + cardType + "_png";
+                    _this.maxArr.source = "maxArr_" + cardType + "_png";
+                    //背景光
+                    bgShow(_this.bgLight, 400).then(function () {
+                        //大法阵
+                        bgShow(_this.maxArr, 200);
+                        //粒子效果
+                        particleEffect();
+                    });
+                });
+            });
+        };
+        /**关闭当前页面*/
+        FreeChoose.prototype.close = function () {
+            var _this = this;
+            return new Promise(function (res, rej) {
+                _this.closeRect.alpha = 0;
+                _this.closeRect.visible = true;
+                egret.Tween.get(_this.closeRect).to({ alpha: 1 }, 1500).call(function () {
+                    egret.Tween.removeTweens(_this.closeRect);
+                    _this.closeRect.visible = false;
+                    _this.visible = false;
+                    res();
+                });
+                egret.Tween.get(_this.maxArr).to({ alpha: 0.4 }, 500).call(function () { return egret.Tween.removeTweens(_this.maxArr); });
+            });
+        };
+        /**点击某选项卡*/
+        FreeChoose.prototype.onClick = function (e) {
+            var _this = this;
+            //发送免费请求
+            var respData;
+            var cardType = e.target.name.split("_")[1];
+            var sendFree = function () {
+                return new Promise(function (res, rej) {
+                    //发送的免费类型，代表5:20, 4:15, 3:10, 2:8, 1:5
+                    var freeAype = [5, 4, 3, 2, 1];
+                    var index = _this.countArr.indexOf(cardType);
+                    if (cardType) {
+                        game.GameService.getInstance().sendFreeChoose(freeAype[index]).then(function (resp) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
+                            respData = resp;
+                            res();
+                            return [2 /*return*/];
+                        }); }); });
+                    }
+                });
+            };
+            this.cardOut(e.target).then(function () { return _this.cardBgAni(cardType); });
         };
         FreeChoose.prototype.onTouch = function (e) {
             var _this = this;
@@ -131,27 +292,6 @@ var game;
                     }); });
                 }
             });
-        };
-        FreeChoose.prototype.yuanbaoAni = function () {
-            game.SoundPlayer.playEffect("CaiShen_243_CardEffect_mp3");
-            egret.Tween.removeTweens(this.tipTxt);
-            var g = this["yuanbaoGroup"];
-            var arr = [];
-            g.visible = true;
-            for (var i = g.numChildren - 1; i >= 0; i--) {
-                g.getChildAt(i).alpha = 0;
-                arr.push(g.getChildAt(i));
-            }
-            return Promise.all(arr.map(function (v, i) {
-                return new Promise(function (resolve, reject) {
-                    setTimeout(function () {
-                        egret.Tween.get(v).to({ alpha: 1 }, 200).wait(500).call(function () {
-                            egret.Tween.removeTweens(v);
-                            resolve();
-                        });
-                    }, 200 * i);
-                });
-            }));
         };
         return FreeChoose;
     }(game.BaseUI));
