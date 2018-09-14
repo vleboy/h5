@@ -38,18 +38,18 @@ module game {
             }
             this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
             return new Promise((res, rej) => {
-                    this.boomAni().then(()=>{
-                        Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(() => {
-                            if (this.winChannel) this.winChannel.stop();
-                            res();
-                        });
-                    })
-                });;
+                this.boomAni().then(() => {
+                    Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(() => {
+                        if (this.winChannel) this.winChannel.stop();
+                        res();
+                    });
+                })
+            });;
         }
         /**boom动画*/
         private boomAni(): Promise<{}> {
             return new Promise((res, rej) => {
-                    //boom显示
+                //boom显示
                 let booShow = (isBo: boolean = true) => {
                     this.payoutGroup.visible = !isBo;
                     this.boomLight.visible = isBo;
@@ -63,7 +63,7 @@ module game {
                     res();
                 }, this);
             });
-            
+
         }
         /**winTxtAni*/
         private winTxtAni(type: string) {
@@ -75,20 +75,37 @@ module game {
                         .to({ scaleX: 1, scaleY: 1 }, 200)
                         .call(() => egret.Tween.removeTweens(this.winImg));
                 }
-                txtAni("bigWin_png");
-                // switch (type) {
-                //     case "big":
-                //         txtAni("BigWin_png").then(() => res());
-                //         break;
-                //     case "mega":
-                //         txtAni("megaWin_png").then(() => {
+                let waitTimer;
+                let wait = (timer: number) => {
+                    return new Promise((res2, rej2) => {
+                        waitTimer && clearTimeout(waitTimer);
+                        waitTimer = setTimeout(() => { res2(); clearTimeout(waitTimer); }, timer);
+                    });
 
-                //         });
-                //         break;
-                //     case "superWin_png":
-                //         txtAni("BigWin_png").then(() => res());
-                //         break;
-                // }
+                }
+                txtAni("bigWin_png");
+                let megaTime: number = this.showTime[1] - this.showTime[0];
+                let superTime: number = this.showTime[2] - this.showTime[1];
+                switch (type) {
+                    case "big":
+                        wait(this.showTime[0]).then(() => { this.visible = false; res(); });
+                        break;
+                    case "mega":
+                        wait(this.showTime[0]).then(() => {
+                            txtAni("megaWin_png");
+                            wait(megaTime).then(() => { this.visible = false; res(); });
+                        });
+                        break;
+                    case "super":
+                        wait(this.showTime[0]).then(() => {
+                            txtAni("megaWin_png");
+                            wait(megaTime).then(() => { 
+                                txtAni("superWin_png");
+                                wait(superTime).then(() => { this.visible = false; res(); });
+                            });
+                        });
+                        break;
+                }
             });
         }
         /**派彩*/
@@ -98,6 +115,7 @@ module game {
                 egret.Tween.get(this, { onChange: () => { this.payout.text = this.winNum.toFixed(2) }, onChangeObj: this })
                     .to({ winNum: mon }, timer - 2000).call(() => {
                         egret.Tween.removeTweens(this);
+                        if (GlobalConfig.effectSwitch) { SoundPlayer.closeEffect(); SoundPlayer.closeEffect(false); }
                         SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
                         egret.Tween.get(this.payout)
                             .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
