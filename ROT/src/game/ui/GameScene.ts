@@ -152,10 +152,8 @@ module game {
 		private initListener() {
 			this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
-				// this.freeChoose.visible = true;
-				// this.freeChoose.show();
-				console.warn("do this")
-				this.connectTip.show(true);
+				this.freeChoose.visible = true;
+				this.freeChoose.show();
 			}, this);
 		}
         /**

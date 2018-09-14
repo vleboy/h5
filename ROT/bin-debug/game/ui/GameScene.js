@@ -139,10 +139,8 @@ var game;
             var _this = this;
             this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                // this.freeChoose.visible = true;
-                // this.freeChoose.show();
-                console.warn("do this");
-                _this.connectTip.show(true);
+                _this.freeChoose.visible = true;
+                _this.freeChoose.show();
             }, this);
         };
         /**

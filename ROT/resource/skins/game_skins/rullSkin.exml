@@ -89,7 +89,7 @@
 
 			</e:Group>
 			<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
-				<e:Image width="1423" height="445" top="100" left="40" source="yellowLight_png"/>
+				<e:Image width="1423" height="445" top="100" left="40" source="touchLight_png"/>
 			</e:Group>
 			<e:Group id="groupRull5" width="1726" height="672" verticalCenter="0" left="8630">
 				<e:Image verticalCenter="0" horizontalCenter="0" width="1380" height="650" source="totalWinBg_png"/>
