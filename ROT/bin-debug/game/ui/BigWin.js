@@ -20,53 +20,54 @@ var game;
         }
         BigWin.prototype.init = function () {
             this.visible = false;
-            this.yuanbaoTime = [10000, 20000, 30000];
-            this.yuanbaoNum = [30, 60, 90];
+            this.showTime = [10000, 20000, 30000];
         };
         BigWin.prototype.bigWinStart = function (type, money) {
             var _this = this;
             this.visible = true;
             //喷元宝的时间
-            var timer = this.yuanbaoTime[0];
+            var timer = this.showTime[0];
             switch (type) {
                 case "big":
-                    timer = this.yuanbaoTime[0];
+                    timer = this.showTime[0];
                     break;
                 case "mega":
-                    timer = this.yuanbaoTime[1];
+                    timer = this.showTime[1];
                     break;
                 case "super":
-                    timer = this.yuanbaoTime[2];
+                    timer = this.showTime[2];
                     break;
             }
             this.winChannel = game.SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
-            this.bigWinLight();
-            return Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(function () {
-                if (_this.winChannel)
-                    _this.winChannel.stop();
+            return new Promise(function (res, rej) {
+                _this.boomAni().then(function () {
+                    Promise.all([_this.payOut(money, timer), _this.winTxtAni(type)]).then(function () {
+                        if (_this.winChannel)
+                            _this.winChannel.stop();
+                        res();
+                    });
+                });
             });
+            ;
         };
-        /**喷元宝
-         * @param timer 喷元宝时间
-         * @param num 喷元宝数量
-        */
-        BigWin.prototype.yuanbao = function (timer, num) {
+        /**boom动画*/
+        BigWin.prototype.boomAni = function () {
             var _this = this;
             return new Promise(function (res, rej) {
-                var texture = RES.getRes("yigeyuanb_png");
-                var cfg = RES.getRes("particle_yuanbao_json");
-                cfg.maxParticles = num;
-                _this.theParticle = new particle.GravityParticleSystem(texture, cfg);
-                _this.yuanbaoGroup.addChild(_this.theParticle);
-                _this.theParticle.start();
-                var timeOut;
-                timeOut && clearTimeout(timeOut);
-                timeOut = setTimeout(function () {
-                    _this.theParticle && _this.theParticle.stop();
-                    _this.theParticle.parent.removeChild(_this.theParticle);
-                    _this.theParticle = null;
+                //boom显示
+                var booShow = function (isBo) {
+                    if (isBo === void 0) { isBo = true; }
+                    _this.payoutGroup.visible = !isBo;
+                    _this.boomLight.visible = isBo;
+                    _this.winLight.visible = !isBo;
+                };
+                booShow();
+                _this.boomLight.play();
+                _this.boomLight.once(game.AMovieClip.COMPLETE, function () {
+                    booShow(false);
+                    _this.winLight.play();
                     res();
-                }, timer);
+                }, _this);
             });
         };
         /**winTxtAni*/
@@ -78,33 +79,21 @@ var game;
                     egret.Tween.get(_this.winImg)
                         .to({ scaleX: 5, scaleY: 5 }, 200)
                         .to({ scaleX: 1, scaleY: 1 }, 200)
-                        .call(function () {
-                        egret.Tween.removeTweens(_this.winImg);
-                    });
+                        .call(function () { return egret.Tween.removeTweens(_this.winImg); });
                 };
-                txtAni("BigWin_png");
-                var megaTime = _this.yuanbaoTime[1] - _this.yuanbaoTime[0];
-                var superTime = _this.yuanbaoTime[2] - _this.yuanbaoTime[1];
-                switch (type) {
-                    case "big":
-                        _this.yuanbao(_this.yuanbaoTime[0], _this.yuanbaoNum[0]).then(function () { _this.visible = false; res(); });
-                        break;
-                    case "mega":
-                        _this.yuanbao(_this.yuanbaoTime[0], _this.yuanbaoNum[0]).then(function () {
-                            txtAni("MegaWin_png");
-                            _this.yuanbao(megaTime, _this.yuanbaoNum[1]).then(function () { _this.visible = false; res(); });
-                        });
-                        break;
-                    case "super":
-                        _this.yuanbao(_this.yuanbaoTime[0], _this.yuanbaoNum[0]).then(function () {
-                            txtAni("MegaWin_png");
-                            _this.yuanbao(megaTime, _this.yuanbaoNum[1]).then(function () {
-                                txtAni("SuperWin_png");
-                                _this.yuanbao(superTime, _this.yuanbaoNum[2]).then(function () { _this.visible = false; res(); });
-                            });
-                        });
-                        break;
-                }
+                txtAni("bigWin_png");
+                // switch (type) {
+                //     case "big":
+                //         txtAni("BigWin_png").then(() => res());
+                //         break;
+                //     case "mega":
+                //         txtAni("megaWin_png").then(() => {
+                //         });
+                //         break;
+                //     case "superWin_png":
+                //         txtAni("BigWin_png").then(() => res());
+                //         break;
+                // }
             });
         };
         /**派彩*/
@@ -121,16 +110,11 @@ var game;
                         .to({ scaleX: 1, scaleY: 1 }, 300)
                         .call(function () {
                         egret.Tween.removeTweens(_this.payout);
-                        _this.fireworks();
+                        // this.fireworks();
                         res();
                     });
                 });
             });
-        };
-        /**light*/
-        BigWin.prototype.bigWinLight = function () {
-            // this.light.sources = "bigwinLight|1-30|_png";
-            this.light.play();
         };
         /**喷烟花*/
         BigWin.prototype.fireworks = function () {
