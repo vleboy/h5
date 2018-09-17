@@ -40,7 +40,7 @@ module game {
                     timer = this.yuanbaoTime[2];
                     break;
             }
-            this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
+            this.winChannel = SoundPlayer.playEffect("BigWin_mp3");
             this.bigWinLight();
             return Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(() => {
                 if (this.winChannel) this.winChannel.stop();
@@ -113,7 +113,7 @@ module game {
                 egret.Tween.get(this, { onChange: () => { this.payout.text = this.winNum.toFixed(2) }, onChangeObj: this })
                     .to({ winNum: mon }, timer - 2000).call(() => {
                         egret.Tween.removeTweens(this);
-                        SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
+                        SoundPlayer.playEffect("BigWinOver_mp3");
                         egret.Tween.get(this.payout)
                             .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
                             .to({ scaleX: 1, scaleY: 1 }, 300)

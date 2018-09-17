@@ -27,7 +27,7 @@ module game {
 					.set({y:defaultY-900})
 					.wait(i*150+500)
 					.call(()=>{
-						SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
+						SoundPlayer.playEffect("CardAppear_mp3");
 					})
 					.to({y:defaultY},400, egret.Ease.backOut)
 					.to({y:defaultY},30)
@@ -43,7 +43,7 @@ module game {
 		}
 
 		private onTouch(e: egret.TouchEvent){
-			SoundPlayer.playEffect("CaiShen_243_ChoseCard_mp3");
+			SoundPlayer.playEffect("ChoseCard_mp3");
 			let n = 0;
 			switch(e.target){
 				case this["choose20"]: n=5;break;
@@ -89,7 +89,7 @@ module game {
 		}
 
 		private yuanbaoAni(){
-			SoundPlayer.playEffect("CaiShen_243_CardEffect_mp3");
+			SoundPlayer.playEffect("CardEffect_mp3");
 			egret.Tween.removeTweens(this.tipTxt);
 			let g = (this["yuanbaoGroup"] as eui.Group);
 			let arr = [];
