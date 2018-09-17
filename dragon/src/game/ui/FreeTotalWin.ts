@@ -14,7 +14,7 @@ module game {
 		}
 
 		public showTotalWin(n:string){
-			SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
+			SoundPlayer.playEffect("FreeOver_mp3");
 			this.visible = true;
 			this.win = +n;
 			this.num = 0;
