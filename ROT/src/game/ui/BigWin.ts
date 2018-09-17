@@ -11,9 +11,7 @@ module game {
         private winImg: eui.Image;
         private payoutGroup: eui.Group;
 
-        private theParticle: particle.GravityParticleSystem;
         private winNum: number = 0;
-
         private winChannel: egret.SoundChannel;
         /**展示的时间数组*/
         private showTime: number[];
@@ -23,7 +21,7 @@ module game {
         }
         public bigWinStart(type: string, money: number) {
             this.visible = true;
-            //喷元宝的时间
+            //持续时间
             let timer: number = this.showTime[0];
             switch (type) {
                 case "big":
@@ -36,7 +34,7 @@ module game {
                     timer = this.showTime[2];
                     break;
             }
-            this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
+            this.winChannel = SoundPlayer.playEffect("ROT_243_BigWin_mp3");
             return new Promise((res, rej) => {
                 this.boomAni().then(() => {
                     Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(() => {
@@ -57,6 +55,7 @@ module game {
                 };
                 booShow();
                 this.boomLight.play();
+                this.boomLight.loop = 1;
                 this.boomLight.once(AMovieClip.COMPLETE, () => {
                     booShow(false);
                     this.winLight.play();
@@ -99,7 +98,7 @@ module game {
                     case "super":
                         wait(this.showTime[0]).then(() => {
                             txtAni("megaWin_png");
-                            wait(megaTime).then(() => { 
+                            wait(megaTime).then(() => {
                                 txtAni("superWin_png");
                                 wait(superTime).then(() => { this.visible = false; res(); });
                             });
@@ -116,14 +115,15 @@ module game {
                     .to({ winNum: mon }, timer - 2000).call(() => {
                         egret.Tween.removeTweens(this);
                         if (GlobalConfig.effectSwitch) { SoundPlayer.closeEffect(); SoundPlayer.closeEffect(false); }
-                        SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
-                        egret.Tween.get(this.payout)
-                            .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
-                            .to({ scaleX: 1, scaleY: 1 }, 300)
-                            .call(() => {
-                                egret.Tween.removeTweens(this.payout);
-                                res();
-                            });
+                        SoundPlayer.playEffect("ROT_243_BigWinOver_mp3");
+                    });
+                egret.Tween.get(this.payout)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, timer - 2000)
+                    .to({ scaleX: 1.8, scaleY: 1.8 }, 300)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, 300)
+                    .call(() => {
+                        egret.Tween.removeTweens(this.payout);
+                        res();
                     });
             });
 

@@ -2,7 +2,7 @@
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Group id="chooseGroup" width="1920" height="1080" x="0" y="0">
 		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
-		<game:AMovieClip id="freeTxtAni" source="freeTxt1_png" verticalCenter="0.5" horizontalCenter="-11" width="1920" height="407" sources="freeTxt|1-33|_png" speed="5" loop="1"/>
+
 		<e:Group id="cardBgLight" width="310" height="600" left="806" verticalCenter="0">
 			<e:Image id="bgLight" width="1000" height="1000" verticalCenter="0" horizontalCenter="0" source="light_10_png" alpha="0"/>
 			<e:Image id="maxArr" verticalCenter="0" horizontalCenter="0" width="1200" height="1200" source="maxArr_10_png" alpha="0"/>
@@ -32,7 +32,7 @@
 			<e:Image verticalCenter="0" horizontalCenter="0" source="yellow_png" width="310" height="600"/>
 			<e:Image id="minArr_5" horizontalCenter="-1" verticalCenter="14" width="360" height="360" source="minArr_5_png"/>
 		</e:Group>
-		<e:Button id="closeBtn" label="close" x="500" y="96"/>
+
 	</e:Group>
 	<e:Image id="tipTxt" y="1010" horizontalCenter="0" source="tese_png"/>
 	<e:Rect id="closeRect" left="0" right="0" top="0" bottom="0" fillColor="0xffffff" visible="false"/>

@@ -25,7 +25,7 @@ var game;
         BigWin.prototype.bigWinStart = function (type, money) {
             var _this = this;
             this.visible = true;
-            //喷元宝的时间
+            //持续时间
             var timer = this.showTime[0];
             switch (type) {
                 case "big":
@@ -38,7 +38,7 @@ var game;
                     timer = this.showTime[2];
                     break;
             }
-            this.winChannel = game.SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
+            this.winChannel = game.SoundPlayer.playEffect("ROT_243_BigWin_mp3");
             return new Promise(function (res, rej) {
                 _this.boomAni().then(function () {
                     Promise.all([_this.payOut(money, timer), _this.winTxtAni(type)]).then(function () {
@@ -63,6 +63,7 @@ var game;
                 };
                 booShow();
                 _this.boomLight.play();
+                _this.boomLight.loop = 1;
                 _this.boomLight.once(game.AMovieClip.COMPLETE, function () {
                     booShow(false);
                     _this.winLight.play();
@@ -125,14 +126,15 @@ var game;
                         game.SoundPlayer.closeEffect();
                         game.SoundPlayer.closeEffect(false);
                     }
-                    game.SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
-                    egret.Tween.get(_this.payout)
-                        .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
-                        .to({ scaleX: 1, scaleY: 1 }, 300)
-                        .call(function () {
-                        egret.Tween.removeTweens(_this.payout);
-                        res();
-                    });
+                    game.SoundPlayer.playEffect("ROT_243_BigWinOver_mp3");
+                });
+                egret.Tween.get(_this.payout)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, timer - 2000)
+                    .to({ scaleX: 1.8, scaleY: 1.8 }, 300)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, 300)
+                    .call(function () {
+                    egret.Tween.removeTweens(_this.payout);
+                    res();
                 });
             });
         };
