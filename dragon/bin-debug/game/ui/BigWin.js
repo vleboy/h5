@@ -39,7 +39,7 @@ var game;
                     timer = this.yuanbaoTime[2];
                     break;
             }
-            this.winChannel = game.SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
+            this.winChannel = game.SoundPlayer.playEffect("BigWin_mp3");
             this.bigWinLight();
             return Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(function () {
                 if (_this.winChannel)
@@ -115,7 +115,7 @@ var game;
                 egret.Tween.get(_this, { onChange: function () { _this.payout.text = _this.winNum.toFixed(2); }, onChangeObj: _this })
                     .to({ winNum: mon }, timer - 2000).call(function () {
                     egret.Tween.removeTweens(_this);
-                    game.SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
+                    game.SoundPlayer.playEffect("BigWinOver_mp3");
                     egret.Tween.get(_this.payout)
                         .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
                         .to({ scaleX: 1, scaleY: 1 }, 300)

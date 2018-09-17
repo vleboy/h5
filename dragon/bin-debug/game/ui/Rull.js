@@ -30,7 +30,7 @@ var game;
             if (isShow) {
                 this.btnState(0, false);
                 this.setOdds(theBet);
-                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+                game.SoundPlayer.playEffect("Generic1_mp3");
             }
         };
         /**默认数据*/
@@ -80,7 +80,7 @@ var game;
             this.registerEvent(this.groupMove, egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onMove, this);
             this.registerEvent(this.btnClose, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.rullShow(0.01);
-                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+                game.SoundPlayer.playEffect("Generic2_mp3");
             }, this);
         };
         /**点击按钮到当前页*/

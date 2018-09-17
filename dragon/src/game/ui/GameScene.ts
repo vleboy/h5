@@ -134,14 +134,14 @@ module game {
          * */
 		private updateBgm() {
 			if (this.isFree) {
-				SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+				SoundPlayer.playMusic("freeGame_mp3");
 			}
 			else {
 				if (this.freeChoose.visible) {
-					SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+					SoundPlayer.playMusic("featureChoose_mp3");
 				}
 				else {
-					SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+					SoundPlayer.playMusic("normalGame_mp3");
 				}
 			}
 		}
@@ -373,7 +373,7 @@ module game {
 		 * 开始滚动
 		 * */
 		private startSpin() {
-			this.rollChannel = SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
+			this.rollChannel = SoundPlayer.playEffect("Roll_mp3", -1);
 			for (let i = 0; i < 15; i++) {
 				this["tile" + i].visible = false;
 			}
@@ -455,8 +455,8 @@ module game {
 						resolve();
 					});
 				})
-				if (haveScatterThisColumn) SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
-				SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
+				if (haveScatterThisColumn) SoundPlayer.playEffect("Scatter_" + (column + 1) + "_mp3");
+				SoundPlayer.playEffect("RollStop_mp3");
 			})
 
 		}
@@ -466,7 +466,7 @@ module game {
 		 * 单列freespin缓停动画
 		 * */
 		private freeEffect(column: number) {
-			SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
+			SoundPlayer.playEffect("Scatter_wait_mp3");
 			return new Promise((resolve, reject) => {
 				(this["border" + column] as AMovieClip).visible = true;
 				(this["border" + column] as AMovieClip).play();
@@ -629,11 +629,11 @@ module game {
 			return new Promise((resolve, reject) => {
 				if (win <= 0) resolve();
 				else if (level == "normal") {
-					SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
+					SoundPlayer.playEffect("SmallWin_mp3");
 					resolve();
 				}
 				else if (level == "middle") {
-					SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+					SoundPlayer.playEffect("MiddleWin_mp3");
 					resolve();
 				}
 				else {
@@ -688,7 +688,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
+					SoundPlayer.playEffect("Get_FreeGame_ogg");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					this.setFreeChooseCount(true);
@@ -713,7 +713,7 @@ module game {
 		private showBonusLine() {
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
 			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
-			gold > 0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+			gold > 0 && SoundPlayer.playEffect("Bonus_mp3");
 			return Promise.all(
 				gold > 0 ? grids.map((value: number, column: number) => {
 					return new Promise((res, rej) => {

@@ -42,7 +42,7 @@ var game;
                 .to({ scaleX: 1, scaleY: 1, alpha: 1 }, 50)
                 .call(function () {
                 egret.Tween.removeTweens(_this.groupSetting);
-                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+                game.SoundPlayer.playEffect("Generic1_mp3");
             });
         };
         /**关闭*/
@@ -56,7 +56,7 @@ var game;
                 _this.defaultUI(false);
                 _this.visible = false;
                 egret.Tween.removeTweens(_this.groupSetting);
-                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+                game.SoundPlayer.playEffect("Generic2_mp3");
             });
         };
         /**默认显示*/
