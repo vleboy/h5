@@ -99,7 +99,7 @@ module game {
                     case "super":
                         wait(this.showTime[0]).then(() => {
                             txtAni("megaWin_png");
-                            wait(megaTime).then(() => { 
+                            wait(megaTime).then(() => {
                                 txtAni("superWin_png");
                                 wait(superTime).then(() => { this.visible = false; res(); });
                             });
@@ -117,13 +117,14 @@ module game {
                         egret.Tween.removeTweens(this);
                         if (GlobalConfig.effectSwitch) { SoundPlayer.closeEffect(); SoundPlayer.closeEffect(false); }
                         SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
-                        egret.Tween.get(this.payout)
-                            .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
-                            .to({ scaleX: 1, scaleY: 1 }, 300)
-                            .call(() => {
-                                egret.Tween.removeTweens(this.payout);
-                                res();
-                            });
+                    });
+                egret.Tween.get(this.payout)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, timer - 2000)
+                    .to({ scaleX: 1.8, scaleY: 1.8 }, 300)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, 300)
+                    .call(() => {
+                        egret.Tween.removeTweens(this.payout);
+                        res();
                     });
             });
 

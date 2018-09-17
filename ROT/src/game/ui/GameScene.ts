@@ -152,7 +152,7 @@ module game {
 		private initListener() {
 			this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
-				this.bigWin.bigWinStart("super",800);
+				this.bigWin.bigWinStart("big",800);
 			}, this);
 		}
         /**

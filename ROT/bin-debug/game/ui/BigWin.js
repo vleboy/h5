@@ -126,13 +126,14 @@ var game;
                         game.SoundPlayer.closeEffect(false);
                     }
                     game.SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
-                    egret.Tween.get(_this.payout)
-                        .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
-                        .to({ scaleX: 1, scaleY: 1 }, 300)
-                        .call(function () {
-                        egret.Tween.removeTweens(_this.payout);
-                        res();
-                    });
+                });
+                egret.Tween.get(_this.payout)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, timer - 2000)
+                    .to({ scaleX: 1.8, scaleY: 1.8 }, 300)
+                    .to({ scaleX: 1.5, scaleY: 1.5 }, 300)
+                    .call(function () {
+                    egret.Tween.removeTweens(_this.payout);
+                    res();
                 });
             });
         };
