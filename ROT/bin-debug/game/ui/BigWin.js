@@ -38,7 +38,7 @@ var game;
                     timer = this.showTime[2];
                     break;
             }
-            this.winChannel = game.SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
+            this.winChannel = game.SoundPlayer.playEffect("ROT_243_BigWin_mp3");
             return new Promise(function (res, rej) {
                 _this.boomAni().then(function () {
                     Promise.all([_this.payOut(money, timer), _this.winTxtAni(type)]).then(function () {
@@ -125,7 +125,7 @@ var game;
                         game.SoundPlayer.closeEffect();
                         game.SoundPlayer.closeEffect(false);
                     }
-                    game.SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
+                    game.SoundPlayer.playEffect("ROT_243_BigWinOver_mp3");
                 });
                 egret.Tween.get(_this.payout)
                     .to({ scaleX: 1.5, scaleY: 1.5 }, timer - 2000)

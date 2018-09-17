@@ -102,7 +102,8 @@ var game;
             return new Promise(function (res, rej) {
                 _this.freeTxtAni.play();
                 _this.freeTxtAni.loop = 1;
-                _this.freeTxtAni.once(game.AMovieClip.COMPLETE, function () { return res(); }, _this);
+                setTimeout(function () { return game.SoundPlayer.playEffect("ROT_243_CardAppear_mp3"); }, 2000);
+                _this.freeTxtAni.once(game.AMovieClip.COMPLETE, function () { res(); }, _this);
             });
         };
         /**
@@ -243,11 +244,15 @@ var game;
                     }
                 });
             };
-            this.cardOut(e.target).then(function () { return _this.cardBgAni(cardType); });
+            game.SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
+            this.cardOut(e.target).then(function () {
+                game.SoundPlayer.playEffect("ROT_243_CardEffect_mp3");
+                _this.cardBgAni(cardType);
+            });
         };
         FreeChoose.prototype.onTouch = function (e) {
             var _this = this;
-            game.SoundPlayer.playEffect("CaiShen_243_ChoseCard_mp3");
+            game.SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
             var n = 0;
             switch (e.target) {
                 case this["choose20"]:

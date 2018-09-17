@@ -86,7 +86,7 @@ module game {
 				if (this.isAuto) {
 					this.sendNotify(NotifyConst.cancelSpin);
 				} else {
-					SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
+					SoundPlayer.playEffect("ROT_243_Spin_mp3");
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
 					this.setWinMoney(0.00);
@@ -138,11 +138,11 @@ module game {
 			let betShow = () => {
 				this.hideCutGroup();
 				this.groupBet.visible = true;
-				this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
+				this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("ROT_243_GUI_Generic1_mp3"));
 			}
 			this.groupBet.visible ? this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
-				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+				SoundPlayer.playEffect("ROT_243_GUI_Generic2_mp3");
 			}) : betShow();
 		}
 		/**校验加减号状态和设置单注下注档次*/
@@ -157,19 +157,19 @@ module game {
 
 		/**单注增加*/
 		private addBetLevel(): void {
-			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+			SoundPlayer.playEffect("ROT_243_GUI_Generic1_mp3");
 			this.theBetIndex < this.theBetArr.length - 1 && this.theBetIndex++;
 			this.checkPlusReduceState();
 		}
 		/**单注减少*/
 		private reduceBetLevel(): void {
-			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+			SoundPlayer.playEffect("ROT_243_GUI_Generic1_mp3");
 			this.theBetIndex > 0 && this.theBetIndex--;
 			this.checkPlusReduceState();
 		}
 		/**单注最大*/
 		private maxBetLevel(): void {
-			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+			SoundPlayer.playEffect("ROT_243_GUI_Generic1_mp3");
 			this.theBetIndex = this.theBetArr.length - 1;
 			this.checkPlusReduceState();
 		}
@@ -178,22 +178,22 @@ module game {
 			let autoShow = () => {
 				this.hideCutGroup();
 				this.groupAutoNum.visible = true;
-				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
+				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("ROT_243_GUI_Generic1_mp3"));
 			}
 			this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(() => {
 				this.groupAutoNum.visible = false;
-				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+				SoundPlayer.playEffect("ROT_243_GUI_Generic2_mp3");
 			}) : autoShow();
 		}
 		/**隐藏切入框*/
 		public hideCutGroup(isSound: boolean = false): void {
 			this.groupBet.visible && this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
-				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+				isSound && SoundPlayer.playEffect("ROT_243_GUI_Generic2_mp3");
 			});
 			this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(() => {
 				this.groupAutoNum.visible = false;
-				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+				isSound && SoundPlayer.playEffect("ROT_243_GUI_Generic2_mp3");
 			});
 		}
 		/**取消自动转动*/

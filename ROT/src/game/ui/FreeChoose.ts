@@ -71,7 +71,8 @@ module game {
 			return new Promise((res, rej) => {
 				this.freeTxtAni.play();
 				this.freeTxtAni.loop = 1;
-				this.freeTxtAni.once(AMovieClip.COMPLETE, () => res(), this);
+				setTimeout(() => SoundPlayer.playEffect("ROT_243_CardAppear_mp3"), 2000);
+				this.freeTxtAni.once(AMovieClip.COMPLETE, () => { res() }, this);
 			});
 		}
 		/**
@@ -203,10 +204,14 @@ module game {
 					}
 				});
 			}
-			this.cardOut(e.target).then(() => this.cardBgAni(cardType));
+			SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
+			this.cardOut(e.target).then(() => {
+				SoundPlayer.playEffect("ROT_243_CardEffect_mp3");
+				this.cardBgAni(cardType);
+			});
 		}
 		private onTouch(e: egret.TouchEvent) {
-			SoundPlayer.playEffect("CaiShen_243_ChoseCard_mp3");
+			SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
 			let n = 0;
 			switch (e.target) {
 				case this["choose20"]: n = 5; break;

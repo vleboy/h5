@@ -36,7 +36,7 @@ module game {
                     timer = this.showTime[2];
                     break;
             }
-            this.winChannel = SoundPlayer.playEffect("CaiShen_243_BigWin_mp3");
+            this.winChannel = SoundPlayer.playEffect("ROT_243_BigWin_mp3");
             return new Promise((res, rej) => {
                 this.boomAni().then(() => {
                     Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(() => {
@@ -116,7 +116,7 @@ module game {
                     .to({ winNum: mon }, timer - 2000).call(() => {
                         egret.Tween.removeTweens(this);
                         if (GlobalConfig.effectSwitch) { SoundPlayer.closeEffect(); SoundPlayer.closeEffect(false); }
-                        SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
+                        SoundPlayer.playEffect("ROT_243_BigWinOver_mp3");
                     });
                 egret.Tween.get(this.payout)
                     .to({ scaleX: 1.5, scaleY: 1.5 }, timer - 2000)

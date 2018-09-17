@@ -139,7 +139,8 @@ var game;
             var _this = this;
             this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                _this.bigWin.bigWinStart("big", 800);
+                _this.freeChoose.visible = true;
+                _this.freeChoose.show();
             }, this);
         };
         /**
@@ -147,14 +148,14 @@ var game;
          * */
         GameScene.prototype.updateBgm = function () {
             if (this.isFree) {
-                game.SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+                game.SoundPlayer.playMusic("ROT_243_freeGame_mp3");
             }
             else {
                 if (this.freeChoose.visible) {
-                    game.SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+                    game.SoundPlayer.playMusic("ROT_243_featureChoose_mp3");
                 }
                 else {
-                    game.SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+                    game.SoundPlayer.playMusic("ROT_243_normalGame_mp3");
                 }
             }
         };
@@ -378,7 +379,7 @@ var game;
          * 开始滚动
          * */
         GameScene.prototype.startSpin = function () {
-            this.rollChannel = game.SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
+            this.rollChannel = game.SoundPlayer.playEffect("ROT_243_Roll_mp3", -1);
             for (var i = 0; i < 15; i++) {
                 this["tile" + i].visible = false;
             }
@@ -500,8 +501,8 @@ var game;
                                 });
                             });
                             if (haveScatterThisColumn)
-                                game.SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
-                            game.SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
+                                game.SoundPlayer.playEffect("ROT_243_Scatter_" + (column + 1) + "_mp3");
+                            game.SoundPlayer.playEffect("ROT_243_RollStop_mp3");
                             return [2 /*return*/];
                     }
                 });
@@ -512,7 +513,7 @@ var game;
          * */
         GameScene.prototype.freeEffect = function (column) {
             var _this = this;
-            game.SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
+            game.SoundPlayer.playEffect("ROT_243_Scatter_wait_mp3");
             return new Promise(function (resolve, reject) {
                 _this["border" + column].visible = true;
                 _this["border" + column].play();
@@ -672,11 +673,11 @@ var game;
                 if (win <= 0)
                     resolve();
                 else if (level == "normal") {
-                    game.SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
+                    game.SoundPlayer.playEffect("ROT_243_SmallWin_mp3");
                     resolve();
                 }
                 else if (level == "middle") {
-                    game.SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+                    game.SoundPlayer.playEffect("ROT_243_MiddleWin_mp3");
                     resolve();
                 }
                 else {
@@ -730,7 +731,7 @@ var game;
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (_this.spinResp.payload.getFeatureChance) {
-                    game.SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
+                    game.SoundPlayer.playEffect("ROT_243_Get_FreeGame_ogg");
                     _this.freeChanceGroup.visible = true;
                     _this.freeChangeMc.play();
                     _this.setFreeChooseCount(true);
@@ -756,7 +757,7 @@ var game;
             var _this = this;
             var grids = this.spinResp.payload.featureData.featureBonusData.grid;
             var gold = this.spinResp.payload.featureData.featureBonusData.gold;
-            gold > 0 && game.SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+            gold > 0 && game.SoundPlayer.playEffect("ROT_243_Bonus_mp3");
             return Promise.all(gold > 0 ? grids.map(function (value, column) {
                 return new Promise(function (res, rej) {
                     if (value == -1) {
@@ -1128,7 +1129,7 @@ var game;
                 else if (_this.value == "1") {
                     _this.tile.source = _this.gameScene.buff != "-1" ? ("wildbg" + _this.gameScene.buff + "_png") : "wildBg0_png";
                     _this.mc = new game.AMovieClip();
-                    // this.mc.sources = "caishenAni|1-16|_png";
+                    // this.mc.sources = "ROTAni|1-16|_png";
                     _this.mc.x = _this.tile.x + 10;
                     _this.mc.y = _this.tile.y;
                     _this.mc.width = 173;
