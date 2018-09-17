@@ -16,16 +16,16 @@
 
 
 		</e:Group>
-		<e:Rect id="tileMask" width="1334" height="658" horizontalCenter="0" verticalCenter="15"/>
+		<e:Rect id="tileMask" width="1334" height="750" horizontalCenter="0" verticalCenter="15"/>
 		<e:Group id="tileGroup" width="1334" height="658" horizontalCenter="0" verticalCenter="15">
 			<e:Group id="freeEffectGroup" width="100%" height="100%" horizontalCenter="0" x="0" scaleX="1" scaleY="1" verticalCenter="0">
-				<game:AMovieClip id="border2" width="280" height="560" horizontalCenter="0" scaleY="1.75" scaleX="1.75" sources="border|1-34|_png" speed="3" source="border1_png" verticalCenter="25" visible="false"/>
-				<game:AMovieClip id="border3" width="280" height="560" horizontalCenter="268" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
-				<game:AMovieClip id="border4" width="280" height="560" horizontalCenter="530" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
+				<game:AMovieClip id="border2" width="280" height="550" horizontalCenter="0" scaleY="1.75" scaleX="1.75" sources="border|1-34|_png" speed="3" source="border1_png" verticalCenter="25" visible="false"/>
+				<game:AMovieClip id="border3" width="280" height="550" horizontalCenter="268" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
+				<game:AMovieClip id="border4" width="280" height="550" horizontalCenter="530" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
 				<e:Group id="freeCoinsGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
-				<e:Image id="tile0" source="symbolName_6_png" x="35" y="0" scaleX="1" scaleY="1" height="200" width="200"/>
+				<e:Image id="tile0" source="symbolName_6_png" x="35" y="0" scaleX="1" scaleY="1" height="205" width="205"/>
 				<e:Image id="tile1" source="symbolName_6_png" x="35" width="205" height="205" y="229" scaleX="1" scaleY="1"/>
 				<e:Image id="tile2" source="symbolName_6_png" x="35" width="205" height="205" scaleX="1" scaleY="1" y="458"/>
 				<e:Image id="tile3" source="symbolName_6_png" x="300" width="205" height="205" scaleX="1" scaleY="1"/>
@@ -70,7 +70,7 @@
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
-		<e:BitmapLabel id="lineWinTxt" width="600" height="63" horizontalCenter="0" verticalCenter="45" text="1232" letterSpacing="-35" touchEnabled="false" textAlign="center" font="fnt113_fnt"/>
+		<e:BitmapLabel id="lineWinTxt" horizontalCenter="0" verticalCenter="45" text="1232" letterSpacing="-10" touchEnabled="false" textAlign="center" font="fnt113_fnt" scaleX="0.5" scaleY="0.5"/>
 		<e:Image id="freeCountBg" x="200" y="90" scaleX="1" scaleY="1" source="UI_mianban_png" height="75" width="140"/>
 		<e:Image id="freeChooseCountBg" x="1050" y="90" source="symbolName_0_png" height="75" width="81"/>
 		<e:BitmapLabel id="freeChooseCountTxt" font="fnt113_fnt" text="1" textAlign="center" scaleY="0.3" scaleX="0.3" top="110" left="1140"/>

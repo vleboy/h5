@@ -53,7 +53,6 @@ module game {
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
-		private thePArr: particle.GravityParticleSystem[];
 		/**是否返回数据*/
 		private isReturnData: boolean;
 		/**spin等待*/
@@ -104,18 +103,17 @@ module game {
 			let starSources: string = isFree ? "blueStar|1-13|_png" : "yellowStar|1-13|_png";
 			[0, 1, 2, 3, 4, 5].forEach(v => (this["starBg" + v] as eui.Image).source = starBg);
 			let starPlay = (index: number) => {
-				return new Promise((res, rej) => {
-					let star: game.AMovieClip = this["starAni" + index] as game.AMovieClip;
-					star.sources = starSources;
-					star.speed = 8;
-					star.play();
-					this.starArr.push(star);
-					star.addEventListener(AMovieClip.VERYLOOPCOMPLETE, () => res(), this);
-				});
+				let star: game.AMovieClip = this["starAni" + index] as game.AMovieClip;
+				star.sources = starSources;
+				star.speed = 8;
+				star.play();
+				this.starArr.push(star);
 			};
-			let num: number = 0;
-			let play = () => { starPlay(num).then(() => { if (num < 5) { num++; play(); } }); };
-			play();
+			this.starArr && this.starArr.forEach(v => v.stop());
+			[0, 2, 4].forEach(v => starPlay(v));
+			setTimeout(() => {
+				[1, 3, 5].forEach(v => starPlay(v));
+			}, 500);
 		}
 		/**
 		 * 初始图标对象
@@ -399,7 +397,7 @@ module game {
 			for (let i = 0; i < 5; i++) {
 				this.singleColumRoll(i);
 			}
-			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
+			this.freeMultiAni(this.featureMultiplier, false);
 		}
 		/**
 		 * 单列模糊图标转动
@@ -689,11 +687,13 @@ module game {
 							let gridIndex = value + column * 3;
 							let target = this["tile" + gridIndex];
 							this.particleBg.visible = true;
-							res();
+							setTimeout(() => {
+								res();
+								this.lineWinTxt.visible = false;
+							}, 1400);
 						}
 					})
-				}) : []
-			)
+				}) : []);
 		}
 		/**
 		 * 各单线中奖展示
@@ -771,7 +771,7 @@ module game {
 			this.bgFree.visible = b;
 			this.freeCountBg.visible = b;
 			this.setFreeChooseCount();
-			b && this.initStar(true);
+			this.initStar(b);
 			this.setState(GameState.BET);
 			this.updateBgm();
 			setTimeout(() => {
@@ -838,7 +838,7 @@ module game {
 		 * */
 		private showFreeTotalWin(n: string) {
 			this.freeTotalWin.showTotalWin(n);
-			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
+			this.freeMultiAni(this.featureMultiplier, false);
 		}
 		/**
 		 * 免费结算完成
@@ -886,7 +886,7 @@ module game {
 				let wait: number = isLong ? 2800 : 1400;
 				this.gameScene.winGridGroup.addChild(this.tile);
 				this.mc = new AMovieClip();
-				this.mc.sources = this.value + "_|1-15|_png";
+				this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
 				this.mc.speed = 5;
 				this.mc.x = this.tile.x;
 				this.mc.y = this.tile.y;

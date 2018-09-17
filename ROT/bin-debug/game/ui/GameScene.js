@@ -91,21 +91,17 @@ var game;
             var starSources = isFree ? "blueStar|1-13|_png" : "yellowStar|1-13|_png";
             [0, 1, 2, 3, 4, 5].forEach(function (v) { return _this["starBg" + v].source = starBg; });
             var starPlay = function (index) {
-                return new Promise(function (res, rej) {
-                    var star = _this["starAni" + index];
-                    star.sources = starSources;
-                    star.speed = 8;
-                    star.play();
-                    _this.starArr.push(star);
-                    star.addEventListener(game.AMovieClip.VERYLOOPCOMPLETE, function () { return res(); }, _this);
-                });
+                var star = _this["starAni" + index];
+                star.sources = starSources;
+                star.speed = 8;
+                star.play();
+                _this.starArr.push(star);
             };
-            var num = 0;
-            var play = function () { starPlay(num).then(function () { if (num < 5) {
-                num++;
-                play();
-            } }); };
-            play();
+            this.starArr && this.starArr.forEach(function (v) { return v.stop(); });
+            [0, 2, 4].forEach(function (v) { return starPlay(v); });
+            setTimeout(function () {
+                [1, 3, 5].forEach(function (v) { return starPlay(v); });
+            }, 500);
         };
         /**
          * 初始图标对象
@@ -384,7 +380,7 @@ var game;
             for (var i = 0; i < 5; i++) {
                 this.singleColumRoll(i);
             }
-            this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
+            this.freeMultiAni(this.featureMultiplier, false);
         };
         /**
          * 单列模糊图标转动
@@ -730,7 +726,10 @@ var game;
                         var gridIndex = value + column * 3;
                         var target = _this["tile" + gridIndex];
                         _this.particleBg.visible = true;
-                        res();
+                        setTimeout(function () {
+                            res();
+                            _this.lineWinTxt.visible = false;
+                        }, 1400);
                     }
                 });
             }) : []);
@@ -835,7 +834,7 @@ var game;
             this.bgFree.visible = b;
             this.freeCountBg.visible = b;
             this.setFreeChooseCount();
-            b && this.initStar(true);
+            this.initStar(b);
             this.setState(game.GameState.BET);
             this.updateBgm();
             setTimeout(function () {
@@ -905,7 +904,7 @@ var game;
          * */
         GameScene.prototype.showFreeTotalWin = function (n) {
             this.freeTotalWin.showTotalWin(n);
-            this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
+            this.freeMultiAni(this.featureMultiplier, false);
         };
         /**
          * 免费结算完成
@@ -950,7 +949,7 @@ var game;
                 var wait = isLong ? 2800 : 1400;
                 _this.gameScene.winGridGroup.addChild(_this.tile);
                 _this.mc = new game.AMovieClip();
-                _this.mc.sources = _this.value + "_|1-15|_png";
+                _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
                 _this.mc.speed = 5;
                 _this.mc.x = _this.tile.x;
                 _this.mc.y = _this.tile.y;
