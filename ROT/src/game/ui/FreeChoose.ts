@@ -2,8 +2,6 @@ module game {
 	export class FreeChoose extends BaseUI {
 		/**下方选择免费提示文字图片*/
 		private tipTxt: eui.Image;
-		/**进入免费游戏文字帧动画*/
-		private freeTxtAni: game.AMovieClip;
 		/**外围大框*/
 		private chooseGroup: eui.Group;
 		/**透明蒙版*/
@@ -28,18 +26,15 @@ module game {
 		public init() {
 			this.countArr = ["20", "15", "10", "8", "5"];
 			this.parArr = [];
-			this.countArr.forEach(v => this.registerEvent(this["choose" + v], egret.TouchEvent.TOUCH_TAP, this.onClick, this));
-			this.registerEvent(this["closeBtn"], egret.TouchEvent.TOUCH_TAP, () => {
-				this.close();
-			}, this);
+			this.countArr.forEach(v => this.registerEvent(this["choose" + v], egret.TouchEvent.TOUCH_TAP, this.onTouch, this));
 		}
 		/**显示*/
 		public show() {
+			this.visible = true;
 			//默认显示
 			let defShow = () => {
 				this.chooseGroup.setChildIndex(this.rect, 0);
-				this.chooseGroup.setChildIndex(this.freeTxtAni, 1);
-				this.chooseGroup.setChildIndex(this.cardBgLight, 2);
+				this.chooseGroup.setChildIndex(this.cardBgLight, 1);
 				//选项卡默认位置,隐藏黄光
 				this.countArr.forEach((v, i) => {
 					let tar: eui.Group = this["choose" + v] as eui.Group;
@@ -59,21 +54,10 @@ module game {
 				this.parArr = [];
 			};
 			defShow();
-			//免费游戏文字帧动画，选项卡动画
-			this.freeTxtIn().then(() => this.cardIn());
+			//选项卡动画
+			this.cardIn();
 			//下方选择免费提示文字图片动画
 			egret.Tween.get(this.tipTxt, { loop: true }).wait(2000).to({ alpha: 0.5 }, 500).to({ alpha: 1 }, 500);
-		}
-		/**
-		 * 免费游戏文字帧动画
-		*/
-		private freeTxtIn(): Promise<{}> {
-			return new Promise((res, rej) => {
-				this.freeTxtAni.play();
-				this.freeTxtAni.loop = 1;
-				setTimeout(() => SoundPlayer.playEffect("ROT_243_CardAppear_mp3"), 2000);
-				this.freeTxtAni.once(AMovieClip.COMPLETE, () => { res() }, this);
-			});
 		}
 		/**
 		 * 选项卡进入动画(免费类型进入动画)
@@ -184,13 +168,21 @@ module game {
 					egret.Tween.removeTweens(this.closeRect);
 					this.closeRect.visible = false;
 					this.visible = false;
+					if (GlobalConfig.effectSwitch) { SoundPlayer.closeEffect(); SoundPlayer.closeEffect(false); }
+					//去掉粒子
+					this.parArr.forEach(v => {
+						v.visible = false;
+						v.stop();
+						v.parent && v.parent.removeChild(v);
+					});
+					this.parArr = [];
 					res();
 				});
 				egret.Tween.get(this.maxArr).to({ alpha: 0.4 }, 500).call(() => egret.Tween.removeTweens(this.maxArr));
 			});
 		}
 		/**点击某选项卡*/
-		private onClick(e: egret.TouchEvent) {
+		private onTouch(e: egret.TouchEvent): void {
 			//发送免费请求
 			let respData;
 			let cardType: string = e.target.name.split("_")[1];
@@ -208,40 +200,12 @@ module game {
 			this.cardOut(e.target).then(() => {
 				SoundPlayer.playEffect("ROT_243_CardEffect_mp3");
 				this.cardBgAni(cardType);
+				setTimeout(() => {
+					sendFree().then(() => {
+						this.close().then(()=>this.sendNotify(NotifyConst.chooseFreeBack, respData));
+					});
+				}, 1500);
 			});
-		}
-		private onTouch(e: egret.TouchEvent) {
-			SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
-			let n = 0;
-			switch (e.target) {
-				case this["choose20"]: n = 5; break;
-				case this["choose15"]: n = 4; break;
-				case this["choose10"]: n = 3; break;
-				case this["choose8"]: n = 2; break;
-				case this["choose5"]: n = 1; break;
-			}
-
-			["20", "15", "10", "8", "5"].forEach((v) => {
-				let target = this["choose" + v] as eui.Group;
-				if (e.target != target) {
-					this["chooseGroup"].setChildIndex(target, 0);
-				}
-				else {
-					let respData;
-					Promise.all([
-						new Promise((resolve, reject) => {
-							n > 0 && GameService.getInstance().sendFreeChoose(n).then(async (resp) => {
-								respData = resp;
-								resolve();
-							});
-						})
-					]).then(async () => {
-						// await this.yuanbaoAni();
-						this.sendNotify(NotifyConst.chooseFreeBack, respData);
-					})
-
-				}
-			})
 		}
 	}
 }

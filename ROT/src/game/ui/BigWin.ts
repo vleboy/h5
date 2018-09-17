@@ -11,9 +11,7 @@ module game {
         private winImg: eui.Image;
         private payoutGroup: eui.Group;
 
-        private theParticle: particle.GravityParticleSystem;
         private winNum: number = 0;
-
         private winChannel: egret.SoundChannel;
         /**展示的时间数组*/
         private showTime: number[];
@@ -23,7 +21,7 @@ module game {
         }
         public bigWinStart(type: string, money: number) {
             this.visible = true;
-            //喷元宝的时间
+            //持续时间
             let timer: number = this.showTime[0];
             switch (type) {
                 case "big":
@@ -57,6 +55,7 @@ module game {
                 };
                 booShow();
                 this.boomLight.play();
+                this.boomLight.loop = 1;
                 this.boomLight.once(AMovieClip.COMPLETE, () => {
                     booShow(false);
                     this.winLight.play();

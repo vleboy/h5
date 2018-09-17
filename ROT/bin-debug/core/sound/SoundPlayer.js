@@ -28,7 +28,6 @@ var game;
         SoundPlayer.playEffect = function (name, count) {
             var _this = this;
             if (count === void 0) { count = 1; }
-            // console.log("playeffect "+name);
             if (game.GlobalConfig.effectSwitch) {
                 var channel = RES.getRes(name).play(0, count);
                 this.effectArr.push(channel);

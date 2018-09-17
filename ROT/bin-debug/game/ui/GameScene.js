@@ -139,8 +139,6 @@ var game;
             var _this = this;
             this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                _this.freeChoose.visible = true;
-                _this.freeChoose.show();
             }, this);
         };
         /**
@@ -522,40 +520,6 @@ var game;
                 var c = new egret.DisplayObjectContainer();
                 _this["freeCoinsGroup"].addChild(c);
                 var arr = [];
-                var createCoins = function () {
-                    // for (let i = 0; i < 4; i++) {
-                    // 	let mc = new AMovieClip();
-                    // 	mc.sources = "coin_pin_|1-9|_png";
-                    // 	mc.width = mc.height = 20;
-                    // 	mc.anchorOffsetX = 10;
-                    // 	mc.anchorOffsetY = 10;
-                    // 	mc.rotation = Math.random() * 360;
-                    // 	mc.play();
-                    // 	mc["speed"] = Math.round(Math.random() * 6 + 3);
-                    // 	mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-                    // 	mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-                    // 	c.addChild(mc);
-                    // 	arr.push(mc);
-                    // }
-                };
-                // let index = 0;
-                // egret.Tween.get(this["freeCoinsGroup"], { loop: true })
-                // 	.wait(20)
-                // 	.call(() => {
-                // 		if (index++ % 10 == 0) {
-                // 			createCoins();
-                // 		}
-                // 		for (let j = arr.length - 1; j >= 0; j--) {
-                // 			let img = arr[j];
-                // 			img.rotation += 5;
-                // 			img.y += img["speed"];
-                // 			img.alpha -= img["alphaSpeed"];
-                // 			if (img.y >= 269 + 658) {
-                // 				img.parent.removeChild(img);
-                // 				arr.splice(j, 1);
-                // 			}
-                // 		}
-                // 	})
                 if (_this.freeColumnTimeout)
                     clearTimeout(_this.freeColumnTimeout);
                 _this.freeColumnTimeout = setTimeout(function () {
@@ -732,18 +696,15 @@ var game;
             return new Promise(function (resolve, reject) {
                 if (_this.spinResp.payload.getFeatureChance) {
                     game.SoundPlayer.playEffect("ROT_243_Get_FreeGame_ogg");
-                    _this.freeChanceGroup.visible = true;
-                    _this.freeChangeMc.play();
                     _this.setFreeChooseCount(true);
-                    egret.Tween.get(_this.freeChangeImg)
-                        .set({ scaleX: 3, scaleY: 3 })
-                        .to({ scaleX: 1, scaleY: 1 }, 200)
-                        .wait(3000)
-                        .call(function () {
-                        egret.Tween.removeTweens(_this.freeChangeImg);
-                        _this.freeChanceGroup.visible = false;
+                    //免费游戏文字帧动画
+                    _this.freeTxt.visible = true;
+                    _this.freeTxtAni.play();
+                    _this.freeTxtAni.loop = 1;
+                    _this.freeTxtAni.once(game.AMovieClip.COMPLETE, function () {
                         resolve();
-                    });
+                        _this.freeTxt.visible = false;
+                    }, _this);
                 }
                 else {
                     resolve();
@@ -769,72 +730,6 @@ var game;
                         var gridIndex = value + column * 3;
                         var target = _this["tile" + gridIndex];
                         _this.particleBg.visible = true;
-                        // //红包动画
-                        // let mc: AMovieClip = new AMovieClip();
-                        // mc.sources = "T_hongbao_|1-16|_png";
-                        // mc.x = target.x;
-                        // mc.y = target.y;
-                        // this["winGridGroup"].addChild(mc);
-                        // target.visible = false;
-                        // mc.loop = 2;
-                        // mc.play();
-                        // /**喷金币 */
-                        // let coins = [];
-                        // let flag = 0;
-                        // let createCoins = () => {
-                        // 	let coin = new AMovieClip();
-                        // 	coin.sources = "SU_Coin_Gold_3x3_|1-9|_png";
-                        // 	coin.x = target.x + target.width / 2;
-                        // 	coin.y = target.y + 70;
-                        // 	coin.width = coin.height = 30;
-                        // 	coin.anchorOffsetX = coin.anchorOffsetY = 15;
-                        // 	coin["speedx"] = Math.round((Math.random() * 10 - 5));
-                        // 	coin["speedy"] = -Math.round((Math.random() * 7 + 7));
-                        // 	coin["count"] = 0;
-                        // 	this["bonusEffectGroup"].addChild(coin);
-                        // 	coins.push(coin);
-                        // 	coin.play();
-                        // }
-                        // egret.Tween.get(this["bonusEffectGroup"], { loop: true })
-                        // 	.wait(30)
-                        // 	.call(() => {
-                        // 		if (++flag % 3 == 0) createCoins();
-                        // 		coins.forEach((v, i) => {
-                        // 			v.x += v["speedx"];
-                        // 			v.y += v["speedy"];
-                        // 			v["speedy"]++;
-                        // 			if (++v.count > 24) {
-                        // 				v.stop();
-                        // 				v.parent.removeChild(v);
-                        // 				coins.splice(i, 1);
-                        // 			}
-                        // 		})
-                        // 	})
-                        // //粒子发散效果
-                        // let texture = RES.getRes("star_png");
-                        // let cfg = RES.getRes("bonusParticle_json");
-                        // let p = new particle.GravityParticleSystem(texture, cfg);
-                        // p.blendMode = egret.BlendMode.ADD;
-                        // p.emitterX = target.x + target.width / 2;
-                        // p.emitterY = target.y + 70;
-                        // this["bonusEffectGroup"].addChild(p);
-                        // p.start();
-                        // mc.once(AMovieClip.COMPLETE, () => {
-                        // 	mc.parent.removeChild(mc);
-                        // 	this["tile" + gridIndex].visible = true;
-                        // 	this.particleBg.visible = false;
-                        // 	this.lineWinTxt.visible = false;
-                        // 	egret.Tween.removeTweens(this["bonusEffectGroup"]);
-                        // 	while (coins.length > 0) {
-                        // 		coins.pop().stop();
-                        // 	}
-                        // 	this["bonusEffectGroup"].removeChildren();
-                        // 	if (p) {
-                        // 		p.stop();
-                        // 		if (p.parent) p.parent.removeChild(p);
-                        // 	}
-                        // 	res();
-                        // }, this);
                         res();
                     }
                 });
@@ -926,8 +821,6 @@ var game;
          * */
         GameScene.prototype.showFreeChoose = function (b) {
             this.freeTotalWin.visible = false;
-            // this.freeChoose.visible = b;
-            this.freeChoose.visible = false;
             if (b)
                 this.freeChoose.show();
             this.updateBgm();
@@ -971,11 +864,12 @@ var game;
             if (isAn) {
                 isShow && egret.Tween.get(this.freeChooseCountBoom)
                     .call(function () { return _this.freeChooseCountBoom.visible = true; })
-                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
+                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1354, y: 128 }, 1000)
                     .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
                     .call(function () {
                     _this.freeChooseCountBoom.play();
-                    _this.freeChooseCountTxt.text = "x" + _this.featureChanceCount;
+                    // this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
+                    _this.freeChooseCountTxt.text = "" + _this.featureChanceCount;
                     _this.freeChooseCountBg.visible = isShow;
                     _this.freeChooseCountTxt.visible = isShow;
                     setTimeout(function () {
@@ -987,41 +881,22 @@ var game;
             else {
                 this.freeChooseCountBg.visible = isShow;
                 this.freeChooseCountTxt.visible = isShow;
-                isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
+                // isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
+                isShow && (this.freeChooseCountTxt.text = "" + this.featureChanceCount);
             }
         };
         /**
          * 显示免费的倍数
          * */
         GameScene.prototype.freeMultiAni = function (mul, isStart) {
-            var _this = this;
             if (isStart === void 0) { isStart = true; }
             if (isStart) {
                 this.freeMultiGroup.visible = true;
                 //倍数
-                this.freeMulti.text = "X" + mul;
-                var theParticle = function (texture, cfg, index, isLight) {
-                    var theP = new particle.GravityParticleSystem(texture, cfg);
-                    _this.freeMultiGroup.addChildAt(theP, index);
-                    theP.emitterX = 100;
-                    theP.emitterY = 70;
-                    isLight && (theP.blendMode = egret.BlendMode.ADD);
-                    theP.start();
-                    return theP;
-                };
-                this.thePArr = [];
-                //光晕效果
-                this.thePArr.push(theParticle(RES.getRes("freemultiLight_png"), RES.getRes("particle_multiLight_json"), 0, true));
-                //粒子发散效果
-                this.thePArr.push(theParticle(RES.getRes("freemulti_png"), RES.getRes("particle_multi_json"), 1));
+                // this.freeMulti.text = "X" + mul;
+                this.freeMulti.text = "" + mul;
             }
             else {
-                this.thePArr.forEach(function (v) {
-                    v.stop();
-                    v.visible = false;
-                    v.parent && v.parent.removeChild(v);
-                });
-                this.thePArr = [];
                 this.freeMultiGroup.visible = false;
             }
         };
@@ -1057,12 +932,6 @@ var game;
         function Symbol(tile, gameScene) {
             this.tile = tile;
             this.gameScene = gameScene;
-            var texture = RES.getRes("light_lizi01_png");
-            var cfg = RES.getRes("particle_json");
-            this.p = new particle.GravityParticleSystem(texture, cfg);
-            this.p.blendMode = egret.BlendMode.ADD;
-            gameScene.particleGroup.addChild(this.p);
-            this.p.visible = false;
         }
         /**
          * 设置图标结果
@@ -1097,126 +966,21 @@ var game;
                     !isLong && (_this.gameScene.lineWinTxt.visible = false);
                 }, _this);
                 //单线展示的间隔时间
-                setTimeout(function () { res(); _this.mc.parent.removeChild(_this.mc); }, wait);
-            });
-        };
-        /**
-         * 图标中奖动画 isLong：是否是长动画
-         * */
-        Symbol.prototype.showWinAni = function (isLong) {
-            var _this = this;
-            if (isLong === void 0) { isLong = true; }
-            return new Promise(function (resolve, reject) {
-                _this.gameScene.winGridGroup.addChild(_this.tile);
-                //scatter 金币图标
-                if (_this.value == "0") {
-                    _this.mc = new game.AMovieClip();
-                    _this.mc.sources = "T_tongqian_|1-16|_png";
-                    _this.mc.speed = 2;
-                    _this.mc.x = _this.tile.x;
-                    _this.mc.y = _this.tile.y;
-                    _this.mc.width = _this.tile.width;
-                    _this.mc.height = _this.tile.height;
-                    _this.gameScene["winGridGroup"].addChild(_this.mc);
-                    _this.mc.play();
-                    _this.mc.loop = isLong ? 3 : -1;
-                    _this.tile.visible = false;
-                    _this.mc.once(game.AMovieClip.COMPLETE, function () {
-                        _this.mc.visible = false;
-                        _this.tile.visible = true;
-                    }, _this);
-                }
-                else if (_this.value == "1") {
-                    _this.tile.source = _this.gameScene.buff != "-1" ? ("wildbg" + _this.gameScene.buff + "_png") : "wildBg0_png";
-                    _this.mc = new game.AMovieClip();
-                    // this.mc.sources = "ROTAni|1-16|_png";
-                    _this.mc.x = _this.tile.x + 10;
-                    _this.mc.y = _this.tile.y;
-                    _this.mc.width = 173;
-                    _this.mc.height = 173;
-                    _this.mc.speed = 4;
-                    _this.mc.loop = isLong ? 2 : 1;
-                    _this.gameScene["winGridGroup"].addChild(_this.mc);
-                    _this.mc.play();
-                    _this.mc2 = new game.AMovieClip();
-                    _this.mc2.sources = "wildText|1-20|_png";
-                    _this.mc2.x = _this.tile.x;
-                    _this.mc2.y = _this.tile.y + 99;
-                    _this.mc2.speed = 4;
-                    _this.mc2.loop = isLong ? 2 : 1;
-                    _this.gameScene["winGridGroup"].addChild(_this.mc2);
-                    _this.mc2.play();
-                }
-                _this.gameScene.particleBg.visible = true;
-                var p = _this.p;
-                var grid = _this.tile;
-                p.visible = true;
-                p.start();
-                p.emitterX = p.emitterY = 0;
-                p.x = grid.x;
-                p.y = grid.y;
-                var f = function () {
-                    egret.Tween.get(p)
-                        .to({ emitterX: grid.width }, 300)
-                        .to({ emitterY: grid.height }, 300)
-                        .to({ emitterX: 0 }, 300)
-                        .to({ emitterY: 0 }, 300)
-                        .call(function () {
-                        p.stop();
-                        p.visible = false;
-                        if (_this.mc && _this.value != "0") {
-                            _this.mc.stop();
-                            _this.mc.parent.removeChild(_this.mc);
-                            _this.mc = null;
-                            _this.tile.visible = true;
-                        }
-                        if (_this.mc2) {
-                            _this.mc2.stop();
-                            _this.mc2.parent.removeChild(_this.mc2);
-                            _this.mc2 = null;
-                        }
-                        if (_this.value == "1") {
-                            _this.tile.source = _this.gameScene.buff != "-1" ? "symbolName_1_" + _this.gameScene.buff + "_png" : "symbolName_1_png";
-                        }
-                        _this.gameScene.valueTiles.addChild(_this.tile);
-                        _this.gameScene.lineWinTxt.visible = false;
-                    })
-                        .wait(200)
-                        .call(function () {
-                        egret.Tween.removeTweens(p);
-                        resolve();
-                    });
-                };
-                if (isLong) {
-                    egret.Tween.get(p)
-                        .to({ emitterX: grid.width }, 300)
-                        .to({ emitterY: grid.height }, 300)
-                        .to({ emitterX: 0 }, 300)
-                        .to({ emitterY: 0 }, 300)
-                        .call(f);
-                }
-                else {
-                    f();
-                }
+                setTimeout(function () { res(); _this.mc && _this.mc.parent && _this.mc.parent.removeChild(_this.mc); }, wait);
             });
         };
         /**
          * 停止动画
          * */
         Symbol.prototype.reset = function () {
-            if (this.p) {
-                this.p.stop();
-                this.p.visible = false;
-                egret.Tween.removeTweens(this.p);
-            }
             if (this.mc) {
                 this.mc.stop();
-                this.mc.parent.removeChild(this.mc);
+                this.mc.parent && this.mc.parent.removeChild(this.mc);
                 this.mc = null;
             }
             if (this.mc2) {
                 this.mc2.stop();
-                this.mc2.parent.removeChild(this.mc2);
+                this.mc2.parent && this.mc2.parent.removeChild(this.mc2);
                 this.mc2 = null;
             }
             if (this.value == "1") {

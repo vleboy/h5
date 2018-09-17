@@ -57,19 +57,16 @@ var game;
             var _this = this;
             this.countArr = ["20", "15", "10", "8", "5"];
             this.parArr = [];
-            this.countArr.forEach(function (v) { return _this.registerEvent(_this["choose" + v], egret.TouchEvent.TOUCH_TAP, _this.onClick, _this); });
-            this.registerEvent(this["closeBtn"], egret.TouchEvent.TOUCH_TAP, function () {
-                _this.close();
-            }, this);
+            this.countArr.forEach(function (v) { return _this.registerEvent(_this["choose" + v], egret.TouchEvent.TOUCH_TAP, _this.onTouch, _this); });
         };
         /**显示*/
         FreeChoose.prototype.show = function () {
             var _this = this;
+            this.visible = true;
             //默认显示
             var defShow = function () {
                 _this.chooseGroup.setChildIndex(_this.rect, 0);
-                _this.chooseGroup.setChildIndex(_this.freeTxtAni, 1);
-                _this.chooseGroup.setChildIndex(_this.cardBgLight, 2);
+                _this.chooseGroup.setChildIndex(_this.cardBgLight, 1);
                 //选项卡默认位置,隐藏黄光
                 _this.countArr.forEach(function (v, i) {
                     var tar = _this["choose" + v];
@@ -89,22 +86,10 @@ var game;
                 _this.parArr = [];
             };
             defShow();
-            //免费游戏文字帧动画，选项卡动画
-            this.freeTxtIn().then(function () { return _this.cardIn(); });
+            //选项卡动画
+            this.cardIn();
             //下方选择免费提示文字图片动画
             egret.Tween.get(this.tipTxt, { loop: true }).wait(2000).to({ alpha: 0.5 }, 500).to({ alpha: 1 }, 500);
-        };
-        /**
-         * 免费游戏文字帧动画
-        */
-        FreeChoose.prototype.freeTxtIn = function () {
-            var _this = this;
-            return new Promise(function (res, rej) {
-                _this.freeTxtAni.play();
-                _this.freeTxtAni.loop = 1;
-                setTimeout(function () { return game.SoundPlayer.playEffect("ROT_243_CardAppear_mp3"); }, 2000);
-                _this.freeTxtAni.once(game.AMovieClip.COMPLETE, function () { res(); }, _this);
-            });
         };
         /**
          * 选项卡进入动画(免费类型进入动画)
@@ -219,13 +204,24 @@ var game;
                     egret.Tween.removeTweens(_this.closeRect);
                     _this.closeRect.visible = false;
                     _this.visible = false;
+                    if (game.GlobalConfig.effectSwitch) {
+                        game.SoundPlayer.closeEffect();
+                        game.SoundPlayer.closeEffect(false);
+                    }
+                    //去掉粒子
+                    _this.parArr.forEach(function (v) {
+                        v.visible = false;
+                        v.stop();
+                        v.parent && v.parent.removeChild(v);
+                    });
+                    _this.parArr = [];
                     res();
                 });
                 egret.Tween.get(_this.maxArr).to({ alpha: 0.4 }, 500).call(function () { return egret.Tween.removeTweens(_this.maxArr); });
             });
         };
         /**点击某选项卡*/
-        FreeChoose.prototype.onClick = function (e) {
+        FreeChoose.prototype.onTouch = function (e) {
             var _this = this;
             //发送免费请求
             var respData;
@@ -248,54 +244,11 @@ var game;
             this.cardOut(e.target).then(function () {
                 game.SoundPlayer.playEffect("ROT_243_CardEffect_mp3");
                 _this.cardBgAni(cardType);
-            });
-        };
-        FreeChoose.prototype.onTouch = function (e) {
-            var _this = this;
-            game.SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
-            var n = 0;
-            switch (e.target) {
-                case this["choose20"]:
-                    n = 5;
-                    break;
-                case this["choose15"]:
-                    n = 4;
-                    break;
-                case this["choose10"]:
-                    n = 3;
-                    break;
-                case this["choose8"]:
-                    n = 2;
-                    break;
-                case this["choose5"]:
-                    n = 1;
-                    break;
-            }
-            ["20", "15", "10", "8", "5"].forEach(function (v) {
-                var target = _this["choose" + v];
-                if (e.target != target) {
-                    _this["chooseGroup"].setChildIndex(target, 0);
-                }
-                else {
-                    var respData_1;
-                    Promise.all([
-                        new Promise(function (resolve, reject) {
-                            n > 0 && game.GameService.getInstance().sendFreeChoose(n).then(function (resp) { return __awaiter(_this, void 0, void 0, function () {
-                                return __generator(this, function (_a) {
-                                    respData_1 = resp;
-                                    resolve();
-                                    return [2 /*return*/];
-                                });
-                            }); });
-                        })
-                    ]).then(function () { return __awaiter(_this, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            // await this.yuanbaoAni();
-                            this.sendNotify(game.NotifyConst.chooseFreeBack, respData_1);
-                            return [2 /*return*/];
-                        });
-                    }); });
-                }
+                setTimeout(function () {
+                    sendFree().then(function () {
+                        _this.close().then(function () { return _this.sendNotify(game.NotifyConst.chooseFreeBack, respData); });
+                    });
+                }, 1500);
             });
         };
         return FreeChoose;

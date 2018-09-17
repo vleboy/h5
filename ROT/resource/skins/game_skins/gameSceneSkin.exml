@@ -71,11 +71,11 @@
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
 		<e:BitmapLabel id="lineWinTxt" width="600" height="63" horizontalCenter="0" verticalCenter="45" text="1232" letterSpacing="-35" touchEnabled="false" textAlign="center" font="fnt113_fnt"/>
-		<e:Image id="freeCountBg" x="-99" y="133" scaleX="1" scaleY="1" source="sliderBg_png"/>
-		<e:Image id="freeChooseCountBg" x="1394" y="112" source="fillBg_png"/>
-		<e:BitmapLabel id="freeChooseCountTxt" right="-267" font="fnt113_fnt" text="2" height="40" top="166" width="176" textAlign="center"/>
-		<e:Group id="freeMultiGroup" width="200" height="140" left="-94" top="140" visible="false">
-			<e:BitmapLabel id="freeMulti" text="" height="70" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0" font="fnt156_fnt"/>
+		<e:Image id="freeCountBg" x="200" y="90" scaleX="1" scaleY="1" source="UI_mianban_png" height="75" width="140"/>
+		<e:Image id="freeChooseCountBg" x="1050" y="90" source="symbolName_0_png" height="75" width="81"/>
+		<e:BitmapLabel id="freeChooseCountTxt" font="fnt113_fnt" text="1" textAlign="center" scaleY="0.3" scaleX="0.3" top="110" left="1140"/>
+		<e:Group id="freeMultiGroup" left="165" top="60" width="200" height="140" visible="false">
+			<e:BitmapLabel id="freeMulti" text="10" scaleX="0.25" scaleY="0.25" verticalCenter="0" horizontalCenter="0" font="fnt156_fnt"/>
 		</e:Group>
 	</e:Group>
 	<e:Group width="1920" height="1080" verticalCenter="0" horizontalCenter="0">
@@ -106,12 +106,13 @@
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" height="220" y="860" horizontalCenter="0"/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
-	<e:TextInput id="testInput" width="363.94" height="57.88" x="397" y="53" anchorOffsetX="0" anchorOffsetY="0"/>
-	<e:Group id="freeChanceGroup" width="100%" x="0" y="0" height="100%" visible="false">
-		<game:AMovieClip id="freeChangeMc" width="292" height="141" source="title1_png" horizontalCenter="0" verticalCenter="-90" scaleX="5" scaleY="5" loop="1" speed="4"/>
-		<e:Image id="freeChangeImg" source="title1_png" horizontalCenter="0" verticalCenter="-90" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
+	<e:TextInput id="testInput" width="364" height="58" x="0" y="90" anchorOffsetX="0" anchorOffsetY="0"/>
+	<e:Group id="freeTxt" width="1920" height="1080" verticalCenter="0" horizontalCenter="0" visible="false">
+		<e:Rect width="100%" height="100%" scaleX="1" scaleY="1" fillAlpha="0.6" verticalCenter="0" horizontalCenter="0"/>
+		<game:AMovieClip id="freeTxtAni" source="freeTxt1_png" verticalCenter="0.5" horizontalCenter="-11" width="1920" height="407" sources="freeTxt|1-33|_png" speed="5" loop="1" x="-11" y="337" scaleX="1" scaleY="1"/>
 	</e:Group>
-	<game:AMovieClip id="freeChooseCountBoom" width="128" height="128" anchorOffsetX="64" anchorOffsetY="64" y="187" x="1727" source="zz_1_png" visible="false"/>
+
+	<game:AMovieClip id="freeChooseCountBoom" width="128" height="128" anchorOffsetX="64" anchorOffsetY="64" y="128" x="1354" source="zz_1_png" visible="false"/>
 	<game:BigWin id="bigWin" height="1080" width="1920" horizontalCenter="0" verticalCenter="0" visible="false"/>
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
 	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>

@@ -25,7 +25,7 @@ var game;
         BigWin.prototype.bigWinStart = function (type, money) {
             var _this = this;
             this.visible = true;
-            //喷元宝的时间
+            //持续时间
             var timer = this.showTime[0];
             switch (type) {
                 case "big":
@@ -63,6 +63,7 @@ var game;
                 };
                 booShow();
                 _this.boomLight.play();
+                _this.boomLight.loop = 1;
                 _this.boomLight.once(game.AMovieClip.COMPLETE, function () {
                     booShow(false);
                     _this.winLight.play();
