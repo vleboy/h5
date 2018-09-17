@@ -81,19 +81,36 @@ var game;
                         .to({ scaleX: 1, scaleY: 1 }, 200)
                         .call(function () { return egret.Tween.removeTweens(_this.winImg); });
                 };
+                var waitTimer;
+                var wait = function (timer) {
+                    return new Promise(function (res2, rej2) {
+                        waitTimer && clearTimeout(waitTimer);
+                        waitTimer = setTimeout(function () { res2(); clearTimeout(waitTimer); }, timer);
+                    });
+                };
                 txtAni("bigWin_png");
-                // switch (type) {
-                //     case "big":
-                //         txtAni("BigWin_png").then(() => res());
-                //         break;
-                //     case "mega":
-                //         txtAni("megaWin_png").then(() => {
-                //         });
-                //         break;
-                //     case "superWin_png":
-                //         txtAni("BigWin_png").then(() => res());
-                //         break;
-                // }
+                var megaTime = _this.showTime[1] - _this.showTime[0];
+                var superTime = _this.showTime[2] - _this.showTime[1];
+                switch (type) {
+                    case "big":
+                        wait(_this.showTime[0]).then(function () { _this.visible = false; res(); });
+                        break;
+                    case "mega":
+                        wait(_this.showTime[0]).then(function () {
+                            txtAni("megaWin_png");
+                            wait(megaTime).then(function () { _this.visible = false; res(); });
+                        });
+                        break;
+                    case "super":
+                        wait(_this.showTime[0]).then(function () {
+                            txtAni("megaWin_png");
+                            wait(megaTime).then(function () {
+                                txtAni("superWin_png");
+                                wait(superTime).then(function () { _this.visible = false; res(); });
+                            });
+                        });
+                        break;
+                }
             });
         };
         /**派彩*/
@@ -104,43 +121,19 @@ var game;
                 egret.Tween.get(_this, { onChange: function () { _this.payout.text = _this.winNum.toFixed(2); }, onChangeObj: _this })
                     .to({ winNum: mon }, timer - 2000).call(function () {
                     egret.Tween.removeTweens(_this);
+                    if (game.GlobalConfig.effectSwitch) {
+                        game.SoundPlayer.closeEffect();
+                        game.SoundPlayer.closeEffect(false);
+                    }
                     game.SoundPlayer.playEffect("CaiShen_243_BigWinOver_mp3");
                     egret.Tween.get(_this.payout)
                         .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
                         .to({ scaleX: 1, scaleY: 1 }, 300)
                         .call(function () {
                         egret.Tween.removeTweens(_this.payout);
-                        // this.fireworks();
                         res();
                     });
                 });
-            });
-        };
-        /**喷烟花*/
-        BigWin.prototype.fireworks = function () {
-            var _this = this;
-            return new Promise(function (res, rej) {
-                var texture = RES.getRes("fireworks_png");
-                var cfg = RES.getRes("particle_fireworks_json");
-                var rand = Math.ceil(Math.random() * 30);
-                var arr = [];
-                for (var i = 0; i <= rand; i++) {
-                    var particle_fireworks = new particle.GravityParticleSystem(texture, cfg);
-                    particle_fireworks.blendMode = egret.BlendMode.ADD;
-                    arr.push(particle_fireworks);
-                    _this.payoutGroup.addChild(particle_fireworks);
-                    var ranX = 200 - Math.floor(Math.random()) * 400;
-                    particle_fireworks.emitterX = 950 + 300 - Math.floor(Math.random() * 600);
-                    particle_fireworks.emitterY = 530 + 150 - Math.floor(Math.random() * 300);
-                    particle_fireworks.start();
-                }
-                var timeOut;
-                if (timeOut)
-                    clearTimeout(timeOut);
-                timeOut = setTimeout(function () {
-                    arr.forEach(function (v) { return v.stop(); });
-                    res();
-                }, 80);
             });
         };
         return BigWin;
