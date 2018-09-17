@@ -64,12 +64,12 @@ module game {
 		private winNum: number = 0;
 
 		public setFree(b: boolean) {
-			this.isFree = b;
-			b && (this.freeAuto = this.isAuto);
+			b && !this.isFree && (this.freeAuto = this.isAuto);
 			this.isAuto = b;
 			!b && (this.isAuto = this.freeAuto);
 			!b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"); 
-			this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
+			this.autoImg.source = b ? "Free_png" : "Auto_1_png";
+			this.isFree = b;
 			this.autoState();
 		}
 
