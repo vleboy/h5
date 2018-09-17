@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="bottomSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Group id="groupBet" width="788" height="200" bottom="0" x="60">
+		<e:Image left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16" source="bottombg3_png"/>
+		<e:Image width="204" height="72" left="192" source="numbg_png" verticalCenter="0"/>
+		<game:SmallButton id="BtnLess" label="" width="110" height="82" scaleX="1" scaleY="1" verticalCenter="0" x="47">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="minus_png" source.down="minus_png" source.disabled="minus_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+		</game:SmallButton>
+		<game:SmallButton id="BtnMore" label="" width="110" height="82" scaleX="1" scaleY="1" verticalCenter="0" x="431">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="plus_png" source.down="plus_png" source.disabled="plus_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+		</game:SmallButton>
+		<game:SmallButton id="BtnMax" label="" width="160" height="82" scaleX="1" scaleY="1" verticalCenter="0" x="582">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+		</game:SmallButton>
+		<e:Label id="betTxt" text="0.00" height="60" width="181" verticalCenter="0" left="205" size="35" textAlign="center" verticalAlign="middle"/>
+	</e:Group>
+	<e:Group id="groupAutoNum" width="252" height="548" right="215" bottom="0">
+		<e:Image left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16" x="-1338" y="283" scaleX="1" scaleY="1" source="bottombg2_png"/>
+		<game:SmallButton id="btn_max" name="btn_max" label="MAX" height="80" width="160" horizontalCenter="0" verticalCenter="-196">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
+		<game:SmallButton id="btn_100" name="btn_max" label="100" height="80" width="160" horizontalCenter="0" verticalCenter="-98">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
+		<game:SmallButton id="btn_50" name="btn_max" label="50" height="80" width="160" horizontalCenter="0" verticalCenter="0">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
+		<game:SmallButton id="btn_20" name="btn_max" label="20" height="80" width="160" horizontalCenter="0" verticalCenter="98">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
+		<game:SmallButton id="btn_10" name="btn_max" label="10" height="80" width="160" horizontalCenter="0" verticalCenter="196">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
+		
+	</e:Group>
+	<e:Group id="groupBtm" name="groupBtm" width="1920" height="220" left="0" bottom="0" touchThrough="true">
+		<e:Image bottom="0" height="120" width="1888" scaleY="-1" y="220" scaleX="1" source="bottombg_png" scale9Grid="51,45,108,10" horizontalCenter="0"/>
+		<e:Image id="winBg" horizontalCenter="0" bottom="0" x="756" y="80" scaleX="1" scaleY="1" source="pool_png"/>
+
+		<e:Image bottom="0" y="100" scaleX="1" scaleY="1" source="flower_png" left="0"/>
+		<e:Image source="flower_png" bottom="0" right="0" x="1136" y="110" scaleX="-1" scaleY="1"/>
+		<game:SmallButton id="helpBtn" label="" scaleX="1" scaleY="1" x="88" verticalCenter="52">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="rule_png" source.down="rule_png" source.disabled="rule_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+		</game:SmallButton>
+		<game:SmallButton id="betBtn" label="下注" width="166" height="85" scaleX="1" scaleY="1" verticalCenter="52" x="232">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+
+		</game:SmallButton>
+		<e:Image height="82" width="256" scale9Grid="66,31,60,58" source="bottombg1_png" x="424" verticalCenter="52"/>
+		<e:Label id="theBet" text="单注：0.00" height="36" size="35" textColor="0xf3f4f4" bottom="40" width="212" textAlign="center" verticalAlign="middle" left="448"/>
+		<e:Image source="win_png" y="101" horizontalCenter="0"/>
+		<e:Label id="winTxt" text="0.00" size="42" height="38" horizontalCenter="0" textColor="0xfdc020" textAlign="center" verticalAlign="middle" width="340" bottom="23"/>
+		<e:Image height="82" width="256" scale9Grid="75,42,59,34" source="bottombg1_png" verticalCenter="52" x="1230"/>
+		<e:Label id="allBet" text="总押注：0.00" height="36" size="35" textColor="0xF3F4F4" bottom="40" width="228" textAlign="center" verticalAlign="middle" x="1245"/>
+		<game:SmallButton id="autoBtn" label="自动转动" width="166" height="85" verticalCenter="52" x="1494">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+
+		</game:SmallButton>
+		<game:SmallButton id="cancelAutoBtn" label="取消自动" width="166" height="85" verticalCenter="52" x="1494" visible="false">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btnGreen_png" source.down="btnGreen_png" source.disabled="btnGreen_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
+		</game:SmallButton>
+
+		<e:Group id="groupSpin" right="0" bottom="0" width="262" height="228">
+			<e:Image anchorOffsetX="115" anchorOffsetY="114" scaleX="1" scaleY="1" source="spinbg_png" verticalCenter="16" horizontalCenter="12"/>
+			<e:Image source="spinborder_png" anchorOffsetX="115" anchorOffsetY="114" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+
+			<e:Button id="spinBtn" label="" anchorOffsetX="87" anchorOffsetY="87" scaleX="1" scaleY="1" enabled="true" verticalCenter="17" horizontalCenter="12">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="spin_png" source.down="spin_png" source.disabled="spin_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+
+			</e:Button>
+			<e:Button id="stopSpinBtn" label="" anchorOffsetX="87" anchorOffsetY="87" scaleX="1" scaleY="1" enabled="true" verticalCenter="17" horizontalCenter="12">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="arrow_png" source.down="arrow_png" source.disabled="arrow_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+
+			</e:Button>
+
+			<e:Group id="groupAuto" width="230" height="228" verticalCenter="0" horizontalCenter="0" touchChildren="false" touchThrough="true" touchEnabled="false">
+				<e:Image id="autoImg" horizontalCenter="13" top="67" x="57" y="60" scaleX="1" scaleY="1" source="auto_png"/>
+				<e:Label id="autoNum" text="MAX" height="55" textAlign="center" verticalAlign="middle" horizontalCenter="15" bold="true" size="55" top="134" x="100" y="120" scaleX="1" scaleY="1" textColor="0x000000"/>
+			</e:Group>
+
+		</e:Group>
+
+	</e:Group>
+</e:Skin>
