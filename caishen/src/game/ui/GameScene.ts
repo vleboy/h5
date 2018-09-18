@@ -668,6 +668,11 @@ module game {
 		 * scatter图标动画
 		 * */
 		private showScatterLine() {
+			if(this.spinResp.payload.getFeatureChance){
+				this.lineWinTxt.visible = true;
+				this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+			}
+
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					let gridIndex = value + column * 3;
@@ -677,6 +682,8 @@ module game {
 		}
 		private stopScatterLine(){
             this.particleBg.visible = false;
+			this.lineWinTxt.visible = false;
+			this.lineWinTxt.text = "";
             this.spinResp.payload.scatterGrid.forEach((value: number, column: number)=>{
                 let gridIndex = value + column * 3;
                 this.symbols[gridIndex].reset();
