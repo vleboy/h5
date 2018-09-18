@@ -12,6 +12,7 @@ module game {
 		private bg: eui.Image;
 		private bgFree: eui.Image;
 		private title: AMovieClip;
+		private titleLight: AMovieClip;
 		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
 		private freeChooseCountTxt: eui.BitmapLabel;
@@ -94,6 +95,7 @@ module game {
 		 * */
 		private initTitle() {
 			this.title.play();
+			this.titleLight.play();
 		}
 		/**
 		 * 星星

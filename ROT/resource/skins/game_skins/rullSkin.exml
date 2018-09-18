@@ -7,7 +7,7 @@
 		<e:Group id="rull" width="1920" height="672" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0">
 			<e:Group id="groupRull" verticalCenter="0" left="97" width="10356" height="672" x="0" y="0" scaleX="1" scaleY="1">
 				<e:Group id="groupRull0" width="1726" height="672" left="0" verticalCenter="0">
-				<e:Image verticalCenter="0" horizontalCenter="0" height="670" width="1698" source="btm_png"/>
+				<e:Image verticalCenter="0" horizontalCenter="0" height="670" width="1698" source="page1_png"/>
 				</e:Group>
 				<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
 				<e:Group width="505" height="224" left="0" top="45">
@@ -80,13 +80,13 @@
 				</e:Group>
 				</e:Group>
 				<e:Group id="groupRull3" width="1726" height="672" verticalCenter="0" left="5178">
-				<e:Image verticalCenter="0" horizontalCenter="0" width="1480" height="568" source="BetButton_png"/>
+				<e:Image verticalCenter="0" horizontalCenter="0" width="1480" height="568" source="page4_png"/>
 				</e:Group>
 				<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
-				<e:Image width="1423" height="445" top="100" left="40" source="touchLight_png"/>
+				<e:Image width="1423" height="445" top="100" left="40" source="page5_png"/>
 				</e:Group>
 				<e:Group id="groupRull5" width="1726" height="672" verticalCenter="0" left="8630">
-				<e:Image verticalCenter="0" horizontalCenter="0" width="1380" height="650" source="totalWinBg_png"/>
+				<e:Image verticalCenter="0" horizontalCenter="0" width="1380" height="650" source="page6_png"/>
 				</e:Group>
 			</e:Group>
 		</e:Group>

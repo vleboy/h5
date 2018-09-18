@@ -80,6 +80,7 @@ var game;
          * */
         GameScene.prototype.initTitle = function () {
             this.title.play();
+            this.titleLight.play();
         };
         /**
          * 星星

@@ -12,6 +12,7 @@
 
 
 			<game:AMovieClip id="title" horizontalCenter="0" speed="8" top="105" height="75" width="500" source="title1_png" sources="title|1-20|_png"/>
+			<game:AMovieClip id="titleLight" horizontalCenter="12" speed="10" top="120" sources="totalLight|1-11|_png" source="totalLight6_png" width="40" height="43"/>
 
 
 
