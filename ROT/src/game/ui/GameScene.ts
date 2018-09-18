@@ -216,7 +216,7 @@ module game {
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				}
 				//去选择免费游戏
 				else if (resp.payload.featureData.featureChanceCount > 0) {
@@ -302,8 +302,10 @@ module game {
 				this.stage.addChild(new game.ErrTip("余额不足", () => { }, this));
 				return;
 			}
-			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
-			this.topBar.setBalance(txt);
+			if (!this.isFree) {
+				let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+				this.topBar.setBalance(txt);
+			}
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -434,10 +436,10 @@ module game {
 			let is5Delay: boolean = is4Delay && arr.slice(9, 12).indexOf("0") > -1;
 
 			for (let i = 0; i < 5; i++) {
-				if (i < 2) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3));
-				else if (i == 2) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is3Delay);
-				else if (i == 3) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is4Delay);
-				else if (i == 4) await this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is5Delay);
+				if (i < 2) await this.stopColumn(i, arr);
+				else if (i == 2) await this.stopColumn(i, arr, is3Delay);
+				else if (i == 3) await this.stopColumn(i, arr, is4Delay);
+				else if (i == 4) await this.stopColumn(i, arr, is5Delay);
 			}
 			this.judgeResult();
 		}
@@ -445,25 +447,28 @@ module game {
 		 * 单列停下来
 		 * */
 		private stopColumn(column, arr: any[], isFree: boolean = false) {
+			let columnArr = arr.slice(column * 3, column * 3 + 3);
 			return new Promise(async (resolve, reject) => {
 				if (isFree) await this.freeEffect(column);
-
 				egret.Tween.removeTweens(this["vagueTile" + (column * 4)]);
 				[0, 1, 2, 3].forEach(i => {
 					this["vagueTile" + (column * 4 + i)].visible = false;
 					this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
 				});
 
-				let haveScatterThisColumn = false;
+				let haveScatterThisColumn = true;
+				for(let c=0; c<=column; c++){
+					if(arr[c*3]!="0" && arr[c*3+1]!="0" && arr[c*3+2]!="0"){
+						haveScatterThisColumn = false;
+					}
+				}
 				[0, 1, 2].forEach(i => {
-					if (arr[i] == "0") haveScatterThisColumn = true;
-
 					//处理wild图标的多样性
 					let symbol: Symbol = this.symbols[(column * 3 + i)];
-					let str = arr[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : arr[i];
+					let str = columnArr[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : columnArr[i];
 					let defaultY = symbol.tile.y;
 					symbol.tile.visible = true;
-					symbol.value = arr[i];
+					symbol.value = columnArr[i];
 					symbol.setTexture("symbolName_" + str + "_png");
 
 					egret.Tween.get(symbol.tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch ? 150 : 250).wait(GlobalConfig.fastSwitch ? 50 : 200).call(() => {
@@ -473,8 +478,7 @@ module game {
 				})
 				if (haveScatterThisColumn) SoundPlayer.playEffect("ROT_243_Scatter_" + (column + 1) + "_mp3");
 				SoundPlayer.playEffect("ROT_243_RollStop_mp3");
-			})
-
+			});
 		}
 
 		private freeColumnTimeout: number;
@@ -512,13 +516,11 @@ module game {
 		 * */
 		private cancelSpin() {
 			if (this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
-
 			for (let i = 0; i < 20; i++) {
 				egret.Tween.removeTweens(this["vagueTile" + i]);
 				this["vagueTile" + i].visible = false;
 				this["vagueTile" + i].y = (i % 4) * 208 + 21;
 			}
-
 			let viewGrid = this.spinResp.payload.viewGrid;
 			for (let i = 0; i < 15; i++) {
 				egret.Tween.removeTweens(this.symbols[i].tile);
@@ -528,17 +530,14 @@ module game {
 				let str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
-
 			this.border2.stop();
 			this.border3.stop();
 			this.border4.stop();
 			this.border2.visible = false;
 			this.border3.visible = false;
 			this.border4.visible = false;
-
 			egret.Tween.removeTweens(this["freeCoinsGroup"]);
 			(this["freeCoinsGroup"] as eui.Group).removeChildren();
-
 			this.judgeResult();
 		}
 
@@ -549,7 +548,6 @@ module game {
 		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
-
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
@@ -560,34 +558,45 @@ module game {
 
 			if (this.isFree) {
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+				this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				if (this.freeSpinRemainCount == 0) {
-					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+					setTimeout(() => {
+						this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+					}, 1000);
 				}
 				else {
 					this.setState(GameState.BET);
-					this.spin();
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					setTimeout(() => {
+						if (this.state == GameState.BET) this.spin();
+					}, 1000);
 				}
 			}
 			else {
-				if (this.autoMax) {
-					this.bottomBar.setAutoBetNum(-1);
-				}
-				else if (this.autoCount > 0) {
-					this.bottomBar.setAutoBetNum(--this.autoCount);
-				}
-
 				if (this.spinResp.payload.getFeatureChance) {
+					if (this.autoMax) {
+						this.bottomBar.setAutoBetNum(-1);
+					}
+					else if (this.autoCount > 0) {
+						this.bottomBar.setAutoBetNum(--this.autoCount);
+					}
 					this.showFreeChoose(true);
 				}
 				else {
 					await this.showEveryLineGrid(this.spinResp.payload.winGrid);
+					if (this.autoMax) {
+						this.bottomBar.setAutoBetNum(-1);
+					}
+					else if (this.autoCount > 0) {
+						this.bottomBar.setAutoBetNum(--this.autoCount);
+					}
 					this.setState(GameState.BET);
-					if (this.autoMax || this.autoCount > 0) this.spin();
+					if (this.autoMax || this.autoCount > 0) {
+						setTimeout(() => {
+							if (this.state == GameState.BET) this.spin();
+						}, 1000);
+					}
 				}
 			}
-
-
 		}
 		/**
 		 * 大赢家 normal middle big mega super
@@ -635,6 +644,10 @@ module game {
 		 * scatter图标动画
 		 * */
 		private showScatterLine() {
+			if (this.spinResp.payload.getFeatureChance) {
+				this.lineWinTxt.visible = true;
+				this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+			}
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					let gridIndex = value + column * 3;
@@ -644,6 +657,8 @@ module game {
 		}
 		private stopScatterLine() {
 			this.particleBg.visible = false;
+			this.lineWinTxt.visible = false;
+			this.lineWinTxt.text = "";
 			this.spinResp.payload.scatterGrid.forEach((value: number, column: number) => {
 				let gridIndex = value + column * 3;
 				this.symbols[gridIndex].reset();
@@ -744,13 +759,25 @@ module game {
 				}
 				else {
 					this.setState(GameState.BET);
-					this.spin();
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
+					setTimeout(() => {
+						if (this.state == GameState.BET) this.spin();
+					}, 1000);
 				}
 			}
 			else {
 				this.setState(GameState.BET);
-				if (this.autoMax || this.autoCount > 0) this.spin();
+				if (this.autoMax) {
+					this.bottomBar.setAutoBetNum(-1);
+				}
+				else if (this.autoCount > 0) {
+					this.bottomBar.setAutoBetNum(--this.autoCount);
+				}
+				if (this.autoMax || this.autoCount > 0) {
+					setTimeout(() => {
+						if (this.state == GameState.BET) this.spin();
+					}, 1000);
+				}
 			}
 		}
 

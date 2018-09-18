@@ -71,6 +71,7 @@ module game {
 			this.autoImg.source = b ? "Free_png" : "Auto_1_png";
 			this.isFree = b;
 			this.autoState();
+			!b && this.showAutoBtn(!this.isAuto);
 		}
 
 		public constructor() {

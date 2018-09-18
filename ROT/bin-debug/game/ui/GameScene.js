@@ -197,7 +197,7 @@ var game;
                     this.featureChanceCount = resp.payload.featureData.featureChanceCount;
                     this.showFreeChoose(false);
                     this.showFreeGame(true);
-                    this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                 }
                 else if (resp.payload.featureData.featureChanceCount > 0) {
                     this.showFreeChoose(true);
@@ -283,8 +283,10 @@ var game;
                 this.stage.addChild(new game.ErrTip("余额不足", function () { }, this));
                 return;
             }
-            var txt = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
-            this.topBar.setBalance(txt);
+            if (!this.isFree) {
+                var txt = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+                this.topBar.setBalance(txt);
+            }
             if (autoCount == "max") {
                 this.autoMax = true;
             }
@@ -424,25 +426,25 @@ var game;
                         case 1:
                             if (!(i < 5)) return [3 /*break*/, 10];
                             if (!(i < 2)) return [3 /*break*/, 3];
-                            return [4 /*yield*/, this.stopColumn(i, arr.slice(i * 3, i * 3 + 3))];
+                            return [4 /*yield*/, this.stopColumn(i, arr)];
                         case 2:
                             _a.sent();
                             return [3 /*break*/, 9];
                         case 3:
                             if (!(i == 2)) return [3 /*break*/, 5];
-                            return [4 /*yield*/, this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is3Delay)];
+                            return [4 /*yield*/, this.stopColumn(i, arr, is3Delay)];
                         case 4:
                             _a.sent();
                             return [3 /*break*/, 9];
                         case 5:
                             if (!(i == 3)) return [3 /*break*/, 7];
-                            return [4 /*yield*/, this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is4Delay)];
+                            return [4 /*yield*/, this.stopColumn(i, arr, is4Delay)];
                         case 6:
                             _a.sent();
                             return [3 /*break*/, 9];
                         case 7:
                             if (!(i == 4)) return [3 /*break*/, 9];
-                            return [4 /*yield*/, this.stopColumn(i, arr.slice(i * 3, i * 3 + 3), is5Delay)];
+                            return [4 /*yield*/, this.stopColumn(i, arr, is5Delay)];
                         case 8:
                             _a.sent();
                             _a.label = 9;
@@ -462,9 +464,10 @@ var game;
         GameScene.prototype.stopColumn = function (column, arr, isFree) {
             var _this = this;
             if (isFree === void 0) { isFree = false; }
+            var columnArr = arr.slice(column * 3, column * 3 + 3);
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
                 var _this = this;
-                var haveScatterThisColumn;
+                var haveScatterThisColumn, c;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
@@ -479,16 +482,19 @@ var game;
                                 _this["vagueTile" + (column * 4 + i)].visible = false;
                                 _this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
                             });
-                            haveScatterThisColumn = false;
+                            haveScatterThisColumn = true;
+                            for (c = 0; c <= column; c++) {
+                                if (arr[c * 3] != "0" && arr[c * 3 + 1] != "0" && arr[c * 3 + 2] != "0") {
+                                    haveScatterThisColumn = false;
+                                }
+                            }
                             [0, 1, 2].forEach(function (i) {
-                                if (arr[i] == "0")
-                                    haveScatterThisColumn = true;
                                 //处理wild图标的多样性
                                 var symbol = _this.symbols[(column * 3 + i)];
-                                var str = arr[i] == "1" ? "1" + (_this.buff == "-1" ? "" : "_" + _this.buff) : arr[i];
+                                var str = columnArr[i] == "1" ? "1" + (_this.buff == "-1" ? "" : "_" + _this.buff) : columnArr[i];
                                 var defaultY = symbol.tile.y;
                                 symbol.tile.visible = true;
-                                symbol.value = arr[i];
+                                symbol.value = columnArr[i];
                                 symbol.setTexture("symbolName_" + str + "_png");
                                 egret.Tween.get(symbol.tile).set({ y: defaultY + 100 }).to({ y: defaultY }, game.GlobalConfig.fastSwitch ? 150 : 250).wait(game.GlobalConfig.fastSwitch ? 50 : 200).call(function () {
                                     egret.Tween.removeTweens(symbol.tile);
@@ -569,6 +575,7 @@ var game;
          * */
         GameScene.prototype.judgeResult = function () {
             return __awaiter(this, void 0, void 0, function () {
+                var _this = this;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
@@ -594,31 +601,46 @@ var game;
                             return [4 /*yield*/, this.showEveryLineGrid(this.spinResp.payload.winGrid)];
                         case 6:
                             _a.sent();
+                            this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                             if (this.freeSpinRemainCount == 0) {
-                                this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
+                                setTimeout(function () {
+                                    _this.showFreeTotalWin(_this.spinResp.payload.featureData.featureRoundGold);
+                                }, 1000);
                             }
                             else {
                                 this.setState(game.GameState.BET);
-                                this.spin();
-                                this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                                setTimeout(function () {
+                                    if (_this.state == game.GameState.BET)
+                                        _this.spin();
+                                }, 1000);
                             }
                             return [3 /*break*/, 10];
                         case 7:
+                            if (!this.spinResp.payload.getFeatureChance) return [3 /*break*/, 8];
                             if (this.autoMax) {
                                 this.bottomBar.setAutoBetNum(-1);
                             }
                             else if (this.autoCount > 0) {
                                 this.bottomBar.setAutoBetNum(--this.autoCount);
                             }
-                            if (!this.spinResp.payload.getFeatureChance) return [3 /*break*/, 8];
                             this.showFreeChoose(true);
                             return [3 /*break*/, 10];
                         case 8: return [4 /*yield*/, this.showEveryLineGrid(this.spinResp.payload.winGrid)];
                         case 9:
                             _a.sent();
+                            if (this.autoMax) {
+                                this.bottomBar.setAutoBetNum(-1);
+                            }
+                            else if (this.autoCount > 0) {
+                                this.bottomBar.setAutoBetNum(--this.autoCount);
+                            }
                             this.setState(game.GameState.BET);
-                            if (this.autoMax || this.autoCount > 0)
-                                this.spin();
+                            if (this.autoMax || this.autoCount > 0) {
+                                setTimeout(function () {
+                                    if (_this.state == game.GameState.BET)
+                                        _this.spin();
+                                }, 1000);
+                            }
                             _a.label = 10;
                         case 10: return [2 /*return*/];
                     }
@@ -672,6 +694,10 @@ var game;
          * */
         GameScene.prototype.showScatterLine = function () {
             var _this = this;
+            if (this.spinResp.payload.getFeatureChance) {
+                this.lineWinTxt.visible = true;
+                this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+            }
             return Promise.all(this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map(function (value, column) {
                 var gridIndex = value + column * 3;
                 return _this.symbols[gridIndex].imgWinAni(false);
@@ -680,6 +706,8 @@ var game;
         GameScene.prototype.stopScatterLine = function () {
             var _this = this;
             this.particleBg.visible = false;
+            this.lineWinTxt.visible = false;
+            this.lineWinTxt.text = "";
             this.spinResp.payload.scatterGrid.forEach(function (value, column) {
                 var gridIndex = value + column * 3;
                 _this.symbols[gridIndex].reset();
@@ -791,6 +819,7 @@ var game;
          * 停止中奖展示
          * */
         GameScene.prototype.cancelLinesWin = function () {
+            var _this = this;
             this.setState(game.GameState.BET);
             this.lineWinTxt.visible = false;
             this.particleBg.visible = false;
@@ -804,14 +833,27 @@ var game;
                 }
                 else {
                     this.setState(game.GameState.BET);
-                    this.spin();
-                    this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
+                    setTimeout(function () {
+                        if (_this.state == game.GameState.BET)
+                            _this.spin();
+                    }, 1000);
                 }
             }
             else {
                 this.setState(game.GameState.BET);
-                if (this.autoMax || this.autoCount > 0)
-                    this.spin();
+                if (this.autoMax) {
+                    this.bottomBar.setAutoBetNum(-1);
+                }
+                else if (this.autoCount > 0) {
+                    this.bottomBar.setAutoBetNum(--this.autoCount);
+                }
+                if (this.autoMax || this.autoCount > 0) {
+                    setTimeout(function () {
+                        if (_this.state == game.GameState.BET)
+                            _this.spin();
+                    }, 1000);
+                }
             }
         };
         // -------------------- 免费游戏显示  ------------------------
