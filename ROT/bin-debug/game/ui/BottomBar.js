@@ -14,15 +14,22 @@ var game;
         __extends(BottomBar, _super);
         function BottomBar() {
             var _this = _super.call(this) || this;
+            /**自动的次数*/
+            _this.autoCount = 0;
+            /**赢得钱*/
             _this.winNum = 0;
             _this.skinName = game.GlobalConfig.skinPath + "bottomSkin.exml";
             return _this;
         }
         BottomBar.prototype.setFree = function (b) {
-            this.isFree = b;
+            b && !this.isFree && (this.freeAuto = this.isAuto);
             this.isAuto = b;
-            this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
+            !b && (this.isAuto = this.freeAuto);
+            !b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX");
+            this.autoImg.source = b ? "Free_png" : "Auto_1_png";
+            this.isFree = b;
             this.autoState();
+            !b && this.showAutoBtn(!this.isAuto);
         };
         /**初始化*/
         BottomBar.prototype.init = function () {
@@ -33,6 +40,8 @@ var game;
         BottomBar.prototype.initData = function () {
             this.isAuto = false;
             this.isFree = false;
+            this.freeAuto = false;
+            this.autoCount = 0;
         };
         /**事件监听*/
         BottomBar.prototype.eventListen = function () {
@@ -228,6 +237,15 @@ var game;
             this.winTxt.text = mon + "";
             this.payout(mon);
         };
+        /**转动按钮显示*/
+        BottomBar.prototype.spinBtnShow = function (isShow, isEn) {
+            if (isShow === void 0) { isShow = true; }
+            if (isEn === void 0) { isEn = true; }
+            this.spinBtn.visible = this.isAuto ? true : isShow;
+            this.spinBtn.enabled = isEn;
+            this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
+            this.spinArrow.visible = this.isAuto ? false : isShow;
+        };
         /**控制游戏状态 */
         BottomBar.prototype.setState = function (n) {
             var _this = this;
@@ -239,31 +257,22 @@ var game;
                 _this.betBtn.enabled = isBetEn;
                 _this.autoBtn.enabled = isAutoEn;
             };
-            /**转动按钮显示*/
-            var spinBtnShow = function (isShow, isEn) {
-                if (isShow === void 0) { isShow = true; }
-                if (isEn === void 0) { isEn = true; }
-                _this.spinBtn.visible = _this.isAuto ? true : isShow;
-                _this.spinBtn.enabled = isEn;
-                _this.stopSpinBtn.visible = _this.isAuto ? false : !isShow;
-                _this.spinArrow.visible = _this.isAuto ? false : isShow;
-            };
             this.autoState();
             switch (n) {
                 case game.GameState.BET:
                     this.isFree ? betAutoState(false, false) : betAutoState();
-                    spinBtnShow();
+                    this.spinBtnShow();
                     break;
                 case game.GameState.SPINNING:
                     this.winTxt.text = "0.00";
                     this.isFree ? betAutoState(false, false) : betAutoState(false, false);
-                    spinBtnShow(true, false);
+                    this.spinBtnShow(true, false);
                     if (this.isAuto)
                         this.spinBtn.enabled = false;
                     break;
                 case game.GameState.SHOW_RESULT:
                     this.isFree ? betAutoState(false, false) : betAutoState(false);
-                    spinBtnShow(true, false);
+                    this.spinBtnShow(true, false);
                     if (this.isAuto)
                         this.spinBtn.enabled = false;
                     break;
@@ -271,22 +280,28 @@ var game;
                 case game.GameState.SHOW_SINGLE_LINES:
                     this.isFree ? betAutoState(false, false) : betAutoState(false, false);
                     this.imgSpin(true);
-                    spinBtnShow(false);
+                    this.spinBtnShow(false);
                     if (this.isAuto)
                         this.spinBtn.enabled = true;
                     break;
             }
         };
-        /**自动或免费下注次数*/
+        /**自动下注次数*/
         BottomBar.prototype.setAutoBetNum = function (num) {
-            if (!this.isFree)
-                this.showAutoBtn(num == 0);
-            if (this.isFree && this.cancelAutoBtn.visible)
-                this.cancelAutoBtn.enabled = false;
-            if (!this.isFree && this.isAuto && this.cancelAutoBtn.visible)
+            this.showAutoBtn(num == 0);
+            if (this.isAuto && this.cancelAutoBtn.visible)
                 this.cancelAutoBtn.enabled = true;
             this.isAuto = num != 0;
+            this.autoCount = num;
             this.autoNum.text = num >= 0 ? (num + "") : "MAX";
+            if (num == 0)
+                this.spinBtnShow();
+        };
+        /**免费下注次数*/
+        BottomBar.prototype.setFreeBetNum = function (num) {
+            if (this.cancelAutoBtn.visible)
+                this.cancelAutoBtn.enabled = false;
+            this.autoNum.text = num + "";
         };
         /**
          * 资源释放
