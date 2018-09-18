@@ -253,14 +253,19 @@ var game;
                     this.showFreeGame(true);
                     break;
                 case game.NotifyConst.freeComplete:
-                    egret.Tween.get(this)
-                        .to({ alpha: 0 }, 700)
+                    egret.Tween.get(this["gameMask"])
+                        .set({ visible: true, alpha: 0 })
+                        .to({ alpha: 1 }, 700)
                         .wait(700)
                         .call(function () {
                         _this.freeTotalWin.visible = false;
                         _this.freeComplete();
                     })
-                        .to({ alpha: 1 }, 700);
+                        .to({ alpha: 0 }, 700)
+                        .call(function () {
+                        _this["gameMask"].visible = false;
+                        egret.Tween.removeTweens(_this["gameMask"]);
+                    });
                     break;
                 case game.NotifyConst.updateBgm:
                     this.updateBgm();

@@ -21,9 +21,9 @@
 		<e:Rect id="tileMask" width="1334" height="752" horizontalCenter="0" verticalCenter="14"/>
 		<e:Group id="tileGroup" width="1334" height="680" horizontalCenter="0" verticalCenter="15">
 			<e:Group id="freeEffectGroup" width="100%" height="100%" horizontalCenter="0" x="0" scaleX="1" scaleY="1" verticalCenter="0">
-				<game:AMovieClip id="border2" width="280" height="550" horizontalCenter="0" scaleY="1.75" scaleX="1.75" sources="border|1-34|_png" speed="3" source="border1_png" verticalCenter="25" visible="false"/>
-				<game:AMovieClip id="border3" width="280" height="550" horizontalCenter="268" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
-				<game:AMovieClip id="border4" width="280" height="550" horizontalCenter="530" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
+				<game:AMovieClip id="border2" width="280" height="525" horizontalCenter="0" scaleY="1.75" scaleX="1.75" sources="border|1-34|_png" speed="3" source="border1_png" verticalCenter="25" visible="false"/>
+				<game:AMovieClip id="border3" width="280" height="525" horizontalCenter="268" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
+				<game:AMovieClip id="border4" width="280" height="525" horizontalCenter="530" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
 				<e:Group id="freeCoinsGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
@@ -124,6 +124,7 @@
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
 	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false"/>
+	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>

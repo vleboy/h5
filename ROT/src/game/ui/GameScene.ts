@@ -272,14 +272,19 @@ module game {
 					this.showFreeGame(true);
 					break;
 				case NotifyConst.freeComplete:
-					egret.Tween.get(this)
-						.to({ alpha: 0 }, 700)
+					egret.Tween.get(this["gameMask"])
+						.set({visible: true, alpha:0})
+						.to({ alpha: 1 }, 700)
 						.wait(700)
 						.call(() => {
 							this.freeTotalWin.visible = false;
 							this.freeComplete();
 						})
-						.to({ alpha: 1 }, 700);
+						.to({ alpha: 0 }, 700)
+						.call(() => {
+							this["gameMask"].visible = false;
+							egret.Tween.removeTweens(this["gameMask"]);
+						})
 					break;
 				case NotifyConst.updateBgm:
 					this.updateBgm();
