@@ -53,10 +53,11 @@ module game {
 				[50, 10, 5],
 			]
 		}
+		private ruleScroll: eui.Group;
 		/**默认显示*/
 		private defaultUI(): void {
 			this.rullShow(0.01);
-			this.groupRull.mask = this.rullMask;
+			this.ruleScroll.mask = new egret.Rectangle(97, 0, 1726, 1080);
 		}
 		/**设置赔率*/
 		private setOdds(theBet: number): void {

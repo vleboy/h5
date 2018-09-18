@@ -709,6 +709,10 @@ var game;
          * */
         GameScene.prototype.showScatterLine = function () {
             var _this = this;
+            if (this.spinResp.payload.getFeatureChance) {
+                this.lineWinTxt.visible = true;
+                this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+            }
             return Promise.all(this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map(function (value, column) {
                 var gridIndex = value + column * 3;
                 return _this.symbols[gridIndex].showWinAni(false);
@@ -717,6 +721,8 @@ var game;
         GameScene.prototype.stopScatterLine = function () {
             var _this = this;
             this.particleBg.visible = false;
+            this.lineWinTxt.visible = false;
+            this.lineWinTxt.text = "";
             this.spinResp.payload.scatterGrid.forEach(function (value, column) {
                 var gridIndex = value + column * 3;
                 _this.symbols[gridIndex].reset();

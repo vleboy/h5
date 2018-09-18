@@ -14,13 +14,19 @@ var game;
         __extends(BottomBar, _super);
         function BottomBar() {
             var _this = _super.call(this) || this;
+            /**自动的次数*/
+            _this.autoCount = 0;
+            /**赢得钱*/
             _this.winNum = 0;
             _this.skinName = game.GlobalConfig.skinPath + "bottomSkin.exml";
             return _this;
         }
         BottomBar.prototype.setFree = function (b) {
             this.isFree = b;
+            b && (this.freeAuto = this.isAuto);
             this.isAuto = b;
+            !b && (this.isAuto = this.freeAuto);
+            !b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX");
             this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
             this.autoState();
         };
@@ -33,6 +39,8 @@ var game;
         BottomBar.prototype.initData = function () {
             this.isAuto = false;
             this.isFree = false;
+            this.freeAuto = false;
+            this.autoCount = 0;
         };
         /**事件监听*/
         BottomBar.prototype.eventListen = function () {
@@ -42,7 +50,7 @@ var game;
                     _this.sendNotify(game.NotifyConst.cancelSpin);
                 }
                 else {
-                    game.SoundPlayer.playEffect("Spin_mp3");
+                    game.SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
                     _this.sendNotify(game.NotifyConst.spin);
                     _this.imgSpin();
                     _this.setWinMoney(0.00);
@@ -95,11 +103,11 @@ var game;
             var betShow = function () {
                 _this.hideCutGroup();
                 _this.groupBet.visible = true;
-                _this.showTween(_this.groupBet, 126).then(function () { return game.SoundPlayer.playEffect("Generic1_mp3"); });
+                _this.showTween(_this.groupBet, 126).then(function () { return game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"); });
             };
             this.groupBet.visible ? this.showTween(this.groupBet, -100).then(function () {
                 _this.groupBet.visible = false;
-                game.SoundPlayer.playEffect("Generic2_mp3");
+                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             }) : betShow();
         };
         /**校验加减号状态和设置单注下注档次*/
@@ -113,19 +121,19 @@ var game;
         };
         /**单注增加*/
         BottomBar.prototype.addBetLevel = function () {
-            game.SoundPlayer.playEffect("Generic1_mp3");
+            game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
             this.theBetIndex < this.theBetArr.length - 1 && this.theBetIndex++;
             this.checkPlusReduceState();
         };
         /**单注减少*/
         BottomBar.prototype.reduceBetLevel = function () {
-            game.SoundPlayer.playEffect("Generic1_mp3");
+            game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
             this.theBetIndex > 0 && this.theBetIndex--;
             this.checkPlusReduceState();
         };
         /**单注最大*/
         BottomBar.prototype.maxBetLevel = function () {
-            game.SoundPlayer.playEffect("Generic1_mp3");
+            game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
             this.theBetIndex = this.theBetArr.length - 1;
             this.checkPlusReduceState();
         };
@@ -135,11 +143,11 @@ var game;
             var autoShow = function () {
                 _this.hideCutGroup();
                 _this.groupAutoNum.visible = true;
-                _this.showTween(_this.groupAutoNum, 107).then(function () { return game.SoundPlayer.playEffect("Generic1_mp3"); });
+                _this.showTween(_this.groupAutoNum, 107).then(function () { return game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"); });
             };
             this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(function () {
                 _this.groupAutoNum.visible = false;
-                game.SoundPlayer.playEffect("Generic2_mp3");
+                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             }) : autoShow();
         };
         /**隐藏切入框*/
@@ -148,11 +156,11 @@ var game;
             if (isSound === void 0) { isSound = false; }
             this.groupBet.visible && this.showTween(this.groupBet, -100).then(function () {
                 _this.groupBet.visible = false;
-                isSound && game.SoundPlayer.playEffect("Generic2_mp3");
+                isSound && game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             });
             this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(function () {
                 _this.groupAutoNum.visible = false;
-                isSound && game.SoundPlayer.playEffect("Generic2_mp3");
+                isSound && game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             });
         };
         /**取消自动转动*/
@@ -228,6 +236,15 @@ var game;
             this.winTxt.text = mon + "";
             this.payout(mon);
         };
+        /**转动按钮显示*/
+        BottomBar.prototype.spinBtnShow = function (isShow, isEn) {
+            if (isShow === void 0) { isShow = true; }
+            if (isEn === void 0) { isEn = true; }
+            this.spinBtn.visible = this.isAuto ? true : isShow;
+            this.spinBtn.enabled = isEn;
+            this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
+            this.spinArrow.visible = this.isAuto ? false : isShow;
+        };
         /**控制游戏状态 */
         BottomBar.prototype.setState = function (n) {
             var _this = this;
@@ -239,49 +256,51 @@ var game;
                 _this.betBtn.enabled = isBetEn;
                 _this.autoBtn.enabled = isAutoEn;
             };
-            /**转动按钮显示*/
-            var spinBtnShow = function (isShow, isEn) {
-                if (isShow === void 0) { isShow = true; }
-                if (isEn === void 0) { isEn = true; }
-                _this.spinBtn.visible = _this.isAuto ? true : isShow;
-                _this.spinBtn.enabled = isEn;
-                _this.stopSpinBtn.visible = _this.isAuto ? false : !isShow;
-                _this.spinArrow.visible = _this.isAuto ? false : isShow;
-            };
             this.autoState();
             switch (n) {
                 case game.GameState.BET:
-                    betAutoState();
-                    spinBtnShow();
+                    this.isFree ? betAutoState(false, false) : betAutoState();
+                    this.spinBtnShow();
                     break;
                 case game.GameState.SPINNING:
                     this.winTxt.text = "0.00";
-                    betAutoState(false, false);
-                    spinBtnShow(true, false);
+                    this.isFree ? betAutoState(false, false) : betAutoState(false, false);
+                    this.spinBtnShow(true, false);
                     if (this.isAuto)
                         this.spinBtn.enabled = false;
                     break;
                 case game.GameState.SHOW_RESULT:
-                    betAutoState(false);
-                    spinBtnShow(true, false);
+                    this.isFree ? betAutoState(false, false) : betAutoState(false);
+                    this.spinBtnShow(true, false);
                     if (this.isAuto)
                         this.spinBtn.enabled = false;
                     break;
                 case game.GameState.STOP:
                 case game.GameState.SHOW_SINGLE_LINES:
-                    betAutoState(false, false);
+                    this.isFree ? betAutoState(false, false) : betAutoState(false, false);
                     this.imgSpin(true);
-                    spinBtnShow(false);
+                    this.spinBtnShow(false);
                     if (this.isAuto)
                         this.spinBtn.enabled = true;
                     break;
             }
         };
-        /**自动或免费下注次数*/
+        /**自动下注次数*/
         BottomBar.prototype.setAutoBetNum = function (num) {
             this.showAutoBtn(num == 0);
+            if (this.isAuto && this.cancelAutoBtn.visible)
+                this.cancelAutoBtn.enabled = true;
             this.isAuto = num != 0;
+            this.autoCount = num;
             this.autoNum.text = num >= 0 ? (num + "") : "MAX";
+            if (num == 0)
+                this.spinBtnShow();
+        };
+        /**免费下注次数*/
+        BottomBar.prototype.setFreeBetNum = function (num) {
+            if (this.cancelAutoBtn.visible)
+                this.cancelAutoBtn.enabled = false;
+            this.autoNum.text = num + "";
         };
         /**
          * 资源释放
