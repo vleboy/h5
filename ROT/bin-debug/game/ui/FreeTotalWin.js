@@ -21,7 +21,7 @@ var game;
         FreeTotalWin.prototype.init = function () {
         };
         FreeTotalWin.prototype.showTotalWin = function (n) {
-            game.SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
+            game.SoundPlayer.playEffect("ROT_243_FreeOver_mp3");
             this.visible = true;
             this.win = +n;
             this.num = 0;
