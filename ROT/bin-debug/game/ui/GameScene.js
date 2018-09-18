@@ -692,7 +692,7 @@ var game;
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (_this.spinResp.payload.getFeatureChance) {
-                    game.SoundPlayer.playEffect("ROT_243_Get_FreeGame_ogg");
+                    game.SoundPlayer.playEffect("ROT_243_Get_FreeGame_mp3");
                     _this.setFreeChooseCount(true);
                     //免费游戏文字帧动画
                     _this.freeTxt.visible = true;
@@ -833,7 +833,7 @@ var game;
             this.freeTotalWin.visible = false;
             this.bg.visible = !b;
             this.bgFree.visible = b;
-            this.freeCountBg.visible = b;
+            this.freeMultiGroup.visible = b;
             this.setFreeChooseCount();
             this.initStar(b);
             this.setState(game.GameState.BET);
@@ -868,8 +868,7 @@ var game;
                     .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
                     .call(function () {
                     _this.freeChooseCountBoom.play();
-                    // this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-                    _this.freeChooseCountTxt.text = "" + _this.featureChanceCount;
+                    _this.freeChooseCountTxt.text = "x" + _this.featureChanceCount;
                     _this.freeChooseCountBg.visible = isShow;
                     _this.freeChooseCountTxt.visible = isShow;
                     setTimeout(function () {
@@ -881,8 +880,7 @@ var game;
             else {
                 this.freeChooseCountBg.visible = isShow;
                 this.freeChooseCountTxt.visible = isShow;
-                // isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
-                isShow && (this.freeChooseCountTxt.text = "" + this.featureChanceCount);
+                isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
             }
         };
         /**
@@ -890,15 +888,11 @@ var game;
          * */
         GameScene.prototype.freeMultiAni = function (mul, isStart) {
             if (isStart === void 0) { isStart = true; }
-            if (isStart) {
-                this.freeMultiGroup.visible = true;
-                //倍数
-                // this.freeMulti.text = "X" + mul;
-                this.freeMulti.text = "" + mul;
-            }
-            else {
-                this.freeMultiGroup.visible = false;
-            }
+            this.freeMulti.visible = isStart;
+            this.freeNoMulit.visible = !isStart;
+            //倍数
+            if (isStart)
+                this.freeMulti.text = "x" + mul;
         };
         /**
          * 进入免费结算面板，显示免费总奖励

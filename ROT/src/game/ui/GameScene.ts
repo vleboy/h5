@@ -13,7 +13,6 @@ module game {
 		private bgFree: eui.Image;
 		private title: AMovieClip;
 		private titleLight: AMovieClip;
-		private freeCountBg: eui.Image;
 		private freeChooseCountBg: eui.Image;
 		private freeChooseCountTxt: eui.BitmapLabel;
 		private freeTotalWin: FreeTotalWin;
@@ -26,6 +25,7 @@ module game {
 		private bigWin: BigWin;
 		private symbols: Array<Symbol>;
 		private freeMultiGroup: eui.Group;
+		private freeNoMulit: eui.Image;
 		private freeMulti: eui.BitmapLabel;
 		private freeChooseCountBoom: AMovieClip;
 		private connectTip: ConnectTip;
@@ -654,7 +654,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("ROT_243_Get_FreeGame_ogg");
+					SoundPlayer.playEffect("ROT_243_Get_FreeGame_mp3");
 					this.setFreeChooseCount(true);
 					//免费游戏文字帧动画
 					this.freeTxt.visible = true;
@@ -771,7 +771,7 @@ module game {
 			this.freeTotalWin.visible = false;
 			this.bg.visible = !b;
 			this.bgFree.visible = b;
-			this.freeCountBg.visible = b;
+			this.freeMultiGroup.visible = b;
 			this.setFreeChooseCount();
 			this.initStar(b);
 			this.setState(GameState.BET);
@@ -806,8 +806,7 @@ module game {
 					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
 					.call(() => {
 						this.freeChooseCountBoom.play();
-						// this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-						this.freeChooseCountTxt.text = "" + this.featureChanceCount;
+						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
 						this.freeChooseCountBg.visible = isShow;
 						this.freeChooseCountTxt.visible = isShow;
 						setTimeout(() => {
@@ -818,22 +817,17 @@ module game {
 			} else {
 				this.freeChooseCountBg.visible = isShow;
 				this.freeChooseCountTxt.visible = isShow;
-				// isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
-				isShow && (this.freeChooseCountTxt.text = "" + this.featureChanceCount);
+				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
 			}
 		}
 		/**
 		 * 显示免费的倍数
 		 * */
 		private freeMultiAni(mul: number, isStart: boolean = true): void {
-			if (isStart) {
-				this.freeMultiGroup.visible = true;
+			this.freeMulti.visible = isStart;
+			this.freeNoMulit.visible = !isStart;
 				//倍数
-				// this.freeMulti.text = "X" + mul;
-				this.freeMulti.text = "" + mul;
-			} else {
-				this.freeMultiGroup.visible = false;
-			}
+			if (isStart) this.freeMulti.text = "x" + mul;
 		}
 		/**
 		 * 进入免费结算面板，显示免费总奖励

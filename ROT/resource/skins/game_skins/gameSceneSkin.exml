@@ -71,12 +71,14 @@
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
-		<e:BitmapLabel id="lineWinTxt" horizontalCenter="0" verticalCenter="45" text="1232" letterSpacing="-10" touchEnabled="false" textAlign="center" font="fnt113_fnt" scaleX="0.5" scaleY="0.5"/>
-		<e:Image id="freeCountBg" x="200" y="90" scaleX="1" scaleY="1" source="UI_mianban_png" height="75" width="140"/>
+		<e:BitmapLabel id="lineWinTxt" horizontalCenter="0" verticalCenter="45" text="12.32" letterSpacing="-40" touchEnabled="false" textAlign="center" font="fnt54_fnt"/>
+
 		<e:Image id="freeChooseCountBg" x="1050" y="90" source="symbolName_0_png" height="75" width="81"/>
-		<e:BitmapLabel id="freeChooseCountTxt" font="fnt113_fnt" text="1" textAlign="center" scaleY="0.3" scaleX="0.3" top="110" left="1140"/>
-		<e:Group id="freeMultiGroup" left="165" top="60" width="200" height="140" visible="false">
-			<e:BitmapLabel id="freeMulti" text="10" scaleX="0.25" scaleY="0.25" verticalCenter="0" horizontalCenter="0" font="fnt156_fnt"/>
+		<e:BitmapLabel id="freeChooseCountTxt" text="x1" textAlign="center" top="110" left="1140" font="fnt39_fnt"/>
+		<e:Group id="freeMultiGroup" left="200" top="90" width="140" height="75">
+			<e:Image scaleX="1" scaleY="1" source="UI_mianban_png" height="75" width="140" verticalCenter="0" horizontalCenter="0"/>
+			<e:Image id="freeNoMulit" source="TimeFreeSign_png" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
+			<e:BitmapLabel id="freeMulti" text="x5" verticalCenter="0" horizontalCenter="0" font="fnt38_fnt" verticalAlign="middle" visible="false"/>
 		</e:Group>
 	</e:Group>
 	<e:Group width="1920" height="1080" verticalCenter="0" horizontalCenter="0">
