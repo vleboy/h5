@@ -282,8 +282,10 @@ module game {
 				this.stage.addChild(new game.ErrTip("余额不足", () => { }, this));
 				return;
 			}
-			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
-			this.topBar.setBalance(txt);
+			if(!this.isFree){
+				let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+				this.topBar.setBalance(txt);
+			}
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -668,6 +670,11 @@ module game {
 		 * scatter图标动画
 		 * */
 		private showScatterLine() {
+			if(this.spinResp.payload.getFeatureChance){
+				this.lineWinTxt.visible = true;
+				this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+			}
+
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					let gridIndex = value + column * 3;
@@ -677,6 +684,8 @@ module game {
 		}
 		private stopScatterLine(){
             this.particleBg.visible = false;
+			this.lineWinTxt.visible = false;
+			this.lineWinTxt.text = "";
             this.spinResp.payload.scatterGrid.forEach((value: number, column: number)=>{
                 let gridIndex = value + column * 3;
                 this.symbols[gridIndex].reset();
@@ -688,7 +697,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("Get_FreeGame_ogg");
+					SoundPlayer.playEffect("Get_FreeGame_mp3");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					this.setFreeChooseCount(true);

@@ -55,7 +55,7 @@ var game;
         /**默认显示*/
         Rull.prototype.defaultUI = function () {
             this.rullShow(0.01);
-            this.groupRull.mask = this.rullMask;
+            this.ruleScroll.mask = new egret.Rectangle(97, 0, 1726, 1080);
         };
         /**设置赔率*/
         Rull.prototype.setOdds = function (theBet) {
