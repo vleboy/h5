@@ -697,7 +697,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
+					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_mp3");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					this.setFreeChooseCount(true);

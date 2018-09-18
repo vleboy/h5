@@ -735,7 +735,7 @@ var game;
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (_this.spinResp.payload.getFeatureChance) {
-                    game.SoundPlayer.playEffect("Get_FreeGame_ogg");
+                    game.SoundPlayer.playEffect("Get_FreeGame_mp3");
                     _this.freeChanceGroup.visible = true;
                     _this.freeChangeMc.play();
                     _this.setFreeChooseCount(true);

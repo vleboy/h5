@@ -282,8 +282,10 @@ module game {
 				this.stage.addChild(new game.ErrTip("余额不足", () => { }, this));
 				return;
 			}
-			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
-			this.topBar.setBalance(txt);
+			if(!this.isFree){
+				let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+				this.topBar.setBalance(txt);
+			}
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -695,7 +697,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("Get_FreeGame_ogg");
+					SoundPlayer.playEffect("Get_FreeGame_mp3");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					this.setFreeChooseCount(true);

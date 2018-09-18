@@ -90,6 +90,7 @@ module game {
 		}
 		/**按钮状态*/
 		private btnState(num: number, isAni: boolean = true, timer: number = 500, callBack?: Function): void {
+			num = Math.floor(num);
 			this.pageArr.forEach(v => { (this["btnRull" + v] as eui.Button).currentState = "up"; });
 			(this["btnRull" + num] as eui.Button).currentState = "down";
 			let move: number = -(num * 1726) + 97;
