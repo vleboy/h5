@@ -56,12 +56,19 @@ module game {
 		private state: GameState;
 		/**是否在免费游戏中 通过主场景控制它的值*/
 		private isFree: boolean;
-
+		/**免费开始前是不是自动*/
+		private freeAuto: boolean;
+		/**自动的次数*/
+		private autoCount: number = 0;
+		/**赢得钱*/
 		private winNum: number = 0;
 
 		public setFree(b: boolean) {
 			this.isFree = b;
+			b && (this.freeAuto = this.isAuto);
 			this.isAuto = b;
+			!b && (this.isAuto = this.freeAuto);
+			!b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"); 
 			this.autoImg.source = this.isFree ? "Free_png" : "Auto_1_png";
 			this.autoState();
 		}
@@ -79,6 +86,8 @@ module game {
 		private initData(): void {
 			this.isAuto = false;
 			this.isFree = false;
+			this.freeAuto = false;
+			this.autoCount = 0;
 		}
 		/**事件监听*/
 		private eventListen(): void {
@@ -86,7 +95,7 @@ module game {
 				if (this.isAuto) {
 					this.sendNotify(NotifyConst.cancelSpin);
 				} else {
-					SoundPlayer.playEffect("Spin_mp3");
+					SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
 					this.sendNotify(NotifyConst.spin);
 					this.imgSpin();
 					this.setWinMoney(0.00);
@@ -120,7 +129,7 @@ module game {
 		}
 		/**点击自动转到次数按钮*/
 		private touchAutoNum(e: egret.TouchEvent): void {
-			let str:string = e.target.name.split("_")[1];
+			let str: string = e.target.name.split("_")[1];
 			this.sendNotify(NotifyConst.spin, str);
 			str == "max" ? this.setAutoBetNum(-1) : this.setAutoBetNum(+str);
 			this.showAutoBtn(false);
@@ -138,11 +147,11 @@ module game {
 			let betShow = () => {
 				this.hideCutGroup();
 				this.groupBet.visible = true;
-				this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("Generic1_mp3"));
+				this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
 			this.groupBet.visible ? this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
-				SoundPlayer.playEffect("Generic2_mp3");
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}) : betShow();
 		}
 		/**校验加减号状态和设置单注下注档次*/
@@ -157,19 +166,19 @@ module game {
 
 		/**单注增加*/
 		private addBetLevel(): void {
-			SoundPlayer.playEffect("Generic1_mp3");
+			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			this.theBetIndex < this.theBetArr.length - 1 && this.theBetIndex++;
 			this.checkPlusReduceState();
 		}
 		/**单注减少*/
 		private reduceBetLevel(): void {
-			SoundPlayer.playEffect("Generic1_mp3");
+			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			this.theBetIndex > 0 && this.theBetIndex--;
 			this.checkPlusReduceState();
 		}
 		/**单注最大*/
 		private maxBetLevel(): void {
-			SoundPlayer.playEffect("Generic1_mp3");
+			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
 			this.theBetIndex = this.theBetArr.length - 1;
 			this.checkPlusReduceState();
 		}
@@ -178,22 +187,22 @@ module game {
 			let autoShow = () => {
 				this.hideCutGroup();
 				this.groupAutoNum.visible = true;
-				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("Generic1_mp3"));
+				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
 			this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(() => {
 				this.groupAutoNum.visible = false;
-				SoundPlayer.playEffect("Generic2_mp3");
+				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}) : autoShow();
 		}
 		/**隐藏切入框*/
 		public hideCutGroup(isSound: boolean = false): void {
 			this.groupBet.visible && this.showTween(this.groupBet, -100).then(() => {
 				this.groupBet.visible = false;
-				isSound && SoundPlayer.playEffect("Generic2_mp3");
+				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
 			this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(() => {
 				this.groupAutoNum.visible = false;
-				isSound && SoundPlayer.playEffect("Generic2_mp3");
+				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
 		}
 		/**取消自动转动*/
@@ -264,6 +273,13 @@ module game {
 			this.winTxt.text = mon + "";
 			this.payout(mon);
 		}
+		/**转动按钮显示*/
+		private spinBtnShow(isShow: boolean = true, isEn: boolean = true): void {
+			this.spinBtn.visible = this.isAuto ? true : isShow;
+			this.spinBtn.enabled = isEn;
+			this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
+			this.spinArrow.visible = this.isAuto ? false : isShow;
+		}
 		/**控制游戏状态 */
 		public setState(n: GameState) {
 			this.state = n;
@@ -272,44 +288,45 @@ module game {
 				this.betBtn.enabled = isBetEn;
 				this.autoBtn.enabled = isAutoEn;
 			};
-			/**转动按钮显示*/
-			let spinBtnShow = (isShow: boolean = true, isEn: boolean = true) => {
-				this.spinBtn.visible = this.isAuto ? true : isShow;
-				this.spinBtn.enabled = isEn;
-				this.stopSpinBtn.visible = this.isAuto ? false : !isShow;
-				this.spinArrow.visible = this.isAuto ? false : isShow;
-			}
 			this.autoState();
 			switch (n) {
 				case GameState.BET:
-					betAutoState();
-					spinBtnShow();
+					this.isFree ? betAutoState(false, false) : betAutoState();
+					this.spinBtnShow();
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0.00";
-					betAutoState(false, false);
-					spinBtnShow(true, false);
+					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
+					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.SHOW_RESULT:
-					betAutoState(false);
-					spinBtnShow(true, false);
+					this.isFree ? betAutoState(false, false) : betAutoState(false);
+					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					betAutoState(false, false);
+					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
 					this.imgSpin(true);
-					spinBtnShow(false);
+					this.spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;
 					break;
 			}
 		}
-		/**自动或免费下注次数*/
+		/**自动下注次数*/
 		public setAutoBetNum(num: number): void {
 			this.showAutoBtn(num == 0);
+			if (this.isAuto && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = true;
 			this.isAuto = num != 0;
+			this.autoCount = num;
 			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
+			if(num == 0) this.spinBtnShow();
+		}
+		/**免费下注次数*/
+		public setFreeBetNum(num: number): void {
+			if (this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
+			this.autoNum.text = num + "";
 		}
 		/**
          * 资源释放
