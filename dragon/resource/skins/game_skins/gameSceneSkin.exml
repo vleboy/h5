@@ -72,7 +72,7 @@
 			
 			<game:AMovieClip id="title" y="139" horizontalCenter="0" sources="logo_|1-20|_png" speed="5" source="logo_1_png"/>
 		</e:Group>
-		<e:Group id="freeEffectGroup" width="100%" height="100%" y="100" horizontalCenter="0" x="0" scaleX="1" scaleY="1">
+		<e:Group id="freeEffectGroup" width="100%" height="100%" y="298" horizontalCenter="0" x="0" scaleX="1" scaleY="1">
 			<game:AMovieClip id="border2" width="332" height="468" horizontalCenter="0" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>
 			<game:AMovieClip id="border3" width="332" height="468" horizontalCenter="282" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>
 			<game:AMovieClip id="border4" width="332" height="468" horizontalCenter="565" verticalCenter="-10" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>
