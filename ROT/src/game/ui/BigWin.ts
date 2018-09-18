@@ -13,6 +13,7 @@ module game {
 
         private winNum: number = 0;
         private winChannel: egret.SoundChannel;
+        private theParticle: particle.GravityParticleSystem;
         /**展示的时间数组*/
         private showTime: number[];
         public init(): void {
@@ -92,15 +93,15 @@ module game {
                     case "mega":
                         wait(this.showTime[0]).then(() => {
                             txtAni("megaWin_png");
-                            wait(megaTime).then(() => { this.visible = false; res(); });
+                            this.spurtCoin(megaTime,20).then(() => { this.visible = false; res(); });
                         });
                         break;
                     case "super":
                         wait(this.showTime[0]).then(() => {
                             txtAni("megaWin_png");
-                            wait(megaTime).then(() => {
+                            this.spurtCoin(megaTime,20).then(() => {
                                 txtAni("superWin_png");
-                                wait(superTime).then(() => { this.visible = false; res(); });
+                                this.spurtCoin(superTime,40).then(() => { this.visible = false; res(); });
                             });
                         });
                         break;
@@ -126,7 +127,28 @@ module game {
                         res();
                     });
             });
-
+        }
+        /**喷银币*/
+        private spurtCoin(timer: number, num: number): Promise<{}> {
+            return new Promise((res, rej) => {
+                let texture = RES.getRes("jinbi_png");
+                let cfg = RES.getRes("particleCoin_json");
+                cfg.maxParticles = num;
+                this.theParticle = new particle.GravityParticleSystem(texture, cfg);
+                this.payoutGroup.addChild(this.theParticle);
+                this.theParticle.emitterX = 950;
+                this.theParticle.emitterY = 860;
+                this.theParticle.start();
+                let timeOut;
+                timeOut && clearTimeout(timeOut);
+                timeOut = setTimeout(() => {
+                    this.theParticle && this.theParticle.stop();
+                    this.theParticle.parent.removeChild(this.theParticle);
+                    this.theParticle = null;
+                    clearTimeout(timeOut);
+                    res();
+                }, timer);
+            });
         }
     }
 }

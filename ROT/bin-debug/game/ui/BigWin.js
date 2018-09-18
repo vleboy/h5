@@ -99,15 +99,15 @@ var game;
                     case "mega":
                         wait(_this.showTime[0]).then(function () {
                             txtAni("megaWin_png");
-                            wait(megaTime).then(function () { _this.visible = false; res(); });
+                            _this.spurtCoin(megaTime, 20).then(function () { _this.visible = false; res(); });
                         });
                         break;
                     case "super":
                         wait(_this.showTime[0]).then(function () {
                             txtAni("megaWin_png");
-                            wait(megaTime).then(function () {
+                            _this.spurtCoin(megaTime, 20).then(function () {
                                 txtAni("superWin_png");
-                                wait(superTime).then(function () { _this.visible = false; res(); });
+                                _this.spurtCoin(superTime, 40).then(function () { _this.visible = false; res(); });
                             });
                         });
                         break;
@@ -136,6 +136,29 @@ var game;
                     egret.Tween.removeTweens(_this.payout);
                     res();
                 });
+            });
+        };
+        /**喷银币*/
+        BigWin.prototype.spurtCoin = function (timer, num) {
+            var _this = this;
+            return new Promise(function (res, rej) {
+                var texture = RES.getRes("jinbi_png");
+                var cfg = RES.getRes("particleCoin_json");
+                cfg.maxParticles = num;
+                _this.theParticle = new particle.GravityParticleSystem(texture, cfg);
+                _this.payoutGroup.addChild(_this.theParticle);
+                _this.theParticle.emitterX = 950;
+                _this.theParticle.emitterY = 860;
+                _this.theParticle.start();
+                var timeOut;
+                timeOut && clearTimeout(timeOut);
+                timeOut = setTimeout(function () {
+                    _this.theParticle && _this.theParticle.stop();
+                    _this.theParticle.parent.removeChild(_this.theParticle);
+                    _this.theParticle = null;
+                    clearTimeout(timeOut);
+                    res();
+                }, timer);
             });
         };
         return BigWin;

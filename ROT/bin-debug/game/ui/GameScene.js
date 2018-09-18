@@ -792,7 +792,6 @@ var game;
          * */
         GameScene.prototype.cancelLinesWin = function () {
             this.setState(game.GameState.BET);
-            this.particleBg.visible = false;
             this.lineWinTxt.visible = false;
             this.particleBg.visible = false;
             this.lineWinTxt.text = "";
@@ -854,23 +853,22 @@ var game;
         GameScene.prototype.setFreeChooseCount = function (isAn) {
             var _this = this;
             if (isAn === void 0) { isAn = false; }
-            this.freeChooseCountBoom.sources = "zz_|1-61|_png";
             egret.Tween.removeTweens(this.freeChooseCountBoom);
-            this.freeChooseCountBoom.scaleX = 1;
-            this.freeChooseCountBoom.scaleY = 1;
             this.freeChooseCountBoom.x = 960;
             this.freeChooseCountBoom.y = 540;
+            this.freeChooseCountBoom.source = "feiqiu_png";
             var isShow = this.featureChanceCount > 0;
             if (isAn) {
                 isShow && egret.Tween.get(this.freeChooseCountBoom)
                     .call(function () { return _this.freeChooseCountBoom.visible = true; })
-                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1354, y: 128 }, 1000)
+                    .to({ x: 1352, y: 128 }, 1000)
                     .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
                     .call(function () {
-                    _this.freeChooseCountBoom.play();
                     _this.freeChooseCountTxt.text = "x" + _this.featureChanceCount;
-                    _this.freeChooseCountBg.visible = isShow;
                     _this.freeChooseCountTxt.visible = isShow;
+                    _this.freeChooseCountBoom.sources = "zz_|1-61|_png";
+                    _this.freeChooseCountBg.visible = isShow;
+                    _this.freeChooseCountBoom.play();
                     setTimeout(function () {
                         _this.freeChooseCountBoom.stop();
                         _this.freeChooseCountBoom.visible = false;
@@ -887,12 +885,21 @@ var game;
          * 显示免费的倍数
          * */
         GameScene.prototype.freeMultiAni = function (mul, isStart) {
+            var _this = this;
             if (isStart === void 0) { isStart = true; }
             this.freeMulti.visible = isStart;
+            this.freeMulitLight.visible = isStart;
             this.freeNoMulit.visible = !isStart;
             //倍数
-            if (isStart)
+            if (isStart) {
                 this.freeMulti.text = "x" + mul;
+                this.freeMulitLight.loop = 1;
+                this.freeMulitLight.play();
+                this.freeMulitLight.once(game.AMovieClip.COMPLETE, function () {
+                    _this.freeMulitLight.visible = false;
+                }, this);
+            }
+            ;
         };
         /**
          * 进入免费结算面板，显示免费总奖励

@@ -27,6 +27,7 @@ module game {
 		private freeMultiGroup: eui.Group;
 		private freeNoMulit: eui.Image;
 		private freeMulti: eui.BitmapLabel;
+		private freeMulitLight: AMovieClip;
 		private freeChooseCountBoom: AMovieClip;
 		private connectTip: ConnectTip;
 		private freeTxtAni: game.AMovieClip;
@@ -278,7 +279,7 @@ module game {
 							this.freeTotalWin.visible = false;
 							this.freeComplete();
 						})
-						.to({ alpha: 1 }, 700)
+						.to({ alpha: 1 }, 700);
 					break;
 				case NotifyConst.updateBgm:
 					this.updateBgm();
@@ -730,7 +731,6 @@ module game {
 		 * */
 		private cancelLinesWin() {
 			this.setState(GameState.BET);
-			this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
@@ -791,24 +791,22 @@ module game {
 		 * 刷新免费选择次数
 		 * */
 		private setFreeChooseCount(isAn: boolean = false) {
-			this.freeChooseCountBoom.sources = "zz_|1-61|_png";
 			egret.Tween.removeTweens(this.freeChooseCountBoom);
-			this.freeChooseCountBoom.scaleX = 1;
-			this.freeChooseCountBoom.scaleY = 1;
 			this.freeChooseCountBoom.x = 960;
 			this.freeChooseCountBoom.y = 540;
-
+			this.freeChooseCountBoom.source = "feiqiu_png";
 			let isShow: boolean = this.featureChanceCount > 0;
 			if (isAn) {
 				isShow && egret.Tween.get(this.freeChooseCountBoom)
 					.call(() => this.freeChooseCountBoom.visible = true)
-					.to({ scaleX: 0.3, scaleY: 0.3, x: 1354, y: 128 }, 1000)
+					.to({ x: 1352, y: 128 }, 1000)
 					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
 					.call(() => {
-						this.freeChooseCountBoom.play();
 						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-						this.freeChooseCountBg.visible = isShow;
 						this.freeChooseCountTxt.visible = isShow;
+						this.freeChooseCountBoom.sources = "zz_|1-61|_png";
+						this.freeChooseCountBg.visible = isShow;
+						this.freeChooseCountBoom.play();
 						setTimeout(() => {
 							this.freeChooseCountBoom.stop();
 							this.freeChooseCountBoom.visible = false;
@@ -825,9 +823,17 @@ module game {
 		 * */
 		private freeMultiAni(mul: number, isStart: boolean = true): void {
 			this.freeMulti.visible = isStart;
+			this.freeMulitLight.visible = isStart;
 			this.freeNoMulit.visible = !isStart;
-				//倍数
-			if (isStart) this.freeMulti.text = "x" + mul;
+			//倍数
+			if (isStart) {
+				this.freeMulti.text = "x" + mul;
+				this.freeMulitLight.loop = 1;
+				this.freeMulitLight.play();
+				this.freeMulitLight.once(AMovieClip.COMPLETE, () => {
+					this.freeMulitLight.visible = false;
+				}, this);
+			};
 		}
 		/**
 		 * 进入免费结算面板，显示免费总奖励
