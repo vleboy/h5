@@ -6,8 +6,8 @@ module game {
 		}
 		private groupMove: eui.Group;
 		private groupRull: eui.Group;
-		private rullMask: eui.Rect;
 		private btnClose: eui.Button;
+		private rull: eui.Group;
 		//-----------变量------------
 		/**页数数组*/
 		private pageArr: number[];
@@ -56,7 +56,7 @@ module game {
 		/**默认显示*/
 		private defaultUI(): void {
 			this.rullShow(0.01);
-			this.groupRull.mask = this.rullMask;
+			this.rull.mask = new egret.Rectangle(97, 0, 1726, 672);
 		}
 		/**设置赔率*/
 		private setOdds(theBet: number): void {
@@ -65,7 +65,7 @@ module game {
 				v.forEach((k, j) => {
 					(this["pageTxt_" + i + "_" + j] as eui.Label).textFlow = [
 						{ text: (5 - j) + " ", style: { "textColor": 0xFCC434 } },
-						{ text: (k * bet / 100).toFixed(2) , style: { "textColor": 0xF1EABD } }
+						{ text: (k * bet / 100).toFixed(2), style: { "textColor": 0xF1EABD } }
 					]
 				})
 			})
@@ -89,6 +89,7 @@ module game {
 		}
 		/**按钮状态*/
 		private btnState(num: number, isAni: boolean = true, timer: number = 500, callBack?: Function): void {
+			num = Math.floor(num);
 			this.pageArr.forEach(v => { (this["btnRull" + v] as eui.Button).currentState = "up"; });
 			(this["btnRull" + num] as eui.Button).currentState = "down";
 			let move: number = -(num * 1726) + 97;

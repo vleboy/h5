@@ -4,12 +4,12 @@
 		<e:Image width="1920" height="1080" top="0" left="0" source="helpBg_png"/>
 
 
-		<e:Rect id="rullMask" width="1726" height="672" verticalCenter="0" horizontalCenter="0"/>
-		<e:Group id="groupRull" verticalCenter="0" left="-97" width="10356">
-			<e:Group id="groupRull0" width="1726" height="672" left="0" verticalCenter="0">
+		<e:Group id="rull" width="1920" height="672" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0">
+			<e:Group id="groupRull" verticalCenter="0" left="97" width="10356" height="672" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Group id="groupRull0" width="1726" height="672" left="0" verticalCenter="0">
 				<e:Image verticalCenter="0" horizontalCenter="0" height="670" width="1698" source="btm_png"/>
-			</e:Group>
-			<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
+				</e:Group>
+				<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
 				<e:Group width="505" height="224" left="0" top="45">
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_2_png"/>
 					<e:Label id="pageTxt_0_0" text="58.00" size="34" top="52" textColor="0xf1eabd" left="280"/>
@@ -40,8 +40,8 @@
 					<e:Label text="40.35" size="34" top="102" textColor="0xF1EABD" left="280" id="pageTxt_4_1"/>
 					<e:Label text="30.15" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_4_2"/>
 				</e:Group>
-			</e:Group>
-			<e:Group id="groupRull2" width="1726" height="672" verticalCenter="0" left="3452">
+				</e:Group>
+				<e:Group id="groupRull2" width="1726" height="672" verticalCenter="0" left="3452">
 				<e:Group width="505" height="224" left="0" top="45">
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_7_png"/>
 					<e:Label id="pageTxt_5_0" text="52.00" size="34" top="52" textColor="0xf1eabd" left="280"/>
@@ -49,52 +49,48 @@
 					<e:Label id="pageTxt_5_2" text="30.10" size="34" top="152" textColor="0xF1EABD" left="280"/>
 				</e:Group>
 				<e:Group width="505" height="224" left="600" top="45">
-
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_8_png"/>
 					<e:Label text="52.00" size="34" top="52" textColor="0xF1EABD" left="280" id="pageTxt_6_0"/>
 					<e:Label text="40.20" size="34" top="102" textColor="0xF1EABD" left="280" id="pageTxt_6_1"/>
 					<e:Label text="30.10" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_6_2"/>
 				</e:Group>
 				<e:Group width="505" height="224" left="1200" top="45">
-
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_9_png"/>
 					<e:Label text="51.00" size="34" top="52" textColor="0xF1EABD" left="280" id="pageTxt_7_0"/>
 					<e:Label text="40.15" size="34" top="102" textColor="0xF1EABD" left="280" id="pageTxt_7_1"/>
 					<e:Label text="30.10" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_7_2"/>
 				</e:Group>
 				<e:Group width="505" height="224" left="0" top="410">
-
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_10_png"/>
 					<e:Label text="51.00" size="34" top="52" textColor="0xF1EABD" left="280" id="pageTxt_8_0"/>
 					<e:Label text="40.15" size="34" top="102" textColor="0xF1EABD" left="280" id="pageTxt_8_1"/>
 					<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_8_2"/>
 				</e:Group>
 				<e:Group width="505" height="224" left="600" top="410">
-
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_11_png"/>
 					<e:Label text="51.00" size="34" top="52" textColor="0xF1EABD" left="280" id="pageTxt_9_0"/>
 					<e:Label text="40.10" size="34" top="102" textColor="0xF1EABD" left="280" id="pageTxt_9_1"/>
 					<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_9_2"/>
 				</e:Group>
 				<e:Group width="505" height="224" left="1200" top="410">
-
 					<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_12_png"/>
 					<e:Label text="50.50" size="34" top="52" textColor="0xF1EABD" left="280" id="pageTxt_10_0"/>
 					<e:Label text="40.10" size="34" top="102" textColor="0xF1EABD" left="280" id="pageTxt_10_1"/>
 					<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_10_2"/>
 				</e:Group>
-			</e:Group>
-			<e:Group id="groupRull3" width="1726" height="672" verticalCenter="0" left="5178">
+				</e:Group>
+				<e:Group id="groupRull3" width="1726" height="672" verticalCenter="0" left="5178">
 				<e:Image verticalCenter="0" horizontalCenter="0" width="1480" height="568" source="BetButton_png"/>
-
-			</e:Group>
-			<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
+				</e:Group>
+				<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
 				<e:Image width="1423" height="445" top="100" left="40" source="touchLight_png"/>
-			</e:Group>
-			<e:Group id="groupRull5" width="1726" height="672" verticalCenter="0" left="8630">
+				</e:Group>
+				<e:Group id="groupRull5" width="1726" height="672" verticalCenter="0" left="8630">
 				<e:Image verticalCenter="0" horizontalCenter="0" width="1380" height="650" source="totalWinBg_png"/>
+				</e:Group>
 			</e:Group>
 		</e:Group>
+
 		<e:Group id="groupMove" width="1726" height="672" horizontalCenter="0" verticalCenter="0" locked="true"/>
 		<e:Group id="btnRull" width="376" height="50" bottom="40" horizontalCenter="0">
 			<e:Button id="btnRull0" name="touch_0" label="" verticalCenter="0" left="0" width="46" height="46">
