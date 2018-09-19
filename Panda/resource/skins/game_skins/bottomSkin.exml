@@ -97,7 +97,7 @@
 
 		<e:Label id="theBet" text="单注：0.00" height="36" size="24" textColor="0xf3f4f4" bottom="34" width="208" textAlign="center" verticalAlign="middle" left="522"/>
 		<e:Image source="win_png" horizontalCenter="0" bottom="75" width="100" height="42"/>
-		<e:BitmapLabel id="winTxt" font="btm_win_fnt" text="0.00" width="340" height="34" horizontalCenter="0" bottom="40" textAlign="center" verticalAlign="middle"/>
+		<e:BitmapLabel id="winTxt" font="btm_win_fnt" text="0.00" width="340" height="34" horizontalCenter="0" bottom="40" textAlign="center" verticalAlign="middle" letterSpacing="-5"/>
 
 
 		<e:Image source="BG_Bet_png" scale9Grid="72,23,129,41" width="232" bottom="5" right="510"/>
