@@ -146,12 +146,7 @@ var game;
                 game.SoundPlayer.playMusic("ROT_243_freeGame_mp3");
             }
             else {
-                if (this.freeChoose.visible) {
-                    game.SoundPlayer.playMusic("ROT_243_featureChoose_mp3");
-                }
-                else {
-                    game.SoundPlayer.playMusic("ROT_243_normalGame_mp3");
-                }
+                this.freeChoose.visible ? game.SoundPlayer.playMusic("ROT_243_featureChoose_mp3") : game.SoundPlayer.playMusic("ROT_243_normalGame_mp3");
             }
         };
         /**
@@ -406,7 +401,7 @@ var game;
                     var tile = _this["vagueTile" + (column * 4 + i)];
                     tile.y += (game.GlobalConfig.fastSwitch ? 104 : 80);
                     if (tile.y > 658) {
-                        tile.y -= 208 * 4;
+                        tile.y -= 238 * 4;
                         tile.source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
                     }
                 }
@@ -464,7 +459,7 @@ var game;
             });
         };
         /**
-         * 单列停下来
+         * 单列停下来 isFree 是否freespin缓停
          * */
         GameScene.prototype.stopColumn = function (column, arr, isFree) {
             var _this = this;
@@ -485,7 +480,7 @@ var game;
                             egret.Tween.removeTweens(this["vagueTile" + (column * 4)]);
                             [0, 1, 2, 3].forEach(function (i) {
                                 _this["vagueTile" + (column * 4 + i)].visible = false;
-                                _this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
+                                _this["vagueTile" + (column * 4 + i)].y = i * 238;
                             });
                             haveScatterThisColumn = true;
                             for (c = 0; c <= column; c++) {
@@ -528,6 +523,21 @@ var game;
                 var c = new egret.DisplayObjectContainer();
                 _this["freeCoinsGroup"].addChild(c);
                 var arr = [];
+                var index = 0;
+                egret.Tween.get(_this["freeCoinsGroup"], { loop: true })
+                    .wait(20)
+                    .call(function () {
+                    for (var j = arr.length - 1; j >= 0; j--) {
+                        var img = arr[j];
+                        img.rotation += 5;
+                        img.y += img["speed"];
+                        img.alpha -= img["alphaSpeed"];
+                        if (img.y >= 269 + 658) {
+                            img.parent.removeChild(img);
+                            arr.splice(j, 1);
+                        }
+                    }
+                });
                 if (_this.freeColumnTimeout)
                     clearTimeout(_this.freeColumnTimeout);
                 _this.freeColumnTimeout = setTimeout(function () {
@@ -548,15 +558,15 @@ var game;
          * 立即停止
          * */
         GameScene.prototype.cancelSpin = function () {
+            var _this = this;
             if (this.freeColumnTimeout)
                 clearTimeout(this.freeColumnTimeout);
             for (var i = 0; i < 20; i++) {
                 egret.Tween.removeTweens(this["vagueTile" + i]);
                 this["vagueTile" + i].visible = false;
-                this["vagueTile" + i].y = (i % 4) * 208 + 21;
+                this["vagueTile" + i].y = (i % 4) * 238;
             }
             var viewGrid = this.spinResp.payload.viewGrid;
-            this.symbols.forEach(function (symbol) { return symbol.reset(); });
             for (var i = 0; i < 15; i++) {
                 egret.Tween.removeTweens(this.symbols[i].tile);
                 this.symbols[i].value = this.spinResp.payload.viewGrid[i];
@@ -565,12 +575,10 @@ var game;
                 var str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
                 this.symbols[i].setTexture("symbolName_" + str + "_png");
             }
-            this.border2.stop();
-            this.border3.stop();
-            this.border4.stop();
-            this.border2.visible = false;
-            this.border3.visible = false;
-            this.border4.visible = false;
+            [2, 3, 4].forEach(function (v) {
+                _this["border" + v].stop();
+                _this["border" + v].visible = false;
+            });
             egret.Tween.removeTweens(this["freeCoinsGroup"]);
             this["freeCoinsGroup"].removeChildren();
             this.judgeResult();
@@ -691,9 +699,7 @@ var game;
             this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
             /**中奖的里面有没有wild*/
             grids.some(function (v) { return _this.spinResp.payload.viewGrid[v] == "1"; }) && this.isFree && this.freeMultiAni(this.featureMultiplier);
-            return Promise.all(grids.map(function (v) {
-                return _this.symbols[v].imgWinAni();
-            }));
+            return Promise.all(grids.map(function (v) { return _this.symbols[v].imgWinAni(); }));
         };
         /**
          * scatter图标动画
@@ -759,11 +765,13 @@ var game;
                         _this.lineWinTxt.visible = true;
                         _this.lineWinTxt.text = gold.toFixed(2);
                         var gridIndex = value + column * 3;
-                        var target = _this["tile" + gridIndex];
+                        var target_1 = _this["tile" + gridIndex];
+                        target_1.visible = false;
                         _this.particleBg.visible = true;
                         setTimeout(function () {
                             res();
                             _this.lineWinTxt.visible = false;
+                            target_1.visible = true;
                         }, 1400);
                     }
                 });
@@ -776,9 +784,7 @@ var game;
             var _this = this;
             this.setState(game.GameState.SHOW_SINGLE_LINES);
             //去掉scatter线
-            arr.forEach(function (v, i) {
-                v.symbol == "0" && arr.splice(i, 1);
-            });
+            arr.forEach(function (v, i) { v.symbol == "0" && arr.splice(i, 1); });
             return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
                 var _this = this;
                 var singleLineShow, i;
@@ -792,9 +798,7 @@ var game;
                                         case 0:
                                             this.lineWinTxt.visible = true;
                                             this.lineWinTxt.text = v.gold.toFixed(2);
-                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) {
-                                                    return _this.symbols[value + column * 3].imgWinAni(false);
-                                                }))];
+                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(false); }))];
                                         case 1:
                                             _a.sent();
                                             console.log("第" + lineIndex + "条中奖线展示完成", v);
@@ -995,7 +999,6 @@ var game;
             return new Promise(function (res, rej) {
                 var theLoop = isLong ? 2 : 1;
                 var wait = isLong ? 2800 : 1400;
-                _this.gameScene.winGridGroup.addChild(_this.tile);
                 _this.mc = new game.AMovieClip();
                 _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
                 _this.mc.speed = 5;
@@ -1008,12 +1011,13 @@ var game;
                 _this.mc.loop = isLong ? 2 : 1;
                 _this.tile.visible = false;
                 _this.mc.once(game.AMovieClip.COMPLETE, function () {
-                    _this.mc.visible = false;
                     _this.tile.visible = true;
+                    _this.mc.visible = false;
+                    _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
+                    _this.mc = null;
                     !isLong && (_this.gameScene.lineWinTxt.visible = false);
+                    res();
                 }, _this);
-                //单线展示的间隔时间
-                setTimeout(function () { res(); _this.mc && _this.mc.parent && _this.mc.parent.removeChild(_this.mc); }, wait);
             });
         };
         /**
@@ -1022,13 +1026,9 @@ var game;
         Symbol.prototype.reset = function () {
             if (this.mc) {
                 this.mc.stop();
+                this.mc.visible = false;
                 this.mc.parent && this.mc.parent.removeChild(this.mc);
                 this.mc = null;
-            }
-            if (this.mc2) {
-                this.mc2.stop();
-                this.mc2.parent && this.mc2.parent.removeChild(this.mc2);
-                this.mc2 = null;
             }
             if (this.value == "1") {
                 this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
