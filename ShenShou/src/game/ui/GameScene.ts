@@ -1019,7 +1019,6 @@ module game {
 		private p: particle.GravityParticleSystem;
 		private gameScene: GameScene;
 		private mc: AMovieClip;
-		private mc2: AMovieClip;
 		public constructor(tile: eui.Image, gameScene: GameScene) {
 			this.tile = tile;
 			this.gameScene = gameScene;
@@ -1066,24 +1065,15 @@ module game {
 					// this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
-					this.mc.sources = "caishenAni|1-16|_png";
-					this.mc.x = this.tile.x + 10;
-					this.mc.y = this.tile.y;
-					this.mc.width = 173;
-					this.mc.height = 173;
-					this.mc.speed = 4;
+					this.mc.sources = "wildAni|1-14|_png";
+					this.mc.x = this.tile.x + 5;
+					this.mc.y = this.tile.y + 5;
+					this.mc.width = 190;
+					this.mc.height = 190;
+					this.mc.speed = 6;
 					this.mc.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
-
-					this.mc2 = new AMovieClip();
-					this.mc2.sources = "wildText|1-20|_png";
-					this.mc2.x = this.tile.x;
-					this.mc2.y = this.tile.y + 99;
-					this.mc2.speed = 4;
-					this.mc2.loop = isLong ? 2 : 1;
-					this.gameScene["winGridGroup"].addChild(this.mc2);
-					this.mc2.play();
 				}
 
 				this.gameScene.particleBg.visible = true;
@@ -1109,11 +1099,6 @@ module game {
 								this.mc.parent.removeChild(this.mc);
 								this.mc = null;
 								this.tile.visible = true;
-							}
-							if (this.mc2) {
-								this.mc2.stop();
-								this.mc2.parent.removeChild(this.mc2);
-								this.mc2 = null;
 							}
 							if (this.value == "1") {
 								this.tile.source = this.gameScene.buff != "-1" ? "symbolName_1_" + this.gameScene.buff + "_png" : "symbolName_1_png";
@@ -1156,11 +1141,6 @@ module game {
 				this.mc.stop();
 				this.mc.parent.removeChild(this.mc);
 				this.mc = null;
-			}
-			if (this.mc2) {
-				this.mc2.stop();
-				this.mc2.parent.removeChild(this.mc2);
-				this.mc2 = null;
 			}
 			if (this.value == "1") {
 				this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));

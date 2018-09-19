@@ -1121,23 +1121,15 @@ var game;
                 else if (_this.value == "1") {
                     // this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
                     _this.mc = new game.AMovieClip();
-                    _this.mc.sources = "caishenAni|1-16|_png";
-                    _this.mc.x = _this.tile.x + 10;
-                    _this.mc.y = _this.tile.y;
-                    _this.mc.width = 173;
-                    _this.mc.height = 173;
-                    _this.mc.speed = 4;
+                    _this.mc.sources = "wildAni|1-14|_png";
+                    _this.mc.x = _this.tile.x + 5;
+                    _this.mc.y = _this.tile.y + 5;
+                    _this.mc.width = 190;
+                    _this.mc.height = 190;
+                    _this.mc.speed = 6;
                     _this.mc.loop = isLong ? 2 : 1;
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
                     _this.mc.play();
-                    _this.mc2 = new game.AMovieClip();
-                    _this.mc2.sources = "wildText|1-20|_png";
-                    _this.mc2.x = _this.tile.x;
-                    _this.mc2.y = _this.tile.y + 99;
-                    _this.mc2.speed = 4;
-                    _this.mc2.loop = isLong ? 2 : 1;
-                    _this.gameScene["winGridGroup"].addChild(_this.mc2);
-                    _this.mc2.play();
                 }
                 _this.gameScene.particleBg.visible = true;
                 var p = _this.p;
@@ -1161,11 +1153,6 @@ var game;
                             _this.mc.parent.removeChild(_this.mc);
                             _this.mc = null;
                             _this.tile.visible = true;
-                        }
-                        if (_this.mc2) {
-                            _this.mc2.stop();
-                            _this.mc2.parent.removeChild(_this.mc2);
-                            _this.mc2 = null;
                         }
                         if (_this.value == "1") {
                             _this.tile.source = _this.gameScene.buff != "-1" ? "symbolName_1_" + _this.gameScene.buff + "_png" : "symbolName_1_png";
@@ -1205,11 +1192,6 @@ var game;
                 this.mc.stop();
                 this.mc.parent.removeChild(this.mc);
                 this.mc = null;
-            }
-            if (this.mc2) {
-                this.mc2.stop();
-                this.mc2.parent.removeChild(this.mc2);
-                this.mc2 = null;
             }
             if (this.value == "1") {
                 this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
