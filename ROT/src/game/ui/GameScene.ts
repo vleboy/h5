@@ -527,11 +527,12 @@ module game {
 				this["vagueTile" + i].y = (i % 4) * 208 + 21;
 			}
 			let viewGrid = this.spinResp.payload.viewGrid;
+			this.symbols.forEach(symbol => symbol.reset());
 			for (let i = 0; i < 15; i++) {
 				egret.Tween.removeTweens(this.symbols[i].tile);
 				this.symbols[i].value = this.spinResp.payload.viewGrid[i];
 				this.symbols[i].tile.visible = true;
-				this.symbols[i].tile.y = (i % 3) * 208 + 21;
+				this.symbols[i].tile.y = (i % 3) * 238;
 				let str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
@@ -754,9 +755,7 @@ module game {
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
-			this.symbols.forEach(symbol => {
-				symbol.reset();
-			})
+			this.symbols.forEach(symbol => symbol.reset());
 
 			if (this.isFree) {
 				if (this.freeSpinRemainCount == 0) {

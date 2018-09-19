@@ -556,11 +556,12 @@ var game;
                 this["vagueTile" + i].y = (i % 4) * 208 + 21;
             }
             var viewGrid = this.spinResp.payload.viewGrid;
+            this.symbols.forEach(function (symbol) { return symbol.reset(); });
             for (var i = 0; i < 15; i++) {
                 egret.Tween.removeTweens(this.symbols[i].tile);
                 this.symbols[i].value = this.spinResp.payload.viewGrid[i];
                 this.symbols[i].tile.visible = true;
-                this.symbols[i].tile.y = (i % 3) * 208 + 21;
+                this.symbols[i].tile.y = (i % 3) * 238;
                 var str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
                 this.symbols[i].setTexture("symbolName_" + str + "_png");
             }
@@ -829,9 +830,7 @@ var game;
             this.lineWinTxt.visible = false;
             this.particleBg.visible = false;
             this.lineWinTxt.text = "";
-            this.symbols.forEach(function (symbol) {
-                symbol.reset();
-            });
+            this.symbols.forEach(function (symbol) { return symbol.reset(); });
             if (this.isFree) {
                 if (this.freeSpinRemainCount == 0) {
                     this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
