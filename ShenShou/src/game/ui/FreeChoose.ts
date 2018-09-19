@@ -61,12 +61,12 @@ module game {
 					Promise.all([
 						new Promise((resolve, reject)=>{
 							let mc = new AMovieClip();
-							mc.sources = "caishenAni|1-16|_png";
-							mc.x = 94;
-							mc.y = 67;
-							mc.width = 319;
-							mc.height = 321;
-							mc.speed = 4;
+							mc.sources = "wildAni|1-14|_png";
+							mc.x = 155;
+							mc.y = 46;
+							mc.width = 207;
+							mc.height = 202;
+							mc.speed = 6;
 							mc.loop = 2;
 							target.addChildAt(mc, 2);
 							mc.play();
@@ -79,7 +79,6 @@ module game {
 							n>0 && GameService.getInstance().sendFreeChoose(n).then(async (resp)=>{
 								respData = resp;
 								resolve();
-									
 							});
 						})
 					]).then(async()=>{
