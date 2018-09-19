@@ -909,12 +909,14 @@ module game {
 				this.mc.play();
 				this.mc.loop = isLong ? 2 : 1;
 				this.tile.visible = false;
+				this.gameScene.particleBg.visible = true;
 				this.mc.once(AMovieClip.COMPLETE, () => {
 					this.tile.visible = true;
 					this.mc.visible = false;
 					this.mc.parent && this.mc.parent.removeChild(this.mc);
 					this.mc = null;
 					!isLong && (this.gameScene.lineWinTxt.visible = false);
+					this.gameScene.particleBg.visible = false;
 					res();
 				}, this);
 			});

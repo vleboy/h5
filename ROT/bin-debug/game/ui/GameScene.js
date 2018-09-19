@@ -1010,12 +1010,14 @@ var game;
                 _this.mc.play();
                 _this.mc.loop = isLong ? 2 : 1;
                 _this.tile.visible = false;
+                _this.gameScene.particleBg.visible = true;
                 _this.mc.once(game.AMovieClip.COMPLETE, function () {
                     _this.tile.visible = true;
                     _this.mc.visible = false;
                     _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
                     _this.mc = null;
                     !isLong && (_this.gameScene.lineWinTxt.visible = false);
+                    _this.gameScene.particleBg.visible = false;
                     res();
                 }, _this);
             });
