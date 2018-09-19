@@ -74,7 +74,7 @@
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
-		<e:BitmapLabel id="lineWinTxt" horizontalCenter="0" verticalCenter="45" text="12.32" letterSpacing="-40" touchEnabled="false" textAlign="center" font="fnt54_fnt"/>
+		<e:BitmapLabel id="lineWinTxt" horizontalCenter="0" verticalCenter="45" text="12.00" letterSpacing="-30" touchEnabled="false" textAlign="center" font="fnt54_fnt"/>
 
 		<e:Image id="freeChooseCountBg" x="1050" y="90" source="symbolName_0_png" height="75" width="81"/>
 		<e:BitmapLabel id="freeChooseCountTxt" text="x1" textAlign="center" top="110" left="1140" font="fnt39_fnt"/>
