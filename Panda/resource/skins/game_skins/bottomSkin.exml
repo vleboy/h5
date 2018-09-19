@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="bottomSkin" width="1920" height="800" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+<e:Skin class="bottomSkin" width="1920" height="220" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Group id="groupBet" width="880" height="218" left="80" bottom="-120" visible="false">
 		<e:Image source="BG_Pop_png" left="0" right="0" top="0" bottom="0" scale9Grid="60,47,74,78"/>
 		<e:Image source="BetInfoBG_png" width="258" height="80" verticalCenter="0" left="200"/>
@@ -77,12 +77,13 @@
 		<e:Image id="winBg" source="BG_Middle_png" height="140" width="408" horizontalCenter="0" bottom="0" x="756" y="80" scaleX="1" scaleY="1"/>
 		<e:Image id="winLight" height="140" width="408" horizontalCenter="0" bottom="0" x="766" y="90" scaleX="1" scaleY="1" source="BG_Middle_png" visible="false"/>
 		<game:SmallButton id="helpBtn" label="" width="100" height="102" scaleX="1" scaleY="1" verticalCenter="58" horizontalCenter="-853">
-		<e:skinName>
-			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="Help_png" source.down="Help_p_png" source.disabled="Help_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
-		</e:skinName>
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="Help_png" source.down="Help_png" source.disabled="Help_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+
 		</game:SmallButton>
 		<game:SmallButton id="betBtn" label="下注" width="182" height="85" scaleX="1" scaleY="1" verticalCenter="60" horizontalCenter="-630">
 			<game:skinName>
