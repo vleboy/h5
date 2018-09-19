@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="gameSceneSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Image id="bg" x="0" y="0" width="100%" height="100%" source="normalbg_jpg"/>
+	<e:Image id="bgFree" x="0" y="0" width="100%" height="100%" source="addsadfg_jpg"/>
+	<e:Group id="contentGroup" width="1396" height="1080" horizontalCenter="0" verticalCenter="0" touchEnabled="false" touchChildren="false">
+		<e:Group id="borderGroup" width="100%" height="100%" x="0" y="0">
+			<e:Image id="kuang" source="NormalFrame_png" y="186" horizontalCenter="0" width="1388" height="761" x="4" scaleX="1" scaleY="1"/>
+			<e:Image id="kuangFree" y="137" width="1400" height="817" scaleX="1" scaleY="1" source="FreeGameFrame_png" horizontalCenter="0" visible="false"/>
+			<e:Image source="LineBG_png" x="39" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="304" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" y="269" x="569" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="834" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<e:Image source="LineBG_png" x="1099" y="269" width="265" height="659" scaleX="1" scaleY="1"/>
+			<game:AMovieClip id="title" width="670" height="157" y="117" source="title1_png" sources="title|1-20|_png" speed="8" horizontalCenter="-23"/>
+
+
+
+		</e:Group>
+		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
+		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
+			<e:Group id="freeEffectGroup" width="100%" height="100%" y="0" horizontalCenter="0" x="0" scaleX="1" scaleY="1">
+				<game:AMovieClip id="border2" width="204" height="400" horizontalCenter="0" scaleY="2.1" scaleX="2.3" source="border1_png" sources="border|1-34|_png" speed="3" verticalCenter="25"/>
+				<game:AMovieClip id="border3" width="204" height="400" horizontalCenter="265" verticalCenter="25" scaleY="2.1" scaleX="2.3" source="border1_png" sources="border|1-34|_png" speed="3"/>
+				<game:AMovieClip id="border4" width="204" height="400" horizontalCenter="530" verticalCenter="25" scaleY="2.1" scaleX="2.4" source="border1_png" sources="border|1-34|_png" speed="3"/>
+				<e:Group id="freeCoinsGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
+			</e:Group>
+			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
+				<e:Image id="tile0" x="35" width="200" height="200" y="21" scaleX="1" scaleY="1" source="symbolName_1_png"/>
+				<e:Image id="tile1" source="symbolName_0_png" x="35" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile2" source="symbolName_0_png" x="35" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile3" source="symbolName_0_png" x="300" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile4" source="symbolName_0_png" x="300" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile5" source="symbolName_0_png" x="300" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile6" source="symbolName_0_png" x="565" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile7" source="symbolName_0_png" x="565" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile8" source="symbolName_0_png" x="565" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile9" source="symbolName_0_png" x="830" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile10" source="symbolName_0_png" x="830" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile11" source="symbolName_0_png" x="830" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="tile12" source="symbolName_0_png" x="1095" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="tile13" source="symbolName_0_png" x="1095" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="tile14" source="symbolName_0_png" x="1095" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+			</e:Group>
+			<e:Group id="vagueTiles" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image id="vagueTile0" source="vague0_png" x="35" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile1" source="vague0_png" x="35" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile2" source="vague0_png" x="35" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile3" source="vague0_png" x="35" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile4" source="vague0_png" x="300" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile5" source="vague0_png" x="300" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile6" source="vague0_png" x="300" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile7" source="vague0_png" x="300" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile8" source="vague0_png" x="565" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile9" source="vague0_png" x="565" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile10" source="vague0_png" x="565" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile11" source="vague0_png" x="565" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile12" source="vague0_png" x="830" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile13" source="vague0_png" x="830" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile14" source="vague0_png" x="830" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile15" source="vague0_png" x="830" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile16" source="vague0_png" x="1095" width="200" height="200" y="21" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile17" source="vague0_png" x="1095" width="200" height="200" y="229" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile18" source="vague0_png" x="1095" width="200" height="200" y="437" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile19" source="vague0_png" x="1095" width="200" height="200" y="645" scaleX="1" scaleY="1"/>
+			</e:Group>
+			<e:Group id="winGridGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Rect id="particleBg" width="1334" height="658" x="0" y="0" scaleX="1" scaleY="1" fillAlpha="0.5" visible="false"/>
+			</e:Group>
+			<e:Group id="bonusEffectGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+			</e:Group>
+			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
+
+		</e:Group>
+		<e:BitmapLabel id="lineWinTxt" width="600" height="63" horizontalCenter="0" verticalCenter="45" font="fnt63_fnt" text="1232" letterSpacing="-35" touchEnabled="false" textAlign="center"/>
+		<e:Image id="freeCountBg" source="Mutiply_png" x="-99" y="133" scaleX="1" scaleY="1"/>
+		<e:Image id="freeChooseCountBg" source="FeatureChance_png" x="1394" y="112"/>
+
+		<e:BitmapLabel id="freeChooseCountTxt" right="-267" font="fnt40_fnt" text="x2" height="40" top="166" width="176" textAlign="center"/>
+		<e:Group id="freeMultiGroup" width="200" height="140" left="-94" top="140" visible="false">
+
+			<e:BitmapLabel id="freeMulti" text="X10" font="fnt70_fnt" height="70" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
+
+		</e:Group>
+
+
+	</e:Group>
+	<game:BottomBar id="bottomBar" width="1920" height="220" y="860" horizontalCenter="0"/>
+	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
+	<e:TextInput id="testInput" width="363.94" height="57.88" x="397" y="53" anchorOffsetX="0" anchorOffsetY="0"/>
+
+
+
+	<e:Group id="bigWinGroup" width="100%" x="0" y="0" height="100%" visible="false">
+		<e:Label id="bigwinTxt" text="大赢家" textColor="0x20c929" size="100" horizontalCenter="0" verticalCenter="0"/>
+	</e:Group>
+	<e:Group id="freeChanceGroup" width="100%" x="0" y="0" height="100%" visible="false">
+		<game:AMovieClip id="freeChangeMc" width="292" height="141" source="freeChange28_png" horizontalCenter="0" verticalCenter="-90" scaleX="5" scaleY="5" loop="1" sources="freeChange|1-33|_png" speed="4"/>
+		<e:Image id="freeChangeImg" source="FreeChance_png" horizontalCenter="0" verticalCenter="-90" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<game:AMovieClip id="freeChooseCountBoom" width="128" height="128" anchorOffsetX="64" anchorOffsetY="64" y="187" x="1727" source="zz_1_png" visible="false"/>
+	<game:BigWin id="bigWin" height="1080" width="1920" horizontalCenter="0" verticalCenter="0" visible="false"/>
+	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
+	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>
+	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false"/>
+	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>
+	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
+	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+
+</e:Skin>
