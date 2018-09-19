@@ -135,7 +135,7 @@ module game {
 			str == "max" ? this.setAutoBetNum(-1) : this.setAutoBetNum(+str);
 			this.showAutoBtn(false);
 			this.isAuto = true;
-			this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);
+			this.showTween(this.groupAutoNum, -420).then(() => this.groupAutoNum.visible = false);
 			this.autoState();
 		}
 		/**是否显示自动转动按钮*/
@@ -190,7 +190,7 @@ module game {
 				this.groupAutoNum.visible = true;
 				this.showTween(this.groupAutoNum, 107).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
 			}
-			this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(() => {
+			this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -420).then(() => {
 				this.groupAutoNum.visible = false;
 				SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			}) : autoShow();
@@ -201,7 +201,7 @@ module game {
 				this.groupBet.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});
-			this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(() => {
+			this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -420).then(() => {
 				this.groupAutoNum.visible = false;
 				isSound && SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
 			});

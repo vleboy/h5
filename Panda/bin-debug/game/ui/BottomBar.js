@@ -90,7 +90,7 @@ var game;
             str == "max" ? this.setAutoBetNum(-1) : this.setAutoBetNum(+str);
             this.showAutoBtn(false);
             this.isAuto = true;
-            this.showTween(this.groupAutoNum, -400).then(function () { return _this.groupAutoNum.visible = false; });
+            this.showTween(this.groupAutoNum, -420).then(function () { return _this.groupAutoNum.visible = false; });
             this.autoState();
         };
         /**是否显示自动转动按钮*/
@@ -106,7 +106,7 @@ var game;
                 _this.groupBet.visible = true;
                 _this.showTween(_this.groupBet, 126).then(function () { return game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"); });
             };
-            this.groupBet.visible ? this.showTween(this.groupBet, -100).then(function () {
+            this.groupBet.visible ? this.showTween(this.groupBet, -120).then(function () {
                 _this.groupBet.visible = false;
                 game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             }) : betShow();
@@ -146,7 +146,7 @@ var game;
                 _this.groupAutoNum.visible = true;
                 _this.showTween(_this.groupAutoNum, 107).then(function () { return game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"); });
             };
-            this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(function () {
+            this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -420).then(function () {
                 _this.groupAutoNum.visible = false;
                 game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             }) : autoShow();
@@ -155,11 +155,11 @@ var game;
         BottomBar.prototype.hideCutGroup = function (isSound) {
             var _this = this;
             if (isSound === void 0) { isSound = false; }
-            this.groupBet.visible && this.showTween(this.groupBet, -100).then(function () {
+            this.groupBet.visible && this.showTween(this.groupBet, -120).then(function () {
                 _this.groupBet.visible = false;
                 isSound && game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             });
-            this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(function () {
+            this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -420).then(function () {
                 _this.groupAutoNum.visible = false;
                 isSound && game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
             });
