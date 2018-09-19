@@ -1,10 +1,4 @@
 {"file":"NeZha_breath.png","frames":{
-"NeZha_breath_11_png":{"x":1440,"y":1054,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
-"NeZha_breath_12_png":{"x":0,"y":1054,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
-"NeZha_breath_13_png":{"x":864,"y":1052,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
-"NeZha_breath_14_png":{"x":576,"y":1052,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
-"NeZha_breath_15_png":{"x":1152,"y":847,"w":286,"h":206,"offX":26,"offY":73,"sourceW":312,"sourceH":312},
-"NeZha_breath_16_png":{"x":1440,"y":846,"w":286,"h":206,"offX":26,"offY":73,"sourceW":312,"sourceH":312},
 "NeZha_breath_17_png":{"x":1728,"y":845,"w":286,"h":207,"offX":26,"offY":72,"sourceW":312,"sourceH":312},
 "NeZha_breath_18_png":{"x":864,"y":843,"w":286,"h":207,"offX":26,"offY":72,"sourceW":312,"sourceH":312},
 "NeZha_breath_19_png":{"x":576,"y":843,"w":286,"h":207,"offX":26,"offY":72,"sourceW":312,"sourceH":312},
@@ -38,4 +32,10 @@
 "NeZha_breath_07_png":{"x":288,"y":425,"w":286,"h":207,"offX":26,"offY":72,"sourceW":312,"sourceH":312},
 "NeZha_breath_08_png":{"x":864,"y":216,"w":286,"h":207,"offX":26,"offY":72,"sourceW":312,"sourceH":312},
 "NeZha_breath_09_png":{"x":0,"y":846,"w":286,"h":206,"offX":26,"offY":73,"sourceW":312,"sourceH":312},
-"NeZha_breath_10_png":{"x":288,"y":1052,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312}}}
+"NeZha_breath_10_png":{"x":576,"y":1052,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
+"NeZha_breath_11_png":{"x":288,"y":1052,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
+"NeZha_breath_12_png":{"x":1440,"y":1054,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
+"NeZha_breath_13_png":{"x":0,"y":1054,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
+"NeZha_breath_14_png":{"x":864,"y":1052,"w":286,"h":205,"offX":26,"offY":74,"sourceW":312,"sourceH":312},
+"NeZha_breath_15_png":{"x":1152,"y":847,"w":286,"h":206,"offX":26,"offY":73,"sourceW":312,"sourceH":312},
+"NeZha_breath_16_png":{"x":1440,"y":846,"w":286,"h":206,"offX":26,"offY":73,"sourceW":312,"sourceH":312}}}

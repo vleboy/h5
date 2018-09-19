@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,CaiShen_243_BigWin_mp3,CaiShen_243_BigWinOver_mp3,CaiShen_243_Bonus_mp3,CaiShen_243_CardAppear_mp3,CaiShen_243_CardEffect_mp3,CaiShen_243_ChoseCard_mp3,CaiShen_243_featureChoose_mp3,CaiShen_243_freeGame_mp3,CaiShen_243_FreeOver_mp3,CaiShen_243_GUI_Generic1_mp3,CaiShen_243_GUI_Generic2_mp3,CaiShen_243_MiddleWin_mp3,CaiShen_243_normalGame_mp3,CaiShen_243_Roll_mp3,CaiShen_243_RollStop_mp3,CaiShen_243_Scatter_1_mp3,CaiShen_243_Scatter_2_mp3,CaiShen_243_Scatter_3_mp3,CaiShen_243_Scatter_4_mp3,CaiShen_243_Scatter_5_mp3,CaiShen_243_Scatter_wait_mp3,CaiShen_243_SmallWin_mp3,CaiShen_243_Spin_mp3,CaiShen_243_Get_FreeGame_ogg,fnt135_fnt,fnt135_png,fnt173_fnt,fnt173_png,fnt40_fnt,fnt40_png,fnt63_fnt,fnt63_png,fnt70_fnt,fnt70_png,particle_json,particle_fireworks_json,particle_multi_json,particle_multiLight_json,particle_yuanbao_json,bonusParticle_json,yj_wild_json,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,yj_breath_json,ToastBG2_png,ToastBG_png,fillBg_png,sliderBg_png",
+			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,fnt194_fnt,fnt194_png,fnt240_fnt,fnt240_png,fnt35_fnt,fnt35_png,fnt53_fnt,fnt53_png,fnt54_fnt,fnt54_png,bigwin_png,circle_png,circle1_png,circle2_png,circle3_png,circle4_png,circle5_png,circle6_png,circle7_png,circle8_png,circle9_png,circlelight1_png,circlelight2_png,circlelight3_png,circlelight4_png,circlelight5_png,circlelight6_png,circlelight7_png,circlelight8_png,circlelight9_png,contentbg_png,fillBg_png,freebg_png,leftflower_png,megawin_png,normalbg_png,rightflower_png,sliderBg_png,superwin_png,ToastBG_png,ToastBG2_png,circlcce_png,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,sgb_breath_json,sgb_wild_json,yj_breath_json,yj_wild_json,enterFreeBg_png,freeSpin_png,freeWinMoney_png,freeWinTitle_png,gain_png,bar1_png,bar2_png,light_png,Loading..._png,loading_jpg,arrow_png,auto_d_png,auto_p_png,auto_png,balanceBg_png,bet_d_png,bet_p_png,bet_png,bottombg_png,bottombg1_png,bottombg2_png,bottombg3_png,btnGreen_png,cancelAuto_d_png,cancelAuto_p_png,cancelAuto_png,flower_png,freeImg_png,headbg_png,max_p_png,max_png,num10_p_png,num10_png,num100_p_png,num100_png,num20_p_png,num20_png,num50_p_png,num50_png,numbg_png,plus_p_png,plus_png,pool_png,reduce_p_png,reduce_png,return_png,rule_d_png,rule_p_png,rule_png,set_png,spin_png,spinbg_png,spinborder_png,topBg_png,win_png,backgroud1_png,BetSliderBG_png,biaoti_png,close_png,FastModel_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,symbol10_png,symbol6_png,symbol7_png,symbol8_png,symbol9_png,tilebg1_png,tilebg2_png,tilebg3_png,tilebg4_png,tilebg5_png,tilebg6_png,vague10_png,vague11_png,vague12_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,di_png,hx_png,j_png,ssz_png",
 			"name": "preload"
 		}
 	],
@@ -27,244 +27,74 @@
 			"name": "track_sb_png"
 		},
 		{
-			"url": "sound/CaiShen_243_BigWin.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_BigWin_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_BigWinOver.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_BigWinOver_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Bonus.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Bonus_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_CardAppear.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_CardAppear_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_CardEffect.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_CardEffect_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_ChoseCard.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_ChoseCard_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_featureChoose.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_featureChoose_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_freeGame.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_freeGame_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_FreeOver.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_FreeOver_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_GUI_Generic1.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_GUI_Generic1_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_GUI_Generic2.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_GUI_Generic2_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_MiddleWin.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_MiddleWin_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_normalGame.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_normalGame_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Roll.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Roll_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_RollStop.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_RollStop_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Scatter_1.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Scatter_1_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Scatter_2.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Scatter_2_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Scatter_3.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Scatter_3_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Scatter_4.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Scatter_4_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Scatter_5.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Scatter_5_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Scatter_wait.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Scatter_wait_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_SmallWin.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_SmallWin_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Spin.mp3",
-			"type": "sound",
-			"name": "CaiShen_243_Spin_mp3"
-		},
-		{
-			"url": "sound/CaiShen_243_Get_FreeGame.ogg",
-			"type": "sound",
-			"name": "CaiShen_243_Get_FreeGame_ogg"
-		},
-		{
-			"url": "config/fnt135.fnt",
+			"url": "config/fnt194.fnt",
 			"type": "font",
-			"name": "fnt135_fnt"
+			"name": "fnt194_fnt"
 		},
 		{
-			"url": "config/fnt135.png",
+			"url": "config/fnt194.png",
 			"type": "image",
-			"name": "fnt135_png"
+			"name": "fnt194_png"
 		},
 		{
-			"url": "config/fnt173.fnt",
+			"url": "config/fnt240.fnt",
 			"type": "font",
-			"name": "fnt173_fnt"
+			"name": "fnt240_fnt"
 		},
 		{
-			"url": "config/fnt173.png",
+			"url": "config/fnt240.png",
 			"type": "image",
-			"name": "fnt173_png"
+			"name": "fnt240_png"
 		},
 		{
-			"url": "config/fnt40.fnt",
+			"url": "config/fnt35.fnt",
 			"type": "font",
-			"name": "fnt40_fnt"
+			"name": "fnt35_fnt"
 		},
 		{
-			"url": "config/fnt40.png",
+			"url": "config/fnt35.png",
 			"type": "image",
-			"name": "fnt40_png"
+			"name": "fnt35_png"
 		},
 		{
-			"url": "config/fnt63.fnt",
+			"url": "config/fnt53.fnt",
 			"type": "font",
-			"name": "fnt63_fnt"
+			"name": "fnt53_fnt"
 		},
 		{
-			"url": "config/fnt63.png",
+			"url": "config/fnt53.png",
 			"type": "image",
-			"name": "fnt63_png"
+			"name": "fnt53_png"
 		},
 		{
-			"url": "config/fnt70.fnt",
+			"url": "config/fnt54.fnt",
 			"type": "font",
-			"name": "fnt70_fnt"
+			"name": "fnt54_fnt"
 		},
 		{
-			"url": "config/fnt70.png",
+			"url": "config/fnt54.png",
 			"type": "image",
-			"name": "fnt70_png"
+			"name": "fnt54_png"
 		},
 		{
-			"url": "config/particle.json",
-			"type": "json",
-			"name": "particle_json"
-		},
-		{
-			"url": "config/particle_fireworks.json",
-			"type": "json",
-			"name": "particle_fireworks_json"
-		},
-		{
-			"url": "config/particle_multi.json",
-			"type": "json",
-			"name": "particle_multi_json"
-		},
-		{
-			"url": "config/particle_multiLight.json",
-			"type": "json",
-			"name": "particle_multiLight_json"
-		},
-		{
-			"url": "config/particle_yuanbao.json",
-			"type": "json",
-			"name": "particle_yuanbao_json"
-		},
-		{
-			"url": "config/bonusParticle.json",
-			"type": "json",
-			"name": "bonusParticle_json"
-		},
-		{
-			"url": "img/circlcce.png",
+			"url": "img/bg/ToastBG.png",
 			"type": "image",
-			"name": "circlcce_png"
+			"name": "ToastBG_png"
 		},
 		{
-			"url": "img/Tile/tilebg0.png",
+			"url": "img/bg/ToastBG2.png",
 			"type": "image",
-			"name": "tilebg0_png"
-		},
-		{
-			"url": "img/Tile/tilebg1.png",
-			"type": "image",
-			"name": "tilebg1_png"
-		},
-		{
-			"url": "img/Tile/tilebg2.png",
-			"type": "image",
-			"name": "tilebg2_png"
-		},
-		{
-			"url": "img/Tile/tilebg3.png",
-			"type": "image",
-			"name": "tilebg3_png"
-		},
-		{
-			"url": "img/Tile/tilebg4.png",
-			"type": "image",
-			"name": "tilebg4_png"
-		},
-		{
-			"url": "img/Tile/tilebg5.png",
-			"type": "image",
-			"name": "tilebg5_png"
+			"name": "ToastBG2_png"
 		},
 		{
 			"url": "img/bg/bigwin.png",
 			"type": "image",
 			"name": "bigwin_png"
+		},
+		{
+			"url": "img/bg/circle.png",
+			"type": "image",
+			"name": "circle_png"
 		},
 		{
 			"url": "img/bg/circle1.png",
@@ -312,9 +142,59 @@
 			"name": "circle9_png"
 		},
 		{
+			"url": "img/bg/circlelight1.png",
+			"type": "image",
+			"name": "circlelight1_png"
+		},
+		{
+			"url": "img/bg/circlelight2.png",
+			"type": "image",
+			"name": "circlelight2_png"
+		},
+		{
+			"url": "img/bg/circlelight3.png",
+			"type": "image",
+			"name": "circlelight3_png"
+		},
+		{
+			"url": "img/bg/circlelight4.png",
+			"type": "image",
+			"name": "circlelight4_png"
+		},
+		{
+			"url": "img/bg/circlelight5.png",
+			"type": "image",
+			"name": "circlelight5_png"
+		},
+		{
+			"url": "img/bg/circlelight6.png",
+			"type": "image",
+			"name": "circlelight6_png"
+		},
+		{
+			"url": "img/bg/circlelight7.png",
+			"type": "image",
+			"name": "circlelight7_png"
+		},
+		{
+			"url": "img/bg/circlelight8.png",
+			"type": "image",
+			"name": "circlelight8_png"
+		},
+		{
+			"url": "img/bg/circlelight9.png",
+			"type": "image",
+			"name": "circlelight9_png"
+		},
+		{
 			"url": "img/bg/contentbg.png",
 			"type": "image",
 			"name": "contentbg_png"
+		},
+		{
+			"url": "img/bg/fillBg.png",
+			"type": "image",
+			"name": "fillBg_png"
 		},
 		{
 			"url": "img/bg/freebg.png",
@@ -342,9 +222,74 @@
 			"name": "rightflower_png"
 		},
 		{
+			"url": "img/bg/sliderBg.png",
+			"type": "image",
+			"name": "sliderBg_png"
+		},
+		{
 			"url": "img/bg/superwin.png",
 			"type": "image",
 			"name": "superwin_png"
+		},
+		{
+			"url": "img/effect/JZY_breath.json",
+			"type": "sheet",
+			"name": "JZY_breath_json",
+			"subkeys": "JZY_breath_01_png,JZY_breath_02_png,JZY_breath_03_png,JZY_breath_04_png,JZY_breath_05_png,JZY_breath_06_png,JZY_breath_07_png,JZY_breath_08_png,JZY_breath_09_png,JZY_breath_10_png,JZY_breath_11_png,JZY_breath_12_png,JZY_breath_13_png,JZY_breath_14_png,JZY_breath_15_png,JZY_breath_16_png,JZY_breath_17_png,JZY_breath_18_png,JZY_breath_19_png,JZY_breath_20_png,JZY_breath_21_png,JZY_breath_22_png,JZY_breath_23_png,JZY_breath_24_png,JZY_breath_25_png,JZY_breath_26_png,JZY_breath_27_png,JZY_breath_28_png,JZY_breath_29_png"
+		},
+		{
+			"url": "img/effect/NeZha_wild.json",
+			"type": "sheet",
+			"name": "NeZha_wild_json",
+			"subkeys": "NeZha_wild_01_png,NeZha_wild_02_png,NeZha_wild_03_png,NeZha_wild_04_png,NeZha_wild_05_png,NeZha_wild_06_png,NeZha_wild_07_png,NeZha_wild_08_png,NeZha_wild_09_png,NeZha_wild_10_png,NeZha_wild_11_png,NeZha_wild_12_png,NeZha_wild_13_png,NeZha_wild_14_png,NeZha_wild_15_png,NeZha_wild_16_png,NeZha_wild_17_png,NeZha_wild_18_png,NeZha_wild_19_png,NeZha_wild_20_png,NeZha_wild_21_png,NeZha_wild_22_png,NeZha_wild_23_png,NeZha_wild_24_png,NeZha_wild_25_png,NeZha_wild_26_png,NeZha_wild_27_png,NeZha_wild_28_png,NeZha_wild_29_png,NeZha_wild_30_png"
+		},
+		{
+			"url": "img/effect/NeZha_breath.json",
+			"type": "sheet",
+			"name": "NeZha_breath_json",
+			"subkeys": "NeZha_breath_01_png,NeZha_breath_02_png,NeZha_breath_03_png,NeZha_breath_04_png,NeZha_breath_05_png,NeZha_breath_06_png,NeZha_breath_07_png,NeZha_breath_08_png,NeZha_breath_09_png,NeZha_breath_10_png,NeZha_breath_11_png,NeZha_breath_12_png,NeZha_breath_13_png,NeZha_breath_14_png,NeZha_breath_15_png,NeZha_breath_16_png,NeZha_breath_17_png,NeZha_breath_18_png,NeZha_breath_19_png,NeZha_breath_20_png,NeZha_breath_21_png,NeZha_breath_22_png,NeZha_breath_23_png,NeZha_breath_24_png,NeZha_breath_25_png,NeZha_breath_26_png,NeZha_breath_27_png,NeZha_breath_28_png,NeZha_breath_29_png,NeZha_breath_30_png,NeZha_breath_31_png,NeZha_breath_32_png,NeZha_breath_33_png,NeZha_breath_34_png,NeZha_breath_35_png,NeZha_breath_36_png,NeZha_breath_37_png,NeZha_breath_38_png,NeZha_breath_39_png,NeZha_breath_40_png"
+		},
+		{
+			"url": "img/effect/JZY_wild.json",
+			"type": "sheet",
+			"name": "JZY_wild_json",
+			"subkeys": "JZY_wild_01_png,JZY_wild_02_png,JZY_wild_03_png,JZY_wild_04_png,JZY_wild_05_png,JZY_wild_06_png,JZY_wild_07_png,JZY_wild_08_png,JZY_wild_09_png,JZY_wild_10_png,JZY_wild_11_png,JZY_wild_12_png,JZY_wild_13_png,JZY_wild_14_png,JZY_wild_15_png,JZY_wild_16_png,JZY_wild_17_png,JZY_wild_18_png,JZY_wild_19_png,JZY_wild_20_png,JZY_wild_21_png,JZY_wild_22_png,JZY_wild_23_png,JZY_wild_24_png,JZY_wild_25_png,JZY_wild_26_png,JZY_wild_27_png,JZY_wild_28_png,JZY_wild_29_png,JZY_wild_30_png"
+		},
+		{
+			"url": "img/effect/sgb_breath.json",
+			"type": "sheet",
+			"name": "sgb_breath_json",
+			"subkeys": "sgb_breath_01_png,sgb_breath_02_png,sgb_breath_03_png,sgb_breath_04_png,sgb_breath_05_png,sgb_breath_06_png,sgb_breath_07_png,sgb_breath_08_png,sgb_breath_09_png,sgb_breath_10_png,sgb_breath_11_png,sgb_breath_12_png,sgb_breath_13_png,sgb_breath_14_png,sgb_breath_15_png,sgb_breath_16_png,sgb_breath_17_png,sgb_breath_18_png,sgb_breath_19_png,sgb_breath_20_png,sgb_breath_21_png,sgb_breath_22_png,sgb_breath_23_png,sgb_breath_24_png,sgb_breath_25_png,sgb_breath_26_png,sgb_breath_27_png,sgb_breath_28_png,sgb_breath_29_png,sgb_breath_30_png,sgb_breath_31_png,sgb_breath_32_png,sgb_breath_33_png,sgb_breath_34_png,sgb_breath_35_png,sgb_breath_36_png,sgb_breath_37_png,sgb_breath_38_png,sgb_breath_39_png,sgb_breath_40_png"
+		},
+		{
+			"url": "img/effect/daji_wild.json",
+			"type": "sheet",
+			"name": "daji_wild_json",
+			"subkeys": "daji_wild_01_png,daji_wild_02_png,daji_wild_03_png,daji_wild_04_png,daji_wild_05_png,daji_wild_06_png,daji_wild_07_png,daji_wild_08_png,daji_wild_09_png,daji_wild_10_png,daji_wild_11_png,daji_wild_12_png,daji_wild_13_png,daji_wild_14_png,daji_wild_15_png,daji_wild_16_png,daji_wild_17_png,daji_wild_18_png,daji_wild_19_png,daji_wild_20_png,daji_wild_21_png,daji_wild_22_png,daji_wild_23_png,daji_wild_24_png,daji_wild_25_png,daji_wild_26_png,daji_wild_27_png,daji_wild_28_png,daji_wild_29_png,daji_wild_30_png"
+		},
+		{
+			"url": "img/effect/daji_breath.json",
+			"type": "sheet",
+			"name": "daji_breath_json",
+			"subkeys": "daji_breath_01_png,daji_breath_02_png,daji_breath_03_png,daji_breath_04_png,daji_breath_05_png,daji_breath_06_png,daji_breath_07_png,daji_breath_08_png,daji_breath_09_png,daji_breath_10_png,daji_breath_11_png,daji_breath_12_png,daji_breath_13_png,daji_breath_14_png,daji_breath_15_png,daji_breath_16_png,daji_breath_17_png,daji_breath_18_png,daji_breath_19_png,daji_breath_20_png,daji_breath_21_png,daji_breath_22_png,daji_breath_23_png,daji_breath_24_png,daji_breath_25_png,daji_breath_26_png,daji_breath_27_png,daji_breath_28_png,daji_breath_29_png,daji_breath_30_png"
+		},
+		{
+			"url": "img/effect/yj_breath.json",
+			"type": "sheet",
+			"name": "yj_breath_json",
+			"subkeys": "yj_breath_01_png,yj_breath_02_png,yj_breath_03_png,yj_breath_04_png,yj_breath_05_png,yj_breath_06_png,yj_breath_07_png,yj_breath_08_png,yj_breath_09_png,yj_breath_10_png,yj_breath_11_png,yj_breath_12_png,yj_breath_13_png,yj_breath_14_png,yj_breath_15_png,yj_breath_16_png,yj_breath_17_png,yj_breath_18_png,yj_breath_19_png,yj_breath_20_png,yj_breath_21_png,yj_breath_22_png,yj_breath_23_png,yj_breath_24_png,yj_breath_25_png,yj_breath_26_png,yj_breath_27_png,yj_breath_28_png,yj_breath_29_png,yj_breath_30_png,yj_breath_31_png,yj_breath_32_png,yj_breath_33_png,yj_breath_34_png,yj_breath_35_png,yj_breath_36_png,yj_breath_37_png,yj_breath_38_png,yj_breath_39_png,yj_breath_40_png"
+		},
+		{
+			"url": "img/effect/yj_wild.json",
+			"type": "sheet",
+			"name": "yj_wild_json",
+			"subkeys": "yj_wild_01_png,yj_wild_02_png,yj_wild_03_png,yj_wild_04_png,yj_wild_05_png,yj_wild_06_png,yj_wild_07_png,yj_wild_08_png,yj_wild_09_png,yj_wild_10_png,yj_wild_11_png,yj_wild_12_png,yj_wild_13_png,yj_wild_14_png,yj_wild_15_png,yj_wild_16_png,yj_wild_17_png,yj_wild_18_png,yj_wild_19_png,yj_wild_20_png,yj_wild_21_png,yj_wild_22_png,yj_wild_23_png,yj_wild_24_png,yj_wild_25_png,yj_wild_26_png,yj_wild_27_png,yj_wild_28_png,yj_wild_29_png,yj_wild_30_png"
+		},
+		{
+			"url": "img/effect/sgb_wild.json",
+			"type": "sheet",
+			"name": "sgb_wild_json",
+			"subkeys": "sgb_wild_01_png,sgb_wild_02_png,sgb_wild_03_png,sgb_wild_04_png,sgb_wild_05_png,sgb_wild_06_png,sgb_wild_07_png,sgb_wild_08_png,sgb_wild_09_png,sgb_wild_10_png,sgb_wild_11_png,sgb_wild_12_png,sgb_wild_13_png,sgb_wild_14_png,sgb_wild_15_png,sgb_wild_16_png,sgb_wild_17_png,sgb_wild_18_png,sgb_wild_19_png,sgb_wild_20_png,sgb_wild_21_png,sgb_wild_22_png,sgb_wild_23_png,sgb_wild_24_png,sgb_wild_25_png,sgb_wild_26_png,sgb_wild_27_png,sgb_wild_28_png,sgb_wild_29_png,sgb_wild_30_png"
 		},
 		{
 			"url": "img/freeGame/enterFreeBg.png",
@@ -407,9 +352,34 @@
 			"name": "auto_png"
 		},
 		{
+			"url": "img/menu/auto_d.png",
+			"type": "image",
+			"name": "auto_d_png"
+		},
+		{
+			"url": "img/menu/auto_p.png",
+			"type": "image",
+			"name": "auto_p_png"
+		},
+		{
 			"url": "img/menu/balanceBg.png",
 			"type": "image",
 			"name": "balanceBg_png"
+		},
+		{
+			"url": "img/menu/bet.png",
+			"type": "image",
+			"name": "bet_png"
+		},
+		{
+			"url": "img/menu/bet_d.png",
+			"type": "image",
+			"name": "bet_d_png"
+		},
+		{
+			"url": "img/menu/bet_p.png",
+			"type": "image",
+			"name": "bet_p_png"
 		},
 		{
 			"url": "img/menu/bottombg.png",
@@ -437,6 +407,21 @@
 			"name": "btnGreen_png"
 		},
 		{
+			"url": "img/menu/cancelAuto.png",
+			"type": "image",
+			"name": "cancelAuto_png"
+		},
+		{
+			"url": "img/menu/cancelAuto_d.png",
+			"type": "image",
+			"name": "cancelAuto_d_png"
+		},
+		{
+			"url": "img/menu/cancelAuto_p.png",
+			"type": "image",
+			"name": "cancelAuto_p_png"
+		},
+		{
 			"url": "img/menu/flower.png",
 			"type": "image",
 			"name": "flower_png"
@@ -462,9 +447,44 @@
 			"name": "max_p_png"
 		},
 		{
-			"url": "img/menu/minus.png",
+			"url": "img/menu/num10.png",
 			"type": "image",
-			"name": "minus_png"
+			"name": "num10_png"
+		},
+		{
+			"url": "img/menu/num100.png",
+			"type": "image",
+			"name": "num100_png"
+		},
+		{
+			"url": "img/menu/num100_p.png",
+			"type": "image",
+			"name": "num100_p_png"
+		},
+		{
+			"url": "img/menu/num10_p.png",
+			"type": "image",
+			"name": "num10_p_png"
+		},
+		{
+			"url": "img/menu/num20.png",
+			"type": "image",
+			"name": "num20_png"
+		},
+		{
+			"url": "img/menu/num20_p.png",
+			"type": "image",
+			"name": "num20_p_png"
+		},
+		{
+			"url": "img/menu/num50.png",
+			"type": "image",
+			"name": "num50_png"
+		},
+		{
+			"url": "img/menu/num50_p.png",
+			"type": "image",
+			"name": "num50_p_png"
 		},
 		{
 			"url": "img/menu/numbg.png",
@@ -477,9 +497,24 @@
 			"name": "plus_png"
 		},
 		{
+			"url": "img/menu/plus_p.png",
+			"type": "image",
+			"name": "plus_p_png"
+		},
+		{
 			"url": "img/menu/pool.png",
 			"type": "image",
 			"name": "pool_png"
+		},
+		{
+			"url": "img/menu/reduce.png",
+			"type": "image",
+			"name": "reduce_png"
+		},
+		{
+			"url": "img/menu/reduce_p.png",
+			"type": "image",
+			"name": "reduce_p_png"
 		},
 		{
 			"url": "img/menu/return.png",
@@ -490,6 +525,16 @@
 			"url": "img/menu/rule.png",
 			"type": "image",
 			"name": "rule_png"
+		},
+		{
+			"url": "img/menu/rule_d.png",
+			"type": "image",
+			"name": "rule_d_png"
+		},
+		{
+			"url": "img/menu/rule_p.png",
+			"type": "image",
+			"name": "rule_p_png"
 		},
 		{
 			"url": "img/menu/set.png",
@@ -572,24 +617,59 @@
 			"name": "yinxiao_png"
 		},
 		{
-			"url": "img/top/di.png",
+			"url": "img/Tile/symbol10.png",
 			"type": "image",
-			"name": "di_png"
+			"name": "symbol10_png"
 		},
 		{
-			"url": "img/top/hx.png",
+			"url": "img/Tile/symbol6.png",
 			"type": "image",
-			"name": "hx_png"
+			"name": "symbol6_png"
 		},
 		{
-			"url": "img/top/j.png",
+			"url": "img/Tile/symbol7.png",
 			"type": "image",
-			"name": "j_png"
+			"name": "symbol7_png"
 		},
 		{
-			"url": "img/top/ssz.png",
+			"url": "img/Tile/symbol8.png",
 			"type": "image",
-			"name": "ssz_png"
+			"name": "symbol8_png"
+		},
+		{
+			"url": "img/Tile/symbol9.png",
+			"type": "image",
+			"name": "symbol9_png"
+		},
+		{
+			"url": "img/Tile/tilebg1.png",
+			"type": "image",
+			"name": "tilebg1_png"
+		},
+		{
+			"url": "img/Tile/tilebg2.png",
+			"type": "image",
+			"name": "tilebg2_png"
+		},
+		{
+			"url": "img/Tile/tilebg3.png",
+			"type": "image",
+			"name": "tilebg3_png"
+		},
+		{
+			"url": "img/Tile/tilebg4.png",
+			"type": "image",
+			"name": "tilebg4_png"
+		},
+		{
+			"url": "img/Tile/tilebg5.png",
+			"type": "image",
+			"name": "tilebg5_png"
+		},
+		{
+			"url": "img/Tile/tilebg6.png",
+			"type": "image",
+			"name": "tilebg6_png"
 		},
 		{
 			"url": "img/Tile/vague/vague10.png",
@@ -642,72 +722,29 @@
 			"name": "vague9_png"
 		},
 		{
-			"name": "yj_wild_json",
-			"type": "sheet",
-			"url": "img/effect/yj_wild.json",
-			"subkeys": "yj_wild_01_png,yj_wild_02_png,yj_wild_03_png,yj_wild_04_png,yj_wild_05_png,yj_wild_06_png,yj_wild_07_png,yj_wild_08_png,yj_wild_09_png,yj_wild_10_png,yj_wild_11_png,yj_wild_12_png,yj_wild_13_png,yj_wild_14_png,yj_wild_15_png,yj_wild_16_png,yj_wild_17_png,yj_wild_18_png,yj_wild_19_png,yj_wild_20_png,yj_wild_21_png,yj_wild_22_png,yj_wild_23_png,yj_wild_24_png,yj_wild_25_png,yj_wild_26_png,yj_wild_27_png,yj_wild_28_png,yj_wild_29_png,yj_wild_30_png"
-		},
-		{
-			"name": "daji_breath_json",
-			"type": "sheet",
-			"url": "img/effect/daji_breath.json",
-			"subkeys": "daji_breath_11_png,daji_breath_12_png,daji_breath_13_png,daji_breath_14_png,daji_breath_15_png,daji_breath_16_png,daji_breath_17_png,daji_breath_18_png,daji_breath_19_png,daji_breath_20_png,daji_breath_21_png,daji_breath_22_png,daji_breath_23_png,daji_breath_24_png,daji_breath_25_png,daji_breath_26_png,daji_breath_27_png,daji_breath_28_png,daji_breath_29_png,daji_breath_30_png,daji_breath_01_png,daji_breath_02_png,daji_breath_03_png,daji_breath_04_png,daji_breath_05_png,daji_breath_06_png,daji_breath_07_png,daji_breath_08_png,daji_breath_09_png,daji_breath_10_png"
-		},
-		{
-			"name": "daji_wild_json",
-			"type": "sheet",
-			"url": "img/effect/daji_wild.json",
-			"subkeys": "daji_wild_01_png,daji_wild_02_png,daji_wild_03_png,daji_wild_04_png,daji_wild_05_png,daji_wild_06_png,daji_wild_07_png,daji_wild_08_png,daji_wild_09_png,daji_wild_10_png,daji_wild_11_png,daji_wild_12_png,daji_wild_13_png,daji_wild_14_png,daji_wild_15_png,daji_wild_16_png,daji_wild_17_png,daji_wild_18_png,daji_wild_19_png,daji_wild_20_png,daji_wild_21_png,daji_wild_22_png,daji_wild_23_png,daji_wild_24_png,daji_wild_25_png,daji_wild_26_png,daji_wild_27_png,daji_wild_28_png,daji_wild_29_png,daji_wild_30_png"
-		},
-		{
-			"name": "JZY_breath_json",
-			"type": "sheet",
-			"url": "img/effect/JZY_breath.json",
-			"subkeys": "JZY_breath_01_png,JZY_breath_02_png,JZY_breath_03_png,JZY_breath_04_png,JZY_breath_05_png,JZY_breath_06_png,JZY_breath_07_png,JZY_breath_08_png,JZY_breath_09_png,JZY_breath_10_png,JZY_breath_11_png,JZY_breath_12_png,JZY_breath_13_png,JZY_breath_14_png,JZY_breath_15_png,JZY_breath_16_png,JZY_breath_17_png,JZY_breath_18_png,JZY_breath_19_png,JZY_breath_20_png,JZY_breath_21_png,JZY_breath_22_png,JZY_breath_23_png,JZY_breath_24_png,JZY_breath_25_png,JZY_breath_26_png,JZY_breath_27_png,JZY_breath_28_png,JZY_breath_29_png"
-		},
-		{
-			"name": "JZY_wild_json",
-			"type": "sheet",
-			"url": "img/effect/JZY_wild.json",
-			"subkeys": "JZY_wild_01_png,JZY_wild_02_png,JZY_wild_03_png,JZY_wild_04_png,JZY_wild_05_png,JZY_wild_06_png,JZY_wild_07_png,JZY_wild_08_png,JZY_wild_09_png,JZY_wild_10_png,JZY_wild_11_png,JZY_wild_12_png,JZY_wild_13_png,JZY_wild_14_png,JZY_wild_15_png,JZY_wild_16_png,JZY_wild_17_png,JZY_wild_18_png,JZY_wild_19_png,JZY_wild_20_png,JZY_wild_21_png,JZY_wild_22_png,JZY_wild_23_png,JZY_wild_24_png,JZY_wild_25_png,JZY_wild_26_png,JZY_wild_27_png,JZY_wild_28_png,JZY_wild_29_png,JZY_wild_30_png"
-		},
-		{
-			"name": "NeZha_breath_json",
-			"type": "sheet",
-			"url": "img/effect/NeZha_breath.json",
-			"subkeys": "NeZha_breath_11_png,NeZha_breath_12_png,NeZha_breath_13_png,NeZha_breath_14_png,NeZha_breath_15_png,NeZha_breath_16_png,NeZha_breath_17_png,NeZha_breath_18_png,NeZha_breath_19_png,NeZha_breath_20_png,NeZha_breath_21_png,NeZha_breath_22_png,NeZha_breath_23_png,NeZha_breath_24_png,NeZha_breath_25_png,NeZha_breath_26_png,NeZha_breath_27_png,NeZha_breath_28_png,NeZha_breath_29_png,NeZha_breath_30_png,NeZha_breath_31_png,NeZha_breath_32_png,NeZha_breath_33_png,NeZha_breath_34_png,NeZha_breath_35_png,NeZha_breath_36_png,NeZha_breath_37_png,NeZha_breath_38_png,NeZha_breath_39_png,NeZha_breath_40_png,NeZha_breath_01_png,NeZha_breath_02_png,NeZha_breath_03_png,NeZha_breath_04_png,NeZha_breath_05_png,NeZha_breath_06_png,NeZha_breath_07_png,NeZha_breath_08_png,NeZha_breath_09_png,NeZha_breath_10_png"
-		},
-		{
-			"name": "NeZha_wild_json",
-			"type": "sheet",
-			"url": "img/effect/NeZha_wild.json",
-			"subkeys": "NeZha_wild_01_png,NeZha_wild_02_png,NeZha_wild_03_png,NeZha_wild_04_png,NeZha_wild_05_png,NeZha_wild_06_png,NeZha_wild_07_png,NeZha_wild_08_png,NeZha_wild_09_png,NeZha_wild_10_png,NeZha_wild_11_png,NeZha_wild_12_png,NeZha_wild_13_png,NeZha_wild_14_png,NeZha_wild_15_png,NeZha_wild_16_png,NeZha_wild_17_png,NeZha_wild_18_png,NeZha_wild_19_png,NeZha_wild_20_png,NeZha_wild_21_png,NeZha_wild_22_png,NeZha_wild_23_png,NeZha_wild_24_png,NeZha_wild_25_png,NeZha_wild_26_png,NeZha_wild_27_png,NeZha_wild_28_png,NeZha_wild_29_png,NeZha_wild_30_png"
-		},
-		{
-			"name": "yj_breath_json",
-			"type": "sheet",
-			"url": "img/effect/yj_breath.json",
-			"subkeys": "yj_breath_01_png,yj_breath_02_png,yj_breath_03_png,yj_breath_04_png,yj_breath_05_png,yj_breath_06_png,yj_breath_07_png,yj_breath_08_png,yj_breath_09_png,yj_breath_10_png,yj_breath_11_png,yj_breath_12_png,yj_breath_13_png,yj_breath_14_png,yj_breath_15_png,yj_breath_16_png,yj_breath_17_png,yj_breath_18_png,yj_breath_19_png,yj_breath_20_png,yj_breath_21_png,yj_breath_22_png,yj_breath_23_png,yj_breath_24_png,yj_breath_25_png,yj_breath_26_png,yj_breath_27_png,yj_breath_28_png,yj_breath_29_png,yj_breath_30_png,yj_breath_31_png,yj_breath_32_png,yj_breath_33_png,yj_breath_34_png,yj_breath_35_png,yj_breath_36_png,yj_breath_37_png,yj_breath_38_png,yj_breath_39_png,yj_breath_40_png"
-		},
-		{
-			"name": "ToastBG2_png",
+			"url": "img/top/di.png",
 			"type": "image",
-			"url": "img/bg/ToastBG2.png"
+			"name": "di_png"
 		},
 		{
-			"name": "ToastBG_png",
+			"url": "img/top/hx.png",
 			"type": "image",
-			"url": "img/bg/ToastBG.png"
+			"name": "hx_png"
 		},
 		{
-			"name": "fillBg_png",
+			"url": "img/top/j.png",
 			"type": "image",
-			"url": "img/bg/fillBg.png"
+			"name": "j_png"
 		},
 		{
-			"name": "sliderBg_png",
+			"url": "img/top/ssz.png",
 			"type": "image",
-			"url": "img/bg/sliderBg.png"
+			"name": "ssz_png"
+		},
+		{
+			"url": "img/circlcce.png",
+			"type": "image",
+			"name": "circlcce_png"
 		}
 	]
 }

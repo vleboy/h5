@@ -2,7 +2,49 @@
 <e:Skin class="gameSceneSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
 	<e:Image id="bg" x="0" y="0" width="100%" height="100%" source="normalbg_png"/>
 	<e:Image id="bgFree" x="0" y="0" width="100%" height="100%" source="freebg_png" visible="false"/>
+	<e:Image source="leftflower_png" x="0" y="0"/>
+	<e:Image source="rightflower_png" y="126" right="0"/>
 	<e:Group id="contentGroup" width="1920" height="1080" horizontalCenter="0" verticalCenter="0" touchEnabled="false" touchChildren="false">
+		<e:Group id="contentBgGroup" width="1920" height="1080" x="0" y="0">
+			<e:Image source="contentbg_png" horizontalCenter="0" y="28" x="109" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group id="tileGroup" width="1430" height="764" x="244" y="148">
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-560" verticalCenter="-248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-560" verticalCenter="0"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-560" verticalCenter="248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-280" verticalCenter="-248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-280" verticalCenter="0"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-280" verticalCenter="248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="-248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="280" verticalCenter="-248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="280" verticalCenter="0"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="280" verticalCenter="248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="560" verticalCenter="-248"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="560" verticalCenter="0"/>
+			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="560" verticalCenter="248"/>
+		</e:Group>
+		<e:Group id="lineNumGroup" width="1920" height="1080" x="0" y="0" visible="false">
+			<e:Image id="leftLine6" source="circle2_png" x="168" y="157"/>
+			<e:Image id="leftLine2" source="circle3_png" x="168" y="233"/>
+			<e:Image id="leftLine4" source="circle4_png" x="168" y="309"/>
+			<e:Image id="leftLine8" source="circle5_png" x="168" y="413"/>
+			<e:Image id="leftLine3" source="circle6_png" x="168" y="489"/>
+			<e:Image id="leftLine9" source="circle7_png" x="168" y="567"/>
+			<e:Image id="leftLine5" source="circle8_png" x="168" y="668"/>
+			<e:Image id="leftLine1" source="circle9_png" x="168" y="747"/>
+			<e:Image id="leftLine7" source="circle1_png" x="168" y="826"/>
+			<e:Image id="rightLine6" source="circle2_png" x="1665" y="157"/>
+			<e:Image id="rightLine2" source="circle3_png" x="1665" y="233"/>
+			<e:Image id="rightLine4" source="circle4_png" x="1665" y="309"/>
+			<e:Image id="rightLine8" source="circle5_png" x="1665" y="413"/>
+			<e:Image id="rightLine3" source="circle6_png" x="1665" y="489"/>
+			<e:Image id="rightLine9" source="circle7_png" x="1665" y="567"/>
+			<e:Image id="rightLine5" source="circle8_png" x="1665" y="668"/>
+			<e:Image id="rightLine1" source="circle9_png" x="1665" y="747"/>
+			<e:Image id="rightLine7" source="circle1_png" x="1665" y="826"/>
+		</e:Group>
 
 
 
@@ -17,7 +59,7 @@
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" horizontalCenter="0" touchChildren="true" touchEnabled="false" bottom="0"/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
-	<e:TextInput id="testInput" width="363.94" height="57.88" x="397" y="53" anchorOffsetX="0" anchorOffsetY="0"/>
+	<e:TextInput id="testInput" width="95.94" height="57.88" x="30" y="80" anchorOffsetX="0" anchorOffsetY="0"/>
 
 
 
@@ -27,9 +69,9 @@
 
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
 
-	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false"/>
+
 	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>
-	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
 
