@@ -11,11 +11,10 @@ module game {
 		private freeChoose: FreeChoose;
 		private bg: eui.Image;
 		private bgFree: eui.Image;
-		private kuang: eui.Image;
-		private kuangFree: eui.Image;
 		private title: AMovieClip;
+		private title_fire: AMovieClip;
 		private freeCountBg: eui.Image;
-		private freeChooseCountBg: eui.Image;
+		private freeChooseCount: eui.Group;
 		private freeChooseCountTxt: eui.BitmapLabel;
 		private freeTotalWin: FreeTotalWin;
 		private border2: AMovieClip;
@@ -94,6 +93,11 @@ module game {
 		private initTitle() {
 			this.title.play();
 		}
+		/**标题燃火*/
+		private titleFire(isFire: boolean): void {
+			this.title_fire.visible = isFire;
+			isFire ? this.title_fire.play() : this.title_fire.stop();
+		}
 		/**
 		 * 初始图标对象
 		 * */
@@ -104,7 +108,7 @@ module game {
 			}
 			for (let i = 0; i < 15; i++) {
 				let n = Math.floor(Math.random() * 13) + "";
-				if(((i<3 || i>11) && n=="1")) n="2";
+				if (((i < 3 || i > 11) && n == "1")) n = "2";
 				n = (n == "1" ? "1_1" : n);
 				this["tile" + i].visible = true;
 				this["tile" + i].source = "symbolName_" + n + "_png";
@@ -248,7 +252,7 @@ module game {
 					break;
 				case NotifyConst.freeComplete:
 					egret.Tween.get(this["gameMask"])
-						.set({visible: true, alpha:0})
+						.set({ visible: true, alpha: 0 })
 						.to({ alpha: 1 }, 700)
 						.wait(700)
 						.call(() => {
@@ -282,7 +286,7 @@ module game {
 				this.stage.addChild(new game.ErrTip("余额不足", () => { }, this));
 				return;
 			}
-			if(!this.isFree){
+			if (!this.isFree) {
 				let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
 				this.topBar.setBalance(txt);
 			}
@@ -296,10 +300,10 @@ module game {
 
 			if (this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
 			this.startSpin();
-			if(this["testInput"].text){
+			if (this["testInput"].text) {
 				GameService.getInstance().sendSpin(this.betLevel, this["testInput"].text).then(this.spinBack.bind(this));
 			}
-			else{
+			else {
 				GameService.getInstance().sendSpin(this.betLevel).then(this.spinBack.bind(this));
 			}
 			this["testInput"].text = "";
@@ -438,8 +442,8 @@ module game {
 				});
 
 				let haveScatterThisColumn = true;
-				for(let c=0; c<=column; c++){
-					if(arr[c*3]!="0" && arr[c*3+1]!="0" && arr[c*3+2]!="0"){
+				for (let c = 0; c <= column; c++) {
+					if (arr[c * 3] != "0" && arr[c * 3 + 1] != "0" && arr[c * 3 + 2] != "0") {
 						haveScatterThisColumn = false;
 					}
 				}
@@ -463,7 +467,7 @@ module game {
 
 		}
 
-		private freeColumnTimeout:number;
+		private freeColumnTimeout: number;
 		/**
 		 * 单列freespin缓停动画
 		 * */
@@ -514,14 +518,14 @@ module game {
 						}
 					})
 
-				if(this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
+				if (this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
 				this.freeColumnTimeout = setTimeout(() => {
 					egret.Tween.removeTweens(this["freeCoinsGroup"]);
 					while (arr.length > 0) {
 						let img = arr.pop();
 						img.parent.removeChild(img);
 					}
-					if(c.parent) c.parent.removeChild(c);
+					if (c.parent) c.parent.removeChild(c);
 					(this["border" + column] as AMovieClip).stop();
 					(this["border" + column] as AMovieClip).visible = false;
 					resolve();
@@ -533,8 +537,8 @@ module game {
 		 * 立即停止
 		 * */
 		private cancelSpin() {
-			if(this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
-			
+			if (this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
+
 			for (let i = 0; i < 20; i++) {
 				egret.Tween.removeTweens(this["vagueTile" + i]);
 				this["vagueTile" + i].visible = false;
@@ -584,14 +588,14 @@ module game {
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
 				this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				if (this.freeSpinRemainCount == 0) {
-					setTimeout(()=> {
+					setTimeout(() => {
 						this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
 					}, 1000);
 				}
 				else {
 					this.setState(GameState.BET);
-					setTimeout(()=> {
-						if(this.state == GameState.BET) this.spin();
+					setTimeout(() => {
+						if (this.state == GameState.BET) this.spin();
 					}, 1000);
 				}
 			}
@@ -615,8 +619,8 @@ module game {
 					}
 					this.setState(GameState.BET);
 					if (this.autoMax || this.autoCount > 0) {
-						setTimeout(()=> {
-							if(this.state == GameState.BET) this.spin();
+						setTimeout(() => {
+							if (this.state == GameState.BET) this.spin();
 						}, 1000);
 					}
 				}
@@ -670,7 +674,7 @@ module game {
 		 * scatter图标动画
 		 * */
 		private showScatterLine() {
-			if(this.spinResp.payload.getFeatureChance){
+			if (this.spinResp.payload.getFeatureChance) {
 				this.lineWinTxt.visible = true;
 				this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
 			}
@@ -682,13 +686,13 @@ module game {
 				}) : []
 			)
 		}
-		private stopScatterLine(){
-            this.particleBg.visible = false;
+		private stopScatterLine() {
+			this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.lineWinTxt.text = "";
-            this.spinResp.payload.scatterGrid.forEach((value: number, column: number)=>{
-                let gridIndex = value + column * 3;
-                this.symbols[gridIndex].reset();
+			this.spinResp.payload.scatterGrid.forEach((value: number, column: number) => {
+				let gridIndex = value + column * 3;
+				this.symbols[gridIndex].reset();
 			})
 		}
 		/**
@@ -748,45 +752,45 @@ module game {
 							/**喷金币 */
 							let coins = [];
 							let flag = 0;
-							let createCoins = ()=>{
+							let createCoins = () => {
 								let coin = new AMovieClip();
 								coin.sources = "SU_Coin_Gold_3x3_|1-9|_png";
-								coin.x = target.x+target.width/2;
-								coin.y = target.y+70;
+								coin.x = target.x + target.width / 2;
+								coin.y = target.y + 70;
 								coin.width = coin.height = 30;
 								coin.anchorOffsetX = coin.anchorOffsetY = 15;
-								coin["speedx"] = Math.round((Math.random()*10-5));
-								coin["speedy"] = -Math.round((Math.random()*7+7));
+								coin["speedx"] = Math.round((Math.random() * 10 - 5));
+								coin["speedy"] = -Math.round((Math.random() * 7 + 7));
 								coin["count"] = 0;
 								this["bonusEffectGroup"].addChild(coin);
 								coins.push(coin);
 								coin.play();
 							}
 
-							egret.Tween.get(this["bonusEffectGroup"], {loop:true})
+							egret.Tween.get(this["bonusEffectGroup"], { loop: true })
 								.wait(30)
-								.call(()=>{
-									if(++flag % 3 == 0)createCoins();
-									coins.forEach((v,i)=>{
+								.call(() => {
+									if (++flag % 3 == 0) createCoins();
+									coins.forEach((v, i) => {
 										v.x += v["speedx"];
 										v.y += v["speedy"];
 										v["speedy"]++;
-										if(++v.count > 24){
+										if (++v.count > 24) {
 											v.stop();
 											v.parent.removeChild(v);
-											coins.splice(i,1);
+											coins.splice(i, 1);
 										}
 									})
 								})
 
 							//粒子发散效果
-							
+
 							let texture = RES.getRes("star_png");
 							let cfg = RES.getRes("bonusParticle_json");
 							let p = new particle.GravityParticleSystem(texture, cfg);
 							p.blendMode = egret.BlendMode.ADD;
-							p.emitterX = target.x+target.width/2;
-							p.emitterY = target.y+70;
+							p.emitterX = target.x + target.width / 2;
+							p.emitterY = target.y + 70;
 							this["bonusEffectGroup"].addChild(p);
 							p.start();
 
@@ -798,14 +802,14 @@ module game {
 								this.lineWinTxt.visible = false;
 
 								egret.Tween.removeTweens(this["bonusEffectGroup"]);
-								while(coins.length>0){
+								while (coins.length > 0) {
 									coins.pop().stop();
 								}
 								this["bonusEffectGroup"].removeChildren();
 
-								if(p){
+								if (p) {
 									p.stop();
-									if(p.parent) p.parent.removeChild(p);
+									if (p.parent) p.parent.removeChild(p);
 								}
 
 								res();
@@ -819,11 +823,11 @@ module game {
 		/**
 		 * 各单线中奖展示
 		 * */
-		private showEveryLineGrid(arr: { gold: number; line: number[]; lineIndex: number; multiplier: number; symbol: string; winCard: number[]}[] ) {
+		private showEveryLineGrid(arr: { gold: number; line: number[]; lineIndex: number; multiplier: number; symbol: string; winCard: number[] }[]) {
 			this.setState(GameState.SHOW_SINGLE_LINES);
 			//去掉scatter线
-			arr.forEach((v, i)=>{
-				v.symbol == "0" && arr.splice(i,1);
+			arr.forEach((v, i) => {
+				v.symbol == "0" && arr.splice(i, 1);
 			})
 			return new Promise(async (resolve, reject) => {
 				let singleLineShow = async (v, lineIndex: number) => {
@@ -848,7 +852,7 @@ module game {
 		 * 停止中奖展示
 		 * */
 		private cancelLinesWin() {
-            this.particleBg.visible = false;
+			this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
 			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
@@ -863,8 +867,8 @@ module game {
 				else {
 					this.setState(GameState.BET);
 					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
-					setTimeout(()=> {
-						if(this.state == GameState.BET) this.spin();
+					setTimeout(() => {
+						if (this.state == GameState.BET) this.spin();
 					}, 1000);
 				}
 			}
@@ -877,8 +881,8 @@ module game {
 					this.bottomBar.setAutoBetNum(--this.autoCount);
 				}
 				if (this.autoMax || this.autoCount > 0) {
-					setTimeout(()=> {
-						if(this.state == GameState.BET) this.spin();
+					setTimeout(() => {
+						if (this.state == GameState.BET) this.spin();
 					}, 1000);
 				}
 			}
@@ -902,9 +906,8 @@ module game {
 			this.freeTotalWin.visible = false;
 			this.bg.visible = !b;
 			this.bgFree.visible = b;
-			this.kuang.visible = !b;
-			this.kuangFree.visible = b;
 			this.freeCountBg.visible = b;
+			this.titleFire(b);
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
 			this.updateBgm();
@@ -939,16 +942,14 @@ module game {
 					.call(() => {
 						this.freeChooseCountBoom.play();
 						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-						this.freeChooseCountBg.visible = isShow;
-						this.freeChooseCountTxt.visible = isShow;
+						this.freeChooseCount.visible = isShow;
 						setTimeout(() => {
 							this.freeChooseCountBoom.stop();
 							this.freeChooseCountBoom.visible = false;
 						}, 1000)
 					})
 			} else {
-				this.freeChooseCountBg.visible = isShow;
-				this.freeChooseCountTxt.visible = isShow;
+				this.freeChooseCount.visible = isShow;
 				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
 			}
 		}
@@ -1062,7 +1063,7 @@ module game {
 				}
 				//wild图标
 				else if (this.value == "1") {
-					this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
+					// this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
 					this.mc.sources = "caishenAni|1-16|_png";
@@ -1103,7 +1104,7 @@ module game {
 							p.stop();
 							p.visible = false;
 
-							if (this.mc && this.value!="0") {
+							if (this.mc && this.value != "0") {
 								this.mc.stop();
 								this.mc.parent.removeChild(this.mc);
 								this.mc = null;
@@ -1162,7 +1163,7 @@ module game {
 				this.mc2 = null;
 			}
 			if (this.value == "1") {
-				this.tile.source = (this.gameScene.buff=="-1"? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
+				this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
 			}
 
 			this.tile.visible = true;

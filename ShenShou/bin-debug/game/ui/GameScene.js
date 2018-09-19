@@ -79,6 +79,11 @@ var game;
         GameScene.prototype.initTitle = function () {
             this.title.play();
         };
+        /**标题燃火*/
+        GameScene.prototype.titleFire = function (isFire) {
+            this.title_fire.visible = isFire;
+            isFire ? this.title_fire.play() : this.title_fire.stop();
+        };
         /**
          * 初始图标对象
          * */
@@ -959,9 +964,8 @@ var game;
             this.freeTotalWin.visible = false;
             this.bg.visible = !b;
             this.bgFree.visible = b;
-            this.kuang.visible = !b;
-            this.kuangFree.visible = b;
             this.freeCountBg.visible = b;
+            this.titleFire(b);
             this.setFreeChooseCount();
             this.setState(game.GameState.BET);
             this.updateBgm();
@@ -996,8 +1000,7 @@ var game;
                     .call(function () {
                     _this.freeChooseCountBoom.play();
                     _this.freeChooseCountTxt.text = "x" + _this.featureChanceCount;
-                    _this.freeChooseCountBg.visible = isShow;
-                    _this.freeChooseCountTxt.visible = isShow;
+                    _this.freeChooseCount.visible = isShow;
                     setTimeout(function () {
                         _this.freeChooseCountBoom.stop();
                         _this.freeChooseCountBoom.visible = false;
@@ -1005,8 +1008,7 @@ var game;
                 });
             }
             else {
-                this.freeChooseCountBg.visible = isShow;
-                this.freeChooseCountTxt.visible = isShow;
+                this.freeChooseCount.visible = isShow;
                 isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
             }
         };
@@ -1117,7 +1119,7 @@ var game;
                     }, _this);
                 }
                 else if (_this.value == "1") {
-                    _this.tile.source = _this.gameScene.buff != "-1" ? ("wildbg" + _this.gameScene.buff + "_png") : "wildBg0_png";
+                    // this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
                     _this.mc = new game.AMovieClip();
                     _this.mc.sources = "caishenAni|1-16|_png";
                     _this.mc.x = _this.tile.x + 10;
