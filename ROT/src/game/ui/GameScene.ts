@@ -118,6 +118,16 @@ module game {
 			}, 500);
 		}
 		/**
+		 * 背景闪烁
+		*/
+		private bgAlpha(isFree: boolean): void {
+			let tar = (isf: boolean) => { return isf ? this.bgFree : this.bg };
+			egret.Tween.removeTweens(tar(!isFree));
+			let theTar: eui.Image = tar(isFree);
+			theTar.alpha = 1;
+			egret.Tween.get(theTar, { loop: true }).to({ alpha: 0.7 }, 1500).to({ alpha: 1 }, 2500);
+		}
+		/**
 		 * 初始图标对象
 		 * */
 		private initSymbols() {
@@ -783,6 +793,7 @@ module game {
 			this.freeTotalWin.visible = false;
 			this.bg.visible = !b;
 			this.bgFree.visible = b;
+			this.bgAlpha(b);
 			this.freeMultiGroup.visible = b;
 			this.setFreeChooseCount();
 			this.initStar(b);
@@ -909,12 +920,14 @@ module game {
 				this.mc.play();
 				this.mc.loop = isLong ? 2 : 1;
 				this.tile.visible = false;
+				this.gameScene.particleBg.visible = true;
 				this.mc.once(AMovieClip.COMPLETE, () => {
 					this.tile.visible = true;
 					this.mc.visible = false;
 					this.mc.parent && this.mc.parent.removeChild(this.mc);
 					this.mc = null;
 					!isLong && (this.gameScene.lineWinTxt.visible = false);
+					this.gameScene.particleBg.visible = false;
 					res();
 				}, this);
 			});

@@ -21,9 +21,9 @@
 		<e:Rect id="tileMask" width="1334" height="752" horizontalCenter="0" verticalCenter="14"/>
 		<e:Group id="tileGroup" width="1334" height="680" horizontalCenter="0" verticalCenter="15">
 			<e:Group id="freeEffectGroup" width="100%" height="100%" horizontalCenter="0" x="0" scaleX="1" scaleY="1" verticalCenter="0">
-				<game:AMovieClip id="border2" width="280" height="525" horizontalCenter="0" scaleY="1.75" scaleX="1.75" sources="border|1-34|_png" speed="3" source="border1_png" verticalCenter="25" visible="false"/>
-				<game:AMovieClip id="border3" width="280" height="525" horizontalCenter="268" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
-				<game:AMovieClip id="border4" width="280" height="525" horizontalCenter="530" verticalCenter="25" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
+				<game:AMovieClip id="border2" width="280" height="525" horizontalCenter="0" scaleY="1.75" scaleX="1.75" sources="border|1-34|_png" speed="3" source="border1_png" verticalCenter="20" visible="false"/>
+				<game:AMovieClip id="border3" width="280" height="525" horizontalCenter="268" verticalCenter="20" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
+				<game:AMovieClip id="border4" width="280" height="525" horizontalCenter="530" verticalCenter="20" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-34|_png" speed="3" visible="false"/>
 				<e:Group id="freeCoinsGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
@@ -66,10 +66,11 @@
 				<e:Image id="vagueTile19" source="vague0_png" x="1087" width="221" height="205" y="696" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="winGridGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Rect id="particleBg" width="1330" height="745" x="2" scaleX="1" scaleY="1" fillAlpha="0.5" y="-42" visible="false"/>
 
 			</e:Group>
 			<e:Image scaleX="1" scaleY="1" source="item_png" scale9Grid="22,186,922,235" horizontalCenter="0" width="1344" height="760" verticalCenter="0" x="26" y="175"/>
-			<e:Rect id="particleBg" width="1330" height="745" x="2" scaleX="1" scaleY="1" fillAlpha="0.5" y="-42" visible="false"/>
+
 
 
 		</e:Group>

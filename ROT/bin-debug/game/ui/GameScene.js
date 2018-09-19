@@ -105,6 +105,17 @@ var game;
             }, 500);
         };
         /**
+         * 背景闪烁
+        */
+        GameScene.prototype.bgAlpha = function (isFree) {
+            var _this = this;
+            var tar = function (isf) { return isf ? _this.bgFree : _this.bg; };
+            egret.Tween.removeTweens(tar(!isFree));
+            var theTar = tar(isFree);
+            theTar.alpha = 1;
+            egret.Tween.get(theTar, { loop: true }).to({ alpha: 0.7 }, 1500).to({ alpha: 1 }, 2500);
+        };
+        /**
          * 初始图标对象
          * */
         GameScene.prototype.initSymbols = function () {
@@ -882,6 +893,7 @@ var game;
             this.freeTotalWin.visible = false;
             this.bg.visible = !b;
             this.bgFree.visible = b;
+            this.bgAlpha(b);
             this.freeMultiGroup.visible = b;
             this.setFreeChooseCount();
             this.initStar(b);
@@ -1010,12 +1022,14 @@ var game;
                 _this.mc.play();
                 _this.mc.loop = isLong ? 2 : 1;
                 _this.tile.visible = false;
+                _this.gameScene.particleBg.visible = true;
                 _this.mc.once(game.AMovieClip.COMPLETE, function () {
                     _this.tile.visible = true;
                     _this.mc.visible = false;
                     _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
                     _this.mc = null;
                     !isLong && (_this.gameScene.lineWinTxt.visible = false);
+                    _this.gameScene.particleBg.visible = false;
                     res();
                 }, _this);
             });
