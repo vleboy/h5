@@ -66,10 +66,11 @@
 				<e:Image id="vagueTile19" source="vague0_png" x="1087" width="221" height="205" y="696" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="winGridGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Rect id="particleBg" width="1330" height="745" x="2" scaleX="1" scaleY="1" fillAlpha="0.5" y="-42" visible="false"/>
 
 			</e:Group>
 			<e:Image scaleX="1" scaleY="1" source="item_png" scale9Grid="22,186,922,235" horizontalCenter="0" width="1344" height="760" verticalCenter="0" x="26" y="175"/>
-			<e:Rect id="particleBg" width="1330" height="745" x="2" scaleX="1" scaleY="1" fillAlpha="0.5" y="-42" visible="false"/>
+
 
 
 		</e:Group>
