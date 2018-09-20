@@ -95,7 +95,6 @@ class Main extends eui.UILayer {
             })
         }
         catch (e) {
-            console.log("aaaaaaaaaaa")
             console.error(e);
         }
     }
@@ -119,5 +118,33 @@ class Main extends eui.UILayer {
         this.gameScene.percentWidth = 100;
         this.gameScene.percentHeight = 100;
         this.addChild(this.gameScene);
+
+        let enterFullScreen = (e)=>{
+            if(e.requestFullScreen){
+                e.requestFullScreen();
+            }
+            else if(e.mozRequestFullScreen){
+                e.mozRequestFullScreen();
+            }
+            else if(e.webkitRequestFullScreen){
+                e.webkitRequestFullScreen();
+            }
+            else if(e.msRequestFullScreen){
+                e.msRequestFullScreen();
+            }
+        }
+
+        let exitFullScreen = ()=>{
+            if(document.exitFullscreen){
+                document.exitFullscreen();
+            }
+            else if(document["mozCancelFullscreen"]){
+                document["mozCancelFullscreen"]();
+            }
+            else if(document["webkitExitFullscreen"]){
+                document["webkitExitFullscreen"]();
+            }
+        }
+
     }
 }

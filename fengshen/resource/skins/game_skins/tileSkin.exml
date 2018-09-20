@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="tileSkin" width="312" height="312" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Image id="bg" width="312" height="312" source="tilebg6_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image id="tileImg" width="312" height="312" source="symbol10_png" horizontalCenter="0" verticalCenter="0"/>
+	<game:AMovieClip id="tileMc" source="daji_breath_01_png" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

@@ -68,6 +68,8 @@ declare class rullSkin extends eui.Skin{
 }
 declare class settingSkin extends eui.Skin{
 }
+declare class tileSkin extends eui.Skin{
+}
 declare class tipSkin extends eui.Skin{
 }
 declare class topBarSkin extends eui.Skin{

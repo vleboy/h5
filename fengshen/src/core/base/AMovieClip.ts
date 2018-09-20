@@ -68,6 +68,7 @@ module game {
 		*/
 		public set sources(str: any)
 		{
+			if(!str) return;
 			var arr = str.split("|");
 			var numArr: string = arr[1].split("-");
 			var start: number = parseInt(numArr[0]);

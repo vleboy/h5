@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6336c69-8b1e-4195-8213-1c3634c67aaf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/config/fnt54.fnt" beforeDir="false" afterPath="$PROJECT_DIR$/resource/config/fnt54.fnt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/default.res.json" beforeDir="false" afterPath="$PROJECT_DIR$/resource/default.res.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/img/Tile/vague/vague11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/img/Tile/vague/vague12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/skins/game_skins/bottomSkin.exml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/skins/game_skins/bottomSkin.exml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/skins/game_skins/gameSceneSkin.exml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/skins/game_skins/gameSceneSkin.exml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/skins/game_skins/tileSkin.exml" beforeDir="false" afterPath="$PROJECT_DIR$/resource/skins/game_skins/tileSkin.exml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/base/AMovieClip.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/base/AMovieClip.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/const/BottomState.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/ui/BottomBar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/ui/BottomBar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/ui/GameScene.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/ui/GameScene.ts" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1031876791">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="ts" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="TypeScript" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="ts" value="349" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="TypeScript" value="349" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/ui/BottomBar.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1346">
+              <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+              <folding>
+                <element signature="e#88#97#0" />
+                <element signature="e#131#144#0" />
+                <element signature="e#178#191#0" />
+                <element signature="e#229#244#0" />
+                <element signature="e#279#292#0" />
+                <element signature="e#247#254#0" />
+                <element signature="e#269#276#0" />
+                <element signature="e#308#315#0" />
+                <element signature="e#347#355#0" />
+                <element signature="e#387#396#0" />
+                <element signature="e#430#441#0" />
+                <element signature="e#481#491#0" />
+                <element signature="e#526#537#0" />
+                <element signature="e#614#623#0" />
+                <element signature="e#656#670#0" />
+                <element signature="e#708#718#0" />
+                <element signature="e#752#763#0" />
+                <element signature="e#797#808#0" />
+                <element signature="e#842#853#0" />
+                <element signature="e#886#895#0" />
+                <element signature="e#927#938#0" />
+                <element signature="e#972#983#0" />
+                <element signature="e#1051#1062#0" />
+                <element signature="e#1096#1110#0" />
+                <element signature="e#1144#1151#0" />
+                <element signature="e#1185#1205#0" />
+                <element signature="e#1235#1244#0" />
+                <element signature="e#1275#1299#0" />
+                <element signature="e#1329#1344#0" />
+                <element signature="e#1376#1386#0" />
+                <element signature="e#1422#1430#0" />
+                <element signature="n#!!block;n#setFree#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#constructor#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#init#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#init#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#setBetData#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#setBetData#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#eventListen#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#eventListen#0;n#BottomBar#0;n#game#0" />
+                <element signature="e#2695#2810#0" />
+                <element signature="n#!!block;n#onSpin#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#showTween#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#showTween#0;n#BottomBar#0;n#game#0" />
+                <element signature="e#3325#3454#0" />
+                <element signature="e#3390#3447#0" />
+                <element signature="n#!!doc;n#showAutoBtn#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#showAutoBtn#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#checkPlusReduceState#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#checkPlusReduceState#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#hideCutGroup#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#hideCutGroup#0;n#BottomBar#0;n#game#0" />
+                <element signature="e#6120#6232#0" />
+                <element signature="e#6318#6434#0" />
+                <element signature="n#!!doc;n#autoState#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#autoState#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#payout#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#payout#0;n#BottomBar#0;n#game#0" />
+                <element signature="e#7306#7753#0" />
+                <element signature="e#7473#7575#0" />
+                <element signature="e#7493#7568#0" />
+                <element signature="e#7674#7746#0" />
+                <element signature="n#!!doc;n#imgSpin#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#imgSpin#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#setWinMoney#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#setWinMoney#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#setState#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#setState#0;n#BottomBar#0;n#game#0" />
+                <element signature="e#8490#8501#0" />
+                <element signature="e#8525#8532#0" />
+                <element signature="e#8540#8807#0" />
+                <element signature="e#8546#8802#0" />
+                <element signature="e#8801#8944#0" />
+                <element signature="e#8950#9131#0" />
+                <element signature="e#8965#9038#0" />
+                <element signature="e#9371#9522#0" />
+                <element signature="e#9528#9685#0" />
+                <element signature="n#!!doc;n#setAutoBetNum#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#setAutoBetNum#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#setFreeBetNum#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#setFreeBetNum#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!doc;n#dispose#0;n#BottomBar#0;n#game#0" />
+                <element signature="n#!!block;n#dispose#0;n#BottomBar#0;n#game#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/const/GameState.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>touchAuto</find>
+      <find>hideCutGroup</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/game/ui/BottomBar.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fengshen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fengshen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fengshen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fengshen" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fengshen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fengshen" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fengshen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fengshen" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\WebStorm 2018.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6336c69-8b1e-4195-8213-1c3634c67aaf" name="Default Changelist" comment="" />
+      <created>1537340318500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1537340318500</updated>
+      <workItem from="1537340319958" duration="5172000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5172000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/game/const/GameState.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/ui/BottomBar.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1346">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
+          <folding>
+            <element signature="e#88#97#0" />
+            <element signature="e#131#144#0" />
+            <element signature="e#178#191#0" />
+            <element signature="e#229#244#0" />
+            <element signature="e#279#292#0" />
+            <element signature="e#247#254#0" />
+            <element signature="e#269#276#0" />
+            <element signature="e#308#315#0" />
+            <element signature="e#347#355#0" />
+            <element signature="e#387#396#0" />
+            <element signature="e#430#441#0" />
+            <element signature="e#481#491#0" />
+            <element signature="e#526#537#0" />
+            <element signature="e#614#623#0" />
+            <element signature="e#656#670#0" />
+            <element signature="e#708#718#0" />
+            <element signature="e#752#763#0" />
+            <element signature="e#797#808#0" />
+            <element signature="e#842#853#0" />
+            <element signature="e#886#895#0" />
+            <element signature="e#927#938#0" />
+            <element signature="e#972#983#0" />
+            <element signature="e#1051#1062#0" />
+            <element signature="e#1096#1110#0" />
+            <element signature="e#1144#1151#0" />
+            <element signature="e#1185#1205#0" />
+            <element signature="e#1235#1244#0" />
+            <element signature="e#1275#1299#0" />
+            <element signature="e#1329#1344#0" />
+            <element signature="e#1376#1386#0" />
+            <element signature="e#1422#1430#0" />
+            <element signature="n#!!block;n#setFree#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#constructor#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#init#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#init#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#setBetData#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#setBetData#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#eventListen#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#eventListen#0;n#BottomBar#0;n#game#0" />
+            <element signature="e#2695#2810#0" />
+            <element signature="n#!!block;n#onSpin#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#showTween#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#showTween#0;n#BottomBar#0;n#game#0" />
+            <element signature="e#3325#3454#0" />
+            <element signature="e#3390#3447#0" />
+            <element signature="n#!!doc;n#showAutoBtn#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#showAutoBtn#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#checkPlusReduceState#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#checkPlusReduceState#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#hideCutGroup#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#hideCutGroup#0;n#BottomBar#0;n#game#0" />
+            <element signature="e#6120#6232#0" />
+            <element signature="e#6318#6434#0" />
+            <element signature="n#!!doc;n#autoState#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#autoState#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#payout#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#payout#0;n#BottomBar#0;n#game#0" />
+            <element signature="e#7306#7753#0" />
+            <element signature="e#7473#7575#0" />
+            <element signature="e#7493#7568#0" />
+            <element signature="e#7674#7746#0" />
+            <element signature="n#!!doc;n#imgSpin#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#imgSpin#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#setWinMoney#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#setWinMoney#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#setState#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#setState#0;n#BottomBar#0;n#game#0" />
+            <element signature="e#8490#8501#0" />
+            <element signature="e#8525#8532#0" />
+            <element signature="e#8540#8807#0" />
+            <element signature="e#8546#8802#0" />
+            <element signature="e#8801#8944#0" />
+            <element signature="e#8950#9131#0" />
+            <element signature="e#8965#9038#0" />
+            <element signature="e#9371#9522#0" />
+            <element signature="e#9528#9685#0" />
+            <element signature="n#!!doc;n#setAutoBetNum#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#setAutoBetNum#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#setFreeBetNum#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#setFreeBetNum#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!doc;n#dispose#0;n#BottomBar#0;n#game#0" />
+            <element signature="n#!!block;n#dispose#0;n#BottomBar#0;n#game#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
