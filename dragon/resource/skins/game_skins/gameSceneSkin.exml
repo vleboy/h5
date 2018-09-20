@@ -22,6 +22,7 @@
 				<e:Image id="tile0" x="-6" width="200" height="200" y="39" scaleX="1" scaleY="1" source="symbolName_1_png"/>
 				<e:Image id="tile1" source="symbolName_0_png" x="-6" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
 				<e:Image id="tile2" source="symbolName_0_png" x="-6" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
+				<e:Image source="wildText_json.wildText1_png" x="-38" y="112" visible="false"/>
 				<e:Image id="tile3" source="symbolName_0_png" x="277" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
 				<e:Image id="tile4" source="symbolName_0_png" x="277" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
 				<e:Image id="tile5" source="symbolName_0_png" x="277" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
@@ -32,7 +33,7 @@
 				<e:Image id="tile10" source="symbolName_0_png" x="846" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
 				<e:Image id="tile11" source="symbolName_0_png" x="846" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
 				<e:Image id="tile12" source="symbolName_0_png" x="1129" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
-				<e:Image x="-27.33" y="4.01" width="242" height="242" source="wildAni_1_png" visible="false"/>
+
 				<e:Image id="tile13" source="symbolName_0_png" x="1129" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
 				<e:Image id="tile14" source="symbolName_0_png" x="1129" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
 			</e:Group>
