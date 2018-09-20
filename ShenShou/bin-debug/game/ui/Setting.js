@@ -76,16 +76,19 @@ var game;
             var isOpen = e.target.currentState == "up";
             game.SoundPlayer.closeMusic(!isOpen);
             this.sendNotify(game.NotifyConst.updateBgm);
+            game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3");
         };
         /**音效*/
         Setting.prototype.theEffect = function (e) {
             var isOpen = e.target.currentState == "up";
             game.SoundPlayer.closeEffect(!isOpen);
+            game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3");
         };
         /**快速模式*/
         Setting.prototype.theFast = function (e) {
             this.btnFast.currentState = (e.target.currentState == "up") ? "down" : "up";
             game.GlobalConfig.fastSwitch = (this.btnFast.currentState == "up");
+            game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3");
         };
         /**
          * 资源释放
