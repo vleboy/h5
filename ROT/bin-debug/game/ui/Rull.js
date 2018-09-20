@@ -55,7 +55,7 @@ var game;
         /**默认显示*/
         Rull.prototype.defaultUI = function () {
             this.rullShow(0.01);
-            this.groupRull.mask = this.rullMask;
+            this.rull.mask = new egret.Rectangle(97, 0, 1726, 672);
         };
         /**设置赔率*/
         Rull.prototype.setOdds = function (theBet) {
@@ -93,6 +93,7 @@ var game;
             var _this = this;
             if (isAni === void 0) { isAni = true; }
             if (timer === void 0) { timer = 500; }
+            num = Math.floor(num);
             this.pageArr.forEach(function (v) { _this["btnRull" + v].currentState = "up"; });
             this["btnRull" + num].currentState = "down";
             var move = -(num * 1726) + 97;
