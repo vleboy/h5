@@ -4,5 +4,5 @@
 	<e:Image source="OverBG2_png" horizontalCenter="0" verticalCenter="0"/>
 	<e:Image source="asdasd_png" verticalCenter="0" x="1"/>
 	<e:Image source="GetTips_png" x="558" y="274"/>
-	<e:BitmapLabel id="winTxt" height="180" font="fnt173_fnt" text="0.00" textAlign="center" letterSpacing="-5" verticalCenter="0" width="1320" anchorOffsetX="660" anchorOffsetY="90" horizontalCenter="295"/>
+	<e:BitmapLabel id="winTxt" height="180" text="0.00" textAlign="center" letterSpacing="-5" verticalCenter="0" width="1320" anchorOffsetX="660" anchorOffsetY="90" horizontalCenter="295" font="fnt140_fnt" verticalAlign="middle"/>
 </e:Skin>

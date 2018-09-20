@@ -75,16 +75,19 @@ module game {
 			let isOpen:boolean = e.target.currentState == "up";
 			SoundPlayer.closeMusic(!isOpen);
 			this.sendNotify(NotifyConst.updateBgm);
+			SoundPlayer.playEffect("Generic1_mp3");
 		}
 		/**音效*/
 		private theEffect(e: egret.TouchEvent): void {
 			let isOpen:boolean = e.target.currentState == "up";
 			SoundPlayer.closeEffect(!isOpen);
+			SoundPlayer.playEffect("Generic1_mp3");
 		}
 		/**快速模式*/
 		private theFast(e: egret.TouchEvent): void {
 			this.btnFast.currentState = (e.target.currentState == "up") ? "down" : "up";
 			GlobalConfig.fastSwitch = (this.btnFast.currentState == "up");
+			SoundPlayer.playEffect("Generic1_mp3");
 		}
 		/**
          * 资源释放

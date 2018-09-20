@@ -24,7 +24,7 @@ var game;
         BottomBar.prototype.setFree = function (b) {
             b && !this.isFree && (this.freeAuto = this.isAuto);
             this.isAuto = b;
-            !b && (this.isAuto = this.freeAuto);
+            !b && (this.isAuto = false);
             !b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX");
             this.autoImg.source = b ? "Free_png" : "Auto_1_png";
             this.isFree = b;
@@ -51,7 +51,7 @@ var game;
                     _this.sendNotify(game.NotifyConst.cancelSpin);
                 }
                 else {
-                    game.SoundPlayer.playEffect("CaiShen_243_Spin_mp3");
+                    game.SoundPlayer.playEffect("ShenShou_243_Spin_mp3");
                     _this.sendNotify(game.NotifyConst.spin);
                     _this.imgSpin();
                     _this.setWinMoney(0.00);
@@ -104,11 +104,11 @@ var game;
             var betShow = function () {
                 _this.hideCutGroup();
                 _this.groupBet.visible = true;
-                _this.showTween(_this.groupBet, 126).then(function () { return game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"); });
+                _this.showTween(_this.groupBet, 126).then(function () { return game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3"); });
             };
             this.groupBet.visible ? this.showTween(this.groupBet, -100).then(function () {
                 _this.groupBet.visible = false;
-                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+                game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic2_mp3");
             }) : betShow();
         };
         /**校验加减号状态和设置单注下注档次*/
@@ -122,19 +122,19 @@ var game;
         };
         /**单注增加*/
         BottomBar.prototype.addBetLevel = function () {
-            game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+            game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3");
             this.theBetIndex < this.theBetArr.length - 1 && this.theBetIndex++;
             this.checkPlusReduceState();
         };
         /**单注减少*/
         BottomBar.prototype.reduceBetLevel = function () {
-            game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+            game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3");
             this.theBetIndex > 0 && this.theBetIndex--;
             this.checkPlusReduceState();
         };
         /**单注最大*/
         BottomBar.prototype.maxBetLevel = function () {
-            game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+            game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3");
             this.theBetIndex = this.theBetArr.length - 1;
             this.checkPlusReduceState();
         };
@@ -144,11 +144,11 @@ var game;
             var autoShow = function () {
                 _this.hideCutGroup();
                 _this.groupAutoNum.visible = true;
-                _this.showTween(_this.groupAutoNum, 107).then(function () { return game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"); });
+                _this.showTween(_this.groupAutoNum, 107).then(function () { return game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic1_mp3"); });
             };
             this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(function () {
                 _this.groupAutoNum.visible = false;
-                game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+                game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic2_mp3");
             }) : autoShow();
         };
         /**隐藏切入框*/
@@ -157,11 +157,11 @@ var game;
             if (isSound === void 0) { isSound = false; }
             this.groupBet.visible && this.showTween(this.groupBet, -100).then(function () {
                 _this.groupBet.visible = false;
-                isSound && game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+                isSound && game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic2_mp3");
             });
             this.groupAutoNum.visible && this.showTween(this.groupAutoNum, -400).then(function () {
                 _this.groupAutoNum.visible = false;
-                isSound && game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+                isSound && game.SoundPlayer.playEffect("ShenShou_243_GUI_Generic2_mp3");
             });
         };
         /**取消自动转动*/

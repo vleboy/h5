@@ -32,6 +32,7 @@ module game {
 		private freeMulti: eui.BitmapLabel;
 		private freeChooseCountBoom: AMovieClip;
 		private connectTip: ConnectTip;
+		private sceneChangeGroup: eui.Group;
 
 		private balance: number;
 		private betcfg: number[];
@@ -138,14 +139,14 @@ module game {
          * */
 		private updateBgm() {
 			if (this.isFree) {
-				SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+				SoundPlayer.playMusic("ShenShou_243_freeGame_mp3");
 			}
 			else {
 				if (this.freeChoose.visible) {
-					SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+					SoundPlayer.playMusic("ShenShou_243_featureChoose_mp3");
 				}
 				else {
-					SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+					SoundPlayer.playMusic("ShenShou_243_normalGame_mp3");
 				}
 			}
 		}
@@ -241,14 +242,19 @@ module game {
 					this.betLevel = body;
 					break;
 				case NotifyConst.chooseFreeBack:
-					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
-					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
-					this.featureChanceCount--;
-					this.isFree = true;
-					this.bottomBar.setFree(true);
-					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
-					this.showFreeChoose(false);
-					this.showFreeGame(true);
+					this.cloundIn().then(()=>{
+						this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+						this.buff = (body as ChooseBuffVO).payload.featureData.buff;
+						this.featureChanceCount--;
+						this.isFree = true;
+						this.bottomBar.setFree(true);
+						this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
+						this.showFreeChoose(false);
+						this.showFreeGame(true);
+						this.cloundOut().then(()=>{
+							this.sceneChangeGroup.visible = false;
+						})
+					});
 					break;
 				case NotifyConst.freeComplete:
 					egret.Tween.get(this["gameMask"])
@@ -354,7 +360,6 @@ module game {
 					}
 				}
 			}
-
 			console.log("UI收到spin返回 ", resp);
 			this.spinResp = resp;
 			if (this.isFree) {
@@ -362,11 +367,8 @@ module game {
 				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
 				this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			}
-			this.stopRoll(resp.payload.viewGrid).then(() => {
-				let balance: string = resp.payload.userBalance;
-				this.topBar.setBalance(balance, resp.payload.totalGold);
-				this.theBalance = balance;
-			});
+			this.theBalance = resp.payload.userBalance;
+			this.stopRoll(resp.payload.viewGrid);
 			this.setState(GameState.STOP);
 			this.isReturnData = true;
 			if (this.connectTip.visible) this.connectTip.show(false);
@@ -379,7 +381,7 @@ module game {
 		 * 开始滚动
 		 * */
 		private startSpin() {
-			this.rollChannel = SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
+			this.rollChannel = SoundPlayer.playEffect("ShenShou_243_Roll_mp3", -1);
 			for (let i = 0; i < 15; i++) {
 				this["tile" + i].visible = false;
 			}
@@ -461,8 +463,8 @@ module game {
 						resolve();
 					});
 				})
-				if (haveScatterThisColumn) SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
-				SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
+				if (haveScatterThisColumn) SoundPlayer.playEffect("ShenShou_243_Scatter_" + (column + 1) + "_mp3");
+				SoundPlayer.playEffect("ShenShou_243_RollStop_mp3");
 			})
 
 		}
@@ -472,45 +474,23 @@ module game {
 		 * 单列freespin缓停动画
 		 * */
 		private freeEffect(column: number) {
-			SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
+			SoundPlayer.playEffect("ShenShou_243_Scatter_wait_mp3");
 			return new Promise((resolve, reject) => {
 				(this["border" + column] as AMovieClip).visible = true;
 				(this["border" + column] as AMovieClip).play();
-
 				let startX = this["tile" + column * 3].x + this["tile" + column * 3].width / 2;
 				let startY = this["tile" + column * 3].y;
 				let c = new egret.DisplayObjectContainer();
 				this["freeCoinsGroup"].addChild(c);
 				let arr = [];
-				let createCoins = () => {
-					for (let i = 0; i < 4; i++) {
-						let mc = new AMovieClip();
-						mc.sources = "coin_pin_|1-9|_png";
-						mc.width = mc.height = 20;
-						mc.anchorOffsetX = 10;
-						mc.anchorOffsetY = 10;
-						mc.rotation = Math.random() * 360;
-						mc.play();
-						mc["speed"] = Math.round(Math.random() * 6 + 3);
-						mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-						mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-						c.addChild(mc);
-						arr.push(mc);
-					}
-				}
-				let index = 0;
 				egret.Tween.get(this["freeCoinsGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
-						if (index++ % 10 == 0) {
-							createCoins();
-						}
 						for (let j = arr.length - 1; j >= 0; j--) {
 							let img = arr[j];
 							img.rotation += 5;
 							img.y += img["speed"];
 							img.alpha -= img["alphaSpeed"];
-
 							if (img.y >= 269 + 658) {
 								img.parent.removeChild(img);
 								arr.splice(j, 1);
@@ -575,7 +555,7 @@ module game {
 		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
-
+			this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
@@ -635,11 +615,11 @@ module game {
 			return new Promise((resolve, reject) => {
 				if (win <= 0) resolve();
 				else if (level == "normal") {
-					SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
+					SoundPlayer.playEffect("ShenShou_243_SmallWin_mp3");
 					resolve();
 				}
 				else if (level == "middle") {
-					SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+					SoundPlayer.playEffect("ShenShou_243_MiddleWin_mp3");
 					resolve();
 				}
 				else {
@@ -701,7 +681,7 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_mp3");
+					SoundPlayer.playEffect("ShenShou_243_Get_FreeGame_mp3");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					this.setFreeChooseCount(true);
@@ -726,7 +706,7 @@ module game {
 		private showBonusLine() {
 			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
 			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
-			gold > 0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+			gold > 0 && SoundPlayer.playEffect("ShenShou_243_Bonus_mp3");
 			return Promise.all(
 				gold > 0 ? grids.map((value: number, column: number) => {
 					return new Promise((res, rej) => {
@@ -889,7 +869,55 @@ module game {
 		}
 
 		// -------------------- 免费游戏显示  ------------------------
-
+		/**云聚拢 */
+		private cloundIn(){
+			SoundPlayer.playEffect("ShenShou_243_CardEffect_mp3");
+			this.sceneChangeGroup.visible = true;
+			return Promise.all(
+				[1,2,3,4,5,6].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let startx = v%2==0 ? 1920 : -1000;
+					let starty = v%2==0 ? 1080 : -500;
+					return new Promise((resolve, reject)=>{
+						egret.Tween.get(target)
+							.set({x:startx, y:starty, visible:true})
+							.wait( Math.floor(i/2)*250)
+							.to({x:defaultx, y:defaulty}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.call(()=>{
+								egret.Tween.removeTweens(target);
+								resolve();
+							})
+					})
+				})
+			);
+			
+		}
+		/**云散开 */
+		private cloundOut(){
+			return Promise.all(
+				[5,6,3,4,1,2].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let endx = v%2==0 ? 1920 : -1000;
+					let endy = v%2==0 ? 1080 : -500;
+					return new Promise((resolve, reject)=>{
+						egret.Tween.get(target)
+							.wait( Math.floor(i/2)*250+500)
+							.to({x:endx, y:endy}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.set({x:defaultx, y:defaulty, visible:false})
+							.call(()=>{
+								egret.Tween.removeTweens(target);
+								resolve();
+							})
+					})
+				})
+			);
+		}
         /**
          * 显示免费游戏选择的ui
          * */
@@ -960,7 +988,7 @@ module game {
 			if (isStart) {
 				this.freeMultiGroup.visible = true;
 				//倍数
-				this.freeMulti.text = "X" + mul;
+				this.freeMulti.text = "x" + mul;
 				let theParticle = (texture, cfg, index, isLight?: boolean) => {
 					let theP = new particle.GravityParticleSystem(texture, cfg);
 					this.freeMultiGroup.addChildAt(theP, index);
@@ -1000,6 +1028,9 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);
@@ -1019,6 +1050,7 @@ module game {
 		private p: particle.GravityParticleSystem;
 		private gameScene: GameScene;
 		private mc: AMovieClip;
+		private mc2: AMovieClip;
 		public constructor(tile: eui.Image, gameScene: GameScene) {
 			this.tile = tile;
 			this.gameScene = gameScene;
@@ -1074,6 +1106,21 @@ module game {
 					this.mc.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
+					this.tile.visible = false;
+					this.mc.once(AMovieClip.COMPLETE, () => {
+						this.mc.visible = false;
+						this.tile.visible = true;
+					}, this);
+					this.mc2 = new AMovieClip();
+					this.mc2.sources = "wildText|1-49|_png";
+					this.mc2.width = 256;
+					this.mc2.height = 64;
+					this.mc2.x = this.tile.x - 25;
+					this.mc2.y = this.tile.y + 69;
+					this.mc2.speed = 4;
+					this.mc2.loop = isLong ? 2 : 1;
+					this.gameScene["winGridGroup"].addChild(this.mc2);
+					this.mc2.play();
 				}
 
 				this.gameScene.particleBg.visible = true;
@@ -1099,6 +1146,11 @@ module game {
 								this.mc.parent.removeChild(this.mc);
 								this.mc = null;
 								this.tile.visible = true;
+							}
+							if (this.mc2) {
+								this.mc2.stop();
+								this.mc2.parent.removeChild(this.mc2);
+								this.mc2 = null;
 							}
 							if (this.value == "1") {
 								this.tile.source = this.gameScene.buff != "-1" ? "symbolName_1_" + this.gameScene.buff + "_png" : "symbolName_1_png";
@@ -1136,11 +1188,15 @@ module game {
 				this.p.visible = false;
 				egret.Tween.removeTweens(this.p);
 			}
-
 			if (this.mc) {
 				this.mc.stop();
 				this.mc.parent.removeChild(this.mc);
 				this.mc = null;
+			}
+			if (this.mc2) {
+				this.mc2.stop();
+				this.mc2.parent.removeChild(this.mc2);
+				this.mc2 = null;
 			}
 			if (this.value == "1") {
 				this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
