@@ -147,6 +147,7 @@ var game;
             var _this = this;
             this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
+                _this.bigWin.bigWinStart("big", 200);
             }, this);
         };
         /**
@@ -1014,8 +1015,8 @@ var game;
                 _this.mc = new game.AMovieClip();
                 _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
                 _this.mc.speed = 5;
-                _this.mc.x = _this.tile.x;
-                _this.mc.y = _this.tile.y;
+                _this.mc.x = _this.tile.x + 2;
+                _this.mc.y = _this.tile.y + 5;
                 _this.mc.width = _this.tile.width;
                 _this.mc.height = _this.tile.height;
                 _this.gameScene["winGridGroup"].addChild(_this.mc);

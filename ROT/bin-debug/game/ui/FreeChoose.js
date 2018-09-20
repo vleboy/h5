@@ -62,11 +62,12 @@ var game;
         /**显示*/
         FreeChoose.prototype.show = function () {
             var _this = this;
-            this.visible = true;
             //默认显示
             var defShow = function () {
                 _this.chooseGroup.setChildIndex(_this.rect, 0);
                 _this.chooseGroup.setChildIndex(_this.cardBgLight, 1);
+                _this.tipTxt.visible = true;
+                _this.visible = true;
                 //选项卡默认位置,隐藏黄光
                 _this.countArr.forEach(function (v, i) {
                     var tar = _this["choose" + v];
@@ -150,12 +151,12 @@ var game;
             var _this = this;
             return new Promise(function (res, rej) {
                 //显示背景
-                var bgShow = function (tar, timer) {
+                var bgShow = function (tar, timer, wait) {
                     return new Promise(function (res2, rej2) {
                         tar.scaleX = .8;
                         tar.scaleY = .8;
                         tar.alpha = 0;
-                        egret.Tween.get(tar).wait(100).to({ scaleX: 1, scaleY: 1, alpha: 1 }, timer).call(function () { egret.Tween.removeTweens(tar); res2(); });
+                        egret.Tween.get(tar).wait(wait).to({ scaleX: 1, scaleY: 1, alpha: 1 }, timer, egret.Ease.quintIn).call(function () { egret.Tween.removeTweens(tar); res2(); });
                     });
                 };
                 //粒子效果
@@ -185,12 +186,11 @@ var game;
                     _this.bgLight.source = "light_" + cardType + "_png";
                     _this.maxArr.source = "maxArr_" + cardType + "_png";
                     //背景光
-                    bgShow(_this.bgLight, 400).then(function () {
-                        //大法阵
-                        bgShow(_this.maxArr, 200);
-                        //粒子效果
-                        particleEffect();
-                    });
+                    bgShow(_this.bgLight, 600, 100);
+                    //大法阵
+                    bgShow(_this.maxArr, 600, 200);
+                    //粒子效果
+                    particleEffect();
                 });
             });
         };
@@ -241,6 +241,7 @@ var game;
                 });
             };
             game.SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
+            this.tipTxt.visible = false;
             this.cardOut(e.target).then(function () {
                 game.SoundPlayer.playEffect("ROT_243_CardEffect_mp3");
                 _this.cardBgAni(cardType);

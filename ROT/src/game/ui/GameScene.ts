@@ -161,6 +161,7 @@ module game {
 		private initListener() {
 			this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
+				this.bigWin.bigWinStart("big",200);
 			}, this);
 		}
         /**
@@ -912,8 +913,8 @@ module game {
 				this.mc = new AMovieClip();
 				this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
 				this.mc.speed = 5;
-				this.mc.x = this.tile.x;
-				this.mc.y = this.tile.y;
+				this.mc.x = this.tile.x + 2;
+				this.mc.y = this.tile.y + 5;
 				this.mc.width = this.tile.width;
 				this.mc.height = this.tile.height;
 				this.gameScene["winGridGroup"].addChild(this.mc);
