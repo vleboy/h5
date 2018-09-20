@@ -191,7 +191,7 @@ module game {
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				}
 				//去选择免费游戏
 				else if (resp.payload.featureData.featureChanceCount > 0) {
@@ -242,7 +242,7 @@ module game {
 					this.featureChanceCount--;
 					this.isFree = true;
 					this.bottomBar.setFree(true);
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
 					break;
@@ -580,7 +580,7 @@ module game {
 
 			if (this.isFree) {
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
-				this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+				this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				if (this.freeSpinRemainCount == 0) {
 					setTimeout(()=> {
 						this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
@@ -859,7 +859,7 @@ module game {
 					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
 				}
 				else {
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 					this.setState(GameState.BET);
 					setTimeout(()=> {
 						if(this.state == GameState.BET) this.spin();
@@ -995,6 +995,10 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
+
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);

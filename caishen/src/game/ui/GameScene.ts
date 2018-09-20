@@ -997,6 +997,10 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
+				
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);

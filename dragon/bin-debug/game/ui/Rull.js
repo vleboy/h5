@@ -93,6 +93,7 @@ var game;
             var _this = this;
             if (isAni === void 0) { isAni = true; }
             if (timer === void 0) { timer = 500; }
+            num = Math.floor(num);
             this.pageArr.forEach(function (v) { _this["btnRull" + v].currentState = "up"; });
             this["btnRull" + num].currentState = "down";
             var move = -(num * 1726) + 97;

@@ -175,7 +175,7 @@ var game;
                     this.featureChanceCount = resp.payload.featureData.featureChanceCount;
                     this.showFreeChoose(false);
                     this.showFreeGame(true);
-                    this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                 }
                 else if (resp.payload.featureData.featureChanceCount > 0) {
                     this.showFreeChoose(true);
@@ -226,7 +226,7 @@ var game;
                     this.featureChanceCount--;
                     this.isFree = true;
                     this.bottomBar.setFree(true);
-                    this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                     this.showFreeChoose(false);
                     this.showFreeGame(true);
                     break;
@@ -266,8 +266,10 @@ var game;
                 this.stage.addChild(new game.ErrTip("余额不足", function () { }, this));
                 return;
             }
-            var txt = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
-            this.topBar.setBalance(txt);
+            if (!this.isFree) {
+                var txt = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+                this.topBar.setBalance(txt);
+            }
             if (autoCount == "max") {
                 this.autoMax = true;
             }
@@ -315,7 +317,6 @@ var game;
          * 收到spin结果 ，把-1的图标筛选掉
          * */
         GameScene.prototype.spinBack = function (resp) {
-            var _this = this;
             resp.payload.winGrid.length > 0 && resp.payload.winGrid.forEach(function (v, i) {
                 for (var i_1 = v.winCard.length - 1; i_1 >= 0; i_1--) {
                     if (v.winCard[i_1] == -1) {
@@ -342,11 +343,8 @@ var game;
                 this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
                 this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
             }
-            this.stopRoll(resp.payload.viewGrid).then(function () {
-                var balance = resp.payload.userBalance;
-                _this.topBar.setBalance(balance, resp.payload.totalGold);
-                _this.theBalance = balance;
-            });
+            this.theBalance = resp.payload.userBalance;
+            this.stopRoll(resp.payload.viewGrid);
             this.setState(game.GameState.STOP);
             this.isReturnData = true;
             if (this.connectTip.visible)
@@ -595,6 +593,7 @@ var game;
                     switch (_a.label) {
                         case 0:
                             console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
+                            this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
                             this.setState(game.GameState.SHOW_RESULT);
                             return [4 /*yield*/, this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold)];
                         case 1:
@@ -616,7 +615,7 @@ var game;
                             return [4 /*yield*/, this.showEveryLineGrid(this.spinResp.payload.winGrid)];
                         case 6:
                             _a.sent();
-                            this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                            this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                             if (this.freeSpinRemainCount == 0) {
                                 setTimeout(function () {
                                     _this.showFreeTotalWin(_this.spinResp.payload.featureData.featureRoundGold);
@@ -914,7 +913,7 @@ var game;
                     this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
                 }
                 else {
-                    this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                     this.setState(game.GameState.BET);
                     setTimeout(function () {
                         if (_this.state == game.GameState.BET)
@@ -1056,6 +1055,9 @@ var game;
                 this.showFreeChoose(true);
             }
             else {
+                this.autoCount = 0;
+                this.autoMax = false;
+                this.bottomBar.setAutoBetNum(0);
                 this.isFree = false;
                 this.showFreeGame(false);
                 this.bottomBar.setFree(false);
