@@ -52,19 +52,8 @@
 			<e:Image y="281" horizontalCenter="0.5" source="yxxz_beishu_6_png"/>
 			<e:Image x="-35" y="214" source="yxxz_yun_6_png"/>
 		</e:Group>
+		<e:Image id="tipTxt" source="freeChoose_png" y="923" horizontalCenter="0" x="693" scaleX="1" scaleY="1"/>
 		
 	</e:Group>
-
-	<e:Image id="tipTxt" source="freeChoose_png" y="923" horizontalCenter="0"/>
-
-	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
-		<e:Image id="yun3" source="yuanbao_png" x="516" y="-141.4" scaleX="1.1" scaleY="1.1"/>
-		<e:Image id="yun4" source="yuanbao_png" x="551" y="409.6" scaleX="1.1" scaleY="1.1"/>
-		<e:Image id="yun1" source="yuanbao_png" x="1304" y="-154.4" scaleX="1.1" scaleY="1.1"/>
-		<e:Image id="yun2" source="yuanbao_png" x="-103" y="385.6" scaleX="1.1" scaleY="1.1"/>
-		<e:Image id="yun5" source="yuanbao_png" x="-165.6" y="-172.7" scaleX="1.1" scaleY="1.1"/>
-		<e:Image id="yun6" source="yuanbao_png" x="1152" y="577.6" scaleX="1.1" scaleY="1.1"/>
-	</e:Group>
-
 
 </e:Skin>
