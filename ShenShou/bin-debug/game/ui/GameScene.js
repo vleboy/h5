@@ -126,14 +126,14 @@ var game;
          * */
         GameScene.prototype.updateBgm = function () {
             if (this.isFree) {
-                game.SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+                game.SoundPlayer.playMusic("ShenShou_243_freeGame_mp3");
             }
             else {
                 if (this.freeChoose.visible) {
-                    game.SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+                    game.SoundPlayer.playMusic("ShenShou_243_featureChoose_mp3");
                 }
                 else {
-                    game.SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+                    game.SoundPlayer.playMusic("ShenShou_243_normalGame_mp3");
                 }
             }
         };
@@ -364,7 +364,7 @@ var game;
          * 开始滚动
          * */
         GameScene.prototype.startSpin = function () {
-            this.rollChannel = game.SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
+            this.rollChannel = game.SoundPlayer.playEffect("ShenShou_243_Roll_mp3", -1);
             for (var i = 0; i < 15; i++) {
                 this["tile" + i].visible = false;
             }
@@ -490,8 +490,8 @@ var game;
                                 });
                             });
                             if (haveScatterThisColumn)
-                                game.SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
-                            game.SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
+                                game.SoundPlayer.playEffect("ShenShou_243_Scatter_" + (column + 1) + "_mp3");
+                            game.SoundPlayer.playEffect("ShenShou_243_RollStop_mp3");
                             return [2 /*return*/];
                     }
                 });
@@ -502,7 +502,7 @@ var game;
          * */
         GameScene.prototype.freeEffect = function (column) {
             var _this = this;
-            game.SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
+            game.SoundPlayer.playEffect("ShenShou_243_Scatter_wait_mp3");
             return new Promise(function (resolve, reject) {
                 _this["border" + column].visible = true;
                 _this["border" + column].play();
@@ -678,11 +678,11 @@ var game;
                 if (win <= 0)
                     resolve();
                 else if (level == "normal") {
-                    game.SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
+                    game.SoundPlayer.playEffect("ShenShou_243_SmallWin_mp3");
                     resolve();
                 }
                 else if (level == "middle") {
-                    game.SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+                    game.SoundPlayer.playEffect("ShenShou_243_MiddleWin_mp3");
                     resolve();
                 }
                 else {
@@ -742,7 +742,7 @@ var game;
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (_this.spinResp.payload.getFeatureChance) {
-                    game.SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_mp3");
+                    game.SoundPlayer.playEffect("ShenShou_243_Get_FreeGame_mp3");
                     _this.freeChanceGroup.visible = true;
                     _this.freeChangeMc.play();
                     _this.setFreeChooseCount(true);
@@ -768,7 +768,7 @@ var game;
             var _this = this;
             var grids = this.spinResp.payload.featureData.featureBonusData.grid;
             var gold = this.spinResp.payload.featureData.featureBonusData.gold;
-            gold > 0 && game.SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+            gold > 0 && game.SoundPlayer.playEffect("ShenShou_243_Bonus_mp3");
             return Promise.all(gold > 0 ? grids.map(function (value, column) {
                 return new Promise(function (res, rej) {
                     if (value == -1) {
@@ -995,7 +995,7 @@ var game;
             if (isAn) {
                 isShow && egret.Tween.get(this.freeChooseCountBoom)
                     .call(function () { return _this.freeChooseCountBoom.visible = true; })
-                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
+                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1657, y: 140 }, 1000)
                     .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
                     .call(function () {
                     _this.freeChooseCountBoom.play();
@@ -1021,7 +1021,7 @@ var game;
             if (isStart) {
                 this.freeMultiGroup.visible = true;
                 //倍数
-                this.freeMulti.text = "X" + mul;
+                this.freeMulti.text = "x" + mul;
                 var theParticle = function (texture, cfg, index, isLight) {
                     var theP = new particle.GravityParticleSystem(texture, cfg);
                     _this.freeMultiGroup.addChildAt(theP, index);
@@ -1130,6 +1130,21 @@ var game;
                     _this.mc.loop = isLong ? 2 : 1;
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
                     _this.mc.play();
+                    _this.tile.visible = false;
+                    _this.mc.once(game.AMovieClip.COMPLETE, function () {
+                        _this.mc.visible = false;
+                        _this.tile.visible = true;
+                    }, _this);
+                    _this.mc2 = new game.AMovieClip();
+                    _this.mc2.sources = "wildText|1-49|_png";
+                    _this.mc2.width = 256;
+                    _this.mc2.height = 64;
+                    _this.mc2.x = _this.tile.x - 25;
+                    _this.mc2.y = _this.tile.y + 69;
+                    _this.mc2.speed = 4;
+                    _this.mc2.loop = isLong ? 2 : 1;
+                    _this.gameScene["winGridGroup"].addChild(_this.mc2);
+                    _this.mc2.play();
                 }
                 _this.gameScene.particleBg.visible = true;
                 var p = _this.p;
@@ -1153,6 +1168,11 @@ var game;
                             _this.mc.parent.removeChild(_this.mc);
                             _this.mc = null;
                             _this.tile.visible = true;
+                        }
+                        if (_this.mc2) {
+                            _this.mc2.stop();
+                            _this.mc2.parent.removeChild(_this.mc2);
+                            _this.mc2 = null;
                         }
                         if (_this.value == "1") {
                             _this.tile.source = _this.gameScene.buff != "-1" ? "symbolName_1_" + _this.gameScene.buff + "_png" : "symbolName_1_png";
@@ -1192,6 +1212,11 @@ var game;
                 this.mc.stop();
                 this.mc.parent.removeChild(this.mc);
                 this.mc = null;
+            }
+            if (this.mc2) {
+                this.mc2.stop();
+                this.mc2.parent.removeChild(this.mc2);
+                this.mc2 = null;
             }
             if (this.value == "1") {
                 this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));

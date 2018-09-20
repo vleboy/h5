@@ -7,7 +7,7 @@
 	</e:Group>
 
 	<e:Group id="payoutGroup" width="1920" height="1080" verticalCenter="0" horizontalCenter="0" x="10" y="10">
-		<e:BitmapLabel id="payout" font="fnt173_fnt" text="1235" height="173" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" letterSpacing="-20"/>
+		<e:BitmapLabel id="payout" text="1235" height="173" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" letterSpacing="-20" font="fnt173_fnt"/>
 		<e:Image id="winImg" source="BigWin_png" horizontalCenter="40" width="728" height="108" anchorOffsetX="364" anchorOffsetY="54" verticalCenter="-225"/>
 
 

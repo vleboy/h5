@@ -64,9 +64,6 @@
 		<e:Image id="yun2" source="yuanbao_png" x="-103" y="385.6" scaleX="1.1" scaleY="1.1"/>
 		<e:Image id="yun5" source="yuanbao_png" x="-165.6" y="-172.7" scaleX="1.1" scaleY="1.1"/>
 		<e:Image id="yun6" source="yuanbao_png" x="1152" y="577.6" scaleX="1.1" scaleY="1.1"/>
-
-
-
 	</e:Group>
 
 

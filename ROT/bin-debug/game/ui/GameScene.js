@@ -147,7 +147,6 @@ var game;
             var _this = this;
             this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                _this.bigWin.bigWinStart("big", 200);
             }, this);
         };
         /**
