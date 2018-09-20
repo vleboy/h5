@@ -388,7 +388,6 @@ module game {
 			if (this.connectTip.visible) this.connectTip.show(false);
 		}
 
-
 		// -------------------- 游戏转动显示  ------------------------
 
 		/**
@@ -871,6 +870,9 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);

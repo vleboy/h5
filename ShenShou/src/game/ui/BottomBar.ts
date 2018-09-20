@@ -66,7 +66,7 @@ module game {
 		public setFree(b: boolean) {
 			b && !this.isFree && (this.freeAuto = this.isAuto);
 			this.isAuto = b;
-			!b && (this.isAuto = this.freeAuto);
+			!b && (this.isAuto = false);
 			!b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"); 
 			this.autoImg.source = b ? "Free_png" : "Auto_1_png";
 			this.isFree = b;

@@ -360,7 +360,6 @@ module game {
 					}
 				}
 			}
-
 			console.log("UI收到spin返回 ", resp);
 			this.spinResp = resp;
 			if (this.isFree) {
@@ -1029,6 +1028,9 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);
