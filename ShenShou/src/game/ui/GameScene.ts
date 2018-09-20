@@ -368,11 +368,8 @@ module game {
 				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
 				this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			}
-			this.stopRoll(resp.payload.viewGrid).then(() => {
-				let balance: string = resp.payload.userBalance;
-				this.topBar.setBalance(balance, resp.payload.totalGold);
-				this.theBalance = balance;
-			});
+			this.theBalance = resp.payload.userBalance;
+			this.stopRoll(resp.payload.viewGrid);
 			this.setState(GameState.STOP);
 			this.isReturnData = true;
 			if (this.connectTip.visible) this.connectTip.show(false);
@@ -559,7 +556,7 @@ module game {
 		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
-
+			this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
