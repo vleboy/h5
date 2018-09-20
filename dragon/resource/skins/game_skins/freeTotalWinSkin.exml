@@ -3,7 +3,7 @@
 	<e:Image source="freeWinBG_jpg" x="0" y="0"/>
 	<e:Image source="OverBG2_png" horizontalCenter="0" verticalCenter="0"/>
 	<e:Image source="asdasd_png" verticalCenter="0" x="1"/>
-	<e:Image source="GetTips_png" y="245" horizontalCenter="0"/>
+	<e:Image source="GetTips_png" y="293" horizontalCenter="0"/>
 
-	<e:BitmapLabel id="winTxt" height="180" font="fnt173_fnt" text="0.00" textAlign="center" letterSpacing="-5" verticalCenter="0" width="1600" anchorOffsetX="800" anchorOffsetY="90" horizontalCenter="155"/>
+	<e:BitmapLabel id="winTxt" height="144" text="0.00" textAlign="center" letterSpacing="-5" verticalCenter="0" width="1329" anchorOffsetX="800" anchorOffsetY="90" font="fnt144_fnt" horizontalCenter="288.5"/>
 </e:Skin>

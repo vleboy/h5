@@ -987,7 +987,7 @@ module game {
 			if (isAn) {
 				isShow && egret.Tween.get(this.freeChooseCountBoom)
 					.call(() => this.freeChooseCountBoom.visible = true)
-					.to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
+					.to({ scaleX: 0.3, scaleY: 0.3, x: 1532, y: 153 }, 1000)
 					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
 					.call(() => {
 						this.freeChooseCountBoom.play();
@@ -1012,7 +1012,7 @@ module game {
 			if (isStart) {
 				this.freeMultiGroup.visible = true;
 				//倍数
-				this.freeMulti.text = "X" + mul;
+				this.freeMulti.text = "x" + mul;
 				let theParticle = (texture, cfg, index, isLight?: boolean) => {
 					let theP = new particle.GravityParticleSystem(texture, cfg);
 					this.freeMultiGroup.addChildAt(theP, index);
