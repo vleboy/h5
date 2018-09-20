@@ -1150,18 +1150,22 @@ var game;
                     }, _this);
                 }
                 else if (_this.value == "1") {
-                    // this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
+                    _this.wildbg = new eui.Image(_this.gameScene.buff != "-1" ? ("wildbg" + _this.gameScene.buff + "_png") : "wildBg0_png");
+                    _this.wildbg.width = 190;
+                    _this.wildbg.height = 190;
+                    _this.wildbg.x = _this.tile.x + 5;
+                    _this.wildbg.y = _this.tile.y + 5;
+                    _this.gameScene["winGridGroup"].addChild(_this.wildbg);
                     _this.mc = new game.AMovieClip();
-                    _this.mc.sources = "wildAni|1-14|_png";
-                    _this.mc.x = _this.tile.x + 5;
-                    _this.mc.y = _this.tile.y + 5;
-                    _this.mc.width = 190;
-                    _this.mc.height = 190;
+                    _this.mc.sources = "wildAni|1-36|_png";
+                    _this.mc.x = _this.tile.x - 4;
+                    _this.mc.y = _this.tile.y - 1;
+                    _this.mc.width = 207;
+                    _this.mc.height = 202;
                     _this.mc.speed = 6;
                     _this.mc.loop = isLong ? 2 : 1;
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
                     _this.mc.play();
-                    _this.tile.visible = false;
                     _this.mc.once(game.AMovieClip.COMPLETE, function () {
                         _this.mc.visible = false;
                         _this.tile.visible = true;
@@ -1204,6 +1208,10 @@ var game;
                             _this.mc2.stop();
                             _this.mc2.parent.removeChild(_this.mc2);
                             _this.mc2 = null;
+                        }
+                        if (_this.wildbg) {
+                            _this.wildbg.parent.removeChild(_this.wildbg);
+                            _this.wildbg = null;
                         }
                         if (_this.value == "1") {
                             _this.tile.source = _this.gameScene.buff != "-1" ? "symbolName_1_" + _this.gameScene.buff + "_png" : "symbolName_1_png";
@@ -1248,6 +1256,10 @@ var game;
                 this.mc2.stop();
                 this.mc2.parent.removeChild(this.mc2);
                 this.mc2 = null;
+            }
+            if (this.wildbg) {
+                this.wildbg.parent.removeChild(this.mc2);
+                this.wildbg = null;
             }
             if (this.value == "1") {
                 this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
