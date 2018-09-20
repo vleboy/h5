@@ -2,7 +2,6 @@
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group id="chooseGroup" width="1920" height="1" x="0" y="0">
 		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7" scaleX="1" scaleY="1"/>
-
 		<e:Group id="choose20" width="517" height="462" scaleX="0.8" scaleY="0.85" horizontalCenter="-568" touchChildren="false" touchEnabled="true" y="254">
 			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
 			<e:Image source="20_png" horizontalCenter="0" width="207" height="202" verticalCenter="-84"/>

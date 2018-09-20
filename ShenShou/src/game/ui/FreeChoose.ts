@@ -48,7 +48,7 @@ module game {
 				case this["choose5"]: n = 1; break;
 			}
 
-			["20", "15", "10", "8", "5"].forEach((v) => {
+			["20", "15", "10", "8", "5"].forEach((v, i) => {
 				let target = this["choose" + v] as eui.Group;
 				if (e.target != target) {
 					this["chooseGroup"].setChildIndex(target, 0);
@@ -57,18 +57,25 @@ module game {
 					let respData;
 					Promise.all([
 						new Promise((resolve, reject) => {
+							let img: eui.Image = new eui.Image("wildbg" + (i + 1) + "_png");
+							img.width = 207;
+							img.height = 202;
+							img.x = 155;
+							img.y = 46;
+							target.addChildAt(img, 2);
 							let mc = new AMovieClip();
-							mc.sources = "wildAni|1-14|_png";
+							mc.sources = "wildAni|1-36|_png";
 							mc.x = 155;
 							mc.y = 46;
 							mc.width = 207;
 							mc.height = 202;
 							mc.speed = 6;
 							mc.loop = 2;
-							target.addChildAt(mc, 2);
+							target.addChildAt(mc, 3);
 							mc.play();
 							mc.once(AMovieClip.COMPLETE, () => {
 								mc.parent.removeChild(mc);
+								img.parent.removeChild(img);
 								resolve();
 							}, this);
 						}),
