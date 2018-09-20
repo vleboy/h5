@@ -80,12 +80,12 @@
 		</e:Group>
 		<e:BitmapLabel id="lineWinTxt" width="600" height="63" horizontalCenter="0" verticalCenter="45" font="fnt63_fnt" text="1232" letterSpacing="-35" touchEnabled="false" textAlign="center"/>
 		<e:Image id="freeCountBg" source="Mutiply_png" x="-99" y="133" scaleX="1" scaleY="1"/>
-		<e:Image id="freeChooseCountBg" source="FeatureChance_png" x="1394" y="112"/>
+		<e:Image id="freeChooseCountBg" x="1220" y="129" source="symbolName_0_png" width="95" height="95"/>
 
 		<e:BitmapLabel id="freeChooseCountTxt" right="-267" font="fnt40_fnt" text="x2" height="40" top="166" width="176" textAlign="center"/>
-		<e:Group id="freeMultiGroup" width="200" height="140" left="-94" top="140" visible="false">
+		<e:Group id="freeMultiGroup" width="200" height="140" left="-110" top="217" visible="false">
 
-			<e:BitmapLabel id="freeMulti" text="X10" font="fnt70_fnt" height="70" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
+			<e:BitmapLabel id="freeMulti" text="x10" font="fnt70_fnt" height="70" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0" letterSpacing="-10"/>
 
 		</e:Group>
 
