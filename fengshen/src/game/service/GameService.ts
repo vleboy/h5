@@ -13,23 +13,42 @@ module game {
 		public login(){
 			return new Promise(async (resolve, reject)=>{
 				try{
-					window["isDebug"] && await DefaultUser.getInstance().login();
-					this.requestInitData().then((resp:LoginVO)=>{
-						console.log("login resp ",resp);
-						
-						this.loginVo = resp;
-						this.token = resp.payload.token;
+					if(window["isDebug"]){
+						DefaultUser.getInstance().login().then((resp:LoginVO)=>{
+							console.log("login resp ",resp);
+							this.loginVo = resp;
+							this.token = resp.payload.token;
 
-						if(resp.code == 0){
-							resolve(resp);
-						}
-						else{
-							reject("auth code err");
-						}
-					})
-					.catch(()=>{
-						reject("login err");
-					})
+							if(resp.code == 0){
+								resolve(resp);
+							}
+							else{
+								reject("auth code err");
+							}
+						})
+						.catch(()=>{
+							reject("login err");
+						})
+					}
+					else{
+						this.requestInitData().then((resp:LoginVO)=>{
+							console.log("login resp ",resp);
+							
+							this.loginVo = resp;
+							this.token = resp.payload.token;
+
+							if(resp.code == 0){
+								resolve(resp);
+							}
+							else{
+								reject("auth code err");
+							}
+						})
+						.catch(()=>{
+							reject("login err");
+						})
+					}
+					
 				}
 				catch(e){
 					console.log("22222222222222");
