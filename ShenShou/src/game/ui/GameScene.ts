@@ -32,6 +32,7 @@ module game {
 		private freeMulti: eui.BitmapLabel;
 		private freeChooseCountBoom: AMovieClip;
 		private connectTip: ConnectTip;
+		private sceneChangeGroup: eui.Group;
 
 		private balance: number;
 		private betcfg: number[];
@@ -241,14 +242,19 @@ module game {
 					this.betLevel = body;
 					break;
 				case NotifyConst.chooseFreeBack:
-					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
-					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
-					this.featureChanceCount--;
-					this.isFree = true;
-					this.bottomBar.setFree(true);
-					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
-					this.showFreeChoose(false);
-					this.showFreeGame(true);
+					this.cloundIn().then(()=>{
+						this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+						this.buff = (body as ChooseBuffVO).payload.featureData.buff;
+						this.featureChanceCount--;
+						this.isFree = true;
+						this.bottomBar.setFree(true);
+						this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
+						this.showFreeChoose(false);
+						this.showFreeGame(true);
+						this.cloundOut().then(()=>{
+							this.sceneChangeGroup.visible = false;
+						})
+					});
 					break;
 				case NotifyConst.freeComplete:
 					egret.Tween.get(this["gameMask"])
@@ -867,7 +873,55 @@ module game {
 		}
 
 		// -------------------- 免费游戏显示  ------------------------
-
+		/**云聚拢 */
+		private cloundIn(){
+			SoundPlayer.playEffect("ShenShou_243_CardEffect_mp3");
+			this.sceneChangeGroup.visible = true;
+			return Promise.all(
+				[1,2,3,4,5,6].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let startx = v%2==0 ? 1920 : -1000;
+					let starty = v%2==0 ? 1080 : -500;
+					return new Promise((resolve, reject)=>{
+						egret.Tween.get(target)
+							.set({x:startx, y:starty, visible:true})
+							.wait( Math.floor(i/2)*250)
+							.to({x:defaultx, y:defaulty}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.call(()=>{
+								egret.Tween.removeTweens(target);
+								resolve();
+							})
+					})
+				})
+			);
+			
+		}
+		/**云散开 */
+		private cloundOut(){
+			return Promise.all(
+				[5,6,3,4,1,2].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let endx = v%2==0 ? 1920 : -1000;
+					let endy = v%2==0 ? 1080 : -500;
+					return new Promise((resolve, reject)=>{
+						egret.Tween.get(target)
+							.wait( Math.floor(i/2)*250+500)
+							.to({x:endx, y:endy}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.set({x:defaultx, y:defaulty, visible:false})
+							.call(()=>{
+								egret.Tween.removeTweens(target);
+								resolve();
+							})
+					})
+				})
+			);
+		}
         /**
          * 显示免费游戏选择的ui
          * */
