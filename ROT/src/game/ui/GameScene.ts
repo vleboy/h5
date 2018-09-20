@@ -381,16 +381,12 @@ module game {
 				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
 				this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			}
-			this.stopRoll(resp.payload.viewGrid).then(() => {
-				let balance: string = resp.payload.userBalance;
-				this.topBar.setBalance(balance, resp.payload.totalGold);
-				this.theBalance = balance;
-			});
+			this.theBalance = resp.payload.userBalance;
+			this.stopRoll(resp.payload.viewGrid);
 			this.setState(GameState.STOP);
 			this.isReturnData = true;
 			if (this.connectTip.visible) this.connectTip.show(false);
 		}
-
 
 		// -------------------- 游戏转动显示  ------------------------
 
@@ -559,6 +555,7 @@ module game {
 		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
+			this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
 			await this.showAllWinGrid(this.spinResp.payload.winGrid);
@@ -873,6 +870,9 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);
@@ -912,8 +912,8 @@ module game {
 				this.mc = new AMovieClip();
 				this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
 				this.mc.speed = 5;
-				this.mc.x = this.tile.x;
-				this.mc.y = this.tile.y;
+				this.mc.x = this.tile.x + 2;
+				this.mc.y = this.tile.y + 5;
 				this.mc.width = this.tile.width;
 				this.mc.height = this.tile.height;
 				this.gameScene["winGridGroup"].addChild(this.mc);

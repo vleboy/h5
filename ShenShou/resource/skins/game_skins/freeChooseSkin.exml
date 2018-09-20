@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group id="chooseGroup" width="1920" height="1" x="0" y="0">
-		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
+		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7" scaleX="1" scaleY="1"/>
+
 		<e:Group id="choose20" width="517" height="462" scaleX="0.8" scaleY="0.85" horizontalCenter="-568" touchChildren="false" touchEnabled="true" y="254">
 			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
 			<e:Image source="20_png" horizontalCenter="0" width="207" height="202" verticalCenter="-84"/>
@@ -39,45 +40,7 @@
 		</e:Group>
 	</e:Group>
 	<e:Image id="tipTxt" source="freeChoose_png" horizontalCenter="0" top="80"/>
-	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0" visible="false">
-		<e:Group width="1" height="1" x="-10" y="-846">
-			<e:Image source="guodu_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-		<e:Group width="1" height="1" x="46" y="-559">
-			<e:Image source="guodu_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-		<e:Group width="1" height="1" x="-81" y="-287">
-			<e:Image source="guodu_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-		<e:Group width="1" height="1" x="10" y="17">
-			<e:Image source="guodu_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="guodu_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
 
-	</e:Group>
 
 
 </e:Skin>

@@ -30,11 +30,12 @@ module game {
 		}
 		/**显示*/
 		public show() {
-			this.visible = true;
 			//默认显示
 			let defShow = () => {
 				this.chooseGroup.setChildIndex(this.rect, 0);
 				this.chooseGroup.setChildIndex(this.cardBgLight, 1);
+				this.tipTxt.visible = true;
+				this.visible = true;
 				//选项卡默认位置,隐藏黄光
 				this.countArr.forEach((v, i) => {
 					let tar: eui.Group = this["choose" + v] as eui.Group;
@@ -115,12 +116,12 @@ module game {
 		private cardBgAni(cardType: string): Promise<{}> {
 			return new Promise((res, rej) => {
 				//显示背景
-				let bgShow = (tar: eui.Image, timer: number) => {
+				let bgShow = (tar: eui.Image, timer: number, wait: number) => {
 					return new Promise((res2, rej2) => {
 						tar.scaleX = .8;
 						tar.scaleY = .8;
 						tar.alpha = 0;
-						egret.Tween.get(tar).wait(100).to({ scaleX: 1, scaleY: 1, alpha: 1 }, timer).call(() => { egret.Tween.removeTweens(tar); res2(); });
+						egret.Tween.get(tar).wait(wait).to({ scaleX: 1, scaleY: 1, alpha: 1 }, timer, egret.Ease.quintIn).call(() => { egret.Tween.removeTweens(tar); res2(); });
 					});
 				}
 				//粒子效果
@@ -150,12 +151,11 @@ module game {
 						this.bgLight.source = "light_" + cardType + "_png";
 						this.maxArr.source = "maxArr_" + cardType + "_png";
 						//背景光
-						bgShow(this.bgLight, 400).then(() => {
-							//大法阵
-							bgShow(this.maxArr, 200);
-							//粒子效果
-							particleEffect();
-						});
+						bgShow(this.bgLight, 600, 100);
+						//大法阵
+						bgShow(this.maxArr, 600, 200);
+						//粒子效果
+						particleEffect();
 					});
 			});
 		}
@@ -197,12 +197,13 @@ module game {
 				});
 			}
 			SoundPlayer.playEffect("ROT_243_ChoseCard_mp3");
+			this.tipTxt.visible = false;
 			this.cardOut(e.target).then(() => {
 				SoundPlayer.playEffect("ROT_243_CardEffect_mp3");
 				this.cardBgAni(cardType);
 				setTimeout(() => {
 					sendFree().then(() => {
-						this.close().then(()=>this.sendNotify(NotifyConst.chooseFreeBack, respData));
+						this.close().then(() => this.sendNotify(NotifyConst.chooseFreeBack, respData));
 					});
 				}, 1500);
 			});

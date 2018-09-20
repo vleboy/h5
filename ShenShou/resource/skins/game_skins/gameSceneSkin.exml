@@ -5,9 +5,6 @@
 	<e:Group id="contentGroup" width="1396" height="1080" horizontalCenter="0" verticalCenter="0" touchEnabled="false" touchChildren="false">
 		<e:Group id="borderGroup" width="100%" height="100%" x="0" y="0">
 			<e:Image y="205" horizontalCenter="0" width="1334" height="700" x="4" scaleX="1" scaleY="1" source="columBg_png" scale9Grid="33,19,204,644"/>
-
-
-
 		</e:Group>
 		<e:Rect id="tileMask" width="1334" height="658" y="220" horizontalCenter="0" visible="false"/>
 		<e:Group id="tileGroup" width="1334" height="658" y="220" horizontalCenter="0">
@@ -62,28 +59,25 @@
 			<e:Group id="bonusEffectGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
-
 		</e:Group>
 		<e:Image source="LineBG_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="-50" width="1635" height="900"/>
 		<game:AMovieClip id="title_fire" sources="title_fire|1-10|_png" speed="6" horizontalCenter="0" source="title_fire1_png" y="35" width="450" height="179" visible="false"/>
 		<game:AMovieClip id="title" y="105" source="title1_png" sources="title|1-22|_png" speed="8" horizontalCenter="0"/>
-		<e:Group id="freeChooseCount" width="232" height="58" x="1354" y="112">
+		<e:Group id="freeChooseCount" width="232" height="58" x="1354" y="112" visible="false">
 			<e:Image source="FeatureChance_png" x="0" y="0" width="232" height="58" scaleX="1" scaleY="1"/>
 			<e:Image source="symbolName_0_png" width="54" height="54" left="15" verticalCenter="0"/>
-			<e:BitmapLabel id="freeChooseCountTxt" font="fnt40_fnt" text="x2" height="40" width="140" textAlign="left" scaleX="1" scaleY="1" verticalCenter="0" left="90"/>
+			<e:BitmapLabel id="freeChooseCountTxt" text="x2" height="40" width="140" textAlign="left" scaleX="1" scaleY="1" verticalCenter="0" left="90" font="fnt40_fnt"/>
 		</e:Group>
 		<e:BitmapLabel id="lineWinTxt" width="600" height="63" horizontalCenter="0" verticalCenter="45" font="fnt63_fnt" text="1232" letterSpacing="-35" touchEnabled="false" textAlign="center"/>
-		<e:Image id="freeCountBg" source="Mutiply_png" x="-60" y="120" scaleX="1" scaleY="1" visible="false"/>
+		<e:Image id="freeCountBg" source="Mutiply_png" x="-60" y="120" scaleX="1" scaleY="1"/>
 		<e:Group id="freeMultiGroup" width="200" height="140" left="-90" top="120" visible="false">
-			<e:BitmapLabel id="freeMulti" text="X10" font="fnt70_fnt" height="70" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
+			<e:BitmapLabel id="freeMulti" text="x10" scaleX="1" scaleY="1" verticalCenter="-3" horizontalCenter="0" font="fnt41_fnt" letterSpacing="-10" textAlign="center" verticalAlign="middle"/>
 		</e:Group>
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" height="220" y="860" horizontalCenter="0"/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
 	<e:TextInput id="testInput" width="363.94" height="57.88" y="35" anchorOffsetX="0" anchorOffsetY="0" x="778"/>
-	<e:Group id="bigWinGroup" width="100%" x="0" y="0" height="100%" visible="false">
-		<e:Label id="bigwinTxt" text="大赢家" textColor="0x20c929" size="100" horizontalCenter="0" verticalCenter="0"/>
-	</e:Group>
+
 	<e:Group id="freeChanceGroup" width="100%" x="0" y="0" height="100%" visible="false">
 		<game:AMovieClip id="freeChangeMc" width="292" height="141" source="freeChange28_png" horizontalCenter="0" verticalCenter="-90" scaleX="5" scaleY="5" loop="1" sources="freeChange|1-33|_png" speed="4"/>
 		<e:Image id="freeChangeImg" source="FreeChance_png" horizontalCenter="0" verticalCenter="-90" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
@@ -95,6 +89,14 @@
 	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+	<e:Group id="sceneChangeGroup" width="1920" height="1080" x="0" y="0" visible="false">
+		<e:Image id="yun3" source="guodu_png" x="516" y="-141.4" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun4" source="guodu_png" x="551" y="409.6" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun1" source="guodu_png" x="1304" y="-154.4" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun2" source="guodu_png" x="-103" y="385.6" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun5" source="guodu_png" x="-165.6" y="-172.7" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun6" source="guodu_png" x="1152" y="577.6" scaleX="1.1" scaleY="1.1"/>
+	</e:Group>
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
 </e:Skin>
