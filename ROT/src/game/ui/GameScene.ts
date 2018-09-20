@@ -159,7 +159,7 @@ module game {
 		 * */
 		private testInput: eui.TextInput;
 		private initListener() {
-			this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, () => {
+			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
 			}, this);
 		}
