@@ -1,7 +1,10 @@
 module game {
 	export class GameScene extends BaseUI implements INotify {
+		private contentGroup: eui.Group;
+		private tileLocationGroup: eui.Group;
 		private tileMask: eui.Rect;
 		private tileGroup: eui.Group;
+		private vagueTileGroup: eui.Group;
 		private bottomBar: BottomBar;
 		private topBar: TopBar;
 		private rull: Rull;
@@ -21,7 +24,6 @@ module game {
 		private border2: AMovieClip;
 		private border3: AMovieClip;
 		private border4: AMovieClip;
-		public valueTiles: eui.Group;
 		public particleBg: eui.Rect;
 		public winGridGroup: eui.Group;
 		private bigWin: BigWin;
@@ -56,11 +58,12 @@ module game {
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
-		private thePArr: particle.GravityParticleSystem[];
 		/**是否返回数据*/
 		private isReturnData: boolean;
 		/**spin等待*/
 		private spinWain: any;
+		/**图标数组 */
+		private symbolArr: Array<Symbol>;
 
 		public constructor() {
 			super();
@@ -81,21 +84,33 @@ module game {
 		 * 初始化显示
 		 * */
 		private initView() {
-			// this.initSymbols();
-			// this.tileGroup.mask = this.tileMask;
-			// this.setState(GameState.BET);
-			// this.initVisible();
+			this.contentGroup.mask = new egret.Rectangle(244, 148, 1430, 764);
+			this.initSymbols();
+			this.setState(GameState.BET);
+			this.initVisible();
 			// this.initListener();
 		}
 		/**
 		 * 初始图标对象
 		 * */
 		private initSymbols() {
+			this.symbolArr = [];
+			for(let i=0; i<15; i++){
+				let s = new Symbol();
+				let value = Math.floor(Math.random()*11)+"";
+				
+				s.horizontalCenter = (this.tileLocationGroup.getChildAt(i) as eui.Image).horizontalCenter;
+				s.verticalCenter = (this.tileLocationGroup.getChildAt(i) as eui.Image).verticalCenter;
+				s.setValue(value);
+				this.tileGroup.addChild(s);
+				this.symbolArr.unshift(s);
+			}
 		}
 		/**
 		 * 初始化一些visible
 		 * */
 		private initVisible() {
+			this.vagueTileGroup.visible = false;
 		}
 		/**
 		 * 初始事件监听
@@ -145,7 +160,7 @@ module game {
 			// this.topBar.setUser(loginVo.payload.nickname);
 			// this.topBar.setBalance(loginVo.payload.userBalance);
 			// this.theBalance = loginVo.payload.userBalance;
-			// this.bottomBar.setBetData(this.betcfg, this.betLevel, this.multicfg[this.multiLevel]);
+			// this.bottomBar.initBetData(this.betcfg, this.betLevel, this.multicfg[this.multiLevel]);
 			// //数据恢复检查
 			// this.checkDataRecover(loginVo);
 			// this.setting.defaultOpen();
@@ -302,6 +317,7 @@ module game {
 		 * 收到spin结果 ，把-1的图标筛选掉
 		 * */
 		private spinBack(resp: SpinVO) {
+			return;
 			resp.payload.winGrid.length > 0 && resp.payload.winGrid.forEach((v, i) => {
 				for (let i = v.winCard.length - 1; i >= 0; i--) {
 					if (v.winCard[i] == -1) {
@@ -348,12 +364,13 @@ module game {
 		private startSpin() {
 			this.rollChannel = SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
 			for (let i = 0; i < 15; i++) {
-				this["tile" + i].visible = false;
+				this.symbolArr[i].visible = false;
 			}
+			
+			this.vagueTileGroup.visible = true;
 			for (let i = 0; i < 5; i++) {
 				this.singleColumRoll(i);
 			}
-			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
 		}
 		/**
 		 * 单列模糊图标转动
@@ -361,17 +378,17 @@ module game {
 		private singleColumRoll(column) {
 			for (let i = 0; i < 4; i++) {
 				this["vagueTile" + (column * 4 + i)].visible = true;
-				this["vagueTile" + (column * 4 + i)].source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
+				this["vagueTile" + (column * 4 + i)].source = "vague" + Math.floor(Math.random() * 10+1) + "_png";
 			}
 			egret.Tween.get(this["vagueTile" + (column * 4)], { loop: true })
 				.wait(20)
 				.call(() => {
 					for (let i = 0; i < 4; i++) {
 						let tile = this["vagueTile" + (column * 4 + i)];
-						tile.y += (GlobalConfig.fastSwitch ? 104 : 80);
-						if (tile.y > 658) {
-							tile.y -= 208 * 4;
-							tile.source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
+						tile.verticalCenter += (GlobalConfig.fastSwitch ? 104 : 80);
+						if (tile.verticalCenter > 496) {
+							tile.verticalCenter -= 248 * 4;
+							tile.source = "vague" + Math.floor(Math.random() * 10 + 1) + "_png";
 						}
 					}
 				})
@@ -933,18 +950,7 @@ module game {
 					theP.start();
 					return theP;
 				}
-				this.thePArr = [];
-				//光晕效果
-				this.thePArr.push(theParticle(RES.getRes("freemultiLight_png"), RES.getRes("particle_multiLight_json"), 0, true));
-				//粒子发散效果
-				this.thePArr.push(theParticle(RES.getRes("freemulti_png"), RES.getRes("particle_multi_json"), 1));
 			} else {
-				this.thePArr.forEach(v => {
-					v.stop();
-					v.visible = false;
-					v.parent && v.parent.removeChild(v);
-				})
-				this.thePArr = [];
 				this.freeMultiGroup.visible = false;
 			}
 		}
@@ -953,7 +959,6 @@ module game {
 		 * */
 		private showFreeTotalWin(n: string) {
 			this.freeTotalWin.showTotalWin(n);
-			this.thePArr && this.thePArr.length > 0 && this.freeMultiAni(this.featureMultiplier, false);
 		}
 		/**
 		 * 免费结算完成
@@ -986,8 +991,9 @@ module game {
 			this.skinName = "resource/skins/game_skins/tileSkin.exml";
 		}
 
-		public setValue(v){
+		public setValue(v: string){
 			let isSmallTile = parseInt(v) > 5;
+			this.bg.visible = true;
 			this.bg.source = isSmallTile ? "tilebg6_png" : ("tilebg"+v+"_png");
 			this.tileImg.visible = isSmallTile;
 			this.tileMc.visible = !isSmallTile;
@@ -995,28 +1001,29 @@ module game {
 			if(!isSmallTile){
 				switch(v){
 					case "0"://太极
-						this.tileMc.source = "";
-						this.tileMc.sources = "";
+						this.bg.visible = false;
+						this.tileMc.source = "zz_01_png";
+						this.tileMc.sources = "zz_|01-30|_png";
 						break;
 					case "1"://姜子牙
 						this.tileMc.source = "JZY_breath_01_png";
-						this.tileMc.sources = "JZY_breath_|01-29|_png";
+						this.tileMc.sources = "JZY_breath_|01-30|_png";
 						break;
 					case "2"://申公豹
-						this.tileMc.source = "JZY_breath_01_png";
-						this.tileMc.sources = "JZY_breath_|01-29|_png";
+						this.tileMc.source = "sgb_breath_01_png";
+						this.tileMc.sources = "sgb_breath_|01-40|_png";
 						break;
 					case "3"://妲己
-						this.tileMc.source = "JZY_breath_01_png";
-						this.tileMc.sources = "JZY_breath_|01-29|_png";
+						this.tileMc.source = "daji_breath_01_png";
+						this.tileMc.sources = "daji_breath_|01-30|_png";
 						break;
 					case "4"://二郎神
-						this.tileMc.source = "JZY_breath_01_png";
-						this.tileMc.sources = "JZY_breath_|01-29|_png";
+						this.tileMc.source = "yj_breath_01_png";
+						this.tileMc.sources = "yj_breath_|01-40|_png";
 						break;
 					case "5"://哪吒
-						this.tileMc.source = "JZY_breath_01_png";
-						this.tileMc.sources = "JZY_breath_|01-29|_png";
+						this.tileMc.source = "NeZha_breath_01_png";
+						this.tileMc.sources = "NeZha_breath_|01-40|_png";
 						break;
 				}
 			}

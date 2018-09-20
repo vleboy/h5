@@ -4,58 +4,72 @@
 	<e:Image id="bgFree" x="0" y="0" width="100%" height="100%" source="freebg_png" visible="false"/>
 	<e:Image source="leftflower_png" x="0" y="0"/>
 	<e:Image source="rightflower_png" y="126" right="0"/>
+	<e:Group id="contentBgGroup" width="1920" height="1080" x="0" y="0">
+		<e:Image source="contentbg_png" horizontalCenter="0" y="28" x="109"/>
+	</e:Group>
 	<e:Group id="contentGroup" width="1920" height="1080" horizontalCenter="0" verticalCenter="0" touchEnabled="false" touchChildren="false">
-		<e:Group id="contentBgGroup" width="1920" height="1080" x="0" y="0">
-			<e:Image source="contentbg_png" horizontalCenter="0" y="28" x="109" scaleX="1" scaleY="1"/>
+
+		<e:Group id="tileLocationGroup" width="1430" height="764" x="244" y="148" visible="false">
+			<e:Image source="tilebg6_png" horizontalCenter="560" verticalCenter="248"/>
+			<e:Image source="tilebg6_png" horizontalCenter="560" verticalCenter="0"/>
+			<e:Image source="tilebg6_png" horizontalCenter="560" verticalCenter="-248"/>
+			<e:Image source="tilebg6_png" verticalCenter="248" horizontalCenter="280"/>
+			<e:Image source="tilebg6_png" verticalCenter="0" horizontalCenter="280"/>
+			<e:Image source="tilebg6_png" verticalCenter="-248" horizontalCenter="280"/>
+			<e:Image source="tilebg6_png" verticalCenter="248" horizontalCenter="0"/>
+			<e:Image source="tilebg6_png" verticalCenter="0" horizontalCenter="0"/>
+			<e:Image source="tilebg6_png" verticalCenter="-248" horizontalCenter="0"/>
+			<e:Image source="tilebg6_png" verticalCenter="248" horizontalCenter="-280"/>
+			<e:Image source="tilebg6_png" verticalCenter="0" horizontalCenter="-280"/>
+			<e:Image source="tilebg6_png" verticalCenter="-248" horizontalCenter="-280"/>
+			<e:Image source="tilebg6_png" verticalCenter="248" horizontalCenter="-560"/>
+			<e:Image source="tilebg6_png" verticalCenter="0" horizontalCenter="-560"/>
+			<e:Image source="tilebg6_png" verticalCenter="-248" horizontalCenter="-560"/>
 		</e:Group>
 		<e:Group id="tileGroup" width="1430" height="764" x="244" y="148">
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-560" verticalCenter="-248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-560" verticalCenter="0"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-560" verticalCenter="248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-280" verticalCenter="-248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-280" verticalCenter="0"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="-280" verticalCenter="248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="-248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="280" verticalCenter="-248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="280" verticalCenter="0"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="280" verticalCenter="248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="560" verticalCenter="-248"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="560" verticalCenter="0"/>
-			<e:Image source="tilebg6_png" scaleX="1" scaleY="1" horizontalCenter="560" verticalCenter="248"/>
 		</e:Group>
-		<e:Group id="lineNumGroup" width="1920" height="1080" x="0" y="0" visible="false">
-			<e:Image id="leftLine6" source="circle2_png" x="168" y="157"/>
-			<e:Image id="leftLine2" source="circle3_png" x="168" y="233"/>
-			<e:Image id="leftLine4" source="circle4_png" x="168" y="309"/>
-			<e:Image id="leftLine8" source="circle5_png" x="168" y="413"/>
-			<e:Image id="leftLine3" source="circle6_png" x="168" y="489"/>
-			<e:Image id="leftLine9" source="circle7_png" x="168" y="567"/>
-			<e:Image id="leftLine5" source="circle8_png" x="168" y="668"/>
-			<e:Image id="leftLine1" source="circle9_png" x="168" y="747"/>
-			<e:Image id="leftLine7" source="circle1_png" x="168" y="826"/>
-			<e:Image id="rightLine6" source="circle2_png" x="1665" y="157"/>
-			<e:Image id="rightLine2" source="circle3_png" x="1665" y="233"/>
-			<e:Image id="rightLine4" source="circle4_png" x="1665" y="309"/>
-			<e:Image id="rightLine8" source="circle5_png" x="1665" y="413"/>
-			<e:Image id="rightLine3" source="circle6_png" x="1665" y="489"/>
-			<e:Image id="rightLine9" source="circle7_png" x="1665" y="567"/>
-			<e:Image id="rightLine5" source="circle8_png" x="1665" y="668"/>
-			<e:Image id="rightLine1" source="circle9_png" x="1665" y="747"/>
-			<e:Image id="rightLine7" source="circle1_png" x="1665" y="826"/>
+		<e:Group id="vagueTileGroup" width="1430" height="764" x="244" y="148">
+			<e:Image id="vagueTile0" source="vague1_png" verticalCenter="-248" horizontalCenter="-560"/>
+			<e:Image id="vagueTile1" source="vague1_png" verticalCenter="0" horizontalCenter="-560"/>
+			<e:Image id="vagueTile2" source="vague1_png" verticalCenter="248" horizontalCenter="-560"/>
+			<e:Image id="vagueTile3" source="vague1_png" verticalCenter="496" horizontalCenter="-560"/>
+			<e:Image id="vagueTile4" source="vague1_png" verticalCenter="-248" horizontalCenter="-280"/>
+			<e:Image id="vagueTile5" source="vague1_png" verticalCenter="0" horizontalCenter="-280"/>
+			<e:Image id="vagueTile6" source="vague1_png" verticalCenter="248" horizontalCenter="-280"/>
+			<e:Image id="vagueTile7" source="vague1_png" verticalCenter="496" horizontalCenter="-280"/>
+			<e:Image id="vagueTile8" source="vague1_png" verticalCenter="-248" horizontalCenter="0"/>
+			<e:Image id="vagueTile9" source="vague1_png" verticalCenter="0" horizontalCenter="0"/>
+			<e:Image id="vagueTile10" source="vague1_png" verticalCenter="248" horizontalCenter="0"/>
+			<e:Image id="vagueTile11" source="vague1_png" verticalCenter="496" horizontalCenter="0"/>
+			<e:Image id="vagueTile12" source="vague1_png" verticalCenter="-248" horizontalCenter="280"/>
+			<e:Image id="vagueTile13" source="vague1_png" verticalCenter="0" horizontalCenter="280"/>
+			<e:Image id="vagueTile14" source="vague1_png" verticalCenter="248" horizontalCenter="280"/>
+			<e:Image id="vagueTile15" source="vague1_png" verticalCenter="496" horizontalCenter="280"/>
+			<e:Image id="vagueTile16" source="vague1_png" horizontalCenter="560" verticalCenter="-248"/>
+			<e:Image id="vagueTile17" source="vague1_png" horizontalCenter="560" verticalCenter="0"/>
+			<e:Image id="vagueTile18" source="vague1_png" horizontalCenter="560" verticalCenter="248"/>
+			<e:Image id="vagueTile19" source="vague1_png" horizontalCenter="560" verticalCenter="496"/>
 		</e:Group>
-
-
-
-
-
-
-
-
-
-
-
+	</e:Group>
+	<e:Group id="lineNumGroup" width="1920" height="1080" x="0" y="0">
+		<e:Image id="leftLine6" x="168" y="157" source="circle6_png"/>
+		<e:Image id="leftLine2" x="168" y="233" source="circle2_png"/>
+		<e:Image id="leftLine4" x="168" y="309" source="circle4_png"/>
+		<e:Image id="leftLine8" x="168" y="413" source="circle8_png"/>
+		<e:Image id="leftLine1" x="168" y="489" source="circle1_png"/>
+		<e:Image id="leftLine9" x="168" y="567" source="circle9_png"/>
+		<e:Image id="leftLine5" x="168" y="668" source="circle5_png"/>
+		<e:Image id="leftLine3" x="168" y="747" source="circle3_png"/>
+		<e:Image id="leftLine7" x="168" y="826" source="circle7_png"/>
+		<e:Image id="rightLine6" x="1665" y="157" source="circle6_png"/>
+		<e:Image id="rightLine2" x="1665" y="233" source="circle2_png"/>
+		<e:Image id="rightLine4" source="circle4_png" x="1665" y="309"/>
+		<e:Image id="rightLine8" x="1665" y="413" source="circle8_png"/>
+		<e:Image id="rightLine1" x="1665" y="489" source="circle1_png"/>
+		<e:Image id="rightLine9" x="1665" y="567" source="circle9_png"/>
+		<e:Image id="rightLine5" x="1665" y="668" source="circle5_png"/>
+		<e:Image id="rightLine3" x="1665" y="747" source="circle3_png"/>
+		<e:Image id="rightLine7" x="1665" y="826" source="circle7_png"/>
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" horizontalCenter="0" touchChildren="true" touchEnabled="false" bottom="0"/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
