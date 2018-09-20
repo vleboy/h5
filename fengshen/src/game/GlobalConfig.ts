@@ -6,7 +6,7 @@ module game {
 		/**1 小丰 2提莫 */
 		private static testUser:number = 1;
 		/**游戏初始数据用的用户id */
-		public static gameUserID:number = (GlobalConfig.testUser==1) ? 276064: 363048;
+		public static gameUserID:number = (GlobalConfig.testUser==1) ? 353107: 363048;
 		/**游戏初始数据用的验证码 */
 		public static verifyCode:number = (GlobalConfig.testUser==1) ? 3841095: 4730318;
 		/**开发模式下默认账号的login名称 */
@@ -14,7 +14,7 @@ module game {
 		/**开发模式下默认账号的join名称 */
 		public static defaultUserNameJoin: string = (GlobalConfig.testUser==1) ? "BZB_sj04": "BZB_sj05";
 		/**auth接口的默认地址 */
-		public static host:string = "https://4oi868q8qh.execute-api.ap-southeast-1.amazonaws.com/N243/games/42001";
+		public static host:string = "https://8vmsmt5cml.execute-api.ap-southeast-1.amazonaws.com/Fengshen/games/70009";
 		
 		/**skin路径*/
 		public static skinPath: string = "resource/skins/game_skins/";
