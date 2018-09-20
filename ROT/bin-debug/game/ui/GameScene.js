@@ -145,9 +145,8 @@ var game;
         };
         GameScene.prototype.initListener = function () {
             var _this = this;
-            this.registerEvent(this.testInput, egret.TouchEvent.TOUCH_TAP, function () {
+            this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                _this.bigWin.bigWinStart("big", 200);
             }, this);
         };
         /**
@@ -346,7 +345,6 @@ var game;
          * 收到spin结果 ，把-1的图标筛选掉
          * */
         GameScene.prototype.spinBack = function (resp) {
-            var _this = this;
             resp.payload.winGrid.length > 0 && resp.payload.winGrid.forEach(function (v, i) {
                 for (var i_1 = v.winCard.length - 1; i_1 >= 0; i_1--) {
                     if (v.winCard[i_1] == -1) {
@@ -373,11 +371,8 @@ var game;
                 this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
                 this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
             }
-            this.stopRoll(resp.payload.viewGrid).then(function () {
-                var balance = resp.payload.userBalance;
-                _this.topBar.setBalance(balance, resp.payload.totalGold);
-                _this.theBalance = balance;
-            });
+            this.theBalance = resp.payload.userBalance;
+            this.stopRoll(resp.payload.viewGrid);
             this.setState(game.GameState.STOP);
             this.isReturnData = true;
             if (this.connectTip.visible)
@@ -606,6 +601,7 @@ var game;
                     switch (_a.label) {
                         case 0:
                             console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
+                            this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
                             this.setState(game.GameState.SHOW_RESULT);
                             return [4 /*yield*/, this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold)];
                         case 1:
@@ -979,6 +975,9 @@ var game;
                 this.showFreeChoose(true);
             }
             else {
+                this.autoCount = 0;
+                this.autoMax = false;
+                this.bottomBar.setAutoBetNum(0);
                 this.isFree = false;
                 this.showFreeGame(false);
                 this.bottomBar.setFree(false);
