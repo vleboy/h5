@@ -191,7 +191,7 @@ module game {
 					this.featureChanceCount = resp.payload.featureData.featureChanceCount;
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				}
 				//去选择免费游戏
 				else if (resp.payload.featureData.featureChanceCount > 0) {
@@ -237,14 +237,20 @@ module game {
 					this.betLevel = body;
 					break;
 				case NotifyConst.chooseFreeBack:
-					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
-					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
-					this.featureChanceCount--;
-					this.isFree = true;
-					this.bottomBar.setFree(true);
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
-					this.showFreeChoose(false);
-					this.showFreeGame(true);
+					this.cloundIn().then(()=>{
+						this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+						this.buff = (body as ChooseBuffVO).payload.featureData.buff;
+						this.featureChanceCount--;
+						this.isFree = true;
+						this.bottomBar.setFree(true);
+						this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
+						this.showFreeChoose(false);
+						this.showFreeGame(true);
+						this.cloundOut().then(()=>{
+							(this["sceneChangeGroup"] as eui.Group).visible = false;
+						})
+					})
+					
 					break;
 				case NotifyConst.freeComplete:
 					egret.Tween.get(this["gameMask"])
@@ -358,11 +364,8 @@ module game {
 				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
 				this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			}
-			this.stopRoll(resp.payload.viewGrid).then(() => {
-				let balance: string = resp.payload.userBalance;
-				this.topBar.setBalance(balance, resp.payload.totalGold);
-				this.theBalance = balance;
-			});
+			this.theBalance = resp.payload.userBalance;
+			this.stopRoll(resp.payload.viewGrid);
 			this.setState(GameState.STOP);
 			this.isReturnData = true;
 			if (this.connectTip.visible) this.connectTip.show(false);
@@ -571,6 +574,7 @@ module game {
 		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
+			this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
 
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
@@ -582,7 +586,7 @@ module game {
 
 			if (this.isFree) {
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
-				this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+				this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 				if (this.freeSpinRemainCount == 0) {
 					setTimeout(()=> {
 						this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
@@ -861,7 +865,7 @@ module game {
 					this.showFreeTotalWin(this.spinResp.payload.featureData.featureRoundGold);
 				}
 				else {
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 					this.setState(GameState.BET);
 					setTimeout(()=> {
 						if(this.state == GameState.BET) this.spin();
@@ -885,6 +889,57 @@ module game {
 		}
 
 		// -------------------- 免费游戏显示  ------------------------
+		/**云聚拢 */
+		private cloundIn(){
+			SoundPlayer.playEffect("CardEffect_mp3");
+			let arr = [];
+			(this["sceneChangeGroup"] as eui.Group).visible = true;
+
+			return Promise.all(
+				[1,2,3,4,5,6].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let startx = v%2==0 ? 1920 : -1000;
+					let starty = v%2==0 ? 1080 : -500;
+					return new Promise((resolve, reject)=>{
+						egret.Tween.get(target)
+							.set({x:startx, y:starty, visible:true})
+							.wait( Math.floor(i/2)*250)
+							.to({x:defaultx, y:defaulty}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.call(()=>{
+								egret.Tween.removeTweens(target);
+								resolve();
+							})
+					})
+				})
+			);
+			
+		}
+		/**云散开 */
+		private cloundOut(){
+			return Promise.all(
+				[5,6,3,4,1,2].map((v, i)=>{
+					let target = this["yun"+v];
+					let defaultx = target.x;
+					let defaulty = target.y;
+					let endx = v%2==0 ? 1920 : -1000;
+					let endy = v%2==0 ? 1080 : -500;
+					return new Promise((resolve, reject)=>{
+						egret.Tween.get(target)
+							.wait( Math.floor(i/2)*250+500)
+							.to({x:endx, y:endy}, 750,egret.Ease.quadOut)
+							.wait( 500)
+							.set({x:defaultx, y:defaulty, visible:false})
+							.call(()=>{
+								egret.Tween.removeTweens(target);
+								resolve();
+							})
+					})
+				})
+			);
+		}
 
         /**
          * 显示免费游戏选择的ui
@@ -913,7 +968,7 @@ module game {
 				else {
 					if (this.autoMax || this.autoCount > 0) this.spin();
 				}
-			}, 500);
+			}, 3000);
 
 
 		}
@@ -997,6 +1052,10 @@ module game {
 				this.showFreeChoose(true);
 			}
 			else {
+				this.autoCount = 0;
+				this.autoMax = false;
+				this.bottomBar.setAutoBetNum(0);
+
 				this.isFree = false;
 				this.showFreeGame(false);
 				this.bottomBar.setFree(false);
