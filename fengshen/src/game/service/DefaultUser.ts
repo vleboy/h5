@@ -17,7 +17,7 @@ module game {
 					.then((resp:any)=>{
 						HttpUtil.sendRequest("POST",  
 							'https://xbbw2jfb58.execute-api.ap-southeast-1.amazonaws.com/dev/game/player/join', 
-							'{"userName":"'+GlobalConfig.defaultUserNameJoin+'","gameId":"40000","sid":"42001","authCode":123456}', 
+							'{"userName":"'+GlobalConfig.defaultUserNameJoin+'","gameId":"40000","sid":"43001","authCode":123456}', 
 							{Authorization: resp.data.token})
 						.then(resolve);
 					});
