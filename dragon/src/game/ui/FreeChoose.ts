@@ -7,14 +7,13 @@ module game {
 		}
 
 		public init(){
-			this["yuanbaoGroup"].visible = false;
 			["20","15","10","8","5"].forEach((v,i)=>{
 				this.registerEvent(this["choose"+v], egret.TouchEvent.TOUCH_TAP, this.onTouch, this );
 			})
 		}
 
 		public show(){
-			this["yuanbaoGroup"].visible = false;
+			this["chooseGroup"].visible = true;
 			this["chooseGroup"].setChildIndex(this["rect"], 0);
 			["10","5","15","8","20"].forEach((v,i)=>{
 				this["chooseGroup"].setChildIndex(this["choose"+v], 1);
@@ -80,42 +79,12 @@ module game {
 							});
 						})
 					]).then(async()=>{
-						await this.yuanbaoAni();
+						egret.Tween.removeTweens(this.tipTxt);
 						this.sendNotify(NotifyConst.chooseFreeBack, respData);
 					})
 					
 				}
 			})
-		}
-
-		private yuanbaoAni(){
-			SoundPlayer.playEffect("CardEffect_mp3");
-			egret.Tween.removeTweens(this.tipTxt);
-			let g = (this["yuanbaoGroup"] as eui.Group);
-			let arr = [];
-			g.visible = true;
-
-			return Promise.all(
-				[1,2,3,4,5,6].map((v, i)=>{
-					let target = this["yun"+v];
-					let defaultx = target.x;
-					let defaulty = target.y;
-					let startx = v%2==0 ? 1920 : -1000;
-					let starty = v%2==0 ? 1080 : -500;
-					return new Promise((resolve, reject)=>{
-						egret.Tween.get(target)
-							.set({x:startx, y:starty})
-							.wait( Math.floor(i/2)*250)
-							.to({x:defaultx, y:defaulty}, 750,egret.Ease.quadOut)
-							.wait( 500)
-							.call(()=>{
-								egret.Tween.removeTweens(target);
-								resolve();
-							})
-					})
-				})
-			);
-			
 		}
 
 	}

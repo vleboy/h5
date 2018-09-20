@@ -112,6 +112,16 @@
 	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:Rull id="rull" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
+	
+	<e:Group id="sceneChangeGroup" width="1920" height="1080" x="0" y="0" visible="false">
+		<e:Image id="yun3" source="yuanbao_png" x="516" y="-141.4" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun4" source="yuanbao_png" x="551" y="409.6" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun1" source="yuanbao_png" x="1304" y="-154.4" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun2" source="yuanbao_png" x="-103" y="385.6" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun5" source="yuanbao_png" x="-165.6" y="-172.7" scaleX="1.1" scaleY="1.1"/>
+		<e:Image id="yun6" source="yuanbao_png" x="1152" y="577.6" scaleX="1.1" scaleY="1.1"/>
+	</e:Group>
+	
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
 </e:Skin>
