@@ -511,29 +511,9 @@ var game;
                 var c = new egret.DisplayObjectContainer();
                 _this["freeCoinsGroup"].addChild(c);
                 var arr = [];
-                var createCoins = function () {
-                    for (var i = 0; i < 4; i++) {
-                        var mc = new game.AMovieClip();
-                        mc.sources = "coin_pin_|1-9|_png";
-                        mc.width = mc.height = 20;
-                        mc.anchorOffsetX = 10;
-                        mc.anchorOffsetY = 10;
-                        mc.rotation = Math.random() * 360;
-                        mc.play();
-                        mc["speed"] = Math.round(Math.random() * 6 + 3);
-                        mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-                        mc.x = startX + (0.5 - Math.random()) * (_this["tile" + column * 3].width);
-                        c.addChild(mc);
-                        arr.push(mc);
-                    }
-                };
-                var index = 0;
                 egret.Tween.get(_this["freeCoinsGroup"], { loop: true })
                     .wait(20)
                     .call(function () {
-                    if (index++ % 10 == 0) {
-                        createCoins();
-                    }
                     for (var j = arr.length - 1; j >= 0; j--) {
                         var img = arr[j];
                         img.rotation += 5;

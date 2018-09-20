@@ -476,41 +476,19 @@ module game {
 			return new Promise((resolve, reject) => {
 				(this["border" + column] as AMovieClip).visible = true;
 				(this["border" + column] as AMovieClip).play();
-
 				let startX = this["tile" + column * 3].x + this["tile" + column * 3].width / 2;
 				let startY = this["tile" + column * 3].y;
 				let c = new egret.DisplayObjectContainer();
 				this["freeCoinsGroup"].addChild(c);
 				let arr = [];
-				let createCoins = () => {
-					for (let i = 0; i < 4; i++) {
-						let mc = new AMovieClip();
-						mc.sources = "coin_pin_|1-9|_png";
-						mc.width = mc.height = 20;
-						mc.anchorOffsetX = 10;
-						mc.anchorOffsetY = 10;
-						mc.rotation = Math.random() * 360;
-						mc.play();
-						mc["speed"] = Math.round(Math.random() * 6 + 3);
-						mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-						mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-						c.addChild(mc);
-						arr.push(mc);
-					}
-				}
-				let index = 0;
 				egret.Tween.get(this["freeCoinsGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
-						if (index++ % 10 == 0) {
-							createCoins();
-						}
 						for (let j = arr.length - 1; j >= 0; j--) {
 							let img = arr[j];
 							img.rotation += 5;
 							img.y += img["speed"];
 							img.alpha -= img["alphaSpeed"];
-
 							if (img.y >= 269 + 658) {
 								img.parent.removeChild(img);
 								arr.splice(j, 1);
