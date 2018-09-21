@@ -643,7 +643,7 @@ module game {
 			this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
 			/**中奖的里面有没有wild*/
 			grids.some(v => this.spinResp.payload.viewGrid[v] == "1") && this.isFree && this.freeMultiAni(this.featureMultiplier);
-			return Promise.all(grids.map((v) => this.symbols[v].imgWinAni()));
+			return Promise.all(grids.map((v) => this.symbols[v].imgWinAni(0)));
 		}
 		/**
 		 * scatter图标动画
@@ -656,7 +656,7 @@ module game {
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					let gridIndex = value + column * 3;
-					return this.symbols[gridIndex].imgWinAni(false);
+					return this.symbols[gridIndex].imgWinAni(400, false);
 				}) : [])
 		}
 		private stopScatterLine() {
@@ -729,7 +729,7 @@ module game {
 				let singleLineShow = async (v, lineIndex: number) => {
 					this.lineWinTxt.visible = true;
 					this.lineWinTxt.text = v.gold.toFixed(2);
-					await Promise.all(v.winCard.map((value: number, column: number) => { return this.symbols[value + column * 3].imgWinAni(false); }));
+					await Promise.all(v.winCard.map((value: number, column: number) => { return this.symbols[value + column * 3].imgWinAni(400, false); }));
 					console.log("第" + lineIndex + "条中奖线展示完成", v);
 				}
 				for (let i = 0; i < arr.length; i++) { await singleLineShow(arr[i], i); }
@@ -911,31 +911,34 @@ module game {
 		/**
 		 * 图标中奖动画
 		*/
-		public imgWinAni(isLong: boolean = true): Promise<{}> {
+		public imgWinAni(waitTime: number, isLong: boolean = true): Promise<{}> {
 			return new Promise((res, rej) => {
-				let theLoop: number = isLong ? 2 : 1;
-				let wait: number = isLong ? 2800 : 1400;
-				this.mc = new AMovieClip();
-				this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
-				this.mc.speed = 5;
-				this.mc.x = this.tile.x + 2;
-				this.mc.y = this.tile.y + 5;
-				this.mc.width = this.tile.width;
-				this.mc.height = this.tile.height;
-				this.gameScene["winGridGroup"].addChild(this.mc);
-				this.mc.play();
-				this.mc.loop = isLong ? 2 : 1;
-				this.tile.visible = false;
-				this.gameScene.particleBg.visible = true;
-				this.mc.once(AMovieClip.COMPLETE, () => {
-					this.tile.visible = true;
-					this.mc.visible = false;
-					this.mc.parent && this.mc.parent.removeChild(this.mc);
-					this.mc = null;
-					!isLong && (this.gameScene.lineWinTxt.visible = false);
-					this.gameScene.particleBg.visible = false;
-					res();
-				}, this);
+				egret.Tween.get(this.tile).wait(waitTime).call(() => {
+					let theLoop: number = isLong ? 2 : 1;
+					let wait: number = isLong ? 2800 : 1400;
+					this.mc = new AMovieClip();
+					this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
+					this.mc.speed = 5;
+					this.mc.x = this.tile.x + 2;
+					this.mc.y = this.tile.y + 5;
+					this.mc.width = this.tile.width;
+					this.mc.height = this.tile.height;
+					this.gameScene["winGridGroup"].addChild(this.mc);
+					this.mc.play();
+					this.mc.loop = isLong ? 2 : 1;
+					this.tile.visible = false;
+					this.gameScene.particleBg.visible = true;
+					this.mc.once(AMovieClip.COMPLETE, () => {
+						this.tile.visible = true;
+						this.mc.visible = false;
+						this.mc.parent && this.mc.parent.removeChild(this.mc);
+						this.mc = null;
+						!isLong && (this.gameScene.lineWinTxt.visible = false);
+						this.gameScene.particleBg.visible = false;
+						egret.Tween.removeTweens(this.tile);
+						res();
+					}, this);
+				});
 			});
 		}
 		/**

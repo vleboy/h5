@@ -709,7 +709,7 @@ var game;
             this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
             /**中奖的里面有没有wild*/
             grids.some(function (v) { return _this.spinResp.payload.viewGrid[v] == "1"; }) && this.isFree && this.freeMultiAni(this.featureMultiplier);
-            return Promise.all(grids.map(function (v) { return _this.symbols[v].imgWinAni(); }));
+            return Promise.all(grids.map(function (v) { return _this.symbols[v].imgWinAni(0); }));
         };
         /**
          * scatter图标动画
@@ -722,7 +722,7 @@ var game;
             }
             return Promise.all(this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map(function (value, column) {
                 var gridIndex = value + column * 3;
-                return _this.symbols[gridIndex].imgWinAni(false);
+                return _this.symbols[gridIndex].imgWinAni(400, false);
             }) : []);
         };
         GameScene.prototype.stopScatterLine = function () {
@@ -808,7 +808,7 @@ var game;
                                         case 0:
                                             this.lineWinTxt.visible = true;
                                             this.lineWinTxt.text = v.gold.toFixed(2);
-                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(false); }))];
+                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(400, false); }))];
                                         case 1:
                                             _a.sent();
                                             console.log("第" + lineIndex + "条中奖线展示完成", v);
@@ -1017,34 +1017,36 @@ var game;
         /**
          * 图标中奖动画
         */
-        Symbol.prototype.imgWinAni = function (isLong) {
+        Symbol.prototype.imgWinAni = function (waitTime, isLong) {
             var _this = this;
             if (isLong === void 0) { isLong = true; }
             return new Promise(function (res, rej) {
-                var theLoop = isLong ? 2 : 1;
-                var wait = isLong ? 2800 : 1400;
-                _this.mc = new game.AMovieClip();
-                console.warn("buff imgAni", _this.gameScene.buff);
-                _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
-                _this.mc.speed = 5;
-                _this.mc.x = _this.tile.x + 2;
-                _this.mc.y = _this.tile.y + 5;
-                _this.mc.width = _this.tile.width;
-                _this.mc.height = _this.tile.height;
-                _this.gameScene["winGridGroup"].addChild(_this.mc);
-                _this.mc.play();
-                _this.mc.loop = isLong ? 2 : 1;
-                _this.tile.visible = false;
-                _this.gameScene.particleBg.visible = true;
-                _this.mc.once(game.AMovieClip.COMPLETE, function () {
-                    _this.tile.visible = true;
-                    _this.mc.visible = false;
-                    _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
-                    _this.mc = null;
-                    !isLong && (_this.gameScene.lineWinTxt.visible = false);
-                    _this.gameScene.particleBg.visible = false;
-                    res();
-                }, _this);
+                egret.Tween.get(_this.tile).wait(waitTime).call(function () {
+                    var theLoop = isLong ? 2 : 1;
+                    var wait = isLong ? 2800 : 1400;
+                    _this.mc = new game.AMovieClip();
+                    _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
+                    _this.mc.speed = 5;
+                    _this.mc.x = _this.tile.x + 2;
+                    _this.mc.y = _this.tile.y + 5;
+                    _this.mc.width = _this.tile.width;
+                    _this.mc.height = _this.tile.height;
+                    _this.gameScene["winGridGroup"].addChild(_this.mc);
+                    _this.mc.play();
+                    _this.mc.loop = isLong ? 2 : 1;
+                    _this.tile.visible = false;
+                    _this.gameScene.particleBg.visible = true;
+                    _this.mc.once(game.AMovieClip.COMPLETE, function () {
+                        _this.tile.visible = true;
+                        _this.mc.visible = false;
+                        _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
+                        _this.mc = null;
+                        !isLong && (_this.gameScene.lineWinTxt.visible = false);
+                        _this.gameScene.particleBg.visible = false;
+                        egret.Tween.removeTweens(_this.tile);
+                        res();
+                    }, _this);
+                });
             });
         };
         /**
