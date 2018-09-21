@@ -19,6 +19,8 @@ module game {
 		private rullX: number;
 		/**赔率数组*/
 		private oddsArr: number[][];
+		/**是不是正在滑动*/
+		private isMove: boolean;
 		/**初始化*/
 		public init(): void {
 			this.defaultData();
@@ -29,6 +31,7 @@ module game {
 		public rullShow(theBet: number, isShow: boolean = false): void {
 			this.visible = isShow;
 			if (isShow) {
+				this.isMove = false;
 				this.btnState(0, false);
 				this.setOdds(theBet);
 				SoundPlayer.playEffect("Generic1_mp3");
@@ -36,6 +39,7 @@ module game {
 		}
 		/**默认数据*/
 		private defaultData(): void {
+			this.isMove = false;
 			this.pageArr = [0, 1, 2, 3, 4, 5];
 			this.startX = 0;
 			this.dragDistance = 300;
@@ -66,7 +70,7 @@ module game {
 				v.forEach((k, j) => {
 					(this["pageTxt_" + i + "_" + j] as eui.Label).textFlow = [
 						{ text: (5 - j) + " ", style: { "textColor": 0xFCC434 } },
-						{ text: (k * bet / 100).toFixed(2) , style: { "textColor": 0xF1EABD } }
+						{ text: (k * bet / 100).toFixed(2), style: { "textColor": 0xF1EABD } }
 					]
 				})
 			})
@@ -102,16 +106,19 @@ module game {
 		private moveAni(move: number, timer: number = 500) {
 			return new Promise((res, rej) => {
 				egret.Tween.removeTweens(this.groupRull);
+				this.isMove = true;
 				egret.Tween.get(this.groupRull)
 					.to({ left: move }, timer)
 					.call(() => {
 						egret.Tween.removeTweens(this.groupRull);
+						this.isMove = false;
 						res();
 					});
 			})
 		}
 		/**手指滑动*/
 		private onMove(e: egret.TouchEvent): void {
+			if (this.isMove) return;
 			switch (e.type) {
 				case egret.TouchEvent.TOUCH_BEGIN://点击开始
 					this.startX = e.localX;
