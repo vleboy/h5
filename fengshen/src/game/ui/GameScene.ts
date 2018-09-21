@@ -47,8 +47,6 @@ module game {
 		public isFree: boolean;
 		/**剩余免费转动次数 */
 		private freeSpinRemainCount: number;
-		/**剩余免费选择次数 */
-		private featureChanceCount: number;
 		/**当前由于wild替换所随机到的翻倍因子*/
 		private featureMultiplier: number
 		/**自动次数 */
@@ -227,7 +225,6 @@ module game {
 				case NotifyConst.chooseFreeBack:
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
 					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
-					this.featureChanceCount--;
 					this.isFree = true;
 					this.bottomBar.setFree(true);
 					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
@@ -270,8 +267,10 @@ module game {
 				this.stage.addChild(new game.ErrTip("余额不足", () => { }, this));
 				return;
 			}
-			let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
-			this.topBar.setBalance(txt);
+			if(!this.isFree){
+				let txt: string = (+this.theBalance - this.betcfg[this.betLevel] * this.multicfg[this.multiLevel]).toFixed(2);
+				this.topBar.setBalance(txt);
+			}
 			if (autoCount == "max") {
 				this.autoMax = true;
 			}
@@ -317,7 +316,6 @@ module game {
 		 * 收到spin结果 ，把-1的图标筛选掉
 		 * */
 		private spinBack(resp: SpinVO) {
-			return;
 			resp.payload.winGrid.length > 0 && resp.payload.winGrid.forEach((v, i) => {
 				for (let i = v.winCard.length - 1; i >= 0; i--) {
 					if (v.winCard[i] == -1) {
@@ -340,16 +338,12 @@ module game {
 
 			console.log("UI收到spin返回 ", resp);
 			this.spinResp = resp;
+			this.theBalance = resp.payload.userBalance;
 			if (this.isFree) {
 				this.freeSpinRemainCount = this.spinResp.payload.featureData.freeSpinRemainCount;
-				this.featureChanceCount = this.spinResp.payload.featureData.featureChanceCount;
 				this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			}
-			this.stopRoll(resp.payload.viewGrid).then(() => {
-				let balance: string = resp.payload.userBalance;
-				this.topBar.setBalance(balance, resp.payload.totalGold);
-				this.theBalance = balance;
-			});
+			this.stopRoll(resp.payload.viewGrid);
 			this.setState(GameState.STOP);
 			this.isReturnData = true;
 			if (this.connectTip.visible) this.connectTip.show(false);
@@ -559,6 +553,7 @@ module game {
 		 * */
 		private async judgeResult() {
 			console.log("判定结果 中奖线" + this.spinResp.payload.winGrid.length);
+			this.topBar.setBalance(this.spinResp.payload.userBalance, this.spinResp.payload.totalGold);
 
 			this.setState(GameState.SHOW_RESULT);
 			await this.showBigWin(this.spinResp.payload.winLevel, this.spinResp.payload.totalGold);
@@ -681,7 +676,6 @@ module game {
 					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
-					this.setFreeChooseCount(true);
 					egret.Tween.get(this.freeChangeImg)
 						.set({ scaleX: 3, scaleY: 3 })
 						.to({ scaleX: 1, scaleY: 1 }, 200)
@@ -886,7 +880,6 @@ module game {
 			this.kuang.visible = !b;
 			this.kuangFree.visible = b;
 			this.freeCountBg.visible = b;
-			this.setFreeChooseCount();
 			this.setState(GameState.BET);
 			this.updateBgm();
 			setTimeout(() => {
@@ -900,39 +893,7 @@ module game {
 
 
 		}
-		/**
-		 * 刷新免费选择次数
-		 * */
-		private setFreeChooseCount(isAn: boolean = false) {
-			this.freeChooseCountBoom.sources = "zz_|1-61|_png";
-			egret.Tween.removeTweens(this.freeChooseCountBoom);
-			this.freeChooseCountBoom.scaleX = 1;
-			this.freeChooseCountBoom.scaleY = 1;
-			this.freeChooseCountBoom.x = 960;
-			this.freeChooseCountBoom.y = 540;
-
-			let isShow: boolean = this.featureChanceCount > 0;
-			if (isAn) {
-				isShow && egret.Tween.get(this.freeChooseCountBoom)
-					.call(() => this.freeChooseCountBoom.visible = true)
-					.to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
-					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
-					.call(() => {
-						this.freeChooseCountBoom.play();
-						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-						this.freeChooseCountBg.visible = isShow;
-						this.freeChooseCountTxt.visible = isShow;
-						setTimeout(() => {
-							this.freeChooseCountBoom.stop();
-							this.freeChooseCountBoom.visible = false;
-						}, 1000)
-					})
-			} else {
-				this.freeChooseCountBg.visible = isShow;
-				this.freeChooseCountTxt.visible = isShow;
-				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
-			}
-		}
+		
 		/**
 		 * 显示免费的倍数
 		 * */
@@ -964,15 +925,10 @@ module game {
 		 * 免费结算完成
 		 * */
 		private freeComplete() {
-			if (this.featureChanceCount > 0) {
-				this.showFreeChoose(true);
-			}
-			else {
-				this.isFree = false;
-				this.showFreeGame(false);
-				this.bottomBar.setFree(false);
-				this.setState(GameState.BET);
-			}
+			this.isFree = false;
+			this.showFreeGame(false);
+			this.bottomBar.setFree(false);
+			this.setState(GameState.BET);
 		}
 
 	}

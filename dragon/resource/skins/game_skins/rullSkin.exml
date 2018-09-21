@@ -6,11 +6,11 @@
 		<e:Image source="asdad_png" right="60" top="65"/>
 		<e:Rect id="rullMask" width="1726" height="672" verticalCenter="0" horizontalCenter="0" visible="false"/>
 		<e:Group id="ruleScroll" width="1" height="1080" x="0" y="0">
-			<e:Group id="groupRull" verticalCenter="0" left="97" width="10356">
+			<e:Group id="groupRull" verticalCenter="0" left="90" width="10356">
 				<e:Group id="groupRull0" width="1726" height="672" left="0" verticalCenter="0">
-					<e:Image source="page1_png" verticalCenter="0" horizontalCenter="0" height="670" width="1698"/>
+					<e:Image source="page1_png" verticalCenter="51" horizontalCenter="0" height="670" width="1698"/>
 				</e:Group>
-				<e:Group id="groupRull1" width="1726" height="672" verticalCenter="0" left="1726">
+				<e:Group id="groupRull1" width="1726" height="672" verticalCenter="55" left="1726">
 					<e:Group width="505" height="224" left="0" top="45">
 						<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
 						<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_2_png"/>
@@ -47,7 +47,7 @@
 						<e:Label text="30.15" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_4_2"/>
 					</e:Group>
 				</e:Group>
-				<e:Group id="groupRull2" width="1726" height="672" verticalCenter="0" left="3452">
+				<e:Group id="groupRull2" width="1726" height="672" verticalCenter="54" left="3452">
 					<e:Group width="505" height="224" left="0" top="45">
 						<e:Image source="bg2_png" width="505" height="224" scale9Grid="35,39,191,71" left="0" x="0" scaleX="1" scaleY="1" verticalCenter="0"/>
 						<e:Image width="215" height="215" verticalCenter="0" left="30" source="symbolName_7_png"/>
@@ -91,14 +91,14 @@
 						<e:Label text="30.05" size="34" top="152" textColor="0xF1EABD" left="280" id="pageTxt_10_2"/>
 					</e:Group>
 				</e:Group>
-				<e:Group id="groupRull3" width="1726" height="672" verticalCenter="0" left="5178">
-					<e:Image source="page4_png" verticalCenter="0" horizontalCenter="0" width="1480" height="568"/>
+				<e:Group id="groupRull3" width="1726" height="672" verticalCenter="49" left="5178">
+					<e:Image source="page4_png" verticalCenter="14" horizontalCenter="0" scaleX="1.2" scaleY="1.2"/>
 
 				</e:Group>
-				<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
+				<e:Group id="groupRull4" width="1726" height="672" verticalCenter="48" left="6904">
 					<e:Image source="page5_png" width="1423" height="445" top="100" left="40"/>
 				</e:Group>
-				<e:Group id="groupRull5" width="1726" height="672" verticalCenter="0" left="8630">
+				<e:Group id="groupRull5" width="1726" height="672" verticalCenter="50" left="8630">
 					<e:Image verticalCenter="0" horizontalCenter="0" source="page6_png" width="1380" height="650"/>
 				</e:Group>
 			</e:Group>
