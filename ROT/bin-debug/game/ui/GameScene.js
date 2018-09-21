@@ -716,13 +716,13 @@ var game;
          * */
         GameScene.prototype.showScatterLine = function () {
             var _this = this;
+            var lineTxt = "";
             if (this.spinResp.payload.getFeatureChance) {
-                this.lineWinTxt.visible = true;
-                this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+                lineTxt = this.spinResp.payload.scatterGold.toFixed(2);
             }
             return Promise.all(this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map(function (value, column) {
                 var gridIndex = value + column * 3;
-                return _this.symbols[gridIndex].imgWinAni(400, false);
+                return _this.symbols[gridIndex].imgWinAni(400, false, lineTxt);
             }) : []);
         };
         GameScene.prototype.stopScatterLine = function () {
@@ -778,11 +778,10 @@ var game;
                         var target_1 = _this["tile" + gridIndex];
                         target_1.visible = false;
                         _this.particleBg.visible = true;
-                        setTimeout(function () {
-                            res();
-                            _this.lineWinTxt.visible = false;
+                        _this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(function () {
                             target_1.visible = true;
-                        }, 1400);
+                            res();
+                        });
                     }
                 });
             }) : []);
@@ -803,12 +802,12 @@ var game;
                         case 0:
                             singleLineShow = function (v, lineIndex) { return __awaiter(_this, void 0, void 0, function () {
                                 var _this = this;
+                                var lineTxt;
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
                                         case 0:
-                                            this.lineWinTxt.visible = true;
-                                            this.lineWinTxt.text = v.gold.toFixed(2);
-                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(400, false); }))];
+                                            lineTxt = v.gold.toFixed(2);
+                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(400, false, lineTxt); }))];
                                         case 1:
                                             _a.sent();
                                             console.log("第" + lineIndex + "条中奖线展示完成", v);
@@ -1017,13 +1016,12 @@ var game;
         /**
          * 图标中奖动画
         */
-        Symbol.prototype.imgWinAni = function (waitTime, isLong) {
+        Symbol.prototype.imgWinAni = function (waitTime, isLong, lineWinTxt) {
             var _this = this;
             if (isLong === void 0) { isLong = true; }
             return new Promise(function (res, rej) {
-                egret.Tween.get(_this.tile).wait(waitTime).call(function () {
-                    var theLoop = isLong ? 2 : 1;
-                    var wait = isLong ? 2800 : 1400;
+                var theLoop = isLong ? 2 : 1;
+                egret.Tween.get(_this.tile).call(function () {
                     _this.mc = new game.AMovieClip();
                     _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
                     _this.mc.speed = 5;
@@ -1031,11 +1029,14 @@ var game;
                     _this.mc.y = _this.tile.y + 5;
                     _this.mc.width = _this.tile.width;
                     _this.mc.height = _this.tile.height;
+                    _this.gameScene.particleBg.visible = true;
+                }).wait(waitTime).call(function () {
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
+                    !isLong && (_this.gameScene.lineWinTxt.visible = true);
+                    !isLong && lineWinTxt && (_this.gameScene.lineWinTxt.text = lineWinTxt);
                     _this.mc.play();
                     _this.mc.loop = isLong ? 2 : 1;
                     _this.tile.visible = false;
-                    _this.gameScene.particleBg.visible = true;
                     _this.mc.once(game.AMovieClip.COMPLETE, function () {
                         _this.tile.visible = true;
                         _this.mc.visible = false;
