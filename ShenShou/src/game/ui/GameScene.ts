@@ -244,6 +244,7 @@ module game {
 				case NotifyConst.chooseFreeBack:
 					this.cloundIn().then(() => {
 						this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+						if (this.spinResp) this.spinResp.payload.featureData.buff = (body as ChooseBuffVO).payload.featureData.buff;
 						this.buff = (body as ChooseBuffVO).payload.featureData.buff;
 						this.featureChanceCount--;
 						this.isFree = true;
@@ -939,6 +940,7 @@ module game {
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
 			this.updateBgm();
+			this.wildShow(b);
 			setTimeout(() => {
 				if (b) {
 					this.spin();
@@ -949,6 +951,14 @@ module game {
 			}, 500);
 
 
+		}
+		/**
+		 * wild图标显示
+		*/
+		private wildShow(isFree: boolean): void {
+			this.symbols && this.symbols.forEach(v => {
+				v.value == "1" && (v.tile.source = isFree ? ("symbolName_1_" + this.buff + "_png") : "symbolName_1_png");
+			});
 		}
 		/**
 		 * 刷新免费选择次数
