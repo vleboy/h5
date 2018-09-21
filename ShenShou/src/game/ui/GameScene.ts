@@ -242,7 +242,7 @@ module game {
 					this.betLevel = body;
 					break;
 				case NotifyConst.chooseFreeBack:
-					this.cloundIn().then(()=>{
+					this.cloundIn().then(() => {
 						this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
 						this.buff = (body as ChooseBuffVO).payload.featureData.buff;
 						this.featureChanceCount--;
@@ -251,7 +251,7 @@ module game {
 						this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 						this.showFreeChoose(false);
 						this.showFreeGame(true);
-						this.cloundOut().then(()=>{
+						this.cloundOut().then(() => {
 							this.sceneChangeGroup.visible = false;
 						})
 					});
@@ -870,47 +870,47 @@ module game {
 
 		// -------------------- 免费游戏显示  ------------------------
 		/**云聚拢 */
-		private cloundIn(){
+		private cloundIn() {
 			SoundPlayer.playEffect("ShenShou_243_CardEffect_mp3");
 			this.sceneChangeGroup.visible = true;
 			return Promise.all(
-				[1,2,3,4,5,6].map((v, i)=>{
-					let target = this["yun"+v];
+				[1, 2, 3, 4, 5, 6].map((v, i) => {
+					let target = this["yun" + v];
 					let defaultx = target.x;
 					let defaulty = target.y;
-					let startx = v%2==0 ? 1920 : -1000;
-					let starty = v%2==0 ? 1080 : -500;
-					return new Promise((resolve, reject)=>{
+					let startx = v % 2 == 0 ? 1920 : -1000;
+					let starty = v % 2 == 0 ? 1080 : -500;
+					return new Promise((resolve, reject) => {
 						egret.Tween.get(target)
-							.set({x:startx, y:starty, visible:true})
-							.wait( Math.floor(i/2)*250)
-							.to({x:defaultx, y:defaulty}, 750,egret.Ease.quadOut)
-							.wait( 500)
-							.call(()=>{
+							.set({ x: startx, y: starty, visible: true })
+							.wait(Math.floor(i / 2) * 250)
+							.to({ x: defaultx, y: defaulty }, 750, egret.Ease.quadOut)
+							.wait(500)
+							.call(() => {
 								egret.Tween.removeTweens(target);
 								resolve();
 							})
 					})
 				})
 			);
-			
+
 		}
 		/**云散开 */
-		private cloundOut(){
+		private cloundOut() {
 			return Promise.all(
-				[5,6,3,4,1,2].map((v, i)=>{
-					let target = this["yun"+v];
+				[5, 6, 3, 4, 1, 2].map((v, i) => {
+					let target = this["yun" + v];
 					let defaultx = target.x;
 					let defaulty = target.y;
-					let endx = v%2==0 ? 1920 : -1000;
-					let endy = v%2==0 ? 1080 : -500;
-					return new Promise((resolve, reject)=>{
+					let endx = v % 2 == 0 ? 1920 : -1000;
+					let endy = v % 2 == 0 ? 1080 : -500;
+					return new Promise((resolve, reject) => {
 						egret.Tween.get(target)
-							.wait( Math.floor(i/2)*250+500)
-							.to({x:endx, y:endy}, 750,egret.Ease.quadOut)
-							.wait( 500)
-							.set({x:defaultx, y:defaulty, visible:false})
-							.call(()=>{
+							.wait(Math.floor(i / 2) * 250 + 500)
+							.to({ x: endx, y: endy }, 750, egret.Ease.quadOut)
+							.wait(500)
+							.set({ x: defaultx, y: defaulty, visible: false })
+							.call(() => {
 								egret.Tween.removeTweens(target);
 								resolve();
 							})
@@ -1051,6 +1051,7 @@ module game {
 		private gameScene: GameScene;
 		private mc: AMovieClip;
 		private mc2: AMovieClip;
+		private wildbg: eui.Image;
 		public constructor(tile: eui.Image, gameScene: GameScene) {
 			this.tile = tile;
 			this.gameScene = gameScene;
@@ -1094,23 +1095,28 @@ module game {
 				}
 				//wild图标
 				else if (this.value == "1") {
-					// this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
+					this.wildbg = new eui.Image(this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png");
+					this.wildbg.width = 190;
+					this.wildbg.height = 190;
+					this.wildbg.x = this.tile.x + 5;
+					this.wildbg.y = this.tile.y + 5;
+					this.gameScene["winGridGroup"].addChild(this.wildbg);
 
 					this.mc = new AMovieClip();
-					this.mc.sources = "wildAni|1-14|_png";
-					this.mc.x = this.tile.x + 5;
-					this.mc.y = this.tile.y + 5;
-					this.mc.width = 190;
-					this.mc.height = 190;
+					this.mc.sources = "wildAni|1-36|_png";
+					this.mc.x = this.tile.x - 4;
+					this.mc.y = this.tile.y - 1;
+					this.mc.width = 207;
+					this.mc.height = 202;
 					this.mc.speed = 6;
 					this.mc.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
-					this.tile.visible = false;
 					this.mc.once(AMovieClip.COMPLETE, () => {
 						this.mc.visible = false;
 						this.tile.visible = true;
 					}, this);
+
 					this.mc2 = new AMovieClip();
 					this.mc2.sources = "wildText|1-49|_png";
 					this.mc2.width = 256;
@@ -1151,6 +1157,10 @@ module game {
 								this.mc2.stop();
 								this.mc2.parent.removeChild(this.mc2);
 								this.mc2 = null;
+							}
+							if(this.wildbg){
+								this.wildbg.parent.removeChild(this.wildbg);
+								this.wildbg = null;
 							}
 							if (this.value == "1") {
 								this.tile.source = this.gameScene.buff != "-1" ? "symbolName_1_" + this.gameScene.buff + "_png" : "symbolName_1_png";
@@ -1197,6 +1207,10 @@ module game {
 				this.mc2.stop();
 				this.mc2.parent.removeChild(this.mc2);
 				this.mc2 = null;
+			}
+			if(this.wildbg){
+				this.wildbg.parent.removeChild(this.mc2);
+				this.wildbg = null;
 			}
 			if (this.value == "1") {
 				this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
