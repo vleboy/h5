@@ -228,6 +228,8 @@ var game;
                 case game.NotifyConst.chooseFreeBack:
                     this.cloundIn().then(function () {
                         _this.freeSpinRemainCount = body.payload.featureData.freeSpinRemainCount;
+                        if (_this.spinResp)
+                            _this.spinResp.payload.featureData.buff = body.payload.featureData.buff;
                         _this.buff = body.payload.featureData.buff;
                         _this.featureChanceCount--;
                         _this.isFree = true;
@@ -997,6 +999,7 @@ var game;
             this.setFreeChooseCount();
             this.setState(game.GameState.BET);
             this.updateBgm();
+            this.wildShow(b);
             setTimeout(function () {
                 if (b) {
                     _this.spin();
@@ -1006,6 +1009,15 @@ var game;
                         _this.spin();
                 }
             }, 500);
+        };
+        /**
+         * wild图标显示
+        */
+        GameScene.prototype.wildShow = function (isFree) {
+            var _this = this;
+            this.symbols && this.symbols.forEach(function (v) {
+                v.value == "1" && (v.tile.source = isFree ? ("symbolName_1_" + _this.buff + "_png") : "symbolName_1_png");
+            });
         };
         /**
          * 刷新免费选择次数
