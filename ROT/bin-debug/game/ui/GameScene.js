@@ -250,6 +250,8 @@ var game;
                     break;
                 case game.NotifyConst.chooseFreeBack:
                     this.freeSpinRemainCount = body.payload.featureData.freeSpinRemainCount;
+                    if (this.spinResp)
+                        this.spinResp.payload.featureData.buff = body.payload.featureData.buff;
                     this.buff = body.payload.featureData.buff;
                     this.featureChanceCount--;
                     this.isFree = true;
@@ -896,6 +898,7 @@ var game;
             this.initStar(b);
             this.setState(game.GameState.BET);
             this.updateBgm();
+            this.wildShow(b);
             setTimeout(function () {
                 if (b) {
                     _this.spin();
@@ -905,6 +908,15 @@ var game;
                         _this.spin();
                 }
             }, 500);
+        };
+        /**
+         * wild图标显示
+        */
+        GameScene.prototype.wildShow = function (isFree) {
+            var _this = this;
+            this.symbols && this.symbols.forEach(function (v) {
+                v.value == "1" && (v.tile.source = isFree ? ("symbolName_1_" + _this.buff + "_png") : "symbolName_1_png");
+            });
         };
         /**
          * 刷新免费选择次数
@@ -1012,6 +1024,7 @@ var game;
                 var theLoop = isLong ? 2 : 1;
                 var wait = isLong ? 2800 : 1400;
                 _this.mc = new game.AMovieClip();
+                console.warn("buff imgAni", _this.gameScene.buff);
                 _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
                 _this.mc.speed = 5;
                 _this.mc.x = _this.tile.x + 2;
@@ -1045,7 +1058,7 @@ var game;
                 this.mc = null;
             }
             if (this.value == "1") {
-                this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
+                this.tile.source = this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png");
             }
             this.tile.visible = true;
             if (this.tile.parent != this.gameScene.valueTiles)
