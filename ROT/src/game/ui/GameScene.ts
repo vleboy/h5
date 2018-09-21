@@ -702,13 +702,8 @@ module game {
 							res();
 						} else {
 							let gridIndex = value + column * 3;
-							let target = this["tile" + gridIndex];
-							target.visible = false;
 							this.particleBg.visible = true;
-							this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(() => {
-								target.visible = true;
-								res();
-							});
+							this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(() => res());
 						}
 					})
 				}) : []);
