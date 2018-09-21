@@ -92,13 +92,13 @@
 				</e:Group>
 				</e:Group>
 				<e:Group id="groupRull3" width="1726" height="672" verticalCenter="0" left="5178">
-				<e:Image source="page4_png" verticalCenter="0" horizontalCenter="0" width="1480" height="568"/>
+				<e:Image source="page4_png" verticalCenter="0" horizontalCenter="0" height="650" width="1115"/>
 				</e:Group>
 				<e:Group id="groupRull4" width="1726" height="672" verticalCenter="0" left="6904">
-				<e:Image source="page5_png" width="1423" height="445" top="100" left="40"/>
+				<e:Image source="page5_png" horizontalCenter="0" width="1600" height="536" verticalCenter="0"/>
 				</e:Group>
 				<e:Group id="groupRull5" width="1726" height="672" verticalCenter="0" left="8630">
-				<e:Image verticalCenter="0" horizontalCenter="0" source="page6_png" width="1380" height="650"/>
+				<e:Image verticalCenter="0" horizontalCenter="0" source="page6_png" height="650" width="1380"/>
 				</e:Group>
 			</e:Group>
 		</e:Group>
