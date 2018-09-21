@@ -772,14 +772,12 @@ var game;
                         res();
                     }
                     else {
-                        _this.lineWinTxt.visible = true;
-                        _this.lineWinTxt.text = gold.toFixed(2);
                         var gridIndex = value + column * 3;
-                        var target_1 = _this["tile" + gridIndex];
-                        target_1.visible = false;
+                        // let target = this["tile" + gridIndex];
+                        // target.visible = false;
                         _this.particleBg.visible = true;
                         _this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(function () {
-                            target_1.visible = true;
+                            // target.visible = true;
                             res();
                         });
                     }
