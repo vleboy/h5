@@ -82,6 +82,7 @@
 
 
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
+	<game:Rull id="rull" width="1920" height="1080" x="0" y="0" visible="false"/>
 
 
 	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>

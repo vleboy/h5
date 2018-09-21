@@ -112,7 +112,8 @@ module game {
             this.sendNotify(NotifyConst.cancelSpin);
         }
         private onRule(){
-            this.sendNotify(NotifyConst.openHelp, this.theBetArr[this.theBetIndex]);
+            // this.sendNotify(NotifyConst.openHelp, this.theBetArr[this.theBetIndex]);
+            this.sendNotify(NotifyConst.openHelp, null);
             this.hideCutGroup();
         }
         private onAutoNum(e: egret.TouchEvent): void {
