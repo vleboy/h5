@@ -52,6 +52,7 @@ module game {
 		/**免费模式下本次转动的buff */
 		public buff: string = "-1";
 		private autoMax: boolean;
+		/**余额*/
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
 		/**是否返回数据*/
@@ -267,6 +268,7 @@ module game {
 					break;
 				case NotifyConst.chooseFreeBack:
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+					if (this.spinResp) this.spinResp.payload.featureData.buff = (body as ChooseBuffVO).payload.featureData.buff;
 					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
 					this.featureChanceCount--;
 					this.isFree = true;
@@ -796,6 +798,7 @@ module game {
 			this.initStar(b);
 			this.setState(GameState.BET);
 			this.updateBgm();
+			this.wildShow(b);
 			setTimeout(() => {
 				if (b) {
 					this.spin();
@@ -804,8 +807,14 @@ module game {
 					if (this.autoMax || this.autoCount > 0) this.spin();
 				}
 			}, 500);
-
-
+		}
+		/**
+		 * wild图标显示
+		*/
+		private wildShow(isFree: boolean): void {
+			this.symbols && this.symbols.forEach(v => {
+				v.value == "1" && (v.tile.source = isFree ? ("symbolName_1_" + this.buff + "_png") : "symbolName_1_png");
+			});
 		}
 		/**
 		 * 刷新免费选择次数
@@ -879,10 +888,7 @@ module game {
 				this.setState(GameState.BET);
 			}
 		}
-
 	}
-
-
 	/**
 	 * 图标动画类
 	 * */
@@ -943,7 +949,7 @@ module game {
 				this.mc = null;
 			}
 			if (this.value == "1") {
-				this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
+				this.tile.source = this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png");
 			}
 			this.tile.visible = true;
 			if (this.tile.parent != this.gameScene.valueTiles) this.gameScene.valueTiles.addChild(this.tile);
