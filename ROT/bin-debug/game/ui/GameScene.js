@@ -773,13 +773,8 @@ var game;
                     }
                     else {
                         var gridIndex = value + column * 3;
-                        // let target = this["tile" + gridIndex];
-                        // target.visible = false;
                         _this.particleBg.visible = true;
-                        _this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(function () {
-                            // target.visible = true;
-                            res();
-                        });
+                        _this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(function () { return res(); });
                     }
                 });
             }) : []);
