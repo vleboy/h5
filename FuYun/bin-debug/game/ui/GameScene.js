@@ -77,7 +77,7 @@ var game;
          * 标题流光
          * */
         GameScene.prototype.initTitle = function () {
-            // this.title.play();
+            this.title.play();
         };
         /**
          * 初始图标对象
@@ -114,7 +114,6 @@ var game;
             var _this = this;
             this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                _this.bigWin.bigWinStart("big", 200);
             }, this);
         };
         /**
@@ -989,6 +988,7 @@ var game;
             var imgSources = ["bg_png", "BgBtm_png", "BgTop_png", "Fram_png"];
             [this.bg, this.bgBtm, this.bgTop, this.kuang].forEach(function (v, i) { return v.source = (b ? "free" : "normal") + imgSources[i]; });
             [this.knotLeft, this.knotRight].forEach(function (v) { return v.top = b ? 205 : 160; });
+            this["freeTitle"].visible = b;
             this.freeCountBg.visible = b;
             this.setFreeChooseCount();
             this.setState(game.GameState.BET);
@@ -1160,19 +1160,19 @@ var game;
                 else if (_this.value == "1") {
                     _this.tile.source = _this.gameScene.buff != "-1" ? ("wildbg" + _this.gameScene.buff + "_png") : "wildBg0_png";
                     _this.mc = new game.AMovieClip();
-                    _this.mc.sources = "caishenAni|1-16|_png";
-                    _this.mc.x = _this.tile.x + 10;
-                    _this.mc.y = _this.tile.y;
-                    _this.mc.width = 173;
-                    _this.mc.height = 173;
+                    _this.mc.sources = "FuYunAni|1-16|_png";
+                    _this.mc.x = _this.tile.x + 30;
+                    _this.mc.y = _this.tile.y + 10;
+                    _this.mc.width = 128;
+                    _this.mc.height = 128;
                     _this.mc.speed = 4;
                     _this.mc.loop = isLong ? 2 : 1;
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
                     _this.mc.play();
                     _this.mc2 = new game.AMovieClip();
-                    _this.mc2.sources = "wildText|1-20|_png";
-                    _this.mc2.x = _this.tile.x;
-                    _this.mc2.y = _this.tile.y + 99;
+                    _this.mc2.sources = "wildText|1-25|_png";
+                    _this.mc2.x = _this.tile.x + 20;
+                    _this.mc2.y = _this.tile.y + 120;
                     _this.mc2.speed = 4;
                     _this.mc2.loop = isLong ? 2 : 1;
                     _this.gameScene["winGridGroup"].addChild(_this.mc2);
