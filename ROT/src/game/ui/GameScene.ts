@@ -162,6 +162,7 @@ module game {
 		private initListener() {
 			this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, () => {
 				this.bottomBar.hideCutGroup(true);
+				this.bigWin.bigWinStart("big", 200);
 			}, this);
 		}
         /**
