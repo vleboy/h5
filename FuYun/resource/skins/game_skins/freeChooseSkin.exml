@@ -4,7 +4,7 @@
 		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
 		<e:Group id="choose20" width="517" height="462" scaleX="0.8" scaleY="0.85" horizontalCenter="-568" touchChildren="false" touchEnabled="true" y="134">
 			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0" source="cardbg20_png"/>
-			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120" width="224" height="224"/>
 			<e:Image name="choose20" scaleX="1" scaleY="1" source="dsadf_png" horizontalCenter="0" top="20"/>
 			<e:Image source="freegame_png" x="252" y="15"/>
 			<e:Image source="num20_png" x="138" y="10"/>
@@ -14,7 +14,7 @@
 		</e:Group>
 		<e:Group id="choose15" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="0" touchChildren="false" touchEnabled="true" y="134">
 			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg15_png" verticalCenter="0" horizontalCenter="0"/>
-			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120" width="224" height="224"/>
 			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" source="dsadf_png" top="20"/>
 			<e:Image source="freegame_png" x="252" y="15"/>
 			<e:Image x="138" y="10" source="num15_png"/>
@@ -24,7 +24,7 @@
 		</e:Group>
 		<e:Group id="choose10" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="568" touchChildren="false" touchEnabled="true" y="134">
 			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg10_png" horizontalCenter="0" verticalCenter="0"/>
-			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120" width="224" height="224"/>
 			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" top="20" source="dsadf_png"/>
 			<e:Image source="freegame_png" x="252" y="15"/>
 			<e:Image x="138" y="10" source="num10_png"/>
@@ -34,7 +34,7 @@
 		</e:Group>
 		<e:Group id="choose8" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="-287" y="512" touchChildren="false" touchEnabled="true">
 			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg8_png" verticalCenter="0" horizontalCenter="0"/>
-			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120" width="224" height="224"/>
 			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" source="dsadf_png" top="20"/>
 			<e:Image source="freegame_png" x="252" y="15"/>
 			<e:Image x="186" y="10" source="num8_png"/>
@@ -44,7 +44,7 @@
 		</e:Group>
 		<e:Group id="choose5" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="287" y="512" touchChildren="false" touchEnabled="true">
 			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg5_png" horizontalCenter="0" verticalCenter="0"/>
-			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120" width="224" height="224"/>
 			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" source="dsadf_png" top="20"/>
 			<e:Image source="freegame_png" x="252" y="15"/>
 			<e:Image x="192" y="10" source="num5_png"/>

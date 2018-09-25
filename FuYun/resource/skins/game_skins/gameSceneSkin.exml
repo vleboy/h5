@@ -15,7 +15,8 @@
 
 
 
-			<game:AMovieClip id="title" width="670" height="157" y="55" speed="8" horizontalCenter="-23" source="normalTitle_png"/>
+			<game:AMovieClip id="title" y="68" speed="8" source="title1_png" sources="title|1-60|_png" height="130" width="634" horizontalCenter="0"/>
+			<e:Image id="freeTitle" source="freeTitle_png" y="67" height="130" width="250" horizontalCenter="5" visible="false"/>
 
 
 

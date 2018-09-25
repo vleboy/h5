@@ -95,7 +95,7 @@ module game {
 		 * 标题流光
 		 * */
 		private initTitle() {
-			// this.title.play();
+			this.title.play();
 		}
 		/**
 		 * 初始图标对象
@@ -935,6 +935,7 @@ module game {
 			let imgSources: string[] = ["bg_png", "BgBtm_png", "BgTop_png", "Fram_png"];
 			[this.bg, this.bgBtm, this.bgTop, this.kuang].forEach((v, i) => v.source = (b ? "free" : "normal") + imgSources[i]);
 			[this.knotLeft, this.knotRight].forEach((v) => v.top = b ? 205 : 160);
+			(this["freeTitle"] as eui.Image).visible = b;
 			this.freeCountBg.visible = b;
 			this.setFreeChooseCount();
 			this.setState(GameState.BET);
@@ -1107,20 +1108,20 @@ module game {
 					this.tile.source = this.gameScene.buff != "-1" ? ("wildbg" + this.gameScene.buff + "_png") : "wildBg0_png";
 
 					this.mc = new AMovieClip();
-					this.mc.sources = "caishenAni|1-16|_png";
-					this.mc.x = this.tile.x + 10;
-					this.mc.y = this.tile.y;
-					this.mc.width = 173;
-					this.mc.height = 173;
+					this.mc.sources = "FuYunAni|1-16|_png";
+					this.mc.x = this.tile.x + 30;
+					this.mc.y = this.tile.y + 10;
+					this.mc.width = 128;
+					this.mc.height = 128;
 					this.mc.speed = 4;
 					this.mc.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
 
 					this.mc2 = new AMovieClip();
-					this.mc2.sources = "wildText|1-20|_png";
-					this.mc2.x = this.tile.x;
-					this.mc2.y = this.tile.y + 99;
+					this.mc2.sources = "wildText|1-25|_png";
+					this.mc2.x = this.tile.x + 20;
+					this.mc2.y = this.tile.y + 120;
 					this.mc2.speed = 4;
 					this.mc2.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc2);
