@@ -3,101 +3,55 @@
 	<e:Group id="chooseGroup" width="1920" height="1" x="0" y="0">
 		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
 		<e:Group id="choose20" width="517" height="462" scaleX="0.8" scaleY="0.85" horizontalCenter="-568" touchChildren="false" touchEnabled="true" y="134">
-		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg5_png"/>
-		<e:Image source="head_png" y="88" horizontalCenter="0"/>
-		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image source="num20_png" x="138" y="10"/>
-		<e:Image source="cardBottom20_png" y="343" horizontalCenter="0"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0" source="cardbg20_png"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" source="dsadf_png" horizontalCenter="0" top="20"/>
+			<e:Image source="freegame_png" x="252" y="15"/>
+			<e:Image source="num20_png" x="138" y="10"/>
+			<e:Image source="cardBottom20_png" y="343" horizontalCenter="0"/>
 			<e:Image source="wildMulti_png" y="360" horizontalCenter="0"/>
-		<e:Image source="multi5_png" horizontalCenter="0" top="397"/>
+			<e:Image source="multi5_png" horizontalCenter="0" top="397"/>
 		</e:Group>
 		<e:Group id="choose15" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="0" touchChildren="false" touchEnabled="true" y="134">
-		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg4_png" width="517" height="462"/>
-		<e:Image source="head_png" y="88" horizontalCenter="0"/>
-		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image x="138" y="10" source="num15_png"/>
-		<e:Image y="343" horizontalCenter="0" source="cardBottom15_png"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg15_png" verticalCenter="0" horizontalCenter="0"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" source="dsadf_png" top="20"/>
+			<e:Image source="freegame_png" x="252" y="15"/>
+			<e:Image x="138" y="10" source="num15_png"/>
+			<e:Image y="343" horizontalCenter="0" source="cardBottom15_png"/>
 			<e:Image source="wildMulti_png" y="360" horizontalCenter="0"/>
-		<e:Image horizontalCenter="0" source="multi8_png" top="397"/>
+			<e:Image horizontalCenter="0" source="multi8_png" top="397"/>
 		</e:Group>
 		<e:Group id="choose10" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="568" touchChildren="false" touchEnabled="true" y="134">
-		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg3_png" width="517" height="462"/>
-		<e:Image source="head_png" y="88" horizontalCenter="0"/>
-		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image x="138" y="10" source="num10_png"/>
-		<e:Image y="343" horizontalCenter="0" source="cardBottom10_png"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg10_png" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" top="20" source="dsadf_png"/>
+			<e:Image source="freegame_png" x="252" y="15"/>
+			<e:Image x="138" y="10" source="num10_png"/>
+			<e:Image y="343" horizontalCenter="0" source="cardBottom10_png"/>
 			<e:Image source="wildMulti_png" y="360" horizontalCenter="0"/>
-		<e:Image horizontalCenter="0" source="multi10_png" top="397"/>
+			<e:Image horizontalCenter="0" source="multi10_png" top="397"/>
 		</e:Group>
 		<e:Group id="choose8" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="-287" y="512" touchChildren="false" touchEnabled="true">
-		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg2_png"/>
-		<e:Image source="head_png" y="88" horizontalCenter="0"/>
-		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image x="186" y="10" source="num8_png"/>
-		<e:Image y="343" horizontalCenter="0" source="cardBottom8_png"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg8_png" verticalCenter="0" horizontalCenter="0"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" source="dsadf_png" top="20"/>
+			<e:Image source="freegame_png" x="252" y="15"/>
+			<e:Image x="186" y="10" source="num8_png"/>
+			<e:Image y="343" horizontalCenter="0" source="cardBottom8_png"/>
 			<e:Image source="wildMulti_png" y="360" horizontalCenter="0"/>
-		<e:Image horizontalCenter="0" source="multi15_png" top="397"/>
+			<e:Image horizontalCenter="0" source="multi15_png" top="397"/>
 		</e:Group>
 		<e:Group id="choose5" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="287" y="512" touchChildren="false" touchEnabled="true">
-		<e:Image y="0" name="choose20" x="0" scaleX="1" scaleY="1" source="cardbg1_png" width="517" height="462"/>
-		<e:Image source="head_png" y="88" horizontalCenter="0"/>
-		<e:Image source="freegame_png" x="252" y="15"/>
-		<e:Image x="192" y="10" source="num5_png"/>
-		<e:Image y="343" horizontalCenter="0" source="cardBottom5_png"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" source="cardbg5_png" horizontalCenter="0" verticalCenter="0"/>
+			<e:Image source="head_png" horizontalCenter="0" top="120"/>
+			<e:Image name="choose20" scaleX="1" scaleY="1" horizontalCenter="0" source="dsadf_png" top="20"/>
+			<e:Image source="freegame_png" x="252" y="15"/>
+			<e:Image x="192" y="10" source="num5_png"/>
+			<e:Image y="343" horizontalCenter="0" source="cardBottom5_png"/>
 			<e:Image source="wildMulti_png" y="360" horizontalCenter="0"/>
-		<e:Image horizontalCenter="0" source="multi30_png" top="397"/>
+			<e:Image horizontalCenter="0" source="multi30_png" top="397"/>
 		</e:Group>
 	</e:Group>
-
 	<e:Image id="tipTxt" source="freeChoose_png" y="977" horizontalCenter="0"/>
-
-	<e:Group id="yuanbaoGroup" width="1920" height="1080" x="0" y="0">
-
-
-
-
-
-
-
-
-		<e:Group width="1" height="1" x="-10" y="-846">
-			<e:Image source="yuanbao_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-		<e:Group width="1" height="1" x="46" y="-559">
-			<e:Image source="yuanbao_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-		<e:Group width="1" height="1" x="-81" y="-287">
-			<e:Image source="yuanbao_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-		<e:Group width="1" height="1" x="10" y="17">
-			<e:Image source="yuanbao_png" x="1577.2" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="1266.8" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="958" y="610" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="657.6" y="592.4" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="410.2" y="641.2" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="82.4" y="611.6" scaleX="1.3" scaleY="1.3"/>
-			<e:Image source="yuanbao_png" x="-229.8" y="611.6" scaleX="1.3" scaleY="1.3"/>
-		</e:Group>
-
-	</e:Group>
-
-
 </e:Skin>

@@ -6,7 +6,6 @@ module game {
 		}
 		private groupMove: eui.Group;
 		private groupRull: eui.Group;
-		private rullMask: eui.Rect;
 		private btnClose: eui.Button;
 		//-----------变量------------
 		/**页数数组*/

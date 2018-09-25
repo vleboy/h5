@@ -28,6 +28,7 @@ var game;
             if (isShow === void 0) { isShow = false; }
             this.visible = isShow;
             if (isShow) {
+                this.isMove = false;
                 this.btnState(0, false);
                 this.setOdds(theBet);
                 game.SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
@@ -35,6 +36,7 @@ var game;
         };
         /**默认数据*/
         Rull.prototype.defaultData = function () {
+            this.isMove = false;
             this.pageArr = [0, 1, 2, 3, 4, 5];
             this.startX = 0;
             this.dragDistance = 300;
@@ -107,10 +109,12 @@ var game;
             if (timer === void 0) { timer = 500; }
             return new Promise(function (res, rej) {
                 egret.Tween.removeTweens(_this.groupRull);
+                _this.isMove = true;
                 egret.Tween.get(_this.groupRull)
                     .to({ left: move }, timer)
                     .call(function () {
                     egret.Tween.removeTweens(_this.groupRull);
+                    _this.isMove = false;
                     res();
                 });
             });
@@ -118,6 +122,8 @@ var game;
         /**手指滑动*/
         Rull.prototype.onMove = function (e) {
             var _this = this;
+            if (this.isMove)
+                return;
             switch (e.type) {
                 case egret.TouchEvent.TOUCH_BEGIN://点击开始
                     this.startX = e.localX;
