@@ -42,7 +42,7 @@ module game {
 				.to({ scaleX: 1, scaleY: 1, alpha: 1 }, 50)
 				.call(() => {
 					egret.Tween.removeTweens(this.groupSetting);
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+					SoundPlayer.playEffect("FuYun_243_GUI_Generic1_mp3");
 				});
 		}
 		/**关闭*/
@@ -55,7 +55,7 @@ module game {
 					this.defaultUI(false);
 					this.visible = false;
 					egret.Tween.removeTweens(this.groupSetting);
-					SoundPlayer.playEffect("CaiShen_243_GUI_Generic2_mp3");
+					SoundPlayer.playEffect("FuYun_243_GUI_Generic2_mp3");
 				});
 		}
 		/**默认显示*/
@@ -75,19 +75,19 @@ module game {
 			let isOpen:boolean = e.target.currentState == "up";
 			SoundPlayer.closeMusic(!isOpen);
 			this.sendNotify(NotifyConst.updateBgm);
-			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+			SoundPlayer.playEffect("FuYun_243_GUI_Generic1_mp3");
 		}
 		/**音效*/
 		private theEffect(e: egret.TouchEvent): void {
 			let isOpen:boolean = e.target.currentState == "up";
 			SoundPlayer.closeEffect(!isOpen);
-			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+			SoundPlayer.playEffect("FuYun_243_GUI_Generic1_mp3");
 		}
 		/**快速模式*/
 		private theFast(e: egret.TouchEvent): void {
 			this.btnFast.currentState = (e.target.currentState == "up") ? "down" : "up";
 			GlobalConfig.fastSwitch = (this.btnFast.currentState == "up");
-			SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3");
+			SoundPlayer.playEffect("FuYun_243_GUI_Generic1_mp3");
 		}
 		/**
          * 资源释放

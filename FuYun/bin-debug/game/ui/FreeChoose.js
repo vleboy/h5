@@ -71,7 +71,7 @@ var game;
                     .set({ y: defaultY - 900 })
                     .wait(i * 150 + 500)
                     .call(function () {
-                    game.SoundPlayer.playEffect("CaiShen_243_CardAppear_mp3");
+                    game.SoundPlayer.playEffect("FuYun_243_CardAppear_mp3");
                 })
                     .to({ y: defaultY }, 400, egret.Ease.backOut)
                     .call(function () {
@@ -85,7 +85,7 @@ var game;
         };
         FreeChoose.prototype.onTouch = function (e) {
             var _this = this;
-            game.SoundPlayer.playEffect("CaiShen_243_ChoseCard_mp3");
+            game.SoundPlayer.playEffect("FuYun_243_ChoseCard_mp3");
             var n = 0;
             switch (e.target) {
                 case this["choose20"]:

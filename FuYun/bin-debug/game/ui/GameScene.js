@@ -114,10 +114,7 @@ var game;
             var _this = this;
             this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-            }, this);
-            this.registerEvent(this["yunIn"], egret.TouchEvent.TOUCH_TAP, this.cloundIn, this);
-            this.registerEvent(this["yunOut"], egret.TouchEvent.TOUCH_TAP, function () {
-                _this.cloundOut().then(function () { return _this.sceneChangeGroup.visible = false; });
+                _this.bigWin.bigWinStart("big", 200);
             }, this);
         };
         /**
@@ -125,14 +122,14 @@ var game;
          * */
         GameScene.prototype.updateBgm = function () {
             if (this.isFree) {
-                game.SoundPlayer.playMusic("CaiShen_243_freeGame_mp3");
+                game.SoundPlayer.playMusic("FuYun_243_freeGame_mp3");
             }
             else {
                 if (this.freeChoose.visible) {
-                    game.SoundPlayer.playMusic("CaiShen_243_featureChoose_mp3");
+                    game.SoundPlayer.playMusic("FuYun_243_featureChoose_mp3");
                 }
                 else {
-                    game.SoundPlayer.playMusic("CaiShen_243_normalGame_mp3");
+                    game.SoundPlayer.playMusic("FuYun_243_normalGame_mp3");
                 }
             }
         };
@@ -364,7 +361,7 @@ var game;
          * 开始滚动
          * */
         GameScene.prototype.startSpin = function () {
-            this.rollChannel = game.SoundPlayer.playEffect("CaiShen_243_Roll_mp3", -1);
+            this.rollChannel = game.SoundPlayer.playEffect("FuYun_243_Roll_mp3", -1);
             for (var i = 0; i < 15; i++) {
                 this["tile" + i].visible = false;
             }
@@ -490,8 +487,8 @@ var game;
                                 });
                             });
                             if (haveScatterThisColumn)
-                                game.SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
-                            game.SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
+                                game.SoundPlayer.playEffect("FuYun_243_Scatter_" + (column + 1) + "_mp3");
+                            game.SoundPlayer.playEffect("FuYun_243_RollStop_mp3");
                             return [2 /*return*/];
                     }
                 });
@@ -502,7 +499,7 @@ var game;
          * */
         GameScene.prototype.freeEffect = function (column) {
             var _this = this;
-            game.SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
+            game.SoundPlayer.playEffect("FuYun_243_Scatter_wait_mp3");
             return new Promise(function (resolve, reject) {
                 _this["border" + column].visible = true;
                 _this["border" + column].play();
@@ -659,11 +656,11 @@ var game;
                 if (win <= 0)
                     resolve();
                 else if (level == "normal") {
-                    game.SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
+                    game.SoundPlayer.playEffect("FuYun_243_SmallWin_mp3");
                     resolve();
                 }
                 else if (level == "middle") {
-                    game.SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+                    game.SoundPlayer.playEffect("FuYun_243_MiddleWin_mp3");
                     resolve();
                 }
                 else {
@@ -723,7 +720,7 @@ var game;
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (_this.spinResp.payload.getFeatureChance) {
-                    game.SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_mp3");
+                    game.SoundPlayer.playEffect("FuYun_243_Get_FreeGame_mp3");
                     _this.freeChanceGroup.visible = true;
                     _this.freeChangeMc.play();
                     _this.setFreeChooseCount(true);
@@ -749,7 +746,7 @@ var game;
             var _this = this;
             var grids = this.spinResp.payload.featureData.featureBonusData.grid;
             var gold = this.spinResp.payload.featureData.featureBonusData.gold;
-            gold > 0 && game.SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
+            gold > 0 && game.SoundPlayer.playEffect("FuYun_243_Bonus_mp3");
             return Promise.all(gold > 0 ? grids.map(function (value, column) {
                 return new Promise(function (res, rej) {
                     if (value == -1) {
@@ -930,7 +927,7 @@ var game;
         /**云聚拢 */
         GameScene.prototype.cloundIn = function () {
             var _this = this;
-            game.SoundPlayer.playEffect("CaiShen_243_CardEffect_mp3");
+            game.SoundPlayer.playEffect("FuYun_243_CardEffect_mp3");
             this.sceneChangeGroup.visible = true;
             return Promise.all([1, 2, 3, 4, 5, 6].map(function (v, i) {
                 var target = _this["yun" + v];
@@ -962,9 +959,9 @@ var game;
                 var endy = v % 2 == 0 ? 1080 : -800;
                 return new Promise(function (resolve, reject) {
                     egret.Tween.get(target)
-                        .wait(Math.floor(i / 2) * 250 + 500)
+                        .wait(Math.floor(i / 2) * 250 + 300)
                         .to({ x: endx, y: endy }, 750, egret.Ease.quadOut)
-                        .wait(500)
+                        .wait(300)
                         .set({ x: defaultx, y: defaulty, visible: false })
                         .call(function () {
                         egret.Tween.removeTweens(target);
