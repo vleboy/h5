@@ -1270,7 +1270,7 @@ var game;
                 this.mc2 = null;
             }
             if (this.wildbg) {
-                this.wildbg.parent.removeChild(this.mc2);
+                this.wildbg.parent.removeChild(this.wildbg);
                 this.wildbg = null;
             }
             if (this.value == "1") {

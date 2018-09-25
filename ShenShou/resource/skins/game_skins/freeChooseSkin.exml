@@ -2,35 +2,35 @@
 <e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group id="chooseGroup" width="1920" height="1" x="0" y="0">
 		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7" scaleX="1" scaleY="1"/>
-		<e:Group id="choose20" width="517" height="462" scaleX="0.8" scaleY="0.85" horizontalCenter="-568" touchChildren="false" touchEnabled="true" y="254">
-			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
-			<e:Image source="20_png" horizontalCenter="0" width="207" height="202" verticalCenter="-84"/>
+		<e:Group id="choose20" width="517" height="462" horizontalCenter="-590" touchChildren="false" touchEnabled="true" y="190">
+			<e:Image horizontalCenter="0" source="cardbg_png" verticalCenter="0" height="440" width="291"/>
+			<e:Image source="20_png" horizontalCenter="0" height="202" verticalCenter="-84" width="207"/>
 			<e:Image source="multi20_png" horizontalCenter="0" width="148" height="63" verticalCenter="54.5"/>
 			<e:Image source="num20_png" horizontalCenter="-70" verticalCenter="-228" width="60" height="63"/>
 			<e:Image source="freegame_png" verticalCenter="-228" horizontalCenter="40" width="150" height="42"/>
 		</e:Group>
-		<e:Group id="choose15" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="0" touchChildren="false" touchEnabled="true" y="254">
+		<e:Group id="choose15" width="517" height="462" horizontalCenter="0" touchChildren="false" touchEnabled="true" y="190">
 			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
 			<e:Image horizontalCenter="0" width="207" height="202" verticalCenter="-84" source="15_png"/>
 			<e:Image horizontalCenter="0" width="148" height="63" verticalCenter="54.5" source="multi15_png"/>
 			<e:Image horizontalCenter="-70" verticalCenter="-228" width="60" height="63" source="num15_png"/>
 			<e:Image source="freegame_png" verticalCenter="-228" horizontalCenter="40" width="150" height="42"/>
 		</e:Group>
-		<e:Group id="choose10" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="568" touchChildren="false" touchEnabled="true" y="254">
+		<e:Group id="choose10" width="517" height="462" horizontalCenter="590" touchChildren="false" touchEnabled="true" y="190">
 			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
 			<e:Image horizontalCenter="0" width="207" height="202" verticalCenter="-84" source="10_png"/>
 			<e:Image horizontalCenter="0" width="148" height="63" verticalCenter="54.5" source="multi10_png"/>
 			<e:Image horizontalCenter="-70" verticalCenter="-228" width="60" height="63" source="num10_png"/>
 			<e:Image source="freegame_png" verticalCenter="-228" horizontalCenter="40" width="150" height="42"/>
 		</e:Group>
-		<e:Group id="choose8" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="-287" y="632" touchChildren="false" touchEnabled="true">
+		<e:Group id="choose8" width="517" horizontalCenter="-300" y="568" touchChildren="false" touchEnabled="true">
 			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
 			<e:Image source="8_png" horizontalCenter="0" width="207" height="202" verticalCenter="-84"/>
 			<e:Image source="multi8_png" horizontalCenter="0" width="148" height="63" verticalCenter="54.5"/>
 			<e:Image source="num8_png" horizontalCenter="-72" verticalCenter="-228" height="64"/>
 			<e:Image source="freegame_png" verticalCenter="-228" horizontalCenter="22" width="150" height="42"/>
 		</e:Group>
-		<e:Group id="choose5" width="517" height="462" scaleX="0.8" scaleY="0.8" horizontalCenter="287" touchChildren="false" touchEnabled="true" y="632">
+		<e:Group id="choose5" width="517" horizontalCenter="300" touchChildren="false" touchEnabled="true" y="568">
 			<e:Image horizontalCenter="0" source="cardbg_png" width="291" height="440" verticalCenter="0"/>
 			<e:Image source="5_png" horizontalCenter="0" width="207" height="202" verticalCenter="-84"/>
 			<e:Image source="multi5_png" horizontalCenter="0" width="148" height="63" verticalCenter="54.5"/>
@@ -38,7 +38,7 @@
 			<e:Image source="freegame_png" verticalCenter="-228" horizontalCenter="22" width="150" height="42"/>
 		</e:Group>
 	</e:Group>
-	<e:Image id="tipTxt" source="freeChoose_png" horizontalCenter="0" top="80"/>
+	<e:Image id="tipTxt" source="freeChoose_png" horizontalCenter="0.5" top="44"/>
 
 
 

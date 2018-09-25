@@ -60,7 +60,7 @@
 			</e:Group>
 			<e:Group id="particleGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1"/>
 		</e:Group>
-		<e:Image source="LineBG_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="-50" width="1635" height="900"/>
+		<e:Image source="LineBG_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="-50"/>
 		<game:AMovieClip id="title_fire" sources="title_fire|1-10|_png" speed="6" horizontalCenter="0" source="title_fire1_png" y="35" width="450" height="179" visible="false"/>
 		<game:AMovieClip id="title" y="105" source="title1_png" sources="title|1-22|_png" speed="8" horizontalCenter="0"/>
 		<e:Group id="freeChooseCount" width="232" height="58" x="1354" y="112" visible="false">
