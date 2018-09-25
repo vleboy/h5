@@ -214,36 +214,7 @@ module game {
 		}
 		/**获得派彩的动画*/
 		private payout(mon: number): void {
-			this.winNum = 0;
-			egret.Tween.get(this, { onChange: () => { this.winTxt.text = this.winNum.toFixed(2); }, onChangeObj: this })
-				.to({ winNum: mon }, 800)
-				.call(() => { egret.Tween.removeTweens(this); });
-			egret.Tween.get(this.winTxt)
-				.to({ scaleX: 1.5, scaleY: 1.5 }, 400)
-				.to({ scaleX: 1, scaleY: 1 }, 400)
-				.call(() => { egret.Tween.removeTweens(this.winTxt); });
-
-			let imgLight = (img: eui.Image, alphaArr: number[], timer: number, isline?: boolean) => {
-				img.visible = true;
-				img.alpha = 0;
-				egret.Tween.get(img)
-					.to({ alpha: alphaArr[0] }, timer)
-					.to({ alpha: alphaArr[1] }, timer)
-					.call(() => {
-						if (isline) {
-							egret.Tween.removeTweens(img);
-							img.visible = false;
-						}
-					})
-					.to({ alpha: alphaArr[2] }, timer)
-					.to({ alpha: alphaArr[3] }, timer)
-					.call(() => {
-						egret.Tween.removeTweens(img);
-						img.visible = false;
-					});
-			}
-			imgLight(this.winLight, [1, .5, 1, 0], 200);
-			imgLight(this.btmLight, [.7, 0], 400, true);
+			
 		}
 		/**图片旋转
 		 * @param isStop 是不是停止动画

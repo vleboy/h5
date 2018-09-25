@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,fnt194_fnt,fnt194_png,fnt240_fnt,fnt240_png,fnt35_fnt,fnt35_png,fnt53_fnt,fnt53_png,fnt54_fnt,fnt54_png,bigwin_png,circle1_png,circle2_png,circle3_png,circle4_png,circle5_png,circle6_png,circle7_png,circle8_png,circle9_png,circlelight1_png,circlelight2_png,circlelight3_png,circlelight4_png,circlelight5_png,circlelight6_png,circlelight7_png,circlelight8_png,circlelight9_png,contentbg_png,fillBg_png,freebg_png,leftflower_png,megawin_png,normalbg_png,rightflower_png,sliderBg_png,superwin_png,ToastBG_png,ToastBG2_png,circlcce_png,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,sgb_breath_json,sgb_wild_json,yj_breath_json,yj_wild_json,enterFreeBg_png,freeSpin_png,freeWinMoney_png,freeWinTitle_png,gain_png,bar1_png,bar2_png,light_png,Loading..._png,loading_jpg,arrow_png,auto_d_png,auto_p_png,auto_png,balanceBg_png,bet_d_png,bet_p_png,bet_png,bottombg_png,bottombg1_png,bottombg2_png,bottombg3_png,btnGreen_png,cancelAuto_d_png,cancelAuto_p_png,cancelAuto_png,flower_png,freeImg_png,headbg_png,max_p_png,max_png,num10_p_png,num10_png,num100_p_png,num100_png,num20_p_png,num20_png,num50_p_png,num50_png,numbg_png,plus_p_png,plus_png,pool_png,reduce_p_png,reduce_png,rule_d_png,rule_p_png,rule_png,set_png,spin_png,spinbg_png,spinborder_png,win_png,backgroud1_png,BetSliderBG_png,biaoti_png,close_png,FastModel_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,di_png,hx_png,j_png,ssz_png,autoImg_png,maxImg_png,symbol10_png,symbol6_png,symbol7_png,symbol8_png,symbol9_png,tilebg0_png,tilebg1_png,tilebg2_png,tilebg3_png,tilebg4_png,tilebg5_png,tilebg6_png,vague1_png,vague10_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,taiji_json,leftTopBg_png,rightTopBg_png,fnt37white_fnt,fnt37white_png,fnt37yellow_fnt,fnt37yellow_png,rule5_png,rule1_png,rule2_png,rule3_png,rule4_png,returnbg_png,return_png,return_d_png,return_p_png",
+			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,fnt194_fnt,fnt194_png,fnt240_fnt,fnt240_png,fnt35_fnt,fnt35_png,fnt53_fnt,fnt53_png,fnt54_fnt,fnt54_png,bigwin_png,circle1_png,circle2_png,circle3_png,circle4_png,circle5_png,circle6_png,circle7_png,circle8_png,circle9_png,circlelight1_png,circlelight2_png,circlelight3_png,circlelight4_png,circlelight5_png,circlelight6_png,circlelight7_png,circlelight8_png,circlelight9_png,contentbg_png,fillBg_png,freebg_png,leftflower_png,megawin_png,normalbg_png,rightflower_png,sliderBg_png,superwin_png,ToastBG_png,ToastBG2_png,circlcce_png,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,sgb_breath_json,sgb_wild_json,yj_breath_json,yj_wild_json,enterFreeBg_png,freeSpin_png,freeWinMoney_png,freeWinTitle_png,gain_png,bar1_png,bar2_png,light_png,Loading..._png,loading_jpg,arrow_png,auto_d_png,auto_p_png,auto_png,balanceBg_png,bet_d_png,bet_p_png,bet_png,bottombg_png,bottombg1_png,bottombg2_png,bottombg3_png,btnGreen_png,cancelAuto_d_png,cancelAuto_p_png,cancelAuto_png,flower_png,freeImg_png,headbg_png,max_p_png,max_png,num10_p_png,num10_png,num100_p_png,num100_png,num20_p_png,num20_png,num50_p_png,num50_png,numbg_png,plus_p_png,plus_png,pool_png,reduce_p_png,reduce_png,rule_d_png,rule_p_png,rule_png,set_png,spin_png,spinbg_png,spinborder_png,win_png,backgroud1_png,BetSliderBG_png,biaoti_png,close_png,FastModel_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,di_png,hx_png,j_png,ssz_png,autoImg_png,maxImg_png,symbol10_png,symbol6_png,symbol7_png,symbol8_png,symbol9_png,tilebg0_png,tilebg1_png,tilebg2_png,tilebg3_png,tilebg4_png,tilebg5_png,tilebg6_png,vague1_png,vague10_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,taiji_json,leftTopBg_png,rightTopBg_png,fnt37white_fnt,fnt37white_png,fnt37yellow_fnt,fnt37yellow_png,rule5_png,rule1_png,rule2_png,rule3_png,rule4_png,returnbg_png,return_png,return_d_png,return_p_png,point_png,pointRed_png,borderLight_json,title_json,borderAni_json",
 			"name": "preload"
 		}
 	],
@@ -753,79 +753,107 @@
 			"subkeys": "zz_010_png,zz_011_png,zz_012_png,zz_013_png,zz_014_png,zz_015_png,zz_016_png,zz_017_png,zz_018_png,zz_019_png,zz_01_png,zz_020_png,zz_021_png,zz_022_png,zz_023_png,zz_024_png,zz_025_png,zz_026_png,zz_027_png,zz_028_png,zz_029_png,zz_02_png,zz_030_png,zz_03_png,zz_04_png,zz_05_png,zz_06_png,zz_07_png,zz_08_png,zz_09_png"
 		},
 		{
-			"name": "leftTopBg_png",
+			"url": "img/menu/leftTopBg.png",
 			"type": "image",
-			"url": "img/menu/leftTopBg.png"
+			"name": "leftTopBg_png"
 		},
 		{
-			"name": "rightTopBg_png",
+			"url": "img/menu/rightTopBg.png",
 			"type": "image",
-			"url": "img/menu/rightTopBg.png"
+			"name": "rightTopBg_png"
 		},
 		{
-			"name": "fnt37white_fnt",
+			"url": "config/fnt37white.fnt",
 			"type": "font",
-			"url": "config/fnt37white.fnt"
+			"name": "fnt37white_fnt"
 		},
 		{
-			"name": "fnt37white_png",
+			"url": "config/fnt37white.png",
 			"type": "image",
-			"url": "config/fnt37white.png"
+			"name": "fnt37white_png"
 		},
 		{
-			"name": "fnt37yellow_fnt",
+			"url": "config/fnt37yellow.fnt",
 			"type": "font",
-			"url": "config/fnt37yellow.fnt"
+			"name": "fnt37yellow_fnt"
 		},
 		{
-			"name": "fnt37yellow_png",
+			"url": "config/fnt37yellow.png",
 			"type": "image",
-			"url": "config/fnt37yellow.png"
+			"name": "fnt37yellow_png"
 		},
 		{
-			"name": "rule5_png",
+			"url": "img/rule/rule5.png",
 			"type": "image",
-			"url": "img/rule/rule5.png"
+			"name": "rule5_png"
 		},
 		{
-			"name": "rule1_png",
+			"url": "img/rule/rule1.png",
 			"type": "image",
-			"url": "img/rule/rule1.png"
+			"name": "rule1_png"
 		},
 		{
-			"name": "rule2_png",
+			"url": "img/rule/rule2.png",
 			"type": "image",
-			"url": "img/rule/rule2.png"
+			"name": "rule2_png"
 		},
 		{
-			"name": "rule3_png",
+			"url": "img/rule/rule3.png",
 			"type": "image",
-			"url": "img/rule/rule3.png"
+			"name": "rule3_png"
 		},
 		{
-			"name": "rule4_png",
+			"url": "img/rule/rule4.png",
 			"type": "image",
-			"url": "img/rule/rule4.png"
+			"name": "rule4_png"
 		},
 		{
-			"name": "returnbg_png",
+			"url": "img/rule/returnbg.png",
 			"type": "image",
-			"url": "img/rule/returnbg.png"
+			"name": "returnbg_png"
 		},
 		{
-			"name": "return_png",
+			"url": "img/rule/return.png",
 			"type": "image",
-			"url": "img/rule/return.png"
+			"name": "return_png"
 		},
 		{
-			"name": "return_d_png",
+			"url": "img/rule/return_d.png",
 			"type": "image",
-			"url": "img/rule/return_d.png"
+			"name": "return_d_png"
 		},
 		{
-			"name": "return_p_png",
+			"url": "img/rule/return_p.png",
 			"type": "image",
-			"url": "img/rule/return_p.png"
+			"name": "return_p_png"
+		},
+		{
+			"url": "img/rule/point.png",
+			"type": "image",
+			"name": "point_png"
+		},
+		{
+			"url": "img/rule/pointRed.png",
+			"type": "image",
+			"name": "pointRed_png"
+		},
+		{
+			"url": "img/effect/borderLight.json",
+			"type": "sheet",
+			"name": "borderLight_json",
+			"subkeys": "borderLight10_png,borderLight11_png,borderLight12_png,borderLight13_png,borderLight14_png,borderLight15_png,borderLight16_png,borderLight17_png,borderLight18_png,borderLight19_png,borderLight1_png,borderLight20_png,borderLight21_png,borderLight22_png,borderLight23_png,borderLight24_png,borderLight25_png,borderLight26_png,borderLight27_png,borderLight28_png,borderLight29_png,borderLight2_png,borderLight30_png,borderLight3_png,borderLight4_png,borderLight5_png,borderLight6_png,borderLight7_png,borderLight8_png,borderLight9_png"
+		},
+		{
+			"url": "img/effect/title.json",
+			"type": "sheet",
+			"name": "title_json",
+			"subkeys": "title10_png,title11_png,title12_png,title13_png,title14_png,title15_png,title16_png,title17_png,title18_png,title19_png,title1_png,title20_png,title21_png,title22_png,title23_png,title24_png,title25_png,title26_png,title27_png,title28_png,title29_png,title2_png,title30_png,title3_png,title4_png,title5_png,title6_png,title7_png,title8_png,title9_png"
+		},
+		{
+			"url": "img/effect/borderAni.json",
+			"type": "sheet",
+			"name": "borderAni_json",
+			"subkeys": "zzz_010_png,zzz_011_png,zzz_012_png,zzz_013_png,zzz_014_png,zzz_015_png,zzz_016_png,zzz_017_png,zzz_018_png,zzz_019_png,zzz_01_png,zzz_020_png,zzz_021_png,zzz_022_png,zzz_023_png,zzz_024_png,zzz_025_png,zzz_026_png,zzz_027_png,zzz_028_png,zzz_029_png,zzz_02_png,zzz_030_png,zzz_03_png,zzz_04_png,zzz_05_png,zzz_06_png,zzz_07_png,zzz_08_png,zzz_09_png"
 		}
 	]
 }

@@ -16,7 +16,7 @@ module game {
 				this["page"+v].x = 1920*i;
 				
 			})
-			this["scrollGroup"].mask = new egret.Rectangle(0,0,1920,1080);
+			this["scrollGroup"].mask = new egret.Rectangle(182,159,1556,834);
 			this.registerEvent(this["contentGroup"], egret.TouchEvent.TOUCH_BEGIN, this.onBegin, this);
 			this.registerEvent(this["contentGroup"], egret.TouchEvent.TOUCH_MOVE, this.onMove, this);
 			this.registerEvent(this["contentGroup"], egret.TouchEvent.TOUCH_END, this.onEnd, this);
