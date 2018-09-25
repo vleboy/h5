@@ -77,7 +77,7 @@ var game;
          * 标题流光
          * */
         GameScene.prototype.initTitle = function () {
-            this.title.play();
+            // this.title.play();
         };
         /**
          * 初始图标对象
@@ -221,16 +221,21 @@ var game;
                     this.betLevel = body;
                     break;
                 case game.NotifyConst.chooseFreeBack:
-                    this.freeSpinRemainCount = body.payload.featureData.freeSpinRemainCount;
-                    if (this.spinResp)
-                        this.spinResp.payload.featureData.buff = body.payload.featureData.buff;
-                    this.buff = body.payload.featureData.buff;
-                    this.featureChanceCount--;
-                    this.isFree = true;
-                    this.bottomBar.setFree(true);
-                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
-                    this.showFreeChoose(false);
-                    this.showFreeGame(true);
+                    this.cloundIn().then(function () {
+                        _this.freeSpinRemainCount = body.payload.featureData.freeSpinRemainCount;
+                        if (_this.spinResp)
+                            _this.spinResp.payload.featureData.buff = body.payload.featureData.buff;
+                        _this.buff = body.payload.featureData.buff;
+                        _this.featureChanceCount--;
+                        _this.isFree = true;
+                        _this.bottomBar.setFree(true);
+                        _this.bottomBar.setFreeBetNum(_this.freeSpinRemainCount);
+                        _this.showFreeChoose(false);
+                        _this.showFreeGame(true);
+                        _this.cloundOut().then(function () {
+                            _this.sceneChangeGroup.visible = false;
+                        });
+                    });
                     break;
                 case game.NotifyConst.freeComplete:
                     egret.Tween.get(this["gameMask"])
@@ -940,6 +945,52 @@ var game;
             }
         };
         // -------------------- 免费游戏显示  ------------------------
+        /**云聚拢 */
+        GameScene.prototype.cloundIn = function () {
+            var _this = this;
+            game.SoundPlayer.playEffect("CaiShen_243_CardEffect_mp3");
+            this.sceneChangeGroup.visible = true;
+            return Promise.all([1, 2, 3, 4, 5, 6].map(function (v, i) {
+                var target = _this["yun" + v];
+                var defaultx = target.x;
+                var defaulty = target.y;
+                var startx = v % 2 == 0 ? 1920 : -1000;
+                var starty = v % 2 == 0 ? 1080 : -500;
+                return new Promise(function (resolve, reject) {
+                    egret.Tween.get(target)
+                        .set({ x: startx, y: starty, visible: true })
+                        .wait(Math.floor(i / 2) * 250)
+                        .to({ x: defaultx, y: defaulty }, 750, egret.Ease.quadOut)
+                        .wait(500)
+                        .call(function () {
+                        egret.Tween.removeTweens(target);
+                        resolve();
+                    });
+                });
+            }));
+        };
+        /**云散开 */
+        GameScene.prototype.cloundOut = function () {
+            var _this = this;
+            return Promise.all([5, 6, 3, 4, 1, 2].map(function (v, i) {
+                var target = _this["yun" + v];
+                var defaultx = target.x;
+                var defaulty = target.y;
+                var endx = v % 2 == 0 ? 1920 : -1000;
+                var endy = v % 2 == 0 ? 1080 : -500;
+                return new Promise(function (resolve, reject) {
+                    egret.Tween.get(target)
+                        .wait(Math.floor(i / 2) * 250 + 500)
+                        .to({ x: endx, y: endy }, 750, egret.Ease.quadOut)
+                        .wait(500)
+                        .set({ x: defaultx, y: defaulty, visible: false })
+                        .call(function () {
+                        egret.Tween.removeTweens(target);
+                        resolve();
+                    });
+                });
+            }));
+        };
         /**
          * 显示免费游戏选择的ui
          * */
@@ -956,10 +1007,9 @@ var game;
         GameScene.prototype.showFreeGame = function (b) {
             var _this = this;
             this.freeTotalWin.visible = false;
-            this.bg.visible = !b;
-            this.bgFree.visible = b;
-            this.kuang.visible = !b;
-            this.kuangFree.visible = b;
+            var imgSources = ["bg_png", "BgBtm_png", "BgTop_png", "Fram_png"];
+            [this.bg, this.bgBtm, this.bgTop, this.kuang].forEach(function (v, i) { return v.source = (b ? "free" : "normal") + imgSources[i]; });
+            [this.knotLeft, this.knotRight].forEach(function (v) { return v.top = b ? 205 : 160; });
             this.freeCountBg.visible = b;
             this.setFreeChooseCount();
             this.setState(game.GameState.BET);
@@ -1000,7 +1050,7 @@ var game;
             if (isAn) {
                 isShow && egret.Tween.get(this.freeChooseCountBoom)
                     .call(function () { return _this.freeChooseCountBoom.visible = true; })
-                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1727, y: 187 }, 1000)
+                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1754, y: 110 }, 1000)
                     .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
                     .call(function () {
                     _this.freeChooseCountBoom.play();

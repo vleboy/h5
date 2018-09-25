@@ -54,14 +54,12 @@ var game;
         }
         FreeChoose.prototype.init = function () {
             var _this = this;
-            this["yuanbaoGroup"].visible = false;
             ["20", "15", "10", "8", "5"].forEach(function (v, i) {
                 _this.registerEvent(_this["choose" + v], egret.TouchEvent.TOUCH_TAP, _this.onTouch, _this);
             });
         };
         FreeChoose.prototype.show = function () {
             var _this = this;
-            this["yuanbaoGroup"].visible = false;
             this["chooseGroup"].setChildIndex(this["rect"], 0);
             ["10", "5", "15", "8", "20"].forEach(function (v, i) {
                 _this["chooseGroup"].setChildIndex(_this["choose" + v], 1);
@@ -141,38 +139,13 @@ var game;
                         })
                     ]).then(function () { return __awaiter(_this, void 0, void 0, function () {
                         return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.yuanbaoAni()];
-                                case 1:
-                                    _a.sent();
-                                    this.sendNotify(game.NotifyConst.chooseFreeBack, respData_1);
-                                    return [2 /*return*/];
-                            }
+                            egret.Tween.removeTweens(this.tipTxt);
+                            this.sendNotify(game.NotifyConst.chooseFreeBack, respData_1);
+                            return [2 /*return*/];
                         });
                     }); });
                 }
             });
-        };
-        FreeChoose.prototype.yuanbaoAni = function () {
-            game.SoundPlayer.playEffect("CaiShen_243_CardEffect_mp3");
-            egret.Tween.removeTweens(this.tipTxt);
-            var g = this["yuanbaoGroup"];
-            var arr = [];
-            g.visible = true;
-            for (var i = g.numChildren - 1; i >= 0; i--) {
-                g.getChildAt(i).alpha = 0;
-                arr.push(g.getChildAt(i));
-            }
-            return Promise.all(arr.map(function (v, i) {
-                return new Promise(function (resolve, reject) {
-                    setTimeout(function () {
-                        egret.Tween.get(v).to({ alpha: 1 }, 200).wait(500).call(function () {
-                            egret.Tween.removeTweens(v);
-                            resolve();
-                        });
-                    }, 200 * i);
-                });
-            }));
         };
         return FreeChoose;
     }(game.BaseUI));
