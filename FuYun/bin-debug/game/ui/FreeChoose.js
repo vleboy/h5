@@ -115,7 +115,7 @@ var game;
                         new Promise(function (resolve, reject) {
                             var mc = new game.AMovieClip();
                             mc.sources = "FuYunAni|1-16|_png";
-                            mc.x = 144;
+                            mc.x = 145;
                             mc.y = 120;
                             mc.width = 224;
                             mc.height = 224;
