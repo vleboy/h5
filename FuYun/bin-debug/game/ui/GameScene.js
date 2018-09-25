@@ -115,6 +115,10 @@ var game;
             this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
             }, this);
+            this.registerEvent(this["yunIn"], egret.TouchEvent.TOUCH_TAP, this.cloundIn, this);
+            this.registerEvent(this["yunOut"], egret.TouchEvent.TOUCH_TAP, function () {
+                _this.cloundOut().then(function () { return _this.sceneChangeGroup.visible = false; });
+            }, this);
         };
         /**
          * 更新背景音乐
@@ -232,9 +236,7 @@ var game;
                         _this.bottomBar.setFreeBetNum(_this.freeSpinRemainCount);
                         _this.showFreeChoose(false);
                         _this.showFreeGame(true);
-                        _this.cloundOut().then(function () {
-                            _this.sceneChangeGroup.visible = false;
-                        });
+                        _this.cloundOut().then(function () { return _this.sceneChangeGroup.visible = false; });
                     });
                     break;
                 case game.NotifyConst.freeComplete:
@@ -387,7 +389,7 @@ var game;
                     var tile = _this["vagueTile" + (column * 4 + i)];
                     tile.y += (game.GlobalConfig.fastSwitch ? 104 : 80);
                     if (tile.y > 658) {
-                        tile.y -= 208 * 4;
+                        tile.y -= 220 * 4;
                         tile.source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
                     }
                 }
@@ -466,7 +468,7 @@ var game;
                             egret.Tween.removeTweens(this["vagueTile" + (column * 4)]);
                             [0, 1, 2, 3].forEach(function (i) {
                                 _this["vagueTile" + (column * 4 + i)].visible = false;
-                                _this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
+                                _this["vagueTile" + (column * 4 + i)].y = 25 + i * 220;
                             });
                             haveScatterThisColumn = true;
                             for (c = 0; c <= column; c++) {
@@ -509,29 +511,9 @@ var game;
                 var c = new egret.DisplayObjectContainer();
                 _this["freeCoinsGroup"].addChild(c);
                 var arr = [];
-                var createCoins = function () {
-                    for (var i = 0; i < 4; i++) {
-                        var mc = new game.AMovieClip();
-                        mc.sources = "coin_pin_|1-9|_png";
-                        mc.width = mc.height = 20;
-                        mc.anchorOffsetX = 10;
-                        mc.anchorOffsetY = 10;
-                        mc.rotation = Math.random() * 360;
-                        mc.play();
-                        mc["speed"] = Math.round(Math.random() * 6 + 3);
-                        mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-                        mc.x = startX + (0.5 - Math.random()) * (_this["tile" + column * 3].width);
-                        c.addChild(mc);
-                        arr.push(mc);
-                    }
-                };
-                var index = 0;
                 egret.Tween.get(_this["freeCoinsGroup"], { loop: true })
                     .wait(20)
                     .call(function () {
-                    if (index++ % 10 == 0) {
-                        createCoins();
-                    }
                     for (var j = arr.length - 1; j >= 0; j--) {
                         var img = arr[j];
                         img.rotation += 5;
@@ -568,14 +550,14 @@ var game;
             for (var i = 0; i < 20; i++) {
                 egret.Tween.removeTweens(this["vagueTile" + i]);
                 this["vagueTile" + i].visible = false;
-                this["vagueTile" + i].y = (i % 4) * 208 + 21;
+                this["vagueTile" + i].y = (i % 4) * 220 + 25;
             }
             var viewGrid = this.spinResp.payload.viewGrid;
             for (var i = 0; i < 15; i++) {
                 egret.Tween.removeTweens(this.symbols[i].tile);
                 this.symbols[i].value = this.spinResp.payload.viewGrid[i];
                 this.symbols[i].tile.visible = true;
-                this.symbols[i].tile.y = (i % 3) * 208 + 21;
+                this.symbols[i].tile.y = (i % 3) * 220 + 25;
                 var str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
                 this.symbols[i].setTexture("symbolName_" + str + "_png");
             }
@@ -954,8 +936,8 @@ var game;
                 var target = _this["yun" + v];
                 var defaultx = target.x;
                 var defaulty = target.y;
-                var startx = v % 2 == 0 ? 1920 : -1000;
-                var starty = v % 2 == 0 ? 1080 : -500;
+                var startx = v % 2 == 0 ? 1920 : -1420;
+                var starty = v % 2 == 0 ? 1080 : -800;
                 return new Promise(function (resolve, reject) {
                     egret.Tween.get(target)
                         .set({ x: startx, y: starty, visible: true })
@@ -976,8 +958,8 @@ var game;
                 var target = _this["yun" + v];
                 var defaultx = target.x;
                 var defaulty = target.y;
-                var endx = v % 2 == 0 ? 1920 : -1000;
-                var endy = v % 2 == 0 ? 1080 : -500;
+                var endx = v % 2 == 0 ? 1920 : -1420;
+                var endy = v % 2 == 0 ? 1080 : -800;
                 return new Promise(function (resolve, reject) {
                     egret.Tween.get(target)
                         .wait(Math.floor(i / 2) * 250 + 500)

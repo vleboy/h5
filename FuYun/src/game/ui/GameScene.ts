@@ -250,9 +250,7 @@ module game {
 						this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 						this.showFreeChoose(false);
 						this.showFreeGame(true);
-						this.cloundOut().then(() => {
-							this.sceneChangeGroup.visible = false;
-						})
+						this.cloundOut().then(() => this.sceneChangeGroup.visible = false);
 					});
 					break;
 				case NotifyConst.freeComplete:
@@ -405,7 +403,7 @@ module game {
 						let tile = this["vagueTile" + (column * 4 + i)];
 						tile.y += (GlobalConfig.fastSwitch ? 104 : 80);
 						if (tile.y > 658) {
-							tile.y -= 208 * 4;
+							tile.y -= 220 * 4;
 							tile.source = "vague" + Math.floor(Math.random() * 11 + 2) + "_png";
 						}
 					}
@@ -440,7 +438,7 @@ module game {
 				egret.Tween.removeTweens(this["vagueTile" + (column * 4)]);
 				[0, 1, 2, 3].forEach(i => {
 					this["vagueTile" + (column * 4 + i)].visible = false;
-					this["vagueTile" + (column * 4 + i)].y = 21 + i * 208;
+					this["vagueTile" + (column * 4 + i)].y = 25 + i * 220;
 				});
 
 				let haveScatterThisColumn = true;
@@ -484,29 +482,9 @@ module game {
 				let c = new egret.DisplayObjectContainer();
 				this["freeCoinsGroup"].addChild(c);
 				let arr = [];
-				let createCoins = () => {
-					for (let i = 0; i < 4; i++) {
-						let mc = new AMovieClip();
-						mc.sources = "coin_pin_|1-9|_png";
-						mc.width = mc.height = 20;
-						mc.anchorOffsetX = 10;
-						mc.anchorOffsetY = 10;
-						mc.rotation = Math.random() * 360;
-						mc.play();
-						mc["speed"] = Math.round(Math.random() * 6 + 3);
-						mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-						mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-						c.addChild(mc);
-						arr.push(mc);
-					}
-				}
-				let index = 0;
 				egret.Tween.get(this["freeCoinsGroup"], { loop: true })
 					.wait(20)
 					.call(() => {
-						if (index++ % 10 == 0) {
-							createCoins();
-						}
 						for (let j = arr.length - 1; j >= 0; j--) {
 							let img = arr[j];
 							img.rotation += 5;
@@ -544,7 +522,7 @@ module game {
 			for (let i = 0; i < 20; i++) {
 				egret.Tween.removeTweens(this["vagueTile" + i]);
 				this["vagueTile" + i].visible = false;
-				this["vagueTile" + i].y = (i % 4) * 208 + 21;
+				this["vagueTile" + i].y = (i % 4) * 220 + 25;
 			}
 
 			let viewGrid = this.spinResp.payload.viewGrid;
@@ -552,7 +530,7 @@ module game {
 				egret.Tween.removeTweens(this.symbols[i].tile);
 				this.symbols[i].value = this.spinResp.payload.viewGrid[i];
 				this.symbols[i].tile.visible = true;
-				this.symbols[i].tile.y = (i % 3) * 208 + 21;
+				this.symbols[i].tile.y = (i % 3) * 220 + 25;
 				let str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
 				this.symbols[i].setTexture("symbolName_" + str + "_png");
 			}
@@ -901,8 +879,8 @@ module game {
 					let target = this["yun" + v];
 					let defaultx = target.x;
 					let defaulty = target.y;
-					let startx = v % 2 == 0 ? 1920 : -1000;
-					let starty = v % 2 == 0 ? 1080 : -500;
+					let startx = v % 2 == 0 ? 1920 : -1420;
+					let starty = v % 2 == 0 ? 1080 : -800;
 					return new Promise((resolve, reject) => {
 						egret.Tween.get(target)
 							.set({ x: startx, y: starty, visible: true })
@@ -916,7 +894,6 @@ module game {
 					})
 				})
 			);
-
 		}
 		/**云散开 */
 		private cloundOut() {
@@ -925,13 +902,13 @@ module game {
 					let target = this["yun" + v];
 					let defaultx = target.x;
 					let defaulty = target.y;
-					let endx = v % 2 == 0 ? 1920 : -1000;
-					let endy = v % 2 == 0 ? 1080 : -500;
+					let endx = v % 2 == 0 ? 1920 : -1420;
+					let endy = v % 2 == 0 ? 1080 : -800;
 					return new Promise((resolve, reject) => {
 						egret.Tween.get(target)
-							.wait(Math.floor(i / 2) * 250 + 500)
+							.wait(Math.floor(i / 2) * 250 + 300)
 							.to({ x: endx, y: endy }, 750, egret.Ease.quadOut)
-							.wait(500)
+							.wait(300)
 							.set({ x: defaultx, y: defaulty, visible: false })
 							.call(() => {
 								egret.Tween.removeTweens(target);
