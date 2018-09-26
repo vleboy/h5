@@ -128,7 +128,7 @@ var game;
                             mc.y = endY;
                             mc.width = 207;
                             mc.height = 202;
-                            mc.speed = 6;
+                            mc.speed = 4;
                             mc.loop = 2;
                             target.addChildAt(mc, 3);
                             mc.play();
