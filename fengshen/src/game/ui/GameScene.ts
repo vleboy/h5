@@ -4,6 +4,7 @@ module game {
 		private tileLocationGroup: eui.Group;
 		private tileMask: eui.Rect;
 		private tileGroup: eui.Group;
+		private winTileGroup: eui.Group;
 		private vagueTileGroup: eui.Group;
 		private bottomBar: BottomBar;
 		private topBar: TopBar;
@@ -24,13 +25,11 @@ module game {
 		private border2: AMovieClip;
 		private border3: AMovieClip;
 		private border4: AMovieClip;
-		public particleBg: eui.Rect;
 		public winGridGroup: eui.Group;
 		private bigWin: BigWin;
 		private freeChanceGroup: eui.Group;
 		private freeChangeMc: AMovieClip;
 		private freeChangeImg: eui.Image;
-		private symbols: Array<Symbol>;
 		private freeMultiGroup: eui.Group;
 		private freeMulti: eui.BitmapLabel;
 		private freeChooseCountBoom: AMovieClip;
@@ -56,8 +55,6 @@ module game {
 		private autoMax: boolean;
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
-		/**是否返回数据*/
-		private isReturnData: boolean;
 		/**spin等待*/
 		private spinWain: any;
 		/**图标数组 */
@@ -83,6 +80,7 @@ module game {
 		 * */
 		private initView() {
 			this.contentGroup.mask = new egret.Rectangle(244, 148, 1430, 764);
+			this["title"].play();
 			this.initSymbols();
 			this.setState(GameState.BET);
 			this.initVisible();
@@ -104,11 +102,18 @@ module game {
 				this.symbolArr.unshift(s);
 			}
 		}
+		/**重置15个图标的层级关系 */
+		private resetSymbolsIndex(){
+			for(let i=14; i>=0; i--){
+				this.symbolArr[i].parent.setChildIndex(this.symbolArr[i], 0);
+			}
+		}
 		/**
 		 * 初始化一些visible
 		 * */
 		private initVisible() {
 			this.vagueTileGroup.visible = false;
+			this.tileMask.visible = false;
 		}
 		/**
 		 * 初始事件监听
@@ -288,29 +293,7 @@ module game {
 				GameService.getInstance().sendSpin(this.betLevel).then(this.spinBack.bind(this));
 			}
 			this["testInput"].text = "";
-			this.isReturnData = false;
 			this.setState(GameState.SPINNING);
-			this.showConnect();
-		}
-		/**
-		 * 显示连接
-		*/
-		private showConnect(): void {
-			let timeOut = (wait: number) => {
-				return new Promise((res, rej) => {
-					this.spinWain && clearTimeout(this.spinWain);
-					this.spinWain = setTimeout(() => res(), wait);
-				});
-			}
-			timeOut(12000).then(() => {
-				if (!this.isReturnData) this.connectTip.show(true);
-				timeOut(8000).then(() => {
-					if (!this.isReturnData) {
-						this.connectTip.show(false);
-						this.stage.addChild(new game.ErrTip("网络连接错误，是否重连?", () => location.reload(), this));
-					}
-				});
-			});
 		}
 		/**
 		 * 收到spin结果 ，把-1的图标筛选掉
@@ -335,6 +318,19 @@ module game {
 					}
 				}
 			}
+			
+			let s = "5";
+			resp.payload.viewGrid = ["0",s,"2","3",s,"4","5",s,"6","7",s,"8","9",s,"10"];
+			resp.payload.winGrid = [
+				{
+					gold: 100,
+					line: [1,4,7,10,13],
+					lineIndex: 1,
+					multiplier: 1,
+					symbol: s,
+					winCard: [1,4,7,10,13]
+				}]
+			resp.payload.totalGold = 100;
 
 			console.log("UI收到spin返回 ", resp);
 			this.spinResp = resp;
@@ -345,8 +341,6 @@ module game {
 			}
 			this.stopRoll(resp.payload.viewGrid);
 			this.setState(GameState.STOP);
-			this.isReturnData = true;
-			if (this.connectTip.visible) this.connectTip.show(false);
 		}
 
 
@@ -427,20 +421,16 @@ module game {
 				}
 				[0, 1, 2].forEach(i => {
 					//处理wild图标的多样性
-					// let symbol: Symbol = this.symbols[(column * 3 + i)];
-					// let str = columnArr[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : columnArr[i];
-					// let defaultY = symbol.tile.y;
-					// symbol.tile.visible = true;
-					// symbol.value = columnArr[i];
-					// symbol.setTexture("symbolName_" + str + "_png");
+					let symbol: Symbol = this.symbolArr[(column * 3 + i)];
+					let defaultv = symbol.verticalCenter;
+					symbol.visible = true;
+					symbol.setValue(columnArr[i]);
 
-					// egret.Tween.get(symbol.tile).set({ y: defaultY + 100 }).to({ y: defaultY }, GlobalConfig.fastSwitch ? 150 : 250).wait(GlobalConfig.fastSwitch ? 50 : 200).call(() => {
-					// 	egret.Tween.removeTweens(symbol.tile);
-					// 	resolve();
-					// });
+					egret.Tween.get(symbol).set({ verticalCenter: defaultv + 100 }).to({ verticalCenter: defaultv }, GlobalConfig.fastSwitch ? 150 : 250).wait(GlobalConfig.fastSwitch ? 50 : 200).call(() => {
+						egret.Tween.removeTweens(symbol);
+						resolve();
+					});
 				})
-				if (haveScatterThisColumn) SoundPlayer.playEffect("CaiShen_243_Scatter_" + (column + 1) + "_mp3");
-				SoundPlayer.playEffect("CaiShen_243_RollStop_mp3");
 			})
 
 		}
@@ -450,64 +440,15 @@ module game {
 		 * 单列freespin缓停动画
 		 * */
 		private freeEffect(column: number) {
-			SoundPlayer.playEffect("CaiShen_243_Scatter_wait_mp3");
 			return new Promise((resolve, reject) => {
 				(this["border" + column] as AMovieClip).visible = true;
+				(this["border" + column] as AMovieClip).loop = 5;
 				(this["border" + column] as AMovieClip).play();
-
-				let startX = this["tile" + column * 3].x + this["tile" + column * 3].width / 2;
-				let startY = this["tile" + column * 3].y;
-				let c = new egret.DisplayObjectContainer();
-				this["freeCoinsGroup"].addChild(c);
-				let arr = [];
-				let createCoins = () => {
-					for (let i = 0; i < 4; i++) {
-						let mc = new AMovieClip();
-						mc.sources = "coin_pin_|1-9|_png";
-						mc.width = mc.height = 20;
-						mc.anchorOffsetX = 10;
-						mc.anchorOffsetY = 10;
-						mc.rotation = Math.random() * 360;
-						mc.play();
-						mc["speed"] = Math.round(Math.random() * 6 + 3);
-						mc["alphaSpeed"] = Math.round(Math.random() * 0.02 + 0.01);
-						mc.x = startX + (0.5 - Math.random()) * (this["tile" + column * 3].width);
-						c.addChild(mc);
-						arr.push(mc);
-					}
-				}
-				let index = 0;
-				egret.Tween.get(this["freeCoinsGroup"], { loop: true })
-					.wait(20)
-					.call(() => {
-						if (index++ % 10 == 0) {
-							createCoins();
-						}
-						for (let j = arr.length - 1; j >= 0; j--) {
-							let img = arr[j];
-							img.rotation += 5;
-							img.y += img["speed"];
-							img.alpha -= img["alphaSpeed"];
-
-							if (img.y >= 269 + 658) {
-								img.parent.removeChild(img);
-								arr.splice(j, 1);
-							}
-						}
-					})
-
-				if(this.freeColumnTimeout) clearTimeout(this.freeColumnTimeout);
-				this.freeColumnTimeout = setTimeout(() => {
-					egret.Tween.removeTweens(this["freeCoinsGroup"]);
-					while (arr.length > 0) {
-						let img = arr.pop();
-						img.parent.removeChild(img);
-					}
-					if(c.parent) c.parent.removeChild(c);
+				(this["border" + column] as AMovieClip).once(AMovieClip.COMPLETE, ()=>{
 					(this["border" + column] as AMovieClip).stop();
 					(this["border" + column] as AMovieClip).visible = false;
 					resolve();
-				}, 2000);
+				}, this);
 			})
 
 		}
@@ -525,12 +466,9 @@ module game {
 
 			let viewGrid = this.spinResp.payload.viewGrid;
 			for (let i = 0; i < 15; i++) {
-				// egret.Tween.removeTweens(this.symbols[i].tile);
-				// this.symbols[i].value = this.spinResp.payload.viewGrid[i];
-				// this.symbols[i].tile.visible = true;
-				// this.symbols[i].tile.y = (i % 3) * 208 + 21;
-				// let str = viewGrid[i] == "1" ? "1" + (this.buff == "-1" ? "" : "_" + this.buff) : viewGrid[i];
-				// this.symbols[i].setTexture("symbolName_" + str + "_png");
+				egret.Tween.removeTweens(this.symbolArr[i]);
+				this.symbolArr[i].visible = true;
+				this.symbolArr[i].setValue(this.spinResp.payload.viewGrid[i]);
 			}
 
 			this.border2.stop();
@@ -539,9 +477,6 @@ module game {
 			this.border2.visible = false;
 			this.border3.visible = false;
 			this.border4.visible = false;
-
-			egret.Tween.removeTweens(this["freeCoinsGroup"]);
-			(this["freeCoinsGroup"] as eui.Group).removeChildren();
 
 			this.judgeResult();
 		}
@@ -561,7 +496,6 @@ module game {
 			await this.showScatterLine();
 			await this.showFreeChange();
 			this.stopScatterLine();
-			await this.showBonusLine();
 
 			if (this.isFree) {
 				await this.showEveryLineGrid(this.spinResp.payload.winGrid);
@@ -612,20 +546,21 @@ module game {
 		 * */
 		private showBigWin(level: string, win: number) {
 			return new Promise((resolve, reject) => {
-				if (win <= 0) resolve();
-				else if (level == "normal") {
-					SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
-					resolve();
-				}
-				else if (level == "middle") {
-					SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
-					resolve();
-				}
-				else {
-					this.bigWin.bigWinStart(level, win).then(() => {
-						resolve();
-					});
-				}
+				// if (win <= 0) resolve();
+				// else if (level == "normal") {
+				// 	SoundPlayer.playEffect("CaiShen_243_SmallWin_mp3");
+				// 	resolve();
+				// }
+				// else if (level == "middle") {
+				// 	SoundPlayer.playEffect("CaiShen_243_MiddleWin_mp3");
+				// 	resolve();
+				// }
+				// else {
+				// 	this.bigWin.bigWinStart(level, win).then(() => {
+				// 		resolve();
+				// 	});
+				// }
+				resolve();
 			})
 		}
 		/**
@@ -634,9 +569,8 @@ module game {
 		private showAllWinGrid(arr: Array<any>) {
 			let grids = [];
 			arr.forEach((v) => {
-				v.winCard.forEach((value: number, column: number) => {
-					let gridIndex = value + column * 3;
-					value != -1 && grids.indexOf(gridIndex) == -1 && grids.push(gridIndex);
+				v.winCard.forEach((gridIndex: number) => {
+					grids.indexOf(gridIndex) == -1 && grids.push(gridIndex);
 				});
 			})
 
@@ -645,26 +579,38 @@ module game {
 			grids.some(v => this.spinResp.payload.viewGrid[v] == "1") && this.isFree && this.freeMultiAni(this.featureMultiplier);
 			return Promise.all(
 				grids.map((v) => {
-					// return this.symbols[v].showWinAni();
+					this.tileMask.visible = true;
+					this.winTileGroup.addChild(this.symbolArr[v]);
+					return this.symbolArr[v].showAnimation().then(()=>{
+								this.tileGroup.addChild(this.symbolArr[v]);
+							});
 				})
-			);
+			).then(()=>{
+				this.resetSymbolsIndex();
+				this.tileMask.visible = false;
+			})
 		}
 		/**
 		 * scatter图标动画
 		 * */
 		private showScatterLine() {
 			return Promise.all(
-				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
-					let gridIndex = value + column * 3;
-					// return this.symbols[gridIndex].showWinAni(false);
+				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((gridIndex: number, column: number) => {
+					this.tileMask.visible = true;
+					this.winTileGroup.addChild(this.symbolArr[gridIndex]);
+					return this.symbolArr[gridIndex].showAnimation().then(()=>{
+								this.tileGroup.addChild(this.symbolArr[gridIndex]);
+							});
 				}) : []
-			)
+			).then(()=>{
+				this.resetSymbolsIndex();
+				this.tileMask.visible = false;
+			})
 		}
 		private stopScatterLine(){
-            this.particleBg.visible = false;
             this.spinResp.payload.scatterGrid.forEach((value: number, column: number)=>{
                 let gridIndex = value + column * 3;
-                this.symbols[gridIndex].reset();
+                this.symbolArr[gridIndex].reset();
 			})
 		}
 		/**
@@ -673,7 +619,6 @@ module game {
 		private showFreeChange() {
 			return new Promise((resolve, reject) => {
 				if (this.spinResp.payload.getFeatureChance) {
-					SoundPlayer.playEffect("CaiShen_243_Get_FreeGame_ogg");
 					this.freeChanceGroup.visible = true;
 					this.freeChangeMc.play();
 					egret.Tween.get(this.freeChangeImg)
@@ -691,106 +636,7 @@ module game {
 				}
 			});
 		}
-		/**
-		 * bonus图标动画
-		 * */
-		private showBonusLine() {
-			let grids = this.spinResp.payload.featureData.featureBonusData.grid;
-			let gold = this.spinResp.payload.featureData.featureBonusData.gold;
-			gold > 0 && SoundPlayer.playEffect("CaiShen_243_Bonus_mp3");
-			return Promise.all(
-				gold > 0 ? grids.map((value: number, column: number) => {
-					return new Promise((res, rej) => {
-						if (value == -1) {
-							res();
-						}
-						else {
-							this.lineWinTxt.visible = true;
-							this.lineWinTxt.text = gold.toFixed(2);
-							let gridIndex = value + column * 3;
-							let target = this["tile" + gridIndex];
-							this.particleBg.visible = true;
-							//红包动画
-							let mc: AMovieClip = new AMovieClip();
-							mc.sources = "T_hongbao_|1-16|_png";
-							mc.x = target.x;
-							mc.y = target.y;
-							this["winGridGroup"].addChild(mc);
-							target.visible = false;
-							mc.loop = 2;
-							mc.play();
-
-							/**喷金币 */
-							let coins = [];
-							let flag = 0;
-							let createCoins = ()=>{
-								let coin = new AMovieClip();
-								coin.sources = "SU_Coin_Gold_3x3_|1-9|_png";
-								coin.x = target.x+target.width/2;
-								coin.y = target.y+70;
-								coin.width = coin.height = 30;
-								coin.anchorOffsetX = coin.anchorOffsetY = 15;
-								coin["speedx"] = Math.round((Math.random()*10-5));
-								coin["speedy"] = -Math.round((Math.random()*7+7));
-								coin["count"] = 0;
-								this["bonusEffectGroup"].addChild(coin);
-								coins.push(coin);
-								coin.play();
-							}
-
-							egret.Tween.get(this["bonusEffectGroup"], {loop:true})
-								.wait(30)
-								.call(()=>{
-									if(++flag % 3 == 0)createCoins();
-									coins.forEach((v,i)=>{
-										v.x += v["speedx"];
-										v.y += v["speedy"];
-										v["speedy"]++;
-										if(++v.count > 24){
-											v.stop();
-											v.parent.removeChild(v);
-											coins.splice(i,1);
-										}
-									})
-								})
-
-							//粒子发散效果
-							
-							let texture = RES.getRes("star_png");
-							let cfg = RES.getRes("bonusParticle_json");
-							let p = new particle.GravityParticleSystem(texture, cfg);
-							p.blendMode = egret.BlendMode.ADD;
-							p.emitterX = target.x+target.width/2;
-							p.emitterY = target.y+70;
-							this["bonusEffectGroup"].addChild(p);
-							p.start();
-
-
-							mc.once(AMovieClip.COMPLETE, () => {
-								mc.parent.removeChild(mc);
-								this["tile" + gridIndex].visible = true;
-								this.particleBg.visible = false;
-								this.lineWinTxt.visible = false;
-
-								egret.Tween.removeTweens(this["bonusEffectGroup"]);
-								while(coins.length>0){
-									coins.pop().stop();
-								}
-								this["bonusEffectGroup"].removeChildren();
-
-								if(p){
-									p.stop();
-									if(p.parent) p.parent.removeChild(p);
-								}
-
-								res();
-							}, this);
-						}
-
-					})
-				}) : []
-			)
-		}
+		
 		/**
 		 * 各单线中奖展示
 		 * */
@@ -805,17 +651,24 @@ module game {
 					this.lineWinTxt.visible = true;
 					this.lineWinTxt.text = v.gold.toFixed(2);
 					await Promise.all(
-						v.winCard.map((value: number, column: number) => {
-							// return this.symbols[value + column * 3].showWinAni(false);
+						v.winCard.map((value: number) => {
+							this.tileMask.visible = true;
+							this.winTileGroup.addChild(this.symbolArr[value]);
+							return this.symbolArr[value].showAnimation(false).then(()=>{
+								this.tileGroup.addChild(this.symbolArr[value]);
+							});
 						})
-					);
+					).then(()=>{
+						this.resetSymbolsIndex();
+						this.tileMask.visible = false;
+					})
+					this.lineWinTxt.visible = false;
 					console.log("第" + lineIndex + "条中奖线展示完成", v);
 				}
 
 				for (let i = 0; i < arr.length; i++) {
 					await singleLineShow(arr[i], i);
 				}
-				this.particleBg.visible = false;
 				resolve();
 			})
 		}
@@ -823,11 +676,9 @@ module game {
 		 * 停止中奖展示
 		 * */
 		private cancelLinesWin() {
-            this.particleBg.visible = false;
 			this.lineWinTxt.visible = false;
-			this.particleBg.visible = false;
 			this.lineWinTxt.text = "";
-			this.symbols.forEach(symbol => {
+			this.symbolArr.forEach(symbol => {
 				symbol.reset();
 			})
 
@@ -939,58 +790,106 @@ module game {
 	 * */
 	class Symbol extends eui.Component{
 		public bg: eui.Image;
+		private borderLight: AMovieClip;
 		public tileImg: eui.Image;
 		private tileMc: AMovieClip;
 		public value: string;
+		/**各图标帧动画的纹理配置 */
+		public static SymbolAninations:any = {
+			"0":{
+				all:{source:"zz_01_png", sources:"zz_0|1-30|_png"},
+				single:{source:"zz_01_png", sources:"zz_0|1-30|_png"},
+			},
+			"1":{
+				all:{source:"JZY_breath_01_png", sources:"JZY_breath_|01-30|_png"},
+				single:{source:"JZY_wild_01_png", sources:"JZY_wild_|01-30|_png"},
+			},
+			"2":{
+				all:{source:"sgb_breath_01_png", sources:"sgb_breath_|01-40|_png"},
+				single:{source:"sgb_wild_01_png", sources:"sgb_wild_|01-30|_png"},
+			},
+			"3":{
+				all:{source:"daji_breath_01_png", sources:"daji_breath_|01-30|_png"},
+				single:{source:"daji_wild_01_png", sources:"daji_wild_|01-30|_png"},
+			},
+			"4":{
+				all:{source:"yj_breath_01_png", sources:"yj_breath_|01-40|_png"},
+				single:{source:"yj_wild_01_png", sources:"yj_wild_|01-30|_png"},
+			},
+			"5":{
+				all:{source:"NeZha_breath_01_png", sources:"NeZha_breath_|01-40|_png"},
+				single:{source:"NeZha_wild_01_png", sources:"NeZha_wild_|01-30|_png"},
+			}
+		}
 		public constructor() {
 			super();
 			this.skinName = "resource/skins/game_skins/tileSkin.exml";
 		}
-
+		/**更新图标的值 */
 		public setValue(v: string){
 			let isSmallTile = parseInt(v) > 5;
+			this.value = v;
 			this.bg.visible = true;
 			this.bg.source = isSmallTile ? "tilebg6_png" : ("tilebg"+v+"_png");
 			this.tileImg.visible = isSmallTile;
 			this.tileMc.visible = !isSmallTile;
 			this.tileImg.source = isSmallTile ? "symbol"+v+"_png" : "symbol6_png";
 			if(!isSmallTile){
-				switch(v){
-					case "0"://太极
-						this.bg.visible = false;
-						this.tileMc.source = "zz_01_png";
-						this.tileMc.sources = "zz_|01-30|_png";
-						break;
-					case "1"://姜子牙
-						this.tileMc.source = "JZY_breath_01_png";
-						this.tileMc.sources = "JZY_breath_|01-30|_png";
-						break;
-					case "2"://申公豹
-						this.tileMc.source = "sgb_breath_01_png";
-						this.tileMc.sources = "sgb_breath_|01-40|_png";
-						break;
-					case "3"://妲己
-						this.tileMc.source = "daji_breath_01_png";
-						this.tileMc.sources = "daji_breath_|01-30|_png";
-						break;
-					case "4"://二郎神
-						this.tileMc.source = "yj_breath_01_png";
-						this.tileMc.sources = "yj_breath_|01-40|_png";
-						break;
-					case "5"://哪吒
-						this.tileMc.source = "NeZha_breath_01_png";
-						this.tileMc.sources = "NeZha_breath_|01-40|_png";
-						break;
-				}
+				if(v=="0") this.bg.visible = false;
+				this.tileMc.source = Symbol.SymbolAninations[v].all.source;
 			}
 		}
-
-		public showAnimation(){
-
+		/**isAll:是否展示全部中奖图标时的动画 */
+		public showAnimation(isAll:boolean=true){
+			return new Promise((resolve, reject)=>{
+				this.borderLight.visible = true;
+				this.borderLight.play();
+				let isSmallTile = parseInt(this.value) > 5;
+				let all = isAll ? "all": "single";
+				if(!isSmallTile){
+					this.tileMc.sources = Symbol.SymbolAninations[this.value][all].sources;
+					this.tileMc.speed = 3;
+					this.tileMc.loop = 2;
+					this.tileMc.play();
+					this.tileMc.once(AMovieClip.COMPLETE, ()=>{
+						this.borderLight.visible = false;
+						this.borderLight.stop();
+						resolve();
+					}, this);
+				}
+				else{
+					egret.Tween.get(this.tileImg)
+						.to({scaleX: 0.8, scaleY:0.8}, 100)
+						.to({scaleX: 1.2, scaleY:1.2}, 200)
+						.to({scaleX: 0.9, scaleY:0.9}, 150)
+						.to({scaleX: 1.1, scaleY:1.1}, 150)
+						.to({scaleX: 0.95, scaleY:0.95}, 120)
+						.to({scaleX: 1, scaleY:1}, 80)
+						.wait(500)
+						.to({scaleX: 0.8, scaleY:0.8}, 100)
+						.to({scaleX: 1.2, scaleY:1.2}, 200)
+						.to({scaleX: 0.9, scaleY:0.9}, 150)
+						.to({scaleX: 1.1, scaleY:1.1}, 150)
+						.to({scaleX: 0.95, scaleY:0.95}, 120)
+						.to({scaleX: 1, scaleY:1}, 80)
+						.call(()=>{
+							egret.Tween.removeTweens(this.tileImg);
+							this.borderLight.visible = false;
+							this.borderLight.stop();
+							resolve();
+						})
+				}
+			})
 		}
-
+		/**停止这个图标的一切动画 */
 		public reset(){
-
+			if(this.tileMc){
+				this.tileMc.stop();
+			}
+			this.borderLight.visible = false;
+			this.borderLight.stop();
+			egret.Tween.removeTweens(this.tileImg);
+			this.tileImg.scaleX = this.tileImg.scaleY = 1;
 		}
 	}
 }
