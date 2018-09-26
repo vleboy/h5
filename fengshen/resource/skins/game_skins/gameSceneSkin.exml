@@ -7,9 +7,9 @@
 	<e:Group id="contentBgGroup" width="1920" height="1080" x="0" y="0">
 		<e:Image source="contentbg_png" horizontalCenter="0" y="28" x="109"/>
 		<game:AMovieClip id="title" y="29" source="title_json.title1_png" x="593" sources="title|1-30|_png"/>
-		<game:AMovieClip id="border2" y="91" source="borderAni_json.zzz_01_png" x="769" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" visible="false"/>
-		<game:AMovieClip id="border3" y="91" source="borderAni_json.zzz_01_png" x="1048" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" visible="false"/>
-		<game:AMovieClip id="border4" y="91" source="borderAni_json.zzz_01_png" x="1329" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" visible="false"/>
+
+
+
 	</e:Group>
 	<e:Group id="contentGroup" width="1920" height="1080" horizontalCenter="0" verticalCenter="0" touchEnabled="false" touchChildren="false">
 
@@ -57,30 +57,62 @@
 			<e:Image id="vagueTile18" source="vague1_png" horizontalCenter="560" verticalCenter="248"/>
 			<e:Image id="vagueTile19" source="vague1_png" horizontalCenter="560" verticalCenter="496"/>
 		</e:Group>
+		<game:AMovieClip id="border2" y="91" source="borderAni_json.zzz_01_png" x="769" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" speed="3" visible="false"/>
+		<game:AMovieClip id="border3" y="91" source="borderAni_json.zzz_01_png" x="1048" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" speed="3" visible="false"/>
+		<game:AMovieClip id="border4" y="91" source="borderAni_json.zzz_01_png" x="1329" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" speed="3" visible="false"/>
 	</e:Group>
 	<e:Group id="lineNumGroup" width="1920" height="1080" x="0" y="0">
-		<e:Image id="leftLine6" x="168" y="157" source="circle6_png"/>
-		<e:Image id="leftLine2" x="168" y="233" source="circle2_png"/>
-		<e:Image id="leftLine4" x="168" y="309" source="circle4_png"/>
-		<e:Image id="leftLine8" x="168" y="413" source="circle8_png"/>
-		<e:Image id="leftLine1" x="168" y="489" source="circle1_png"/>
-		<e:Image id="leftLine9" x="168" y="567" source="circle9_png"/>
-		<e:Image id="leftLine5" x="168" y="668" source="circle5_png"/>
-		<e:Image id="leftLine3" x="168" y="747" source="circle3_png"/>
-		<e:Image id="leftLine7" x="168" y="826" source="circle7_png"/>
-		<e:Image id="rightLine6" x="1665" y="157" source="circle6_png"/>
-		<e:Image id="rightLine2" x="1665" y="233" source="circle2_png"/>
-		<e:Image id="rightLine4" source="circle4_png" x="1665" y="309"/>
-		<e:Image id="rightLine8" x="1665" y="413" source="circle8_png"/>
-		<e:Image id="rightLine1" x="1665" y="489" source="circle1_png"/>
-		<e:Image id="rightLine9" x="1665" y="567" source="circle9_png"/>
-		<e:Image id="rightLine5" x="1665" y="668" source="circle5_png"/>
-		<e:Image id="rightLine3" x="1665" y="747" source="circle3_png"/>
-		<e:Image id="rightLine7" x="1665" y="826" source="circle7_png"/>
+		<e:Image id="leftLine6" source="circle6_png" horizontalCenter="-756.5" verticalCenter="-345"/>
+		<e:Image id="leftLine2" source="circle2_png" horizontalCenter="-756.5" verticalCenter="-269"/>
+		<e:Image id="leftLine4" source="circle4_png" horizontalCenter="-756.5" verticalCenter="-193"/>
+		<e:Image id="leftLine8" source="circle8_png" horizontalCenter="-756.5" verticalCenter="-89"/>
+		<e:Image id="leftLine1" source="circle1_png" horizontalCenter="-756.5" verticalCenter="-13"/>
+		<e:Image id="leftLine9" source="circle9_png" horizontalCenter="-756.5" verticalCenter="65"/>
+		<e:Image id="leftLine5" source="circle5_png" horizontalCenter="-756.5" verticalCenter="166"/>
+		<e:Image id="leftLine3" source="circle3_png" horizontalCenter="-756.5" verticalCenter="245"/>
+		<e:Image id="leftLine7" source="circle7_png" horizontalCenter="-756.5" verticalCenter="324"/>
+		<e:Image id="rightLine6" source="circle6_png" horizontalCenter="740.5" verticalCenter="-345"/>
+		<e:Image id="rightLine2" source="circle2_png" horizontalCenter="740.5" verticalCenter="-269"/>
+		<e:Image id="rightLine4" source="circle4_png" horizontalCenter="740.5" verticalCenter="-193"/>
+		<e:Image id="rightLine8" source="circle8_png" horizontalCenter="740.5" verticalCenter="-89"/>
+		<e:Image id="rightLine1" source="circle1_png" horizontalCenter="740.5" verticalCenter="-13"/>
+		<e:Image id="rightLine9" source="circle9_png" horizontalCenter="740.5" verticalCenter="65"/>
+		<e:Image id="rightLine5" source="circle5_png" horizontalCenter="740.5" verticalCenter="166"/>
+		<e:Image id="rightLine3" source="circle3_png" horizontalCenter="740.5" verticalCenter="245"/>
+		<e:Image id="rightLine7" source="circle7_png" horizontalCenter="740.5" verticalCenter="324"/>
+		
+		<e:Image id="leftLineLight6" source="circlelight6_png" horizontalCenter="-756.5" verticalCenter="-347" scaleX="0.87" scaleY="0.87" visible="false"/>
+		<e:Image id="leftLineLight2" source="circlelight2_png" horizontalCenter="-756.5" verticalCenter="-271" scaleX="0.87" scaleY="0.87" visible="false"/>
+		<e:Image id="leftLineLight4" source="circlelight4_png" horizontalCenter="-756.5" verticalCenter="-195" visible="false"/>
+		<e:Image id="leftLineLight8" source="circlelight8_png" horizontalCenter="-756.5" verticalCenter="-91" visible="false"/>
+		<e:Image id="leftLineLight1" source="circlelight1_png" horizontalCenter="-756.5" verticalCenter="-15" visible="false"/>
+		<e:Image id="leftLineLight9" source="circlelight9_png" horizontalCenter="-756.5" verticalCenter="63" visible="false"/>
+		<e:Image id="leftLineLight5" source="circlelight5_png" horizontalCenter="-756.5" verticalCenter="164" visible="false"/>
+		<e:Image id="leftLineLight3" source="circlelight3_png" horizontalCenter="-756.5" verticalCenter="243" visible="false"/>
+		<e:Image id="leftLineLight7" source="circlelight7_png" horizontalCenter="-756.5" verticalCenter="322" visible="false"/>
+		<e:Image id="rightLineLight6" source="circlelight6_png" horizontalCenter="740.5" verticalCenter="-347" visible="false"/>
+		<e:Image id="rightLineLight2" source="circlelight2_png" horizontalCenter="740.5" verticalCenter="-271" visible="false"/>
+		<e:Image id="rightLineLight4" source="circlelight4_png" horizontalCenter="740.5" verticalCenter="-195" visible="false"/>
+		<e:Image id="rightLineLight8" source="circlelight8_png" horizontalCenter="740.5" verticalCenter="-91" visible="false"/>
+		<e:Image id="rightLineLight1" source="circlelight1_png" horizontalCenter="740.5" verticalCenter="-15" visible="false"/>
+		<e:Image id="rightLineLight9" source="circlelight9_png" horizontalCenter="740.5" verticalCenter="63" visible="false"/>
+		<e:Image id="rightLineLight5" source="circlelight5_png" horizontalCenter="740.5" verticalCenter="164" visible="false"/>
+		<e:Image id="rightLineLight3" source="circlelight3_png" horizontalCenter="740.5" verticalCenter="243" visible="false"/>
+		<e:Image id="rightLineLight7" source="circlelight7_png" horizontalCenter="740.5" verticalCenter="322" visible="false"/>
 	</e:Group>
 	<game:BottomBar id="bottomBar" width="1920" horizontalCenter="0" touchChildren="true" touchEnabled="false" bottom="0"/>
 	<e:BitmapLabel id="lineWinTxt" height="35" font="fnt35_fnt" horizontalCenter="0" verticalCenter="0" text=""/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
+	<e:Group id="freeChanceGroup" width="1920" height="1080" x="0" y="0" visible="false">
+		<e:Image source="enterFreeBg_png" x="0" y="0"/>
+		<e:Image id="freeChange1" source="freeWinTitle_png" y="30" horizontalCenter="0"/>
+		<e:Group id="freeChange2" width="1920" height="1080" x="0" y="0">
+			<e:Image source="gain_png" y="338" horizontalCenter="0" x="827" scaleX="1" scaleY="1"/>
+			<e:BitmapLabel id="moreFreeTimesTxt" height="200" y="495" font="fnt194_fnt" text="0" horizontalCenter="0" x="882" scaleX="1" scaleY="1"/>
+			<e:Image source="freeSpin_png" y="731" horizontalCenter="0" x="716" scaleX="1" scaleY="1"/>
+		</e:Group>
+	</e:Group>
+	<e:Rect id="whiteMask" width="1920" height="1080" x="0" y="0" fillColor="0xffffff" visible="false"/>
 	<e:TextInput id="testInput" width="95.94" height="57.88" x="30" y="80" anchorOffsetX="0" anchorOffsetY="0"/>
 
 

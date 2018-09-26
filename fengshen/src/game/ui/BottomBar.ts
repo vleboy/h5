@@ -277,13 +277,14 @@ module game {
 			if (this.isAuto && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = true;
 			this.isAuto = num != 0;
 			this.autoCount = num;
-			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
+			(this.autoNumBtn.getChildByName("maxImg") as eui.Image).visible = num < 0;
+			(this.autoNumBtn.getChildByName("countTxt") as eui.Label).text = num >= 0 ? (num + "") : "";
 			// if(num == 0) this.spinBtnShow();
 		}
 		/**免费下注次数*/
 		public setFreeBetNum(num: number): void {
 			if (this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
-			this.autoNum.text = num + "";
+			(this.freeNumBtn.getChildByName("countTxt") as eui.Label).text = num + "";
 		}
 		/**
          * 资源释放
