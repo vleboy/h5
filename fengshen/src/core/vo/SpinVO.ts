@@ -38,6 +38,7 @@ module game {
 			totalGold: number;
 			userBalance: string;
 			viewGrid: string[];
+			wildFlow: number[];
 			winGrid: {
 				gold: number;
 				line: number[];
