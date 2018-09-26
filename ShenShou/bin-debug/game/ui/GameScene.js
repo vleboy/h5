@@ -1189,7 +1189,7 @@ var game;
                     _this.mc.y = _this.tile.y - 1;
                     _this.mc.width = 207;
                     _this.mc.height = 202;
-                    _this.mc.speed = 6;
+                    _this.mc.speed = 4;
                     _this.mc.loop = isLong ? 2 : 1;
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
                     _this.mc.play();

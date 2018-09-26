@@ -1131,7 +1131,7 @@ module game {
 					this.mc.y = this.tile.y - 1;
 					this.mc.width = 207;
 					this.mc.height = 202;
-					this.mc.speed = 6;
+					this.mc.speed = 4;
 					this.mc.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
