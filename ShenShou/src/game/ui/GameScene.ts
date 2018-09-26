@@ -821,7 +821,6 @@ module game {
 					);
 					console.log("第" + lineIndex + "条中奖线展示完成", v);
 				}
-
 				for (let i = 0; i < arr.length; i++) {
 					await singleLineShow(arr[i], i);
 				}
@@ -968,24 +967,38 @@ module game {
 			egret.Tween.removeTweens(this.freeChooseCountBoom);
 			this.freeChooseCountBoom.scaleX = 1;
 			this.freeChooseCountBoom.scaleY = 1;
-			this.freeChooseCountBoom.x = 960;
-			this.freeChooseCountBoom.y = 540;
-
+			let defX = this.freeChooseCountBoom.x;
+			let defY = this.freeChooseCountBoom.y;
 			let isShow: boolean = this.featureChanceCount > 0;
 			if (isAn) {
-				isShow && egret.Tween.get(this.freeChooseCountBoom)
-					.call(() => this.freeChooseCountBoom.visible = true)
-					.to({ scaleX: 0.3, scaleY: 0.3, x: 1657, y: 140 }, 1000)
-					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
-					.call(() => {
-						this.freeChooseCountBoom.play();
-						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-						this.freeChooseCount.visible = isShow;
-						setTimeout(() => {
-							this.freeChooseCountBoom.stop();
-							this.freeChooseCountBoom.visible = false;
-						}, 1000)
+				if (isShow) {
+					let p = new particle.GravityParticleSystem(RES.getRes("freeChanceParticle_png"), RES.getRes("freeChanceParticle_json"));
+					this.freeChooseCountBoom.parent.addChild(p);
+					p.blendMode = egret.BlendMode.ADD;
+					p.emitterX = this.freeChooseCountBoom.x;
+					p.emitterY = this.freeChooseCountBoom.y;
+					p.start();
+					egret.Tween.get(this.freeChooseCountBoom, {
+						onChange: () => {
+							p.emitterX = this.freeChooseCountBoom.x;
+							p.emitterY = this.freeChooseCountBoom.y;
+						}, onChangeObj: this
 					})
+						.set({ x: 960, y: 540 })
+						.call(() => this.freeChooseCountBoom.visible = true)
+						.to({ scaleX: 0.3, scaleY: 0.3, x: defX, y: defY }, 1000)
+						.call(() => p.stop())
+						.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
+						.call(() => {
+							this.freeChooseCountBoom.play();
+							this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
+							this.freeChooseCount.visible = isShow;
+							setTimeout(() => {
+								this.freeChooseCountBoom.stop();
+								this.freeChooseCountBoom.visible = false;
+							}, 1000);
+						});
+				}
 			} else {
 				this.freeChooseCount.visible = isShow;
 				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
@@ -1117,7 +1130,7 @@ module game {
 					this.mc.y = this.tile.y - 1;
 					this.mc.width = 207;
 					this.mc.height = 202;
-					this.mc.speed = 6;
+					this.mc.speed = 4;
 					this.mc.loop = isLong ? 2 : 1;
 					this.gameScene["winGridGroup"].addChild(this.mc);
 					this.mc.play();
@@ -1167,7 +1180,7 @@ module game {
 								this.mc2.parent.removeChild(this.mc2);
 								this.mc2 = null;
 							}
-							if(this.wildbg){
+							if (this.wildbg) {
 								this.wildbg.parent.removeChild(this.wildbg);
 								this.wildbg = null;
 							}
@@ -1217,7 +1230,7 @@ module game {
 				this.mc2.parent.removeChild(this.mc2);
 				this.mc2 = null;
 			}
-			if(this.wildbg){
+			if (this.wildbg) {
 				this.wildbg.parent.removeChild(this.wildbg);
 				this.wildbg = null;
 			}
