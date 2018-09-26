@@ -250,6 +250,8 @@ var game;
                     break;
                 case game.NotifyConst.chooseFreeBack:
                     this.freeSpinRemainCount = body.payload.featureData.freeSpinRemainCount;
+                    if (this.spinResp)
+                        this.spinResp.payload.featureData.buff = body.payload.featureData.buff;
                     this.buff = body.payload.featureData.buff;
                     this.featureChanceCount--;
                     this.isFree = true;
@@ -707,20 +709,20 @@ var game;
             this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
             /**中奖的里面有没有wild*/
             grids.some(function (v) { return _this.spinResp.payload.viewGrid[v] == "1"; }) && this.isFree && this.freeMultiAni(this.featureMultiplier);
-            return Promise.all(grids.map(function (v) { return _this.symbols[v].imgWinAni(); }));
+            return Promise.all(grids.map(function (v) { return _this.symbols[v].imgWinAni(0); }));
         };
         /**
          * scatter图标动画
          * */
         GameScene.prototype.showScatterLine = function () {
             var _this = this;
+            var lineTxt = "";
             if (this.spinResp.payload.getFeatureChance) {
-                this.lineWinTxt.visible = true;
-                this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
+                lineTxt = this.spinResp.payload.scatterGold.toFixed(2);
             }
             return Promise.all(this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map(function (value, column) {
                 var gridIndex = value + column * 3;
-                return _this.symbols[gridIndex].imgWinAni(false);
+                return _this.symbols[gridIndex].imgWinAni(400, false, lineTxt);
             }) : []);
         };
         GameScene.prototype.stopScatterLine = function () {
@@ -770,17 +772,9 @@ var game;
                         res();
                     }
                     else {
-                        _this.lineWinTxt.visible = true;
-                        _this.lineWinTxt.text = gold.toFixed(2);
                         var gridIndex = value + column * 3;
-                        var target_1 = _this["tile" + gridIndex];
-                        target_1.visible = false;
                         _this.particleBg.visible = true;
-                        setTimeout(function () {
-                            res();
-                            _this.lineWinTxt.visible = false;
-                            target_1.visible = true;
-                        }, 1400);
+                        _this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(function () { return res(); });
                     }
                 });
             }) : []);
@@ -801,12 +795,12 @@ var game;
                         case 0:
                             singleLineShow = function (v, lineIndex) { return __awaiter(_this, void 0, void 0, function () {
                                 var _this = this;
+                                var lineTxt;
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
                                         case 0:
-                                            this.lineWinTxt.visible = true;
-                                            this.lineWinTxt.text = v.gold.toFixed(2);
-                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(false); }))];
+                                            lineTxt = v.gold.toFixed(2);
+                                            return [4 /*yield*/, Promise.all(v.winCard.map(function (value, column) { return _this.symbols[value + column * 3].imgWinAni(400, false, lineTxt); }))];
                                         case 1:
                                             _a.sent();
                                             console.log("第" + lineIndex + "条中奖线展示完成", v);
@@ -896,6 +890,7 @@ var game;
             this.initStar(b);
             this.setState(game.GameState.BET);
             this.updateBgm();
+            this.wildShow(b);
             setTimeout(function () {
                 if (b) {
                     _this.spin();
@@ -905,6 +900,15 @@ var game;
                         _this.spin();
                 }
             }, 500);
+        };
+        /**
+         * wild图标显示
+        */
+        GameScene.prototype.wildShow = function (isFree) {
+            var _this = this;
+            this.symbols && this.symbols.forEach(function (v) {
+                v.value == "1" && (v.tile.source = isFree ? ("symbolName_1_" + _this.buff + "_png") : "symbolName_1_png");
+            });
         };
         /**
          * 刷新免费选择次数
@@ -1005,33 +1009,38 @@ var game;
         /**
          * 图标中奖动画
         */
-        Symbol.prototype.imgWinAni = function (isLong) {
+        Symbol.prototype.imgWinAni = function (waitTime, isLong, lineWinTxt) {
             var _this = this;
             if (isLong === void 0) { isLong = true; }
             return new Promise(function (res, rej) {
                 var theLoop = isLong ? 2 : 1;
-                var wait = isLong ? 2800 : 1400;
-                _this.mc = new game.AMovieClip();
-                _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
-                _this.mc.speed = 5;
-                _this.mc.x = _this.tile.x + 2;
-                _this.mc.y = _this.tile.y + 5;
-                _this.mc.width = _this.tile.width;
-                _this.mc.height = _this.tile.height;
-                _this.gameScene["winGridGroup"].addChild(_this.mc);
-                _this.mc.play();
-                _this.mc.loop = isLong ? 2 : 1;
-                _this.tile.visible = false;
-                _this.gameScene.particleBg.visible = true;
-                _this.mc.once(game.AMovieClip.COMPLETE, function () {
-                    _this.tile.visible = true;
-                    _this.mc.visible = false;
-                    _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
-                    _this.mc = null;
-                    !isLong && (_this.gameScene.lineWinTxt.visible = false);
-                    _this.gameScene.particleBg.visible = false;
-                    res();
-                }, _this);
+                egret.Tween.get(_this.tile).call(function () {
+                    _this.mc = new game.AMovieClip();
+                    _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-15|_png");
+                    _this.mc.speed = 5;
+                    _this.mc.x = _this.tile.x + 2;
+                    _this.mc.y = _this.tile.y + 5;
+                    _this.mc.width = _this.tile.width;
+                    _this.mc.height = _this.tile.height;
+                    _this.gameScene.particleBg.visible = true;
+                }).wait(waitTime).call(function () {
+                    _this.gameScene["winGridGroup"].addChild(_this.mc);
+                    !isLong && (_this.gameScene.lineWinTxt.visible = true);
+                    !isLong && lineWinTxt && (_this.gameScene.lineWinTxt.text = lineWinTxt);
+                    _this.mc.play();
+                    _this.mc.loop = isLong ? 2 : 1;
+                    _this.tile.visible = false;
+                    _this.mc.once(game.AMovieClip.COMPLETE, function () {
+                        _this.tile.visible = true;
+                        _this.mc.visible = false;
+                        _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
+                        _this.mc = null;
+                        !isLong && (_this.gameScene.lineWinTxt.visible = false);
+                        _this.gameScene.particleBg.visible = false;
+                        egret.Tween.removeTweens(_this.tile);
+                        res();
+                    }, _this);
+                });
             });
         };
         /**
@@ -1045,7 +1054,7 @@ var game;
                 this.mc = null;
             }
             if (this.value == "1") {
-                this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
+                this.tile.source = this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png");
             }
             this.tile.visible = true;
             if (this.tile.parent != this.gameScene.valueTiles)

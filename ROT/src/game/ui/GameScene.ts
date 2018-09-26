@@ -52,6 +52,7 @@ module game {
 		/**免费模式下本次转动的buff */
 		public buff: string = "-1";
 		private autoMax: boolean;
+		/**余额*/
 		private theBalance: string;
 		private rollChannel: egret.SoundChannel;
 		/**是否返回数据*/
@@ -267,6 +268,7 @@ module game {
 					break;
 				case NotifyConst.chooseFreeBack:
 					this.freeSpinRemainCount = (body as ChooseBuffVO).payload.featureData.freeSpinRemainCount;
+					if (this.spinResp) this.spinResp.payload.featureData.buff = (body as ChooseBuffVO).payload.featureData.buff;
 					this.buff = (body as ChooseBuffVO).payload.featureData.buff;
 					this.featureChanceCount--;
 					this.isFree = true;
@@ -641,20 +643,18 @@ module game {
 			this.bottomBar.setWinMoney(this.spinResp.payload.totalGold);
 			/**中奖的里面有没有wild*/
 			grids.some(v => this.spinResp.payload.viewGrid[v] == "1") && this.isFree && this.freeMultiAni(this.featureMultiplier);
-			return Promise.all(grids.map((v) => this.symbols[v].imgWinAni()));
+			return Promise.all(grids.map((v) => this.symbols[v].imgWinAni(0)));
 		}
 		/**
 		 * scatter图标动画
 		 * */
 		private showScatterLine() {
-			if (this.spinResp.payload.getFeatureChance) {
-				this.lineWinTxt.visible = true;
-				this.lineWinTxt.text = this.spinResp.payload.scatterGold.toFixed(2);
-			}
+			let lineTxt: string = "";
+			if (this.spinResp.payload.getFeatureChance) { lineTxt = this.spinResp.payload.scatterGold.toFixed(2); }
 			return Promise.all(
 				this.spinResp.payload.getFeatureChance ? this.spinResp.payload.scatterGrid.map((value: number, column: number) => {
 					let gridIndex = value + column * 3;
-					return this.symbols[gridIndex].imgWinAni(false);
+					return this.symbols[gridIndex].imgWinAni(400, false, lineTxt);
 				}) : [])
 		}
 		private stopScatterLine() {
@@ -701,17 +701,9 @@ module game {
 						if (value == -1) {
 							res();
 						} else {
-							this.lineWinTxt.visible = true;
-							this.lineWinTxt.text = gold.toFixed(2);
 							let gridIndex = value + column * 3;
-							let target = this["tile" + gridIndex];
-							target.visible = false;
 							this.particleBg.visible = true;
-							setTimeout(() => {
-								res();
-								this.lineWinTxt.visible = false;
-								target.visible = true;
-							}, 1400);
+							this.symbols[gridIndex].imgWinAni(400, false, gold.toFixed(2)).then(() => res());
 						}
 					})
 				}) : []);
@@ -725,9 +717,8 @@ module game {
 			arr.forEach((v, i) => { v.symbol == "0" && arr.splice(i, 1); });
 			return new Promise(async (resolve, reject) => {
 				let singleLineShow = async (v, lineIndex: number) => {
-					this.lineWinTxt.visible = true;
-					this.lineWinTxt.text = v.gold.toFixed(2);
-					await Promise.all(v.winCard.map((value: number, column: number) => { return this.symbols[value + column * 3].imgWinAni(false); }));
+					let lineTxt: string = v.gold.toFixed(2);
+					await Promise.all(v.winCard.map((value: number, column: number) => { return this.symbols[value + column * 3].imgWinAni(400, false, lineTxt); }));
 					console.log("第" + lineIndex + "条中奖线展示完成", v);
 				}
 				for (let i = 0; i < arr.length; i++) { await singleLineShow(arr[i], i); }
@@ -796,6 +787,7 @@ module game {
 			this.initStar(b);
 			this.setState(GameState.BET);
 			this.updateBgm();
+			this.wildShow(b);
 			setTimeout(() => {
 				if (b) {
 					this.spin();
@@ -804,8 +796,14 @@ module game {
 					if (this.autoMax || this.autoCount > 0) this.spin();
 				}
 			}, 500);
-
-
+		}
+		/**
+		 * wild图标显示
+		*/
+		private wildShow(isFree: boolean): void {
+			this.symbols && this.symbols.forEach(v => {
+				v.value == "1" && (v.tile.source = isFree ? ("symbolName_1_" + this.buff + "_png") : "symbolName_1_png");
+			});
 		}
 		/**
 		 * 刷新免费选择次数
@@ -879,10 +877,7 @@ module game {
 				this.setState(GameState.BET);
 			}
 		}
-
 	}
-
-
 	/**
 	 * 图标动画类
 	 * */
@@ -905,31 +900,36 @@ module game {
 		/**
 		 * 图标中奖动画
 		*/
-		public imgWinAni(isLong: boolean = true): Promise<{}> {
+		public imgWinAni(waitTime: number, isLong: boolean = true, lineWinTxt?: string): Promise<{}> {
 			return new Promise((res, rej) => {
 				let theLoop: number = isLong ? 2 : 1;
-				let wait: number = isLong ? 2800 : 1400;
-				this.mc = new AMovieClip();
-				this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
-				this.mc.speed = 5;
-				this.mc.x = this.tile.x + 2;
-				this.mc.y = this.tile.y + 5;
-				this.mc.width = this.tile.width;
-				this.mc.height = this.tile.height;
-				this.gameScene["winGridGroup"].addChild(this.mc);
-				this.mc.play();
-				this.mc.loop = isLong ? 2 : 1;
-				this.tile.visible = false;
-				this.gameScene.particleBg.visible = true;
-				this.mc.once(AMovieClip.COMPLETE, () => {
-					this.tile.visible = true;
-					this.mc.visible = false;
-					this.mc.parent && this.mc.parent.removeChild(this.mc);
-					this.mc = null;
-					!isLong && (this.gameScene.lineWinTxt.visible = false);
-					this.gameScene.particleBg.visible = false;
-					res();
-				}, this);
+				egret.Tween.get(this.tile).call(() => {
+					this.mc = new AMovieClip();
+					this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
+					this.mc.speed = 5;
+					this.mc.x = this.tile.x + 2;
+					this.mc.y = this.tile.y + 5;
+					this.mc.width = this.tile.width;
+					this.mc.height = this.tile.height;
+					this.gameScene.particleBg.visible = true;
+				}).wait(waitTime).call(() => {
+					this.gameScene["winGridGroup"].addChild(this.mc);
+					!isLong && (this.gameScene.lineWinTxt.visible = true);
+					!isLong && lineWinTxt && (this.gameScene.lineWinTxt.text = lineWinTxt);
+					this.mc.play();
+					this.mc.loop = isLong ? 2 : 1;
+					this.tile.visible = false;
+					this.mc.once(AMovieClip.COMPLETE, () => {
+						this.tile.visible = true;
+						this.mc.visible = false;
+						this.mc.parent && this.mc.parent.removeChild(this.mc);
+						this.mc = null;
+						!isLong && (this.gameScene.lineWinTxt.visible = false);
+						this.gameScene.particleBg.visible = false;
+						egret.Tween.removeTweens(this.tile);
+						res();
+					}, this);
+				});
 			});
 		}
 		/**
@@ -943,7 +943,7 @@ module game {
 				this.mc = null;
 			}
 			if (this.value == "1") {
-				this.tile.source = (this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png"));
+				this.tile.source = this.gameScene.buff == "-1" ? "symbolName_1_png" : ("symbolName_1_" + this.gameScene.buff + "_png");
 			}
 			this.tile.visible = true;
 			if (this.tile.parent != this.gameScene.valueTiles) this.gameScene.valueTiles.addChild(this.tile);
