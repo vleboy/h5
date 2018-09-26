@@ -1029,23 +1029,38 @@ var game;
             egret.Tween.removeTweens(this.freeChooseCountBoom);
             this.freeChooseCountBoom.scaleX = 1;
             this.freeChooseCountBoom.scaleY = 1;
-            this.freeChooseCountBoom.x = 960;
-            this.freeChooseCountBoom.y = 540;
+            var defX = this.freeChooseCountBoom.x;
+            var defY = this.freeChooseCountBoom.y;
             var isShow = this.featureChanceCount > 0;
             if (isAn) {
-                isShow && egret.Tween.get(this.freeChooseCountBoom)
-                    .call(function () { return _this.freeChooseCountBoom.visible = true; })
-                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1687, y: 130 }, 1000)
-                    .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
-                    .call(function () {
-                    _this.freeChooseCountBoom.play();
-                    _this.freeChooseCountTxt.text = "x" + _this.featureChanceCount;
-                    _this.freeChooseCount.visible = isShow;
-                    setTimeout(function () {
-                        _this.freeChooseCountBoom.stop();
-                        _this.freeChooseCountBoom.visible = false;
-                    }, 1000);
-                });
+                if (isShow) {
+                    var p_2 = new particle.GravityParticleSystem(RES.getRes("freeChanceParticle_png"), RES.getRes("freeChanceParticle_json"));
+                    this.freeChooseCountBoom.parent.addChild(p_2);
+                    p_2.blendMode = egret.BlendMode.ADD;
+                    p_2.emitterX = this.freeChooseCountBoom.x;
+                    p_2.emitterY = this.freeChooseCountBoom.y;
+                    p_2.start();
+                    egret.Tween.get(this.freeChooseCountBoom, {
+                        onChange: function () {
+                            p_2.emitterX = _this.freeChooseCountBoom.x;
+                            p_2.emitterY = _this.freeChooseCountBoom.y;
+                        }, onChangeObj: this
+                    })
+                        .set({ x: 960, y: 540 })
+                        .call(function () { return _this.freeChooseCountBoom.visible = true; })
+                        .to({ scaleX: 0.3, scaleY: 0.3, x: defX, y: defY }, 1000)
+                        .call(function () { return p_2.stop(); })
+                        .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
+                        .call(function () {
+                        _this.freeChooseCountBoom.play();
+                        _this.freeChooseCountTxt.text = "x" + _this.featureChanceCount;
+                        _this.freeChooseCount.visible = isShow;
+                        setTimeout(function () {
+                            _this.freeChooseCountBoom.stop();
+                            _this.freeChooseCountBoom.visible = false;
+                        }, 1000);
+                    });
+                }
             }
             else {
                 this.freeChooseCount.visible = isShow;

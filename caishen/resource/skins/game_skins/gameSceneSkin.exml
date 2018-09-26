@@ -97,7 +97,7 @@
 		<game:AMovieClip id="freeChangeMc" width="292" height="141" source="freeChange28_png" horizontalCenter="0" verticalCenter="-90" scaleX="5" scaleY="5" loop="1" sources="freeChange|1-33|_png" speed="4"/>
 		<e:Image id="freeChangeImg" source="FreeChance_png" horizontalCenter="0" verticalCenter="-90" width="1246" height="179" x="337" y="451.00000000000006" scaleX="1" scaleY="1"/>
 	</e:Group>
-	<game:AMovieClip id="freeChooseCountBoom" width="128" height="128" anchorOffsetX="64" anchorOffsetY="64" y="187" x="1727" source="zz_1_png" visible="false"/>
+	<game:AMovieClip id="freeChooseCountBoom" width="128" height="128" anchorOffsetX="64" anchorOffsetY="64" y="187" x="1727" source="zz_1_png" speed="1" visible="false"/>
 	<game:BigWin id="bigWin" height="1080" width="1920" horizontalCenter="0" verticalCenter="0" visible="false"/>
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
 	<game:FreeChoose id="freeChoose" width="1920" height="1080" x="0" y="0" visible="false"/>
