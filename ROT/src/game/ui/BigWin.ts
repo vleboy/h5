@@ -14,6 +14,7 @@ module game {
         private winNum: number = 0;
         private winChannel: egret.SoundChannel;
         private theParticle: particle.GravityParticleSystem;
+        private timeOut;
         /**展示的时间数组*/
         private showTime: number[];
         public init(): void {
@@ -37,33 +38,29 @@ module game {
             }
             this.winChannel = SoundPlayer.playEffect("ROT_243_BigWin_mp3");
             return new Promise((res, rej) => {
-                this.boomAni().then(() => {
+                this.boomAni();
+                if (this.timeOut) clearTimeout(this.timeOut);
+                this.timeOut = setTimeout(() => {
+                    this.winLight.play();
+                    this.winLight.visible = true;
+                    this.payoutGroup.visible = true;
                     Promise.all([this.payOut(money, timer), this.winTxtAni(type)]).then(() => {
                         if (this.winChannel) this.winChannel.stop();
+                        this.winLight.visible = false;
+                        this.payoutGroup.visible = false;
                         res();
-                    });
-                })
+                    })
+                }, 400);
             });;
         }
         /**boom动画*/
-        private boomAni(): Promise<{}> {
-            return new Promise((res, rej) => {
-                //boom显示
-                let booShow = (isBo: boolean = true) => {
-                    this.payoutGroup.visible = !isBo;
-                    this.boomLight.visible = isBo;
-                    this.winLight.visible = !isBo;
-                };
-                booShow();
-                this.boomLight.play();
-                this.boomLight.loop = 1;
-                this.boomLight.once(AMovieClip.COMPLETE, () => {
-                    booShow(false);
-                    this.winLight.play();
-                    res();
-                }, this);
-            });
-
+        private boomAni(): void {
+            this.boomLight.visible = true;
+            this.boomLight.play();
+            this.boomLight.loop = 1;
+            this.boomLight.once(AMovieClip.COMPLETE, () => {
+                this.boomLight.visible = false;
+            }, this);
         }
         /**winTxtAni*/
         private winTxtAni(type: string) {
@@ -93,15 +90,15 @@ module game {
                     case "mega":
                         wait(this.showTime[0]).then(() => {
                             txtAni("megaWin_png");
-                            this.spurtCoin(megaTime,20).then(() => { this.visible = false; res(); });
+                            this.spurtCoin(megaTime, 20).then(() => { this.visible = false; res(); });
                         });
                         break;
                     case "super":
                         wait(this.showTime[0]).then(() => {
                             txtAni("megaWin_png");
-                            this.spurtCoin(megaTime,20).then(() => {
+                            this.spurtCoin(megaTime, 20).then(() => {
                                 txtAni("superWin_png");
-                                this.spurtCoin(superTime,40).then(() => { this.visible = false; res(); });
+                                this.spurtCoin(superTime, 40).then(() => { this.visible = false; res(); });
                             });
                         });
                         break;

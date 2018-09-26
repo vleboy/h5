@@ -69,7 +69,7 @@ var game;
                 var target = _this["choose" + v];
                 var defaultY = target.y;
                 egret.Tween.get(target)
-                    .set({ y: defaultY - 1000 })
+                    .set({ y: defaultY - 1200 })
                     .wait(i * 150 + 500)
                     .call(function () {
                     game.SoundPlayer.playEffect("ShenShou_243_CardAppear_mp3");
@@ -115,16 +115,17 @@ var game;
                     var respData_1;
                     Promise.all([
                         new Promise(function (resolve, reject) {
+                            var endY = i >= 3 ? 76 : 46;
                             var img = new eui.Image("wildbg" + (i + 1) + "_png");
                             img.width = 207;
                             img.height = 202;
                             img.x = 155;
-                            img.y = 46;
+                            img.y = endY;
                             target.addChildAt(img, 2);
                             var mc = new game.AMovieClip();
                             mc.sources = "wildAni|1-36|_png";
                             mc.x = 155;
-                            mc.y = 46;
+                            mc.y = endY;
                             mc.width = 207;
                             mc.height = 202;
                             mc.speed = 6;
