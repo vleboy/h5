@@ -1035,7 +1035,7 @@ var game;
             if (isAn) {
                 isShow && egret.Tween.get(this.freeChooseCountBoom)
                     .call(function () { return _this.freeChooseCountBoom.visible = true; })
-                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1657, y: 140 }, 1000)
+                    .to({ scaleX: 0.3, scaleY: 0.3, x: 1687, y: 130 }, 1000)
                     .to({ scaleX: 1.2, scaleY: 1.2 }, 10)
                     .call(function () {
                     _this.freeChooseCountBoom.play();

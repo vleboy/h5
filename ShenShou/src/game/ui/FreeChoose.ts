@@ -21,7 +21,7 @@ module game {
 				let target = this["choose" + v];
 				let defaultY = target.y;
 				egret.Tween.get(target)
-					.set({ y: defaultY - 1000 })
+					.set({ y: defaultY - 1200 })
 					.wait(i * 150 + 500)
 					.call(() => {
 						SoundPlayer.playEffect("ShenShou_243_CardAppear_mp3");
@@ -57,16 +57,17 @@ module game {
 					let respData;
 					Promise.all([
 						new Promise((resolve, reject) => {
+							let endY:number = i >= 3 ? 76 : 46;
 							let img: eui.Image = new eui.Image("wildbg" + (i + 1) + "_png");
 							img.width = 207;
 							img.height = 202;
 							img.x = 155;
-							img.y = 46;
+							img.y = endY;
 							target.addChildAt(img, 2);
 							let mc = new AMovieClip();
 							mc.sources = "wildAni|1-36|_png";
 							mc.x = 155;
-							mc.y = 46;
+							mc.y = endY;
 							mc.width = 207;
 							mc.height = 202;
 							mc.speed = 6;

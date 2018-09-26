@@ -968,14 +968,16 @@ module game {
 			egret.Tween.removeTweens(this.freeChooseCountBoom);
 			this.freeChooseCountBoom.scaleX = 1;
 			this.freeChooseCountBoom.scaleY = 1;
-			this.freeChooseCountBoom.x = 960;
-			this.freeChooseCountBoom.y = 540;
-
+			let defX = this.freeChooseCountBoom.x;
+			let defY = this.freeChooseCountBoom.y;
 			let isShow: boolean = this.featureChanceCount > 0;
 			if (isAn) {
 				isShow && egret.Tween.get(this.freeChooseCountBoom)
-					.call(() => this.freeChooseCountBoom.visible = true)
-					.to({ scaleX: 0.3, scaleY: 0.3, x: 1657, y: 140 }, 1000)
+					.set({ x: 960, y: 540 })
+					.call(() => {
+						this.freeChooseCountBoom.visible = true
+					})
+					.to({ scaleX: 0.3, scaleY: 0.3, x: defX, y: defY }, 1000)
 					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
 					.call(() => {
 						this.freeChooseCountBoom.play();
@@ -984,8 +986,8 @@ module game {
 						setTimeout(() => {
 							this.freeChooseCountBoom.stop();
 							this.freeChooseCountBoom.visible = false;
-						}, 1000)
-					})
+						}, 1000);
+					});
 			} else {
 				this.freeChooseCount.visible = isShow;
 				isShow && (this.freeChooseCountTxt.text = "x" + this.featureChanceCount);
@@ -1167,7 +1169,7 @@ module game {
 								this.mc2.parent.removeChild(this.mc2);
 								this.mc2 = null;
 							}
-							if(this.wildbg){
+							if (this.wildbg) {
 								this.wildbg.parent.removeChild(this.wildbg);
 								this.wildbg = null;
 							}
@@ -1217,7 +1219,7 @@ module game {
 				this.mc2.parent.removeChild(this.mc2);
 				this.mc2 = null;
 			}
-			if(this.wildbg){
+			if (this.wildbg) {
 				this.wildbg.parent.removeChild(this.wildbg);
 				this.wildbg = null;
 			}
