@@ -821,7 +821,6 @@ module game {
 					);
 					console.log("第" + lineIndex + "条中奖线展示完成", v);
 				}
-
 				for (let i = 0; i < arr.length; i++) {
 					await singleLineShow(arr[i], i);
 				}
