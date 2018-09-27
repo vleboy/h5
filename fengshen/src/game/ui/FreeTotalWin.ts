@@ -14,7 +14,7 @@ module game {
 		}
 
 		public showTotalWin(n:string){
-			SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
+			// SoundPlayer.playEffect("CaiShen_243_FreeOver_mp3");
 			this.visible = true;
 			this.win = +n;
 			this.num = 0;
@@ -22,7 +22,7 @@ module game {
 				.to({num:+n}, 2000)
 				.call(this.stop);
 
-			this.registerEvent(this, egret.TouchEvent.TOUCH_TAP, this.stop, this);
+			this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.stop, this);
 		}
 		private onChange(){
 			this.winTxt.text = this.num.toFixed(2);
@@ -30,6 +30,7 @@ module game {
 		/**跳过缓动 */
 		public stop(){
 			egret.Tween.removeTweens(this);
+			this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.stop, this);
 			this.winTxt.text = this.win.toFixed(2);
 			egret.Tween.get(this.winTxt)
 				.to({scaleX:1.2, scaleY:1.2},300)

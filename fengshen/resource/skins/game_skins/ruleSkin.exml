@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ruleSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Image source="normalbg_png" x="0" y="0"/>
+
+	<e:Image source="contentbg_png" width="1849" height="1019" horizontalCenter="0" verticalCenter="0"/>
+	<e:Group id="scrollGroup" width="1920" height="1080" x="0" y="0">
+		<e:Group id="contentGroup" width="1920" height="1080" x="0" y="0" scaleX="1" scaleY="1">
+			<e:Group id="page1" width="1920" height="1080" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image source="rule1_png" horizontalCenter="0" verticalCenter="32"/>
+			</e:Group>
+			<e:Group id="page2" width="1920" height="1080" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image source="rule2_png" horizontalCenter="0" verticalCenter="32"/>
+			</e:Group>
+			<e:Group id="page3" width="1920" height="1080" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image source="rule3_png" horizontalCenter="0" verticalCenter="32"/>
+				<e:BitmapLabel x="478" y="333" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="478" y="390" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="478" y="447" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="988" y="333" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="988" y="390" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="988" y="447" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="1485" y="333" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="1485" y="390" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="1485" y="447" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="720" y="648" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="720" y="705" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="720" y="764" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="1222" y="648" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="1222" y="705" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="1222" y="764" font="fnt37yellow_fnt" text="3"/>
+				
+				<e:BitmapLabel id="rate00" x="538" y="333" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate01" x="538" y="390" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate02" x="538" y="447" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate10" x="1048" y="333" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate11" x="1048" y="390" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate12" x="1048" y="447" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate20" x="1545" y="333" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate21" x="1545" y="390" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate22" x="1545" y="447" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate30" x="800" y="648" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate31" x="800" y="705" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate32" x="800" y="764" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate40" x="1282" y="648" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate41" x="1282" y="705" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate42" x="1282" y="764" font="fnt37white_fnt" text="3"/>
+			</e:Group>
+			<e:Group id="page4" width="1920" height="1080" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image source="rule4_png" horizontalCenter="0" verticalCenter="32"/>
+				
+				<e:BitmapLabel x="478" y="333" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="478" y="390" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="478" y="447" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="988" y="333" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="988" y="390" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="988" y="447" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="1485" y="333" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="1485" y="390" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="1485" y="447" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="720" y="648" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="720" y="705" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="720" y="764" font="fnt37yellow_fnt" text="3"/>
+				<e:BitmapLabel x="1222" y="648" font="fnt37yellow_fnt" text="5"/>
+				<e:BitmapLabel x="1222" y="705" font="fnt37yellow_fnt" text="4"/>
+				<e:BitmapLabel x="1222" y="764" font="fnt37yellow_fnt" text="3"/>
+				
+				<e:BitmapLabel id="rate50" x="538" y="333" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate51" x="538" y="390" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate52" x="538" y="447" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate60" x="1048" y="333" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate61" x="1048" y="390" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate62" x="1048" y="447" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate70" x="1545" y="333" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate71" x="1545" y="390" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate72" x="1545" y="447" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate80" x="800" y="648" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate81" x="800" y="705" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate82" x="800" y="764" font="fnt37white_fnt" text="3"/>
+				<e:BitmapLabel id="rate90" x="1282" y="648" font="fnt37white_fnt" text="5"/>
+				<e:BitmapLabel id="rate91" x="1282" y="705" font="fnt37white_fnt" text="4"/>
+				<e:BitmapLabel id="rate92" x="1282" y="764" font="fnt37white_fnt" text="3"/>
+			</e:Group>
+			<e:Group id="page5" width="1920" height="1080" x="0" y="0" scaleX="1" scaleY="1">
+				<e:Image source="rule5_png" horizontalCenter="0" verticalCenter="32"/>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+
+	<e:Image left="0" top="0" source="returnbg_png"/>
+	<game:SmallButton id="returnBtn" label="" horizontalCenter="-893" verticalCenter="-500">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="return_png" source.down="return_p_png" source.disabled="return_d_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</game:SmallButton>
+	<game:SmallButton id="point0" label="" width="67" height="67" verticalCenter="390" horizontalCenter="-166" name="0">
+		<game:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="point_png" source.down="point_png" source.disabled="point_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</game:skinName>
+	</game:SmallButton>
+	<game:SmallButton id="point1" label="" width="67" height="67" verticalCenter="390" horizontalCenter="-83" name="1">
+		<game:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="point_png" source.down="point_png" source.disabled="point_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</game:skinName>
+	</game:SmallButton>
+	<game:SmallButton id="point2" label="" width="67" height="67" verticalCenter="390" horizontalCenter="-0" name="2">
+		<game:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="point_png" source.down="point_png" source.disabled="point_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</game:skinName>
+	</game:SmallButton>
+	<game:SmallButton id="point3" label="" width="67" height="67" verticalCenter="390" horizontalCenter="83" name="3">
+		<game:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="point_png" source.down="point_png" source.disabled="point_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</game:skinName>
+	</game:SmallButton>
+	<game:SmallButton id="point4" label="" width="67" height="67" verticalCenter="390" horizontalCenter="166" name="4">
+		<game:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="point_png" source.down="point_png" source.disabled="point_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</game:skinName>
+	</game:SmallButton>
+	<e:Image id="pointRed" source="pointRed_png" horizontalCenter="-166" verticalCenter="390" touchEnabled="true"/>
+
+</e:Skin>
