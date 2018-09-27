@@ -58,13 +58,11 @@ declare class connectTipSkin extends eui.Skin{
 }
 declare class errSkin extends eui.Skin{
 }
-declare class freeChooseSkin extends eui.Skin{
-}
 declare class freeTotalWinSkin extends eui.Skin{
 }
 declare class gameSceneSkin extends eui.Skin{
 }
-declare class rullSkin extends eui.Skin{
+declare class ruleSkin extends eui.Skin{
 }
 declare class settingSkin extends eui.Skin{
 }

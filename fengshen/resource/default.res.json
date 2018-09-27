@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,fnt194_fnt,fnt194_png,fnt240_fnt,fnt240_png,fnt35_fnt,fnt35_png,fnt53_fnt,fnt53_png,fnt54_fnt,fnt54_png,bigwin_png,circle1_png,circle2_png,circle3_png,circle4_png,circle5_png,circle6_png,circle7_png,circle8_png,circle9_png,circlelight1_png,circlelight2_png,circlelight3_png,circlelight4_png,circlelight5_png,circlelight6_png,circlelight7_png,circlelight8_png,circlelight9_png,contentbg_png,fillBg_png,freebg_png,leftflower_png,megawin_png,normalbg_png,rightflower_png,sliderBg_png,superwin_png,ToastBG_png,ToastBG2_png,circlcce_png,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,sgb_breath_json,sgb_wild_json,yj_breath_json,yj_wild_json,enterFreeBg_png,freeSpin_png,freeWinMoney_png,freeWinTitle_png,gain_png,bar1_png,bar2_png,light_png,Loading..._png,loading_jpg,arrow_png,auto_d_png,auto_p_png,auto_png,balanceBg_png,bet_d_png,bet_p_png,bet_png,bottombg_png,bottombg1_png,bottombg2_png,bottombg3_png,btnGreen_png,cancelAuto_d_png,cancelAuto_p_png,cancelAuto_png,flower_png,freeImg_png,headbg_png,max_p_png,max_png,num10_p_png,num10_png,num100_p_png,num100_png,num20_p_png,num20_png,num50_p_png,num50_png,numbg_png,plus_p_png,plus_png,pool_png,reduce_p_png,reduce_png,rule_d_png,rule_p_png,rule_png,set_png,spin_png,spinbg_png,spinborder_png,win_png,backgroud1_png,BetSliderBG_png,biaoti_png,close_png,FastModel_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,di_png,hx_png,j_png,ssz_png,autoImg_png,maxImg_png,symbol10_png,symbol6_png,symbol7_png,symbol8_png,symbol9_png,tilebg0_png,tilebg1_png,tilebg2_png,tilebg3_png,tilebg4_png,tilebg5_png,tilebg6_png,vague1_png,vague10_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,taiji_json,leftTopBg_png,rightTopBg_png,fnt37white_fnt,fnt37white_png,fnt37yellow_fnt,fnt37yellow_png,rule5_png,rule1_png,rule2_png,rule3_png,rule4_png,returnbg_png,return_png,return_d_png,return_p_png,point_png,pointRed_png,borderLight_json,title_json,borderAni_json,spinbg_d_png",
+			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,fnt194_fnt,fnt194_png,fnt240_fnt,fnt240_png,fnt35_fnt,fnt35_png,fnt53_fnt,fnt53_png,fnt54_fnt,fnt54_png,bigwin_png,circle1_png,circle2_png,circle3_png,circle4_png,circle5_png,circle6_png,circle7_png,circle8_png,circle9_png,circlelight1_png,circlelight2_png,circlelight3_png,circlelight4_png,circlelight5_png,circlelight6_png,circlelight7_png,circlelight8_png,circlelight9_png,contentbg_png,fillBg_png,freebg_png,leftflower_png,megawin_png,normalbg_png,rightflower_png,sliderBg_png,superwin_png,ToastBG_png,ToastBG2_png,circlcce_png,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,sgb_breath_json,sgb_wild_json,yj_breath_json,yj_wild_json,enterFreeBg_png,freeSpin_png,freeWinMoney_png,freeWinTitle_png,gain_png,bar1_png,bar2_png,light_png,Loading..._png,loading_jpg,arrow_png,auto_d_png,auto_p_png,auto_png,balanceBg_png,bet_d_png,bet_p_png,bet_png,bottombg_png,bottombg1_png,bottombg2_png,bottombg3_png,btnGreen_png,cancelAuto_d_png,cancelAuto_p_png,cancelAuto_png,flower_png,freeImg_png,headbg_png,max_p_png,max_png,num10_p_png,num10_png,num100_p_png,num100_png,num20_p_png,num20_png,num50_p_png,num50_png,numbg_png,plus_p_png,plus_png,pool_png,reduce_p_png,reduce_png,rule_d_png,rule_p_png,rule_png,set_png,spin_png,spinbg_png,spinborder_png,win_png,backgroud1_png,BetSliderBG_png,biaoti_png,close_png,FastModel_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,di_png,hx_png,j_png,ssz_png,autoImg_png,maxImg_png,symbol10_png,symbol6_png,symbol7_png,symbol8_png,symbol9_png,tilebg0_png,tilebg1_png,tilebg2_png,tilebg3_png,tilebg4_png,tilebg5_png,tilebg6_png,vague1_png,vague10_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,taiji_json,leftTopBg_png,rightTopBg_png,fnt37white_fnt,fnt37yellow_fnt,fnt37yellow_png,rule5_png,rule1_png,rule2_png,rule3_png,rule4_png,returnbg_png,return_png,return_d_png,return_p_png,point_png,pointRed_png,borderLight_json,title_json,borderAni_json,spinbg_d_png,fx_BG_golwe_png,fx_guang_07_json,fx_guang_07_png,fx_guang_0001_png,yuanbao_01_json,yuanbao_01_png,fx_golwe_json,fx_golwe_png,fx_guang_00001_png,fx_guang_00001_json,freeChanceParticle_png,freeChanceParticle_json,freeCountMc_json",
 			"name": "preload"
 		}
 	],
@@ -768,11 +768,6 @@
 			"name": "fnt37white_fnt"
 		},
 		{
-			"url": "config/fnt37white.png",
-			"type": "image",
-			"name": "fnt37white_png"
-		},
-		{
 			"url": "config/fnt37yellow.fnt",
 			"type": "font",
 			"name": "fnt37yellow_fnt"
@@ -859,6 +854,72 @@
 			"name": "spinbg_d_png",
 			"type": "image",
 			"url": "img/menu/spinbg_d.png"
+		},
+		{
+			"name": "fx_BG_golwe_png",
+			"type": "image",
+			"url": "img/effect/fx_BG_golwe.png"
+		},
+		{
+			"name": "fx_guang_07_json",
+			"type": "json",
+			"url": "img/effect/fx_guang_07.json"
+		},
+		{
+			"name": "fx_guang_07_png",
+			"type": "image",
+			"url": "img/effect/fx_guang_07.png"
+		},
+		{
+			"name": "fx_guang_0001_png",
+			"type": "image",
+			"url": "img/effect/fx_guang_0001.png"
+		},
+		{
+			"name": "yuanbao_01_json",
+			"type": "json",
+			"url": "img/effect/yuanbao_01.json"
+		},
+		{
+			"name": "yuanbao_01_png",
+			"type": "image",
+			"url": "img/effect/yuanbao_01.png"
+		},
+		{
+			"name": "fx_golwe_json",
+			"type": "json",
+			"url": "img/effect/fx_golwe.json"
+		},
+		{
+			"name": "fx_golwe_png",
+			"type": "image",
+			"url": "img/effect/fx_golwe.png"
+		},
+		{
+			"name": "fx_guang_00001_png",
+			"type": "image",
+			"url": "img/effect/fx_guang_00001.png"
+		},
+		{
+			"name": "fx_guang_00001_json",
+			"type": "json",
+			"url": "img/effect/fx_guang_00001.json"
+		},
+		{
+			"name": "freeChanceParticle_png",
+			"type": "image",
+			"url": "config/freeChanceParticle.png"
+		},
+		{
+			"name": "freeChanceParticle_json",
+			"type": "json",
+			"url": "config/freeChanceParticle.json"
+		},
+		{
+			"name": "freeCountMc_json",
+			"type": "sheet",
+			"url": "img/effect/freeCountMc.json",
+			"subkeys": "fx_huode8_png,fx_huode1_png,fx_huode2_png,fx_huode3_png,fx_huode4_png,fx_huode5_png,fx_huode6_png,fx_huode7_png"
 		}
 	]
 }

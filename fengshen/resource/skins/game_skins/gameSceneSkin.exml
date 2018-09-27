@@ -7,9 +7,6 @@
 	<e:Group id="contentBgGroup" width="1920" height="1080" x="0" y="0">
 		<e:Image source="contentbg_png" horizontalCenter="0" y="28" x="109"/>
 		<game:AMovieClip id="title" y="29" source="title_json.title1_png" x="593" sources="title|1-30|_png"/>
-
-
-
 	</e:Group>
 	<e:Group id="contentGroup" width="1920" height="1080" horizontalCenter="0" verticalCenter="0" touchEnabled="false" touchChildren="false">
 
@@ -57,9 +54,9 @@
 			<e:Image id="vagueTile18" source="vague1_png" horizontalCenter="560" verticalCenter="248"/>
 			<e:Image id="vagueTile19" source="vague1_png" horizontalCenter="560" verticalCenter="496"/>
 		</e:Group>
-		<game:AMovieClip id="border2" y="91" source="borderAni_json.zzz_01_png" x="769" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" speed="3" visible="false"/>
-		<game:AMovieClip id="border3" y="91" source="borderAni_json.zzz_01_png" x="1048" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" speed="3" visible="false"/>
-		<game:AMovieClip id="border4" y="91" source="borderAni_json.zzz_01_png" x="1329" sources="zzz_0|1-30|_png" scaleY="2" scaleX="2" speed="3" visible="false"/>
+		<game:AMovieClip id="border2" source="borderAni_json.zzz_01_png" sources="zzz_0|1-30|_png" scaleX="2.2" speed="3" horizontalCenter="-7" verticalCenter="-12" scaleY="2.05" visible="false"/>
+		<game:AMovieClip id="border3" source="borderAni_json.zzz_01_png" sources="zzz_0|1-30|_png" scaleY="2.05" scaleX="2.2" speed="3" horizontalCenter="272" verticalCenter="-12" visible="false"/>
+		<game:AMovieClip id="border4" source="borderAni_json.zzz_01_png" sources="zzz_0|1-30|_png" scaleY="2.05" scaleX="2.2" speed="3" horizontalCenter="553" verticalCenter="-12" visible="false"/>
 	</e:Group>
 	<e:Group id="lineNumGroup" width="1920" height="1080" x="0" y="0">
 		<e:Image id="leftLine6" source="circle6_png" horizontalCenter="-756.5" verticalCenter="-345"/>
@@ -103,30 +100,24 @@
 	<game:BottomBar id="bottomBar" width="1920" horizontalCenter="0" touchChildren="true" touchEnabled="false" bottom="0"/>
 	<e:BitmapLabel id="lineWinTxt" height="35" font="fnt35_fnt" horizontalCenter="0" verticalCenter="0" text=""/>
 	<game:TopBar id="topBar" top="0" horizontalCenter="0"/>
+	<game:BigWin id="bigWin" />
 	<e:Group id="freeChanceGroup" width="1920" height="1080" x="0" y="0" visible="false">
 		<e:Image source="enterFreeBg_png" x="0" y="0"/>
 		<e:Image id="freeChange1" source="freeWinTitle_png" y="30" horizontalCenter="0"/>
 		<e:Group id="freeChange2" width="1920" height="1080" x="0" y="0">
 			<e:Image source="gain_png" y="338" horizontalCenter="0" x="827" scaleX="1" scaleY="1"/>
-			<e:BitmapLabel id="moreFreeTimesTxt" height="200" y="495" font="fnt194_fnt" text="0" horizontalCenter="0" x="882" scaleX="1" scaleY="1"/>
+			<e:BitmapLabel id="moreFreeTimesTxt" height="200" y="495" font="fnt194_fnt" text="0" horizontalCenter="0" x="882" scaleX="1" scaleY="1" letterSpacing="-20"/>
 			<e:Image source="freeSpin_png" y="731" horizontalCenter="0" x="716" scaleX="1" scaleY="1"/>
 		</e:Group>
 	</e:Group>
+	<e:Group id="freeChanceInFreeGroup" width="1920" height="1080" x="0" y="0" touchThrough="true">
+	
+	</e:Group>
+	<game:FreeTotalWin id="freeTotalWin" width="1920" height="1080" x="0" y="0" visible="false" />
 	<e:Rect id="whiteMask" width="1920" height="1080" x="0" y="0" fillColor="0xffffff" visible="false"/>
 	<e:TextInput id="testInput" width="95.94" height="57.88" x="30" y="80" anchorOffsetX="0" anchorOffsetY="0"/>
-
-
-
-
-
-
-
 	<game:Setting id="setting" left="0" right="0" top="0" bottom="0" visible="false"/>
-	<game:Rull id="rull" width="1920" height="1080" x="0" y="0" visible="false"/>
-
-
-	<e:Rect id="gameMask" width="1920" height="1080" x="0" y="0" visible="false"/>
-
+	<game:Rule id="rule" width="1920" height="1080" x="0" y="0" visible="false"/>
 	<game:Tips id="tips" height="20" top="0" horizontalCenter="0" width="20" visible="false"/>
 	<game:ConnectTip id="connectTip" width="100%" height="100%" verticalCenter="0" horizontalCenter="0" visible="false"/>
 
