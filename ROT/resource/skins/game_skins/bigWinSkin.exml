@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="bigWinSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Rect left="0" right="0" top="0" bottom="0" alpha="0.3"/>
+
+	<e:Group id="bgGroup" width="1920" height="1080" verticalCenter="0" horizontalCenter="0">
+		<game:AMovieClip id="boomLight" verticalCenter="0" horizontalCenter="0" anchorOffsetY="0" anchorOffsetX="0" source="bigWinBoom1_png" sources="bigWinBoom|1-14|_png" width="1920" height="993" speed="5" loop="1" visible="false"/>
+		<game:AMovieClip id="winLight" verticalCenter="0" horizontalCenter="0" speed="4" anchorOffsetY="0" anchorOffsetX="0" source="bigWin1_png" sources="bigWin|1-16|_png" width="1920" height="1088" scaleX="1.25" scaleY="1.25" visible="false"/>
+	</e:Group>
+
+	<e:Group id="payoutGroup" width="1920" height="1080" verticalCenter="0" horizontalCenter="0" x="10" y="10" visible="false">
+		<e:BitmapLabel id="payout" text="2.05" height="173" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" letterSpacing="-15" font="fnt113_fnt"/>
+		<e:Image id="winImg" horizontalCenter="0" width="728" height="108" anchorOffsetX="364" anchorOffsetY="54" verticalCenter="-225" source="bigWin_png"/>
+
+
+	</e:Group>
+</e:Skin>

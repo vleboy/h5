@@ -1,0 +1,43 @@
+{
+	"skins": {
+		"eui.Button": "resource/skins/eui_skins/ButtonSkin.exml",
+		"eui.CheckBox": "resource/skins/eui_skins/CheckBoxSkin.exml",
+		"eui.HScrollBar": "resource/skins/eui_skins/HScrollBarSkin.exml",
+		"eui.HSlider": "resource/skins/eui_skins/HSliderSkin.exml",
+		"eui.Panel": "resource/skins/eui_skins/PanelSkin.exml",
+		"eui.TextInput": "resource/skins/eui_skins/TextInputSkin.exml",
+		"eui.ProgressBar": "resource/skins/eui_skins/ProgressBarSkin.exml",
+		"eui.RadioButton": "resource/skins/eui_skins/RadioButtonSkin.exml",
+		"eui.Scroller": "resource/skins/eui_skins/ScrollerSkin.exml",
+		"eui.ToggleSwitch": "resource/skins/eui_skins/ToggleSwitchSkin.exml",
+		"eui.VScrollBar": "resource/skins/eui_skins/VScrollBarSkin.exml",
+		"eui.VSlider": "resource/skins/eui_skins/VSliderSkin.exml",
+		"eui.ItemRenderer": "resource/skins/eui_skins/ItemRendererSkin.exml"
+	},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/skins/eui_skins/ButtonSkin.exml",
+		"resource/skins/eui_skins/HScrollBarSkin.exml",
+		"resource/skins/eui_skins/HSliderSkin.exml",
+		"resource/skins/eui_skins/ItemRendererSkin.exml",
+		"resource/skins/eui_skins/ScrollerSkin.exml",
+		"resource/skins/eui_skins/TextInputSkin.exml",
+		"resource/skins/eui_skins/VScrollBarSkin.exml",
+		"resource/skins/eui_skins/VSliderSkin.exml",
+		"resource/skins/game_skins/bacMiListItemSkin.exml",
+		"resource/skins/game_skins/bacMiListSkin.exml",
+		"resource/skins/game_skins/bacMiSkin.exml",
+		"resource/skins/game_skins/changeRoomSkin.exml",
+		"resource/skins/game_skins/chipListSkin.exml",
+		"resource/skins/game_skins/chipsSkin.exml",
+		"resource/skins/game_skins/gameListSkin.exml",
+		"resource/skins/game_skins/keyboardSkin.exml",
+		"resource/skins/game_skins/loadingSkin.exml",
+		"resource/skins/game_skins/rouListItemSkin.exml",
+		"resource/skins/game_skins/rouListSkin.exml",
+		"resource/skins/game_skins/rouSkin.exml",
+		"resource/skins/game_skins/topBarSkin.exml",
+		"resource/skins/game_skins/topMiSkin.exml"
+	],
+	"path": "resource/default.thm.json"
+}

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="roomSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+	<e:Image x="0" y="0" width="100%" height="100%" touchEnabled="false" source="baccaratbg_jpg"/>
+	<e:Group id="betArea" width="100%" height="100%" x="0" y="0" touchThrough="true">
+		<e:ToggleButton id="normalBtn" label="普通" x="430" y="605" scaleX="1" scaleY="1" width="153" height="83" selected="true">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu_pt_2_png" source.down="anniu_pt_1_png" source.disabled="anniu_pt_2_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:ToggleButton>
+		<e:ToggleButton id="noComBtn" label="免佣" x="526" y="624" width="129" height="83">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu_B27_1_png" source.down="anniu_b27_2_png" source.disabled="anniu_B27_1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:ToggleButton>
+		<e:ToggleButton id="b27Btn" label="b27" x="626" y="636" width="115" height="83">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu_s6_1_png" source.down="anniu_s6_2_png" source.disabled="anniu_s6_1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:ToggleButton>
+		<e:Group id="betArea_normal" width="100%" height="100%" x="0" y="0" touchThrough="true" touchChildren="true" touchEnabled="false">
+			<e:Image source="putong_touz_png" y="668" horizontalCenter="0" touchEnabled="false"/>
+			<e:Image id="dark1_1" source="dark1-1_png" x="226" y="669" visible="false"/>
+			<e:Image id="dark1_2" source="dark1-2_png" x="413" y="706" visible="false"/>
+			<e:Image id="dark1_3" source="dark1-3_png" x="625" y="730" visible="false"/>
+			<e:Image id="dark1_4" source="dark1-4_png" x="849" y="741" visible="false"/>
+			<e:Image id="dark1_5" source="dark1-5_png" x="1038" y="730" visible="false"/>
+			<e:Image id="dark1_6" source="dark1-6_png" x="1214" y="705" visible="false"/>
+			<e:Image id="dark1_7" source="dark1-7_png" x="1385" y="669" visible="false"/>
+			<e:Image id="boder1_1" source="1-1_png" x="221" y="667" touchEnabled="false"/>
+			<e:Image id="boder1_2" source="1-2_png" x="405" y="705" touchEnabled="false"/>
+			<e:Image id="boder1_3" source="1-3_png" x="623" y="726" touchEnabled="false"/>
+			<e:Image id="boder1_5" source="1-5_png" x="1034" y="727" touchEnabled="false"/>
+			<e:Image id="boder1_6" source="1-6_png" x="1216" y="703" touchEnabled="false"/>
+			<e:Image id="boder1_7" source="1-7_png" x="1383" y="667" touchEnabled="false"/>
+			<e:Image id="boder1_4" source="1-4_png" x="845" y="736" touchEnabled="false"/>
+			<e:Label text="闲例" x="407" y="684" size="50" skewX="45" rotation="20" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="闲对" x="545" y="730" size="50" skewX="20" rotation="10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="闲" x="717" y="753" size="50" skewX="10" rotation="5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="和" y="765" size="50" width="150" textAlign="center" scaleX="1" scaleY="1" horizontalCenter="0"/>
+			<e:Label text="庄" x="1060" y="768" size="50" skewX="-10" rotation="-5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="庄对" x="1239" y="751" size="50" skewX="-25" rotation="-10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="庄例" x="1396" y="729" size="50" width="150" textAlign="center" scaleX="1" scaleY="1" skewX="-50" rotation="-20"/>
+			<e:Label text="1:3.5" x="326" y="752" size="35" skewX="45" rotation="20" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:11" x="496" y="803" size="35" skewX="20" rotation="10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:1" x="698" y="829" size="35" skewX="10" rotation="5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:8" y="847" size="35" width="150" textAlign="center" scaleX="1" scaleY="1" horizontalCenter="0"/>
+			<e:Label text="1:0.95" x="1096" y="847" size="35" skewX="-10" rotation="-5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:8" x="1295" y="831" size="35" rotation="-10" width="150" textAlign="center" scaleX="1" scaleY="1" skewX="-20"/>
+			<e:Label text="1:3.5" x="1453" y="805" size="35" skewX="-50" rotation="-30" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group id="betArea_noCom" width="100%" height="100%" x="0" y="0" touchChildren="true" touchEnabled="false" touchThrough="true" visible="false">
+			<e:Image source="b27_s6_png" y="668" horizontalCenter="0" x="211" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Image id="dark2_6" source="darkb27-1_png" x="1382" y="661" visible="false"/>
+			<e:Image id="dark2_5" source="darkb27-2_png" x="1177" y="706" visible="false"/>
+			<e:Image id="dark2_4" source="darkb27-3_png" x="958" y="735" visible="false"/>
+			<e:Image id="dark2_3" source="darkb27-4_png" x="672" y="737" visible="false"/>
+			<e:Image id="dark2_2" source="darkb27-5_png" x="385" y="707" visible="false"/>
+			<e:Image id="dark2_1" source="darkb27-6_png" x="191" y="664" visible="false"/>
+			<e:Image id="border2_6" source="b27-1-1_png" x="1385" y="660" touchEnabled="false"/>
+			<e:Image id="border2_5" source="b27-2_png" x="1180" y="702" touchEnabled="false"/>
+			<e:Image id="border2_4" source="b27-3_png" x="958" y="730" touchEnabled="false"/>
+			<e:Image id="border2_3" source="b27-4_png" x="669" y="731" touchEnabled="false"/>
+			<e:Image id="border2_2" source="b27-5_png" x="381" y="705" touchEnabled="false"/>
+			<e:Image id="border2_1" source="b27-6-1_png" x="188" y="664" touchEnabled="false"/>
+			<e:Label text="闲对" x="330" y="711" size="50" skewX="20" rotation="10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="闲" x="532" y="757" size="50" skewX="10" rotation="5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="和" y="781" size="50" width="150" textAlign="center" scaleX="1" scaleY="1" x="765" rotation="3"/>
+			<e:Label text="庄" x="1235" y="761" size="50" skewX="-10" rotation="-5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="庄对" x="1438" y="732" size="50" skewX="-25" rotation="-10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="SUPER6" x="1014" y="790.4" size="32" width="150" textAlign="center" scaleX="1" scaleY="1" rotation="-4"/>
+			<e:Label text="1:11" x="280" y="769" size="35" skewX="20" rotation="10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:1" x="501" y="821" size="35" skewX="10" rotation="5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:8" y="854" size="35" width="150" textAlign="center" scaleX="1" scaleY="1" x="759" rotation="3"/>
+			<e:Label text="1:0.95" x="1276" y="829" size="35" skewX="-10" rotation="-5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:8" x="1488" y="790" size="35" rotation="-10" width="150" textAlign="center" scaleX="1" scaleY="1" skewX="-20"/>
+			<e:Label text="1:12" x="1019.9" y="857.5" size="35" width="150" textAlign="center" scaleX="1" scaleY="1" rotation="-3"/>
+		</e:Group>
+		<e:Group id="betArea_b27" width="100%" height="100%" x="0" y="0" touchChildren="true" touchEnabled="false" touchThrough="true" visible="false">
+			<e:Image source="b27_s6_png" y="668" horizontalCenter="0" x="211" scaleX="1" scaleY="1" touchEnabled="false"/>
+			<e:Image id="dark3_6" source="darkb27-1_png" x="1382" y="661" visible="false"/>
+			<e:Image id="dark3_5" source="darkb27-2_png" x="1177" y="706" visible="false"/>
+			<e:Image id="dark3_4" source="darkb27-3_png" x="958" y="735" visible="false"/>
+			<e:Image id="dark3_3" source="darkb27-4_png" x="672" y="737" visible="false"/>
+			<e:Image id="dark3_2" source="darkb27-5_png" x="385" y="707" visible="false"/>
+			<e:Image id="dark3_1" source="darkb27-6_png" x="191" y="664" visible="false"/>
+			<e:Image id="border3_6" source="b27-1-1_png" x="1385" y="660" touchEnabled="false"/>
+			<e:Image id="border3_5" source="b27-2_png" x="1180" y="702" touchEnabled="false"/>
+			<e:Image id="border3_4" source="b27-3_png" x="958" y="730" touchEnabled="false"/>
+			<e:Image id="border3_3" source="b27-4_png" x="669" y="731" touchEnabled="false"/>
+			<e:Image id="border3_2" source="b27-5_png" x="381" y="705" touchEnabled="false"/>
+			<e:Image id="border3_1" source="b27-6-1_png" x="188" y="664"/>
+			<e:Label text="闲对" x="330" y="711" size="50" skewX="20" rotation="10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="闲" x="532" y="757" size="50" skewX="10" rotation="5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="和" y="781" size="50" width="150" textAlign="center" scaleX="1" scaleY="1" x="765" rotation="3"/>
+			<e:Label text="庄" x="1235" y="761" size="50" skewX="-10" rotation="-5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="庄对" x="1438" y="732" size="50" skewX="-25" rotation="-10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="B27" x="1014" y="790.4" size="32" width="150" textAlign="center" scaleX="1" scaleY="1" rotation="-4"/>
+			<e:Label text="1:11" x="280" y="769" size="35" skewX="20" rotation="10" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:1" x="501" y="821" size="35" skewX="10" rotation="5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:8" y="854" size="35" width="150" textAlign="center" scaleX="1" scaleY="1" x="759" rotation="3"/>
+			<e:Label text="1:0.95" x="1276" y="829" size="35" skewX="-10" rotation="-5" width="150" textAlign="center" scaleX="1" scaleY="1"/>
+			<e:Label text="1:8" x="1488" y="790" size="35" rotation="-10" width="150" textAlign="center" scaleX="1" scaleY="1" skewX="-20"/>
+			<e:Label text="1:12" x="1019.9" y="857.5" size="35" width="150" textAlign="center" scaleX="1" scaleY="1" rotation="-3"/>
+		</e:Group>
+	</e:Group>
+	<game:ChipList id="chiplist" width="138" x="22" top="116" bottom="246"/>
+	<e:Group id="roomSmallInfoGroup" width="1" height="1" x="0" y="0" touchThrough="true" touchChildren="true" touchEnabled="false">
+		<e:Image id="roomInfoBg" source="xinxi_bg_png" x="190" y="119" scaleX="1" scaleY="1" width="390" height="108" scale9Grid="114,0,36,108" pixelHitTest="true"/>
+		<e:Image source="xinxi_png" x="218" y="140" scaleX="1" scaleY="1" touchEnabled="false"/>
+		<e:Label text="桌台编号:301" x="304" y="178" scaleX="1" scaleY="1" width="200" size="26" touchEnabled="false"/>
+		<e:Label text="下注限红:1-3k" x="304" y="140" scaleX="1" scaleY="1" size="26" width="200" touchEnabled="false"/>
+		<e:Image source="img_3_png" x="510" y="193" scaleY="-1" touchEnabled="false"/>
+	</e:Group>
+	<e:Group id="roomAllInfoGroup" width="1" height="1" x="0" y="0" touchThrough="true" touchChildren="true" touchEnabled="false" visible="false">
+		<e:Image id="allInfoBg" x="190" y="119" scaleX="1" scaleY="1" width="390" height="306" scale9Grid="114,0,36,108" source="xiala_png" pixelHitTest="true"/>
+		<e:Image source="xinxi_png" x="218" y="140" scaleX="1" scaleY="1" touchEnabled="false"/>
+		<e:Label text="桌台编号:302" x="304" y="150" scaleX="1" scaleY="1" size="26" width="200" touchEnabled="false"/>
+		<e:Label text="游戏局号:1906345" x="304" y="202" scaleX="1" scaleY="1" size="26" width="264" touchEnabled="false"/>
+		<e:Label text="荷官名称:MHAIKA" x="304" y="254" scaleX="1" scaleY="1" size="26" width="264" touchEnabled="false"/>
+		<e:Label text="下注限红:1-3k" x="304" y="306" scaleX="1" scaleY="1" width="264" size="26" touchEnabled="false"/>
+		<e:Label text="台       红:1200000" x="304" y="358" scaleX="1" scaleY="1" width="264" size="26" touchEnabled="false"/>
+		<e:Image source="img_3_png" x="510" y="152" scaleY="1" touchEnabled="false"/>
+	</e:Group>
+	<e:Group id="smallRoadGroup" width="100%" height="100%" x="0" y="0" touchThrough="true" touchChildren="true" touchEnabled="false">
+		<e:Image source="xianh_bg_png" y="138" width="714" height="384" right="0" scale9Grid="14,14,22,24"/>
+		<e:Image source="lvdan_bg1_jpg" x="1255" y="154"/>
+		<e:Image source="lvdan_bg1_jpg" x="1255" y="306"/>
+		<e:Image source="lvdan_bg1_jpg" x="1484" y="306"/>
+		<e:Image source="lvdan_bg1_jpg" x="1722" y="306"/>
+		<e:Image x="1485" y="154" source="lvdan_bg2_jpg"/>
+		<e:Image source="img_l_png" x="1588" y="456" width="58" height="58"/>
+		<e:Image source="img_h_png" x="1851" y="456" width="58" height="58"/>
+		<e:Image source="img_lv_png" x="1720" y="456" width="58" height="58"/>
+		<e:Label text="珠盘路" x="1220" y="300" rotation="-90" size="28" width="144" textAlign="center"/>
+		<e:Label text="大路" x="1454" y="300" rotation="-90" size="28" width="144" textAlign="center"/>
+		<e:Label text="大眼路" x="1220" y="449" rotation="-90" size="28" width="144" textAlign="center"/>
+		<e:Label text="小路" x="1454" y="449" rotation="-90" size="28" width="144" textAlign="center"/>
+		<e:Label text="曱甴路" x="1687" y="449" rotation="-90" size="28" width="144" textAlign="center"/>
+		<e:Label text="总:40" x="1420" y="470" size="28"/>
+		<e:Label text="闲:" x="1547" y="470" size="28" textColor="0x3e41d1"/>
+		<e:Label text="和:" x="1680" y="470" size="28" textColor="0x00ec1d"/>
+		<e:Label text="庄:" x="1808" y="470" size="28" textColor="0xff1212"/>
+	</e:Group>
+	<e:Group id="bigRoadGroup" width="100%" height="100%" x="0" y="0" touchThrough="true" touchChildren="true" touchEnabled="false" visible="false">
+		<e:Image source="xianh_bg_png" y="88" width="1748" height="480" right="0" scale9Grid="14,14,22,24"/>
+		<e:Image x="242" y="98" source="lvdan_bg4_jpg"/>
+		<e:Image x="240" y="298" source="lvdan_bg4_jpg"/>
+		<e:Image x="829" y="298" source="lvdan_bg4_jpg"/>
+		<e:Image x="1401" y="298" source="lvdan_bg4_jpg"/>
+		<e:Image x="829" y="98" source="lvdan_bg3_jpg"/>
+		<e:Image source="img_l_png" x="1588" y="502" width="58" height="58"/>
+		<e:Image source="img_h_png" x="1851" y="502" width="58" height="58"/>
+		<e:Image source="img_lv_png" x="1720" y="502" width="58" height="58"/>
+		<e:Label text="珠盘路" rotation="-90" size="28" width="185" textAlign="center" y="287" x="200"/>
+		<e:Label text="大路" x="787" y="291" rotation="-90" size="28" width="189" textAlign="center"/>
+		<e:Label text="大眼路" x="200" y="486" rotation="-90" size="28" width="191" textAlign="center"/>
+		<e:Label text="小路" x="787" y="485" rotation="-90" size="28" width="185" textAlign="center"/>
+		<e:Label text="曱甴路" x="1359" y="486" rotation="-90" size="28" width="181" textAlign="center"/>
+		<e:Label text="总:40" x="1420" y="520" size="28"/>
+		<e:Label text="闲:" x="1547" y="520" size="28" textColor="0x3E41D1"/>
+		<e:Label text="和:" x="1680" y="520" size="28" textColor="0x00EC1D"/>
+		<e:Label text="庄:" x="1808" y="520" size="28" textColor="0xFF1212"/>
+	</e:Group>
+	<e:Group id="btnGroup" width="100%" height="100%" x="0" y="0" touchThrough="true" touchEnabled="false" touchChildren="true">
+		<e:Image source="anniu_bg_png" bottom="0" height="174" scale9Grid="6,25,22,13" width="288" left="0"/>
+		<e:Button id="playerAskBtn" label="闲问路" x="0" bottom="54">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="xianwenl_1_png" source.down="xianwenl_2_png" source.disabled="xianwenl_1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="bankerAskBtn" label="庄问路" x="142" bottom="54">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="zhuangwenl_1_png" source.down="zhuangwenl_2_png" source.disabled="zhuangwenl_1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image source="img_hs_png" x="13" bottom="10"/>
+		<e:Image source="img_h_png" x="54" bottom="10"/>
+		<e:Image source="img_hx_png" x="128" bottom="10" scaleX="-1"/>
+		<e:Image source="img_ls_png" x="151" bottom="10"/>
+		<e:Image source="img_l_png" x="194" bottom="10"/>
+		<e:Image source="img_lx_png" x="267" bottom="10" scaleX="-1"/>
+		<e:Image source="anniu_bg_png" bottom="0" width="288" height="174" scale9Grid="6,25,22,13" right="0" scaleX="-1"/>
+		<e:Button id="sureBtn" label="确认" bottom="52" right="5" width="134" height="114">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="queren_3_png" source.down="queren_2_png" source.disabled="queren_1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="80" textColor="0xff1212"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="cancelBtn" label="撤销" right="145" bottom="52" width="134" height="114">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="quxiao_3_png" source.down="quxiao_2_png" source.disabled="quxiao_1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="80" textColor="0x484848"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="refreshVideoBtn" label="刷新视频" width="200" height="82" right="0" bottom="324">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu-huanzhuo_png" source.down="anniu-huanzhuo_png" source.disabled="anniu-huanzhuo_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="changeBtn" label="快速换桌" width="200" height="82" right="0" bottom="425">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu-huanzhuo_png" source.down="anniu-huanzhuo_png" source.disabled="anniu-huanzhuo_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+	<e:Group id="seats" width="100%" height="94" x="0" bottom="5">
+		<e:Image source="touxiang_bg_png" y="0" width="912" height="100%" horizontalCenter="0" scale9Grid="49,42,46,5"/>
+		<e:Image id="headIcon1" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="-360" y="2" width="72" height="72"/>
+		<e:Image id="headIcon2" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="-240" y="2" width="72" height="72"/>
+		<e:Image id="headIcon3" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="-120" y="2" width="72" height="72"/>
+		<e:Image id="headIcon5" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="0" y="2" width="72" height="72"/>
+		<e:Image id="headIcon6" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="120" y="2" width="72" height="72"/>
+		<e:Image id="headIcon7" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="240" y="2" width="72" height="72"/>
+		<e:Image id="headIcon8" source="na_yuan_png" scaleX="1" scaleY="1" horizontalCenter="360" y="2" width="72" height="72"/>
+		<e:Label id="seatName1" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="-360" width="80" textAlign="center"/>
+		<e:Label id="seatName2" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="-240" width="80" textAlign="center"/>
+		<e:Label id="seatName3" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="-120" width="80" textAlign="center"/>
+		<e:Label id="seatName5" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="0" width="80" textAlign="center"/>
+		<e:Label id="seatName6" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="120" width="80" textAlign="center"/>
+		<e:Label id="seatName7" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="240" width="80" textAlign="center"/>
+		<e:Label id="seatName8" text="昵称" size="18" textColor="0xcd5808" bottom="0" horizontalCenter="360" width="80" textAlign="center"/>
+	</e:Group>
+	<e:Group id="cardAreaGroup" width="100%" height="212" x="0" bottom="0">
+		<e:Image source="xianh_bg_png" x="0" y="0" width="50%" height="100%" scale9Grid="16,17,16,21"/>
+		<e:Image source="xianh_bg_png" y="0" width="50%" height="100%" scale9Grid="16,17,16,21" right="0"/>
+		<e:Image source="img_l_png" width="138" height="138" verticalCenter="0" horizontalCenter="-98"/>
+		<e:Image source="img_h_png" width="138" height="138" verticalCenter="0" horizontalCenter="98"/>
+		<e:Label text="闲" y="73" width="138" textAlign="center" size="60" horizontalCenter="-98"/>
+		<e:Label text="庄" y="73" width="138" textAlign="center" size="60" horizontalCenter="98"/>
+		<e:Image id="card0" source="Back_png" width="118" height="182" verticalCenter="0" horizontalCenter="-573"/>
+		<e:Image id="card1" source="Back_png" width="118" height="182" verticalCenter="0" horizontalCenter="-435"/>
+		<e:Image id="card2" source="Back_png" width="118" height="182" verticalCenter="0" horizontalCenter="435"/>
+		<e:Image id="card3" source="Back_png" width="118" height="182" verticalCenter="0" horizontalCenter="573"/>
+	</e:Group>
+</e:Skin>

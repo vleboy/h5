@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="topMiSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect width="100%" height="100%" x="0" y="0" fillColor="0xccbbbb"/>
+	<game:TurnCard id="card1" width="1000" height="600" x="373" y="264"/>
+</e:Skin>

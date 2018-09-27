@@ -1,0 +1,864 @@
+{
+	"groups": [
+		{
+			"keys": "button_down_png,button_up_png,roundthumb_png,track_sb_png,fnt194_fnt,fnt194_png,fnt240_fnt,fnt240_png,fnt35_fnt,fnt35_png,fnt53_fnt,fnt53_png,fnt54_fnt,fnt54_png,bigwin_png,circle1_png,circle2_png,circle3_png,circle4_png,circle5_png,circle6_png,circle7_png,circle8_png,circle9_png,circlelight1_png,circlelight2_png,circlelight3_png,circlelight4_png,circlelight5_png,circlelight6_png,circlelight7_png,circlelight8_png,circlelight9_png,contentbg_png,fillBg_png,freebg_png,leftflower_png,megawin_png,normalbg_png,rightflower_png,sliderBg_png,superwin_png,ToastBG_png,ToastBG2_png,circlcce_png,daji_breath_json,daji_wild_json,JZY_breath_json,JZY_wild_json,NeZha_breath_json,NeZha_wild_json,sgb_breath_json,sgb_wild_json,yj_breath_json,yj_wild_json,enterFreeBg_png,freeSpin_png,freeWinMoney_png,freeWinTitle_png,gain_png,bar1_png,bar2_png,light_png,Loading..._png,loading_jpg,arrow_png,auto_d_png,auto_p_png,auto_png,balanceBg_png,bet_d_png,bet_p_png,bet_png,bottombg_png,bottombg1_png,bottombg2_png,bottombg3_png,btnGreen_png,cancelAuto_d_png,cancelAuto_p_png,cancelAuto_png,flower_png,freeImg_png,headbg_png,max_p_png,max_png,num10_p_png,num10_png,num100_p_png,num100_png,num20_p_png,num20_png,num50_p_png,num50_png,numbg_png,plus_p_png,plus_png,pool_png,reduce_p_png,reduce_png,rule_d_png,rule_p_png,rule_png,set_png,spin_png,spinbg_png,spinborder_png,win_png,backgroud1_png,BetSliderBG_png,biaoti_png,close_png,FastModel_png,off_png,on_png,shengyin_png,windowdi_png,yinxiao_png,di_png,hx_png,j_png,ssz_png,autoImg_png,maxImg_png,symbol10_png,symbol6_png,symbol7_png,symbol8_png,symbol9_png,tilebg0_png,tilebg1_png,tilebg2_png,tilebg3_png,tilebg4_png,tilebg5_png,tilebg6_png,vague1_png,vague10_png,vague2_png,vague3_png,vague4_png,vague5_png,vague6_png,vague7_png,vague8_png,vague9_png,taiji_json,leftTopBg_png,rightTopBg_png,fnt37white_fnt,fnt37white_png,fnt37yellow_fnt,fnt37yellow_png,rule5_png,rule1_png,rule2_png,rule3_png,rule4_png,returnbg_png,return_png,return_d_png,return_p_png,point_png,pointRed_png,borderLight_json,title_json,borderAni_json,spinbg_d_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "config/fnt194.fnt",
+			"type": "font",
+			"name": "fnt194_fnt"
+		},
+		{
+			"url": "config/fnt194.png",
+			"type": "image",
+			"name": "fnt194_png"
+		},
+		{
+			"url": "config/fnt240.fnt",
+			"type": "font",
+			"name": "fnt240_fnt"
+		},
+		{
+			"url": "config/fnt240.png",
+			"type": "image",
+			"name": "fnt240_png"
+		},
+		{
+			"url": "config/fnt35.fnt",
+			"type": "font",
+			"name": "fnt35_fnt"
+		},
+		{
+			"url": "config/fnt35.png",
+			"type": "image",
+			"name": "fnt35_png"
+		},
+		{
+			"url": "config/fnt53.fnt",
+			"type": "font",
+			"name": "fnt53_fnt"
+		},
+		{
+			"url": "config/fnt53.png",
+			"type": "image",
+			"name": "fnt53_png"
+		},
+		{
+			"url": "config/fnt54.fnt",
+			"type": "font",
+			"name": "fnt54_fnt"
+		},
+		{
+			"url": "config/fnt54.png",
+			"type": "image",
+			"name": "fnt54_png"
+		},
+		{
+			"url": "img/bg/ToastBG.png",
+			"type": "image",
+			"name": "ToastBG_png"
+		},
+		{
+			"url": "img/bg/ToastBG2.png",
+			"type": "image",
+			"name": "ToastBG2_png"
+		},
+		{
+			"url": "img/bg/bigwin.png",
+			"type": "image",
+			"name": "bigwin_png"
+		},
+		{
+			"url": "img/bg/circle1.png",
+			"type": "image",
+			"name": "circle1_png"
+		},
+		{
+			"url": "img/bg/circle2.png",
+			"type": "image",
+			"name": "circle2_png"
+		},
+		{
+			"url": "img/bg/circle3.png",
+			"type": "image",
+			"name": "circle3_png"
+		},
+		{
+			"url": "img/bg/circle4.png",
+			"type": "image",
+			"name": "circle4_png"
+		},
+		{
+			"url": "img/bg/circle5.png",
+			"type": "image",
+			"name": "circle5_png"
+		},
+		{
+			"url": "img/bg/circle6.png",
+			"type": "image",
+			"name": "circle6_png"
+		},
+		{
+			"url": "img/bg/circle7.png",
+			"type": "image",
+			"name": "circle7_png"
+		},
+		{
+			"url": "img/bg/circle8.png",
+			"type": "image",
+			"name": "circle8_png"
+		},
+		{
+			"url": "img/bg/circle9.png",
+			"type": "image",
+			"name": "circle9_png"
+		},
+		{
+			"url": "img/bg/circlelight1.png",
+			"type": "image",
+			"name": "circlelight1_png"
+		},
+		{
+			"url": "img/bg/circlelight2.png",
+			"type": "image",
+			"name": "circlelight2_png"
+		},
+		{
+			"url": "img/bg/circlelight3.png",
+			"type": "image",
+			"name": "circlelight3_png"
+		},
+		{
+			"url": "img/bg/circlelight4.png",
+			"type": "image",
+			"name": "circlelight4_png"
+		},
+		{
+			"url": "img/bg/circlelight5.png",
+			"type": "image",
+			"name": "circlelight5_png"
+		},
+		{
+			"url": "img/bg/circlelight6.png",
+			"type": "image",
+			"name": "circlelight6_png"
+		},
+		{
+			"url": "img/bg/circlelight7.png",
+			"type": "image",
+			"name": "circlelight7_png"
+		},
+		{
+			"url": "img/bg/circlelight8.png",
+			"type": "image",
+			"name": "circlelight8_png"
+		},
+		{
+			"url": "img/bg/circlelight9.png",
+			"type": "image",
+			"name": "circlelight9_png"
+		},
+		{
+			"url": "img/bg/contentbg.png",
+			"type": "image",
+			"name": "contentbg_png"
+		},
+		{
+			"url": "img/bg/fillBg.png",
+			"type": "image",
+			"name": "fillBg_png"
+		},
+		{
+			"url": "img/bg/freebg.png",
+			"type": "image",
+			"name": "freebg_png"
+		},
+		{
+			"url": "img/bg/leftflower.png",
+			"type": "image",
+			"name": "leftflower_png"
+		},
+		{
+			"url": "img/bg/megawin.png",
+			"type": "image",
+			"name": "megawin_png"
+		},
+		{
+			"url": "img/bg/normalbg.png",
+			"type": "image",
+			"name": "normalbg_png"
+		},
+		{
+			"url": "img/bg/rightflower.png",
+			"type": "image",
+			"name": "rightflower_png"
+		},
+		{
+			"url": "img/bg/sliderBg.png",
+			"type": "image",
+			"name": "sliderBg_png"
+		},
+		{
+			"url": "img/bg/superwin.png",
+			"type": "image",
+			"name": "superwin_png"
+		},
+		{
+			"url": "img/effect/JZY_breath.json",
+			"type": "sheet",
+			"name": "JZY_breath_json",
+			"subkeys": "JZY_breath_01_png,JZY_breath_02_png,JZY_breath_03_png,JZY_breath_04_png,JZY_breath_05_png,JZY_breath_06_png,JZY_breath_07_png,JZY_breath_08_png,JZY_breath_09_png,JZY_breath_10_png,JZY_breath_11_png,JZY_breath_12_png,JZY_breath_13_png,JZY_breath_14_png,JZY_breath_15_png,JZY_breath_16_png,JZY_breath_17_png,JZY_breath_18_png,JZY_breath_19_png,JZY_breath_20_png,JZY_breath_21_png,JZY_breath_22_png,JZY_breath_23_png,JZY_breath_24_png,JZY_breath_25_png,JZY_breath_26_png,JZY_breath_27_png,JZY_breath_28_png,JZY_breath_29_png,JZY_breath_30_png"
+		},
+		{
+			"url": "img/effect/NeZha_wild.json",
+			"type": "sheet",
+			"name": "NeZha_wild_json",
+			"subkeys": "NeZha_wild_01_png,NeZha_wild_02_png,NeZha_wild_03_png,NeZha_wild_04_png,NeZha_wild_05_png,NeZha_wild_06_png,NeZha_wild_07_png,NeZha_wild_08_png,NeZha_wild_09_png,NeZha_wild_10_png,NeZha_wild_11_png,NeZha_wild_12_png,NeZha_wild_13_png,NeZha_wild_14_png,NeZha_wild_15_png,NeZha_wild_16_png,NeZha_wild_17_png,NeZha_wild_18_png,NeZha_wild_19_png,NeZha_wild_20_png,NeZha_wild_21_png,NeZha_wild_22_png,NeZha_wild_23_png,NeZha_wild_24_png,NeZha_wild_25_png,NeZha_wild_26_png,NeZha_wild_27_png,NeZha_wild_28_png,NeZha_wild_29_png,NeZha_wild_30_png"
+		},
+		{
+			"url": "img/effect/NeZha_breath.json",
+			"type": "sheet",
+			"name": "NeZha_breath_json",
+			"subkeys": "NeZha_breath_01_png,NeZha_breath_02_png,NeZha_breath_03_png,NeZha_breath_04_png,NeZha_breath_05_png,NeZha_breath_06_png,NeZha_breath_07_png,NeZha_breath_08_png,NeZha_breath_09_png,NeZha_breath_10_png,NeZha_breath_11_png,NeZha_breath_12_png,NeZha_breath_13_png,NeZha_breath_14_png,NeZha_breath_15_png,NeZha_breath_16_png,NeZha_breath_17_png,NeZha_breath_18_png,NeZha_breath_19_png,NeZha_breath_20_png,NeZha_breath_21_png,NeZha_breath_22_png,NeZha_breath_23_png,NeZha_breath_24_png,NeZha_breath_25_png,NeZha_breath_26_png,NeZha_breath_27_png,NeZha_breath_28_png,NeZha_breath_29_png,NeZha_breath_30_png,NeZha_breath_31_png,NeZha_breath_32_png,NeZha_breath_33_png,NeZha_breath_34_png,NeZha_breath_35_png,NeZha_breath_36_png,NeZha_breath_37_png,NeZha_breath_38_png,NeZha_breath_39_png,NeZha_breath_40_png"
+		},
+		{
+			"url": "img/effect/JZY_wild.json",
+			"type": "sheet",
+			"name": "JZY_wild_json",
+			"subkeys": "JZY_wild_01_png,JZY_wild_02_png,JZY_wild_03_png,JZY_wild_04_png,JZY_wild_05_png,JZY_wild_06_png,JZY_wild_07_png,JZY_wild_08_png,JZY_wild_09_png,JZY_wild_10_png,JZY_wild_11_png,JZY_wild_12_png,JZY_wild_13_png,JZY_wild_14_png,JZY_wild_15_png,JZY_wild_16_png,JZY_wild_17_png,JZY_wild_18_png,JZY_wild_19_png,JZY_wild_20_png,JZY_wild_21_png,JZY_wild_22_png,JZY_wild_23_png,JZY_wild_24_png,JZY_wild_25_png,JZY_wild_26_png,JZY_wild_27_png,JZY_wild_28_png,JZY_wild_29_png,JZY_wild_30_png"
+		},
+		{
+			"url": "img/effect/sgb_breath.json",
+			"type": "sheet",
+			"name": "sgb_breath_json",
+			"subkeys": "sgb_breath_01_png,sgb_breath_02_png,sgb_breath_03_png,sgb_breath_04_png,sgb_breath_05_png,sgb_breath_06_png,sgb_breath_07_png,sgb_breath_08_png,sgb_breath_09_png,sgb_breath_10_png,sgb_breath_11_png,sgb_breath_12_png,sgb_breath_13_png,sgb_breath_14_png,sgb_breath_15_png,sgb_breath_16_png,sgb_breath_17_png,sgb_breath_18_png,sgb_breath_19_png,sgb_breath_20_png,sgb_breath_21_png,sgb_breath_22_png,sgb_breath_23_png,sgb_breath_24_png,sgb_breath_25_png,sgb_breath_26_png,sgb_breath_27_png,sgb_breath_28_png,sgb_breath_29_png,sgb_breath_30_png,sgb_breath_31_png,sgb_breath_32_png,sgb_breath_33_png,sgb_breath_34_png,sgb_breath_35_png,sgb_breath_36_png,sgb_breath_37_png,sgb_breath_38_png,sgb_breath_39_png,sgb_breath_40_png"
+		},
+		{
+			"url": "img/effect/daji_wild.json",
+			"type": "sheet",
+			"name": "daji_wild_json",
+			"subkeys": "daji_wild_01_png,daji_wild_02_png,daji_wild_03_png,daji_wild_04_png,daji_wild_05_png,daji_wild_06_png,daji_wild_07_png,daji_wild_08_png,daji_wild_09_png,daji_wild_10_png,daji_wild_11_png,daji_wild_12_png,daji_wild_13_png,daji_wild_14_png,daji_wild_15_png,daji_wild_16_png,daji_wild_17_png,daji_wild_18_png,daji_wild_19_png,daji_wild_20_png,daji_wild_21_png,daji_wild_22_png,daji_wild_23_png,daji_wild_24_png,daji_wild_25_png,daji_wild_26_png,daji_wild_27_png,daji_wild_28_png,daji_wild_29_png,daji_wild_30_png"
+		},
+		{
+			"url": "img/effect/daji_breath.json",
+			"type": "sheet",
+			"name": "daji_breath_json",
+			"subkeys": "daji_breath_01_png,daji_breath_02_png,daji_breath_03_png,daji_breath_04_png,daji_breath_05_png,daji_breath_06_png,daji_breath_07_png,daji_breath_08_png,daji_breath_09_png,daji_breath_10_png,daji_breath_11_png,daji_breath_12_png,daji_breath_13_png,daji_breath_14_png,daji_breath_15_png,daji_breath_16_png,daji_breath_17_png,daji_breath_18_png,daji_breath_19_png,daji_breath_20_png,daji_breath_21_png,daji_breath_22_png,daji_breath_23_png,daji_breath_24_png,daji_breath_25_png,daji_breath_26_png,daji_breath_27_png,daji_breath_28_png,daji_breath_29_png,daji_breath_30_png"
+		},
+		{
+			"url": "img/effect/yj_breath.json",
+			"type": "sheet",
+			"name": "yj_breath_json",
+			"subkeys": "yj_breath_01_png,yj_breath_02_png,yj_breath_03_png,yj_breath_04_png,yj_breath_05_png,yj_breath_06_png,yj_breath_07_png,yj_breath_08_png,yj_breath_09_png,yj_breath_10_png,yj_breath_11_png,yj_breath_12_png,yj_breath_13_png,yj_breath_14_png,yj_breath_15_png,yj_breath_16_png,yj_breath_17_png,yj_breath_18_png,yj_breath_19_png,yj_breath_20_png,yj_breath_21_png,yj_breath_22_png,yj_breath_23_png,yj_breath_24_png,yj_breath_25_png,yj_breath_26_png,yj_breath_27_png,yj_breath_28_png,yj_breath_29_png,yj_breath_30_png,yj_breath_31_png,yj_breath_32_png,yj_breath_33_png,yj_breath_34_png,yj_breath_35_png,yj_breath_36_png,yj_breath_37_png,yj_breath_38_png,yj_breath_39_png,yj_breath_40_png"
+		},
+		{
+			"url": "img/effect/yj_wild.json",
+			"type": "sheet",
+			"name": "yj_wild_json",
+			"subkeys": "yj_wild_01_png,yj_wild_02_png,yj_wild_03_png,yj_wild_04_png,yj_wild_05_png,yj_wild_06_png,yj_wild_07_png,yj_wild_08_png,yj_wild_09_png,yj_wild_10_png,yj_wild_11_png,yj_wild_12_png,yj_wild_13_png,yj_wild_14_png,yj_wild_15_png,yj_wild_16_png,yj_wild_17_png,yj_wild_18_png,yj_wild_19_png,yj_wild_20_png,yj_wild_21_png,yj_wild_22_png,yj_wild_23_png,yj_wild_24_png,yj_wild_25_png,yj_wild_26_png,yj_wild_27_png,yj_wild_28_png,yj_wild_29_png,yj_wild_30_png"
+		},
+		{
+			"url": "img/effect/sgb_wild.json",
+			"type": "sheet",
+			"name": "sgb_wild_json",
+			"subkeys": "sgb_wild_01_png,sgb_wild_02_png,sgb_wild_03_png,sgb_wild_04_png,sgb_wild_05_png,sgb_wild_06_png,sgb_wild_07_png,sgb_wild_08_png,sgb_wild_09_png,sgb_wild_10_png,sgb_wild_11_png,sgb_wild_12_png,sgb_wild_13_png,sgb_wild_14_png,sgb_wild_15_png,sgb_wild_16_png,sgb_wild_17_png,sgb_wild_18_png,sgb_wild_19_png,sgb_wild_20_png,sgb_wild_21_png,sgb_wild_22_png,sgb_wild_23_png,sgb_wild_24_png,sgb_wild_25_png,sgb_wild_26_png,sgb_wild_27_png,sgb_wild_28_png,sgb_wild_29_png,sgb_wild_30_png"
+		},
+		{
+			"url": "img/freeGame/enterFreeBg.png",
+			"type": "image",
+			"name": "enterFreeBg_png"
+		},
+		{
+			"url": "img/freeGame/freeSpin.png",
+			"type": "image",
+			"name": "freeSpin_png"
+		},
+		{
+			"url": "img/freeGame/freeWinMoney.png",
+			"type": "image",
+			"name": "freeWinMoney_png"
+		},
+		{
+			"url": "img/freeGame/freeWinTitle.png",
+			"type": "image",
+			"name": "freeWinTitle_png"
+		},
+		{
+			"url": "img/freeGame/gain.png",
+			"type": "image",
+			"name": "gain_png"
+		},
+		{
+			"url": "img/load/Loading....png",
+			"type": "image",
+			"name": "Loading..._png"
+		},
+		{
+			"url": "img/load/bar1.png",
+			"type": "image",
+			"name": "bar1_png"
+		},
+		{
+			"url": "img/load/bar2.png",
+			"type": "image",
+			"name": "bar2_png"
+		},
+		{
+			"url": "img/load/light.png",
+			"type": "image",
+			"name": "light_png"
+		},
+		{
+			"url": "img/load/loading.jpg",
+			"type": "image",
+			"name": "loading_jpg"
+		},
+		{
+			"url": "img/menu/arrow.png",
+			"type": "image",
+			"name": "arrow_png"
+		},
+		{
+			"url": "img/menu/auto.png",
+			"type": "image",
+			"name": "auto_png"
+		},
+		{
+			"url": "img/menu/auto_d.png",
+			"type": "image",
+			"name": "auto_d_png"
+		},
+		{
+			"url": "img/menu/auto_p.png",
+			"type": "image",
+			"name": "auto_p_png"
+		},
+		{
+			"url": "img/menu/balanceBg.png",
+			"type": "image",
+			"name": "balanceBg_png"
+		},
+		{
+			"url": "img/menu/bet.png",
+			"type": "image",
+			"name": "bet_png"
+		},
+		{
+			"url": "img/menu/bet_d.png",
+			"type": "image",
+			"name": "bet_d_png"
+		},
+		{
+			"url": "img/menu/bet_p.png",
+			"type": "image",
+			"name": "bet_p_png"
+		},
+		{
+			"url": "img/menu/bottombg.png",
+			"type": "image",
+			"name": "bottombg_png"
+		},
+		{
+			"url": "img/menu/bottombg1.png",
+			"type": "image",
+			"name": "bottombg1_png"
+		},
+		{
+			"url": "img/menu/bottombg2.png",
+			"type": "image",
+			"name": "bottombg2_png"
+		},
+		{
+			"url": "img/menu/bottombg3.png",
+			"type": "image",
+			"name": "bottombg3_png"
+		},
+		{
+			"url": "img/menu/btnGreen.png",
+			"type": "image",
+			"name": "btnGreen_png"
+		},
+		{
+			"url": "img/menu/cancelAuto.png",
+			"type": "image",
+			"name": "cancelAuto_png"
+		},
+		{
+			"url": "img/menu/cancelAuto_d.png",
+			"type": "image",
+			"name": "cancelAuto_d_png"
+		},
+		{
+			"url": "img/menu/cancelAuto_p.png",
+			"type": "image",
+			"name": "cancelAuto_p_png"
+		},
+		{
+			"url": "img/menu/flower.png",
+			"type": "image",
+			"name": "flower_png"
+		},
+		{
+			"url": "img/menu/freeImg.png",
+			"type": "image",
+			"name": "freeImg_png"
+		},
+		{
+			"url": "img/menu/headbg.png",
+			"type": "image",
+			"name": "headbg_png"
+		},
+		{
+			"url": "img/menu/max.png",
+			"type": "image",
+			"name": "max_png"
+		},
+		{
+			"url": "img/menu/max_p.png",
+			"type": "image",
+			"name": "max_p_png"
+		},
+		{
+			"url": "img/menu/num10.png",
+			"type": "image",
+			"name": "num10_png"
+		},
+		{
+			"url": "img/menu/num100.png",
+			"type": "image",
+			"name": "num100_png"
+		},
+		{
+			"url": "img/menu/num100_p.png",
+			"type": "image",
+			"name": "num100_p_png"
+		},
+		{
+			"url": "img/menu/num10_p.png",
+			"type": "image",
+			"name": "num10_p_png"
+		},
+		{
+			"url": "img/menu/num20.png",
+			"type": "image",
+			"name": "num20_png"
+		},
+		{
+			"url": "img/menu/num20_p.png",
+			"type": "image",
+			"name": "num20_p_png"
+		},
+		{
+			"url": "img/menu/num50.png",
+			"type": "image",
+			"name": "num50_png"
+		},
+		{
+			"url": "img/menu/num50_p.png",
+			"type": "image",
+			"name": "num50_p_png"
+		},
+		{
+			"url": "img/menu/numbg.png",
+			"type": "image",
+			"name": "numbg_png"
+		},
+		{
+			"url": "img/menu/plus.png",
+			"type": "image",
+			"name": "plus_png"
+		},
+		{
+			"url": "img/menu/plus_p.png",
+			"type": "image",
+			"name": "plus_p_png"
+		},
+		{
+			"url": "img/menu/pool.png",
+			"type": "image",
+			"name": "pool_png"
+		},
+		{
+			"url": "img/menu/reduce.png",
+			"type": "image",
+			"name": "reduce_png"
+		},
+		{
+			"url": "img/menu/reduce_p.png",
+			"type": "image",
+			"name": "reduce_p_png"
+		},
+		{
+			"url": "img/menu/rule.png",
+			"type": "image",
+			"name": "rule_png"
+		},
+		{
+			"url": "img/menu/rule_d.png",
+			"type": "image",
+			"name": "rule_d_png"
+		},
+		{
+			"url": "img/menu/rule_p.png",
+			"type": "image",
+			"name": "rule_p_png"
+		},
+		{
+			"url": "img/menu/set.png",
+			"type": "image",
+			"name": "set_png"
+		},
+		{
+			"url": "img/menu/spin.png",
+			"type": "image",
+			"name": "spin_png"
+		},
+		{
+			"url": "img/menu/spinbg.png",
+			"type": "image",
+			"name": "spinbg_png"
+		},
+		{
+			"url": "img/menu/spinborder.png",
+			"type": "image",
+			"name": "spinborder_png"
+		},
+		{
+			"url": "img/menu/win.png",
+			"type": "image",
+			"name": "win_png"
+		},
+		{
+			"url": "img/setting/BetSliderBG.png",
+			"type": "image",
+			"name": "BetSliderBG_png"
+		},
+		{
+			"url": "img/setting/FastModel.png",
+			"type": "image",
+			"name": "FastModel_png"
+		},
+		{
+			"url": "img/setting/backgroud1.png",
+			"type": "image",
+			"name": "backgroud1_png"
+		},
+		{
+			"url": "img/setting/biaoti.png",
+			"type": "image",
+			"name": "biaoti_png"
+		},
+		{
+			"url": "img/setting/close.png",
+			"type": "image",
+			"name": "close_png"
+		},
+		{
+			"url": "img/setting/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "img/setting/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "img/setting/shengyin.png",
+			"type": "image",
+			"name": "shengyin_png"
+		},
+		{
+			"url": "img/setting/windowdi.png",
+			"type": "image",
+			"name": "windowdi_png"
+		},
+		{
+			"url": "img/setting/yinxiao.png",
+			"type": "image",
+			"name": "yinxiao_png"
+		},
+		{
+			"url": "img/top/di.png",
+			"type": "image",
+			"name": "di_png"
+		},
+		{
+			"url": "img/top/hx.png",
+			"type": "image",
+			"name": "hx_png"
+		},
+		{
+			"url": "img/top/j.png",
+			"type": "image",
+			"name": "j_png"
+		},
+		{
+			"url": "img/top/ssz.png",
+			"type": "image",
+			"name": "ssz_png"
+		},
+		{
+			"url": "img/circlcce.png",
+			"type": "image",
+			"name": "circlcce_png"
+		},
+		{
+			"url": "img/menu/autoImg.png",
+			"type": "image",
+			"name": "autoImg_png"
+		},
+		{
+			"url": "img/menu/maxImg.png",
+			"type": "image",
+			"name": "maxImg_png"
+		},
+		{
+			"url": "img/Tile/symbol10.png",
+			"type": "image",
+			"name": "symbol10_png"
+		},
+		{
+			"url": "img/Tile/symbol6.png",
+			"type": "image",
+			"name": "symbol6_png"
+		},
+		{
+			"url": "img/Tile/symbol7.png",
+			"type": "image",
+			"name": "symbol7_png"
+		},
+		{
+			"url": "img/Tile/symbol8.png",
+			"type": "image",
+			"name": "symbol8_png"
+		},
+		{
+			"url": "img/Tile/symbol9.png",
+			"type": "image",
+			"name": "symbol9_png"
+		},
+		{
+			"url": "img/Tile/tilebg0.png",
+			"type": "image",
+			"name": "tilebg0_png"
+		},
+		{
+			"url": "img/Tile/tilebg1.png",
+			"type": "image",
+			"name": "tilebg1_png"
+		},
+		{
+			"url": "img/Tile/tilebg2.png",
+			"type": "image",
+			"name": "tilebg2_png"
+		},
+		{
+			"url": "img/Tile/tilebg3.png",
+			"type": "image",
+			"name": "tilebg3_png"
+		},
+		{
+			"url": "img/Tile/tilebg4.png",
+			"type": "image",
+			"name": "tilebg4_png"
+		},
+		{
+			"url": "img/Tile/tilebg5.png",
+			"type": "image",
+			"name": "tilebg5_png"
+		},
+		{
+			"url": "img/Tile/tilebg6.png",
+			"type": "image",
+			"name": "tilebg6_png"
+		},
+		{
+			"url": "img/Tile/vague/vague1.png",
+			"type": "image",
+			"name": "vague1_png"
+		},
+		{
+			"url": "img/Tile/vague/vague10.png",
+			"type": "image",
+			"name": "vague10_png"
+		},
+		{
+			"url": "img/Tile/vague/vague2.png",
+			"type": "image",
+			"name": "vague2_png"
+		},
+		{
+			"url": "img/Tile/vague/vague3.png",
+			"type": "image",
+			"name": "vague3_png"
+		},
+		{
+			"url": "img/Tile/vague/vague4.png",
+			"type": "image",
+			"name": "vague4_png"
+		},
+		{
+			"url": "img/Tile/vague/vague5.png",
+			"type": "image",
+			"name": "vague5_png"
+		},
+		{
+			"url": "img/Tile/vague/vague6.png",
+			"type": "image",
+			"name": "vague6_png"
+		},
+		{
+			"url": "img/Tile/vague/vague7.png",
+			"type": "image",
+			"name": "vague7_png"
+		},
+		{
+			"url": "img/Tile/vague/vague8.png",
+			"type": "image",
+			"name": "vague8_png"
+		},
+		{
+			"url": "img/Tile/vague/vague9.png",
+			"type": "image",
+			"name": "vague9_png"
+		},
+		{
+			"url": "img/effect/taiji.json",
+			"type": "sheet",
+			"name": "taiji_json",
+			"subkeys": "zz_010_png,zz_011_png,zz_012_png,zz_013_png,zz_014_png,zz_015_png,zz_016_png,zz_017_png,zz_018_png,zz_019_png,zz_01_png,zz_020_png,zz_021_png,zz_022_png,zz_023_png,zz_024_png,zz_025_png,zz_026_png,zz_027_png,zz_028_png,zz_029_png,zz_02_png,zz_030_png,zz_03_png,zz_04_png,zz_05_png,zz_06_png,zz_07_png,zz_08_png,zz_09_png"
+		},
+		{
+			"url": "img/menu/leftTopBg.png",
+			"type": "image",
+			"name": "leftTopBg_png"
+		},
+		{
+			"url": "img/menu/rightTopBg.png",
+			"type": "image",
+			"name": "rightTopBg_png"
+		},
+		{
+			"url": "config/fnt37white.fnt",
+			"type": "font",
+			"name": "fnt37white_fnt"
+		},
+		{
+			"url": "config/fnt37white.png",
+			"type": "image",
+			"name": "fnt37white_png"
+		},
+		{
+			"url": "config/fnt37yellow.fnt",
+			"type": "font",
+			"name": "fnt37yellow_fnt"
+		},
+		{
+			"url": "config/fnt37yellow.png",
+			"type": "image",
+			"name": "fnt37yellow_png"
+		},
+		{
+			"url": "img/rule/rule5.png",
+			"type": "image",
+			"name": "rule5_png"
+		},
+		{
+			"url": "img/rule/rule1.png",
+			"type": "image",
+			"name": "rule1_png"
+		},
+		{
+			"url": "img/rule/rule2.png",
+			"type": "image",
+			"name": "rule2_png"
+		},
+		{
+			"url": "img/rule/rule3.png",
+			"type": "image",
+			"name": "rule3_png"
+		},
+		{
+			"url": "img/rule/rule4.png",
+			"type": "image",
+			"name": "rule4_png"
+		},
+		{
+			"url": "img/rule/returnbg.png",
+			"type": "image",
+			"name": "returnbg_png"
+		},
+		{
+			"url": "img/rule/return.png",
+			"type": "image",
+			"name": "return_png"
+		},
+		{
+			"url": "img/rule/return_d.png",
+			"type": "image",
+			"name": "return_d_png"
+		},
+		{
+			"url": "img/rule/return_p.png",
+			"type": "image",
+			"name": "return_p_png"
+		},
+		{
+			"url": "img/rule/point.png",
+			"type": "image",
+			"name": "point_png"
+		},
+		{
+			"url": "img/rule/pointRed.png",
+			"type": "image",
+			"name": "pointRed_png"
+		},
+		{
+			"url": "img/effect/borderLight.json",
+			"type": "sheet",
+			"name": "borderLight_json",
+			"subkeys": "borderLight10_png,borderLight11_png,borderLight12_png,borderLight13_png,borderLight14_png,borderLight15_png,borderLight16_png,borderLight17_png,borderLight18_png,borderLight19_png,borderLight1_png,borderLight20_png,borderLight21_png,borderLight22_png,borderLight23_png,borderLight24_png,borderLight25_png,borderLight26_png,borderLight27_png,borderLight28_png,borderLight29_png,borderLight2_png,borderLight30_png,borderLight3_png,borderLight4_png,borderLight5_png,borderLight6_png,borderLight7_png,borderLight8_png,borderLight9_png"
+		},
+		{
+			"url": "img/effect/title.json",
+			"type": "sheet",
+			"name": "title_json",
+			"subkeys": "title10_png,title11_png,title12_png,title13_png,title14_png,title15_png,title16_png,title17_png,title18_png,title19_png,title1_png,title20_png,title21_png,title22_png,title23_png,title24_png,title25_png,title26_png,title27_png,title28_png,title29_png,title2_png,title30_png,title3_png,title4_png,title5_png,title6_png,title7_png,title8_png,title9_png"
+		},
+		{
+			"url": "img/effect/borderAni.json",
+			"type": "sheet",
+			"name": "borderAni_json",
+			"subkeys": "zzz_010_png,zzz_011_png,zzz_012_png,zzz_013_png,zzz_014_png,zzz_015_png,zzz_016_png,zzz_017_png,zzz_018_png,zzz_019_png,zzz_01_png,zzz_020_png,zzz_021_png,zzz_022_png,zzz_023_png,zzz_024_png,zzz_025_png,zzz_026_png,zzz_027_png,zzz_028_png,zzz_029_png,zzz_02_png,zzz_030_png,zzz_03_png,zzz_04_png,zzz_05_png,zzz_06_png,zzz_07_png,zzz_08_png,zzz_09_png"
+		},
+		{
+			"name": "spinbg_d_png",
+			"type": "image",
+			"url": "img/menu/spinbg_d.png"
+		}
+	]
+}

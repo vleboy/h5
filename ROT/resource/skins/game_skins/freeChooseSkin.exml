@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="freeChooseSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+	<e:Group id="chooseGroup" width="1920" height="1080" x="0" y="0">
+		<e:Rect id="rect" width="1920" height="1080" x="0" y="0" fillAlpha="0.7"/>
+
+		<e:Group id="cardBgLight" width="310" height="600" left="806" verticalCenter="0">
+			<e:Image id="bgLight" width="1000" height="1000" verticalCenter="0" horizontalCenter="0" source="light_10_png" alpha="0"/>
+			<e:Image id="maxArr" verticalCenter="0" horizontalCenter="0" width="1200" height="1200" source="maxArr_10_png" alpha="0"/>
+		</e:Group>
+		<e:Group id="choose20" name="choose_20" scaleX="1" scaleY="1" height="600" verticalCenter="0" left="62" width="310" touchChildren="false" touchEnabled="true">
+			<e:Image id="cardBg20" width="320" height="610" verticalCenter="5" horizontalCenter="2" scale9Grid="74,135,102,184" source="touchLight_png"/>
+			<e:Image source="purple_png" verticalCenter="0" horizontalCenter="0" width="310" height="600"/>
+			<e:Image id="minArr_20" horizontalCenter="-1" verticalCenter="14" width="360" height="360" source="minArr_20_png"/>
+		</e:Group>
+		<e:Group id="choose15" name="choose_15" width="310" height="600" scaleX="1" scaleY="1" verticalCenter="0" left="434" touchChildren="false" touchEnabled="true">
+			<e:Image id="cardBg15" width="320" height="610" verticalCenter="5" horizontalCenter="2" scale9Grid="74,135,102,184" source="touchLight_png"/>
+			<e:Image verticalCenter="0" horizontalCenter="0" width="310" height="600" source="red_png"/>
+			<e:Image id="minArr_15" horizontalCenter="-2" verticalCenter="14" width="360" height="360" source="minArr_15_png"/>
+		</e:Group>
+		<e:Group id="choose10" name="choose_10" width="310" height="600" scaleX="1" scaleY="1" verticalCenter="0" left="806" touchChildren="false" touchEnabled="true">
+			<e:Image id="cardBg10" width="320" height="610" verticalCenter="5" horizontalCenter="2" scale9Grid="74,135,102,184" source="touchLight_png"/>
+			<e:Image verticalCenter="0" horizontalCenter="0" source="green_png" width="310" height="600"/>
+			<e:Image id="minArr_10" horizontalCenter="-2" verticalCenter="15" width="360" height="360" source="minArr_10_png"/>
+		</e:Group>
+		<e:Group id="choose8" name="choose_8" width="310" height="600" scaleX="1" scaleY="1" verticalCenter="0" left="1178" touchChildren="false" touchEnabled="true">
+			<e:Image id="cardBg8" width="320" height="610" verticalCenter="5" horizontalCenter="2" scale9Grid="74,135,102,184" source="touchLight_png"/>
+			<e:Image verticalCenter="0" horizontalCenter="0" source="blue_png" width="310" height="600"/>
+			<e:Image id="minArr_8" horizontalCenter="-1" verticalCenter="12" width="360" height="360" source="minArr_8_png"/>
+		</e:Group>
+		<e:Group id="choose5" name="choose_5" scaleX="1" scaleY="1" height="600" width="310" verticalCenter="0" left="1550" touchChildren="false" touchEnabled="true">
+			<e:Image id="cardBg5" width="320" height="610" verticalCenter="5" horizontalCenter="2" scale9Grid="74,135,102,184" source="touchLight_png"/>
+			<e:Image verticalCenter="0" horizontalCenter="0" source="yellow_png" width="310" height="600"/>
+			<e:Image id="minArr_5" horizontalCenter="-1" verticalCenter="14" width="360" height="360" source="minArr_5_png"/>
+		</e:Group>
+
+	</e:Group>
+	<e:Image id="tipTxt" y="1010" horizontalCenter="0" source="tese_png"/>
+	<e:Rect id="closeRect" left="0" right="0" top="0" bottom="0" fillColor="0xffffff" visible="false"/>
+
+
+
+
+</e:Skin>

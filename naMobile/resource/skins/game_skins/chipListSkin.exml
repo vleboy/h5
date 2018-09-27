@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="chipListSkin" width="138" height="722" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="chouma_huad_png" scaleY="-1" horizontalCenter="0" height="31" top="0"/>
+	<e:Image source="chouma_huad_png" horizontalCenter="0" bottom="0"/>
+	<e:Scroller id="scroller" width="100%" x="0" top="50" bottom="50">
+		<e:List id="list">
+			<e:ArrayCollection>
+				<e:Array>
+					<e:Object value="5"/>
+					<e:Object value="10"/>
+					<e:Object value="50"/>
+					<e:Object value="100"/>
+					<e:Object value="500"/>
+					<e:Object value="1000"/>
+					<e:Object value="custom"/>
+				</e:Array>
+			</e:ArrayCollection>
+			<e:itemRendererSkinName>
+				<e:Skin states="up,down,disabled" height="161" width="138" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+				<e:Image id="chipImg" scale9Grid="1,3,8,8" alpha.disabled="0.5" source="chouma5_png" horizontalCenter="0" verticalCenter="0" visible="true"/>
+                <e:Group id="customGroup" width="100%" height="100%" x="0" y="0" visible="false">
+                    <e:Image source="zidingyi_png" horizontalCenter="0" verticalCenter="0"/>
+                    <e:Image id="penImg" source="chouma_bianji_png" x="0" bottom="10"/>
+                    <e:Label id="customTxt" text="自定义" x="0" width="100%" textAlign="center" verticalCenter="0" size="28"/>
+                </e:Group>
+				<game:AMovieClip id="selectEffect1" width="250" height="250" source="BetEffect1_0_png" sources="BetEffect1_|0-29|_png" horizontalCenter="-3" verticalCenter="-5" speed="2" visible="true"/>
+				<game:AMovieClip id="selectEffect2" width="250" height="250"  source="BetEffect2_0_png" sources="BetEffect2_|0-26|_png" horizontalCenter="2" verticalCenter="0" speed="2" visible="false"/>
+				</e:Skin>
+			</e:itemRendererSkinName>
+		</e:List>
+	</e:Scroller>
+</e:Skin>

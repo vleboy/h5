@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="gameListSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="beijing_jpg" x="0" y="0" width="100%" height="100%"/>
+	<e:Group id="gameGroup" width="1" x="0" top="112" bottom="0">
+		<e:Image id="gameMi" source="xuanze-mpbjl_png" x="22" name="gameMi" scaleX="1" scaleY="1" verticalCenter="0"/>
+		<e:Image id="gameBac" x="398" source="xuanze-jsbjl_png" name="gameBac" scaleX="1" scaleY="1" verticalCenter="0"/>
+		<e:Image id="gameRoulette" x="774" source="xuanze-cjlp_png" name="gameRoulette" scaleX="1" scaleY="1" verticalCenter="0"/>
+		<e:Image id="gameMultiBac" x="1150" source="xuanze-dtbjl_png" name="gameMultiBac" scaleX="1" scaleY="1" verticalCenter="0"/>
+		<e:Image id="gameVipBac" x="1526" source="xuanze-gbbjl_png" name="gameVipBac" scaleX="1" scaleY="1" verticalCenter="0"/>
+	</e:Group>
+</e:Skin>

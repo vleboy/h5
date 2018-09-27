@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="topBarSkin" width="1920" height="95" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
+
+
+
+	<e:Group id="groupLeft" width="338" height="95" left="0" verticalCenter="0">
+		<e:Image verticalCenter="0" scale9Grid="74,28,67,33" x="0" y="0" scaleY="1" source="leftTopBg_png"/>
+
+
+		<e:Label id="userName" text="游客12454" scaleX="1" scaleY="1" size="24" textAlign="center" verticalAlign="middle" x="15" y="8" textColor="0x000000" width="219"/>
+		<e:Label id="userMoney" text="888.888.88" size="26" textAlign="center" verticalAlign="middle" scaleX="1" scaleY="1" height="26" width="172" x="52" y="43" textColor="0xcc9c35"/>
+	</e:Group>
+	<e:Group id="groupRight" width="150" height="95" verticalCenter="0" right="0">
+		<e:Image source="di_png" width="150" height="95" right="0" top="0" scale9Grid="68,23,73,35" x="0" y="0" scaleX="1" scaleY="1"/>
+		<game:SmallButton id="setBtn" label="" width="63" height="59" verticalCenter="0" horizontalCenter="15.5">
+			<game:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="ssz_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</game:skinName>
+		</game:SmallButton>
+	</e:Group>
+</e:Skin>

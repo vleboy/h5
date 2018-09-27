@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="bacMiListItemSkin" width="1880" height="400" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="xianhong_1_png" x="356" y="2" width="460" scale9Grid="8,8,48,52"/>
+	<e:Image source="sanjianx_png" x="777" y="15"/>
+	<e:Image x="0" y="0" source="xuanzuo_bg_jpg" width="100%" scale9Grid="393,52,28,332" height="100%"/>
+	<e:Label text="咪牌百家乐M01" x="22" y="18" size="34" textColor="0xe59320"/>
+	<e:Label text="房间限红:" x="384" y="15" size="30" textColor="0xE59320"/>
+	<e:Label id="limitTxt" text="1-3k" x="524" y="15" size="30" textColor="0xE59320" width="250" textAlign="center"/>
+	<e:Image id="dealerHeadImg" source="beijing_jpg" x="36" y="68" width="182" height="240"/>
+	<e:Image id="dealerNameTxt" source="mingzi_bg_png" x="37" y="322"/>
+	<e:Label text="KARINA" x="37" y="334.52" width="181" textAlign="center"/>
+	<e:Image source="jushu_bg_png" x="264" y="77" width="153" height="46" scale9Grid="14,13,9,7"/>
+	<e:Image source="jushu_bg_png" x="426" y="77" width="153" height="46" scale9Grid="14,13,9,7"/>
+	<e:Image source="jushu_bg_png" x="588" y="77" width="153" height="46" scale9Grid="14,13,9,7"/>
+	<e:Image source="jushu_bg_png" x="750" y="77" width="153" height="46" scale9Grid="14,13,9,7"/>
+	<e:Label id="totalTxt" text="总:74" x="286" y="87" size="26"/>
+	<e:Label id="bankerTxt" text="庄:74" x="448" y="87" size="26"/>
+	<e:Label id="playerTxt" text="闲:74" x="610" y="87" size="26"/>
+	<e:Label id="tieTxt" text="和:74" x="772" y="87" size="26"/>
+	<e:Image id="stageImg" source="mipai_bg_png" y="70" right="136"/>
+	<e:Image id="stateIcon" source="mipai_tb_png" y="67" right="56"/>
+	<e:Label id="stateTxt" text="咪牌中" x="1611" y="84" width="119" textAlign="center" textColor="0xeeaa25" size="28"/>
+	<e:Group id="roadmapGroup" width="1" height="1" x="0" y="0">
+		<e:Image source="liebiao_ludan_jpg" x="262" y="132" scaleX="1" scaleY="1"/>
+		<e:Image source="huanzhuoludan2_jpg" x="262" y="260" scaleX="1" scaleY="1"/>
+		<e:Image source="huanzhuoludan2_jpg" x="666" y="260" scaleX="1" scaleY="1"/>
+		<e:Image source="huanzhuoludan2_jpg" x="1070" y="260" scaleX="1" scaleY="1"/>
+		<e:Image source="huanzhuoludan2_jpg" x="1472" y="260" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Group id="setLimitGroup" width="1" height="1" x="0" y="0" visible="false">
+		<e:Image source="xianh_bg_png" x="815" y="0" width="512" height="240" scale9Grid="15,14,21,24" scaleX="1" scaleY="1"/>
+		<e:Scroller width="486" height="222" x="828" y="8" scaleX="1" scaleY="1">
+			<e:List x="-2" y="-2">
+			<e:ArrayCollection>
+				<e:Array>
+				<e:Object limit="1-3k"/>
+				<e:Object limit="1-5k"/>
+				<e:Object limit="1-10k"/>
+				</e:Array>
+			</e:ArrayCollection>
+			<e:itemRendererSkinName>
+				<e:Skin states="up,down,disabled" height="75" width="486">
+				<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8" size="20" fontFamily="Tahoma" text="{data.limit}" verticalAlign="middle" textAlign="center" textColor="0xeba136"/>
+				<e:Group id="selectedImg" width="1" height="1" x="0" y="0">
+					<e:Image source="xianhxz_bg_png" x="362" y="18" scaleX="1" scaleY="1"/>
+					<e:Image source="xianhxz_xz_png" x="369" y="24" scaleX="1" scaleY="1"/>
+				</e:Group>
+				</e:Skin>
+			</e:itemRendererSkinName>
+			</e:List>
+		</e:Scroller>
+	</e:Group>
+	<e:Group id="shuffleGroup" width="100%" height="100%" x="0" y="0" visible="false">
+		<e:Rect width="100%" height="100%" x="0" y="0" alpha="0.5"/>
+		<e:Image source="xiapi_da_png" horizontalCenter="0" verticalCenter="0"/>
+	</e:Group>
+</e:Skin>

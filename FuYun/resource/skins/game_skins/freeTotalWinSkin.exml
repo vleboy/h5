@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="freeTotalWinSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image x="0" y="0" source="freebg_png"/>
+	<e:Image source="OverBG2_png" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image source="asdasd_png" verticalCenter="0" x="1"/>
+	<e:Image source="GetTips_png" x="558" y="274"/>
+	<e:BitmapLabel id="winTxt" height="180" font="fnt173_fnt" text="0.00" textAlign="center" letterSpacing="-5" verticalCenter="0" width="1600" anchorOffsetX="800" anchorOffsetY="90" horizontalCenter="155"/>
+</e:Skin>

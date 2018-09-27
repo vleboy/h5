@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="topBarSkin" width="1920" height="112" currentState="roomlist" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" states="gamelist,roomlist,gameroom"  height.gameroom="1080">
+	<e:Image source="topbg_png" x="0" y="0" width="100%" height="112" visible.gameroom="false"/>
+	<e:Image source="topbg2_png" includeIn="gameroom" x="0" y="0" scale9Grid="4,11,17,66" width="720" height="88"/>
+	<e:Image source="topbg2_png" includeIn="gameroom" y="0" scale9Grid="4,11,17,66" width="720" height="88" right="0" scaleX="-1"/>
+	<e:Image id="returnImg" source="fanhuihong_png" x="0" y="0" height="115" visible.gamelist="false" height.gameroom="88" width.gameroom="152"/>
+	<e:Image source="balancebg_png" y="24" right.gamelist="160" right="160" right.gameroom="299" y.gameroom="11"/>
+	<e:Label text="200340" x.roomlist="1520" y="45" size="30" fontFamily="SimHei" width="268" height="25" verticalAlign="middle" textAlign="center" textColor="0xd7c288" width.gamelist="268" right.gamelist="160" right="160" right.gameroom="300" y.gamelist="43" right.roomlist="160" y.roomlist="43" y.gameroom="29"/>
+	<e:Image id="settingImg" source="setting_png" right="50" right.gamelist="50" right.roomlist="50" y.gamelist="24" y.roomlist="24" y="24" y.gameroom="11"/>
+	<e:Image source="title_png" x="227" x.gamelist="50" visible.gameroom="false" y.gamelist="31" y.roomlist="31" y="31"/>
+	<e:Image id="headImg" source="touxiang_png" includeIn="gameroom" x="165" y="8" width="75" height="75"/>
+	<e:Label id="nameTxt" text="yd004" includeIn="gameroom" x="250" y="12" textColor="0xb93131" size="26" fontFamily="SimHei"/>
+	<e:Label id="idTxt" text="ID:576558" includeIn="gameroom" x="250" y="52" size="26" fontFamily="SimHei" textColor="0xffffff"/>
+</e:Skin>
