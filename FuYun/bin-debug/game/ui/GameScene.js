@@ -1072,7 +1072,7 @@ var game;
             if (isStart) {
                 this.freeMultiGroup.visible = true;
                 //倍数
-                this.freeMulti.text = "X" + mul;
+                this.freeMulti.text = "x" + mul;
                 var theParticle = function (texture, cfg, index, isLight) {
                     var theP = new particle.GravityParticleSystem(texture, cfg);
                     _this.freeMultiGroup.addChildAt(theP, index);

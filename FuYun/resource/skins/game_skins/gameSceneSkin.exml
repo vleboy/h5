@@ -81,9 +81,9 @@
 		<e:Image id="freeChooseCountBg" source="FeatureChance_png" top="90" left="1450"/>
 
 		<e:BitmapLabel id="freeChooseCountTxt" right="-260" font="fnt40_fnt" text="x2" height="40" top="100" width="120" textAlign="left"/>
-		<e:Group id="freeMultiGroup" width="200" height="140" left="5" top="87" visible="false">
+		<e:Group id="freeMultiGroup" width="200" height="140" left="5" top="90" visible="false">
 
-			<e:BitmapLabel id="freeMulti" text="X10" font="fnt70_fnt" height="70" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0"/>
+			<e:BitmapLabel id="freeMulti" text="x10" scaleX="1.1" scaleY="1.1" verticalCenter="0" horizontalCenter="0" font="fnt41_fnt" height="41" letterSpacing="-15"/>
 
 		</e:Group>
 

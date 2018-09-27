@@ -1012,7 +1012,7 @@ module game {
 			if (isStart) {
 				this.freeMultiGroup.visible = true;
 				//倍数
-				this.freeMulti.text = "X" + mul;
+				this.freeMulti.text = "x" + mul;
 				let theParticle = (texture, cfg, index, isLight?: boolean) => {
 					let theP = new particle.GravityParticleSystem(texture, cfg);
 					this.freeMultiGroup.addChildAt(theP, index);
