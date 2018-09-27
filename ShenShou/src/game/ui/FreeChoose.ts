@@ -58,7 +58,7 @@ module game {
 					Promise.all([
 						new Promise((resolve, reject) => {
 							let endY:number = i >= 3 ? 76 : 46;
-							let img: eui.Image = new eui.Image("wildbg" + (i + 1) + "_png");
+							let img: eui.Image = new eui.Image("wildbg" + ( 5 - i) + "_png");
 							img.width = 207;
 							img.height = 202;
 							img.x = 155;
