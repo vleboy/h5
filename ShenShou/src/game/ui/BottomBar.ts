@@ -67,7 +67,7 @@ module game {
 			b && !this.isFree && (this.freeAuto = this.isAuto);
 			this.isAuto = b;
 			!b && (this.isAuto = false);
-			!b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX"); 
+			!b && (this.autoNum.text = this.autoCount >= 0 ? (this.autoCount + "") : "MAX");
 			this.autoImg.source = b ? "Free_png" : "Auto_1_png";
 			this.isFree = b;
 			this.autoState();
@@ -297,18 +297,18 @@ module game {
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0.00";
-					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
+					betAutoState(false, false);
 					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.SHOW_RESULT:
-					this.isFree ? betAutoState(false, false) : betAutoState(false);
+					betAutoState(false, false);
 					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
+					betAutoState(false, false);
 					this.imgSpin(true);
 					this.spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;
@@ -322,7 +322,7 @@ module game {
 			this.isAuto = num != 0;
 			this.autoCount = num;
 			this.autoNum.text = num >= 0 ? (num + "") : "MAX";
-			if(num == 0) this.spinBtnShow();
+			if (num == 0) this.spinBtnShow();
 		}
 		/**免费下注次数*/
 		public setFreeBetNum(num: number): void {
