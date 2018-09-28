@@ -1,0 +1,83 @@
+module game {
+	export class AMovieClip extends eui.Image{
+		/**帧图数组 */
+		private imgs:Array<string> = [];
+		/**当前帧 */
+		private currentFrame: number = 0;
+		/**是否循环播放 默认-1 循环 */
+		public loop:number = -1;
+		/**播放速度 值越大播放越慢 */
+		public speed: number = 5;
+		/**计数器 */
+		private _flag:number = 0;
+		/**结束事件 */
+		public static COMPLETE:string = "loopComplete";
+		/**每一次循环完成*/
+		public static VERYLOOPCOMPLETE:string = "veryLoopComplete";
+
+		public constructor() {
+			super();
+
+		}
+
+
+
+		/** 开始播放 */
+		public play()
+		{
+			this.currentFrame = 0;
+			this.source = this.imgs[this.currentFrame];
+			this.addEventListener(egret.Event.ENTER_FRAME, this.onFrame, this);
+		}
+		/**停止播放 */
+		public stop()
+		{
+			this.removeEventListener(egret.Event.ENTER_FRAME, this.onFrame, this);
+		}
+		private onFrame()
+		{
+			this._flag++;
+			if(this._flag >= this.speed)
+			{
+				this.nextFrame();
+				this._flag = 0;
+			}
+		}
+		/**播下一帧 */
+		private nextFrame()
+		{
+			this.currentFrame++;
+			if(this.currentFrame == this.imgs.length)
+			{
+				this.loop--;
+				if(this.loop==0)
+				{
+					this.dispatchEventWith(AMovieClip.COMPLETE);
+					this.stop();
+					return;
+				}
+				else
+				{
+					this.currentFrame = 0;
+					this.dispatchEventWith(AMovieClip.VERYLOOPCOMPLETE);
+				}
+			}
+			this.source = this.imgs[this.currentFrame];
+		}
+
+		/**设置图片数组 例如 'a0_png'到'a10_png' 那么设置为格式为 'a|0-10|_png' */
+		public set sources(str: any)
+		{
+			var arr = str.split("|");
+			var numStr: string = arr[1];
+			var start: number = parseInt(numStr.split("-")[0]);
+			var end: number = parseInt(numStr.split("-")[1]);
+
+			this.imgs = [];
+			for(var i:number=start; i<=end; i++)
+			{
+				this.imgs.push(arr[0]+i+arr[2]);
+			}
+		}
+	}
+}

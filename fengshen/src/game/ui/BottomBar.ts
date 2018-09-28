@@ -60,8 +60,6 @@ module game {
 		private isFree: boolean;
 		/**免费开始前是不是自动*/
 		private freeAuto: boolean;
-		/**自动的次数*/
-		private autoCount: number = 0;
 		/**赢得钱*/
 		private winNum: number = 0;
 
@@ -91,6 +89,8 @@ module game {
 		private initListenr(): void {
 			this.registerEvent(this.spinBtn, egret.TouchEvent.TOUCH_TAP, this.onSpin, this);
 			this.registerEvent(this.stopSpinBtn, egret.TouchEvent.TOUCH_TAP, this.onCancelSpin, this);
+			this.registerEvent(this.autoNumBtn, egret.TouchEvent.TOUCH_TAP, this.onCancelSpin, this);
+			this.registerEvent(this.freeNumBtn, egret.TouchEvent.TOUCH_TAP, this.onCancelSpin, this);
 			this.registerEvent(this.helpBtn, egret.TouchEvent.TOUCH_TAP, this.onRule, this);
 			this.registerEvent(this.betBtn, egret.TouchEvent.TOUCH_TAP, this.onBetLevel, this);
 			this.registerEvent(this.autoBtn, egret.TouchEvent.TOUCH_TAP, this.showAutoCountChoose, this);
@@ -112,8 +112,7 @@ module game {
             this.sendNotify(NotifyConst.cancelSpin);
         }
         private onRule(){
-            // this.sendNotify(NotifyConst.openHelp, this.theBetArr[this.theBetIndex]);
-            this.sendNotify(NotifyConst.openHelp, null);
+            this.sendNotify(NotifyConst.openHelp, this.theBetArr[this.theBetIndex]);
             this.hideCutGroup();
         }
         private onAutoNum(e: egret.TouchEvent): void {
@@ -123,13 +122,12 @@ module game {
             this.showAutoBtn(false);
             this.isAuto = true;
             this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);
-            this.autoState();
         }
         private onBetLevel(): void {
             let betShow = () => {
                 this.hideCutGroup();
                 this.groupBet.visible = true;
-                this.showTween(this.groupBet, 126).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
+                this.showTween(this.groupBet, 128).then(() => SoundPlayer.playEffect("CaiShen_243_GUI_Generic1_mp3"));
             }
             this.groupBet.visible ? this.showTween(this.groupBet, -100).then(() => {
                 this.groupBet.visible = false;
@@ -152,7 +150,7 @@ module game {
             let autoShow = () => {
                 this.hideCutGroup();
                 this.groupAutoNum.visible = true;
-                this.showTween(this.groupAutoNum, 107);
+                this.showTween(this.groupAutoNum, 128);
             }
             this.groupAutoNum.visible ? this.showTween(this.groupAutoNum, -400).then(() => {
                 this.groupAutoNum.visible = false;
@@ -205,40 +203,33 @@ module game {
 				this.groupAutoNum.visible = false
 			});
 		}
-
-		/**是不是自动状态*/
-		private autoState(): void {
-			this.spinArrow.visible = !this.isAuto;
-			this.stopSpinBtn.visible = !this.isAuto;
-			this.groupAuto.visible = this.isAuto;
-		}
-		/**获得派彩的动画*/
-		private payout(mon: number): void {
-			
-		}
-		/**图片旋转
-		 * @param isStop 是不是停止动画
-		*/
-		private imgSpin(isStop: boolean = false): void {
-			isStop ? egret.Tween.removeTweens(this.spinArrow) : egret.Tween.get(this.spinArrow).to({ rotation: 360 }, 500);
-		}
 		/**赢得钱*/
 		public setWinMoney(mon: number): void {
 			if (!mon) return;
 			this.winTxt.text = mon + "";
-			this.payout(mon);
 		}
 		/**控制游戏状态 */
 		public setState(n: GameState) {
 			this.state = n;
 			if(this.isFree){
+				this.cancelAutoBtn.visible = false;
                 this.freeNumBtn.visible = true;
+				this.betBtn.enabled = false;
+				this.autoBtn.enabled = false;
+				this.groupBet.touchChildren = false;
+				this.groupAutoNum.touchChildren = false;
 			}
 			else if(this.isAuto){
+				this.cancelAutoBtn.visible = true;
                 this.autoNumBtn.visible = true;
                 this.freeNumBtn.visible = false;
+				this.betBtn.enabled = false;
+				this.autoBtn.enabled = false;
+				this.groupBet.touchChildren = false;
+				this.groupAutoNum.touchChildren = false;
 			}
 			else{
+				this.cancelAutoBtn.visible = false;
                 this.autoNumBtn.visible = false;
                 this.freeNumBtn.visible = false;
 				switch (n) {
@@ -246,45 +237,83 @@ module game {
                         this.spinBtn.visible = true;
                         this.spinBtn.enabled = true;
                         this.stopSpinBtn.visible = false;
+						this.betBtn.enabled = true;
+						this.autoBtn.enabled = true;
+						this.groupBet.touchChildren = true;
+						this.groupAutoNum.touchChildren = true;
 						break;
                     case GameState.SPINNING:
                         this.winTxt.text = "0.00";
                         this.spinBtn.visible = true;
                         this.spinBtn.enabled = false;
                         this.stopSpinBtn.visible = false;
+						this.betBtn.enabled = false;
+						this.autoBtn.enabled = false;
+						this.groupBet.touchChildren = false;
+						this.groupAutoNum.touchChildren = false;
                         break;
                     case GameState.STOP:
                         this.spinBtn.visible = false;
                         this.stopSpinBtn.visible = true;
                         this.stopSpinBtn.enabled = true;
+						this.betBtn.enabled = false;
+						this.autoBtn.enabled = false;
+						this.groupBet.touchChildren = false;
+						this.groupAutoNum.touchChildren = false;
                         break;
 					case GameState.SHOW_RESULT:
                         this.spinBtn.visible = true;
                         this.spinBtn.enabled = false;
                         this.stopSpinBtn.visible = false;
+						this.betBtn.enabled = false;
+						this.autoBtn.enabled = false;
+						this.groupBet.touchChildren = false;
+						this.groupAutoNum.touchChildren = false;
 						break;
 					case GameState.SHOW_SINGLE_LINES:
                         this.spinBtn.visible = false;
                         this.stopSpinBtn.visible = true;
                         this.stopSpinBtn.enabled = true;
+						this.betBtn.enabled = false;
+						this.autoBtn.enabled = false;
+						this.groupBet.touchChildren = false;
+						this.groupAutoNum.touchChildren = false;
 						break;
 				}
 			}
 		}
 		/**自动下注次数*/
 		public setAutoBetNum(num: number): void {
-			this.showAutoBtn(num == 0);
-			if (this.isAuto && this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = true;
-			this.isAuto = num != 0;
-			this.autoCount = num;
+            this.isAuto = num!=0;
 			(this.autoNumBtn.getChildByName("maxImg") as eui.Image).visible = num < 0;
 			(this.autoNumBtn.getChildByName("countTxt") as eui.Label).text = num >= 0 ? (num + "") : "";
-			// if(num == 0) this.spinBtnShow();
 		}
 		/**免费下注次数*/
 		public setFreeBetNum(num: number): void {
 			if (this.cancelAutoBtn.visible) this.cancelAutoBtn.enabled = false;
 			(this.freeNumBtn.getChildByName("countTxt") as eui.Label).text = num + "";
+		}
+		private freeMc: AMovieClip;
+		/**免费中增加免费次数 */
+		public addFreeCount(add){
+			return new Promise((resolve, reject)=>{
+				this.freeMc.visible = true;
+				this.freeMc.loop = 1;
+				this.freeMc.play();
+				this.freeMc.once(AMovieClip.COMPLETE, ()=>{
+					this.freeMc.visible = false;
+					let target = this.freeNumBtn.getChildByName("countTxt") as eui.Label;
+					let n = +target.text;
+					target["count"] = n;
+					egret.Tween.get(target, {onChange:()=>{target.text = parseInt(target["count"])+""}, onChangeObj:this})
+						.to({count:n+add},200)
+						.call(()=>{
+							egret.Tween.removeTweens(target);
+							resolve();
+						})
+				}, this);
+				
+			})
 		}
 		/**
          * 资源释放

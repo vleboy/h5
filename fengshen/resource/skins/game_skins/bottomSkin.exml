@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="bottomSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
-	<e:Group id="groupBet" width="788" height="200" bottom="-400" x="60">
+	<e:Group id="groupBet" width="788" height="200" bottom="-209" x="60" visible="false">
 		<e:Image left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16" source="bottombg3_png"/>
 		<e:Image width="204" height="72" left="192" source="numbg_png" verticalCenter="0"/>
 		<game:SmallButton id="BtnLess" label="" width="110" height="82" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="-292">
@@ -35,7 +35,7 @@
 		</game:SmallButton>
 		<e:Label id="betTxt" text="0.00" height="60" width="181" verticalCenter="0" left="205" size="35" textAlign="center" verticalAlign="middle"/>
 	</e:Group>
-	<e:Group id="groupAutoNum" width="252" height="548" right="215" bottom="-400">
+	<e:Group id="groupAutoNum" width="252" height="548" right="215" bottom="-556" visible="false">
 		<e:Image left="0" right="0" top="0" bottom="0" scale9Grid="22,26,23,16" x="-1338" y="283" scaleX="1" scaleY="1" source="bottombg2_png"/>
 		<game:SmallButton id="btn_max" name="btn_max" label="" height="80" width="160" horizontalCenter="0" verticalCenter="-196">
 			<game:skinName>
@@ -46,7 +46,7 @@
 			</game:skinName>
 
 		</game:SmallButton>
-		<game:SmallButton id="btn_100" name="btn_max" label="" height="80" width="160" horizontalCenter="0" verticalCenter="-98">
+		<game:SmallButton id="btn_100" name="btn_100" label="" height="80" width="160" horizontalCenter="0" verticalCenter="-98">
 			<game:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="num100_png" source.down="num100_p_png" source.disabled="num100_png"/>
@@ -55,7 +55,7 @@
 			</game:skinName>
 
 		</game:SmallButton>
-		<game:SmallButton id="btn_50" name="btn_max" label="" height="80" width="160" horizontalCenter="0" verticalCenter="0">
+		<game:SmallButton id="btn_50" name="btn_50" label="" height="80" width="160" horizontalCenter="0" verticalCenter="0">
 			<game:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="num50_png" source.down="num50_p_png" source.disabled="num50_png"/>
@@ -64,7 +64,7 @@
 			</game:skinName>
 
 		</game:SmallButton>
-		<game:SmallButton id="btn_20" name="btn_max" label="" height="80" width="160" horizontalCenter="0" verticalCenter="98">
+		<game:SmallButton id="btn_20" name="btn_20" label="" height="80" width="160" horizontalCenter="0" verticalCenter="98">
 			<game:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="num20_png" source.down="num20_p_png" source.disabled="num20_png"/>
@@ -73,7 +73,7 @@
 			</game:skinName>
 
 		</game:SmallButton>
-		<game:SmallButton id="btn_10" name="btn_max" label="" height="80" width="160" horizontalCenter="0" verticalCenter="196">
+		<game:SmallButton id="btn_10" name="btn_10" label="" height="80" width="160" horizontalCenter="0" verticalCenter="196">
 			<game:skinName>
 				<e:Skin states="up,down,disabled">
 				<e:Image width="100%" height="100%" source="num10_png" source.down="num10_p_png" source.disabled="num10_png"/>
@@ -181,6 +181,7 @@
 
 
 		</e:Group>
+		<game:AMovieClip id="freeMc" source="freeCountMc_json.fx_huode8_png" horizontalCenter="842" verticalCenter="12" scaleX="2" scaleY="2" sources="fx_huode|1-8|_png" loop="1" visible="false"/>
 
 	</e:Group>
 </e:Skin>

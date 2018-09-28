@@ -12,7 +12,7 @@
 	"game": [
 		"bin-debug/core/base/BaseUI.js",
 		"bin-debug/core/vo/BaseVO.js",
-		"bin-debug/core/vo/LoginVO.js",
+		"bin-debug/core/vo/ChooseBuffVO.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/core/base/AMovieClip.js",
@@ -24,10 +24,11 @@
 		"bin-debug/core/util/Dictionary.js",
 		"bin-debug/core/util/FilterUtil.js",
 		"bin-debug/core/util/HttpUtil.js",
+		"bin-debug/core/util/NumberUtil.js",
 		"bin-debug/core/util/StageUtil.js",
 		"bin-debug/Main.js",
-		"bin-debug/core/vo/ChooseBuffVO.js",
-		"bin-debug/game/ui/TopBar.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/core/vo/LoginVO.js",
 		"bin-debug/core/vo/SpinVO.js",
 		"bin-debug/game/GlobalConfig.js",
 		"bin-debug/game/const/GameState.js",
@@ -38,12 +39,11 @@
 		"bin-debug/game/ui/BottomBar.js",
 		"bin-debug/game/ui/ConnectTip.js",
 		"bin-debug/game/ui/ErrTip.js",
-		"bin-debug/game/ui/FreeChoose.js",
 		"bin-debug/game/ui/FreeTotalWin.js",
 		"bin-debug/game/ui/GameScene.js",
-		"bin-debug/game/ui/Rull.js",
+		"bin-debug/game/ui/Rule.js",
 		"bin-debug/game/ui/Setting.js",
 		"bin-debug/game/ui/Tips.js",
-		"bin-debug/LoadingUI.js"
+		"bin-debug/game/ui/TopBar.js"
 	]
 }
