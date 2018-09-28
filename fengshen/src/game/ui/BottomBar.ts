@@ -119,8 +119,8 @@ module game {
             let str: string = e.target.name.split("_")[1];
             this.sendNotify(NotifyConst.spin, str);
             str == "max" ? this.setAutoBetNum(-1) : this.setAutoBetNum(+str);
-            this.showAutoBtn(false);
             this.isAuto = true;
+			this.cancelAutoBtn.visible = true;
             this.showTween(this.groupAutoNum, -400).then(() => this.groupAutoNum.visible = false);
         }
         private onBetLevel(): void {
@@ -159,7 +159,7 @@ module game {
         private onCancelAuto(): void {
             this.sendNotify(NotifyConst.cancelAutoSpin);
             this.isAuto = false;
-            this.showAutoBtn(true);
+			this.cancelAutoBtn.visible = false;
         }
 
 
@@ -176,11 +176,6 @@ module game {
 					res();
 				});
 			})
-		}
-		/**是否显示自动转动按钮*/
-		private showAutoBtn(isShow: boolean): void {
-			this.autoBtn.visible = isShow;
-			this.cancelAutoBtn.visible = !isShow;
 		}
 
 		/**校验加减号状态和设置单注下注档次*/
@@ -285,6 +280,7 @@ module game {
 		/**自动下注次数*/
 		public setAutoBetNum(num: number): void {
             this.isAuto = num!=0;
+			this.cancelAutoBtn.visible = num!=0;
 			(this.autoNumBtn.getChildByName("maxImg") as eui.Image).visible = num < 0;
 			(this.autoNumBtn.getChildByName("countTxt") as eui.Label).text = num >= 0 ? (num + "") : "";
 		}

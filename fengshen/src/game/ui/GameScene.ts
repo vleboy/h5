@@ -289,6 +289,7 @@ module game {
 				this.autoMax = false;
 				this.autoCount = autoCount;
 			}
+			this.clearClouds();
 
 			if (this.spinResp) this.buff = this.spinResp.payload.featureData.buff;
 			this.startSpin();
@@ -347,6 +348,7 @@ module game {
 			this.freeSpinRemainCount = this.spinResp.payload.featureData.freeSpinRemainCount;
 			this.featureMultiplier = this.spinResp.payload.featureData.featureMultiplier;
 			this.stopRoll(resp.payload.viewGrid);
+			this.showWildFlow(resp.payload.wildFlow);
 			this.setState(GameState.STOP);
 		}
 
@@ -387,6 +389,34 @@ module game {
 						}
 					}
 				})
+		}
+		private cloudGroup: eui.Group;
+		private clouds: Array<AMovieClip>;
+		private showWildFlow(arr:number[]){
+			this.clouds = [];
+			arr.forEach((index)=>{
+				let mc = new AMovieClip();
+				this.cloudGroup.addChild(mc);
+				this.clouds.push(mc);
+				mc.horizontalCenter = this.symbolArr[index].horizontalCenter+15;
+				mc.verticalCenter = this.symbolArr[index].verticalCenter-30;
+				mc.sources = "cloud|00-50|_png";
+				mc.play();
+				egret.Tween.get(mc)
+					.set({scaleX:4, scaleY:4, alpha:0})
+					.to({scaleX:1.5, scaleY:1.5, alpha:1},300)
+					.call(()=>{
+						egret.Tween.removeTweens(mc);
+					})
+			})
+		}
+		private clearClouds(){
+			while(this.clouds && this.clouds.length>0){
+				let mc = this.clouds.pop();
+				mc.stop();
+				mc.parent.removeChild(mc);
+			}
+			this.clouds = [];
 		}
 		/**
 		 * 停下来
@@ -887,8 +917,16 @@ module game {
 			this.tileMc.visible = !isSmallTile;
 			this.tileImg.source = isSmallTile ? "symbol"+v+"_png" : "symbol6_png";
 			if(!isSmallTile){
-				if(v=="0") this.bg.visible = false;
 				this.tileMc.source = Symbol.SymbolAninations[v].all.source;
+				if(v=="0") {
+					this.bg.visible = false;
+				}
+				else{
+					this.tileMc.sources = Symbol.SymbolAninations[v]["all"].sources;
+					this.tileMc.speed = 5;
+					this.tileMc.loop = -1;
+					this.tileMc.play();
+				}
 			}
 		}
 		/**isAll:是否展示全部中奖图标时的动画 */
@@ -897,9 +935,8 @@ module game {
 				this.borderLight.visible = true;
 				this.borderLight.play();
 				let isSmallTile = parseInt(this.value) > 5;
-				let all = isAll ? "all": "single";
 				if(!isSmallTile){
-					this.tileMc.sources = Symbol.SymbolAninations[this.value][all].sources;
+					this.tileMc.sources = Symbol.SymbolAninations[this.value]["single"].sources;
 					this.tileMc.speed = 3;
 					this.tileMc.loop = 2;
 					this.tileMc.play();
