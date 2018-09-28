@@ -920,7 +920,7 @@ module game {
 					!isLong && (this.gameScene.lineWinTxt.visible = true);
 					!isLong && lineWinTxt && (this.gameScene.lineWinTxt.text = lineWinTxt);
 					this.mc.play();
-					this.mc.loop = isLong ? 2 : 1;
+					this.mc.loop = isLong ? 3 : 2;
 					this.tile.visible = false;
 					this.mc.once(AMovieClip.COMPLETE, () => {
 						this.tile.visible = true;

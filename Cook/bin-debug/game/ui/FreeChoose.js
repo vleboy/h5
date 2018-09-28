@@ -66,15 +66,12 @@ var game;
             var defShow = function () {
                 _this.chooseGroup.setChildIndex(_this.rect, 0);
                 _this.chooseGroup.setChildIndex(_this.cardBgLight, 1);
-                _this.tipTxt.visible = true;
                 _this.visible = true;
-                //选项卡默认位置,隐藏黄光
+                //选项卡默认位置
                 _this.countArr.forEach(function (v, i) {
                     var tar = _this["choose" + v];
-                    tar.left = -310;
-                    _this.chooseGroup.setChildIndex(tar, i + 3);
-                    _this["cardBg" + v].alpha = 0;
-                    _this["minArr_" + v].alpha = 0;
+                    tar.top = 240;
+                    tar.left = FreeChoose.positionArr[i];
                     _this.bgLight.alpha = 0;
                     _this.maxArr.alpha = 0;
                 });
@@ -89,6 +86,9 @@ var game;
             defShow();
             //选项卡动画
             this.cardIn();
+            setTimeout(function () {
+                _this.tipTxt.visible = true;
+            }, 1000);
             //下方选择免费提示文字图片动画
             egret.Tween.get(this.tipTxt, { loop: true }).wait(2000).to({ alpha: 0.5 }, 500).to({ alpha: 1 }, 500);
         };
@@ -97,17 +97,41 @@ var game;
         */
         FreeChoose.prototype.cardIn = function () {
             var _this = this;
+            for (var _i = 0, _a = this.countArr; _i < _a.length; _i++) {
+                var value = _a[_i];
+                this["cardBg" + value].top = -256;
+                this["cardBg" + value].visible = true;
+                this["cardBg" + value].alpha = 0;
+                this["body" + value].top = -534;
+            }
             return new Promise(function (res, rej) {
-                var moveAni = function (tar, leftNum, moveTime, wait) {
+                var moveAni = function (tar, wait, tar2) {
                     return new Promise(function (res2, rej2) {
-                        egret.Tween.get(tar).wait(wait).to({ left: leftNum }, moveTime).call(function () { egret.Tween.removeTweens(tar); res2(); });
+                        egret.Tween.get(tar)
+                            .wait(wait)
+                            .to({ top: 126, alpha: 1 }, 250)
+                            .to({ top: 16 }, 250)
+                            .call(function () {
+                            egret.Tween.get(tar2).to({ top: 0 }, 300).call(function () {
+                                egret.Tween.removeTweens(tar);
+                                egret.Tween.removeTweens(tar2);
+                                res();
+                            });
+                        });
                     });
                 };
-                var moveTimeArr = [600, 450, 300, 150, 80];
-                var waitTaimArr = [0, 200, 400, 600, 800];
-                var cardArr = [1550, 1178, 806, 434, 62];
+                _this.countArr.forEach(function (v) {
+                    var mk = new eui.Rect(310, 534);
+                    mk.x = 0;
+                    mk.y = 66;
+                    _this["choose" + v].addChild(mk);
+                    _this["body" + v].mask = mk;
+                });
+                var waitTaimArr = [0, 250, 500, 750, 1000];
                 var proArr = [];
-                ["5", "8", "10", "15", "20"].forEach(function (v, i) { proArr.push(moveAni(_this["choose" + v], cardArr[i], moveTimeArr[i], waitTaimArr[i])); });
+                _this.countArr.forEach(function (v, i) {
+                    proArr.push(moveAni(_this["cardBg" + v], waitTaimArr[i], _this["body" + v]));
+                });
                 Promise.all(proArr).then(function () { return res(); });
             });
         };
@@ -121,29 +145,23 @@ var game;
                         egret.Tween.get(gro).wait(wait).to({ left: leftNum }, moveTime).call(function () { egret.Tween.removeTweens(gro); res2(); });
                     });
                 };
-                var moveCenterTime = [400, 200, 0, 200, 400];
-                var moveOutTime = [80, 150, 300, 450, 600];
+                var moveTop = function (gro, topNum, moveTime, wait) {
+                    return new Promise(function (res2, rej2) {
+                        egret.Tween.get(gro).wait(wait).to({ top: topNum }, moveTime).call(function () { egret.Tween.removeTweens(gro); res2(); });
+                    });
+                };
+                var moveCenterTime = [200, 100, 0, 100, 200];
+                var moveOutTime = [0, 100, 200, 300];
                 var index = _this.countArr.indexOf(freeType);
-                //闪黄光
-                egret.Tween.get(_this["cardBg" + freeType])
-                    .to({ alpha: 1 }, 200)
-                    .to({ alpha: 0 }, 200)
-                    .call(function () {
-                    egret.Tween.removeTweens(_this["cardBg" + freeType]);
-                    //移动动画
-                    var outArr = ["20", "15", "10", "8", "5"];
-                    outArr.splice(index, 1);
-                    var proArr = [];
-                    //先设其他卡片的层次
-                    outArr.forEach(function (v) { return _this.chooseGroup.setChildIndex(_this["choose" + v], 0); });
-                    //其他卡片飞出
-                    outArr.forEach(function (v) { return proArr.push(moveAni(_this["choose" + v], -310, moveOutTime[index], 0)); });
-                    //设卡片的层次
-                    _this.chooseGroup.setChildIndex(tar, _this.chooseGroup.numChildren);
-                    //选中卡片飞到中间
-                    proArr.push(moveAni(tar, 806, moveCenterTime[index], 100));
-                    Promise.all(proArr).then(function () { return res(); });
-                });
+                //移动动画
+                var outArr = ["20", "15", "10", "8", "5"];
+                outArr.splice(index, 1);
+                var proArr = [];
+                //其他卡片飞出
+                outArr.forEach(function (v, i) { return proArr.push(moveTop(_this["choose" + v], -600, 100, moveOutTime[i])); });
+                //选中卡片飞到中间
+                proArr.push(moveAni(tar, 806, moveCenterTime[index], 600));
+                Promise.all(proArr).then(function () { return res(); });
             });
         };
         /**选项卡背景光动画*/
@@ -252,6 +270,8 @@ var game;
                 }, 1500);
             });
         };
+        /**卷轴初始位置 */
+        FreeChoose.positionArr = [62, 434, 806, 1178, 1550];
         return FreeChoose;
     }(game.BaseUI));
     game.FreeChoose = FreeChoose;

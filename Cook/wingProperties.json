@@ -1,19 +1,9 @@
 {
-    "resourcePlugin": {
-        "configs": [
-            {
-                "configPath": "resource/default.res.json",
-                "relativePath": "resource/"
-            },
-            {
-                "configPath": "resource/img/Tile/caishen/bin-release/web/caishen/resource/default.res.json",
-                "relativePath": "resource/"
-            },
-            {
-                "configPath": "resource/img/Tile/caishen/resource/default.res.json",
-                "relativePath": "resource/"
-            }
-        ]
-    },
-    "theme": "resource/default.thm.json"
+	"resourcePlugin":{
+		"configs":[{
+				"configPath":"resource/default.res.json",
+				"relativePath":"resource/"
+			}]
+		},
+	"theme":"resource/default.thm.json"
 }

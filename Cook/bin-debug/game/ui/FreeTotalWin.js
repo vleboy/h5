@@ -39,8 +39,8 @@ var game;
             egret.Tween.removeTweens(this);
             this.winTxt.text = this.win.toFixed(2);
             egret.Tween.get(this.winTxt)
-                .to({ scaleX: 1.2, scaleY: 1.2 }, 300)
-                .to({ scaleX: 1, scaleY: 1 }, 300)
+                .to({ scaleX: 0.8, scaleY: 0.8 }, 300)
+                .to({ scaleX: 0.6, scaleY: 0.6 }, 300)
                 .wait(2000)
                 .call(function () {
                 egret.Tween.removeTweens(_this.winTxt);

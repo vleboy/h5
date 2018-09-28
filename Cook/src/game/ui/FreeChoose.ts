@@ -16,6 +16,8 @@ module game {
 		private closeRect: eui.Rect;
 		/**次数数组*/
 		private countArr: string[];
+		/**卷轴初始位置 */
+		private static positionArr: number[] = [62, 434, 806, 1178, 1550];
 		/**粒子效果数组*/
 		private parArr: particle.GravityParticleSystem[];
 		public constructor() {
@@ -34,15 +36,12 @@ module game {
 			let defShow = () => {
 				this.chooseGroup.setChildIndex(this.rect, 0);
 				this.chooseGroup.setChildIndex(this.cardBgLight, 1);
-				this.tipTxt.visible = true;
 				this.visible = true;
-				//选项卡默认位置,隐藏黄光
+				//选项卡默认位置
 				this.countArr.forEach((v, i) => {
 					let tar: eui.Group = this["choose" + v] as eui.Group;
-					tar.left = -310;
-					this.chooseGroup.setChildIndex(tar, i + 3);
-					(this["cardBg" + v] as eui.Image).alpha = 0;
-					(this["minArr_" + v] as eui.Image).alpha = 0;
+					tar.top = 240;
+					tar.left = FreeChoose.positionArr[i];
 					this.bgLight.alpha = 0;
 					this.maxArr.alpha = 0;
 				});
@@ -57,6 +56,9 @@ module game {
 			defShow();
 			//选项卡动画
 			this.cardIn();
+			setTimeout(() => {
+				this.tipTxt.visible = true;
+			}, 1000);
 			//下方选择免费提示文字图片动画
 			egret.Tween.get(this.tipTxt, { loop: true }).wait(2000).to({ alpha: 0.5 }, 500).to({ alpha: 1 }, 500);
 		}
@@ -64,17 +66,40 @@ module game {
 		 * 选项卡进入动画(免费类型进入动画)
 		*/
 		private cardIn(): Promise<{}> {
+			for (let value of this.countArr) {
+				(this[`cardBg${value}`] as eui.Image).top = -256;
+				(this[`cardBg${value}`] as eui.Image).visible = true;
+				(this[`cardBg${value}`] as eui.Image).alpha = 0;
+				(this[`body${value}`] as eui.Image).top = -534;
+			}
 			return new Promise((res, rej) => {
-				let moveAni = (tar: eui.Group, leftNum: number, moveTime: number, wait: number) => {
+				let moveAni = (tar: eui.Image, wait: number, tar2: eui.Image) => {
 					return new Promise((res2, rej2) => {
-						egret.Tween.get(tar).wait(wait).to({ left: leftNum }, moveTime).call(() => { egret.Tween.removeTweens(tar); res2(); });
+						egret.Tween.get(tar)
+							.wait(wait)
+							.to({ top: 126, alpha: 1 }, 250)
+							.to({ top: 16 }, 250)
+							.call(() => {
+								egret.Tween.get(tar2).to({ top: 0 }, 300).call(() => {
+									egret.Tween.removeTweens(tar);
+									egret.Tween.removeTweens(tar2);
+									res();
+								})
+							});
 					});
 				};
-				let moveTimeArr: number[] = [600, 450, 300, 150, 80];
-				let waitTaimArr: number[] = [0, 200, 400, 600, 800];
-				let cardArr: number[] = [1550, 1178, 806, 434, 62];
+				this.countArr.forEach(v => {
+					let mk = new eui.Rect(310, 534);
+					mk.x = 0;
+					mk.y = 66;
+					(this["choose" + v] as eui.Group).addChild(mk);
+					(this[`body${v}`] as eui.Image).mask = mk;
+				});
+				let waitTaimArr: number[] = [0, 250, 500, 750, 1000];
 				let proArr: Array<Promise<{}>> = [];
-				["5", "8", "10", "15", "20"].forEach((v, i) => { proArr.push(moveAni(this["choose" + v] as eui.Group, cardArr[i], moveTimeArr[i], waitTaimArr[i])) });
+				this.countArr.forEach((v, i) => {
+					proArr.push(moveAni(this[`cardBg${v}`] as eui.Image, waitTaimArr[i], this[`body${v}`] as eui.Image))
+				});
 				Promise.all(proArr).then(() => res());
 			});
 		}
@@ -87,29 +112,23 @@ module game {
 						egret.Tween.get(gro).wait(wait).to({ left: leftNum }, moveTime).call(() => { egret.Tween.removeTweens(gro); res2(); });
 					});
 				};
-				let moveCenterTime: number[] = [400, 200, 0, 200, 400];
-				let moveOutTime: number[] = [80, 150, 300, 450, 600];
-				let index: number = this.countArr.indexOf(freeType);
-				//闪黄光
-				egret.Tween.get(this["cardBg" + freeType])
-					.to({ alpha: 1 }, 200)
-					.to({ alpha: 0 }, 200)
-					.call(() => {
-						egret.Tween.removeTweens(this["cardBg" + freeType]);
-						//移动动画
-						let outArr: string[] = ["20", "15", "10", "8", "5"];
-						outArr.splice(index, 1);
-						let proArr: Array<Promise<{}>> = [];
-						//先设其他卡片的层次
-						outArr.forEach(v => this.chooseGroup.setChildIndex(this["choose" + v] as eui.Group, 0));
-						//其他卡片飞出
-						outArr.forEach(v => proArr.push(moveAni(this["choose" + v] as eui.Group, -310, moveOutTime[index], 0)));
-						//设卡片的层次
-						this.chooseGroup.setChildIndex(tar, this.chooseGroup.numChildren);
-						//选中卡片飞到中间
-						proArr.push(moveAni(tar, 806, moveCenterTime[index], 100));
-						Promise.all(proArr).then(() => res());
+				let moveTop = (gro: eui.Group, topNum: number, moveTime: number, wait: number) => {
+					return new Promise((res2, rej2) => {
+						egret.Tween.get(gro).wait(wait).to({ top: topNum }, moveTime).call(() => { egret.Tween.removeTweens(gro); res2(); });
 					});
+				};
+				let moveCenterTime: number[] = [200, 100, 0, 100, 200];
+				let moveOutTime: number[] = [0, 100, 200, 300];
+				let index: number = this.countArr.indexOf(freeType);
+				//移动动画
+				let outArr: string[] = ["20", "15", "10", "8", "5"];
+				outArr.splice(index, 1);
+				let proArr: Array<Promise<{}>> = [];
+				//其他卡片飞出
+				outArr.forEach((v, i) => proArr.push(moveTop(this["choose" + v] as eui.Group, -600, 100, moveOutTime[i])));
+				//选中卡片飞到中间
+				proArr.push(moveAni(tar, 806, moveCenterTime[index], 600));
+				Promise.all(proArr).then(() => res());
 			});
 		}
 		/**选项卡背景光动画*/

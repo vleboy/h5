@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="freeTotalWinSkin" width="1920" height="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="totalWinBg_png" width="1920" height="1080" verticalCenter="0" horizontalCenter="0"/>
-	<e:Image horizontalCenter="0" source="totalWin_png" top="270"/>
 
 
-	<e:BitmapLabel id="winTxt" height="180" text="0.00" textAlign="center" letterSpacing="-5" width="1600" anchorOffsetX="800" anchorOffsetY="90" horizontalCenter="0" top="515" font="fnt156_fnt" verticalAlign="middle"/>
+
+	<e:Group horizontalCenter="0" verticalCenter="0" width="1334" height="723">
+		<e:Image source="totalWin_png" horizontalCenter="0" verticalCenter="0"/>
+		<e:Image source="wzdstc_png" horizontalCenter="64.5" verticalCenter="58"/>
+		<e:Image source="xyz_png" right="126" bottom="152"/>
+		<e:BitmapLabel id="winTxt" text="100.00" textAlign="center" letterSpacing="-5" width="100%" anchorOffsetX="800" anchorOffsetY="90" verticalAlign="middle" font="fnt156_fnt" horizontalCenter="-60" verticalCenter="37" scaleX="0.6" scaleY="0.6"/>
+	</e:Group>
 </e:Skin>

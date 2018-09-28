@@ -1031,8 +1031,8 @@ var game;
                     !isLong && (_this.gameScene.lineWinTxt.visible = true);
                     !isLong && lineWinTxt && (_this.gameScene.lineWinTxt.text = lineWinTxt);
                     _this.mc.play();
-                    _this.mc.loop = isLong ? 2 : 1;
-                    // this.tile.visible = false;
+                    _this.mc.loop = isLong ? 3 : 2;
+                    _this.tile.visible = false;
                     _this.mc.once(game.AMovieClip.COMPLETE, function () {
                         _this.tile.visible = true;
                         _this.mc.visible = false;
