@@ -23,6 +23,7 @@ module game {
 		/** 开始播放 */
 		public play()
 		{
+			this.stop();
 			this.currentFrame = 0;
 			this.source = this.imgs[this.currentFrame];
 			this.addEventListener(egret.Event.ENTER_FRAME, this.onFrame, this);
