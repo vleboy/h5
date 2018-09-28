@@ -68,7 +68,6 @@ module game {
 		public defaultOpen():void{
 			SoundPlayer.closeMusic(false);
 			SoundPlayer.closeEffect(false);
-			this.sendNotify(NotifyConst.updateBgm);
 		}
 		/**音乐*/
 		private theMusic(e: egret.TouchEvent): void {

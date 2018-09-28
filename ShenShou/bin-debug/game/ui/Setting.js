@@ -69,7 +69,6 @@ var game;
         Setting.prototype.defaultOpen = function () {
             game.SoundPlayer.closeMusic(false);
             game.SoundPlayer.closeEffect(false);
-            this.sendNotify(game.NotifyConst.updateBgm);
         };
         /**音乐*/
         Setting.prototype.theMusic = function (e) {
