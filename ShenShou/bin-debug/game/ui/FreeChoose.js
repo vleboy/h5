@@ -116,7 +116,7 @@ var game;
                     Promise.all([
                         new Promise(function (resolve, reject) {
                             var endY = i >= 3 ? 76 : 46;
-                            var img = new eui.Image("wildbg" + (i + 1) + "_png");
+                            var img = new eui.Image("wildbg" + (5 - i) + "_png");
                             img.width = 207;
                             img.height = 202;
                             img.x = 155;

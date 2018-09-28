@@ -297,18 +297,18 @@ module game {
 					break;
 				case GameState.SPINNING:
 					this.winTxt.text = "0.00";
-					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
+					betAutoState(false, false);
 					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.SHOW_RESULT:
-					this.isFree ? betAutoState(false, false) : betAutoState(false);
+					betAutoState(false, false);
 					this.spinBtnShow(true, false);
 					if (this.isAuto) this.spinBtn.enabled = false;
 					break;
 				case GameState.STOP:
 				case GameState.SHOW_SINGLE_LINES:
-					this.isFree ? betAutoState(false, false) : betAutoState(false, false);
+					betAutoState(false, false);
 					this.imgSpin(true);
 					this.spinBtnShow(false);
 					if (this.isAuto) this.spinBtn.enabled = true;

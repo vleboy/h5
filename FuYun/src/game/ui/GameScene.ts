@@ -966,25 +966,39 @@ module game {
 			egret.Tween.removeTweens(this.freeChooseCountBoom);
 			this.freeChooseCountBoom.scaleX = 1;
 			this.freeChooseCountBoom.scaleY = 1;
-			this.freeChooseCountBoom.x = 960;
-			this.freeChooseCountBoom.y = 540;
-
+			let defX = this.freeChooseCountBoom.x;
+			let defY = this.freeChooseCountBoom.y;
 			let isShow: boolean = this.featureChanceCount > 0;
 			if (isAn) {
-				isShow && egret.Tween.get(this.freeChooseCountBoom)
-					.call(() => this.freeChooseCountBoom.visible = true)
-					.to({ scaleX: 0.3, scaleY: 0.3, x: 1754, y: 110 }, 1000)
-					.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
-					.call(() => {
-						this.freeChooseCountBoom.play();
-						this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
-						this.freeChooseCountBg.visible = isShow;
-						this.freeChooseCountTxt.visible = isShow;
-						setTimeout(() => {
-							this.freeChooseCountBoom.stop();
-							this.freeChooseCountBoom.visible = false;
-						}, 1000)
+				if (isShow) {
+					let p = new particle.GravityParticleSystem(RES.getRes("freeChanceParticle_png"), RES.getRes("freeChanceParticle_json"));
+					this.freeChooseCountBoom.parent.addChild(p);
+					p.blendMode = egret.BlendMode.ADD;
+					p.emitterX = this.freeChooseCountBoom.x;
+					p.emitterY = this.freeChooseCountBoom.y;
+					p.start();
+					egret.Tween.get(this.freeChooseCountBoom, {
+						onChange: () => {
+							p.emitterX = this.freeChooseCountBoom.x;
+							p.emitterY = this.freeChooseCountBoom.y;
+						}, onChangeObj: this
 					})
+						.set({ x: 960, y: 540 })
+						.call(() => this.freeChooseCountBoom.visible = true)
+						.to({ scaleX: 0.3, scaleY: 0.3, x: defX, y: defY }, 1000)
+						.call(() => p.stop())
+						.to({ scaleX: 1.2, scaleY: 1.2 }, 10)
+						.call(() => {
+							this.freeChooseCountBoom.play();
+							this.freeChooseCountTxt.text = "x" + this.featureChanceCount;
+							this.freeChooseCountBg.visible = isShow;
+							this.freeChooseCountTxt.visible = isShow;
+							setTimeout(() => {
+								this.freeChooseCountBoom.stop();
+								this.freeChooseCountBoom.visible = false;
+							}, 1000);
+						});
+				}
 			} else {
 				this.freeChooseCountBg.visible = isShow;
 				this.freeChooseCountTxt.visible = isShow;
@@ -998,7 +1012,7 @@ module game {
 			if (isStart) {
 				this.freeMultiGroup.visible = true;
 				//倍数
-				this.freeMulti.text = "X" + mul;
+				this.freeMulti.text = "x" + mul;
 				let theParticle = (texture, cfg, index, isLight?: boolean) => {
 					let theP = new particle.GravityParticleSystem(texture, cfg);
 					this.freeMultiGroup.addChildAt(theP, index);
