@@ -181,6 +181,8 @@ module game {
 			//数据恢复检查
 			this.checkDataRecover(loginVo);
 			this.setting.defaultOpen();
+			//开背景音乐
+			this.updateBgm();
 		}
 		/**
 		 * 数据恢复

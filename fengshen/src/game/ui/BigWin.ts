@@ -41,16 +41,22 @@ module game {
                     case "big":
                         this.winImg.source = "bigwin_png";
                         this.particle4.visible = false;
+                        this.particle2.emissionRate = 40;
                         break;
                     case "mega":
                         time=20000;
                         this.winImg.source = "bigwin_png";
                         this.particle4.visible = false;
+                        this.particle2.emissionRate = 40;
                         setTimeout(()=> {
-                            this.winImg.source = "megawin_png";
+                            egret.Tween.get(this.winImg)
+                                .set({scaleX:4, scaleY:4, source:"megawin_png"})
+                                .to({scaleX:1, scaleY:1}, 200)
+                                .call(()=>{
+                                    egret.Tween.removeTweens(this.winImg);
+                                })
                             this.particle4.visible = true;
-                            this.particle2.stop();
-                            this.particle2.start();
+                            this.particle2.emissionRate = 20;
                         }, 10000);
                         break;
                     case "super":

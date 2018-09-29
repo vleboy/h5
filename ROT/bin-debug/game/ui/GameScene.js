@@ -147,7 +147,6 @@ var game;
             var _this = this;
             this.registerEvent(this.bg, egret.TouchEvent.TOUCH_TAP, function () {
                 _this.bottomBar.hideCutGroup(true);
-                _this.bigWin.bigWinStart("big", 200);
             }, this);
         };
         /**
@@ -257,7 +256,7 @@ var game;
                     this.featureChanceCount--;
                     this.isFree = true;
                     this.bottomBar.setFree(true);
-                    this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+                    this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
                     this.showFreeChoose(false);
                     this.showFreeGame(true);
                     break;

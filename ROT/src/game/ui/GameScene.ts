@@ -273,7 +273,7 @@ module game {
 					this.featureChanceCount--;
 					this.isFree = true;
 					this.bottomBar.setFree(true);
-					this.bottomBar.setAutoBetNum(this.freeSpinRemainCount);
+					this.bottomBar.setFreeBetNum(this.freeSpinRemainCount);
 					this.showFreeChoose(false);
 					this.showFreeGame(true);
 					break;
