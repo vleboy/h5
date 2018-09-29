@@ -5,7 +5,7 @@ module game {
         /**关闭背景音乐*/
         public static closeMusic(isClose: boolean = true) {
             GlobalConfig.musicSwitch = !isClose;
-            if(isClose && this.musicChannel) {
+            if (isClose && this.musicChannel) {
                 this.musicChannel.stop();
                 this.musicChannel = null;
             }
@@ -13,13 +13,13 @@ module game {
         /**关闭音效*/
         public static closeEffect(isClose: boolean = true) {
             GlobalConfig.effectSwitch = !isClose;
-            if (isClose) { 
-                this.effectArr.forEach(v => v.stop()); 
+            if (isClose) {
+                this.effectArr.forEach(v => v.stop());
                 this.effectArr = [];
             }
         }
         /**播放某一个音效*/
-        public static playEffect(name: string, count:number=1) :egret.SoundChannel{
+        public static playEffect(name: string, count: number = 1): egret.SoundChannel {
             // console.log("playeffect "+name);
             if (GlobalConfig.effectSwitch) {
                 let channel: egret.SoundChannel = RES.getRes(name).play(0, count);
@@ -40,6 +40,5 @@ module game {
                 this.musicChannel = RES.getRes(name).play(0);
             }
         }
-
     }
 }
