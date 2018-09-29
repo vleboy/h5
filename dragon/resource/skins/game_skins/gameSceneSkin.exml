@@ -3,7 +3,7 @@
 	<e:Image id="bg" x="0" y="0" width="100%" height="100%" source="normalbg_jpg"/>
 	<e:Image id="bgFree" x="0" y="0" width="100%" height="100%" source="freeBG_jpg"/>
 	<e:Group id="contentGroup" width="1396" height="1080" horizontalCenter="0" verticalCenter="-23" touchEnabled="false" touchChildren="false">
-		<e:Rect id="tileMask" width="1334" height="658" y="269" horizontalCenter="0"/>
+		<e:Rect id="tileMask" width="1375" height="658" y="269" horizontalCenter="-4"/>
 		<e:Group id="borderGroup" width="100%" height="100%" x="0" y="0">
 
 
@@ -16,51 +16,50 @@
 		</e:Group>
 
 
-		<e:Group id="tileGroup" width="1334" height="658" y="269" horizontalCenter="0">
+		<e:Group id="tileGroup" width="1375" height="658" y="269" horizontalCenter="0">
 
 			<e:Group id="valueTiles" width="1" height="1" x="0" y="0">
-				<e:Image id="tile0" x="-6" width="200" height="200" y="39" scaleX="1" scaleY="1" source="symbolName_1_png"/>
-				<e:Image id="tile1" source="symbolName_0_png" x="-6" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
-				<e:Image id="tile2" source="symbolName_0_png" x="-6" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
+				<e:Image id="tile0" width="200" height="200" y="39" scaleX="1" scaleY="1" source="symbolName_1_png" x="19"/>
+				<e:Image id="tile1" source="symbolName_0_png" x="19" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
+				<e:Image id="tile2" source="symbolName_0_png" x="19" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
 				<e:Image source="wildText_json.wildText1_png" x="-38" y="112" visible="false"/>
-				<e:Image id="tile3" source="symbolName_0_png" x="277" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
-				<e:Image id="tile4" source="symbolName_0_png" x="277" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
-				<e:Image id="tile5" source="symbolName_0_png" x="277" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
-				<e:Image id="tile6" source="symbolName_0_png" x="565" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
-				<e:Image id="tile7" source="symbolName_0_png" x="565" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
-				<e:Image id="tile8" source="symbolName_0_png" x="565" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
-				<e:Image id="tile9" source="symbolName_0_png" x="846" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
-				<e:Image id="tile10" source="symbolName_0_png" x="846" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
-				<e:Image id="tile11" source="symbolName_0_png" x="846" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
-				<e:Image id="tile12" source="symbolName_0_png" x="1129" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
-
-				<e:Image id="tile13" source="symbolName_0_png" x="1129" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
-				<e:Image id="tile14" source="symbolName_0_png" x="1129" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
+				<e:Image id="tile3" source="symbolName_0_png" x="300" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
+				<e:Image id="tile4" source="symbolName_0_png" x="300" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
+				<e:Image id="tile5" source="symbolName_0_png" x="300" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
+				<e:Image id="tile6" source="symbolName_0_png" x="588" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
+				<e:Image id="tile7" source="symbolName_0_png" x="588" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
+				<e:Image id="tile8" source="symbolName_0_png" x="588" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
+				<e:Image id="tile9" source="symbolName_0_png" x="869" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
+				<e:Image id="tile10" source="symbolName_0_png" x="869" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
+				<e:Image id="tile11" source="symbolName_0_png" x="869" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
+				<e:Image id="tile12" source="symbolName_0_png" x="1152" width="200" height="200" y="39" scaleX="1" scaleY="1"/>
+				<e:Image id="tile13" source="symbolName_0_png" x="1152" width="200" height="200" y="247" scaleX="1" scaleY="1"/>
+				<e:Image id="tile14" source="symbolName_0_png" x="1152" width="200" height="200" y="455" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="vagueTiles" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
-				<e:Image id="vagueTile0" source="vague0_png" x="-6" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile1" source="vague0_png" x="-6" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile2" source="vague0_png" x="-6" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile3" source="vague0_png" x="-6" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile4" source="vague0_png" x="277" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile5" source="vague0_png" x="277" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile6" source="vague0_png" x="277" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile7" source="vague0_png" x="277" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile8" source="vague0_png" x="565" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile9" source="vague0_png" x="565" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile10" source="vague0_png" x="565" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile11" source="vague0_png" x="565" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile12" source="vague0_png" x="846" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile13" source="vague0_png" x="846" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile14" source="vague0_png" x="846" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile15" source="vague0_png" x="846" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile16" source="vague0_png" x="1129" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile17" source="vague0_png" x="1129" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile18" source="vague0_png" x="1129" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
-				<e:Image id="vagueTile19" source="vague0_png" x="1129" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile0" source="vague0_png" x="19" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile1" source="vague0_png" x="19" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile2" source="vague0_png" x="19" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile3" source="vague0_png" x="19" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile4" source="vague0_png" x="300" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile5" source="vague0_png" x="300" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile6" source="vague0_png" x="300" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile7" source="vague0_png" x="300" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile8" source="vague0_png" x="588" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile9" source="vague0_png" x="588" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile10" source="vague0_png" x="588" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile11" source="vague0_png" x="588" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile12" source="vague0_png" x="869" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile13" source="vague0_png" x="869" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile14" source="vague0_png" x="869" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile15" source="vague0_png" x="869" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile16" source="vague0_png" x="1152" width="200" height="200" y="33" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile17" source="vague0_png" x="1152" width="200" height="200" y="241" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile18" source="vague0_png" x="1152" width="200" height="200" y="449" scaleX="1" scaleY="1"/>
+				<e:Image id="vagueTile19" source="vague0_png" x="1152" width="200" height="200" y="652" scaleX="1" scaleY="1"/>
 			</e:Group>
 			<e:Group id="winGridGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
-				<e:Rect id="particleBg" width="1334" height="658" x="0" y="0" scaleX="1" scaleY="1" fillAlpha="0.5" visible="false"/>
+				<e:Rect id="particleBg" width="1370" height="658" x="0" y="0" scaleX="1" scaleY="1" fillAlpha="0.5" visible="false"/>
 			</e:Group>
 			<e:Group id="bonusEffectGroup" width="1" height="1" x="0" y="0" scaleX="1" scaleY="1">
 			</e:Group>
@@ -73,7 +72,7 @@
 			
 			<game:AMovieClip id="title" y="139" horizontalCenter="0" sources="logo_|1-20|_png" speed="5" source="logo_1_png"/>
 		</e:Group>
-		<e:Group id="freeEffectGroup" width="100%" height="100%" y="298" horizontalCenter="0" x="0" scaleX="1" scaleY="1">
+		<e:Group id="freeEffectGroup" width="100%" y="298" horizontalCenter="0" x="0" scaleX="1" scaleY="1" height="100%">
 			<game:AMovieClip id="border2" width="332" height="468" horizontalCenter="0" verticalCenter="-214" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>
 			<game:AMovieClip id="border3" width="332" height="468" horizontalCenter="282" verticalCenter="-214" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>
 			<game:AMovieClip id="border4" width="332" height="468" horizontalCenter="565" verticalCenter="-214" scaleY="1.75" scaleX="1.75" source="border1_png" sources="border|1-45|_png" speed="3" visible="false"/>

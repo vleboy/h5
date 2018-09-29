@@ -902,7 +902,6 @@ module game {
 		*/
 		public imgWinAni(waitTime: number, isLong: boolean = true, lineWinTxt?: string): Promise<{}> {
 			return new Promise((res, rej) => {
-				let theLoop: number = isLong ? 2 : 1;
 				egret.Tween.get(this.tile).call(() => {
 					this.mc = new AMovieClip();
 					this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-15|_png");
