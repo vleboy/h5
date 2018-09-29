@@ -1013,11 +1013,20 @@ var game;
         Symbol.prototype.imgWinAni = function (waitTime, isLong, lineWinTxt) {
             var _this = this;
             if (isLong === void 0) { isLong = true; }
+            var src = "";
+            if (this.value == "0") {
+                src = "0_|1-10|_png";
+            }
+            else if (this.value == "1") {
+                src = this.gameScene.buff != "-1" ? "free" + this.gameScene.buff + "_|1-20|_png" : "1_|1-20|_png";
+            }
+            else {
+                src = "2_|1-20|_png";
+            }
             return new Promise(function (res, rej) {
-                var theLoop = isLong ? 2 : 1;
                 egret.Tween.get(_this.tile).call(function () {
                     _this.mc = new game.AMovieClip();
-                    _this.mc.sources = _this.value == "1" && _this.gameScene.buff != "-1" ? ("free" + _this.gameScene.buff + "_|1-15|_png") : (_this.value + "_|1-10|_png");
+                    _this.mc.sources = src;
                     _this.mc.speed = 5;
                     _this.mc.x = _this.tile.x - 88;
                     _this.mc.y = _this.tile.y - 92;
@@ -1027,16 +1036,19 @@ var game;
                     _this.mc.height = 280;
                     _this.gameScene.particleBg.visible = true;
                 }).wait(waitTime).call(function () {
+                    // (this.gameScene["winGridGroup"] as eui.Group).addChild(this.tile);
                     _this.gameScene["winGridGroup"].addChild(_this.mc);
                     !isLong && (_this.gameScene.lineWinTxt.visible = true);
                     !isLong && lineWinTxt && (_this.gameScene.lineWinTxt.text = lineWinTxt);
                     _this.mc.play();
                     _this.mc.loop = isLong ? 3 : 2;
-                    _this.tile.visible = false;
+                    if (_this.value == "0")
+                        _this.tile.visible = false;
                     _this.mc.once(game.AMovieClip.COMPLETE, function () {
                         _this.tile.visible = true;
                         _this.mc.visible = false;
-                        _this.mc.parent && _this.mc.parent.removeChild(_this.mc);
+                        _this.mc.parent.removeChild(_this.mc);
+                        // (this.gameScene["winGridGroup"] as eui.Group).removeChild(this.tile);
                         _this.mc = null;
                         !isLong && (_this.gameScene.lineWinTxt.visible = false);
                         _this.gameScene.particleBg.visible = false;

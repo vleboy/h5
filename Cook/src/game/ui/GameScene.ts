@@ -902,11 +902,18 @@ module game {
 		 * 图标中奖动画
 		*/
 		public imgWinAni(waitTime: number, isLong: boolean = true, lineWinTxt?: string): Promise<{}> {
+			let src = "";
+			if (this.value == "0") {
+				src = "0_|1-10|_png";
+			} else if (this.value == "1") {
+				src = this.gameScene.buff != "-1" ? "free" + this.gameScene.buff + "_|1-20|_png" : "1_|1-20|_png";
+			} else {
+				src = "2_|1-20|_png";
+			}
 			return new Promise((res, rej) => {
-				let theLoop: number = isLong ? 2 : 1;
 				egret.Tween.get(this.tile).call(() => {
 					this.mc = new AMovieClip();
-					this.mc.sources = this.value == "1" && this.gameScene.buff != "-1" ? ("free" + this.gameScene.buff + "_|1-15|_png") : (this.value + "_|1-10|_png");
+					this.mc.sources = src;
 					this.mc.speed = 5;
 					this.mc.x = this.tile.x - 88;
 					this.mc.y = this.tile.y - 92;
@@ -916,16 +923,18 @@ module game {
 					this.mc.height = 280;
 					this.gameScene.particleBg.visible = true;
 				}).wait(waitTime).call(() => {
-					this.gameScene["winGridGroup"].addChild(this.mc);
+					// (this.gameScene["winGridGroup"] as eui.Group).addChild(this.tile);
+					(this.gameScene["winGridGroup"] as eui.Group).addChild(this.mc);
 					!isLong && (this.gameScene.lineWinTxt.visible = true);
 					!isLong && lineWinTxt && (this.gameScene.lineWinTxt.text = lineWinTxt);
 					this.mc.play();
 					this.mc.loop = isLong ? 3 : 2;
-					this.tile.visible = false;
+					if (this.value == "0") this.tile.visible = false;
 					this.mc.once(AMovieClip.COMPLETE, () => {
 						this.tile.visible = true;
 						this.mc.visible = false;
-						this.mc.parent && this.mc.parent.removeChild(this.mc);
+						this.mc.parent.removeChild(this.mc);
+						// (this.gameScene["winGridGroup"] as eui.Group).removeChild(this.tile);
 						this.mc = null;
 						!isLong && (this.gameScene.lineWinTxt.visible = false);
 						this.gameScene.particleBg.visible = false;
